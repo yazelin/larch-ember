@@ -1,0 +1,5 @@
+{
+ "job": "img_64627eb4974f15122c414a3e",
+ "prompt": "Game map object sprite, one single object only, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. 3/4 top-down camera view from the south (about 50 degrees elevation, showing top and south-facing front), soft even lighting. Redraw the object cleanly and completely as a standalone sprite.\nDraw: an old theater dressing table with a mirror framed by round light bulbs, a small photo tucked in the mirror corner, an open notebook and a black wristwatch on the table.\nProportions: bounding box is 4 grid cells wide and 3 grid cells tall (aspect ratio 4:3). The bottom 1 cells are its floor footprint; the top 2 cells rise up.\nDraw only this object: no floor, no shadows on floor, no people, no background scenery. Clean edges.\nBackground: a completely flat opaque solid #00FF00 pure green fill, uniform color, absolutely no gradient, no drop shadow. No text, no letters.",
+ "refs": []
+}

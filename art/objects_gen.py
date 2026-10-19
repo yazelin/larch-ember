@@ -50,7 +50,8 @@ TYPES = {
     'b_door': (2, 2, 1, 'an old wooden dressing room door with a small brass name plate (no readable text)', True, 'magenta'),
     'b_piano': (3, 2, 1, 'an old black upright piano against a wall, a lamp on top', True, 'magenta'),
     'b_cases': (2, 2, 1, 'two stacked black flight cases for stage equipment', True, 'magenta'),
-    'a_row': (16, 1, 1, 'a single long straight row of old red velvet theater seats seen from slightly above and behind, evenly spaced, wooden armrests', True, 'green'),
+    'a_block6': (6, 10, 10, 'a block of old ornate red velvet theater seats seen from above, 5 rows of 6 seats with empty walking rows between them, gold-trimmed armrests', True, 'green'),
+    'a_block8': (8, 10, 10, 'a block of old ornate red velvet theater seats seen from above, 5 rows of 8 seats with empty walking rows between them, gold-trimmed armrests', True, 'green'),
     'a_piano': (3, 2, 1, 'a black grand piano on a wooden stage, lid closed', True, 'magenta'),
     'a_desk': (4, 2, 1, 'a sound mixing desk with many faders and small glowing lights on a wooden platform', True, 'magenta'),
     'l_door': (2, 2, 1, 'an old theater back door in a brick wall, a rolled-up metal shutter, warm light from inside', True, 'magenta'),
@@ -61,11 +62,20 @@ TYPES = {
 OBJ_TYPE_MAP = {
     '朝西的窗': 'd_window', '化妝台': 'd_vanity', '首飾盒小桌': 'd_jewel', '收音機桌': 'd_radio', '化妝箱': 'd_case', '衣架': 'd_rack', '椅子': 'd_chair',
     '化妝間門': 'b_door', '直立鋼琴': 'b_piano', '器材箱': 'b_cases',
-    '第一排': 'a_row', '第二排': 'a_row', '第三排': 'a_row', '第四排': 'a_row', '鋼琴': 'a_piano', '音控台': 'a_desk',
+    '左區': 'a_block6', '中區': 'a_block8', '右區': 'a_block6', '鋼琴': 'a_piano', '音控台': 'a_desk',
     '後門': 'l_door', '機車': 'l_scooter', '菜籃': 'l_basket',
 }
 
 FALLBACK_RAW = {}
+
+# 作者 2026-10-19：地圖要跟 CG 是同一個地方、大小也要對得起來 → 地面與物件都拿選定的 CG 當參考
+SCENE_REF = {
+    'dressing': ['assets/art/cg/s_dress_1.webp', 'assets/art/cg/s_branch_1.webp'],
+    'backstage': ['assets/art/cg/s_prologue_4.webp', 'assets/art/cg/s_c_1.webp'],
+    'auditorium': ['assets/art/cg/s_soundcheck_1.webp', 'assets/art/cg/s_concert_1.webp'],
+    'alley': ['assets/art/cg/s_c_1.webp', 'assets/art/cg/s_c_4.webp'],
+}
+SCENE_NOTE = ' The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.'
 
 
 def get_type(o, a):
@@ -123,7 +133,7 @@ def gen_ground(a):
     )
     if not os.path.exists(out_raw):
         print(f'Generating ground for {a}...')
-        codex11.gen(prompt, out_raw, refs=[compose_path], size='1536x1024')
+        codex11.gen(prompt + SCENE_NOTE, out_raw, refs=[compose_path] + [os.path.join(G, r) for r in SCENE_REF[a]], size='1536x1024')
     
     # 縮放成 W * 48 x H * 48 並存為 .webp
     im = Image.open(out_raw).convert('RGB')
@@ -159,7 +169,7 @@ def gen_objects(a, redo=False):
         rp = raw_path(t)
         size = '1024x1536' if TYPES[t][1] > TYPES[t][0] else '1536x1024'
         try:
-            codex11.gen(p, rp, size=size)
+            codex11.gen(p + SCENE_NOTE, rp, refs=[os.path.join(G, r) for r in SCENE_REF[a]], size=size)
             print(f'Generated {t} -> {rp}')
         except Exception as e:
             print(f'Failed {t}: {e}')

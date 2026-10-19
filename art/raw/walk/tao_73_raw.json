@@ -1,0 +1,8 @@
+{
+ "job": "img_7a56717913ca8eecf5d14765",
+ "prompt": "Reference 1 is a walking sprite sheet: 3 columns x 4 rows (rows top to bottom: facing down, facing left, facing right, facing up; columns: left foot forward, standing, right foot forward). Draw a NEW sprite sheet with exactly the same 3x4 grid, the same chibi proportions, the same poses and the same soft anime style, but a different character. Reference 2 is the character's full portrait: copy the face, hair and outfit exactly. Character: AH-TAO, 73: short grey permed curls; a floral blouse, a dark apron skirt, jade bracelet, carrying a small plastic bag. Twelve separate full-body figures, evenly spaced, none touching. Solid flat pure magenta #FF00FF background, even lighting, crisp edges, no shadow, no ground, no gradient, nothing touches the image border. No text.",
+ "refs": [
+  "/home/ct/larch-ember/art/ref_walk_grid.webp",
+  "/home/ct/larch-ember/assets/art/p_tao_73.webp"
+ ]
+}
