@@ -6,14 +6,16 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import codex11
 
 R = pathlib.Path(__file__).resolve().parent.parent
-STY = R / 'art/raw/styleref/cover_full.jpg'
-STYLE = ('Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, '
+STY = R / 'art/raw/styleref/cover_bg.jpg'   # 封面右半邊，沒有人（全圖會讓模型把托腮的她畫進每一張，2026-10-19）
+STYLE = ('Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. '
+         'Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, '
          'drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. '
          'Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. '
          'Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. '
          'No text, no letters, no logos, no watermark. 16:9.')
 WHO = {   # 名字 → (挑定立繪, 描述)
     'yu_47': ('p_yu_47', 'YU JING at 47: shoulder-length wavy light-brown bob with a few silver strands, off-shoulder black lace evening gown, a pair of long drop earrings'),
+    'yu_47_home': ('p_yu_47', 'YU JING at 47 at home: shoulder-length wavy light-brown bob with a few silver strands, wearing a cream knit cardigan over a simple floral house dress, NOT the evening gown, no earrings'),
     'yu_33': ('p_yu_33', 'YU JING at 33: long light-brown wavy hair pinned up loosely, off-shoulder black lace evening gown, long drop earrings'),
     'yu_25': ('p_yu_25', 'YU JING at 25: long light-brown wavy hair down, dark-red velvet slip dress with a thin black cardigan, long drop earring'),
     'yu_42': ('p_yu_47', 'YU JING at 42: the same woman as the reference but younger, long light-brown wavy hair, a dark stage dress'),
@@ -57,7 +59,7 @@ CG = {
     'cg_climax': (['yu_47', 'cheng_45'],
         'The farewell concert in the old theater, every red seat full, the stage dark except one warm spotlight. She stands holding an unfolded sheet of music with handwriting on the back, '
         'looking down into the audience; in the third row a man in a navy shirt has stood up from his seat holding a deep crimson rose, singing to her. The whole hall silent. Wide, emotional.'),
-    'cg_a_kitchen': (['yu_47', 'cheng_45'],
+    'cg_a_kitchen': (['yu_47_home', 'cheng_45'],
         'Three days later, early morning in an old Tainan house kitchen, soft white-gold morning light, sparrows at the window, a folded sheet of music held on the fridge by a magnet. '
         'She is barefoot in a cardigan over a simple dress, laughing, pulling him by both hands into a slow little dance; he is surprised and smiling. Warm, intimate.'),
     'cg_b_encore': (['yu_47', 'cheng_45', 'zhou'],
@@ -83,7 +85,7 @@ CG = {
     'cg_2022_home': (['yu_43'],
         'Night, 2022, a Taipei apartment dining table under a pendant lamp; in the background kitchen a man\'s back washing dishes, steam. '
         'She sits writing a letter by hand, pausing with the pen above the paper; an old plastic portable radio beside her with its base cover open. Quiet and heavy.'),
-    'cg_2024_name': (['yu_47', 'cheng_45'],
+    'cg_2024_name': (['yu_47_home', 'cheng_45'],
         'Early morning, 2024, an old Tainan house kitchen doorway, pale dawn light. She stands in the doorway in a cardigan, one hand reaching toward him, her mouth open on a word that will not come; '
         'he stands by the stove holding a cup, looking at her with endless patience. Soft, aching.'),
     'cg_c_market': (['yu_47'],

@@ -53,7 +53,7 @@ SHOTS = {
     's_mem4_5': ('mem4_letter', '她把信摺好', ['yu_43'], 'Close: her hands slipping a folded letter into the open base of an old plastic portable radio on the dining table.', 's_mem4_4'),
     's_mem4_6': ('mem4_letter', '程希：（從廚房）你在做什麼', ['yu_43', 'cheng_45'], 'He stands in the kitchen doorway drying his hands with a towel, looking at her; she sits by the radio with an innocent small smile.', 's_mem4_4'),
     's_mem4_7': ('mem4_name', '2024 年，台南的老家', ['yu_47', 'cheng_45'], 'cg:cg_2024_name', None),
-    's_mem4_8': ('mem4_name', '程希：我是你先生', ['yu_47', 'cheng_45'], 'Close two-shot in the dawn kitchen: he says it gently; she repeats the word, tears in her eyes, a small relieved smile.', 's_mem4_7'),
+    's_mem4_8': ('mem4_name', '程希：我是你先生', ['yu_47_home', 'cheng_45'], 'Close two-shot in the dawn kitchen: he says it gently; she repeats the word, tears in her eyes, a small relieved smile.', 's_mem4_7'),
     # 分歧
     's_branch_1': ('branch_dark', '窗外最後一道光', [], 'The dressing room window gone black, every lamp in the room on, the mirror bulbs glowing; the room suddenly feels unfamiliar.', None),
     's_branch_2': ('branch_dark', '余靜：你去。', ['yu_47', 'cheng_45'], 'He stands at the door with a walkie-talkie, hesitating, looking back at her; she sits at the dressing table and nods at him to go.', 's_branch_1'),
@@ -69,8 +69,8 @@ SHOTS = {
     's_a_3': ('ending_a1', '余靜：（唱）有人坐在我身邊', ['yu_47', 'zhou'], 'She sings with tears running down, smiling, looking at the third row; the pianist plays again behind her, light blooming.', 's_concert_2'),
     's_a_4': ('ending_a2', '安可。周老師彈起〈餘燼〉', ['yu_47', 'zhou'], 'Encore: the whole audience on its feet, roses in the air, she sings in the spotlight.', 's_concert_1'),
     's_a_5': ('ending_a2', '下台的時候，他在側台等她', ['yu_47', 'cheng_45'], 'Side stage in dim light: he holds out a deep crimson rose; she takes it and tucks it into the breast pocket of his navy shirt, smiling up at him.', 's_concert_2'),
-    's_a_6': ('ending_a3', '三天後，台南的老家', ['yu_47'], 'Early morning old Tainan kitchen: she stands at the fridge reading a folded sheet of music held by a magnet, lips moving, morning light.', None),
-    's_a_7': ('ending_a3', '門鈴響', ['yu_47', 'tao_73'], 'At the open front door the old neighbor woman holds up a newspaper with a stage photo on the front page, beaming; she looks at it, puzzled and smiling.', 's_a_6'),
+    's_a_6': ('ending_a3', '三天後，台南的老家', ['yu_47_home'], 'Early morning old Tainan kitchen: she stands at the fridge reading a folded sheet of music held by a magnet, lips moving, morning light.', None),
+    's_a_7': ('ending_a3', '門鈴響', ['yu_47_home', 'tao_73'], 'At the open front door the old neighbor woman holds up a newspaper with a stage photo on the front page, beaming; she looks at it, puzzled and smiling.', 's_a_6'),
     's_a_8': ('ending_a3', '她拉起他的手', ['yu_47', 'cheng_45'], 'cg:cg_a_kitchen', None),
     's_a_9': ('ending_a3', '那天晚上，筆記本翻到新的一頁', ['cheng_45'], 'Night, close on his hand writing in a notebook under a desk lamp, a cup of tea, the sheet of music beside it.', 's_a_6'),
     # 結局 B

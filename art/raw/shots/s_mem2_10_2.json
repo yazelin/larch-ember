@@ -1,0 +1,10 @@
+{
+ "job": "img_6d3b60c99ccbb64998c0f12c",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 33: long light-brown wavy hair pinned up loosely, off-shoulder black lace evening gown, long drop earrings. Reference 3 is CHENG XI at 30: short neat black hair, black crew T-shirt, monitor headset around his neck. Reference 4 is TEACHER ZHOU, pianist: neat white hair, thin gold-rimmed glasses, grey cardigan. Scene: The empty old theater stage under one warm spotlight: she (simple cream dress) and he (white shirt) pose side by side, shy; the old pianist in the empty front row holds up a camera.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_33.webp",
+  "/home/ct/larch-ember/assets/art/p_cheng_30.webp",
+  "/home/ct/larch-ember/assets/art/p_zhou_62.webp"
+ ]
+}

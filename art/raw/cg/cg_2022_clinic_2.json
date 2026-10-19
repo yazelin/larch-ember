@@ -1,0 +1,10 @@
+{
+ "job": "img_cae0fb38d08f813a8cc0c32d",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 43: the same woman as the reference, hair to the shoulders, a plain grey sweater. Reference 3 is CHENG XI at 45: short black hair with grey temples, dark navy shirt with rolled sleeves, black wristwatch. Reference 4 is DR. LIN, neurologist: white coat, stethoscope, glasses pushed up. Scene: 2022, a neurology consulting room in Taipei, white window light, a brain MRI on a monitor. She sits very still with her hands in her lap; the doctor speaks gently; he sits beside her writing every word in a small notebook, his jaw tight. Quiet, clinical, devastating.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_47.webp",
+  "/home/ct/larch-ember/assets/art/p_cheng_45.webp",
+  "/home/ct/larch-ember/assets/art/p_dr_lin.webp"
+ ]
+}
