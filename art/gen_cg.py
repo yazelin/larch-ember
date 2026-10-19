@@ -29,15 +29,18 @@ WHO = {   # 名字 → (挑定立繪, 描述)
     'azhe': ('p_azhe_30', 'A-ZHE, young sound engineer: side-swept black hair, black crew T-shirt, walkie-talkie and headset'),
     'tao_73': ('p_tao_73', 'AH-TAO at 73: short grey permed curls, floral blouse, jade bracelet'),
     'father': ('p_yu_father', 'YU BO, her father, fishmonger: tanned, white towel around the neck, yellow rubber apron'),
-    'dr_lin': ('p_dr_lin', 'DR. LIN, neurologist: white coat, stethoscope, glasses pushed up'),
+    'dr_lin': ('p_dr_lin', 'DR. LIN, 52, neurologist: straight jet-black chin-length blunt bob with a side parting (NO waves, NO long hair), thin black-framed glasses WORN on her nose, angular face with firm jaw and narrow calm eyes, white coat over a navy blouse, stethoscope, ID badge. She must look clearly like a different woman from the heroine, older and plainer'),
 }
 CG = {
     'cg_1988_canal': (['father', 'yu_9'],
         '1988, dusk, old stone steps going down into a Tainan canal, the water glowing orange with the sunset. The father and his 9-year-old daughter crouch side by side on the lowest step, '
         'scrubbing blue plastic fish crates with brushes; he is singing to her, she sings back, both laughing. A small old plastic portable radio sits on the step above. Warm, safe, tender.'),
     'cg_2004_door': (['yu_25', 'cheng_23'],
-        '2004, 10 pm, right after rain, the backstage door of an old Tainan theater, glossy black asphalt reflecting a single warm door lamp. The young man thrusts a deep crimson rose and a paper ticket stub '
-        'into her hands, blushing, eyes down, already turning to run; she holds them, surprised, her lips parted to ask his name. Night, steam, wet light.'),
+        '2004, 10 pm, right after rain, the backstage door of an old Tainan theater, glossy black asphalt reflecting a single warm door lamp. '
+        'Medium two-shot. The young man has just pressed a deep crimson rose and a paper ticket stub into her open palms and his fingers are still opening away from them: '
+        'his hands are NOT holding her hands, NOT grabbing her wrist or arm, NOT touching her at all beyond that moment. His body is already half turned away toward the dark alley, one foot stepping back, '
+        'face flushed and eyes down, about to run. She stands in the doorway light with her hands cupped open holding the rose and the ticket, surprised, lips parted to ask his name. '
+        'Each person keeps their own hands clearly separate; five fingers on every hand. Night, rain-wet light, a little steam.'),
     'cg_2009_monitor': (['yu_33', 'cheng_30'],
         '2009, a concert stage seen from the side: in the foreground she turns her head back mid-song, one hand on her in-ear monitor; behind her, in the dim side stage, '
         'he has one hand pulling a fader down to the bottom and the other switching a channel on a monitor console, lit by the console glow. Stage haze, warm spotlights.'),
@@ -51,7 +54,7 @@ CG = {
         'December 2021, a big concert hall in Taichung full of audience in the dark. On stage she stands frozen in a spotlight, mouth half open, one hand at her ear; '
         'at the front edge of the stage a large teleprompter screen glows with huge blurred white characters (not readable). Far back, at the mixing desk, a small figure presses a walkie-talkie.'),
     'cg_2022_clinic': (['yu_43', 'cheng_45', 'dr_lin'],
-        '2022, a neurology consulting room in Taipei, white window light, a brain MRI on a monitor. She sits very still with her hands in her lap; the doctor speaks gently; '
+        '2022, a neurology consulting room in Taipei, white window light, a brain MRI on a monitor. She (long wavy light-brown hair) sits very still with her hands in her lap; the doctor, a clearly different woman with straight black chin-length hair and thin black-framed glasses on her nose, older and plainer than the heroine, speaks gently; '
         'he sits beside her writing every word in a small notebook, his jaw tight. Quiet, clinical, devastating.'),
     'cg_letter': (['yu_47', 'cheng_45'],
         'Today, 17:40, a small old theater dressing room on the second floor, a west window full of sunset over old Tainan rooftops, a dressing table with a lit bulb mirror. '

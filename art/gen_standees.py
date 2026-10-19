@@ -56,10 +56,15 @@ WHO = {
                'rubber boots, sturdy hands. Acting: holding a bunch of leafy greens, laughing loudly, a few water splashes. Warm dusk market light bulb.'),
     'yu_father': ('YU BO, 45, in 1988, the heroine\'s father, a fishmonger at the Tainan evening market: tanned weathered face, short hair, a white towel around his neck, '
                   'a yellow rubber apron and rubber boots, strong forearms. Acting: holding up a big fish on ice with a proud tender grin, looking down at his daughter. Warm dusk market light bulb.'),
-    'dr_lin': ('DR. LIN HUI-RU, 52, a neurologist in Taipei: shoulder-length black hair, a white coat over a navy blouse, a stethoscope, reading glasses pushed up. '
-               'Acting: holding a tablet with brain scan images, a calm kind serious expression, about to deliver hard news gently. Cool clinical white light from a window, a warm tone on the face.'),
+    'dr_lin': ('DR. LIN HUI-RU, 52, a neurologist in Taipei. She must look CLEARLY like a different woman from the heroine (the singer): a squarer, more angular face with defined cheekbones and a firm jaw, '
+               'straight jet-black hair cut in a neat blunt chin-length bob with a side parting, absolutely NO waves and NO curls, thin black-framed glasses WORN on her nose, '
+               'small narrow calm eyes with a direct steady gaze, faint nasolabial lines and slight shadows under the eyes, thin lips, almost no makeup, no earrings. '
+               'A plain white coat over a navy blouse buttoned to the collar, a stethoscope around her neck, a hospital ID badge on the coat. '
+               'Acting: holding a tablet with brain scan images, a calm direct serious expression, about to deliver hard news gently. Cool clinical white light from a window, a warm tone on the face. '
+               'She is a realistic supporting character: ordinary-professional, not glamorous, not a romance lead.'),
 }
 # 身分參考（第三張參考圖）：挑定的立繪
+NOYU = {'dr_lin'}
 IDREF = {'cheng_23': 'p_cheng_45', 'cheng_30': 'p_cheng_45', 'yu_9': 'p_yu_25', 'tao_35': 'p_tao_73'}
 
 
@@ -74,9 +79,12 @@ def gen(job):
 
 def _gen(codex11, name, n):
     refs = [str(STY / 'yu_cover_crop.png'), str(STY / 'cover_full.jpg')]
+    if name in NOYU:   # 不帶余靜的臉當參考，不然會跟她長一樣（2026-10-20 作者：醫生長得跟靜一樣）
+        refs = [str(STY / 'cover_bg.jpg')]
     if IDREF.get(name):
         refs.append(str(R / f'assets/art/{IDREF[name]}.webp'))
-    return codex11.gen(BASE + ' Character: ' + WHO[name], str(RAW / f'{name}_{n}.png'), refs=refs, size='1024x1536')
+    base = BASE.replace('drawn as a beautiful lead of a mature romance anime film: refined, well-proportioned features, ', 'drawn in the same painterly anime film style: ').replace('appealing and memorable, emotionally real', 'emotionally real') if name in NOYU else BASE
+    return codex11.gen(base + ' Character: ' + WHO[name], str(RAW / f'{name}_{n}.png'), refs=refs, size='1024x1536')
 
 
 def cut(name, n):

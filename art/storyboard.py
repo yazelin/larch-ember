@@ -10,7 +10,7 @@ R = pathlib.Path(__file__).resolve().parent.parent
 SHOTS = {
     # 序幕
     's_prologue_1': ('prologue', '2026 年 10 月 14 日', [], 'Wide establishing shot: the arcade of an old 1950s Tainan theater at 15:30, warm afternoon light, a hand-painted farewell poster of a woman singer on the wall (no readable text), scooters parked, an old neon sign off.', None),
-    's_prologue_2': ('prologue', '一個穿深藍襯衫的男人推開後台的門', ['yu_47_day', 'cheng_45'], 'He holds the old theater side door open with one hand, carrying a makeup case in the other; she steps over the threshold, looking up at the old building with a faint smile of recognition. Afternoon.', 's_prologue_1'),
+    's_prologue_2': ('prologue', '一個穿深藍襯衫的男人推開後台的門', ['yu_47_day', 'cheng_45'], 'Wide three-quarter view from the arcade, afternoon. The heavy old wooden side door of the theater swings INWARD (away from the viewer) and stands open, showing a warm dim lit hallway inside. He stands outside beside the door frame, body turned sideways to leave the passage free, one hand holding the open door leaf by its edge, the other hand carrying the black makeup case by its handle. She is stepping over the threshold INTO the doorway: her body and her front foot point into the building; we see her in three-quarter side view looking ahead into the warm interior with curious wide eyes and a faint smile, while he watches her go in. She is NOT walking away from the door and NOT standing outside beside it: her feet face the doorway.', 's_prologue_1'),
     's_prologue_3': ('prologue', '小時候我阿爸帶我來看電影', ['yu_47_day'], 'Inside the old theater lobby: she touches the armrest of an old red folding seat, smiling at a childhood memory; dust in the light from the door.', 's_prologue_2'),
     's_prologue_4': ('prologue', '那我們算是同鄉', ['yu_47_day', 'cheng_45'], 'Backstage corridor: she walks ahead looking around; he follows half a step behind carrying her makeup case, watching her back with a quiet ache.', 's_prologue_2'),
     # 試音
@@ -47,7 +47,7 @@ SHOTS = {
     's_mem3_3': ('mem3_forget', '台下沒有人發現', ['yu_42', 'cheng_45'], 'A dressing room after the show: she sits at the mirror still in full makeup, staring at nothing; he crouches beside her chair holding her hand.', 's_mem3_1'),
     # 回憶四
     's_mem4_1': ('mem4_clinic', '2022 年 3 月', ['yu_43', 'cheng_45', 'dr_lin'], 'cg:cg_2022_clinic', None),
-    's_mem4_2': ('mem4_clinic', '余靜：我還能唱歌嗎', ['yu_43', 'dr_lin'], 'Close: she leans forward asking the doctor a question, hands gripping each other; the doctor answers gently.', 's_mem4_1'),
+    's_mem4_2': ('mem4_clinic', '余靜：我還能唱歌嗎', ['yu_43', 'dr_lin'], 'Close: she (long wavy light-brown hair) leans forward asking the doctor a question, her own hands clasped together in her lap; the doctor, a clearly different woman with straight black chin-length hair and thin black-framed glasses on her nose, answers gently.', 's_mem4_1'),
     's_mem4_3': ('mem4_clinic', '余靜：程希，你剛剛為什麼不說話', ['yu_43', 'cheng_45'], 'Close on him writing every word into a small notebook, his jaw tight; she looks at him.', 's_mem4_1'),
     's_mem4_4': ('mem4_letter', '當天晚上，台北的家', ['yu_43'], 'cg:cg_2022_home', None),
     's_mem4_5': ('mem4_letter', '她把信摺好', ['yu_43'], 'Close: her hands slipping a folded letter into the open base of an old plastic portable radio on the dining table.', 's_mem4_4'),
