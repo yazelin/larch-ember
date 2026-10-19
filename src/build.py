@@ -4,7 +4,7 @@ python3 src/build.py
 """
 import json, pathlib, shutil, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-import script, cards, maps, variables, mapkit
+import script, cards, maps, variables, mapkit, ui_inject
 
 R = pathlib.Path(__file__).resolve().parent.parent
 PROJECT_ID = 'project-904c48a1-2797-4a7e-916a-75b1117e6211'
@@ -27,6 +27,12 @@ TITLES = {'prologue': '序：最後一場', 'soundcheck': '試音', 'card_dress'
           'branch_dark': '天黑', 'concert': '開演', 'ending_a1': '三排十四號', 'ending_a2': '安可', 'ending_a3': '什麼演唱會',
           'ending_b1': '餘燼', 'ending_b2': '謝謝您，先生', 'ending_c1': '天黑以後', 'ending_c2': '天烏烏', 'ending_c3': '天亮', 'ending_c4': '一個星期後'}
 END_CARDS = {'ending_a3', 'ending_b2', 'ending_c4'}
+
+
+GALLERY = [('s_prologue_2', '後台的門'), ('s_soundcheck_3', '三排十四號'), ('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面'),
+           ('s_mem2_9', '2012，歐洲的化妝間'), ('s_mem2_11', '2013，空舞台上的一小段舞'), ('s_mem4_1', '2022，診間'), ('s_concert_1', '開演'),
+           ('s_a_2', '結局 A'), ('s_a_8', '結局 A 尾聲'), ('s_b_3', '結局 B'), ('s_c_8', '結局 C'), ('s_c_10', '結局 C 尾聲')]
+GAL = {k for k, _ in GALLERY}
 
 
 def voice(vid):
@@ -62,6 +68,9 @@ def story_card(cid, bg_carry):
         dst['speaker'] = src['speaker']
         if 'background' in src:
             dst['background'] = src['background']
+    ops = [{'id': f'cgop-{cid}-{sh}', 'mode': 'unlock', 'url': shot_url(sh)} for (c, _), sh in script.SHOTS.items() if c == cid and sh in GAL and shot_url(sh)]
+    if ops:
+        card['data']['cgOps'] = ops
     card['data']['stage'] = {'actors': []}
     card['data']['characterLayers'] = []
     card['data']['voiceMode'] = 'ai'
@@ -132,7 +141,14 @@ def build():
     for n in board['nodes']:
         if n['id'].startswith('set_heard_'):
             n['data']['text'] = '天黑了。'
-    p['settings']['cgGalleryEnabled'] = False
+    cover = A + 'art/cover.webp'
+    p['settings']['titleCoverImage'] = cover
+    p['settings']['projectThumbnail'] = cover
+    p['projectThumbnail'] = cover
+    p['settings']['cgGalleryEnabled'] = True
+    p['settings']['cgGallerySource'] = 'picked'
+    p['settings']['cgGalleryItems'] = [{'url': cover, 'title': '最終遺忘的橘色餘燼'}] + [{'url': shot_url(k), 'title': t, 'locked': True} for k, t in GALLERY if shot_url(k)]
+    ui_inject.apply(p, R / 'dist')   # 介面「信紙與餘燼」；線上的 PUT 不更新介面，要另外推（見 ui/ 說明）
     (R / 'dist').mkdir(exist_ok=True)
     out = R / 'dist/project.json'
     out.write_text(json.dumps(p, ensure_ascii=False, indent=1), encoding='utf-8')
