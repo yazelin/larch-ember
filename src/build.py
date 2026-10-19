@@ -4,17 +4,17 @@ python3 src/build.py
 """
 import json, pathlib, shutil, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-import script, cards
+import script, cards, maps, variables, mapkit
 
 R = pathlib.Path(__file__).resolve().parent.parent
 PROJECT_ID = 'project-904c48a1-2797-4a7e-916a-75b1117e6211'
 A = '/files/assets/'
 
 # 劇情順序（地圖版會改成在化妝間自由探索這一段）
-MAIN = ['prologue', 'soundcheck', 'card_dress', 'm_dressing_intro', 'm_window', 'm_alley', 'mem0_market',
-        'm_mirror', 'mem1_door', 'm_notebook', 'm_rose_dry', 'mem2_monitor', 'mem2_rose', 'mem2_europe', 'mem2_stage',
-        'm_jewelry', 'm_radio', 'm_radio_on', 'm_corridor', 'mem3_forget', 'mem4_clinic', 'm_letter', 'mem4_letter', 'mem4_name',
-        'm_note', 'm_auditorium', 'branch_dark']
+MAIN = ['prologue', 'soundcheck', 'card_dress']   # 之後進 m-dressing 地圖探索（maps.py），天黑由地圖跳到 branch_dark
+MAP_CARDS = ['m_dressing_intro', 'm_window', 'm_alley', 'mem0_market', 'm_mirror', 'mem1_door', 'm_notebook', 'm_rose_dry',
+             'mem2_monitor', 'mem2_rose', 'mem2_europe', 'mem2_stage', 'm_jewelry', 'm_radio', 'm_radio_on', 'm_corridor',
+             'mem3_forget', 'mem4_clinic', 'm_letter', 'mem4_letter', 'mem4_name', 'm_note', 'm_auditorium']
 ENDINGS = {'ending_a': ['concert', 'ending_a1', 'ending_a2', 'ending_a3'],
            'ending_b': ['concert', 'ending_b1', 'ending_b2'],
            'ending_c': ['ending_c1', 'ending_c2', 'ending_c3', 'ending_c4']}
@@ -80,6 +80,20 @@ def build():
     N = board['nodes'].append
     bg = ''
     made = set()
+    p['variables'] = variables.project_variables()
+    db = {'version': 1, 'heroId': 'yu', 'leadSwitch': False,
+          'actors': [{'id': 'yu', 'name': '余靜', 'title': '', 'profile': '', 'role': 'party', 'walk': mapkit.walker('/files/assets/art/walk/walk-yu-47.webp'),
+                      'portrait': '/files/assets/art/p_yu_47.webp', 'join': 'stay', 'kit': 'none', 'rig': '', 'joinVariable': ''}]}
+    p['settings'].setdefault('plugins', {})['larch-rpg-system'] = {'enabled': True, 'settings': {'database': json.dumps(db, ensure_ascii=False)}}
+    for m in maps.all_maps():
+        N(m)
+    for cid in MAP_CARDS:   # 地圖事件播的卡：不接線
+        c, _ = story_card(cid, '')
+        N(c); made.add(cid)
+    c, bgb = story_card('branch_dark', shot_url('s_branch_1'))
+    N(c); made.add('branch_dark')
+    N(cards.choice('branch_choice', '天黑', '她心裡聽見誰？', [t for t, _ in script.CHOICES['branch_dark']], speaker='余靜', bg=bgb))
+    cards.link(board, 'branch_dark', 'branch_choice')
     seqs = [MAIN] + list(ENDINGS.values())
     for seq in seqs:
         prev = None
@@ -87,13 +101,6 @@ def build():
         for cid in seq:
             if cid == 'concert' and 'concert' in made:   # A、B 共用開演
                 prev = cid; continue
-            if cid == 'branch_dark':
-                c, bg = story_card(cid, bg)
-                N(c); made.add(cid)
-                ch = cards.choice('branch_choice', '天黑', '她心裡聽見誰？', [t for t, _ in script.CHOICES['branch_dark']], speaker='余靜', bg=bg)
-                N(ch); cards.link(board, cid, 'branch_choice')
-                if prev: cards.link(board, prev, cid)
-                prev = None; break
             c, bg = story_card(cid, bg)
             if cid == MAIN[0]:
                 c['data']['start'] = True
@@ -102,13 +109,11 @@ def build():
             if prev:
                 cards.link(board, prev, cid)
             prev = cid
+    cards.link(board, 'card_dress', 'm-dressing')
     first = {'ending_a': 'concert', 'ending_b': 'concert', 'ending_c': 'ending_c1'}
     for i, (_, target) in enumerate(script.CHOICES['branch_dark']):
         cards.choice_link(board, 'branch_choice', first[target], i)
     # A、B 都從 concert 出發：concert 後面接哪一個由選擇決定 → 用變數分支
-    p.setdefault('variables', [])
-    if not any(v['name'] == 'heard' for v in p['variables']):
-        p['variables'].append({'id': 'heard', 'name': 'heard', 'type': 'string', 'label': '她心裡聽見誰', 'defaultValue': ''})
     for e in list(board['edges']):
         if e['source'] == 'concert':
             board['edges'].remove(e)
