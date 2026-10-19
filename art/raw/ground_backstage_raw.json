@@ -1,0 +1,9 @@
+{
+ "job": "img_8c9fc192c3b09e400a9fc1b9",
+ "prompt": "Top-down painted anime RPG game map floor, the backstage corridor of an old 1950s Tainan theater, warm tungsten bulbs, old wooden floor, worn plaster walls, soft painted anime RPG map style, warm palette. Follow the floor region layout of image 1 exactly. a long old wooden corridor floor with scuffs and tape marks; plaster walls along the top and bottom; a stair opening on the left edge and a back door on the right. Top-down RPG map floor only. Dimensions: 16 cells wide by 8 cells tall. Rich textures, atmospheric lighting. Draw ONLY the floor surface materials: absolutely NO furniture, NO counters, NO walls rising up, NO doors, NO people, NO text. The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.",
+ "refs": [
+  "/home/ct/larch-ember/art/check/compose-backstage-ground.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_prologue_4.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_c_1.webp"
+ ]
+}

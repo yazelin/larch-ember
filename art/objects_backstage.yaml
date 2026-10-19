@@ -1,20 +1,25 @@
-# 後台走廊（m-backstage）：周老師的直立鋼琴；樓梯往下是觀眾席，後門通巷子。
-map: {id: m-backstage, w: 16, h: 8}
+# 後台（m-backstage）：一張圖同時看得到二樓與一樓。二樓是架在一樓上方的陽台走廊，前緣是欄杆＋一樓高的牆面；
+# 右側樓梯從陽台往下到一樓。疊層：陽台前緣物件的占地是牆面那一列，人在陽台上（北邊）被欄杆擋在後面、人在一樓（南邊）畫在前面。
+# （作者 2026-10-19：一個地圖直接看得到 1 樓 2 樓，用疊層讓人從二樓走向一樓）
+map: {id: m-backstage, w: 18, h: 14}
 
 ground:
-  - {name: 北牆, kind: border, rects: [[0, 0, 16, 2]]}
-  - {name: 南牆, kind: border, rects: [[0, 7, 16, 1]]}
-  - {name: 西牆, kind: border, rects: [[0, 0, 1, 8]]}
-  - {name: 東牆, kind: border, rects: [[15, 0, 1, 8]]}
-  - {name: 走廊地板, kind: wood, rects: [[1, 2, 14, 5]]}
+  - {name: 外牆, kind: border, rects: [[0, 0, 18, 1], [0, 0, 1, 14], [17, 0, 1, 14], [0, 13, 18, 1], [16, 1, 1, 9]]}
+  - {name: 二樓陽台, kind: wood, rects: [[1, 1, 12, 3]]}
+  - {name: 樓梯, kind: concrete, rects: [[13, 1, 3, 9]]}
+  - {name: 一樓後台, kind: concrete, rects: [[1, 6, 12, 7], [13, 10, 4, 3]]}
 
 objects:
-  - {name: 化妝間門, kind: 門, foot: [3, 1, 2, 1], up: 1, desc: 二樓化妝間的門，掛著「余靜」名牌（沒有可讀文字）}
-  - {name: 直立鋼琴, kind: 櫃, foot: [11, 2, 3, 1], up: 1, desc: 走廊盡頭一台舊直立鋼琴}
-  - {name: 器材箱, kind: 雜物, foot: [6, 5, 2, 1], up: 1, desc: 兩個疊起來的黑色器材箱}
-  - {name: 往觀眾席樓梯, kind: 門, foot: [1, 4, 1, 2], desc: 往下的樓梯}
-  - {name: 後門, kind: 門, foot: [14, 6, 1, 1], desc: 器材進出的後門，通巷子}
+  - {name: 化妝間門, kind: 門, foot: [3, 1, 2, 1], up: 1, desc: 二樓化妝間的門}
+  - {name: 直立鋼琴, kind: 櫃, foot: [7, 1, 3, 1], up: 1, desc: 二樓陽台走廊上的舊直立鋼琴}
+  - {name: 陽台前緣, kind: 雜物, foot: [1, 4, 12, 2], up: 1, desc: 二樓陽台的鑄鐵欄杆，底下是一整層樓高的舊磚牆，牆上有一盞壁燈}
+  - {name: 樓梯欄杆, kind: 雜物, foot: [12, 6, 1, 4], up: 0, desc: 樓梯左側的木欄杆}
+  - {name: 器材箱, kind: 雜物, foot: [5, 9, 2, 1], up: 1, desc: 兩個疊起來的黑色器材箱}
+  - {name: 側台門, kind: 門, foot: [1, 7, 1, 2], desc: 往舞台旁邊的側台門，通觀眾席}
+  - {name: 後門, kind: 門, foot: [16, 11, 1, 1], desc: 器材進出的後門，通巷子}
 
 points:
-  hero_start: [4, 3]
-  piano: [12, 3]
+  hero_start: [4, 2]
+  piano: [8, 2]
+  stage_door: [2, 8]
+  back_door: [15, 11]
