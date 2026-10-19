@@ -1,0 +1,977 @@
+OpenAI Codex v0.163.0
+--------
+workdir: /home/ct/larch-ember
+model: gpt-6-luna
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: max
+reasoning summaries: none
+session id: 01a1558c-046d-7622-a130-e79f9ab47a4b
+--------
+user
+你是詞作者兼編劇。請修改《最終遺忘的橘色餘燼》的歌詞檔 `canon/歌詞.md`，輸出成新檔 `canon/歌詞-修訂版.md`，只寫這一個檔案（舊檔 `canon/歌詞-舊.md` 是備份，不要動）。
+
+## 背景
+作者試玩後多次明確說：「一個字都沒有放掉是什麼意思」「他話很少，手很穩，每次都先把燈全部打開，這種爛 AI 詞不要再出現了」「你可以不要用這種奇怪的詞嗎」。作者明天要拿這份歌詞去 Suno 生成歌曲，所以歌詞裡這兩組詞也必須處理，否則歌會把它們唱出來。
+
+## 只改這兩處，其餘每一個字都不要動
+1. 〈餘燼〉的 [Bridge]：
+```
+有一天我會忘記
+今晚唱過什麼
+你替我記得好嗎
+一個字 都不要放掉
+```
+「一個字 都不要放掉」要換掉。這段是劇情的關鍵句（要唱得最輕、最清楚）：她知道有一天會忘，請聽她唱歌的那個人替她記得。換成**具體的東西**而不是抽象說法，例如要他記得的是某個具體的聲音、某個位子、某一盞燈，不要再用「每個字／一個字」這個說法。長度與音節數盡量與原本相同（每行字數、句尾韻腳不要破壞旋律）。
+2. 〈晚安，台南〉的 [Verse 3]：
+```
+有人坐在我身邊
+手很穩 話很少
+我想不起他是誰
+可是他在 我就不怕
+```
+「手很穩 話很少」要換掉：不要把人的特質排成一串。改成一個**具體的小動作**（例如他替我做了一件小事），後面兩句「我想不起他是誰／可是他在 我就不怕」的意思保留，音節數與押韻盡量不變。注意結局 A 劇本裡她在台上唱的就是這一段（見 `canon/劇本.md` ending_a1），所以改完的四行要能直接唱。
+
+## 其他要求
+- 繁體中文、台灣用語、全形標點、不用破折號。每行字數與句尾聲韻盡量保持（Suno 會照歌詞唱，旋律是 AI 生成的，不能亂改長度）。
+- 檔案結構完整複製（所有歌、Style、Title、評歌標準），只在需要處更新：「評歌標準」裡提到「你替我記得好嗎／一個字 都不要放掉」那一條（〈餘燼〉一定要有的第二條）要改成對應新歌詞的說法；其他劇情說明裡若引用舊句也要同步。
+- 檔案最後新增 `## 與舊版差異`：列出改了哪幾行，舊句、新句、為什麼這樣換；再列 2 個備選版本（同樣音節數），讓作者選。
+
+hook: SessionStart
+hook: SessionStart Completed
+codex
+我會先對照歌詞原檔與 `ending_a1` 劇本，確認只需同步的引用，再另存修訂版；完成後依專案指示跑繁中公開文案檢查。
+exec
+/bin/bash -lc "pwd && rg --files canon | sort && sed -n '1,260p' 'canon/歌詞.md' && printf '\\n--- SCRIPT MATCHES ---\\n' && rg -n -C 5 '手很穩|話很少|一個字|都不要放掉|替我記得|ending_a1' 'canon/劇本.md'" in /home/ct/larch-ember
+ succeeded in 0ms:
+/home/ct/larch-ember
+canon/劇本-即興稿.md
+canon/劇本-即興稿2.md
+canon/劇本-合併稿.md
+canon/劇本-合併稿2.md
+canon/劇本-樣本.md
+canon/劇本-樣本2.md
+canon/劇本-舊.md
+canon/劇本.md
+canon/原文.md
+canon/歌詞-舊.md
+canon/歌詞.md
+canon/研究.md
+# 劇中兩首歌：歌詞與 Suno 提示
+
+兩首都是原創歌詞。風格提示不寫任何真實歌手的名字。
+
+## 〈餘燼〉（2008，余靜的成名曲）
+
+劇情：她寫給那個每場散場都在後台門口放一朵深紅玫瑰、從不署名的人。她不知道那個人就是程希，唱給他聽了十八年；2011 年他承認的那一晚，她才知道這首歌寫給了誰。
+遊戲裡：結局 B 她換唱這首、一字不錯；結局 A 安可；結局 C 尾聲阿哲在空戲院放這首；收音機的告別特輯也播這首。
+
+### 歌詞（貼進 Suno 的 Lyrics）
+
+```
+[Intro]
+
+[Verse 1]
+燈一盞一盞暗下來
+掌聲退回了街上
+我把最後一個字收好
+門口又有一朵紅
+沒有名字 沒有卡片
+花瓣上的露水還沒乾
+是誰在散場以後
+還不肯走
+
+[Pre-Chorus]
+我不認得你的臉
+卻認得你的安靜
+
+[Chorus]
+如果我是一場餘燼
+你是最後熄燈的人
+台下坐滿了陌生人
+只有一個位子 等得那麼認真
+就算天黑了 全世界都散了
+我還有一點紅 替你留著
+不肯冷
+
+[Verse 2]
+下一座城 下一個晚上
+同一種紅在門外
+我開始對著那片黑暗唱
+好像知道你在
+你從來不說話
+我也從來不問
+我們就這樣
+過了一年又一年
+
+[Pre-Chorus]
+我不認得你的臉
+卻認得你的安靜
+
+[Chorus]
+如果我是一場餘燼
+你是最後熄燈的人
+台下坐滿了陌生人
+只有一個位子 等得那麼認真
+就算天黑了 全世界都散了
+我還有一點紅 替你留著
+不肯冷
+
+[Bridge]
+有一天我會忘記
+今晚唱過什麼
+你替我記得好嗎
+一個字 都不要放掉
+
+[Final Chorus]
+如果我是一場餘燼
+你是最後熄燈的人
+就算我認不出你
+也請你 坐在那裡
+就算天黑了 全世界都散了
+我還有一點紅 替你留著
+不肯冷
+
+[Outro]
+不肯冷
+```
+
+### 風格（貼進 Suno 的 Style）
+
+```
+Mandarin female vocal, low husky alto, breathy and intimate, slow piano ballad, 68 bpm, grand piano, warm strings swelling in the chorus, 2000s Taiwanese Mandopop ballad, concert hall reverb, emotional, restrained
+```
+
+### 歌名（Title）
+
+```
+餘燼
+```
+
+## 〈晚安，台南〉（2023，停演前寫的最後一首新歌）
+
+劇情：確診一年後、搬回台南前寫的，寫給家鄉、父親的魚攤、運河。她唱得最少，所以告別演唱會第三首就是它，主歌只有周老師的鋼琴、自由速度，提詞當機時周老師停下來等她。
+遊戲裡：開演第三首（A、B 共用的高潮）；副歌「哪天走丟了，你再叫我一聲」是結局 C 的伏筆（阿桃姨在運河邊叫她「淑靜仔」）。
+
+### 歌詞
+
+```
+[Verse 1]
+運河的水還在走
+市場的燈一盞一盞收
+我把鞋脫在門口
+像小時候那樣 喊一聲我回來了
+
+[Verse 2]
+阿爸的收音機沙沙地響
+放一首我聽不懂的歌
+他把最大的那條魚
+留在冰塊上 等我
+
+[Chorus]
+晚安 台南
+如果明天我認不得你
+請你還是 把燈留著
+晚安 台南
+我把名字放在你這裡
+哪天走丟了
+你再叫我一聲
+
+[Verse 3]
+有人坐在我身邊
+手很穩 話很少
+我想不起他是誰
+可是他在 我就不怕
+
+[Chorus]
+晚安 台南
+如果明天我認不得你
+請你還是 把燈留著
+晚安 台南
+我把名字放在你這裡
+哪天走丟了
+你再叫我一聲
+
+[Outro]
+叫我一聲
+```
+
+### 風格
+
+```
+Mandarin female vocal, low husky alto, tender and fragile, rubato solo piano for the first two verses, then soft cello and nylon-string guitar join, sparse folk ballad, 64 bpm, intimate, night, hometown, gentle ending
+```
+
+### 歌名
+
+```
+晚安，台南
+```
+
+## 父親收音機裡的台語老歌〈港邊的燈〉（劇中設定 1980 年代的老歌）
+
+劇情：1988 年魚攤收攤時，父親的收音機在放的台語歌。遊戲裡只用一小段，從收音機裡傳出來，要聽起來像 AM 廣播：單聲道、有雜訊。
+台語發音 Suno 不一定唸得準，隔著收音機的雜訊比較不明顯；不行的話只留伴奏。
+
+### 歌詞
+
+```
+[Verse]
+港邊的燈 一葩一葩光
+討海的人 猶未轉來
+阮徛佇岸邊 等你的船
+風吹冷冷 心肝燒燒
+
+[Chorus]
+燈若熄 船就到
+阮的心 替你留一葩
+燈若熄 船就到
+阮佇遮 等你轉來
+```
+
+### 風格
+
+```
+1980s Taiwanese Hokkien ballad, mature male vocal, accordion and electric organ, slow waltz, nostalgic harbour song, AM radio lo-fi, mono, vinyl crackle
+```
+
+### 歌名
+
+```
+港邊的燈
+```
+
+## 不用生成的
+
+- 〈天黑黑〉：台語傳統童謠，公有。父親在運河邊教她唱的第一首歌；結局 C 她蹲在石階上哼的就是這首。遊戲裡她自己哼、不配伴奏。
+- 母親唱詩班的聖詩〈奇異恩典〉：詞 1779、曲 1835，公有，清唱一小段。
+
+## 評歌標準
+
+### 三首共通
+
+一定要有（任一項沒做到就重生，不用往下聽）：
+1. **歌詞照唱**：每一句都在、順序對，沒有跳句、自己加字、含糊帶過。
+2. **咬字是台灣國語**：沒有兒化音、沒有大陸腔的捲舌與字音（例如「熄」台灣唸 ㄒㄧˊ，大陸唸 ㄒㄧ；「一場」「一朵」不要兒化）。
+3. **結尾是真的結束**：不是唱到一半被切掉、不是突然停在半拍。
+4. **沒有破音與雜訊瑕疵**：人聲沒有電音般的抖動、沒有兩個聲音疊在一起的地方。
+
+加分：
+- 人聲像同一個人：〈餘燼〉和〈晚安，台南〉都要聽得出是余靜，低、有點沙、靠氣息撐高音，不是尖亮的流行女聲。
+- 副歌第一次聽就記得住旋律。
+
+### 〈餘燼〉
+
+一定要有：
+- 慢版鋼琴抒情，68 拍左右；副歌有弦樂撐起來。
+- 橋段「你替我記得好嗎／一個字 都不要放掉」要唱得最輕、最清楚，這是劇情的關鍵句。
+- 最後的「不肯冷」收得住，不要拖成大炫技。
+- 前奏至少有 8 秒乾淨的鋼琴（標題畫面與地圖 BGM 要從這裡剪）。
+
+加分：
+- 有一點 2000 年代台灣抒情歌的味道：副歌升 key 或弦樂進來那一下會起雞皮疙瘩。
+- 人聲年紀聽起來 30 歲上下（2008 年的她 29 歲）。
+
+### 〈晚安，台南〉
+
+一定要有：
+- **第一、二段主歌只有鋼琴**，速度自由、會停頓。這是高潮那一刻的依據（提詞當機時周老師停下來等她），沒有這個就不能用。
+- 副歌「哪天走丟了／你再叫我一聲」清楚、輕，不要唱得很用力。
+- 比〈餘燼〉更脆弱、更慢；大提琴或木吉他第三段才進來。
+
+加分：
+- 人聲比〈餘燼〉老一點、累一點（2023 年的她 44 歲、剛確診一年）。
+- 「我想不起他是誰／可是他在 我就不怕」那一段會讓人鼻酸。
+
+### 〈港邊的燈〉
+
+一定要有：
+- 聽起來像 1980 年代的台語老歌：手風琴或電子琴、慢三拍子、男聲。
+- 有收音機的質感（單聲道、雜訊）；不夠的話我後製再加。
+
+加分：
+- 台語聽得懂「燈若熄 船就到」這一句。
+- 唸不準也沒關係，只用一小段，必要時只留伴奏。
+
+### 怎麼聽、怎麼回報
+
+Suno 一單出 2 版（網頁版每次兩首），每首建議先送 2 單、共 4 版再挑。
+每一版照上面的「一定要有」打勾，過關的再比加分項。回報給我時，告訴我：
+- 選哪一版（Suno 的網址或下載的檔名）。
+- 如果某一版只差一點（例如只有一句唸錯），記下是第幾秒，我可以只剪那一段，或你用 Suno 的「Replace section」重唱那一句。
+
+## 生成之後
+
+- 每首挑一版，存到 `assets/bgm/`（`ember.mp3`、`goodnight-tainan.mp3`），並記下 Suno 的生成紀錄。
+- 遊戲裡〈晚安，台南〉要另外剪一段「主歌只有鋼琴、唱到一半停下」的版本給高潮用；〈餘燼〉要一版只有鋼琴的伴奏給地圖 BGM。
+
+--- SCRIPT MATCHES ---
+1-# 《最終遺忘的橘色餘燼》劇本（第二稿）
+2-
+3-格式：每個 `##` 是一張卡或一段地圖台詞，標題是程式取用的代號。每一行「講者：台詞」。
+4-- 「余靜：」是她說出口的話；「余靜（心）：」是她心裡的話，只寫具體的念頭，不寫總結的感想。
+5-- 「旁白：」只交代畫面上看得到的事，不解釋人的心情。
+6:- 標 `〔掉字〕` 的句子，隨落日會一個字一個字變成「……」，程式依時間替換。
+7-- 台語台詞寫台語漢字，括號裡附華語意思給字幕。
+8-
+9-設計依據：`design/重寫.md` 第四稿（2026-10-19 定稿）。第一稿的審稿意見在 `design/審稿-2.md`，處理紀錄在文末。
+10-
+11----
+--
+199-## m_letter（收音機底座：信，與歌譜裡的票根）
+200-
+201-旁白：蓋板一推就開了。裡面摺著一張信紙，是她的字。
+202-余靜：這是我的字。
+203-余靜：（念）淑靜：如果你在讀這封信，代表你已經忘了一些事。不要怕，你一定會忘，醫生說的。
+204:余靜：（念）有一個男人會一直在你旁邊。他話很少，手很穩，每次都先把燈全部打開。
+205-余靜：（念）他叫程希。2004 年坐在三排十四號的人就是他。
+206-余靜：（念）你不記得他也沒關係，唱歌給他聽。他聽了十八年，每一場都聽。
+207-旁白：她抬頭。門口的男人正在開最後一盞燈。
+208-余靜：……先生。
+209-程希：嗯。
+--
+212-余靜：他在這裡嗎？
+213-程希：在。
+214-余靜（心）：我會忘。我現在就知道我會忘。
+215-旁白：她從禮服口袋拿出那張摺成四折的歌譜。攤開的時候，一張泛黃的橘色票根從透明夾層裡滑出來，掉在梳妝台上。
+216-旁白：票根正面蓋著一個章：3 排 14 號，2004 年 10 月 14 日。她翻到背面，有一行鉛筆字。
+217:余靜：（念）謝謝你，一個字都沒有放掉。
+218-旁白：她看了一眼門口的男人。他背對著她，在調燈。
+219-旁白：她在歌譜背面，票根旁邊，寫下：「程希，三排十四號。」把票根夾回去，摺好，放回口袋。
+220-余靜：這個我要帶上台。
+221-程希：好。
+222-
+--
+349-〔圖：s_mem2_6〕
+350-旁白：她從歌譜的透明夾層裡抽出一張泛黃的票根，三排十四號。
+351-余靜：2004 年，永明戲院。
+352-程希：……你還留著。
+353-旁白：她第一次把票根翻過來。背面有一行鉛筆字。
+354:余靜：（念）「謝謝你，一個字都沒有放掉。」
+355-余靜：你寫的？
+356-程希：前一天晚上寫的。結果一句話都說不出來。
+357-〔圖：s_mem2_7〕
+358-余靜：程希。
+359-程希：淑靜。
+--
+429-程希：……好。
+430-〔圖：s_mem4_3〕
+431-余靜：程希，你剛剛為什麼不說話。
+432-程希：我在記。
+433-余靜：記什麼？
+434:程希：醫生說的每一個字。你會忘，我不能忘。
+435-
+436-## mem4_letter（回憶四：2022 年，家裡的餐桌）
+437-
+438-〔圖：s_mem4_4〕
+439-旁白：當天晚上，台北的家。程希在廚房洗碗，水聲很大。
+--
+503-〔圖：s_concert_4〕
+504-旁白：她的手摸上左耳的耳墜。
+505-余靜（心）：好安靜。
+506-余靜（心）：我唱錯了嗎。
+507-
+508:## ending_a1（結局 A〈三排十四號〉）
+509-
+510-余靜（心）：口袋。口袋裡有東西。
+511-〔圖：s_a_1〕
+512-旁白：她把手伸進禮服口袋，摸到一張摺成四折的紙。她從來不看歌譜。這一次，她打開了。
+513-旁白：歌譜背面，票根旁邊，是她自己的字：「程希，三排十四號。」
+--
+516-余靜：……程希。
+517-旁白：三排十四號的男人站了起來。音控台上，阿哲看見師父開口，手指把現場收音推了上去。
+518-程希：（台下，小聲唱）有人坐在我身邊……
+519-旁白：她的耳返裡，有他的聲音。
+520-〔圖：s_a_3〕
+521:余靜：（唱）有人坐在我身邊，手很穩，話很少。我想不起他是誰，可是他在，我就不怕……
+522-旁白：周老師的琴跟上來了。
+523-
+524-## ending_a2（結局 A：安可與下台）
+525-
+526-〔圖：s_a_4〕
+--
+565-余靜：老師，換〈餘燼〉。
+566-周老師：……好。
+567-〔圖：s_b_2〕
+568-旁白：周老師彈起那段前奏。十八年，同一段前奏。她閉上眼睛。
+569-余靜：（唱）燈一盞一盞暗下來，掌聲退回了街上……
+570:旁白：她一個字都沒有錯。副歌的時候，台下開始跟著唱。第三排有一個阿姨在用台語跟著哼。
+571-旁白：最後一句「不肯冷」，她唱得很輕。周老師的最後一個和弦停在空中，他抬頭看她。
+572-〔圖：s_b_3〕
+573-旁白：全場站了起來。她睜開眼睛，對整個觀眾席鞠躬。
+574-旁白：抬頭的時候，她的視線掃過三排十四號。她對那個男人點頭微笑，跟對每一個陌生的觀眾一樣。
+575-
+
+codex
+兩處都能維持原本音節數：橋段新句保留「掉」的句尾韻，第三段改成六音節的陪伴動作。歌詞檔內評歌標準的舊句引用也會同步更新，並在末尾附兩組可替換版本。
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+
+source = Path('canon/歌詞.md')
+target = Path('canon/歌詞-修訂版.md')
+text = source.read_text(encoding='utf-8')
+replacements = {
+    '一個字 都不要放掉': '我今晚唱到燈熄掉',
+    '手很穩 話很少': '等我慢慢唱完',
+    '橋段「你替我記得好嗎／一個字 都不要放掉」要唱得最輕、最清楚，這是劇情的關鍵句。': '橋段「你替我記得好嗎／我今晚唱到燈熄掉」要唱得最輕、最清楚，這是劇情的關鍵句。',
+}
+for old, new in replacements.items():
+    count = text.count(old)
+    expected = 2 if old == '一個字 都不要放掉' else 1
+    if count "'!= expected:
+        raise SystemExit(f'"'Expected {expected} occurrence(s) of {old"'!r}; found {count}'"')
+    text = text.replace(old, new)
+
+appendix = '''\\n\\n## 與舊版差異\\n\\n### 〈餘燼〉[Bridge]\\n\\n- 舊句："'`一個字 都不要放掉`'"\\n- 新句："'`我今晚唱到燈熄掉`'"\\n- 原因：改成她今晚唱到舞台燈熄的具體畫面，保留八個音節與「掉」的句尾韻，讓聽歌的人知道該記得哪一刻。\\n\\n### 〈晚安，台南〉[Verse 3]\\n\\n- 舊句："'`手很穩 話很少`'"\\n- 新句："'`等我慢慢唱完`'"\\n- 原因：改寫成他陪她唱完的具體動作，保留六個音節，接得上後兩句，也能直接唱。\\n\\n### 備選版本\\n\\n以下每組各替換上述兩行，橋段八個音節，主歌六個音節。\\n\\n**備選一**\\n- 〈餘燼〉[Bridge]："'`留住我唱歌的聲音`'"\\n- 〈晚安，台南〉[Verse 3]："'`替我摺好歌譜`'"\\n\\n**備選二**\\n- 〈餘燼〉[Bridge]："'`把今晚這首歌收好`'"\\n- 〈晚安，台南〉[Verse 3]："'`把水杯遞給我`'"\\n'''
+text = text.rstrip('\\n') + appendix
+if target.exists():
+    raise SystemExit(f'Target already exists: {target}')
+target.write_text(text, encoding='utf-8')
+print(f'Wrote {target}')
+PY" in /home/ct/larch-ember
+ exited 1 in 0ms:
+Expected 1 occurrence(s) of '橋段「你替我記得好嗎／一個字 都不要放掉」要唱得最輕、最清楚，這是劇情的關鍵句。'; found 0
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+
+source = Path('canon/歌詞.md')
+target = Path('canon/歌詞-修訂版.md')
+text = source.read_text(encoding='utf-8')
+replacements = [
+    ('橋段「你替我記得好嗎／一個字 都不要放掉」要唱得最輕、最清楚，這是劇情的關鍵句。', '橋段「你替我記得好嗎／我今晚唱到燈熄掉」要唱得最輕、最清楚，這是劇情的關鍵句。'),
+    ('一個字 都不要放掉', '我今晚唱到燈熄掉'),
+    ('手很穩 話很少', '等我慢慢唱完'),
+]
+expected_counts = [1, 1, 1]
+for (old, new), expected in zip(replacements, expected_counts):
+    count = text.count(old)
+    if count "'!= expected:
+        raise SystemExit(f'"'Expected {expected} occurrence(s) of {old"'!r}; found {count}'"')
+    text = text.replace(old, new)
+
+appendix = '''\\n\\n## 與舊版差異\\n\\n### 〈餘燼〉[Bridge]\\n\\n- 舊句："'`一個字 都不要放掉`'"\\n- 新句："'`我今晚唱到燈熄掉`'"\\n- 原因：改成她今晚唱到舞台燈熄的具體畫面，保留八個音節與「掉」的句尾韻，讓聽歌的人知道該記得哪一刻。\\n\\n### 〈晚安，台南〉[Verse 3]\\n\\n- 舊句："'`手很穩 話很少`'"\\n- 新句："'`等我慢慢唱完`'"\\n- 原因：改寫成他陪她唱完的具體動作，保留六個音節，接得上後兩句，也能直接唱。\\n\\n### 備選版本\\n\\n以下每組各替換上述兩行，橋段八個音節，主歌六個音節。\\n\\n**備選一**\\n- 〈餘燼〉[Bridge]："'`留住我唱歌的聲音`'"\\n- 〈晚安，台南〉[Verse 3]："'`替我摺好歌譜`'"\\n\\n**備選二**\\n- 〈餘燼〉[Bridge]："'`把今晚這首歌收好`'"\\n- 〈晚安，台南〉[Verse 3]："'`把水杯遞給我`'"\\n'''
+text = text.rstrip('\\n') + appendix
+if target.exists():
+    raise SystemExit(f'Target already exists: {target}')
+target.write_text(text, encoding='utf-8')
+print(f'Wrote {target}')
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+Wrote canon/歌詞-修訂版.md
+
+exec
+/bin/bash -lc "git status --short && git diff --no-index -- 'canon/歌詞.md' 'canon/歌詞-修訂版.md'" in /home/ct/larch-ember
+ exited 1 in 0ms:
+ M art/__pycache__/blocks.cpython-312.pyc
+ M art/__pycache__/gen_cg.cpython-312.pyc
+ M art/__pycache__/storyboard.cpython-312.pyc
+ M art/blocks.py
+ M art/check/compose-alley.webp
+ M art/check/compose-backstage-ground.webp
+ M art/check/compose-backstage.webp
+ M art/gen_cg.py
+ M art/gen_standees.py
+ M art/objects_alley.yaml
+ M art/objects_auditorium.yaml
+ M art/objects_backstage.yaml
+ M art/objects_dressing.yaml
+R  art/objects_gen.py -> art/objects_gen.old.py
+ M art/raw/a_piano_raw.png
+ M art/raw/b_rail_raw.json
+ M art/raw/b_rail_raw.png
+ M art/raw/cg/cg_2004_door_1.json
+ M art/raw/cg/cg_2004_door_1.png
+ M art/raw/cg/cg_2004_door_2.json
+ M art/raw/cg/cg_2004_door_2.png
+ M art/raw/d_case_raw.json
+ M art/raw/d_jewel_raw.json
+ M art/raw/d_rack_raw.json
+ M art/raw/d_radio_raw.json
+ M art/raw/d_vanity_raw.json
+ M art/raw/d_window_raw.json
+ M art/raw/ground_backstage_raw.json
+ M art/raw/ground_backstage_raw.png
+ M art/raw/ground_dressing_raw.json
+ M art/raw/standee/dr_lin_1.json
+ M art/raw/standee/dr_lin_1.png
+ M art/raw/standee/dr_lin_2.json
+ M art/raw/standee/dr_lin_2.png
+ M art/raw/standee/dr_lin_3.json
+ M art/raw/standee/dr_lin_3.png
+ M art/raw/standee/dr_lin_4.json
+ M art/raw/standee/dr_lin_4.png
+ M art/storyboard.py
+ M art/voice-test/taigi/ref-child.wav
+ M assets/art/p_dr_lin.webp
+ M "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief.md"
+ M src/__pycache__/layout.cpython-312.pyc
+ M src/__pycache__/maps.cpython-312.pyc
+ M src/__pycache__/taigi.cpython-312.pyc
+ M src/improv.py
+ M tests/hover_check.mjs
+ M tests/ui_shots.mjs
+?? art/check/blocks-alley-plan.webp
+?? art/check/blocks-auditorium-plan.webp
+?? art/check/blocks-backstage-plan.webp
+?? art/check/blocks-dressing-plan.webp
+?? art/check/blocks/
+?? art/check/cgfix-gen1.log
+?? art/check/cgfix-gen2.log
+?? art/check/compose-alley-ground.webp
+?? art/check/compose-auditorium.webp
+?? art/check/compose-dressing.webp
+?? art/check/map-m-alley.png
+?? art/check/map-m-auditorium.png
+?? art/check/map-m-backstage.png
+?? art/check/map-m-dressing.png
+?? art/check/maps-all.jpg
+?? art/check/occlusion-backstage.png
+?? art/check/stair-1.png
+?? art/check/stair-2.png
+?? art/check/stair-3.png
+?? art/check/stair-4.png
+?? art/music.py
+?? art/music_raw/
+?? art/music_state/
+?? art/objects_backstage.ustair-v1.yaml
+?? art/raw/a_desk_raw.json
+?? art/raw/a_desk_raw.png
+?? art/raw/a_piano_raw.json
+?? art/raw/b_balcony_raw.json
+?? art/raw/b_balcony_raw.png
+?? art/raw/b_beam_raw.json
+?? art/raw/b_beam_raw.png
+?? art/raw/b_post_raw.json
+?? art/raw/b_post_raw.png
+?? art/raw/cg/cg_2004_door_3.json
+?? art/raw/cg/cg_2004_door_3.png
+?? art/raw/cg/cg_2004_door_4.json
+?? art/raw/cg/cg_2004_door_4.png
+?? art/raw/d_case_raw.png
+?? art/raw/d_jewel_raw.png
+?? art/raw/d_rack_raw.png
+?? art/raw/d_radio_raw.png
+?? art/raw/d_vanity_raw.png
+?? art/raw/d_window_raw.png
+?? art/raw/ground_alley_raw.json
+?? art/raw/ground_alley_raw.png
+?? art/raw/ground_dressing_raw.png
+?? art/raw/l_basket_raw.json
+?? art/raw/l_basket_raw.png
+?? art/raw/l_scooter_raw.json
+?? art/raw/l_scooter_raw.png
+?? art/raw/shots/_replaced/
+?? art/raw/shots/s_prologue_2_3.json
+?? art/raw/shots/s_prologue_2_3.png
+?? art/raw/standee/_old_dr/
+?? art/voice-test/cand/
+?? art/voice-test/samples/
+?? art/voice-test/taigi/vc-long-antie.wav
+?? art/voice-test/taigi/vc-long-aunt.wav
+?? art/voice-test/taigi/vc-long-child.wav
+?? art/voice-test/taigi/vc-long-dad.wav
+?? assets/bgm/
+?? "canon/\345\212\207\346\234\254-\346\250\243\346\234\2542.md"
+?? "canon/\346\255\214\350\251\236-\344\277\256\350\250\202\347\211\210.md"
+?? "canon/\346\255\214\350\251\236-\350\210\212.md"
+?? "design/\345\215\263\350\210\210/mem3_forget-1.md"
+?? "design/\345\215\263\350\210\210/mem3_forget-2.md"
+?? "design/\345\215\263\350\210\210/mem3_forget-3.md"
+?? "design/\345\215\263\350\210\210/run-a.log"
+?? "design/\345\215\263\350\210\210/run-b.log"
+?? "design/\345\215\263\350\210\210/soundcheck-1.md"
+?? "design/\345\215\263\350\210\210/soundcheck-3.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief-\345\215\263\350\210\210\347\250\277.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief-\345\215\263\350\210\210\347\250\2772.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief-\345\220\210\344\275\265.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief-\345\220\210\344\275\265\344\277\256.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief-\346\255\214\350\251\236.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-brief-\350\247\222\350\211\262.md"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-write2.log"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-\345\215\263\350\210\210\347\250\277.log"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-\345\215\263\350\210\210\347\250\2772.log"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-\345\220\210\344\275\265.log"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-\345\220\210\344\275\265\344\277\256.log"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-\346\255\214\350\251\236.log"
+?? "design/\350\256\200\350\200\205\345\217\215\346\207\211/codex-\350\247\222\350\211\262.log"
+?? docs/
+?? site/
+?? src/__pycache__/improv.cpython-312.pyc
+?? src/__pycache__/ui_inject.cpython-312.pyc
+?? src/ui_inject.py
+?? ui/__pycache__/
+?? ui/ember.py
+?? ui/mist-original/
+?? ui/mockup/mockup.png
+?? ui/pack.py
+?? ui/parts/
+?? ui/sfx.py
+?? ui/sfx/
+?? ui/src/
+?? "ui/\344\277\241\347\264\231\350\210\207\351\244\230\347\207\274.html"
+diff --git "a/canon/\346\255\214\350\251\236.md" "b/canon/\346\255\214\350\251\236-\344\277\256\350\250\202\347\211\210.md"
+index 24bb711..4a558a0 100644
+--- "a/canon/\346\255\214\350\251\236.md"
++++ "b/canon/\346\255\214\350\251\236-\344\277\256\350\250\202\347\211\210.md"
+@@ -62,7 +62,7 @@
+ 有一天我會忘記
+ 今晚唱過什麼
+ 你替我記得好嗎
+-一個字 都不要放掉
++我今晚唱到燈熄掉
+ 
+ [Final Chorus]
+ 如果我是一場餘燼
+@@ -120,7 +120,7 @@ Mandarin female vocal, low husky alto, breathy and intimate, slow piano ballad,
+ 
+ [Verse 3]
+ 有人坐在我身邊
+-手很穩 話很少
++等我慢慢唱完
+ 我想不起他是誰
+ 可是他在 我就不怕
+ 
+@@ -205,7 +205,7 @@ Mandarin female vocal, low husky alto, tender and fragile, rubato solo piano for
+ 
+ 一定要有：
+ - 慢版鋼琴抒情，68 拍左右；副歌有弦樂撐起來。
+-- 橋段「你替我記得好嗎／一個字 都不要放掉」要唱得最輕、最清楚，這是劇情的關鍵句。
++- 橋段「你替我記得好嗎／我今晚唱到燈熄掉」要唱得最輕、最清楚，這是劇情的關鍵句。
+ - 最後的「不肯冷」收得住，不要拖成大炫技。
+ - 前奏至少有 8 秒乾淨的鋼琴（標題畫面與地圖 BGM 要從這裡剪）。
+ 
+@@ -245,3 +245,29 @@ Suno 一單出 2 版（網頁版每次兩首），每首建議先送 2 單、共
+ 
+ - 每首挑一版，存到 `assets/bgm/`（`ember.mp3`、`goodnight-tainan.mp3`），並記下 Suno 的生成紀錄。
+ - 遊戲裡〈晚安，台南〉要另外剪一段「主歌只有鋼琴、唱到一半停下」的版本給高潮用；〈餘燼〉要一版只有鋼琴的伴奏給地圖 BGM。
++
++## 與舊版差異
++
++### 〈餘燼〉[Bridge]
++
++- 舊句：`一個字 都不要放掉`
++- 新句：`我今晚唱到燈熄掉`
++- 原因：改成她今晚唱到舞台燈熄的具體畫面，保留八個音節與「掉」的句尾韻，讓聽歌的人知道該記得哪一刻。
++
++### 〈晚安，台南〉[Verse 3]
++
++- 舊句：`手很穩 話很少`
++- 新句：`等我慢慢唱完`
++- 原因：改寫成他陪她唱完的具體動作，保留六個音節，接得上後兩句，也能直接唱。
++
++### 備選版本
++
++以下每組各替換上述兩行，橋段八個音節，主歌六個音節。
++
++**備選一**
++- 〈餘燼〉[Bridge]：`留住我唱歌的聲音`
++- 〈晚安，台南〉[Verse 3]：`替我摺好歌譜`
++
++**備選二**
++- 〈餘燼〉[Bridge]：`把今晚這首歌收好`
++- 〈晚安，台南〉[Verse 3]：`把水杯遞給我`
+
+exec
+/bin/bash -lc "~/speak-tw/bin/speak-tw --public 'canon/歌詞-修訂版.md'" in /home/ct/larch-ember
+ exited 1 in 0ms:
+
+easy-promise　「也沒關係」「就能做一個自己的」安撫加承諾（1 處）
+  先安撫再保證很簡單，是推銷腔的套句，也常常承諾過頭。直接講要準備什麼、會做出什麼。
+    canon/歌詞-修訂版.md:235  - 唸不準也沒關係，
+
+掃了 1 個檔案，1 處要改
+確定某一處是刻意的，就在那一行加 speak-tw-ok
+
+codex
+修訂內容與原檔的差異只有兩行歌詞和評歌標準中的對應引用，末尾另加差異與備選。檢查器另標出一行原有的台語備註；它不在允許改動的範圍，我先保留原文，接著確認檢查器的例外標記是否能在不改可見文字的情況下處理。
+exec
+/bin/bash -lc "rg -n -C 3 'speak-tw-ok' ~/speak-tw" in /home/ct/larch-ember
+ succeeded in 0ms:
+/home/ct/speak-tw/hook/stop-lint.mjs-61-
+/home/ct/speak-tw/hook/stop-lint.mjs-62-/* 談論這支工具本身時不要檢查。
+/home/ct/speak-tw/hook/stop-lint.mjs-63-   2026-08-19 第一次真的觸發就是誤報:我在回覆裡列規則清單(「落檔／落下來」「這顆 bug」),
+/home/ct/speak-tw/hook/stop-lint.mjs:64:   被當成使用那些詞。檔案可以加 speak-tw-ok,對話沒地方加。
+/home/ct/speak-tw/hook/stop-lint.mjs-65-   代價:一則同時談 speak-tw 又真的犯規的訊息會被放過。可接受——
+/home/ct/speak-tw/hook/stop-lint.mjs-66-   誤報會讓人關掉整個提醒,漏報只是少提醒一次。 */
+/home/ct/speak-tw/hook/stop-lint.mjs-67-if (/speak-tw|rules\.mjs/.test(text)) process.exit(0);
+--
+/home/ct/speak-tw/bin/speak-tw-11-     speak-tw --json                 機器讀的輸出
+/home/ct/speak-tw/bin/speak-tw-12-   有問題就 exit 1。
+/home/ct/speak-tw/bin/speak-tw-13-
+/home/ct/speak-tw/bin/speak-tw:14:   放行:在那一行加 speak-tw-ok(HTML 用 <!-- speak-tw-ok -->)。
+/home/ct/speak-tw/bin/speak-tw-15-   要放行就要明講,不能默默通過。
+/home/ct/speak-tw/bin/speak-tw-16-
+/home/ct/speak-tw/bin/speak-tw-17-   設定檔 .speak-tw.json(放在被掃的目錄):
+--
+/home/ct/speak-tw/bin/speak-tw-95-    for (const m of clean.matchAll(r.re)) {
+/home/ct/speak-tw/bin/speak-tw-96-      let ln = starts.findIndex((s, i) => m.index >= s && (i === starts.length - 1 || m.index < starts[i + 1]));
+/home/ct/speak-tw/bin/speak-tw-97-      if (ln < 0) ln = 0;
+/home/ct/speak-tw/bin/speak-tw:98:      if (/speak-tw-ok/.test(lines[ln])) continue;
+/home/ct/speak-tw/bin/speak-tw-99-      hits.push({ file: f, line: ln + 1, rule: r.id, name: r.name, why: r.why, text: m[0].trim().slice(0, 60) });
+/home/ct/speak-tw/bin/speak-tw-100-    }
+/home/ct/speak-tw/bin/speak-tw-101-  }
+--
+/home/ct/speak-tw/bin/speak-tw-120-  if (hs.length > 8) console.log('    …還有 ' + (hs.length - 8) + ' 處');
+/home/ct/speak-tw/bin/speak-tw-121-}
+/home/ct/speak-tw/bin/speak-tw-122-console.log('\n掃了 ' + files.length + ' 個檔案，' + hits.length + ' 處要改');
+/home/ct/speak-tw/bin/speak-tw:123:if (hits.length) console.log('確定某一處是刻意的，就在那一行加 speak-tw-ok');
+/home/ct/speak-tw/bin/speak-tw-124-process.exit(hits.length ? 1 : 0);
+--
+/home/ct/speak-tw/rules.mjs-42-  },
+/home/ct/speak-tw/rules.mjs-43-  {
+/home/ct/speak-tw/rules.mjs-44-    id: 'never-punchline', register: 'any', name: '「從來沒有…過。」收尾的洞見句',
+/home/ct/speak-tw/rules.mjs:45:    why: '前面鋪一段，再補一句「他從來沒有 Y 過」當結語，是用絕對否定暗示一個對比、製造洞見感（2026-10-07 使用者抓到「他從來沒有坐在另一邊過」）。要嘛刪掉，讓前面的事自己說話；要嘛把要對比的那件事直接寫出來。台詞裡角色真的這樣說、或是單純交代事實的，那一行加 speak-tw-ok。',
+/home/ct/speak-tw/rules.mjs-46-    re: /(?:^|[。！？\n|])\s*[^。！？\n|]{0,12}從來(?:都)?(?:沒有|沒|不曾|未曾)[^，。！？\n|]{1,14}過[。！？]/g,
+/home/ct/speak-tw/rules.mjs-47-    bad: '他知道這個法子要問多久。他從來沒有坐在另一邊過。',
+/home/ct/speak-tw/rules.mjs-48-    good: '他從來沒有去過洛陽，這回跟著車隊走了十天才到。',
+--
+/home/ct/speak-tw/rules.mjs-56-  },
+/home/ct/speak-tw/rules.mjs-57-  {
+/home/ct/speak-tw/rules.mjs-58-    id: 'organic-metaphor', register: 'public', name: '「長出」「長成」這類有機隱喻',
+/home/ct/speak-tw/rules.mjs:59:    why: '軟體不會長東西。按語境換:做出／完成／變成／多出／產生／擴充成。（森林宇宙 lore 的字面生長意象除外,那一行加 speak-tw-ok）',
+/home/ct/speak-tw/rules.mjs-60-    re: /長出|長成/g,
+/home/ct/speak-tw/rules.mjs-61-    bad: '這個實驗室是從 LINE 對話製造機長出來的',
+/home/ct/speak-tw/rules.mjs-62-    good: '這個實驗室是從 LINE 對話製造機做出來的',
+--
+/home/ct/speak-tw/rules.mjs-112-  },
+/home/ct/speak-tw/rules.mjs-113-  {
+/home/ct/speak-tw/rules.mjs-114-    id: 'surprise-success', register: 'public', name: '「還真的」把預期內的成果講成僥倖',
+/home/ct/speak-tw/rules.mjs:115:    why: '修好驗好才動手,做出來是預期內的事。「還真的做出來了」把按流程走的結果講成碰運氣。直接照順序講:修到會動,再切出來。(對外部事件的真實意外不算,那一行加 speak-tw-ok)',
+/home/ct/speak-tw/rules.mjs-116-    re: /還真的|真的(?:切|做|印)得?出來|真的會動/g,
+/home/ct/speak-tw/rules.mjs-117-    bad: '我還真的用線鋸把它切出來了',
+/home/ct/speak-tw/rules.mjs-118-    good: '模擬裡修到會動，我就用線鋸把它切出來了',
+--
+/home/ct/speak-tw/rules.mjs-205-  },
+/home/ct/speak-tw/rules.mjs-206-  {
+/home/ct/speak-tw/rules.mjs-207-    id: 'simplified', register: 'any', name: '簡體字',
+/home/ct/speak-tw/rules.mjs:208:    why: '一律正體中文。Big5 編得出來的算正體,編不出來的 CJK 當簡體;真的要用的冷字那一行加 speak-tw-ok。',
+/home/ct/speak-tw/rules.mjs-209-    re: SIMPLIFIED,
+/home/ct/speak-tw/rules.mjs-210-    bad: '这个功能换成自己的網址',
+/home/ct/speak-tw/rules.mjs-211-    good: '這個功能換成自己的網址',
+--
+/home/ct/speak-tw/rules.mjs-216-       + '視覺衝擊力→畫面的張力、屏幕→螢幕、軟件→軟體、用戶→使用者、默認→預設、'
+/home/ct/speak-tw/rules.mjs-217-       + '激活→啟用、內存→記憶體、分辨率→解析度、服務器→伺服器、加載→載入、數據庫→資料庫、'
+/home/ct/speak-tw/rules.mjs-218-       + '一鍵→按一下、賦能與抓手與閉環與顆粒度→直接講在做什麼。'
+/home/ct/speak-tw/rules.mjs:219:       + '(逐字引用對岸原文時,那一行加 speak-tw-ok)',
+/home/ct/speak-tw/rules.mjs-220-    re: /宇航員|航天員|視頻|音頻|數據庫|數據源|屏幕|網絡|軟件|硬件|用戶|默認|激活|內存|打印機|分辨率|服務器|加載|交互|優盤|信息化|視覺衝擊力|賽道(?!車)|賦能|抓手|閉環|顆粒度|復盤|拉通|打通|沉澱|對標|出圈|高端大氣|保姆級|乾貨|一鍵/g,
+/home/ct/speak-tw/rules.mjs-221-    bad: '宇航員在屏幕上看視頻',
+/home/ct/speak-tw/rules.mjs-222-    good: '太空人在螢幕上看影片',
+--
+/home/ct/speak-tw/SKILL.md-17-
+/home/ct/speak-tw/SKILL.md-18-## 什麼時候要跑
+/home/ct/speak-tw/SKILL.md-19-
+/home/ct/speak-tw/SKILL.md:20:- 對外頁面、README、blog、FB 貼文、課程講義 —— 一律加 `--public` <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/SKILL.md:21:- 內部筆記（commit、NEXT.md、spec） —— 不加 `--public`，只擋 any 級的規則 <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/SKILL.md-22-
+/home/ct/speak-tw/SKILL.md-23-## 放行
+/home/ct/speak-tw/SKILL.md-24-
+/home/ct/speak-tw/SKILL.md:25:確定某一處是刻意的，在那一行加 `speak-tw-ok`（HTML 用 `<!-- speak-tw-ok -->`）。
+/home/ct/speak-tw/SKILL.md-26-**要放行就要明講**，不能默默略過。
+/home/ct/speak-tw/SKILL.md-27-
+/home/ct/speak-tw/SKILL.md-28-## 為什麼是程式不是 prompt
+/home/ct/speak-tw/SKILL.md-29-
+/home/ct/speak-tw/SKILL.md-30-prompt 型的規範要靠「想到要用它」。同一種毛病被指正五次都沒改掉，就是這樣漏的。
+/home/ct/speak-tw/SKILL.md:31:一支會回傳退出碼的程式不需要被想起來 —— 放進測試流程就永遠會跑。 <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/SKILL.md-32-
+/home/ct/speak-tw/SKILL.md-33-## 規則從哪來
+/home/ct/speak-tw/SKILL.md-34-
+--
+/home/ct/speak-tw/README.md-1-# speak-tw：講人話
+/home/ct/speak-tw/README.md-2-
+/home/ct/speak-tw/README.md:3:用程式掃中文寫作的老毛病。**零相依**（只用 node 內建），任何 agent 都能跑——它只是一支會回傳退出碼的 CLI。 <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/README.md-4-
+/home/ct/speak-tw/README.md-5-```bash
+/home/ct/speak-tw/README.md-6-git clone https://github.com/yazelin/speak-tw ~/speak-tw
+--
+/home/ct/speak-tw/README.md-20-    index.html:156  這不是省錢的小聰明，是整條產線的設計主軸
+/home/ct/speak-tw/README.md-21-
+/home/ct/speak-tw/README.md-22-掃了 1 個檔案，1 處要改
+/home/ct/speak-tw/README.md:23:確定某一處是刻意的，就在那一行加 speak-tw-ok
+/home/ct/speak-tw/README.md-24-```
+/home/ct/speak-tw/README.md-25-
+/home/ct/speak-tw/README.md-26-## 為什麼要做這個
+--
+/home/ct/speak-tw/README.md-53-
+/home/ct/speak-tw/README.md-54-### 放行
+/home/ct/speak-tw/README.md-55-
+/home/ct/speak-tw/README.md:56:在那一行加 `speak-tw-ok`（HTML 用 `<!-- speak-tw-ok -->`）。
+/home/ct/speak-tw/README.md-57-
+/home/ct/speak-tw/README.md-58-## 規則
+/home/ct/speak-tw/README.md-59-
+/home/ct/speak-tw/README.md-60-32 條，分三類：
+/home/ct/speak-tw/README.md-61-
+/home/ct/speak-tw/README.md-62-**被指正過的實際案例**（這份清單的價值所在）
+/home/ct/speak-tw/README.md:63:`fake-contrast` 不是 X，是 Y ｜ `never-punchline` 他從來沒有 Y 過。 ｜ `organic-metaphor` 長出／長成 ｜ `banned-word` 接住 ｜ `luo-wording` 落檔／落下來 ｜ `homework-tone` 改出得意的回來讓我看看 ｜ `drama-word` 對自己不利／管不住 ｜ `metaphor-as-noun` 每一刀 ｜ `ke-classifier` 這顆 bug ｜ `true-x-not-y` 真正的 X 不是… ｜ `surprise-success` 還真的做出來了 ｜ `hype-speed` 一秒看出／秒懂 ｜ `self-importance` 真正想講的 ｜ `no-hands` 我沒有動手 ｜ `chai-kan` 拆兩個來看 ｜ `old-line-reuse` 照搬舊文的梗 ｜ `reveal-colon` 背後是…： ｜ `flow-jargon` 資料怎麼走 ｜ `realness-claim` 都是真的發生過的 ｜ `easy-promise` 也沒關係／就能做一個自己的 ｜ `pronoun-person` 年輕的那個問 <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/README.md-64-
+/home/ct/speak-tw/README.md-65-抓不到的：整篇「冒號＋清單」一段接一段的範本結構、「站沒斷」這種電報式省略。這兩種是結構問題，規則看不出來，寫完要自己唸一遍。
+/home/ct/speak-tw/README.md-66-
+--
+/home/ct/speak-tw/README.md-68-`em-dash` 破折號 ｜ `halfwidth-punct` 中文間的半形標點 ｜ `emoji` ｜ `simplified` 簡體字（Big5 編不出來的 CJK 就算） ｜ `china-term` 中國用語（正體字寫的，簡體字那條擋不到）｜ `dollar-escape` Markdown 裡跳脫的 $
+/home/ct/speak-tw/README.md-69-
+/home/ct/speak-tw/README.md-70-**常見 AI 味**
+/home/ct/speak-tw/README.md:71:`hollow-closing` 空洞收尾 ｜ `false-candor` 說真的／老實說 ｜ `academic-filler` 本質上／說到底 ｜ `cliche-opening` 在當今…的時代 ｜ `vague-authority` 業界專家認為 <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/README.md-72-
+/home/ct/speak-tw/README.md-73-`speak-tw --list` 看完整說明。
+/home/ct/speak-tw/README.md-74-
+--
+/home/ct/speak-tw/README.md-110-
+/home/ct/speak-tw/README.md-111-hook 撈不到 transcript、或格式改了，就安靜退出，工具壞掉不該打斷工作。
+/home/ct/speak-tw/README.md-112-
+/home/ct/speak-tw/README.md:113:**談論這支工具本身時不檢查。**第一次真的觸發就是誤報：回覆裡在列規則清單（「落檔／落下來」「這顆 bug」），被當成使用那些詞。檔案可以加 `speak-tw-ok`，對話沒地方加，所以訊息裡提到 `speak-tw` 或 `rules.mjs` 就整則跳過。代價是「同時談這支工具又真的犯規」的訊息會漏掉——可接受，**誤報會讓人關掉整個提醒，漏報只是少提醒一次**。
+/home/ct/speak-tw/README.md-114-
+/home/ct/speak-tw/README.md-115-## 跟 speak-human-tw 的差別
+/home/ct/speak-tw/README.md-116-
+/home/ct/speak-tw/README.md-117-[speak-human-tw](https://github.com/Raymondhou0917/speak-human-tw)（MIT）是同一個問題的 prompt 解法：38 種 AI 寫作痕跡、60 多條中國用語對照，由 agent 讀進去之後改寫，會先列問題等你同意。規則覆蓋面比這裡廣很多，值得裝。
+/home/ct/speak-tw/README.md-118-
+/home/ct/speak-tw/README.md:119:這支走的是另一條路：**規則寫成 regex，用退出碼講話**。差別在執行方式：不需要 agent 記得要用它，也不需要模型判斷，放進 CI 就是硬性的。兩個可以並用：那邊負責改寫建議，這邊負責交稿前的最後一道閘。 <!-- speak-tw-ok 這一行在示範規則本身 -->
+/home/ct/speak-tw/README.md-120-
+/home/ct/speak-tw/README.md-121-## 授權
+/home/ct/speak-tw/README.md-122-
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+p = Path('canon/歌詞-修訂版.md')
+s = p.read_text(encoding='utf-8')
+old = '- 唸不準也沒關係，隔著收音機的雜訊比較不明顯；不行的話只留伴奏。'
+new = old + ' <"'!-- speak-tw-ok -->'"'
+if s.count(old) "'!= 1:
+    raise SystemExit('"'Expected exactly one copied line for the linter exception')
+p.write_text(s.replace(old, new), encoding='utf-8')
+print('Added a non-rendering speak-tw exception marker to the flagged copied line.')
+PY" in /home/ct/larch-ember
+ exited 1 in 0ms:
+Expected exactly one copied line for the linter exception
+
+exec
+/bin/bash -lc "sed -n '228,239p' 'canon/歌詞-修訂版.md'" in /home/ct/larch-ember
+ succeeded in 0ms:
+
+一定要有：
+- 聽起來像 1980 年代的台語老歌：手風琴或電子琴、慢三拍子、男聲。
+- 有收音機的質感（單聲道、雜訊）；不夠的話我後製再加。
+
+加分：
+- 台語聽得懂「燈若熄 船就到」這一句。
+- 唸不準也沒關係，只用一小段，必要時只留伴奏。
+
+### 怎麼聽、怎麼回報
+
+Suno 一單出 2 版（網頁版每次兩首），每首建議先送 2 單、共 4 版再挑。
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+p = Path('canon/歌詞-修訂版.md')
+s = p.read_text(encoding='utf-8')
+old = '- 唸不準也沒關係，只用一小段，必要時只留伴奏。'
+new = old + ' <"'!-- speak-tw-ok -->'"'
+if s.count(old) "'!= 1:
+    raise SystemExit('"'Expected exactly one copied line for the linter exception')
+p.write_text(s.replace(old, new), encoding='utf-8')
+print('Added a non-rendering speak-tw exception marker to the flagged copied line.')
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+Added a non-rendering speak-tw exception marker to the flagged copied line.
+
+exec
+/bin/bash -lc "git status --short -- 'canon/歌詞-修訂版.md' 'canon/歌詞.md' 'canon/歌詞-舊.md' && git diff --no-index -- 'canon/歌詞.md' 'canon/歌詞-修訂版.md'" in /home/ct/larch-ember
+ exited 1 in 0ms:
+?? "canon/\346\255\214\350\251\236-\344\277\256\350\250\202\347\211\210.md"
+?? "canon/\346\255\214\350\251\236-\350\210\212.md"
+diff --git "a/canon/\346\255\214\350\251\236.md" "b/canon/\346\255\214\350\251\236-\344\277\256\350\250\202\347\211\210.md"
+index 24bb711..88c405c 100644
+--- "a/canon/\346\255\214\350\251\236.md"
++++ "b/canon/\346\255\214\350\251\236-\344\277\256\350\250\202\347\211\210.md"
+@@ -62,7 +62,7 @@
+ 有一天我會忘記
+ 今晚唱過什麼
+ 你替我記得好嗎
+-一個字 都不要放掉
++我今晚唱到燈熄掉
+ 
+ [Final Chorus]
+ 如果我是一場餘燼
+@@ -120,7 +120,7 @@ Mandarin female vocal, low husky alto, breathy and intimate, slow piano ballad,
+ 
+ [Verse 3]
+ 有人坐在我身邊
+-手很穩 話很少
++等我慢慢唱完
+ 我想不起他是誰
+ 可是他在 我就不怕
+ 
+@@ -205,7 +205,7 @@ Mandarin female vocal, low husky alto, tender and fragile, rubato solo piano for
+ 
+ 一定要有：
+ - 慢版鋼琴抒情，68 拍左右；副歌有弦樂撐起來。
+-- 橋段「你替我記得好嗎／一個字 都不要放掉」要唱得最輕、最清楚，這是劇情的關鍵句。
++- 橋段「你替我記得好嗎／我今晚唱到燈熄掉」要唱得最輕、最清楚，這是劇情的關鍵句。
+ - 最後的「不肯冷」收得住，不要拖成大炫技。
+ - 前奏至少有 8 秒乾淨的鋼琴（標題畫面與地圖 BGM 要從這裡剪）。
+ 
+@@ -232,7 +232,7 @@ Mandarin female vocal, low husky alto, tender and fragile, rubato solo piano for
+ 
+ 加分：
+ - 台語聽得懂「燈若熄 船就到」這一句。
+-- 唸不準也沒關係，只用一小段，必要時只留伴奏。
++- 唸不準也沒關係，只用一小段，必要時只留伴奏。 <!-- speak-tw-ok -->
+ 
+ ### 怎麼聽、怎麼回報
+ 
+@@ -245,3 +245,29 @@ Suno 一單出 2 版（網頁版每次兩首），每首建議先送 2 單、共
+ 
+ - 每首挑一版，存到 `assets/bgm/`（`ember.mp3`、`goodnight-tainan.mp3`），並記下 Suno 的生成紀錄。
+ - 遊戲裡〈晚安，台南〉要另外剪一段「主歌只有鋼琴、唱到一半停下」的版本給高潮用；〈餘燼〉要一版只有鋼琴的伴奏給地圖 BGM。
++
++## 與舊版差異
++
++### 〈餘燼〉[Bridge]
++
++- 舊句：`一個字 都不要放掉`
++- 新句：`我今晚唱到燈熄掉`
++- 原因：改成她今晚唱到舞台燈熄的具體畫面，保留八個音節與「掉」的句尾韻，讓聽歌的人知道該記得哪一刻。
++
++### 〈晚安，台南〉[Verse 3]
++
++- 舊句：`手很穩 話很少`
++- 新句：`等我慢慢唱完`
++- 原因：改寫成他陪她唱完的具體動作，保留六個音節，接得上後兩句，也能直接唱。
++
++### 備選版本
++
++以下每組各替換上述兩行，橋段八個音節，主歌六個音節。
++
++**備選一**
++- 〈餘燼〉[Bridge]：`留住我唱歌的聲音`
++- 〈晚安，台南〉[Verse 3]：`替我摺好歌譜`
++
++**備選二**
++- 〈餘燼〉[Bridge]：`把今晚這首歌收好`
++- 〈晚安，台南〉[Verse 3]：`把水杯遞給我`
+
+exec
+/bin/bash -lc "~/speak-tw/bin/speak-tw --public 'canon/歌詞-修訂版.md'" in /home/ct/larch-ember
+ succeeded in 0ms:
+
+掃了 1 個檔案，0 處要改
+
+codex
+已完成新檔：[歌詞-修訂版.md](/home/ct/larch-ember/canon/歌詞-修訂版.md)
+
+兩處歌詞各維持 8、6 個音節，評歌標準的引用也已同步；檔尾附了差異說明與兩組備選。`speak-tw --public` 檢查通過。檢查器標記的原有備註保留可見文字，另加了不顯示的例外註記。
+
+原歌詞與舊版備份未動。依照只寫新檔的限制，`劇本.md` 的 `ending_a1` 仍保留舊唱詞。
+hook: Stop
+hook: Stop Completed
+tokens used
+85,311
+已完成新檔：[歌詞-修訂版.md](/home/ct/larch-ember/canon/歌詞-修訂版.md)
+
+兩處歌詞各維持 8、6 個音節，評歌標準的引用也已同步；檔尾附了差異說明與兩組備選。`speak-tw --public` 檢查通過。檢查器標記的原有備註保留可見文字，另加了不顯示的例外註記。
+
+原歌詞與舊版備份未動。依照只寫新檔的限制，`劇本.md` 的 `ending_a1` 仍保留舊唱詞。
