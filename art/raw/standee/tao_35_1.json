@@ -1,0 +1,9 @@
+{
+ "job": "img_69b99844e56d73f9433f9cd9",
+ "prompt": "A premium visual-novel character standee, HALF BODY from mid-thigh up, the figure fills the height of the image, face large and highly detailed. Cinematic anime feature-film rendering in exactly the painting style of the references: painterly light and shadow, glowing warm sunset backlight, a strong golden-orange rim light outlining the hair and shoulders, soft amber bounce light on the face, rich hand-painted fabric texture and lace detail, subtle film color grading in amber, deep crimson and ash grey, a few tiny glowing ember particles near the figure. An East Asian (Taiwanese) person, drawn as a beautiful lead of a mature romance anime film: refined, well-proportioned features, expressive deep eyes with layered irises, natural skin, appealing and memorable, emotionally real. Background: a completely flat, uniform pure magenta #FF00FF, no gradient, no scenery, no particles on the background, nothing touches the left, right or top border. No text, no letters, no logos. Character: AH-TAO at 35, in 1988, the SAME woman as Reference 3 (her at 73) when young: same face shape, eyes and smile, black permed hair under a faded headscarf. A plain hard-working market vegetable vendor, not glamorous: a modest floral blouse buttoned up to the collar, sleeves pushed up, a worn canvas work apron, rubber boots, sturdy hands. Acting: holding a bunch of leafy greens, laughing loudly, a few water splashes. Warm dusk market light bulb.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/yu_cover_crop.png",
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_tao_73.webp"
+ ]
+}

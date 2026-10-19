@@ -1,0 +1,9 @@
+{
+ "job": "img_9b18e69e9584c9c1f5d87918",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU BO, her father, fishmonger: tanned, white towel around the neck, yellow rubber apron. Reference 3 is YU SHU-JING at 9: a small child, short ponytail, white school shirt, navy skirt, blue plastic apron, yellow rubber boots. Scene: 1988, dusk, old stone steps going down into a Tainan canal, the water glowing orange with the sunset. The father and his 9-year-old daughter crouch side by side on the lowest step, scrubbing blue plastic fish crates with brushes; he is singing to her, she sings back, both laughing. A small old plastic portable radio sits on the step above. Warm, safe, tender.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_father.webp",
+  "/home/ct/larch-ember/assets/art/p_yu_9.webp"
+ ]
+}

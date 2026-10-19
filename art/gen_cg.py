@@ -23,6 +23,7 @@ WHO = {   # 名字 → (挑定立繪, 描述)
     'cheng_23': ('p_cheng_23', 'CHENG XI at 23: messy black hair, oversized plaid flannel shirt over a white tee'),
     'cheng_30': ('p_cheng_30', 'CHENG XI at 30: short neat black hair, black crew T-shirt, monitor headset around his neck'),
     'zhou': ('p_zhou_62', 'TEACHER ZHOU, pianist: neat white hair, thin gold-rimmed glasses, grey cardigan'),
+    'azhe': ('p_azhe_30', 'A-ZHE, young sound engineer: side-swept black hair, black crew T-shirt, walkie-talkie and headset'),
     'tao_73': ('p_tao_73', 'AH-TAO at 73: short grey permed curls, floral blouse, jade bracelet'),
     'father': ('p_yu_father', 'YU BO, her father, fishmonger: tanned, white towel around the neck, yellow rubber apron'),
     'dr_lin': ('p_dr_lin', 'DR. LIN, neurologist: white coat, stethoscope, glasses pushed up'),

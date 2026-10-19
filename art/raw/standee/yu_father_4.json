@@ -1,0 +1,8 @@
+{
+ "job": "img_c205785066bf5325187387e7",
+ "prompt": "A premium visual-novel character standee, HALF BODY from mid-thigh up, the figure fills the height of the image, face large and highly detailed. Cinematic anime feature-film rendering in exactly the painting style of the references: painterly light and shadow, glowing warm sunset backlight, a strong golden-orange rim light outlining the hair and shoulders, soft amber bounce light on the face, rich hand-painted fabric texture and lace detail, subtle film color grading in amber, deep crimson and ash grey, a few tiny glowing ember particles near the figure. An East Asian (Taiwanese) person, drawn as a beautiful lead of a mature romance anime film: refined, well-proportioned features, expressive deep eyes with layered irises, natural skin, appealing and memorable, emotionally real. Background: a completely flat, uniform pure magenta #FF00FF, no gradient, no scenery, no particles on the background, nothing touches the left, right or top border. No text, no letters, no logos. Character: YU BO, 45, in 1988, the heroine's father, a fishmonger at the Tainan evening market: tanned weathered face, short hair, a white towel around his neck, a yellow rubber apron and rubber boots, strong forearms. Acting: holding up a big fish on ice with a proud tender grin, looking down at his daughter. Warm dusk market light bulb.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/yu_cover_crop.png",
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg"
+ ]
+}

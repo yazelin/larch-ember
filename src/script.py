@@ -11,6 +11,7 @@ SRC = R / 'canon/劇本.md'
 HEAD = re.compile(r'^## (\w+)')
 LINE = re.compile(r'^([^：\s#>-][^：]{0,12})：(.+)$')
 CHOICE = re.compile(r'^- (.+?) → (\w+)$')
+SHOT = re.compile(r'^〔圖：(\w+)〕$')
 
 
 def speaker_of(raw):
@@ -24,7 +25,7 @@ def speaker_of(raw):
 
 def parse(text=None):
     text = text if text is not None else SRC.read_text(encoding='utf-8')
-    L, CHOICES, FADE, cur = {}, {}, set(), None
+    L, CHOICES, FADE, SHOTS, cur = {}, {}, set(), {}, None
     for raw in text.splitlines():
         s = raw.strip()
         if s.startswith('## 修改紀錄'):
@@ -34,6 +35,9 @@ def parse(text=None):
             cur = h.group(1); L[cur] = []; continue
         if cur is None or not s:
             continue
+        g = SHOT.match(s)
+        if g:   # 〔圖：s_xxx〕：從下一句起換這張 CG（連續動作一句一張，作者 2026-10-19）
+            SHOTS[(cur, len(L[cur]))] = g.group(1); continue
         c = CHOICE.match(s)
         if c:
             CHOICES.setdefault(cur, []).append((c.group(1), c.group(2))); continue
@@ -49,10 +53,10 @@ def parse(text=None):
         if fade:
             FADE.add((cur, len(L[cur])))
         L[cur].append((spk, line, vid, tag))
-    return L, CHOICES, FADE
+    return L, CHOICES, FADE, SHOTS
 
 
-L, CHOICES, FADE = parse()
+L, CHOICES, FADE, SHOTS = parse()
 
 if __name__ == '__main__':
     n = sum(len(v) for v in L.values())
@@ -65,6 +69,8 @@ if __name__ == '__main__':
     print(spk)
     assert CHOICES['branch_dark'] and len(CHOICES['branch_dark']) == 3, CHOICES
     assert all(L[k] for k in L), [k for k in L if not L[k]]
-    t, c, f = parse('## a（x）\n余靜（心）：好安靜。〔掉字〕\n旁白：燈。\n選項：\n- 走 → b\n')
+    t, c, f, sh = parse('## a（x）\n〔圖：s_a_1〕\n余靜（心）：好安靜。〔掉字〕\n〔圖：s_a_2〕\n旁白：燈。\n選項：\n- 走 → b\n')
     assert t == {'a': [('余靜', '好安靜。', t['a'][0][2], '心'), ('', '燈。', None, '')]} and c == {'a': [('走', 'b')]} and f == {('a', 0)}, (t, c, f)
+    assert sh == {('a', 0): 's_a_1', ('a', 1): 's_a_2'}, sh
+    print(len(SHOTS), '個換圖點')
     print('ok')

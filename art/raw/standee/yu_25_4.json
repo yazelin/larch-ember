@@ -1,0 +1,8 @@
+{
+ "job": "img_c1b334ece6f16e2b39c3c8be",
+ "prompt": "A premium visual-novel character standee, HALF BODY from mid-thigh up, the figure fills the height of the image, face large and highly detailed. Cinematic anime feature-film rendering in exactly the painting style of the references: painterly light and shadow, glowing warm sunset backlight, a strong golden-orange rim light outlining the hair and shoulders, soft amber bounce light on the face, rich hand-painted fabric texture and lace detail, subtle film color grading in amber, deep crimson and ash grey, a few tiny glowing ember particles near the figure. An East Asian (Taiwanese) person, drawn as a beautiful lead of a mature romance anime film: refined, well-proportioned features, expressive deep eyes with layered irises, natural skin, appealing and memorable, emotionally real. Background: a completely flat, uniform pure magenta #FF00FF, no gradient, no scenery, no particles on the background, nothing touches the left, right or top border. No text, no letters, no logos. Character: Her face must be clearly the same woman as in Reference 1 (the singer on the original cover): same eyes, nose, lips, face shape. YU JING, 25, in 2004 on the night of her first ticketed concert in her hometown: younger, fresher face, long light-brown wavy hair down, a simple dark-red velvet slip dress with a thin black cardigan, a long drop earring on her left ear. Acting: holding a sheet of music folded in four against her chest with both hands, nervous bright eyes, biting back a hopeful smile.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/yu_cover_crop.png",
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg"
+ ]
+}

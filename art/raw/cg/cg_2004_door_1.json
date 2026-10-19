@@ -1,0 +1,9 @@
+{
+ "job": "img_97938bda17981c1f247c94d8",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 25: long light-brown wavy hair down, dark-red velvet slip dress with a thin black cardigan, long drop earring. Reference 3 is CHENG XI at 23: messy black hair, oversized plaid flannel shirt over a white tee. Scene: 2004, 10 pm, right after rain, the backstage door of an old Tainan theater, glossy black asphalt reflecting a single warm door lamp. The young man thrusts a deep crimson rose and a paper ticket stub into her hands, blushing, eyes down, already turning to run; she holds them, surprised, her lips parted to ask his name. Night, steam, wet light.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_25.webp",
+  "/home/ct/larch-ember/assets/art/p_cheng_23.webp"
+ ]
+}
