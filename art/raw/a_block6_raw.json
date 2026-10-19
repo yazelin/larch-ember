@@ -1,0 +1,8 @@
+{
+ "job": "img_6fb2d59691ab69aea522e869",
+ "prompt": "Game map object sprite, one single object only, the auditorium of an old 1950s Tainan theater after soundcheck, rows of red velvet seats, a wooden stage with warm stage lights, soft painted anime RPG map style, warm palette. 3/4 top-down camera view from the south (about 50 degrees elevation, showing top and south-facing front), soft even lighting. Redraw the object cleanly and completely as a standalone sprite.\nDraw: a block of old ornate red velvet theater seats seen from above, 5 rows of 6 seats with empty walking rows between them, gold-trimmed armrests.\nProportions: bounding box is 6 grid cells wide and 10 grid cells tall (aspect ratio 6:10). The bottom 10 cells are its floor footprint; the top 0 cells rise up.\nDraw only this object: no floor, no shadows on floor, no people, no background scenery. Clean edges.\nBackground: a completely flat opaque solid #00FF00 pure green fill, uniform color, absolutely no gradient, no drop shadow. No text, no letters. The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.",
+ "refs": [
+  "/home/ct/larch-ember/assets/art/cg/s_soundcheck_1.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_concert_1.webp"
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "job": "img_84fa060aa0c032870496919b",
+ "prompt": "Top-down painted anime RPG game map floor, the auditorium of an old 1950s Tainan theater after soundcheck, rows of red velvet seats, a wooden stage with warm stage lights, soft painted anime RPG map style, warm palette. Follow the floor region layout of image 1 exactly. a wooden stage across the top, below it a deep red carpeted auditorium floor with aisles on both sides; dark side walls. Top-down RPG map floor only. Dimensions: 26 cells wide by 18 cells tall. Rich textures, atmospheric lighting. Draw ONLY the floor surface materials: absolutely NO furniture, NO counters, NO walls rising up, NO doors, NO people, NO text. The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.",
+ "refs": [
+  "/home/ct/larch-ember/art/check/compose-auditorium-ground.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_soundcheck_1.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_concert_1.webp"
+ ]
+}
