@@ -283,20 +283,58 @@ def align_ground(raw_png, d, S):
     return best
 
 
-def stairs_ok(canvas, d, S):
-    """樓梯地面閘門：每一段 kind=stairs 的區域，縱向每一格至少要有約一條橫向踏階邊緣（亮度的縱向梯度出現週期性峰值）。回傳 (全過, 各段峰值數)。"""
-    L = np.asarray(canvas.convert('L')).astype(float); res = []; ok = True
+def stair_rows(d):
+    """每一段樓梯真正露出來的列（後面的地面矩形蓋過去的列不算，例如 B 段尾端被一樓地面蓋住）"""
+    W, Hh = d['map']['w'], d['map']['h']; grid = [[None] * W for _ in range(Hh)]
+    for g in d['ground']:
+        for x, y, w, h in g['rects']:
+            for j in range(y, y + h):
+                for i in range(x, x + w): grid[j][i] = g['kind']
+    out = []
     for g in d['ground']:
         if g['kind'] != 'stairs': continue
         for x, y, w, h in g['rects']:
-            if h < 3: continue   # 舞台前兩小段階梯（1 格）不驗
-            sub = L[y * S:(y + h) * S, x * S + S // 4:(x + w) * S - S // 4]
-            prof = np.abs(np.diff(sub, axis=0)).mean(1)
-            thr = prof.mean() + 1.0 * prof.std(); peaks = 0; last = -99
-            for i in range(1, len(prof) - 1):
-                if prof[i] > thr and prof[i] >= prof[i - 1] and prof[i] >= prof[i + 1] and i - last > S * .3: peaks += 1; last = i
-            res.append((g['name'], h, peaks)); ok &= peaks >= max(3, int(h * .8))
+            rows = [j for j in range(y, y + h) if all(grid[j][i] == 'stairs' for i in range(x, x + w))]
+            if len(rows) >= 3: out.append((g['name'], x, w, rows))   # 舞台前的 1 格小階梯不驗
+    return out
+
+
+def riser_count(canvas, x, w, rows, S, thr=.55, min_w=9):
+    """沿樓梯縱向取亮度剖面：立面（階與階之間的暗帶）要夠深（低於踏面亮度的 55%）又夠寬（≥ 9 px，約 0.14 格）才算一階。
+    木板的板縫只有 1 到 5 px 寬，不算。回傳 (立面數, 所有暗帶寬)。"""
+    L = np.asarray(canvas.convert('L')).astype(float)
+    p = np.convolve(L[rows[0] * S:(rows[-1] + 1) * S, x * S + S // 4:(x + w) * S - S // 4].mean(1), np.ones(3) / 3, 'same')[8:-8]
+    dark = p < thr * np.percentile(p, 70); runs = []; n = 0
+    for v in dark:
+        if v: n += 1
+        elif n: runs.append(n); n = 0
+    if n: runs.append(n)
+    return sum(r >= min_w for r in runs), sorted(runs)
+
+
+def stairs_ok(canvas, d, S):
+    """樓梯地面閘門：每一段露出來的樓梯，立面（暗帶）數要 ≥ 每格 0.9 條（至少 3 條）。回傳 (全過, [(名稱, 露出幾格, 立面數)])。"""
+    res = []; ok = True
+    for name, x, w, rows in stair_rows(d):
+        n, _ = riser_count(canvas, x, w, rows, S); res.append((name, len(rows), n)); ok &= n >= max(3, int(len(rows) * .9))
     return ok, res
+
+
+def fix_stairs(canvas, d, S):
+    """生成圖裡有一段樓梯畫成平木板、另一段是真的階梯時：把合格那段的階梯貼到不合格那段上（從上緣對齊），兩段樣式一致。
+    只在寬度相同、合格那段夠長時才補。回傳 (圖, 被補的段名)。"""
+    segs = stair_rows(d); good = []; bad = []
+    for name, x, w, rows in segs:
+        n, _ = riser_count(canvas, x, w, rows, S)
+        (good if n >= max(3, int(len(rows) * .9)) else bad).append((name, x, w, rows))
+    out = canvas.copy(); fixed = []
+    for name, x, w, rows in bad:
+        donors = [g for g in good if g[2] == w and len(g[3]) >= len(rows)]
+        if not donors: continue
+        dn, dx, dw, drows = donors[0]
+        patch = canvas.crop((dx * S, drows[0] * S, (dx + dw) * S, (drows[0] + len(rows)) * S))
+        out.paste(patch, (x * S, rows[0] * S)); fixed.append(name)
+    return out, fixed
 
 
 def ground(a):
@@ -315,10 +353,13 @@ def ground(a):
         o = out if k == 0 else out.replace('.png', f'-try{k + 1}.png')
         try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom. Both wooden staircases must show clearly separated steps: many distinct horizontal treads with a dark riser line between each, one step about every half cell.' if k else ''), o, [lay, anchor(a)], size='1536x1024')
         except Exception as e: print('地面第', k + 1, '次生成失敗', repr(e)[:120], flush=True); continue
-        canvas, iou, how = align_ground(o, d, S2); sok, sres = stairs_ok(canvas, d, S2)
-        print('地面第', k + 1, '次 IoU', round(iou, 3), '樓梯踏階', sres, '過' if sok else '不過', flush=True)
+        canvas, iou, how = align_ground(o, d, S2); sok, sres = stairs_ok(canvas, d, S2); fixed = []
+        if not sok:
+            c2, fixed = fix_stairs(canvas, d, S2); sok2, sres2 = stairs_ok(c2, d, S2)
+            if sok2: canvas, sok, sres = c2, True, sres2
+        print('地面第', k + 1, '次 IoU', round(iou, 3), '樓梯立面', sres, '過' if sok else '不過', ('；補貼：' + '、'.join(fixed)) if fixed else '', flush=True)
         good = iou >= .92 and sok
-        log(dict(map=a, type='ground', ok=good, iou=round(iou, 3), stairs=sres, try_=k + 1))
+        log(dict(map=a, type='ground', ok=good, iou=round(iou, 3), stairs=sres, cloned=fixed, try_=k + 1))
         score = iou + (1 if sok else 0)
         if best is None or score > best[1]: best = (canvas, score, o)
         if good: break
@@ -445,8 +486,11 @@ def realign(a, raw=None):
     cands = [raw] if raw else sorted(glob.glob(os.path.join(RAW, f'ground-{a}*.png')))
     cands = [c for c in cands if 'layout' not in c]; best = None
     for c in cands:
-        canvas, iou, how = align_ground(c, d, S2); sok, sres = stairs_ok(canvas, d, S2)
-        print(os.path.basename(c), 'IoU', round(iou, 3), f'({how})', '樓梯', sres, '過' if sok else '不過')
+        canvas, iou, how = align_ground(c, d, S2); sok, sres = stairs_ok(canvas, d, S2); fixed = []
+        if not sok:
+            c2, fixed = fix_stairs(canvas, d, S2); sok2, sres2 = stairs_ok(c2, d, S2)
+            if sok2: canvas, sok, sres = c2, True, sres2
+        print(os.path.basename(c), 'IoU', round(iou, 3), f'({how})', '樓梯立面', sres, '過' if sok else '不過', ('；補貼：' + '、'.join(fixed)) if fixed else '')
         sc = iou + (1 if sok else 0)
         if best is None or sc > best[1]: best = (canvas, sc, c, iou, sok)
     best[0].save(os.path.join(G, f'assets/maps/{a}_ground.webp'), quality=92)
