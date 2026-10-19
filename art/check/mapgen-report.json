@@ -1,0 +1,1092 @@
+[
+ {
+  "map": "dressing",
+  "type": "d_wall",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 28,
+    "top": 231,
+    "right": 28,
+    "bottom": 232
+   },
+   "aspect": 2.64,
+   "want": 2.0,
+   "bottom_deg": -0.0,
+   "top_deg": 0.0,
+   "opaque": 0.996
+  },
+  "try": 1,
+  "t": "2026-10-20 03:10:13"
+ },
+ {
+  "map": "dressing",
+  "type": "d_vanity",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 248,
+    "top": 23,
+    "right": 249,
+    "bottom": 40
+   },
+   "aspect": 1.08,
+   "want": 1.33,
+   "bottom_deg": -0.04
+  },
+  "try": 1,
+  "t": "2026-10-20 03:10:18"
+ },
+ {
+  "map": "dressing",
+  "type": "d_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 43,
+    "top": 124,
+    "right": 42,
+    "bottom": 181
+   },
+   "aspect": 0.76,
+   "want": 0.67,
+   "bottom_deg": 0.07,
+   "top_deg": -0.1
+  },
+  "try": 1,
+  "t": "2026-10-20 03:10:22"
+ },
+ {
+  "map": "dressing",
+  "type": "d_window",
+  "ok": false,
+  "problems": [
+   "比例不對（1.86，要 1.33）"
+  ],
+  "m": {
+   "margins": {
+    "left": 41,
+    "top": 100,
+    "right": 37,
+    "bottom": 142
+   },
+   "aspect": 1.86,
+   "want": 1.33,
+   "bottom_deg": 0.0,
+   "top_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:10:23"
+ },
+ {
+  "map": "dressing",
+  "type": "d_bench",
+  "ok": false,
+  "problems": [
+   "比例不對（3.21，要 2.00）"
+  ],
+  "m": {
+   "margins": {
+    "left": 44,
+    "top": 286,
+    "right": 43,
+    "bottom": 286
+   },
+   "aspect": 3.21,
+   "want": 2.0,
+   "bottom_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:11:09"
+ },
+ {
+  "map": "dressing",
+  "type": "d_radio",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 186,
+    "top": 157,
+    "right": 186,
+    "bottom": 145
+   },
+   "aspect": 0.93,
+   "want": 1.0,
+   "bottom_deg": -0.29
+  },
+  "try": 1,
+  "t": "2026-10-20 03:11:10"
+ },
+ {
+  "map": "dressing",
+  "type": "d_window",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 27,
+    "top": 54,
+    "right": 27,
+    "bottom": 83
+   },
+   "aspect": 1.67,
+   "want": 1.33,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0
+  },
+  "try": 2,
+  "t": "2026-10-20 03:11:19"
+ },
+ {
+  "map": "dressing",
+  "type": "d_jewel",
+  "ok": false,
+  "problems": [
+   "比例不對（0.71，要 0.50）"
+  ],
+  "m": {
+   "margins": {
+    "left": 103,
+    "top": 209,
+    "right": 101,
+    "bottom": 172
+   },
+   "aspect": 0.71,
+   "want": 0.5
+  },
+  "try": 1,
+  "t": "2026-10-20 03:11:29"
+ },
+ {
+  "map": "dressing",
+  "type": "d_bench",
+  "ok": false,
+  "problems": [
+   "比例不對（3.29，要 2.00）"
+  ],
+  "m": {
+   "margins": {
+    "left": 69,
+    "top": 299,
+    "right": 66,
+    "bottom": 299
+   },
+   "aspect": 3.29,
+   "want": 2.0,
+   "bottom_deg": -0.01
+  },
+  "try": 2,
+  "t": "2026-10-20 03:12:03"
+ },
+ {
+  "map": "dressing",
+  "type": "d_chair",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 148,
+    "top": 68,
+    "right": 148,
+    "bottom": 69
+   },
+   "aspect": 0.52,
+   "want": 0.5
+  },
+  "try": 1,
+  "t": "2026-10-20 03:12:33"
+ },
+ {
+  "map": "dressing",
+  "type": "d_jewel",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 104,
+    "top": 206,
+    "right": 105,
+    "bottom": 146
+   },
+   "aspect": 0.69,
+   "want": 0.5
+  },
+  "try": 2,
+  "t": "2026-10-20 03:12:37"
+ },
+ {
+  "map": "dressing",
+  "type": "d_case",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 138,
+    "top": 83,
+    "right": 138,
+    "bottom": 82
+   },
+   "aspect": 0.9,
+   "want": 1.0,
+   "bottom_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:13:03"
+ },
+ {
+  "map": "dressing",
+  "type": "d_rack",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 300,
+    "top": 14,
+    "right": 298,
+    "bottom": 49
+   },
+   "aspect": 0.29,
+   "want": 0.25
+  },
+  "try": 1,
+  "t": "2026-10-20 03:13:20"
+ },
+ {
+  "map": "dressing",
+  "type": "d_sofa",
+  "ok": false,
+  "problems": [
+   "貼到圖邊（可能被切掉）：left,right"
+  ],
+  "m": {
+   "margins": {
+    "left": 1,
+    "top": 252,
+    "right": 2,
+    "bottom": 268
+   },
+   "aspect": 3.04,
+   "want": 3.0,
+   "bottom_deg": -0.05
+  },
+  "try": 1,
+  "t": "2026-10-20 03:13:20"
+ },
+ {
+  "map": "dressing",
+  "type": "d_sofa",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 30,
+    "top": 254,
+    "right": 30,
+    "bottom": 283
+   },
+   "aspect": 3.03,
+   "want": 3.0,
+   "bottom_deg": -0.0
+  },
+  "try": 2,
+  "t": "2026-10-20 03:13:52"
+ },
+ {
+  "map": "dressing",
+  "type": "d_bench",
+  "ok": false,
+  "problems": [
+   "比例不對（2.87，要 2.00）"
+  ],
+  "m": {
+   "margins": {
+    "left": 61,
+    "top": 264,
+    "right": 60,
+    "bottom": 267
+   },
+   "aspect": 2.87,
+   "want": 2.0,
+   "bottom_deg": -0.0
+  },
+  "try": 3,
+  "t": "2026-10-20 03:14:27"
+ },
+ {
+  "map": "backstage",
+  "type": "b_wall",
+  "ok": false,
+  "problems": [
+   "長條太短（比例 3.17 < 3.67）"
+  ],
+  "m": {
+   "margins": {
+    "left": 26,
+    "top": 266,
+    "right": 26,
+    "bottom": 143
+   },
+   "aspect": 3.17,
+   "want": 3.67,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0,
+   "opaque": 0.995
+  },
+  "try": 1,
+  "t": "2026-10-20 03:14:51"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "try_": 1,
+  "t": "2026-10-20 03:14:55"
+ },
+ {
+  "map": "backstage",
+  "type": "b_rail_e",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 396,
+    "top": 16,
+    "right": 374,
+    "bottom": 16
+   },
+   "aspect": 0.17,
+   "want": 0.25
+  },
+  "try": 1,
+  "t": "2026-10-20 03:14:56"
+ },
+ {
+  "map": "backstage",
+  "type": "b_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 33,
+    "top": 96,
+    "right": 32,
+    "bottom": 102
+   },
+   "aspect": 0.72,
+   "want": 0.67,
+   "bottom_deg": 0.0,
+   "top_deg": -0.12
+  },
+  "try": 1,
+  "t": "2026-10-20 03:15:22"
+ },
+ {
+  "map": "backstage",
+  "type": "b_balcony",
+  "ok": false,
+  "problems": [
+   "長條太短（比例 3.51 < 5.00）",
+   "有透空 87.37%"
+  ],
+  "m": {
+   "margins": {
+    "left": 4,
+    "top": 295,
+    "right": 5,
+    "bottom": 294
+   },
+   "aspect": 3.51,
+   "want": 5.0,
+   "bottom_deg": -0.0,
+   "top_deg": -0.0,
+   "opaque": 0.874
+  },
+  "try": 1,
+  "t": "2026-10-20 03:15:33"
+ },
+ {
+  "map": "backstage",
+  "type": "b_cap",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 52,
+    "top": 197,
+    "right": 49,
+    "bottom": 221
+   },
+   "aspect": 2.37,
+   "want": 2.0,
+   "bottom_deg": 0.0,
+   "top_deg": 0.0,
+   "opaque": 0.978
+  },
+  "try": 1,
+  "t": "2026-10-20 03:15:59"
+ },
+ {
+  "map": "backstage",
+  "type": "b_wall",
+  "ok": false,
+  "problems": [
+   "長條太短（比例 2.92 < 3.67）"
+  ],
+  "m": {
+   "margins": {
+    "left": 26,
+    "top": 257,
+    "right": 22,
+    "bottom": 257
+   },
+   "aspect": 2.92,
+   "want": 3.67,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0,
+   "opaque": 0.997
+  },
+  "try": 2,
+  "t": "2026-10-20 03:16:03"
+ },
+ {
+  "map": "backstage",
+  "type": "b_piano",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 99,
+    "top": 23,
+    "right": 98,
+    "bottom": 33
+   },
+   "aspect": 1.38,
+   "want": 1.5,
+   "bottom_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:16:07"
+ },
+ {
+  "map": "backstage",
+  "type": "b_balcony",
+  "ok": false,
+  "problems": [
+   "長條太短（比例 4.46 < 5.00）"
+  ],
+  "m": {
+   "margins": {
+    "left": 23,
+    "top": 361,
+    "right": 23,
+    "bottom": 329
+   },
+   "aspect": 4.46,
+   "want": 5.0,
+   "bottom_deg": -0.0,
+   "top_deg": -0.0,
+   "opaque": 0.985
+  },
+  "try": 2,
+  "t": "2026-10-20 03:16:25"
+ },
+ {
+  "map": "backstage",
+  "type": "b_divider",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 433,
+    "top": 19,
+    "right": 432,
+    "bottom": 22
+   },
+   "aspect": 0.11,
+   "want": 0.1,
+   "bottom_deg": -0.03
+  },
+  "try": 1,
+  "t": "2026-10-20 03:16:36"
+ },
+ {
+  "map": "backstage",
+  "type": "b_wall",
+  "ok": false,
+  "problems": [
+   "長條太短（比例 3.26 < 3.67）"
+  ],
+  "m": {
+   "margins": {
+    "left": 18,
+    "top": 68,
+    "right": 17,
+    "bottom": 61
+   },
+   "aspect": 3.26,
+   "want": 3.67,
+   "bottom_deg": 0.0,
+   "top_deg": 0.01,
+   "opaque": 0.995
+  },
+  "try": 3,
+  "t": "2026-10-20 03:16:41"
+ },
+ {
+  "map": "backstage",
+  "type": "b_turn",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 37,
+    "top": 68,
+    "right": 34,
+    "bottom": 81
+   },
+   "aspect": 2.75,
+   "want": 2.33,
+   "bottom_deg": 0.0,
+   "top_deg": 0.02,
+   "opaque": 0.993
+  },
+  "try": 1,
+  "t": "2026-10-20 03:17:00"
+ },
+ {
+  "map": "backstage",
+  "type": "b_balcony",
+  "ok": false,
+  "problems": [
+   "長條太短（比例 3.74 < 5.00）",
+   "有透空 89.91%"
+  ],
+  "m": {
+   "margins": {
+    "left": 49,
+    "top": 317,
+    "right": 49,
+    "bottom": 322
+   },
+   "aspect": 3.74,
+   "want": 5.0,
+   "bottom_deg": 0.0,
+   "top_deg": 0.0,
+   "opaque": 0.899
+  },
+  "try": 3,
+  "t": "2026-10-20 03:17:03"
+ },
+ {
+  "map": "backstage",
+  "type": "b_cases",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 169,
+    "top": 81,
+    "right": 169,
+    "bottom": 109
+   },
+   "aspect": 0.86,
+   "want": 1.0,
+   "bottom_deg": -0.02
+  },
+  "try": 1,
+  "t": "2026-10-20 03:17:24"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_mic",
+  "ok": false,
+  "problems": [
+   "比例不對（0.26，要 0.50）"
+  ],
+  "m": {
+   "margins": {
+    "left": 325,
+    "top": 50,
+    "right": 324,
+    "bottom": 49
+   },
+   "aspect": 0.26,
+   "want": 0.5
+  },
+  "try": 1,
+  "t": "2026-10-20 03:17:24"
+ },
+ {
+  "map": "auditorium",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "try_": 1,
+  "t": "2026-10-20 03:17:36"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_curtain",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 26,
+    "top": 289,
+    "right": 26,
+    "bottom": 247
+   },
+   "aspect": 3.04,
+   "want": 2.0,
+   "bottom_deg": -0.0,
+   "top_deg": -0.0,
+   "opaque": 0.988
+  },
+  "try": 1,
+  "t": "2026-10-20 03:17:40"
+ },
+ {
+  "map": "backstage",
+  "type": "b_upper",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 57,
+    "top": 22,
+    "right": 56,
+    "bottom": 22
+   },
+   "aspect": 0.94,
+   "want": 0.8,
+   "bottom_deg": -0.0,
+   "top_deg": -0.0,
+   "opaque": 0.976
+  },
+  "try": 1,
+  "t": "2026-10-20 03:17:40"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_lip",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 7,
+    "top": 360,
+    "right": 7,
+    "bottom": 359
+   },
+   "aspect": 4.99,
+   "want": 4.0,
+   "bottom_deg": -0.06,
+   "top_deg": -0.07
+  },
+  "try": 1,
+  "t": "2026-10-20 03:17:54"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_piano",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 70,
+    "top": 48,
+    "right": 70,
+    "bottom": 48
+   },
+   "aspect": 1.5,
+   "want": 1.5,
+   "bottom_deg": -0.15
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:10"
+ },
+ {
+  "map": "backstage",
+  "type": "b_sidedoor",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 291,
+    "top": 27,
+    "right": 291,
+    "bottom": 56
+   },
+   "aspect": 0.3,
+   "want": 0.33
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:11"
+ },
+ {
+  "map": "backstage",
+  "type": "b_backdoor",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 273,
+    "top": 53,
+    "right": 272,
+    "bottom": 68
+   },
+   "aspect": 0.34,
+   "want": 0.33
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:18"
+ },
+ {
+  "map": "backstage",
+  "type": "b_table",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 62,
+    "top": 25,
+    "right": 61,
+    "bottom": 72
+   },
+   "aspect": 1.52,
+   "want": 1.5,
+   "bottom_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:20"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_mic",
+  "ok": false,
+  "problems": [
+   "比例不對（0.23，要 0.50）"
+  ],
+  "m": {
+   "margins": {
+    "left": 346,
+    "top": 48,
+    "right": 347,
+    "bottom": 76
+   },
+   "aspect": 0.23,
+   "want": 0.5
+  },
+  "try": 2,
+  "t": "2026-10-20 03:18:46"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_seat6",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 55,
+    "top": 302,
+    "right": 54,
+    "bottom": 342
+   },
+   "aspect": 3.76,
+   "want": 3.0,
+   "bottom_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:46"
+ },
+ {
+  "map": "alley",
+  "type": "l_wall",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 17,
+    "top": 306,
+    "right": 15,
+    "bottom": 302
+   },
+   "aspect": 3.62,
+   "want": 2.67,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0,
+   "opaque": 0.992
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:54"
+ },
+ {
+  "map": "alley",
+  "type": "l_shop",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 78,
+    "top": 67,
+    "right": 74,
+    "bottom": 66
+   },
+   "aspect": 1.55,
+   "want": 1.33,
+   "bottom_deg": 0.04,
+   "top_deg": -0.04
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:54"
+ },
+ {
+  "map": "alley",
+  "type": "l_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 23,
+    "top": 103,
+    "right": 21,
+    "bottom": 199
+   },
+   "aspect": 0.79,
+   "want": 0.67,
+   "bottom_deg": -0.01,
+   "top_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:18:58"
+ },
+ {
+  "map": "alley",
+  "type": "l_scooters",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 36,
+    "top": 169,
+    "right": 26,
+    "bottom": 206
+   },
+   "aspect": 2.27,
+   "want": 2.0,
+   "bottom_deg": 0.74
+  },
+  "try": 1,
+  "t": "2026-10-20 03:19:17"
+ },
+ {
+  "map": "alley",
+  "type": "ground",
+  "ok": false,
+  "iou": 0.607,
+  "try_": 1,
+  "t": "2026-10-20 03:19:17"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_desk",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 29,
+    "top": 200,
+    "right": 28,
+    "bottom": 203
+   },
+   "aspect": 2.38,
+   "want": 2.0,
+   "bottom_deg": 0.05
+  },
+  "try": 1,
+  "t": "2026-10-20 03:19:24"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_mic",
+  "ok": false,
+  "problems": [
+   "比例不對（0.25，要 0.50）"
+  ],
+  "m": {
+   "margins": {
+    "left": 325,
+    "top": 24,
+    "right": 326,
+    "bottom": 33
+   },
+   "aspect": 0.25,
+   "want": 0.5
+  },
+  "try": 3,
+  "t": "2026-10-20 03:19:34"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_seat8",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 46,
+    "top": 329,
+    "right": 46,
+    "bottom": 375
+   },
+   "aspect": 4.51,
+   "want": 4.0,
+   "bottom_deg": 0.02
+  },
+  "try": 1,
+  "t": "2026-10-20 03:19:40"
+ },
+ {
+  "map": "alley",
+  "type": "l_crates",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 108,
+    "top": 114,
+    "right": 106,
+    "bottom": 175
+   },
+   "aspect": 0.65,
+   "want": 0.5
+  },
+  "try": 1,
+  "t": "2026-10-20 03:19:51"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_sidedoor",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 227,
+    "top": 21,
+    "right": 227,
+    "bottom": 66
+   },
+   "aspect": 0.39,
+   "want": 0.33
+  },
+  "try": 1,
+  "t": "2026-10-20 03:19:53"
+ },
+ {
+  "map": "alley",
+  "type": "ground",
+  "ok": false,
+  "iou": 0.848,
+  "try_": 2,
+  "t": "2026-10-20 03:20:09"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_seat8rose",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 46,
+    "top": 323,
+    "right": 46,
+    "bottom": 372
+   },
+   "aspect": 4.39,
+   "want": 4.0,
+   "bottom_deg": 0.01
+  },
+  "try": 1,
+  "t": "2026-10-20 03:20:30"
+ },
+ {
+  "map": "alley",
+  "type": "ground",
+  "ok": false,
+  "iou": 0.848,
+  "try_": 3,
+  "t": "2026-10-20 03:20:50"
+ },
+ {
+  "map": "backstage",
+  "type": "b_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 22,
+    "top": 123,
+    "right": 20,
+    "bottom": 136
+   },
+   "aspect": 0.77,
+   "want": 0.67,
+   "bottom_deg": -0.01,
+   "top_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 03:22:22"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "try_": 1,
+  "t": "2026-10-20 03:23:04"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": false,
+  "iou": 0.674,
+  "stairs": [
+   [
+    "A 段樓梯",
+    5,
+    9
+   ],
+   [
+    "B 段樓梯",
+    10,
+    14
+   ]
+  ],
+  "try_": 1,
+  "t": "2026-10-20 03:24:54"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "stairs": [
+   [
+    "A 段樓梯",
+    5,
+    11
+   ],
+   [
+    "B 段樓梯",
+    10,
+    12
+   ]
+  ],
+  "try_": 2,
+  "t": "2026-10-20 03:25:55"
+ }
+]

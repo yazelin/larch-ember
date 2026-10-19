@@ -1,0 +1,8 @@
+{
+ "job": "img_f1d4e12e92a284bff4a331d5",
+ "prompt": "A complete top-down painted game map (warm hand-painted 2D game map art, storybook illustration style with clean crisp outlines and visible soft brush texture, warm golden-hour palette of orange, amber, deep red and dark brown; NOT pixel art, NOT blurry, NOT photographic). Follow EXACTLY the layout of image 1: each flat colour block is one thing, the darker block is its footprint on the floor and the lighter block above it is the part rising up (seen from the south at about 50 degrees, so tall things and walls show their south-facing front). Match the painting style, colour palette, brush texture and lighting of image 2 (ignore image 2's furniture layout). This map: a narrow back alley behind an old Tainan theater at dusk: weathered red brick wall, wet asphalt reflecting the orange lights of an evening market at the far right end. Floors: 巷子: 老舊濕潤的柏油巷子，地上幾灘積水映著右邊市場的橘色燈光，右側三分之一明顯更亮更暖. Things on the map: 北牆左: 戲院後牆的舊紅磚牆（左段）; 後門: 戲院的鐵製後門，門上一盞暖黃的燈泡；門前（4; 北牆中: 同上，紅磚牆; 市場店面: 巷子盡頭市場的店面：紅白條紋帆布遮陽棚，橘色紙燈籠掛成一排; 機車: 兩台並排停在牆邊的機車，一白一紅，車頭朝西; 菜籃: 兩層疊起來的塑膠菜籃. the same fixed 3/4 top-down camera looking from the south (about 50 degrees; you see the top surface and the south-facing front), light from the upper left. Everything is drawn perfectly axis-aligned: horizontal edges exactly horizontal, vertical edges exactly vertical, absolutely no rotation, no tilt, no perspective skew. Everything tidy, evenly spaced and aligned to a grid. No people, no text, no letters, no UI.",
+ "refs": [
+  "/home/ct/larch-ember/art/check/compose-alley.webp",
+  "/home/ct/larch-ember/art/style/dressing_style_v1.png"
+ ]
+}

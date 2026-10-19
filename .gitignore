@@ -1,1 +1,5 @@
 dist/
+dist-maps/
+art/raw/mapgen/
+art/check/maps-review/walk/
+art/check/maps-review/cells/

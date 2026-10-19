@@ -54,7 +54,7 @@ TYPES = {
     'd_sofa': (6, 2, 1, 'a long sofa seen from behind (its back toward the camera): a tall straight faded red velvet backrest with gold buttons, wooden feet, straight and level', 'obj', 'green', True),
     # 後台
     'b_wall': (11, 3, 1, 'a plain section of the back wall of an old theater backstage corridor: worn cream plaster with a few peeling patches, a dark brown wooden skirting, a faded painted stripe; completely plain, no doors, no windows, nothing hanging', 'strip', 'green', True),
-    'b_door': (2, 3, 1, 'the same kind of wall section (worn cream plaster, dark skirting) with a closed old wooden dressing-room door and a small blank brass plate, in a plain frame, centered; plain wall at the left and right edges', 'seg', 'green', True),
+    'b_door': (2, 3, 1, 'the same kind of wall section (worn cream plaster above, a dark brown wooden wainscot panelling band along the whole bottom third, dark skirting) with a closed old wooden dressing-room door and a small blank brass plate, in a plain frame, centered; the door goes all the way down to the bottom edge and the wainscot panelling continues on both sides down to the bottom edge; NO floor visible anywhere, plain wall at the left and right edges', 'seg', 'green', True),
     'b_piano': (3, 2, 1, 'an old black upright piano seen from the front, a small brass lamp on top', 'obj', 'green', True),
     'b_rail_e': (1, 4, 3, 'a short dark wooden banister rail with turned balusters standing along a balcony edge, drawn as a tall narrow object', 'obj', 'green', False),
     'b_balcony': (15, 3, 2, 'the front edge of an indoor second-floor balcony seen from the south: an ornate black cast-iron railing along the top, below it a full-storey-high old red brick wall face with four evenly spaced brass wall lamps glowing warm; runs straight across', 'strip', 'green', True),
@@ -87,7 +87,7 @@ OPAQUE = {'b_turn', 'b_upper', 'b_cap', 'd_wall', 'b_wall', 'l_wall', 'a_curtain
 FLOORS = {a: '' for a in LOOK}
 
 
-def anchor(a): return os.path.join(STYLE, f'{a}_style_v1.png')
+def anchor(a): return os.path.join(STYLE, f'{a}_style_v1.webp')
 def raw_path(a, t): return os.path.join(RAW, f'obj-{a}-{t}.png')
 
 
@@ -163,7 +163,7 @@ def check_raw(path, t):
     asp = bw / bh; want = w / h; m['aspect'] = round(asp, 2); m['want'] = round(want, 2)
     if mode == 'strip':
         if asp < want * .45: probs.append(f'長條太短（比例 {asp:.2f} < {want * .45:.2f}），鏡射接長也不夠')   # 不夠寬的長條會在 cut 時鏡射接長
-    elif not (.62 <= asp / want <= 1.65):   # 寬扁的家具比框胖沒關係（縮放以寬為準），只擋極端
+    elif not ((.62 if rect else .4) <= asp / want <= 1.65):   # 寬扁的家具比框胖沒關係（縮放以寬為準），只擋極端
         probs.append(f'比例不對（{asp:.2f}，要 {want:.2f}）')
     if rect:
         sb = edge_slope(A, x0, x1); m['bottom_deg'] = round(sb, 2)
@@ -252,29 +252,51 @@ def want_mask(d):
     return want
 
 
-def floor_mask(im):
-    """地板＝夠亮，或偏紅褐（陰影下的木頭和地毯）；深灰色的外框牆不算"""
+def floor_mask(im, textured=True):
+    """地板＝夠亮，或偏紅褐（陰影下的木頭與地毯），或有紋理（深色濕柏油：外框牆是完全平的，紋理為 0）；深灰色的外框牆不算"""
+    from scipy import ndimage
     a = np.asarray(im.convert('RGB')).astype(int); L = (a[..., 0] * 3 + a[..., 1] * 6 + a[..., 2]) / 10
-    return (L > 58) | (((a[..., 0] - a[..., 2]) > 18) & (L > 25))
+    gy, gx = np.gradient(L); tex = ndimage.uniform_filter(np.abs(gx) + np.abs(gy), size=7)
+    m = (L > 58) | (((a[..., 0] - a[..., 2]) > 18) & (L > 25))
+    return m | (tex > 2.0) if textured else m
 
 
 def align_ground(raw_png, d, S):
     """模型會把地板置中、邊框厚度各畫各的，位置跟設計差一兩格：量出生成圖裡地板的實際範圍，縮放貼回設計的格子上。
-    回傳 (對位後的圖, 格子層級 IoU)。IoU < 0.92 就是形狀對不上，要重產。"""
+    判斷「哪裡是地板」有兩種方法各有盲點（只看亮度與顏色：深色濕柏油會被當成外框；加上紋理：有紋理的深色外框會被當成地板），
+    兩種都試，採用格子層級重疊度（IoU）高的。回傳 (對位後的圖, IoU, 用哪種)。IoU < 0.92 就是形狀對不上，要重產。"""
     from scipy import ndimage
     from PIL import ImageFilter
     im = Image.open(raw_png).convert('RGB'); W, Hh = d['map']['w'], d['map']['h']; want = want_mask(d)
     ys, xs = np.where(want); wx0, wx1, wy0, wy1 = xs.min(), xs.max() + 1, ys.min(), ys.max() + 1
-    m = floor_mask(im.filter(ImageFilter.GaussianBlur(3)))
-    lab, n = ndimage.label(m); k = 1 + int(np.argmax(ndimage.sum(m, lab, range(1, n + 1)))); mm = lab == k
-    ys2, xs2 = np.where(mm); gx0, gx1, gy0, gy1 = xs2.min(), xs2.max() + 1, ys2.min(), ys2.max() + 1
-    border = tuple(int(v) for v in np.asarray(im)[~mm].mean(0)) if (~mm).any() else (30, 30, 30)
-    crop = im.crop((int(gx0), int(gy0), int(gx1), int(gy1))).resize(((wx1 - wx0) * S, (wy1 - wy0) * S), Image.LANCZOS)
-    canvas = Image.new('RGB', (W * S, Hh * S), border); canvas.paste(crop, (int(wx0) * S, int(wy0) * S))
-    Lc = floor_mask(canvas)
-    got = Lc.reshape(Hh, S, W, S).mean(axis=(1, 3)) > .5
-    iou = float((got & want).sum() / max(1, (got | want).sum()))
-    return canvas, iou
+    best = None
+    for textured in (False, True):
+        m = floor_mask(im.filter(ImageFilter.GaussianBlur(3)), textured)
+        lab, n = ndimage.label(m); k = 1 + int(np.argmax(ndimage.sum(m, lab, range(1, n + 1)))); mm = lab == k
+        ys2, xs2 = np.where(mm); gx0, gx1, gy0, gy1 = xs2.min(), xs2.max() + 1, ys2.min(), ys2.max() + 1
+        border = tuple(int(v) for v in np.asarray(im)[~mm].mean(0)) if (~mm).any() else (30, 30, 30)
+        crop = im.crop((int(gx0), int(gy0), int(gx1), int(gy1))).resize(((wx1 - wx0) * S, (wy1 - wy0) * S), Image.LANCZOS)
+        canvas = Image.new('RGB', (W * S, Hh * S), border); canvas.paste(crop, (int(wx0) * S, int(wy0) * S))
+        got = floor_mask(canvas, textured).reshape(Hh, S, W, S).mean(axis=(1, 3)) > .5
+        iou = float((got & want).sum() / max(1, (got | want).sum()))
+        if best is None or iou > best[1]: best = (canvas, iou, '亮度＋紋理' if textured else '亮度顏色')
+    return best
+
+
+def stairs_ok(canvas, d, S):
+    """樓梯地面閘門：每一段 kind=stairs 的區域，縱向每一格至少要有約一條橫向踏階邊緣（亮度的縱向梯度出現週期性峰值）。回傳 (全過, 各段峰值數)。"""
+    L = np.asarray(canvas.convert('L')).astype(float); res = []; ok = True
+    for g in d['ground']:
+        if g['kind'] != 'stairs': continue
+        for x, y, w, h in g['rects']:
+            if h < 3: continue   # 舞台前兩小段階梯（1 格）不驗
+            sub = L[y * S:(y + h) * S, x * S + S // 4:(x + w) * S - S // 4]
+            prof = np.abs(np.diff(sub, axis=0)).mean(1)
+            thr = prof.mean() + 1.0 * prof.std(); peaks = 0; last = -99
+            for i in range(1, len(prof) - 1):
+                if prof[i] > thr and prof[i] >= prof[i - 1] and prof[i] >= prof[i + 1] and i - last > S * .3: peaks += 1; last = i
+            res.append((g['name'], h, peaks)); ok &= peaks >= max(3, int(h * .8))
+    return ok, res
 
 
 def ground(a):
@@ -291,14 +313,17 @@ def ground(a):
     out = os.path.join(RAW, f'ground-{a}.png'); S2 = 1536 // W; best = None
     for k in range(3):
         o = out if k == 0 else out.replace('.png', f'-try{k + 1}.png')
-        try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom.' if k else ''), o, [lay, anchor(a)], size='1536x1024')
+        try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom. Both wooden staircases must show clearly separated steps: many distinct horizontal treads with a dark riser line between each, one step about every half cell.' if k else ''), o, [lay, anchor(a)], size='1536x1024')
         except Exception as e: print('地面第', k + 1, '次生成失敗', repr(e)[:120], flush=True); continue
-        canvas, iou = align_ground(o, d, S2); print('地面第', k + 1, '次 IoU', round(iou, 3), flush=True)
-        log(dict(map=a, type='ground', ok=iou >= .92, iou=round(iou, 3), try_=k + 1))
-        if best is None or iou > best[1]: best = (canvas, iou, o)
-        if iou >= .92: break
+        canvas, iou, how = align_ground(o, d, S2); sok, sres = stairs_ok(canvas, d, S2)
+        print('地面第', k + 1, '次 IoU', round(iou, 3), '樓梯踏階', sres, '過' if sok else '不過', flush=True)
+        good = iou >= .92 and sok
+        log(dict(map=a, type='ground', ok=good, iou=round(iou, 3), stairs=sres, try_=k + 1))
+        score = iou + (1 if sok else 0)
+        if best is None or score > best[1]: best = (canvas, score, o)
+        if good: break
     os.makedirs(os.path.join(G, 'assets/maps'), exist_ok=True)
-    best[0].save(os.path.join(G, f'assets/maps/{a}_ground.webp'), quality=92); print('ground IoU', round(best[1], 3), best[2])
+    best[0].save(os.path.join(G, f'assets/maps/{a}_ground.webp'), quality=92); print('ground 分數', round(best[1], 3), best[2])
     print('ground ok')
 
 
@@ -360,7 +385,7 @@ def cut(a):
             if not os.path.exists(raw_path(a, t)): raise SystemExit(f'缺 {t} 的產圖')
             f = key_full(raw_path(a, t)); cache[t] = f.crop(f.getbbox())
         fig = cache[t]; alt[t] = alt.get(t, 0) + 1
-        if mode == 'strip': fig = seg_slice(extend_strip(fig, fw / fh * 1.15), fw, fh, alt[t] - 1)
+        if mode == 'strip': fig = seg_slice(extend_strip(fig.crop((4, 0, fig.width - 4, fig.height)), fw / fh * 1.15), fw, fh, alt[t] - 1)   # 去掉左右各 4px 的去背邊，鏡射接縫才不會有線
         img = fit(fig, fw, fh, mode)
         if pad:   # 排序比圖框下緣大的遮擋牆：下面補透明列，引擎才會照 sort 排
             c = Image.new('RGBA', (fw * OBJ_PX, (fh + pad) * OBJ_PX)); c.alpha_composite(img, (0, 0)); img = c
@@ -412,6 +437,20 @@ def audit(a):
         print(f"  {o['name']:8} 框 {fw}×{fh}  寬佔 {wr:.0%} 高佔 {hr:.0%}{flag}")
         if flag: bad += 1
     print('不合格', bad)
+
+
+def realign(a, raw=None):
+    """用已經生成的原圖重新對位並存檔（改了對位判斷、不想重產時用）；raw 預設用 ground 紀錄裡分數最高的那張"""
+    d = layout.load(a); W = d['map']['w']; S2 = 1536 // W
+    cands = [raw] if raw else sorted(glob.glob(os.path.join(RAW, f'ground-{a}*.png')))
+    cands = [c for c in cands if 'layout' not in c]; best = None
+    for c in cands:
+        canvas, iou, how = align_ground(c, d, S2); sok, sres = stairs_ok(canvas, d, S2)
+        print(os.path.basename(c), 'IoU', round(iou, 3), f'({how})', '樓梯', sres, '過' if sok else '不過')
+        sc = iou + (1 if sok else 0)
+        if best is None or sc > best[1]: best = (canvas, sc, c, iou, sok)
+    best[0].save(os.path.join(G, f'assets/maps/{a}_ground.webp'), quality=92)
+    print('採用', os.path.basename(best[2]), 'IoU', round(best[3], 3), '樓梯', '過' if best[4] else '不過')
 
 
 if __name__ == '__main__':

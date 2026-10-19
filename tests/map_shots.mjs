@@ -15,9 +15,9 @@ try {
     if (!v) { console.log('找不到', id); continue; }
     await page.selectOption('select', v); await sleep(6000);
     await page.keyboard.press('Space'); await sleep(800); await page.keyboard.press('Space'); await sleep(1500);
-    await page.screenshot({ path: `art/check/maps-review/shot-${id}.png` });
+    await page.screenshot({ path: `art/check/maps-review/shot-${id}.jpg`, type: 'jpeg', quality: 88 });
     let err = '';
-    for (const f of page.frames()) err += await f.evaluate(() => [...document.querySelectorAll('*')].filter(e => e.children.length === 0 && /Error:|無法讀取|沒有完整載入/.test(e.textContent)).map(e => e.textContent.slice(0, 120)).join(' / ')).catch(() => '');
+    for (const f of page.frames()) { const t = await f.evaluate(() => document.body ? document.body.innerText : '').catch(() => ''); const m = t.match(/(這張地圖的資料無法讀取|地圖素材沒有完整載入)[^\n]*|Error: [^\n]{0,80}/g); if (m) err += m.join(' / '); }
     console.log(err ? `✗ ${id} 讀取錯誤：${err}` : `ok ${id}`);
   }
   if (missing.size) console.log('缺檔：', [...missing]);
