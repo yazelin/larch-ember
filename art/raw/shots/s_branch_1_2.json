@@ -1,0 +1,8 @@
+{
+ "job": "img_3b6fa047b96a29751eb36a85",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is the previous shot of this same scene: keep the same location, set dressing, lighting, outfits and color grade; this is the next moment. Scene: The dressing room window gone black, every lamp in the room on, the mirror bulbs glowing; the room suddenly feels unfamiliar. Same room as Reference 2, after dark.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/cg/s_dress_1.webp"
+ ]
+}

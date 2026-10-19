@@ -15,6 +15,7 @@ STYLE = ('Reference 1 is ONLY a style and lighting reference: do not copy any pe
          'No text, no letters, no logos, no watermark. 16:9.')
 WHO = {   # 名字 → (挑定立繪, 描述)
     'yu_47': ('p_yu_47', 'YU JING at 47: shoulder-length wavy light-brown bob with a few silver strands, off-shoulder black lace evening gown, a pair of long drop earrings'),
+    'yu_47_day': ('p_yu_47', 'YU JING at 47 in the afternoon BEFORE changing: shoulder-length wavy light-brown bob with a few silver strands, a soft grey knit cardigan over a plain long cream dress, flat shoes, a pair of long drop earrings, NOT the black evening gown'),
     'yu_47_home': ('p_yu_47', 'YU JING at 47 at home: shoulder-length wavy light-brown bob with a few silver strands, wearing a cream knit cardigan over a simple floral house dress, NOT the evening gown, no earrings'),
     'yu_33': ('p_yu_33', 'YU JING at 33: long light-brown wavy hair pinned up loosely, off-shoulder black lace evening gown, long drop earrings'),
     'yu_25': ('p_yu_25', 'YU JING at 25: long light-brown wavy hair down, dark-red velvet slip dress with a thin black cardigan, long drop earring'),

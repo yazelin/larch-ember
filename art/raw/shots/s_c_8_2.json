@@ -1,0 +1,9 @@
+{
+ "job": "img_2fc37f1fd015048ad927c935",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is the previous shot of this same scene: keep the same location, set dressing, lighting, outfits and color grade; this is the next moment. Reference 3 is YU JING at 47: shoulder-length wavy light-brown bob with a few silver strands, off-shoulder black lace evening gown, a pair of long drop earrings. Scene: Blue dawn, seen from above the railing: the old stone steps; on the lowest step she sits leaning her head against the stone wall as if asleep, the hem of the black lace gown in the still water. Peaceful, not graphic.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/cg/s_c_5.webp",
+  "/home/ct/larch-ember/assets/art/p_yu_47.webp"
+ ]
+}

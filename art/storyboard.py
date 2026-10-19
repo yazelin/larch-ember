@@ -10,14 +10,14 @@ R = pathlib.Path(__file__).resolve().parent.parent
 SHOTS = {
     # 序幕
     's_prologue_1': ('prologue', '2026 年 10 月 14 日', [], 'Wide establishing shot: the arcade of an old 1950s Tainan theater at 15:30, warm afternoon light, a hand-painted farewell poster of a woman singer on the wall (no readable text), scooters parked, an old neon sign off.', None),
-    's_prologue_2': ('prologue', '一個穿深藍襯衫的男人推開後台的門', ['yu_47', 'cheng_45'], 'cg:cg_prologue', None),
-    's_prologue_3': ('prologue', '小時候我阿爸帶我來看電影', ['yu_47'], 'Inside the old theater lobby: she touches the armrest of an old red folding seat, smiling at a childhood memory; dust in the light from the door.', 's_prologue_2'),
-    's_prologue_4': ('prologue', '那我們算是同鄉', ['yu_47', 'cheng_45'], 'Backstage corridor: she walks ahead looking around; he follows half a step behind carrying her makeup case, watching her back with a quiet ache.', 's_prologue_2'),
+    's_prologue_2': ('prologue', '一個穿深藍襯衫的男人推開後台的門', ['yu_47_day', 'cheng_45'], 'He holds the old theater side door open with one hand, carrying a makeup case in the other; she steps over the threshold, looking up at the old building with a faint smile of recognition. Afternoon.', 's_prologue_1'),
+    's_prologue_3': ('prologue', '小時候我阿爸帶我來看電影', ['yu_47_day'], 'Inside the old theater lobby: she touches the armrest of an old red folding seat, smiling at a childhood memory; dust in the light from the door.', 's_prologue_2'),
+    's_prologue_4': ('prologue', '那我們算是同鄉', ['yu_47_day', 'cheng_45'], 'Backstage corridor: she walks ahead looking around; he follows half a step behind carrying her makeup case, watching her back with a quiet ache.', 's_prologue_2'),
     # 試音
     's_soundcheck_1': ('soundcheck', '舞台上只開了一排燈', [], 'cg:cg_soundcheck', None),
     's_soundcheck_2': ('soundcheck', '周老師：靜，〈晚安，台南〉', ['yu_47', 'zhou'], 'On stage during soundcheck: the old pianist at a grand piano, she stands by the piano in a casual cardigan, about to sing; one row of stage lights.', 's_soundcheck_1'),
     's_soundcheck_3': ('soundcheck', '穿深藍襯衫的男人走下台', ['cheng_45'], 'From the stage looking down into the empty hall: in the third row a man sits holding a deep crimson rose, listening, his face lit faintly by the stage.', 's_soundcheck_1'),
-    's_soundcheck_4': ('soundcheck', '余靜：老師，那個位子', ['yu_47', 'zhou'], 'She stands at the front edge of the stage looking toward the third row, puzzled, one hand at her chest; the pianist looks up at her.', 's_soundcheck_2'),
+    's_soundcheck_4': ('soundcheck', '余靜：老師，那個位子', ['yu_47_day', 'zhou'], 'She stands at the front edge of the stage looking toward the third row, puzzled, one hand at her chest; the pianist looks up at her.', 's_soundcheck_2'),
     # 換禮服
     's_dress_1': ('card_dress', '二樓的化妝間', [], 'cg:bg_dressing', None),
     's_dress_2': ('card_dress', '她換好禮服出來', ['yu_47', 'cheng_45'], 'In the dressing room she stands in the black lace gown; he gently holds her left wrist and unbuckles a black wristwatch, close two-shot, sunset light through the window.', 's_dress_1'),
@@ -75,7 +75,7 @@ SHOTS = {
     's_a_9': ('ending_a3', '那天晚上，筆記本翻到新的一頁', ['cheng_45'], 'Night, close on his hand writing in a notebook under a desk lamp, a cup of tea, the sheet of music beside it.', 's_a_6'),
     # 結局 B
     's_b_1': ('ending_b1', '她轉頭，對周老師說', ['yu_47', 'zhou'], 'On stage she turns to the pianist and speaks; he nods, hands rising to the keys.', 's_concert_2'),
-    's_b_2': ('ending_b1', '周老師彈起那段前奏', ['yu_47', 'zhou', 'cheng_45'], 'cg:cg_b_encore', None),
+    's_b_2': ('ending_b1', '周老師彈起那段前奏', ['yu_47', 'zhou', 'cheng_45'], 'She sings with her eyes closed in a warm spotlight, the old pianist at the grand piano watching her; the whole audience standing, roses raised; in the third row a man stands holding a rose, the only one not singing.', 's_concert_2'),
     's_b_3': ('ending_b1', '全場站了起來', ['yu_47', 'cheng_45'], 'She bows to the standing audience; rising, her polite smile passes over the man in the third row exactly as over every stranger.', 's_concert_1'),
     's_b_4': ('ending_b2', '下台的時候，側台有一個人', ['yu_47', 'cheng_45'], 'Side stage: he hands her a glass of warm water; she bows to him politely like to a stranger; his face holds still.', 's_concert_2'),
     's_b_5': ('ending_b2', '散場以後', ['cheng_45'], 'The empty theater after the show, stage lights going out one by one; he sits alone in the third row, a rose on the empty seat beside him.', 's_concert_1'),

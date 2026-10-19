@@ -13,6 +13,7 @@ from PIL import Image
 R = pathlib.Path(__file__).resolve().parent.parent
 RAW = R / 'art/raw/shots'
 OUT = R / 'assets/art/cg'
+NIGHT = {'concert', 'ending_a1', 'ending_a2', 'ending_b1', 'ending_b2'}
 KS = [int(x) for x in os.environ.get('KS', '1,2').split(',')]
 
 
@@ -38,6 +39,8 @@ def gen(job):
     for w in cast:
         refs.append(str(R / f'assets/art/{WHO[w][0]}.webp'))
         notes.append(f'Reference {len(refs)} is {WHO[w][1]}.')
+    if card in NIGHT:   # 19:30 開演之後：畫風參考的落日會滲進窗戶（2026-10-19 抓到），明講是夜裡
+        notes.append('IMPORTANT: it is night, after 7:30 pm. There are NO windows showing sky or sunset; the theater interior is lit only by stage spotlights, house lights and candles-like warm practicals; deep dark surroundings.')
     try:
         return codex11.gen(f'{STYLE} {" ".join(notes)} Scene: {desc}', str(RAW / f'{shot}_{n}.png'), refs=refs, size='1536x1024')
     except Exception as e:  # noqa: BLE001
