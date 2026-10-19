@@ -57,9 +57,9 @@ def hold_cells(d):
     return [(0, y) for y in range(H)] + [(W - 1, y) for y in range(H)] + [(x, 0) for x in range(1, W - 1)] + [(x, H - 1) for x in range(1, W - 1)]
 
 
-def events(d, urls, conds=lambda name: []):
-    """物件 → 自由圖片事件；urls：物件名 → 圖網址；conds：物件名 → 出現條件"""
-    obs = objects(d); hold = hold_cells(d)
+def events(d, urls, conds=lambda name: [], taken=()):
+    """物件 → 自由圖片事件；urls：物件名 → 圖網址；conds：物件名 → 出現條件；taken：已有事件的格子（門常在邊界上）"""
+    obs = objects(d); hold = [c for c in hold_cells(d) if c not in set(taken)]
     assert len(hold) >= len(obs), f'物件 {len(obs)} 個，放事件的格子只有 {len(hold)} 個'
     return [ev(f'obj-{d["map"]["id"]}-{i}', *hold[i], name=o['name'],
                conditions=conds(o['name']),
