@@ -1,0 +1,10 @@
+{
+ "job": "img_41dd59808a7f89dacc03782f",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is the previous shot of this same scene: keep the same location, set dressing, lighting, outfits and color grade; this is the next moment. Reference 3 is YU JING at 47: shoulder-length wavy light-brown bob with a few silver strands, off-shoulder black lace evening gown, a pair of long drop earrings. Reference 4 is TEACHER ZHOU, pianist: neat white hair, thin gold-rimmed glasses, grey cardigan. IMPORTANT: it is night, after 7:30 pm. There are NO windows showing sky or sunset; the theater interior is lit only by stage spotlights, house lights and candles-like warm practicals; deep dark surroundings. Scene: On stage she turns to the pianist and speaks; he nods, hands rising to the keys.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/cg/s_concert_2.webp",
+  "/home/ct/larch-ember/assets/art/p_yu_47.webp",
+  "/home/ct/larch-ember/assets/art/p_zhou_62.webp"
+ ]
+}
