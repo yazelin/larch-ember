@@ -1,0 +1,62 @@
+{
+ "name": "dress",
+ "retries": 1,
+ "wasted_regens_from_auditor_outage": 1,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 3.47,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 177,
+    "start": 27.5,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "弦樂"
+    ],
+    "mood": "憂鬱且靜謐，帶有一種沉思與呼吸般的律動感。",
+    "fits_scene": 10,
+    "fit_reason": "音樂的極簡鋼琴與長音弦樂完美契合了後台安靜且充滿期待的氛圍。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 4
+   },
+   "bad": [
+    "接縫 z=3.47"
+   ]
+  },
+  {
+   "retries_so_far": 1,
+   "loop": {
+    "seam_score": -0.54,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 140,
+    "start": 63.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "大提琴",
+     "小提琴",
+     "弦樂"
+    ],
+    "mood": "寧靜而深沉，帶有一絲優雅與沉思的氛圍。",
+    "fits_scene": 10,
+    "fit_reason": "鋼琴與弦樂的交織完美契合了後台靜謐且如呼吸般的律動感。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 7
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

@@ -1,0 +1,33 @@
+{
+ "name": "mem_1988",
+ "retries": 1,
+ "wasted_regens_from_auditor_outage": 0,
+ "history": [
+  {
+   "retries_so_far": 1,
+   "loop": {
+    "seam_score": 2.2,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 181,
+    "start": 92.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "木吉他",
+     "小提琴"
+    ],
+    "mood": "溫暖懷舊且充滿童趣恬靜的氛圍",
+    "fits_scene": 7,
+    "fit_reason": "旋律極具九歲小孩的天真與黃昏懷舊感，但音色為乾淨的吉他與小提琴，缺少手風琴及小收音機的質感。",
+    "loopable_background": true,
+    "tempo_feel": "中",
+    "melody_prominence": 8
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

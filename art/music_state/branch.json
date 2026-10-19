@@ -1,0 +1,64 @@
+{
+ "name": "branch",
+ "retries": 2,
+ "wasted_regens_from_auditor_outage": 0,
+ "history": [
+  {
+   "retries_so_far": 1,
+   "loop": {
+    "seam_score": 0.76,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 172,
+    "start": 76.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "電鋼琴",
+     "爵士鼓",
+     "低音提琴",
+     "黑膠雜音"
+    ],
+    "mood": "慵懶愜意且帶有復古懷舊感的 Chillhop 氛圍",
+    "fits_scene": 3,
+    "fit_reason": "音樂帶有明顯節奏與溫柔和弦，缺乏場景所需的懸疑懸著感與寂靜孤獨氛圍。",
+    "loopable_background": true,
+    "tempo_feel": "中",
+    "melody_prominence": 6
+   },
+   "bad": [
+    "場景適配 3"
+   ]
+  },
+  {
+   "retries_so_far": 2,
+   "loop": {
+    "seam_score": -0.29,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 159,
+    "start": 55.5,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "深沉合成器",
+     "電子鼓點",
+     "環境雜訊音效",
+     "低音墊底"
+    ],
+    "mood": "陰暗且具壓迫感的懸疑氛圍，帶有一種不安的等待感。",
+    "fits_scene": 10,
+    "fit_reason": "音樂中的低頻持續音與規律的跳動聲完美營造出化妝間內孤獨且懸而未決的緊張感。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 2
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

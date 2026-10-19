@@ -1,0 +1,33 @@
+{
+ "name": "end_c",
+ "retries": 0,
+ "wasted_regens_from_auditor_outage": 0,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 1.53,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 168,
+    "start": 79.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "水聲環境音"
+    ],
+    "mood": "孤寂沉靜且帶有些許哀傷的深夜氛圍",
+    "fits_scene": 10,
+    "fit_reason": "稀疏悲傷的鋼琴獨奏搭配清晰的水流環境音，完美契合夜間運河石階的孤寂場景",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 5
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

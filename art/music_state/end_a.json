@@ -1,0 +1,90 @@
+{
+ "name": "end_a",
+ "retries": 3,
+ "wasted_regens_from_auditor_outage": 0,
+ "history": [
+  {
+   "retries_so_far": 1,
+   "loop": {
+    "seam_score": -0.37,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 179,
+    "start": 84.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "弦樂",
+     "木管樂器"
+    ],
+    "mood": "溫馨治癒且充滿希望與感懷的溫柔氛圍",
+    "fits_scene": 10,
+    "fit_reason": "柔和優美的鋼琴與弦樂層層交織展開，極為完美地展現了釋懷和解與被深深記住的幸福感。",
+    "loopable_background": false,
+    "tempo_feel": "慢",
+    "melody_prominence": 9
+   },
+   "bad": [
+    "不像可循環背景"
+   ]
+  },
+  {
+   "retries_so_far": 2,
+   "loop": {
+    "seam_score": 1.2,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 167,
+    "start": 100.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "弦樂"
+    ],
+    "mood": "溫暖深情且帶有釋懷與希望的感動",
+    "fits_scene": 10,
+    "fit_reason": "柔美的鋼琴開場搭配漸次加入的弦樂層次，完美契合情緒逐步釋放與和解的幸福感。",
+    "loopable_background": false,
+    "tempo_feel": "慢",
+    "melody_prominence": 9
+   },
+   "bad": [
+    "不像可循環背景"
+   ]
+  },
+  {
+   "retries_so_far": 3,
+   "loop": {
+    "seam_score": -0.44,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 159,
+    "start": 86.5,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "小提琴",
+     "大提琴",
+     "弦樂團"
+    ],
+    "mood": "溫暖而充滿希望，帶有一絲懷舊與釋懷的欣慰感。",
+    "fits_scene": 10,
+    "fit_reason": "旋律溫柔且層次遞進，完美契合從內斂到情感釋放的溫暖結局。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 9
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

@@ -1,0 +1,33 @@
+{
+ "name": "alley",
+ "retries": 0,
+ "wasted_regens_from_auditor_outage": 1,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 1.23,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 181,
+    "start": 89.5,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "手風琴",
+     "吉他"
+    ],
+    "mood": "溫暖懷舊且帶有些許復古感傷的流轉氛圍",
+    "fits_scene": 10,
+    "fit_reason": "完美呈現台語老歌風格的手風琴華爾滋，極度契合黃昏市場與巷弄的懷舊氛圍",
+    "loopable_background": true,
+    "tempo_feel": "中",
+    "melody_prominence": 8
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

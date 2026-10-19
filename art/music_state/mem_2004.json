@@ -1,0 +1,35 @@
+{
+ "name": "mem_2004",
+ "retries": 0,
+ "wasted_regens_from_auditor_outage": 1,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 2.09,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 151,
+    "start": 52.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "小提琴",
+     "大提琴",
+     "弦樂合奏"
+    ],
+    "mood": "充滿懷舊感與青澀的憂傷，帶有一種雨後清新的孤寂與期待。",
+    "fits_scene": 10,
+    "fit_reason": "鋼琴與弦樂的交織完美契合了雨後後台的氛圍，旋律中流露出的猶豫感精準捕捉了青澀的緊張情緒。",
+    "loopable_background": true,
+    "tempo_feel": "中",
+    "melody_prominence": 8
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

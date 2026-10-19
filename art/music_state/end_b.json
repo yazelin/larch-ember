@@ -1,0 +1,35 @@
+{
+ "name": "end_b",
+ "retries": 1,
+ "wasted_regens_from_auditor_outage": 0,
+ "history": [
+  {
+   "retries_so_far": 1,
+   "loop": {
+    "seam_score": 0.96,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 176,
+    "start": 66.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "大提琴",
+     "小提琴",
+     "輕微打擊樂"
+    ],
+    "mood": "溫柔而略帶憂傷，充滿懷舊與釋然的氛圍。",
+    "fits_scene": 10,
+    "fit_reason": "鋼琴旋律優美且帶有淡淡的孤寂感，完美契合散場後空戲院的落寞與溫馨。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 8
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

@@ -1,0 +1,35 @@
+{
+ "name": "title",
+ "retries": 0,
+ "wasted_regens_from_auditor_outage": 1,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 2.17,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 160,
+    "start": 84.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "手風琴",
+     "原聲吉他",
+     "弦樂"
+    ],
+    "mood": "懷舊溫暖中帶著淡淡感傷的夕陽氛圍",
+    "fits_scene": 9,
+    "fit_reason": "優美的鋼琴與手風琴旋律展現出極佳的復古懷舊與感傷氛圍，完美契合台南老戲院黃昏意境。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 8
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

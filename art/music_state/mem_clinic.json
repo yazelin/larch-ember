@@ -1,0 +1,32 @@
+{
+ "name": "mem_clinic",
+ "retries": 0,
+ "wasted_regens_from_auditor_outage": 1,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 0.54,
+    "seconds": 60.5,
+    "lufs": -16.4,
+    "src_seconds": 179,
+    "start": 70.0,
+    "bytes": 1453293
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴"
+    ],
+    "mood": "孤寂沉靜且帶有疏離感的淡淡憂傷",
+    "fits_scene": 10,
+    "fit_reason": "極簡空靈且緩慢的鋼琴彈奏，完美契合診間冷白燈光與記憶逐漸遺忘的凝重沉思感",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 5
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}

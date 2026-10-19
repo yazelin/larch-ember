@@ -1,0 +1,68 @@
+{
+ "branch": {
+  "wrong_scene": "結局 A：溫暖的和解，情緒慢慢打開，被記得的幸福",
+  "audit": {
+   "has_vocals": true,
+   "instruments": [
+    "鋼琴",
+    "電子鼓",
+    "合成器墊音",
+    "人聲取樣"
+   ],
+   "mood": "輕鬆、帶有一絲懷舊感的都市放鬆氛圍。",
+   "fits_scene": 4,
+   "fit_reason": "節奏感過強且風格偏向 Lo-fi，缺乏情感大開大合的渲染力，較難支撐起感人的結局氛圍。",
+   "loopable_background": true,
+   "tempo_feel": "中",
+   "melody_prominence": 6
+  }
+ },
+ "end_c": {
+  "wrong_scene": "2009 到 2013 年兩人相遇、相愛到結婚，輕巧溫暖，帶一點爵士鋼琴",
+  "audit": {
+   "has_vocals": false,
+   "instruments": [
+    "鋼琴"
+   ],
+   "mood": "溫柔細膩且充滿懷舊感的浪漫氛圍。",
+   "fits_scene": 9,
+   "fit_reason": "鋼琴的觸鍵輕柔且帶有爵士和弦色彩，完美契合回憶往事與愛情的溫馨感。",
+   "loopable_background": true,
+   "tempo_feel": "慢",
+   "melody_prominence": 8
+  }
+ },
+ "mem_love": {
+  "wrong_scene": "結局 C：悲傷，非常稀疏的鋼琴與水聲，夜裡運河石階邊",
+  "audit": {
+   "has_vocals": false,
+   "instruments": [
+    "鋼琴",
+    "低音提琴",
+    "爵士鼓"
+   ],
+   "mood": "輕快優雅的爵士氛圍，帶有一種放鬆且隨性的都市感。",
+   "fits_scene": 2,
+   "fit_reason": "音樂節奏過於輕快且編制完整，與場景要求的悲傷、稀疏鋼琴及水聲完全不符。",
+   "loopable_background": true,
+   "tempo_feel": "中",
+   "melody_prominence": 8
+  }
+ },
+ "alley": {
+  "wrong_scene": "2021 到 2022 年忘詞與診間，冷白燈，極簡克制的鋼琴",
+  "audit": {
+   "has_vocals": false,
+   "instruments": [
+    "小提琴",
+    "鋼琴"
+   ],
+   "mood": "優雅而帶有懷舊憂傷的敘事感，像是在回憶一段溫暖但遺憾的往事。",
+   "fits_scene": 4,
+   "fit_reason": "雖然情緒帶有懷舊感，但小提琴旋律過於抒情且存在感強，與要求的『極簡克制鋼琴』風格不符。",
+   "loopable_background": false,
+   "tempo_feel": "中",
+   "melody_prominence": 9
+  }
+ }
+}

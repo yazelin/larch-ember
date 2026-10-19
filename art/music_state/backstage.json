@@ -1,0 +1,35 @@
+{
+ "name": "backstage",
+ "retries": 0,
+ "wasted_regens_from_auditor_outage": 0,
+ "history": [
+  {
+   "retries_so_far": 0,
+   "loop": {
+    "seam_score": 0.13,
+    "seconds": 60.5,
+    "lufs": -16.3,
+    "src_seconds": 178,
+    "start": 80.0,
+    "bytes": 1453915
+   },
+   "audit": {
+    "has_vocals": false,
+    "instruments": [
+     "鋼琴",
+     "合成低音",
+     "電子節奏",
+     "環境氛圍音效"
+    ],
+    "mood": "幽靜深沉且帶有淡淡疏離感",
+    "fits_scene": 9,
+    "fit_reason": "空間感濃厚的鋼琴搭配低緩低音與節奏，完美襯托空曠走廊的平靜氛圍。",
+    "loopable_background": true,
+    "tempo_feel": "慢",
+    "melody_prominence": 6
+   },
+   "bad": []
+  }
+ ],
+ "final_bad": []
+}
