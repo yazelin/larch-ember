@@ -109,7 +109,7 @@ if __name__ == '__main__':
             cuts[r] = spans
             subprocess.run(['scp', '-q', long, os.path.join(WORK, f'ref-{r}.wav'), 'ct@192.168.11.11:~/seed-vc/ember/taigi/'], check=True)
         cmd = ' ; '.join(f'rm -rf ember/taigi/out-long-{r} ; .venv/bin/python inference.py --source ember/taigi/long-{r}.wav --target ember/taigi/ref-{r}.wav '
-                         f'--output ember/taigi/out-long-{r} --diffusion-steps 30 --fp16 False >/dev/null 2>&1' for r in groups)
+                         f'--output ember/taigi/out-long-{r} --diffusion-steps 30 --fp16 False --f0-condition True --auto-f0-adjust True >/dev/null 2>&1' for r in groups)   # 不開音高控制會把音高一律拉到 140 Hz 上下，小孩聽起來像男人（2026-10-19 作者抓到）
         print('換聲', list(groups), flush=True)
         subprocess.run(['ssh', 'ct@192.168.11.11', f'cd ~/seed-vc && {cmd}'], check=True)
         for r, spans in cuts.items():
