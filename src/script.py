@@ -27,6 +27,8 @@ def parse(text=None):
     L, CHOICES, FADE, cur = {}, {}, set(), None
     for raw in text.splitlines():
         s = raw.strip()
+        if s.startswith('## 修改紀錄'):
+            break
         h = HEAD.match(s)
         if h:
             cur = h.group(1); L[cur] = []; continue
