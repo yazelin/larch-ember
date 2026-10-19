@@ -1,0 +1,2618 @@
+{
+ "project": {
+  "id": "project-904c48a1-2797-4a7e-916a-75b1117e6211",
+  "name": "最終遺忘的橘色餘燼",
+  "edges": [
+   {
+    "id": "e_intro_hub",
+    "source": "node_intro",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_hub_vanity",
+    "label": "調查化妝梳妝台",
+    "source": "scene_hub",
+    "target": "scene_vanity",
+    "animated": true,
+    "sourceHandle": "choice-0",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_hub_window",
+    "label": "走向落地窗邊",
+    "source": "scene_hub",
+    "target": "scene_window",
+    "animated": true,
+    "sourceHandle": "choice-1",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_hub_radio",
+    "label": "靠近牆角收音機",
+    "source": "scene_hub",
+    "target": "scene_radio",
+    "animated": true,
+    "sourceHandle": "choice-2",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_hub_deduction",
+    "label": "進行記憶推論",
+    "source": "scene_hub",
+    "target": "scene_deduction",
+    "animated": true,
+    "sourceHandle": "choice-3",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_vanity_ticket",
+    "label": "翻開樂譜",
+    "source": "scene_vanity",
+    "target": "act_pickup_ticket",
+    "animated": true,
+    "sourceHandle": "choice-0",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_vanity_rose",
+    "label": "拿起陶瓶乾燥花",
+    "source": "scene_vanity",
+    "target": "act_pickup_rose",
+    "animated": true,
+    "sourceHandle": "choice-1",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_vanity_hub",
+    "label": "回休息室中央",
+    "source": "scene_vanity",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "choice-2",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_window_knob",
+    "label": "打開木盒",
+    "source": "scene_window",
+    "target": "act_pickup_knob",
+    "animated": true,
+    "sourceHandle": "choice-0",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_window_sunset",
+    "label": "凝視落日",
+    "source": "scene_window",
+    "target": "act_window_sunset",
+    "animated": true,
+    "sourceHandle": "choice-1",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_sunset_back_hub",
+    "source": "act_window_sunset",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_window_hub",
+    "label": "回休息室中央",
+    "source": "scene_window",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "choice-2",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_radio_fix",
+    "label": "安裝旋鈕調頻",
+    "source": "scene_radio",
+    "target": "act_fix_radio",
+    "animated": true,
+    "sourceHandle": "choice-0",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_radio_bare",
+    "label": "徒手轉動軸心",
+    "source": "scene_radio",
+    "target": "act_radio_bare",
+    "animated": true,
+    "sourceHandle": "choice-1",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_bare_back_hub",
+    "source": "act_radio_bare",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_radio_hub",
+    "label": "回休息室中央",
+    "source": "scene_radio",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "choice-2",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_deduct_true",
+    "label": "真相拼湊完畢",
+    "source": "scene_deduction",
+    "target": "scene_true_revelation",
+    "animated": true,
+    "sourceHandle": "choice-0",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_rev_true",
+    "source": "scene_true_revelation",
+    "target": "ending_true",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_deduct_bad",
+    "label": "任由黑暗吞噬",
+    "source": "scene_deduction",
+    "target": "scene_bad_ending",
+    "animated": true,
+    "sourceHandle": "choice-1",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_scene_bad_end",
+    "source": "scene_bad_ending",
+    "target": "ending_bad",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_ticket_grant",
+    "source": "act_pickup_ticket",
+    "target": "plugin_grant_ticket",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_grant_ticket_hub",
+    "source": "plugin_grant_ticket",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_rose_grant",
+    "source": "act_pickup_rose",
+    "target": "plugin_grant_rose",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_grant_rose_hub",
+    "source": "plugin_grant_rose",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_knob_grant",
+    "source": "act_pickup_knob",
+    "target": "plugin_grant_knob",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_grant_knob_hub",
+    "source": "plugin_grant_knob",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "bottom"
+   },
+   {
+    "id": "e_fix_remove_knob",
+    "source": "act_fix_radio",
+    "target": "plugin_remove_knob",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_remove_grant_note",
+    "source": "plugin_remove_knob",
+    "target": "plugin_grant_note",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "top"
+   },
+   {
+    "id": "e_grant_note_hub",
+    "source": "plugin_grant_note",
+    "target": "scene_hub",
+    "animated": true,
+    "sourceHandle": "right",
+    "targetHandle": "bottom"
+   }
+  ],
+  "media": [
+   {
+    "id": "agent-voice-bb5f7032-2137-4da7-9cf4-a97182527ce5",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398643519_e0b4d544.mp3",
+    "name": "我・1・溫和前輩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+    "category": "voice",
+    "voiceText": "冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\n\n我徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著我的人。\n\n在空蕩冰冷的後台角落，我像一具被抽空靈魂的空殼般癱坐在陰影裡。\n沒有歌聲，沒有花香，沒有記憶。\n只有永無止境的虛無與黑暗。\n\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\\n\\n我徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著我的人。\\n\\n在空蕩冰冷的後台角落，我像一具被抽空靈魂的空殼般癱坐在陰影裡。\\n沒有歌聲，沒有花香，沒有記憶。\\n只有永無止境的虛無與黑暗。\\n\\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentle_Senior\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-46963c76-0ce5-4c7e-9b31-fa187db245b6",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398441717_70b67576.mp3",
+    "name": "我・1・溫和前輩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+    "category": "voice",
+    "voiceText": "最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\n\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\n我茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\n\n『這些到底是什麼……？毫無意義的樂色……』\n我發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾燥花。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\\n\\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\\n我茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\\n\\n『這些到底是什麼……？毫無意義的樂色……』\\n我發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾燥花。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentle_Senior\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-fafc73ca-7332-4ec8-89ee-3258c4ae9172",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398324110_deeff32a.mp3",
+    "name": "我・1・溫和前輩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "calm",
+    "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+    "category": "voice",
+    "voiceText": "窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\n\n眼淚無聲地劃過臉頰，滴落在枯萎的花瓣上。\n雖然喉嚨發不出任何高亢的聲音，但我的心臟正在劇烈而溫暖地跳動著。我將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\n\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\n\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\\n\\n眼淚無聲地劃過臉頰，滴落在枯萎的花瓣上。\\n雖然喉嚨發不出任何高亢的聲音，但我的心臟正在劇烈而溫暖地跳動著。我將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\\n\\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\\n\\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentle_Senior\",\"model\":\"\",\"emotion\":\"calm\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-fbf9e398-4ec6-4b3e-8575-25f93f2285d4",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398203246_3ecb917a.mp3",
+    "name": "我・1・溫和前輩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "calm",
+    "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+    "category": "voice",
+    "voiceText": "我將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\n\n信箋上熟悉的字跡躍入眼簾：\n\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\n你不是一個人在面對寂靜。』\n\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"我將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\\n\\n信箋上熟悉的字跡躍入眼簾：\\n\\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\\n你不是一個人在面對寂靜。』\\n\\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentle_Senior\",\"model\":\"\",\"emotion\":\"calm\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-b2536ebb-e329-48c6-9893-82329b3d3274",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398130539_b0ff352f.mp3",
+    "name": "我・1・溫和前輩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+    "category": "voice",
+    "voiceText": "生鏽的軸心冰冷而僵硬。我用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\n\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"生鏽的軸心冰冷而僵硬。我用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\\n\\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentle_Senior\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-53ea101e-dc44-47ec-b1b1-7815f4052dda",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398039644_71eefa8f.mp3",
+    "name": "我・1・溫和前輩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentle_Senior",
+    "category": "voice",
+    "voiceText": "夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、枯萎卻溫暖的玫瑰與琥珀香氣。\n\n我坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的我，記憶正在如流沙般飛速消散。\n\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、枯萎卻溫暖的玫瑰與琥珀香氣。\\n\\n我坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的我，記憶正在如流沙般飛速消散。\\n\\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentle_Senior\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-66ac3b47-96e8-4eb4-b27e-ccaf7a9b529d",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789397481678_151f9310.mp3",
+    "name": "我・1・輕柔女孩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Soft_Girl",
+    "category": "voice",
+    "voiceText": "冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\n\n我徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著我的人。\n\n在空蕩冰冷的後台角落，我像一具被抽空靈魂的空殼般癱坐在陰影裡。\n沒有歌聲，沒有花香，沒有記憶。\n只有永無止境的虛無與黑暗。\n\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\\n\\n我徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著我的人。\\n\\n在空蕩冰冷的後台角落，我像一具被抽空靈魂的空殼般癱坐在陰影裡。\\n沒有歌聲，沒有花香，沒有記憶。\\n只有永無止境的虛無與黑暗。\\n\\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Soft_Girl\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-a2ddc065-3d19-4c99-819c-939541ed5055",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789397266151_c985cde4.mp3",
+    "name": "我・1・輕柔女孩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Soft_Girl",
+    "category": "voice",
+    "voiceText": "最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\n\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\n我茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\n\n『這些到底是什麼……？毫無意義的樂色……』\n我發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾燥花。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\\n\\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\\n我茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\\n\\n『這些到底是什麼……？毫無意義的樂色……』\\n我發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾燥花。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Soft_Girl\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-d1e18b65-aa9a-4337-890f-a9ae2c3bead4",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789397103481_b17478ca.mp3",
+    "name": "我・1・輕柔女孩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "calm",
+    "voiceId": "Chinese (Mandarin)_Soft_Girl",
+    "category": "voice",
+    "voiceText": "窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\n\n眼淚無聲地劃過臉頰，滴落在乾枯的花瓣上。\n雖然喉嚨發不出任何高亢的聲音，但我的心臟正在劇烈而溫暖地跳動著。我將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\n\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\n\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\\n\\n眼淚無聲地劃過臉頰，滴落在乾枯的花瓣上。\\n雖然喉嚨發不出任何高亢的聲音，但我的心臟正在劇烈而溫暖地跳動著。我將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\\n\\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\\n\\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Soft_Girl\",\"model\":\"\",\"emotion\":\"calm\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-f26a1e58-cd8f-4214-b504-0ed1ba4bb8fd",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789396945019_0520b0cb.mp3",
+    "name": "我・1・輕柔女孩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "calm",
+    "voiceId": "Chinese (Mandarin)_Soft_Girl",
+    "category": "voice",
+    "voiceText": "我將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\n\n信箋上熟悉的字跡躍入眼簾：\n\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\n你不是一個人在面對寂靜。』\n\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"我將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\\n\\n信箋上熟悉的字跡躍入眼簾：\\n\\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\\n你不是一個人在面對寂靜。』\\n\\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Soft_Girl\",\"model\":\"\",\"emotion\":\"calm\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-d01f2093-2a45-4176-8243-dc10b9d4cf51",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789396819996_4584d995.mp3",
+    "name": "我・1・輕柔女孩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Soft_Girl",
+    "category": "voice",
+    "voiceText": "生鏽的軸心冰冷而僵硬。我用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\n\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"生鏽的軸心冰冷而僵硬。我用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\\n\\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Soft_Girl\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-e1c713e7-1ca6-4730-88cf-06b0f17e221d",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789396657363_13c1ceb2.mp3",
+    "name": "我・1・輕柔女孩.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Soft_Girl",
+    "category": "voice",
+    "voiceText": "夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、乾枯卻溫暖的玫瑰與琥珀香氣。\n\n我坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的我，記憶正在如流沙般飛速消散。\n\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、乾枯卻溫暖的玫瑰與琥珀香氣。\\n\\n我坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的我，記憶正在如流沙般飛速消散。\\n\\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Soft_Girl\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-4cbee40e-1fe6-409e-bfc2-f4908d639b68",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789395026524_1d92b40e.mp3",
+    "name": "刺耳的雜訊・1・紳士.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentleman",
+    "category": "voice",
+    "voiceText": "生鏽的軸心冰冷而僵硬。你用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\n\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"生鏽的軸心冰冷而僵硬。你用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\\n\\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentleman\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-ac6f2ed4-b043-4eab-8139-8eb721e37d26",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789394954739_837d4da6.mp3",
+    "name": "char-protagonist・1・紳士.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentleman",
+    "category": "voice",
+    "voiceText": "最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\n\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\n你茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\n\n『這些到底是什麼……？毫無意義的垃圾……』\n你發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾花。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\\n\\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\\n你茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\\n\\n『這些到底是什麼……？毫無意義的垃圾……』\\n你發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾花。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentleman\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-c1efb841-a5b4-4eae-b524-50bf0eeffec2",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789394896125_e5c8d990.mp3",
+    "name": "char-protagonist・1・紳士.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "calm",
+    "voiceId": "Chinese (Mandarin)_Gentleman",
+    "category": "voice",
+    "voiceText": "窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\n\n眼淚無聲地劃過臉頰，滴落在乾枯的花瓣上。\n雖然喉嚨發不出任何高亢的聲音，但你的心臟正在劇烈而溫暖地跳動著。你將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\n\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\n\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\\n\\n眼淚無聲地劃過臉頰，滴落在乾枯的花瓣上。\\n雖然喉嚨發不出任何高亢的聲音，但你的心臟正在劇烈而溫暖地跳動著。你將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\\n\\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\\n\\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentleman\",\"model\":\"\",\"emotion\":\"calm\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-2ee2cf33-cf8a-41e0-ac33-7bcdca9ec191",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789394841653_bd28ff43.mp3",
+    "name": "char-protagonist・1・紳士.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "calm",
+    "voiceId": "Chinese (Mandarin)_Gentleman",
+    "category": "voice",
+    "voiceText": "你將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\n\n信箋上熟悉的字跡躍入眼簾：\n\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\n你不是一個人在面對寂靜。』\n\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"你將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\\n\\n信箋上熟悉的字跡躍入眼簾：\\n\\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\\n你不是一個人在面對寂靜。』\\n\\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentleman\",\"model\":\"\",\"emotion\":\"calm\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-voice-a1373295-b78a-4d78-b50c-5e60abf115e1",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789394774549_5015c2c2.mp3",
+    "name": "char-protagonist・1・紳士.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentleman",
+    "category": "voice",
+    "voiceText": "夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、乾枯卻溫暖的玫瑰與琥珀香氣。\n\n你坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的你，記憶正在如流沙般飛速消散。\n\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、乾枯卻溫暖的玫瑰與琥珀香氣。\\n\\n你坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的你，記憶正在如流沙般飛速消散。\\n\\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentleman\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "agent-image-c6074015-b41d-4935-ab43-871e2233ff42",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/muse-link/yaze.lin.j303@gmail.com/1789391002783_459ae409.png",
+    "name": "prop_pencil_note.png",
+    "type": "image",
+    "remote": true,
+    "source": "Larch AI",
+    "category": "prop"
+   },
+   {
+    "id": "agent-voice-46adcbba-34fa-49ce-a60f-ba633e134714",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789388684144_d60f858a.mp3",
+    "name": "char-protagonist・1・紳士.mp3",
+    "type": "audio",
+    "remote": true,
+    "source": "Larch Agent AI voice",
+    "emotion": "sad",
+    "voiceId": "Chinese (Mandarin)_Gentleman",
+    "category": "voice",
+    "voiceText": "冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\n\n你徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著你的人。\n\n在空蕩冰冷的後台角落，你像一具被抽空靈魂的空殼般癱坐在陰影裡。\n沒有歌聲，沒有花香，沒有記憶。\n只有永無止境的虛無與黑暗。\n\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**",
+    "disclosure": "AI-generated voice / AI 合成語音",
+    "voiceModel": "speech-2.8-hd",
+    "voiceCacheKey": "{\"version\":1,\"text\":\"冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\\n\\n你徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著你的人。\\n\\n在空蕩冰冷的後台角落，你像一具被抽空靈魂的空殼般癱坐在陰影裡。\\n沒有歌聲，沒有花香，沒有記憶。\\n只有永無止境的虛無與黑暗。\\n\\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**\",\"provider\":\"minimax\",\"voice\":\"Chinese (Mandarin)_Gentleman\",\"model\":\"\",\"emotion\":\"sad\",\"instructions\":\"\"}"
+   },
+   {
+    "id": "037b708f-067e-4e4e-945d-54d270741e2b",
+    "url": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/1789394344163_1789392901670_02e7ad94.png",
+    "name": "1789392901670_02e7ad94.png",
+    "type": "image",
+    "remote": true,
+    "variant": "1789392901670_02e7ad94",
+    "category": "scene"
+   }
+  ],
+  "nodes": [
+   {
+    "id": "node_intro",
+    "data": {
+     "bgm": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-bec1644c-0dfe-4447-86c0-0c592e2f939f/1787448412938_bgm-title.mp3",
+     "text": "夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、枯萎卻溫暖的玫瑰與琥珀香氣。\n\n我坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的我，記憶正在如流沙般飛速消散。\n\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』",
+     "type": "dialogue",
+     "start": true,
+     "title": "序幕：熔金餘燼",
+     "bgmLoop": true,
+     "speaker": "我",
+     "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398039644_71eefa8f.mp3",
+     "bgmVolume": 0.2,
+     "voiceMode": "ai",
+     "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/muse-link/yaze.lin.j303@gmail.com/1789392901670_02e7ad94.png",
+     "transition": "fadeBlack",
+     "voiceModel": "speech-2.8-hd",
+     "transitionMs": 800,
+     "voiceEmotion": "sad",
+     "voiceProvider": "minimax",
+     "voiceDisclosure": true
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 307
+    },
+    "position": {
+     "x": 50,
+     "y": 300
+    }
+   },
+   {
+    "id": "scene_hub",
+    "data": {
+     "text": "落日的橘光正在緩慢縮短（剩餘行動力：{{time_remaining}}）。天黑之前必須完成所有調查！若行動力歸零，天色徹底轉暗無法再搜查角落，只能進行最終記憶結算。\n\n你要前往哪裡？",
+     "type": "choice",
+     "title": "後台休息室・場景導航",
+     "choices": [
+      "【場景切換】調查化妝鏡與梳妝台",
+      "【場景切換】走向老舊的落地窗邊",
+      "【場景切換】靠近牆角的古董收音機",
+      "【記憶結算】整理背包線索並進行推論"
+     ],
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385164153_bg_backstage_sunset.jpg",
+     "choiceMode": "branch",
+     "choicePlacement": "center",
+     "choiceConditions": [
+      {
+       "op": "gt",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "time_remaining",
+       "conditions": [
+        {
+         "op": "gt",
+         "value": 0,
+         "variable": "time_remaining",
+         "valueSource": "value"
+        }
+       ]
+      },
+      {
+       "op": "gt",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "time_remaining",
+       "conditions": [
+        {
+         "op": "gt",
+         "value": 0,
+         "variable": "time_remaining",
+         "valueSource": "value"
+        }
+       ]
+      },
+      {
+       "op": "gt",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "time_remaining",
+       "conditions": [
+        {
+         "op": "gt",
+         "value": 0,
+         "variable": "time_remaining",
+         "valueSource": "value"
+        }
+       ]
+      },
+      null
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 345
+    },
+    "position": {
+     "x": 500,
+     "y": 300
+    }
+   },
+   {
+    "id": "scene_vanity",
+    "data": {
+     "text": "梳妝台上落滿灰塵。散亂的舊樂譜下方隱約壓著一張橘色的紙卡；旁邊的單花陶瓶裡，插著一朵深紅枯萎的乾燥花。\n\n你想查看什麼？",
+     "type": "choice",
+     "title": "角落：化妝鏡與梳妝台",
+     "choices": [
+      "翻開樂譜，拾起那張橘色紙卡",
+      "取出陶瓶裡的深紅乾燥花",
+      "轉身回到休息室中央"
+     ],
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385164153_bg_backstage_sunset.jpg",
+     "choiceMode": "branch",
+     "choicePlacement": "center",
+     "choiceConditions": [
+      {
+       "op": "eq",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "has_ticket",
+       "conditions": [
+        {
+         "op": "eq",
+         "value": 0,
+         "variable": "has_ticket",
+         "valueSource": "value"
+        }
+       ]
+      },
+      {
+       "op": "eq",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "has_rose",
+       "conditions": [
+        {
+         "op": "eq",
+         "value": 0,
+         "variable": "has_rose",
+         "valueSource": "value"
+        }
+       ]
+      },
+      null
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 309
+    },
+    "position": {
+     "x": 1000,
+     "y": 100
+    }
+   },
+   {
+    "id": "act_pickup_ticket",
+    "data": {
+     "text": "你從雜亂的曲譜下抽出了那張紙卡——這是一張泛黃的橘色音樂會票根。\n\n票根上的大部分墨水早已褪色，但唯獨座位號碼異常清晰：『3排 14號』。\n票根背面似乎有用鉛筆寫下的極淺字跡，但被灰塵遮蔽，暫時無法辨認。\n\n【已將「泛黃的橘色票根」收進背包！】",
+     "type": "setVariable",
+     "title": "獲得道具：泛黃的橘色票根",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385368305_cg_ticket_macro.jpg",
+     "variableOps": [
+      {
+       "kind": "set",
+       "value": 1,
+       "variable": "has_ticket"
+      },
+      {
+       "kind": "add",
+       "value": -1,
+       "variable": "time_remaining"
+      }
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 411
+    },
+    "position": {
+     "x": 1450,
+     "y": 20
+    }
+   },
+   {
+    "id": "act_pickup_rose",
+    "data": {
+     "text": "我的指尖觸碰那朵深紅色的乾燥玫瑰。雖然花已枯萎，花瓣卻完好無損，散發著一縷微苦卻沉靜的琥珀香氣。\n\n我依稀記得，每一場演唱會散場後，所有人潮退去時，總會有人在後台門外靜靜留下一束同樣的玫瑰花。\n\n【已將「乾燥的深紅玫瑰」收進背包！】",
+     "type": "setVariable",
+     "title": "獲得道具：乾燥的深紅玫瑰",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385428603_cg_dried_rose.jpg",
+     "variableOps": [
+      {
+       "kind": "set",
+       "value": 1,
+       "variable": "has_rose"
+      },
+      {
+       "kind": "add",
+       "value": -1,
+       "variable": "time_remaining"
+      }
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 411
+    },
+    "position": {
+     "x": 1450,
+     "y": 180
+    }
+   },
+   {
+    "id": "scene_window",
+    "data": {
+     "text": "夕陽的熔金光芒將整面落地窗染成刺眼的火紅。窗台的灰塵上，靜靜擺放著一只微啟的精緻雕花木盒。\n\n你想做什麼？",
+     "type": "choice",
+     "title": "角落：老舊落地窗邊",
+     "choices": [
+      "打開窗台邊的雕花木盒仔細搜查",
+      "凝視窗外逐漸西沉的落日（消耗時間）",
+      "轉身回到休息室中央"
+     ],
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388078753_bg_window_balcony.jpg",
+     "choiceMode": "branch",
+     "choicePlacement": "center",
+     "choiceConditions": [
+      {
+       "op": "eq",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "has_knob",
+       "conditions": [
+        {
+         "op": "eq",
+         "value": 0,
+         "variable": "has_knob",
+         "valueSource": "value"
+        }
+       ]
+      },
+      {
+       "op": "gt",
+       "kind": "variable",
+       "match": "all",
+       "value": 0,
+       "variable": "time_remaining",
+       "conditions": [
+        {
+         "op": "gt",
+         "value": 0,
+         "variable": "time_remaining",
+         "valueSource": "value"
+        }
+       ]
+      },
+      null
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 309
+    },
+    "position": {
+     "x": 1000,
+     "y": 380
+    }
+   },
+   {
+    "id": "act_pickup_knob",
+    "data": {
+     "text": "你輕輕推開木盒的抽屜。裡面墊著天鵝絨布，正中央躺著一顆沉甸甸的黃銅金屬旋鈕，刻著精細的調諧刻度（88-108 MHz）。\n\n這正是牆角那台古董收音機脫落遺失的調頻鈕！\n\n【已將「收音機金屬調諧旋鈕」收進背包！】",
+     "type": "setVariable",
+     "title": "獲得道具：收音機金屬調諧旋鈕",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388078753_bg_window_balcony.jpg",
+     "variableOps": [
+      {
+       "kind": "set",
+       "value": 1,
+       "variable": "has_knob"
+      },
+      {
+       "kind": "add",
+       "value": -1,
+       "variable": "time_remaining"
+      }
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 411
+    },
+    "position": {
+     "x": 1450,
+     "y": 330
+    }
+   },
+   {
+    "id": "act_window_sunset",
+    "data": {
+     "text": "橘紅色的太陽正在以肉眼可見的速度沉入天際線。時間如指間流沙，留給你的行動次數正在減少……",
+     "type": "setVariable",
+     "title": "落日的凝望",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388078753_bg_window_balcony.jpg",
+     "variableOps": [
+      {
+       "kind": "add",
+       "value": -1,
+       "variable": "time_remaining"
+      }
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 314
+    },
+    "position": {
+     "x": 1450,
+     "y": 480
+    }
+   },
+   {
+    "id": "scene_radio",
+    "data": {
+     "text": "木几上的老舊收音機發出刺耳的電流聲『滋滋——滋滋——』。調台的軸心光禿禿的，缺了一顆旋鈕，指針停滯在空無一物的死頻率。\n\n你想做什麼？",
+     "type": "choice",
+     "title": "角落：古董收音機",
+     "choices": [
+      "【使用背包】裝上黃銅旋鈕並精準調頻",
+      "徒手轉動生鏽的金屬軸心",
+      "轉身回到休息室中央"
+     ],
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385303969_cg_radio_closeup.jpg",
+     "choiceMode": "branch",
+     "choicePlacement": "center",
+     "choiceConditions": [
+      {
+       "op": "eq",
+       "kind": "variable",
+       "match": "all",
+       "value": 1,
+       "variable": "has_knob",
+       "conditions": [
+        {
+         "op": "eq",
+         "value": 1,
+         "variable": "has_knob",
+         "valueSource": "value"
+        }
+       ]
+      },
+      null,
+      null
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 309
+    },
+    "position": {
+     "x": 1000,
+     "y": 660
+    }
+   },
+   {
+    "id": "act_radio_bare",
+    "data": {
+     "text": "生鏽的軸心冰冷而僵硬。我用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\n\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。",
+     "type": "dialogue",
+     "title": "刺耳的雜訊",
+     "speaker": "我",
+     "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398130539_b0ff352f.mp3",
+     "voiceMode": "ai",
+     "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385303969_cg_radio_closeup.jpg",
+     "voiceModel": "speech-2.8-hd",
+     "voiceEmotion": "sad",
+     "voiceProvider": "minimax",
+     "voiceDisclosure": true
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 260
+    },
+    "position": {
+     "x": 1450,
+     "y": 740
+    }
+   },
+   {
+    "id": "act_fix_radio",
+    "data": {
+     "text": "你取出黃銅旋鈕，對準收音機的凹槽按下——『咔嗒』一聲，齒輪完美咬合！\n\n你屏住呼吸，輕輕轉動刻度盤。指針緩緩滑向 FM 99.9。\n\n原本尖銳刺耳的電流聲突然消失了，取而代之的是極度純淨而溫暖的吉他聲，接著傳出熟悉的歌聲——那是你失語前寫下的最後一首歌，台下第一排總有一個固執的聲音跟著合唱。\n\n隨著音樂共鳴的低頻震顫，收音機底座夾層彈開了！裡面夾著一張泛黃的【鉛筆留言信箋】！\n\n【已獲得「鉛筆留言信箋」並收進背包！】",
+     "type": "setVariable",
+     "title": "調頻共鳴：鉛筆信箋",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385303969_cg_radio_closeup.jpg",
+     "variableOps": [
+      {
+       "kind": "set",
+       "value": 1,
+       "variable": "radio_fixed"
+      },
+      {
+       "kind": "set",
+       "value": 1,
+       "variable": "has_note"
+      },
+      {
+       "kind": "add",
+       "value": -1,
+       "variable": "time_remaining"
+      }
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 411
+    },
+    "position": {
+     "x": 1450,
+     "y": 600
+    }
+   },
+   {
+    "id": "scene_deduction",
+    "data": {
+     "text": "落日已墜入地平線的一半，天色迅速轉為深沉的鈷藍與暗灰。耳鳴聲越來越急促，時間已經徹底到了臨界點（剩餘行動力：{{time_remaining}}）。\n\n你看著背包裡的線索……",
+     "type": "choice",
+     "title": "記憶結算：最後的餘光",
+     "choices": [
+      "【真相喚醒】將【票根】、【乾燥玫瑰】與【信箋】拼湊在一起",
+      "【任由遺忘】腦海一片空白……任由黑暗吞噬（放棄抵抗）"
+     ],
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385164153_bg_backstage_sunset.jpg",
+     "choiceMode": "branch",
+     "choicePlacement": "center",
+     "choiceConditions": [
+      {
+       "op": "eq",
+       "kind": "variable",
+       "match": "all",
+       "value": 1,
+       "variable": "has_note",
+       "conditions": [
+        {
+         "op": "eq",
+         "value": 1,
+         "variable": "has_ticket",
+         "valueSource": "value"
+        },
+        {
+         "op": "eq",
+         "value": 1,
+         "variable": "has_rose",
+         "valueSource": "value"
+        },
+        {
+         "op": "eq",
+         "value": 1,
+         "variable": "has_note",
+         "valueSource": "value"
+        }
+       ]
+      },
+      null
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 273
+    },
+    "position": {
+     "x": 1950,
+     "y": 300
+    }
+   },
+   {
+    "id": "scene_true_revelation",
+    "data": {
+     "bgm": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-bec1644c-0dfe-4447-86c0-0c592e2f939f/1787448351327_bgm-reveal.mp3",
+     "text": "我將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\n\n信箋上熟悉的字跡躍入眼簾：\n\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\n你不是一個人在面對寂靜。』\n\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。",
+     "type": "dialogue",
+     "title": "餘燼中的共鳴",
+     "bgmLoop": false,
+     "speaker": "我",
+     "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398203246_3ecb917a.mp3",
+     "bgmVolume": 0.28,
+     "voiceMode": "ai",
+     "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385428603_cg_dried_rose.jpg",
+     "transition": "fadeWhite",
+     "voiceModel": "speech-2.8-hd",
+     "transitionMs": 1000,
+     "voiceEmotion": "calm",
+     "voiceProvider": "minimax",
+     "voiceDisclosure": true
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 307
+    },
+    "position": {
+     "x": 2450,
+     "y": 150
+    }
+   },
+   {
+    "id": "ending_true",
+    "data": {
+     "text": "窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\n\n眼淚無聲地劃過臉頰，滴落在枯萎的花瓣上。\n雖然喉嚨發不出任何高亢的聲音，但我的心臟正在劇烈而溫暖地跳動著。我將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\n\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\n\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**",
+     "type": "dialogue",
+     "title": "真結局：橘色餘燼中的殘響",
+     "speaker": "我",
+     "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398324110_deeff32a.mp3",
+     "voiceMode": "ai",
+     "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385540427_cg_true_ending.jpg",
+     "transition": "fadeWhite",
+     "voiceModel": "speech-2.8-hd",
+     "transitionMs": 1200,
+     "voiceEmotion": "calm",
+     "voiceProvider": "minimax",
+     "voiceDisclosure": true
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 307
+    },
+    "position": {
+     "x": 2900,
+     "y": 150
+    }
+   },
+   {
+    "id": "scene_bad_ending",
+    "data": {
+     "bgm": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-bec1644c-0dfe-4447-86c0-0c592e2f939f/1787448307394_bgm-cold.mp3",
+     "text": "最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\n\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\n我茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\n\n『這些到底是什麼……？毫無意義的垃圾……』\n我發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾燥花。",
+     "type": "dialogue",
+     "title": "殘陽落盡的虛無",
+     "bgmLoop": false,
+     "speaker": "我",
+     "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398441717_70b67576.mp3",
+     "bgmVolume": 0.25,
+     "voiceMode": "ai",
+     "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385478972_bg_sunset_fade_dark.jpg",
+     "transition": "fadeBlack",
+     "voiceModel": "speech-2.8-hd",
+     "transitionMs": 1000,
+     "voiceEmotion": "sad",
+     "voiceProvider": "minimax",
+     "voiceDisclosure": true
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 307
+    },
+    "position": {
+     "x": 2450,
+     "y": 450
+    }
+   },
+   {
+    "id": "ending_bad",
+    "data": {
+     "text": "冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\n\n我徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著我的人。\n\n在空蕩冰冷的後台角落，我像一具被抽空靈魂的空殼般癱坐在陰影裡。\n沒有歌聲，沒有花香，沒有記憶。\n只有永無止境的虛無與黑暗。\n\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**",
+     "type": "dialogue",
+     "title": "壞結局：永寂的殘墨與碎屑",
+     "speaker": "我",
+     "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398643519_e0b4d544.mp3",
+     "voiceMode": "ai",
+     "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+     "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388019551_cg_bad_ending_shattered.jpg",
+     "transition": "fadeBlack",
+     "voiceModel": "speech-2.8-hd",
+     "transitionMs": 1500,
+     "voiceEmotion": "sad",
+     "voiceProvider": "minimax",
+     "voiceDisclosure": true
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 307
+    },
+    "position": {
+     "x": 2900,
+     "y": 450
+    }
+   },
+   {
+    "id": "plugin_grant_ticket",
+    "data": {
+     "text": "已將【泛黃的橘色票根】收入背包。",
+     "type": "plugin",
+     "title": "道具入包：泛黃的橘色票根",
+     "pluginId": "larch-inventory",
+     "platforms": [
+      "web"
+     ],
+     "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+     "pluginIcon": "box",
+     "pluginName": "背包系統",
+     "pluginColor": "#f39c12",
+     "pluginCardId": "grant-item",
+     "pluginValues": {
+      "bagVar": "inventory",
+      "itemId": "ticket",
+      "itemName": "泛黃的橘色票根",
+      "itemNote": "印著『3排 14號』的音樂會票根，背面有鉛筆字跡",
+      "itemCount": 1,
+      "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388260771_prop_ticket.png",
+      "consumable": false,
+      "autoCollect": true,
+      "hideAfterCollect": true
+     },
+     "pluginCardName": "取得道具",
+     "pluginReadVars": [
+      "inventory"
+     ],
+     "pluginWriteVars": [
+      "inventory"
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 187
+    },
+    "position": {
+     "x": 1800,
+     "y": 20
+    }
+   },
+   {
+    "id": "plugin_grant_rose",
+    "data": {
+     "text": "已將【乾燥的深紅玫瑰】收入背包。",
+     "type": "plugin",
+     "title": "道具入包：乾燥的深紅玫瑰",
+     "pluginId": "larch-inventory",
+     "platforms": [
+      "web"
+     ],
+     "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+     "pluginIcon": "box",
+     "pluginName": "背包系統",
+     "pluginColor": "#f39c12",
+     "pluginCardId": "grant-item",
+     "pluginValues": {
+      "bagVar": "inventory",
+      "itemId": "rose",
+      "itemName": "乾燥的深紅玫瑰",
+      "itemNote": "枯萎卻完好如初的深紅玫瑰，散發微苦的琥珀香氣",
+      "itemCount": 1,
+      "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388199580_prop_rose.png",
+      "consumable": false,
+      "autoCollect": true,
+      "hideAfterCollect": true
+     },
+     "pluginCardName": "取得道具",
+     "pluginReadVars": [
+      "inventory"
+     ],
+     "pluginWriteVars": [
+      "inventory"
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 187
+    },
+    "position": {
+     "x": 1800,
+     "y": 180
+    }
+   },
+   {
+    "id": "plugin_grant_knob",
+    "data": {
+     "text": "已將【收音機金屬調諧旋鈕】收入背包。",
+     "type": "plugin",
+     "title": "道具入包：收音機金屬調諧旋鈕",
+     "pluginId": "larch-inventory",
+     "platforms": [
+      "web"
+     ],
+     "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+     "pluginIcon": "box",
+     "pluginName": "背包系統",
+     "pluginColor": "#f39c12",
+     "pluginCardId": "grant-item",
+     "pluginValues": {
+      "bagVar": "inventory",
+      "itemId": "knob",
+      "itemName": "收音機金屬調諧旋鈕",
+      "itemNote": "刻著精細刻度的黃銅旋鈕，能用來精準對焦收音機頻率",
+      "itemCount": 1,
+      "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388138884_prop_radio_knob.png",
+      "consumable": true,
+      "autoCollect": true,
+      "hideAfterCollect": true
+     },
+     "pluginCardName": "取得道具",
+     "pluginReadVars": [
+      "inventory"
+     ],
+     "pluginWriteVars": [
+      "inventory"
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 187
+    },
+    "position": {
+     "x": 1800,
+     "y": 330
+    }
+   },
+   {
+    "id": "plugin_remove_knob",
+    "data": {
+     "text": "已使用並裝上【收音機金屬調諧旋鈕】。",
+     "type": "plugin",
+     "title": "裝上道具：收音機金屬調諧旋鈕",
+     "pluginId": "larch-inventory",
+     "platforms": [
+      "web"
+     ],
+     "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var id=(val.itemId||val.itemName||'').trim().toLowerCase().replace(/\\s+/g,'-');\n  var bagVar=val.bagVar||'inventory';\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  bag=bag.filter(function(it){return String(it.id||it.n||'').trim().toLowerCase().replace(/\\s+/g,'-')!==id;});\n  setVar(bagVar,JSON.stringify(bag));\n  finish('removed',{item:id});\n});\n</script></body></html>",
+     "pluginIcon": "box",
+     "pluginName": "背包系統",
+     "pluginColor": "#f39c12",
+     "pluginCardId": "remove-item",
+     "pluginValues": {
+      "bagVar": "inventory",
+      "itemId": "knob",
+      "itemName": "收音機金屬調諧旋鈕",
+      "itemCount": 1
+     },
+     "pluginCardName": "移除道具",
+     "pluginReadVars": [
+      "inventory"
+     ],
+     "pluginWriteVars": [
+      "inventory"
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 187
+    },
+    "position": {
+     "x": 1800,
+     "y": 580
+    }
+   },
+   {
+    "id": "plugin_grant_note",
+    "data": {
+     "text": "已將【底座夾層的鉛筆信箋】收入背包。",
+     "type": "plugin",
+     "title": "道具入包：底座夾層的鉛筆信箋",
+     "pluginId": "larch-inventory",
+     "platforms": [
+      "web"
+     ],
+     "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+     "pluginIcon": "box",
+     "pluginName": "背包系統",
+     "pluginColor": "#f39c12",
+     "pluginCardId": "grant-item",
+     "pluginValues": {
+      "bagVar": "inventory",
+      "itemId": "note",
+      "itemName": "底座夾層的鉛筆信箋",
+      "itemNote": "收音機夾層彈出的泛黃信箋，上面有深深刻下的溫柔筆跡",
+      "itemCount": 1,
+      "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/muse-link/yaze.lin.j303@gmail.com/1789391002783_459ae409.png",
+      "consumable": false,
+      "autoCollect": true,
+      "hideAfterCollect": true
+     },
+     "pluginCardName": "取得道具",
+     "pluginReadVars": [
+      "inventory"
+     ],
+     "pluginWriteVars": [
+      "inventory"
+     ]
+    },
+    "type": "story",
+    "measured": {
+     "width": 306,
+     "height": 187
+    },
+    "position": {
+     "x": 2100,
+     "y": 580
+    }
+   }
+  ],
+  "boards": [
+   {
+    "id": "board-main",
+    "kind": "story",
+    "mode": "story",
+    "name": "最終遺忘的橘色餘燼（背包解謎版）",
+    "edges": [
+     {
+      "id": "e_intro_hub",
+      "source": "node_intro",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_hub_vanity",
+      "label": "調查化妝梳妝台",
+      "source": "scene_hub",
+      "target": "scene_vanity",
+      "animated": true,
+      "sourceHandle": "choice-0",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_hub_window",
+      "label": "走向落地窗邊",
+      "source": "scene_hub",
+      "target": "scene_window",
+      "animated": true,
+      "sourceHandle": "choice-1",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_hub_radio",
+      "label": "靠近牆角收音機",
+      "source": "scene_hub",
+      "target": "scene_radio",
+      "animated": true,
+      "sourceHandle": "choice-2",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_hub_deduction",
+      "label": "進行記憶推論",
+      "source": "scene_hub",
+      "target": "scene_deduction",
+      "animated": true,
+      "sourceHandle": "choice-3",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_vanity_ticket",
+      "label": "翻開樂譜",
+      "source": "scene_vanity",
+      "target": "act_pickup_ticket",
+      "animated": true,
+      "sourceHandle": "choice-0",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_vanity_rose",
+      "label": "拿起陶瓶乾燥花",
+      "source": "scene_vanity",
+      "target": "act_pickup_rose",
+      "animated": true,
+      "sourceHandle": "choice-1",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_vanity_hub",
+      "label": "回休息室中央",
+      "source": "scene_vanity",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "choice-2",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_window_knob",
+      "label": "打開木盒",
+      "source": "scene_window",
+      "target": "act_pickup_knob",
+      "animated": true,
+      "sourceHandle": "choice-0",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_window_sunset",
+      "label": "凝視落日",
+      "source": "scene_window",
+      "target": "act_window_sunset",
+      "animated": true,
+      "sourceHandle": "choice-1",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_sunset_back_hub",
+      "source": "act_window_sunset",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_window_hub",
+      "label": "回休息室中央",
+      "source": "scene_window",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "choice-2",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_radio_fix",
+      "label": "安裝旋鈕調頻",
+      "source": "scene_radio",
+      "target": "act_fix_radio",
+      "animated": true,
+      "sourceHandle": "choice-0",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_radio_bare",
+      "label": "徒手轉動軸心",
+      "source": "scene_radio",
+      "target": "act_radio_bare",
+      "animated": true,
+      "sourceHandle": "choice-1",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_bare_back_hub",
+      "source": "act_radio_bare",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_radio_hub",
+      "label": "回休息室中央",
+      "source": "scene_radio",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "choice-2",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_deduct_true",
+      "label": "真相拼湊完畢",
+      "source": "scene_deduction",
+      "target": "scene_true_revelation",
+      "animated": true,
+      "sourceHandle": "choice-0",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_rev_true",
+      "source": "scene_true_revelation",
+      "target": "ending_true",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_deduct_bad",
+      "label": "任由黑暗吞噬",
+      "source": "scene_deduction",
+      "target": "scene_bad_ending",
+      "animated": true,
+      "sourceHandle": "choice-1",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_scene_bad_end",
+      "source": "scene_bad_ending",
+      "target": "ending_bad",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_ticket_grant",
+      "source": "act_pickup_ticket",
+      "target": "plugin_grant_ticket",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_grant_ticket_hub",
+      "source": "plugin_grant_ticket",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_rose_grant",
+      "source": "act_pickup_rose",
+      "target": "plugin_grant_rose",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_grant_rose_hub",
+      "source": "plugin_grant_rose",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_knob_grant",
+      "source": "act_pickup_knob",
+      "target": "plugin_grant_knob",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_grant_knob_hub",
+      "source": "plugin_grant_knob",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+     },
+     {
+      "id": "e_fix_remove_knob",
+      "source": "act_fix_radio",
+      "target": "plugin_remove_knob",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_remove_grant_note",
+      "source": "plugin_remove_knob",
+      "target": "plugin_grant_note",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "top"
+     },
+     {
+      "id": "e_grant_note_hub",
+      "source": "plugin_grant_note",
+      "target": "scene_hub",
+      "animated": true,
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+     }
+    ],
+    "nodes": [
+     {
+      "id": "node_intro",
+      "data": {
+       "bgm": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-bec1644c-0dfe-4447-86c0-0c592e2f939f/1787448412938_bgm-title.mp3",
+       "text": "夕陽的熔金餘暉穿透老舊的落地窗，在飄浮的微塵中割出一道道光痕。空氣中瀰漫著潮濕木頭味，以及一縷若有似無、枯萎卻溫暖的玫瑰與琥珀香氣。\n\n我坐在化妝鏡前，耳鳴如遠處的蟬鳴。鏡中的自己眼神空洞而渙散。曾經萬人同聲歡呼的舞台早已遠去，失語後的我，記憶正在如流沙般飛速消散。\n\n『留給我的時間……不多了。在天黑之前，我必須找回最後的記憶。』",
+       "type": "dialogue",
+       "start": true,
+       "title": "序幕：熔金餘燼",
+       "bgmLoop": true,
+       "speaker": "我",
+       "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398039644_71eefa8f.mp3",
+       "bgmVolume": 0.2,
+       "voiceMode": "ai",
+       "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/muse-link/yaze.lin.j303@gmail.com/1789392901670_02e7ad94.png",
+       "transition": "fadeBlack",
+       "voiceModel": "speech-2.8-hd",
+       "transitionMs": 800,
+       "voiceEmotion": "sad",
+       "voiceProvider": "minimax",
+       "voiceDisclosure": true
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 307
+      },
+      "position": {
+       "x": 50,
+       "y": 300
+      }
+     },
+     {
+      "id": "scene_hub",
+      "data": {
+       "text": "落日的橘光正在緩慢縮短（剩餘行動力：{{time_remaining}}）。天黑之前必須完成所有調查！若行動力歸零，天色徹底轉暗無法再搜查角落，只能進行最終記憶結算。\n\n你要前往哪裡？",
+       "type": "choice",
+       "title": "後台休息室・場景導航",
+       "choices": [
+        "【場景切換】調查化妝鏡與梳妝台",
+        "【場景切換】走向老舊的落地窗邊",
+        "【場景切換】靠近牆角的古董收音機",
+        "【記憶結算】整理背包線索並進行推論"
+       ],
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385164153_bg_backstage_sunset.jpg",
+       "choiceMode": "branch",
+       "choicePlacement": "center",
+       "choiceConditions": [
+        {
+         "op": "gt",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "time_remaining",
+         "conditions": [
+          {
+           "op": "gt",
+           "value": 0,
+           "variable": "time_remaining",
+           "valueSource": "value"
+          }
+         ]
+        },
+        {
+         "op": "gt",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "time_remaining",
+         "conditions": [
+          {
+           "op": "gt",
+           "value": 0,
+           "variable": "time_remaining",
+           "valueSource": "value"
+          }
+         ]
+        },
+        {
+         "op": "gt",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "time_remaining",
+         "conditions": [
+          {
+           "op": "gt",
+           "value": 0,
+           "variable": "time_remaining",
+           "valueSource": "value"
+          }
+         ]
+        },
+        null
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 345
+      },
+      "position": {
+       "x": 500,
+       "y": 300
+      }
+     },
+     {
+      "id": "scene_vanity",
+      "data": {
+       "text": "梳妝台上落滿灰塵。散亂的舊樂譜下方隱約壓著一張橘色的紙卡；旁邊的單花陶瓶裡，插著一朵深紅枯萎的乾燥花。\n\n你想查看什麼？",
+       "type": "choice",
+       "title": "角落：化妝鏡與梳妝台",
+       "choices": [
+        "翻開樂譜，拾起那張橘色紙卡",
+        "取出陶瓶裡的深紅乾燥花",
+        "轉身回到休息室中央"
+       ],
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385164153_bg_backstage_sunset.jpg",
+       "choiceMode": "branch",
+       "choicePlacement": "center",
+       "choiceConditions": [
+        {
+         "op": "eq",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "has_ticket",
+         "conditions": [
+          {
+           "op": "eq",
+           "value": 0,
+           "variable": "has_ticket",
+           "valueSource": "value"
+          }
+         ]
+        },
+        {
+         "op": "eq",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "has_rose",
+         "conditions": [
+          {
+           "op": "eq",
+           "value": 0,
+           "variable": "has_rose",
+           "valueSource": "value"
+          }
+         ]
+        },
+        null
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 309
+      },
+      "position": {
+       "x": 1000,
+       "y": 100
+      }
+     },
+     {
+      "id": "act_pickup_ticket",
+      "data": {
+       "text": "你從雜亂的曲譜下抽出了那張紙卡——這是一張泛黃的橘色音樂會票根。\n\n票根上的大部分墨水早已褪色，但唯獨座位號碼異常清晰：『3排 14號』。\n票根背面似乎有用鉛筆寫下的極淺字跡，但被灰塵遮蔽，暫時無法辨認。\n\n【已將「泛黃的橘色票根」收進背包！】",
+       "type": "setVariable",
+       "title": "獲得道具：泛黃的橘色票根",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385368305_cg_ticket_macro.jpg",
+       "variableOps": [
+        {
+         "kind": "set",
+         "value": 1,
+         "variable": "has_ticket"
+        },
+        {
+         "kind": "add",
+         "value": -1,
+         "variable": "time_remaining"
+        }
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 411
+      },
+      "position": {
+       "x": 1450,
+       "y": 20
+      }
+     },
+     {
+      "id": "act_pickup_rose",
+      "data": {
+       "text": "我的指尖觸碰那朵深紅色的乾燥玫瑰。雖然花已枯萎，花瓣卻完好無損，散發著一縷微苦卻沉靜的琥珀香氣。\n\n我依稀記得，每一場演唱會散場後，所有人潮退去時，總會有人在後台門外靜靜留下一束同樣的玫瑰花。\n\n【已將「乾燥的深紅玫瑰」收進背包！】",
+       "type": "setVariable",
+       "title": "獲得道具：乾燥的深紅玫瑰",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385428603_cg_dried_rose.jpg",
+       "variableOps": [
+        {
+         "kind": "set",
+         "value": 1,
+         "variable": "has_rose"
+        },
+        {
+         "kind": "add",
+         "value": -1,
+         "variable": "time_remaining"
+        }
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 411
+      },
+      "position": {
+       "x": 1450,
+       "y": 180
+      }
+     },
+     {
+      "id": "scene_window",
+      "data": {
+       "text": "夕陽的熔金光芒將整面落地窗染成刺眼的火紅。窗台的灰塵上，靜靜擺放著一只微啟的精緻雕花木盒。\n\n你想做什麼？",
+       "type": "choice",
+       "title": "角落：老舊落地窗邊",
+       "choices": [
+        "打開窗台邊的雕花木盒仔細搜查",
+        "凝視窗外逐漸西沉的落日（消耗時間）",
+        "轉身回到休息室中央"
+       ],
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388078753_bg_window_balcony.jpg",
+       "choiceMode": "branch",
+       "choicePlacement": "center",
+       "choiceConditions": [
+        {
+         "op": "eq",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "has_knob",
+         "conditions": [
+          {
+           "op": "eq",
+           "value": 0,
+           "variable": "has_knob",
+           "valueSource": "value"
+          }
+         ]
+        },
+        {
+         "op": "gt",
+         "kind": "variable",
+         "match": "all",
+         "value": 0,
+         "variable": "time_remaining",
+         "conditions": [
+          {
+           "op": "gt",
+           "value": 0,
+           "variable": "time_remaining",
+           "valueSource": "value"
+          }
+         ]
+        },
+        null
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 309
+      },
+      "position": {
+       "x": 1000,
+       "y": 380
+      }
+     },
+     {
+      "id": "act_pickup_knob",
+      "data": {
+       "text": "你輕輕推開木盒的抽屜。裡面墊著天鵝絨布，正中央躺著一顆沉甸甸的黃銅金屬旋鈕，刻著精細的調諧刻度（88-108 MHz）。\n\n這正是牆角那台古董收音機脫落遺失的調頻鈕！\n\n【已將「收音機金屬調諧旋鈕」收進背包！】",
+       "type": "setVariable",
+       "title": "獲得道具：收音機金屬調諧旋鈕",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388078753_bg_window_balcony.jpg",
+       "variableOps": [
+        {
+         "kind": "set",
+         "value": 1,
+         "variable": "has_knob"
+        },
+        {
+         "kind": "add",
+         "value": -1,
+         "variable": "time_remaining"
+        }
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 411
+      },
+      "position": {
+       "x": 1450,
+       "y": 330
+      }
+     },
+     {
+      "id": "act_window_sunset",
+      "data": {
+       "text": "橘紅色的太陽正在以肉眼可見的速度沉入天際線。時間如指間流沙，留給你的行動次數正在減少……",
+       "type": "setVariable",
+       "title": "落日的凝望",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388078753_bg_window_balcony.jpg",
+       "variableOps": [
+        {
+         "kind": "add",
+         "value": -1,
+         "variable": "time_remaining"
+        }
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 314
+      },
+      "position": {
+       "x": 1450,
+       "y": 480
+      }
+     },
+     {
+      "id": "scene_radio",
+      "data": {
+       "text": "木几上的老舊收音機發出刺耳的電流聲『滋滋——滋滋——』。調台的軸心光禿禿的，缺了一顆旋鈕，指針停滯在空無一物的死頻率。\n\n你想做什麼？",
+       "type": "choice",
+       "title": "角落：古董收音機",
+       "choices": [
+        "【使用背包】裝上黃銅旋鈕並精準調頻",
+        "徒手轉動生鏽的金屬軸心",
+        "轉身回到休息室中央"
+       ],
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385303969_cg_radio_closeup.jpg",
+       "choiceMode": "branch",
+       "choicePlacement": "center",
+       "choiceConditions": [
+        {
+         "op": "eq",
+         "kind": "variable",
+         "match": "all",
+         "value": 1,
+         "variable": "has_knob",
+         "conditions": [
+          {
+           "op": "eq",
+           "value": 1,
+           "variable": "has_knob",
+           "valueSource": "value"
+          }
+         ]
+        },
+        null,
+        null
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 309
+      },
+      "position": {
+       "x": 1000,
+       "y": 660
+      }
+     },
+     {
+      "id": "act_radio_bare",
+      "data": {
+       "text": "生鏽的軸心冰冷而僵硬。我用力轉動，粗糙的金屬邊緣劃痛了手指，揚聲器只爆發出更加刺耳的雜訊嘯叫。\n\n沒有旋鈕，根本無法精準對焦頻率，什麼也聽不清。",
+       "type": "dialogue",
+       "title": "刺耳的雜訊",
+       "speaker": "我",
+       "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398130539_b0ff352f.mp3",
+       "voiceMode": "ai",
+       "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385303969_cg_radio_closeup.jpg",
+       "voiceModel": "speech-2.8-hd",
+       "voiceEmotion": "sad",
+       "voiceProvider": "minimax",
+       "voiceDisclosure": true
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 260
+      },
+      "position": {
+       "x": 1450,
+       "y": 740
+      }
+     },
+     {
+      "id": "act_fix_radio",
+      "data": {
+       "text": "你取出黃銅旋鈕，對準收音機的凹槽按下——『咔嗒』一聲，齒輪完美咬合！\n\n你屏住呼吸，輕輕轉動刻度盤。指針緩緩滑向 FM 99.9。\n\n原本尖銳刺耳的電流聲突然消失了，取而代之的是極度純淨而溫暖的吉他聲，接著傳出熟悉的歌聲——那是你失語前寫下的最後一首歌，台下第一排總有一個固執的聲音跟著合唱。\n\n隨著音樂共鳴的低頻震顫，收音機底座夾層彈開了！裡面夾著一張泛黃的【鉛筆留言信箋】！\n\n【已獲得「鉛筆留言信箋」並收進背包！】",
+       "type": "setVariable",
+       "title": "調頻共鳴：鉛筆信箋",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385303969_cg_radio_closeup.jpg",
+       "variableOps": [
+        {
+         "kind": "set",
+         "value": 1,
+         "variable": "radio_fixed"
+        },
+        {
+         "kind": "set",
+         "value": 1,
+         "variable": "has_note"
+        },
+        {
+         "kind": "add",
+         "value": -1,
+         "variable": "time_remaining"
+        }
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 411
+      },
+      "position": {
+       "x": 1450,
+       "y": 600
+      }
+     },
+     {
+      "id": "scene_deduction",
+      "data": {
+       "text": "落日已墜入地平線的一半，天色迅速轉為深沉的鈷藍與暗灰。耳鳴聲越來越急促，時間已經徹底到了臨界點（剩餘行動力：{{time_remaining}}）。\n\n你看著背包裡的線索……",
+       "type": "choice",
+       "title": "記憶結算：最後的餘光",
+       "choices": [
+        "【真相喚醒】將【票根】、【乾燥玫瑰】與【信箋】拼湊在一起",
+        "【任由遺忘】腦海一片空白……任由黑暗吞噬（放棄抵抗）"
+       ],
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385164153_bg_backstage_sunset.jpg",
+       "choiceMode": "branch",
+       "choicePlacement": "center",
+       "choiceConditions": [
+        {
+         "op": "eq",
+         "kind": "variable",
+         "match": "all",
+         "value": 1,
+         "variable": "has_note",
+         "conditions": [
+          {
+           "op": "eq",
+           "value": 1,
+           "variable": "has_ticket",
+           "valueSource": "value"
+          },
+          {
+           "op": "eq",
+           "value": 1,
+           "variable": "has_rose",
+           "valueSource": "value"
+          },
+          {
+           "op": "eq",
+           "value": 1,
+           "variable": "has_note",
+           "valueSource": "value"
+          }
+         ]
+        },
+        null
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 273
+      },
+      "position": {
+       "x": 1950,
+       "y": 300
+      }
+     },
+     {
+      "id": "scene_true_revelation",
+      "data": {
+       "bgm": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-bec1644c-0dfe-4447-86c0-0c592e2f939f/1787448351327_bgm-reveal.mp3",
+       "text": "我將印著『3排 14號』的票根、散發微苦琥珀香的深紅乾燥玫瑰、以及收音機裡彈出的信箋鋪在梳妝台上。\n\n信箋上熟悉的字跡躍入眼簾：\n\n『如果有一天，世界奪走了你的歌聲，也不要害怕。\n我會永遠坐在三排十四號。每一場散場，我都會留下一束深紅的乾燥玫瑰，替你把所有未唱完的音符，完整地刻在時間裡。\n你不是一個人在面對寂靜。』\n\n三個碎片在這一刻融為一體。那些被遺忘的散場夜晚、那個在門縫外守護的身影、那無聲而堅定的一切……全部回來了。",
+       "type": "dialogue",
+       "title": "餘燼中的共鳴",
+       "bgmLoop": false,
+       "speaker": "我",
+       "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398203246_3ecb917a.mp3",
+       "bgmVolume": 0.28,
+       "voiceMode": "ai",
+       "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385428603_cg_dried_rose.jpg",
+       "transition": "fadeWhite",
+       "voiceModel": "speech-2.8-hd",
+       "transitionMs": 1000,
+       "voiceEmotion": "calm",
+       "voiceProvider": "minimax",
+       "voiceDisclosure": true
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 307
+      },
+      "position": {
+       "x": 2450,
+       "y": 150
+      }
+     },
+     {
+      "id": "ending_true",
+      "data": {
+       "text": "窗外的夕陽終於沉沒，但黑暗這一次卻溫柔如水。\n\n眼淚無聲地劃過臉頰，滴落在枯萎的花瓣上。\n雖然喉嚨發不出任何高亢的聲音，但我的心臟正在劇烈而溫暖地跳動著。我將票根與玫瑰緊緊按在胸口，那股微弱的金橘色溫暖，在掌心如不滅的餘燼般綻放光芒。\n\n「我想起來了……謝謝你一直都在。三排十四號……我最珍視的人。」\n\n**【真結局成就：橘色餘燼中的殘響（雙向的銘記）】**",
+       "type": "dialogue",
+       "title": "真結局：橘色餘燼中的殘響",
+       "speaker": "我",
+       "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398324110_deeff32a.mp3",
+       "voiceMode": "ai",
+       "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385540427_cg_true_ending.jpg",
+       "transition": "fadeWhite",
+       "voiceModel": "speech-2.8-hd",
+       "transitionMs": 1200,
+       "voiceEmotion": "calm",
+       "voiceProvider": "minimax",
+       "voiceDisclosure": true
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 307
+      },
+      "position": {
+       "x": 2900,
+       "y": 150
+      }
+     },
+     {
+      "id": "scene_bad_ending",
+      "data": {
+       "bgm": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-bec1644c-0dfe-4447-86c0-0c592e2f939f/1787448307394_bgm-cold.mp3",
+       "text": "最後一抹橘色的落日餘暉，終於被絕對的黑暗吞噬。\n\n耳鳴突兀地停了。世界陷入了一片可怕的死寂。\n我茫然地看著背包裡零碎的物件——生鏽的金屬鈕、發黑枯萎的花、模糊不清的爛紙片。\n\n『這些到底是什麼……？毫無意義的垃圾……』\n我發出神經質的冷笑，隨手將紙卡揉成一團砸向地面，狠狠踩碎了那朵脆弱的乾燥花。",
+       "type": "dialogue",
+       "title": "殘陽落盡的虛無",
+       "bgmLoop": false,
+       "speaker": "我",
+       "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398441717_70b67576.mp3",
+       "bgmVolume": 0.25,
+       "voiceMode": "ai",
+       "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789385478972_bg_sunset_fade_dark.jpg",
+       "transition": "fadeBlack",
+       "voiceModel": "speech-2.8-hd",
+       "transitionMs": 1000,
+       "voiceEmotion": "sad",
+       "voiceProvider": "minimax",
+       "voiceDisclosure": true
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 307
+      },
+      "position": {
+       "x": 2450,
+       "y": 450
+      }
+     },
+     {
+      "id": "ending_bad",
+      "data": {
+       "text": "冷月的光線穿透窗櫺，照亮了地板上被撕碎踩爛的橘色票根與殘破的花瓣。\n\n我徹底忘記了那個人的名字，忘記了那首曾經讓萬人流淚的歌，也忘記了在無數個深夜默默守護著我的人。\n\n在空蕩冰冷的後台角落，我像一具被抽空靈魂的空殼般癱坐在陰影裡。\n沒有歌聲，沒有花香，沒有記憶。\n只有永無止境的虛無與黑暗。\n\n**【壞結局成就：永寂的殘墨與碎屑（雙向的歸零）】**",
+       "type": "dialogue",
+       "title": "壞結局：永寂的殘墨與碎屑",
+       "speaker": "我",
+       "voiceUrl": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/ai-generated/yaze.lin.j303@gmail.com/1789398643519_e0b4d544.mp3",
+       "voiceMode": "ai",
+       "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+       "background": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388019551_cg_bad_ending_shattered.jpg",
+       "transition": "fadeBlack",
+       "voiceModel": "speech-2.8-hd",
+       "transitionMs": 1500,
+       "voiceEmotion": "sad",
+       "voiceProvider": "minimax",
+       "voiceDisclosure": true
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 307
+      },
+      "position": {
+       "x": 2900,
+       "y": 450
+      }
+     },
+     {
+      "id": "plugin_grant_ticket",
+      "data": {
+       "text": "已將【泛黃的橘色票根】收入背包。",
+       "type": "plugin",
+       "title": "道具入包：泛黃的橘色票根",
+       "pluginId": "larch-inventory",
+       "platforms": [
+        "web"
+       ],
+       "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+       "pluginIcon": "box",
+       "pluginName": "背包系統",
+       "pluginColor": "#f39c12",
+       "pluginCardId": "grant-item",
+       "pluginValues": {
+        "bagVar": "inventory",
+        "itemId": "ticket",
+        "itemName": "泛黃的橘色票根",
+        "itemNote": "印著『3排 14號』的音樂會票根，背面有鉛筆字跡",
+        "itemCount": 1,
+        "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388260771_prop_ticket.png",
+        "consumable": false,
+        "autoCollect": true,
+        "hideAfterCollect": true
+       },
+       "pluginCardName": "取得道具",
+       "pluginReadVars": [
+        "inventory"
+       ],
+       "pluginWriteVars": [
+        "inventory"
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 187
+      },
+      "position": {
+       "x": 1800,
+       "y": 20
+      }
+     },
+     {
+      "id": "plugin_grant_rose",
+      "data": {
+       "text": "已將【乾燥的深紅玫瑰】收入背包。",
+       "type": "plugin",
+       "title": "道具入包：乾燥的深紅玫瑰",
+       "pluginId": "larch-inventory",
+       "platforms": [
+        "web"
+       ],
+       "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+       "pluginIcon": "box",
+       "pluginName": "背包系統",
+       "pluginColor": "#f39c12",
+       "pluginCardId": "grant-item",
+       "pluginValues": {
+        "bagVar": "inventory",
+        "itemId": "rose",
+        "itemName": "乾燥的深紅玫瑰",
+        "itemNote": "枯萎卻完好如初的深紅玫瑰，散發微苦的琥珀香氣",
+        "itemCount": 1,
+        "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388199580_prop_rose.png",
+        "consumable": false,
+        "autoCollect": true,
+        "hideAfterCollect": true
+       },
+       "pluginCardName": "取得道具",
+       "pluginReadVars": [
+        "inventory"
+       ],
+       "pluginWriteVars": [
+        "inventory"
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 187
+      },
+      "position": {
+       "x": 1800,
+       "y": 180
+      }
+     },
+     {
+      "id": "plugin_grant_knob",
+      "data": {
+       "text": "已將【收音機金屬調諧旋鈕】收入背包。",
+       "type": "plugin",
+       "title": "道具入包：收音機金屬調諧旋鈕",
+       "pluginId": "larch-inventory",
+       "platforms": [
+        "web"
+       ],
+       "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+       "pluginIcon": "box",
+       "pluginName": "背包系統",
+       "pluginColor": "#f39c12",
+       "pluginCardId": "grant-item",
+       "pluginValues": {
+        "bagVar": "inventory",
+        "itemId": "knob",
+        "itemName": "收音機金屬調諧旋鈕",
+        "itemNote": "刻著精細刻度的黃銅旋鈕，能用來精準對焦收音機頻率",
+        "itemCount": 1,
+        "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/project-904c48a1-2797-4a7e-916a-75b1117e6211/1789388138884_prop_radio_knob.png",
+        "consumable": true,
+        "autoCollect": true,
+        "hideAfterCollect": true
+       },
+       "pluginCardName": "取得道具",
+       "pluginReadVars": [
+        "inventory"
+       ],
+       "pluginWriteVars": [
+        "inventory"
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 187
+      },
+      "position": {
+       "x": 1800,
+       "y": 330
+      }
+     },
+     {
+      "id": "plugin_remove_knob",
+      "data": {
+       "text": "已使用並裝上【收音機金屬調諧旋鈕】。",
+       "type": "plugin",
+       "title": "裝上道具：收音機金屬調諧旋鈕",
+       "pluginId": "larch-inventory",
+       "platforms": [
+        "web"
+       ],
+       "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var id=(val.itemId||val.itemName||'').trim().toLowerCase().replace(/\\s+/g,'-');\n  var bagVar=val.bagVar||'inventory';\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  bag=bag.filter(function(it){return String(it.id||it.n||'').trim().toLowerCase().replace(/\\s+/g,'-')!==id;});\n  setVar(bagVar,JSON.stringify(bag));\n  finish('removed',{item:id});\n});\n</script></body></html>",
+       "pluginIcon": "box",
+       "pluginName": "背包系統",
+       "pluginColor": "#f39c12",
+       "pluginCardId": "remove-item",
+       "pluginValues": {
+        "bagVar": "inventory",
+        "itemId": "knob",
+        "itemName": "收音機金屬調諧旋鈕",
+        "itemCount": 1
+       },
+       "pluginCardName": "移除道具",
+       "pluginReadVars": [
+        "inventory"
+       ],
+       "pluginWriteVars": [
+        "inventory"
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 187
+      },
+      "position": {
+       "x": 1800,
+       "y": 580
+      }
+     },
+     {
+      "id": "plugin_grant_note",
+      "data": {
+       "text": "已將【底座夾層的鉛筆信箋】收入背包。",
+       "type": "plugin",
+       "title": "道具入包：底座夾層的鉛筆信箋",
+       "pluginId": "larch-inventory",
+       "platforms": [
+        "web"
+       ],
+       "pluginHtml": "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\n<script>\nvar done=false;\nfunction setVar(n,v){parent.postMessage({type:'larch:set',name:n,value:v},'*');}\nfunction finish(r,p){if(done)return;done=true;parent.postMessage({type:'larch:complete',result:r,payload:p},'*');}\nparent.postMessage({type:'larch:ready'},'*');\nwindow.addEventListener('message',function(e){\n  var d=e.data;if(!d||d.type!=='larch:init')return;\n  var val=d.values||{},vars=d.variables||{};\n  var name=val.itemName||'神秘道具',note=val.itemNote||'',bagVar=val.bagVar||'inventory';\n  var id=(val.itemId||name).trim().toLowerCase().replace(/\\s+/g,'-');\n  var img=val.itemImage||'',count=val.itemCount||1;\n  var bag=[];\n  try{bag=JSON.parse(vars[bagVar]||'[]');}catch(err){bag=[];}\n  if(!Array.isArray(bag))bag=[];\n  var ex=bag.find(function(it){return String(it.id||it.n)===id;});\n  if(ex){ex.q=(ex.q||1)+count;}\n  else{bag.push({id:id,n:name,i:img,d:note,q:count,c:val.consumable!==false});}\n  setVar(bagVar,JSON.stringify(bag));\n  finish('granted',{item:name,count:count});\n});\n</script></body></html>",
+       "pluginIcon": "box",
+       "pluginName": "背包系統",
+       "pluginColor": "#f39c12",
+       "pluginCardId": "grant-item",
+       "pluginValues": {
+        "bagVar": "inventory",
+        "itemId": "note",
+        "itemName": "底座夾層的鉛筆信箋",
+        "itemNote": "收音機夾層彈出的泛黃信箋，上面有深深刻下的溫柔筆跡",
+        "itemCount": 1,
+        "itemImage": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/muse-link/yaze.lin.j303@gmail.com/1789391002783_459ae409.png",
+        "consumable": false,
+        "autoCollect": true,
+        "hideAfterCollect": true
+       },
+       "pluginCardName": "取得道具",
+       "pluginReadVars": [
+        "inventory"
+       ],
+       "pluginWriteVars": [
+        "inventory"
+       ]
+      },
+      "type": "story",
+      "measured": {
+       "width": 306,
+       "height": 187
+      },
+      "position": {
+       "x": 2100,
+       "y": 580
+      }
+     }
+    ],
+    "updatedAt": "2026-09-14T15:16:42.866Z",
+    "description": "完整背包解謎版：支援 3 大探索場景自由切換、背包道具拾取與調頻使用、真相拼圖與極致動人真結局／慘烈壞結局"
+   }
+  ],
+  "locale": "zh-Hant",
+  "ownerId": "c29cd393-779b-4d47-b71a-9f2596bfaa8b",
+  "settings": {
+   "aiMode": "authored",
+   "plugins": {
+    "slide-deck": {
+     "enabled": true
+    },
+    "larch-inventory": {
+     "enabled": true
+    }
+   },
+   "textSpeed": 32,
+   "cardBanner": "none",
+   "cursorMode": "system",
+   "cursorSize": 34,
+   "dialogueUi": {
+    "preset": "cinematic",
+    "fontSize": 25,
+    "textColor": "#f6f2e8",
+    "fontFamily": "serif",
+    "panelColor": "#05070a",
+    "panelWidth": 100,
+    "accentColor": "#b68a3d",
+    "borderColor": "#caa85f",
+    "panelOffset": 0,
+    "backdropBlur": 0,
+    "borderRadius": 0,
+    "nameFontSize": 18,
+    "panelOpacity": 0.84,
+    "panelPadding": 30,
+    "presentation": "gradient",
+    "speakerColor": "#e2c17c",
+    "textOverflow": "grow"
+   },
+   "resolution": {
+    "width": 1920,
+    "height": 1080
+   },
+   "showRpgHud": false,
+   "organization": {
+    "tags": [
+     "LINE社群分享",
+     "gemini"
+    ],
+    "stage": "",
+    "genres": []
+   },
+   "typingEffect": true,
+   "cursorHotspotX": 50,
+   "cursorHotspotY": 50,
+   "cursorRotation": 342,
+   "defaultAiModel": "google/gemini-3.5-flash",
+   "liveApiEnabled": true,
+   "aiDirectorModel": "google/gemini-3.5-flash-lite",
+   "titleCoverShade": 0.58,
+   "aiDirectorUseBgm": true,
+   "autoAdvanceDelay": 1800,
+   "cgGalleryEnabled": true,
+   "customInterfaces": {
+    "dialogue": {
+     "html": "<!-- 最終遺忘的橘色餘燼 - 感官聯覺介面特效 (Synesthesia Interface) -->\n<style>\n  #synesthesia-vignette {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 5;\n    box-shadow: inset 0 0 140px 45px rgba(230, 90, 20, 0.22);\n    transition: box-shadow 2.5s ease-in-out;\n  }\n  #synesthesia-canvas {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 6;\n  }\n  .custom-dialogue-container {\n    position: relative;\n    z-index: 20;\n    background: rgba(20, 15, 25, 0.82);\n    border: 1px solid rgba(243, 156, 18, 0.35);\n    border-radius: 8px;\n    padding: 24px 32px;\n    backdrop-filter: blur(12px);\n    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(230, 90, 20, 0.15);\n  }\n  .custom-speaker {\n    font-size: 1.15rem;\n    font-weight: 700;\n    color: #f39c12;\n    margin-bottom: 8px;\n    letter-spacing: 0.05em;\n  }\n  .custom-text {\n    font-size: 1.15rem;\n    line-height: 1.85;\n    color: #f5eedc;\n    text-shadow: 0 0 8px rgba(243, 156, 18, 0.3);\n    font-family: -apple-system, BlinkMacSystemFont, \"Noto Serif TC\", \"Source Han Serif TC\", serif;\n  }\n</style>\n\n<div id=\"synesthesia-vignette\"></div>\n<canvas id=\"synesthesia-canvas\"></canvas>\n\n<div class=\"custom-dialogue-container\">\n  <div class=\"custom-speaker\" data-larch-slot=\"speaker\"></div>\n  <p class=\"custom-text\" data-larch-slot=\"text\"></p>\n</div>\n\n<script>\n(function() {\n  if (window.__synesthesia_initialized) return;\n  window.__synesthesia_initialized = true;\n\n  const canvas = document.getElementById('synesthesia-canvas');\n  if (!canvas) return;\n  const ctx = canvas.getContext('2d');\n\n  let width = (canvas.width = window.innerWidth);\n  let height = (canvas.height = window.innerHeight);\n\n  window.addEventListener('resize', () => {\n    width = canvas.width = window.innerWidth;\n    height = canvas.height = window.innerHeight;\n  });\n\n  const PARTICLE_COUNT = 38;\n  const particles = [];\n  const colors = [\n    'rgba(224, 135, 133, ',\n    'rgba(243, 156, 18, ',\n    'rgba(211, 84, 0, ',\n    'rgba(192, 108, 132, '\n  ];\n\n  for (let i = 0; i < PARTICLE_COUNT; i++) {\n    particles.push({\n      x: Math.random() * width,\n      y: Math.random() * height,\n      size: Math.random() * 2.8 + 0.8,\n      speedX: (Math.random() - 0.45) * 0.4,\n      speedY: -(Math.random() * 0.5 + 0.15),\n      baseAlpha: Math.random() * 0.45 + 0.25,\n      alpha: 0,\n      color: colors[Math.floor(Math.random() * colors.length)],\n      pulseSpeed: Math.random() * 0.025 + 0.01,\n      angle: Math.random() * Math.PI * 2\n    });\n  }\n\n  function render() {\n    ctx.clearRect(0, 0, width, height);\n\n    for (let i = 0; i < particles.length; i++) {\n      const p = particles[i];\n      p.angle += p.pulseSpeed;\n      p.alpha = p.baseAlpha + Math.sin(p.angle) * 0.18;\n\n      p.x += p.speedX;\n      p.y += p.speedY;\n\n      if (p.y < -10) {\n        p.y = height + 10;\n        p.x = Math.random() * width;\n      }\n      if (p.x < -10) p.x = width + 10;\n      if (p.x > width + 10) p.x = -10;\n\n      const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);\n      gradient.addColorStop(0, p.color + Math.max(0, p.alpha) + ')');\n      gradient.addColorStop(1, p.color + '0)');\n\n      ctx.fillStyle = gradient;\n      ctx.beginPath();\n      ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);\n      ctx.fill();\n    }\n\n    requestAnimationFrame(render);\n  }\n\n  render();\n})();\n</script>",
+     "enabled": true
+    }
+   },
+   "projectThumbnail": "https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/1789394344163_1789392901670_02e7ad94.png",
+   "showVersionBadge": true,
+   "liveApiConfigured": false,
+   "returnToTitleOnEnd": true,
+   "titleScreenEnabled": true,
+   "titleCoverPositionX": 50,
+   "titleCoverPositionY": 50,
+   "aiDirectorMediaScope": "board-only",
+   "aiDirectorAllowPlayerInput": true,
+   "aiDirectorAllowImprovisation": true
+  },
+  "createdAt": "2026-09-14T13:34:23.470Z",
+  "languages": [
+   {
+    "code": "zh-Hant",
+    "label": "繁體中文"
+   }
+  ],
+  "updatedAt": "2026-10-07T06:17:57.823Z",
+  "variables": [
+   {
+    "id": "inventory",
+    "name": "inventory",
+    "type": "string",
+    "label": "背包道具清單",
+    "defaultValue": "[]"
+   },
+   {
+    "id": "time_remaining",
+    "name": "time_remaining",
+    "type": "number",
+    "label": "剩餘行動次數（落日餘暉）",
+    "defaultValue": 4
+   },
+   {
+    "id": "has_ticket",
+    "name": "has_ticket",
+    "type": "number",
+    "label": "是否持有橘色票根",
+    "defaultValue": 0
+   },
+   {
+    "id": "has_rose",
+    "name": "has_rose",
+    "type": "number",
+    "label": "是否持有乾燥玫瑰",
+    "defaultValue": 0
+   },
+   {
+    "id": "has_knob",
+    "name": "has_knob",
+    "type": "number",
+    "label": "是否持有收音機旋鈕",
+    "defaultValue": 0
+   },
+   {
+    "id": "radio_fixed",
+    "name": "radio_fixed",
+    "type": "number",
+    "label": "收音機是否已調頻修復",
+    "defaultValue": 0
+   },
+   {
+    "id": "has_note",
+    "name": "has_note",
+    "type": "number",
+    "label": "是否取得底座信箋",
+    "defaultValue": 0
+   }
+  ],
+  "characters": [
+   {
+    "id": "char-protagonist",
+    "name": "我",
+    "role": "失語女歌手",
+    "slug": "我",
+    "summary": "失語的女性歌手，在落日後台找回最珍視的記憶。",
+    "backstory": "在繁華落盡的劇院後台，面對即將沉落的夕陽，在耳鳴與黑暗中找尋最後的羈絆。",
+    "voiceName": "Chinese (Mandarin)_Gentle_Senior",
+    "expressions": [],
+    "voiceProvider": "minimax"
+   }
+  ],
+  "description": "視覺互動解謎小說：記憶的雙向錯位與單向遺忘。落日的餘暉將老舊的落地窗染成一片融化的橘色，伴隨著不斷減退的視力與耳鳴，你試圖在最後的餘燼中，拼湊出那位坐在三排十四號的人……",
+  "activeBoardId": "board-main",
+  "schemaVersion": 1
+ },
+ "revision": 84
+}
