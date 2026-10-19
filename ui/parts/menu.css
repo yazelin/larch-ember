@@ -1,0 +1,127 @@
+/* @larch-params {
+  "accent": { "type": "color", "label": "餘燼重點色", "labelEn": "Mist accent", "default": "#e8743b" },
+  "open": { "type": "audio", "kind": "sfx", "label": "打開視窗音效", "labelEn": "Window open sound", "default": "/files/ui-sfx/open.mp3" },
+  "close": { "type": "audio", "kind": "sfx", "label": "關閉視窗音效", "labelEn": "Window close sound", "default": "/files/ui-sfx/close.mp3" },
+  "tab": { "type": "audio", "kind": "sfx", "label": "切換分頁音效", "labelEn": "Tab switch sound", "default": "/files/ui-sfx/press.mp3" },
+  "hover": { "type": "audio", "kind": "sfx", "label": "按鈕滑過音效", "labelEn": "Button hover sound", "default": "/files/ui-sfx/hover.mp3" }
+} */
+:scope { --mg-deep: color-mix(in srgb, var(--skin-accent, #e8743b) 38%, #231a13); --mg-ink: #281d16; --mg-soft: #4b3728; --mg-mute: #654a37; --mg-ctl: #b37e57; --mg-line: rgba(67, 49, 36, .16); --mg-edge: rgba(243, 228, 200, .92); --mg-glass: linear-gradient(165deg, rgba(243, 228, 200, .88), rgba(239, 222, 192, .8)); --mg-shadow: 0 26px 64px -18px rgba(56, 41, 30, .34), 0 6px 18px rgba(56, 41, 30, .1); }
+/* 快捷列：一條細長的玻璃膠囊。 */
+:scope[data-larch-ui="toolbar"] { gap: 2px; padding: 4px; border: 1px solid var(--mg-edge); border-radius: 999px; background: rgba(241, 226, 197, .76); box-shadow: inset 0 0 0 1px rgba(67, 49, 36, .1), 0 10px 26px -8px rgba(56, 41, 30, .3); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); }
+:scope[data-larch-ui="toolbar"] button { min-height: 32px; padding: 0 11px; border-radius: 999px; background: transparent; color: #3c2c20; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; font-weight: 600; text-shadow: none; }
+:scope[data-larch-ui="toolbar"] button svg { color: var(--mg-deep); }
+:scope[data-larch-ui="toolbar"] button::after { display: none; }
+:scope[data-larch-ui="toolbar"] button:hover, :scope[data-larch-ui="toolbar"] button:focus-visible { background: #f3e4c8; color: var(--mg-deep); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mg-deep) 30%, transparent); }
+:scope[data-larch-ui="toolbar"] button:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; outline-offset: 1px; }
+:scope[data-larch-ui="toolbar"] button:is([aria-pressed="true"], [aria-expanded="true"]) { background: var(--mg-deep); color: #f3e4c8; box-shadow: none; }
+:scope[data-larch-ui="toolbar"] button:is([aria-pressed="true"], [aria-expanded="true"]) svg { color: #f3e4c8; }
+:scope[data-larch-ui="toolbar"] button:active { scale: .96; }
+:scope[data-larch-ui="toolbar"] button:disabled { background: transparent; color: #866248; box-shadow: none; }
+:scope[data-larch-ui="toolbar"] button:disabled svg { color: #866248; }
+:scope[data-larch-ui="toolbar"] .vn2-dialogue-actions-divider { width: 1px; height: 16px; background: rgba(67, 49, 36, .24); }
+
+/* 設定、存讀檔、對話紀錄：同一片磨砂玻璃，細白邊。 */
+:scope:is([data-larch-ui="settings"], [data-larch-ui="save"]) { border: 1px solid var(--mg-edge); background: var(--mg-glass); color: var(--mg-ink); box-shadow: inset 0 0 0 1px rgba(67, 49, 36, .08), var(--mg-shadow); -webkit-backdrop-filter: blur(22px) saturate(1.5); backdrop-filter: blur(22px) saturate(1.5); border-radius: 30px; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; }
+:scope[data-larch-ui="settings"] { --vn-settings-surface: #f0e0c2 !important; --vn-settings-opacity: 80% !important; --vn-settings-accent: var(--mg-deep) !important; --vn-settings-text: #281d16 !important; --vn-settings-button: #f3e4c8 !important; --vn-settings-button-text: #281d16 !important; --vn-settings-border: #b37e57 !important; --vn-settings-radius: 30px !important; width: min(720px, 100%); background: var(--mg-glass); }
+/* 標題置中：小字、細明體的大標，關閉鈕是右上角一顆細線圓。 */
+:scope:is([data-larch-ui="settings"], [data-larch-ui="save"]) > header { position: relative; display: flex; justify-content: center; align-items: center; min-height: 0; padding: 26px 70px 8px; border: 0; background: transparent; color: var(--mg-ink); text-align: center; }
+:scope > header small { display: block; color: var(--mg-soft); font-size: 10.5px; font-weight: 600; letter-spacing: .42em; }
+:scope > header h2 { margin: 4px 0 0; color: var(--mg-ink); font-family: "Noto Serif TC", "Songti TC", "Source Han Serif TC", "PMingLiU", Georgia, serif; font-size: 26px; font-weight: 300; letter-spacing: .2em; }
+:scope > header > button { display: grid; place-items: center; width: 38px; height: 38px; min-height: 38px; padding: 0; border: 1px solid var(--mg-ctl); border-radius: 50%; background: rgba(243, 228, 200, .55); color: var(--mg-ink); box-shadow: none; }
+:scope:is([data-larch-ui="settings"], [data-larch-ui="save"]) > header > button { position: absolute; right: 20px; top: 20px; }
+:scope > header > button:hover, :scope > header > button:focus-visible { border-color: var(--mg-deep); background: var(--mg-deep); color: #f3e4c8; }
+:scope > header > button:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; }
+:scope > header > button:active { scale: .94; }
+/* 分頁：置中的分段切換鈕。 */
+[data-larch-ui="settings-tabs"] { align-self: center; display: inline-flex; gap: 2px; max-width: calc(100% - 40px); margin: 12px auto 6px; padding: 4px; overflow-x: auto; border-radius: 999px; background: rgba(67, 49, 36, .07); box-shadow: inset 0 0 0 1px rgba(67, 49, 36, .16), inset 0 1px 3px rgba(67, 49, 36, .08); scrollbar-width: none; }
+[data-larch-ui="settings-tab"] { flex: none; min-height: 34px; gap: 7px; padding: 0 18px; border: 0; border-radius: 999px; background: transparent; color: var(--mg-soft); font: 600 13px/1 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; letter-spacing: .06em; box-shadow: none; transition: background .2s, color .2s, box-shadow .2s; }
+[data-larch-ui="settings-tab"] svg { color: currentColor; }
+[data-larch-ui="settings-tab"]:hover { background: rgba(243, 228, 200, .6); color: var(--mg-ink); }
+[data-larch-ui="settings-tab"]:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; outline-offset: 1px; }
+[data-larch-ui="settings-tab"][aria-selected="true"] { background: #f3e4c8; color: var(--mg-deep); box-shadow: inset 0 0 0 1px var(--mg-deep), 0 1px 2px rgba(56, 41, 30, .14), 0 6px 14px -6px rgba(56, 41, 30, .3); }
+[data-larch-ui="settings-tab"]:active { scale: .97; }
+/* 每一列：沒有框，只用髮絲線分開。 */
+[data-larch-ui="settings-body"] { gap: 6px 28px; padding: 12px 34px 30px; scrollbar-width: thin; }
+[data-larch-ui="settings-panel"] { gap: 0; }
+[data-larch-ui="settings-panel"] h4 { color: var(--mg-deep); letter-spacing: .3em; }
+.vn2-menu-row { min-height: 56px; gap: 14px; padding: 10px 4px; border: 0; border-bottom: 1px solid var(--mg-line); border-radius: 0; background: transparent; color: var(--mg-ink); box-shadow: none; transition: background .2s; }
+.vn2-menu-row:hover { background: linear-gradient(90deg, transparent, rgba(243, 228, 200, .6) 20%, rgba(243, 228, 200, .6) 80%, transparent); color: var(--mg-ink); transform: none; }
+.vn2-menu-row > span { color: #3c2c20; font-size: 14px; font-weight: 500; letter-spacing: .04em; }
+.vn2-menu-row svg { color: var(--mg-deep); }
+.vn2-menu-row b { min-width: 54px; color: var(--mg-deep); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.vn2-menu-row input[type="range"] { height: 22px; appearance: none; -webkit-appearance: none; background: transparent; accent-color: var(--mg-deep); cursor: pointer; }
+.vn2-menu-row input[type="range"]::-webkit-slider-runnable-track { height: 2px; border-radius: 2px; background: var(--mg-ctl); }
+.vn2-menu-row input[type="range"]::-webkit-slider-thumb { width: 18px; height: 18px; margin-top: -8px; border: 2px solid var(--mg-deep); border-radius: 50%; background: #f3e4c8; box-shadow: 0 2px 6px rgba(56, 41, 30, .25); appearance: none; -webkit-appearance: none; }
+.vn2-menu-row input[type="range"]::-moz-range-track { height: 2px; border-radius: 2px; background: var(--mg-ctl); }
+.vn2-menu-row input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border: 2px solid var(--mg-deep); border-radius: 50%; background: #f3e4c8; }
+.vn2-menu-row input:focus-visible, .vn2-menu-row select:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; }
+.vn2-menu-row select { flex: 0 1 240px; margin-left: auto; min-height: 36px; padding: 0 30px 0 14px; border: 1px solid var(--mg-ctl); border-radius: 999px; background-color: rgba(243, 228, 200, .78); color: var(--mg-ink); font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; }
+.vn2-menu-toggle > i { width: 42px; height: 24px; border: 1px solid var(--mg-ctl); background: rgba(243, 228, 200, .6); }
+.vn2-menu-toggle > i::after { top: 3px; left: 3px; width: 16px; height: 16px; background: #866248; }
+.vn2-menu-toggle input:checked + i { border-color: var(--mg-deep); background: var(--mg-deep); }
+.vn2-menu-toggle input:checked + i::after { background: #f3e4c8; transform: translateX(18px); }
+.vn2-menu-toggle input:focus-visible + i { outline: 2px solid var(--mg-deep); outline-offset: 3px; }
+.vn2-reading-note { padding: 12px 4px 2px; color: var(--mg-soft); font-size: 12.5px; line-height: 1.8; }
+.vn2-reading-reset, .vn2-menu-actions button { min-height: 40px; padding: 0 18px; border: 1px solid var(--mg-ctl); border-radius: 999px; background: rgba(243, 228, 200, .62); color: var(--mg-ink); box-shadow: none; text-shadow: none; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; font-weight: 600; letter-spacing: .04em; transform: none; justify-self: start; display: inline-flex; align-items: center; gap: 8px; margin: 10px 0 12px; border-bottom: 1px solid var(--mg-ctl); }
+.vn2-reading-reset:hover:not(:disabled), .vn2-reading-reset:focus-visible, .vn2-menu-actions button:hover:not(:disabled), .vn2-menu-actions button:focus-visible { border-color: var(--mg-deep); background: #f3e4c8; color: var(--mg-deep); box-shadow: 0 0 0 3px rgba(243, 228, 200, .55); }
+.vn2-reading-reset:focus-visible, .vn2-menu-actions button:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; }
+.vn2-menu-actions button[aria-pressed="true"] { border-color: var(--mg-deep); background: var(--mg-deep); color: #f3e4c8; box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--mg-deep) 70%, transparent); }
+.vn2-reading-reset:disabled, .vn2-menu-actions button:disabled { border: 1px dashed var(--mg-ctl); background: rgba(237, 219, 188, .7); color: var(--mg-mute); box-shadow: none; cursor: not-allowed; opacity: 1; }
+.vn2-reading-reset span { color: inherit; }
+
+/* 存讀檔：一張張橫式磨砂玻璃卡，截圖在左、資訊在右。 */
+:scope[data-larch-ui="save"] { width: min(1000px, 100%); }
+.save-slot-grid { gap: 14px; padding: 14px 30px 8px; }
+[data-larch-ui="save-slot"] { display: grid; grid-template-columns: 128px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; grid-template-areas: "shot info" "shot act"; gap: 6px 14px; min-height: auto; padding: 10px; overflow: visible; border: 1px solid var(--mg-edge); border-radius: 22px; background: rgba(243, 228, 200, .5); color: var(--mg-ink); box-shadow: inset 0 0 0 1px rgba(67, 49, 36, .09), 0 10px 24px -14px rgba(56, 41, 30, .4); transition: background .2s, box-shadow .2s; }
+[data-larch-ui="save-slot"]:hover { transform: translateY(-2px); background: rgba(243, 228, 200, .82); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mg-deep) 34%, transparent), 0 16px 30px -14px rgba(56, 41, 30, .45); }
+[data-larch-ui="save-slot"] figure { grid-area: shot; position: relative; display: grid; place-items: center; width: 128px; height: auto; min-height: 0; margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(243, 228, 200, .9); border-radius: 15px; background: linear-gradient(160deg, #f1e1c4, #ebd9b9); color: var(--mg-mute); }
+[data-larch-ui="save-slot"] figure::after { display: none; }
+[data-larch-ui="save-slot"] figure img { width: 100%; height: 100%; object-fit: cover; }
+[data-larch-ui="save-slot"] figure svg { width: 20px; height: 20px; color: #976e51; }
+[data-larch-ui="save-slot"] figure span { position: absolute; left: 8px; right: auto; top: 6px; text-shadow: none; color: var(--mg-mute); font-family: "Noto Serif TC", "Songti TC", "Source Han Serif TC", "PMingLiU", Georgia, serif; font-size: 13px; letter-spacing: .1em; }
+[data-larch-ui="save-slot"].is-empty figure { border-style: dashed; border-color: var(--mg-ctl); background: rgba(243, 228, 200, .35); }
+.save-slot-info { grid-area: info; position: static; align-self: start; display: grid; gap: 2px; min-width: 0; margin: 0; padding: 4px 0 0; background: none; color: var(--mg-ink); text-shadow: none; }
+.save-slot-info b, .save-slot-info input.save-slot-name { overflow: hidden; color: var(--mg-ink); font-family: "Noto Serif TC", "Songti TC", "Source Han Serif TC", "PMingLiU", Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .08em; text-overflow: ellipsis; white-space: nowrap; }
+.save-slot-info input.save-slot-name { min-width: 0; width: 100%; padding: 2px 6px; margin: 0 0 0 -6px; text-shadow: none; border: 1px solid transparent; border-radius: 8px; background: transparent; }
+.save-slot-info input.save-slot-name:hover { border-color: var(--mg-line); }
+.save-slot-info input.save-slot-name:focus-visible { border-color: var(--mg-deep); background: #f3e4c8; outline: 2px solid var(--mg-deep); outline-offset: 1px; }
+.save-slot-info span { overflow: hidden; color: #3c2c20; font-size: 12.5px; text-overflow: ellipsis; white-space: nowrap; }
+.save-slot-info small { color: var(--mg-soft); font-size: 11.5px; }
+.save-slot-actions { grid-area: act; position: static; justify-self: end; padding: 0; background: none; }
+.save-slot-actions button { min-height: 40px; padding: 0 18px; border: 1px solid var(--mg-ctl); border-radius: 999px; background: rgba(243, 228, 200, .62); color: var(--mg-ink); box-shadow: none; text-shadow: none; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; font-weight: 600; letter-spacing: .04em; transform: none; min-height: 32px; padding: 0 14px; gap: 6px; font-size: 13px; }
+.save-slot-actions button svg { width: 15px; height: 15px; }
+.save-slot-actions button:hover:not(:disabled), .save-slot-actions button:focus-visible { border-color: var(--mg-deep); background: var(--mg-deep); color: #f3e4c8; box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--mg-deep) 70%, transparent); }
+.save-slot-actions button:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; }
+.save-slot-actions button:disabled { border: 1px dashed var(--mg-ctl); background: rgba(237, 219, 188, .7); color: var(--mg-mute); box-shadow: none; cursor: not-allowed; opacity: 1; }
+.save-slot-pagination { padding: 10px 30px 24px; border: 0; background: transparent; }
+.save-slot-pagination button { min-width: 34px; height: 34px; min-height: 34px; padding: 0 6px; border: 1px solid transparent; border-radius: 999px; background: transparent; color: var(--mg-soft); font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; font-weight: 600; box-shadow: none; }
+.save-slot-pagination > button { border-color: var(--mg-ctl); color: var(--mg-ink); }
+.save-slot-pagination button:hover:not(:disabled) { border-color: var(--mg-deep); background: #f3e4c8; color: var(--mg-deep); }
+.save-slot-pagination button:focus-visible { outline: 2px solid var(--mg-deep); outline-offset: 3px; }
+.save-slot-pagination button:is(.active, [aria-current="page"]) { border-color: var(--mg-deep); background: var(--mg-deep); color: #f3e4c8; }
+.save-slot-pagination button:disabled { border-style: dashed; background: transparent; color: #b78560; opacity: 1; }
+
+/* 對話紀錄：從右邊滑進來的一片玻璃，紀錄之間用髮絲線分開。 */
+:scope[data-larch-ui="history"] { --vn-history-text: #281d16 !important; --vn-history-speaker: var(--mg-deep) !important; --vn-history-accent: var(--mg-deep) !important; --vn-history-muted: #4b3728 !important; --vn-history-border: rgba(67, 49, 36, .16) !important; --vn-history-surface: #f0e0c2 !important; width: min(470px, 100%); border: 0; border-left: 1px solid var(--mg-edge); border-radius: 30px 0 0 30px; background: linear-gradient(180deg, rgba(243, 228, 200, .88), rgba(238, 221, 191, .84)); color: var(--mg-ink); box-shadow: inset 1px 0 0 rgba(67, 49, 36, .08), -30px 0 80px -20px rgba(56, 41, 30, .35); -webkit-backdrop-filter: blur(28px) saturate(1.5); backdrop-filter: blur(28px) saturate(1.5); font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; }
+:scope[data-larch-ui="history"] > header { padding: 30px 26px 14px 30px; border-bottom: 1px solid var(--mg-line); background: transparent; }
+.history-panel-scroll { padding: 6px 26px 30px 30px; scrollbar-width: thin; scrollbar-color: var(--mg-ctl) transparent; }
+[data-larch-ui="history-entry"] { gap: 14px; padding: 16px 0; border: 0; border-bottom: 1px solid var(--mg-line); border-radius: 0; background: transparent; }
+[data-larch-ui="history-entry"] > span { color: var(--mg-mute); font-family: "Noto Serif TC", "Songti TC", "Source Han Serif TC", "PMingLiU", Georgia, serif; font-size: 13px; letter-spacing: .08em; }
+[data-larch-ui="history-entry"] b { color: var(--mg-deep); font-size: 12.5px; font-weight: 700; letter-spacing: .2em; }
+[data-larch-ui="history-entry"] p { color: var(--mg-ink); font-size: 15px; line-height: 1.85; }
+.empty-history { color: var(--mg-soft); }
+@media (max-width: 640px) {
+  :scope:is([data-larch-ui="settings"], [data-larch-ui="save"]) { border-radius: 24px; }
+  :scope:is([data-larch-ui="settings"], [data-larch-ui="save"]) > header { padding: 22px 58px 6px; }
+  :scope:is([data-larch-ui="settings"], [data-larch-ui="save"]) > header > button { right: 14px; top: 16px; }
+  :scope > header h2 { font-size: 22px; }
+  [data-larch-ui="settings-tabs"] { max-width: calc(100% - 24px); }
+  [data-larch-ui="settings-tab"] { padding: 0 12px; }
+  [data-larch-ui="settings-body"] { padding: 8px 18px 22px; }
+  .save-slot-grid { grid-template-columns: minmax(0, 1fr); padding: 10px 14px 6px; }
+  [data-larch-ui="save-slot"] { grid-template-columns: 96px minmax(0, 1fr); }
+  [data-larch-ui="save-slot"] figure { width: 96px; }
+  .save-slot-pagination { padding: 8px 14px 18px; }
+  :scope[data-larch-ui="history"] { border-radius: 24px 0 0 24px; }
+}
+@media (prefers-reduced-motion: reduce) { [data-larch-ui="settings-tab"], .vn2-menu-row, [data-larch-ui="save-slot"] { transition: none; } }

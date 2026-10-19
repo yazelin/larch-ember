@@ -1,0 +1,26 @@
+/* @larch-params {
+  "accent": { "type": "color", "label": "餘燼重點色", "labelEn": "Ember accent", "default": "#e8743b" },
+  "hover": { "type": "audio", "kind": "sfx", "label": "滑過選項音效", "labelEn": "Choice hover sound", "default": "@SFX:hover@" },
+  "select": { "type": "audio", "kind": "sfx", "label": "選定選項音效（鉛筆點紙）", "labelEn": "Choice pick sound", "default": "@SFX:press@" }
+} */
+/* 選項：一張張摺過的歌譜條。選中改用貼邊的餘燼框（inset），不位移、不外推，免得被對話框切掉。 */
+:scope { /*TOKENS*/ --mg-deep: var(--ember-deep); gap: 14px; }
+:scope.vn2-choices-floating { padding: 0; border: 0; background: none; box-shadow: none; backdrop-filter: none; }
+[data-larch-ui="choice"] { position: relative; min-height: 54px; padding: 12px 26px 12px 22px; gap: 16px; overflow: hidden; border: 0; border-left: 3px solid var(--rose); border-radius: 3px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--paper) 94%, transparent), color-mix(in srgb, var(--paper-2) 92%, transparent)); color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--paper-line), 0 10px 26px -12px rgba(0, 0, 0, .75); font-family: var(--serif); font-size: 18px; font-weight: 600; letter-spacing: .06em; text-shadow: none; transition: background .2s, box-shadow .2s, border-color .2s; }
+[data-larch-ui="choice"]::after { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--rule); content: ""; pointer-events: none; }
+[data-larch-ui="choice-index"] { flex: none; padding-right: 14px; border-right: 1px solid var(--pencil); color: var(--ember-deep); font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: .12em; }
+[data-larch-ui="choice-text"] { text-align: left; }
+[data-larch-ui="choice-arrow"] { color: var(--ember-deep); opacity: .8; transition: translate .2s, opacity .2s; }
+[data-larch-ui="choice"]:is(:hover, :focus-visible):not(:disabled) { border-left-color: var(--ember-deep); background: linear-gradient(90deg, #f6e6c6, #ecd2a6); outline: none;
+  box-shadow: inset 0 0 0 2px var(--ember), 0 0 18px -2px rgba(232, 116, 59, .6), 0 10px 26px -12px rgba(0, 0, 0, .75); }
+[data-larch-ui="choice"]:is(:hover, :focus-visible, :active) { transform: none !important; translate: none !important; scale: none !important; }
+[data-larch-ui="choice"]:is(:hover, :focus-visible) [data-larch-ui="choice-arrow"] { opacity: 1; translate: 3px 0; }
+[data-larch-ui="choice"]:focus-visible:not(:disabled) { box-shadow: inset 0 0 0 2px var(--ember-deep), 0 0 0 2px rgba(246, 230, 198, .9), 0 0 18px 0 rgba(232, 116, 59, .6); }
+[data-larch-ui="choice"]:active:not(:disabled) { background: #e8c690; }
+[data-larch-ui="choice"]:disabled { border-left: 3px dashed var(--pencil); background: rgba(206, 188, 158, .75); color: var(--pencil); box-shadow: none; cursor: not-allowed; }
+[data-larch-ui="choice"]:disabled::after { display: none; }
+[data-larch-ui="choice"]:disabled :is([data-larch-ui="choice-index"], [data-larch-ui="choice-arrow"]) { color: var(--pencil); }
+@media (max-width: 640px) { [data-larch-ui="choice"] { min-height: 50px; padding: 10px 18px 10px 16px; gap: 12px; font-size: 16px; } [data-larch-ui="choice-index"] { padding-right: 10px; } }
+@media (prefers-reduced-motion: reduce) { [data-larch-ui="choice"], [data-larch-ui="choice-arrow"] { transition: none; } }

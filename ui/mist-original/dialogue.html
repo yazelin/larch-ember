@@ -1,0 +1,38 @@
+<script type="application/larch-params">
+{
+  "tone": { "type": "select", "label": "色調", "labelEn": "Tone", "options": [{ "value": "day", "label": "晨霧（亮）", "labelEn": "Day (light)" }, { "value": "night", "label": "夜霧（深）", "labelEn": "Night (dark)" }], "default": "day" },
+  "accent": { "type": "color", "label": "霧藍重點色", "labelEn": "Mist accent", "default": "#8fc3ea" },
+  "blur": { "type": "range", "label": "霧化程度", "labelEn": "Blur", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 20 },
+  "advance": { "type": "audio", "kind": "sfx", "label": "下一句音效", "labelEn": "Next line sound", "default": "/skills/morning-glass/sfx/advance.mp3" }
+}
+</script>
+<style>
+:root { --skin-accent: #8fc3ea; --skin-blur: 20px; --deep: color-mix(in srgb, var(--skin-accent) 38%, #0d2238); --glass-a: rgba(255, 255, 255, .84); --glass-b: rgba(240, 246, 251, .76); --edge: rgba(255, 255, 255, .95); --inner: rgba(40, 64, 92, .08); --line: rgba(40, 64, 92, .3); --ink: #1c2633; --soft: #3a4859; --shadow: rgba(30, 52, 80, .3); }
+html[data-skin-tone="night"] { --deep: color-mix(in srgb, var(--skin-accent) 70%, #fff); --glass-a: rgba(22, 30, 42, .68); --glass-b: rgba(14, 20, 30, .62); --edge: rgba(255, 255, 255, .26); --inner: rgba(255, 255, 255, .06); --line: rgba(255, 255, 255, .3); --ink: #f4f7fb; --soft: #d3dbe6; --shadow: rgba(0, 0, 0, .4); }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: transparent; overflow: hidden; }
+body { padding: 8px 10px 8px; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; }
+.box { position: relative; min-height: 152px; padding: 22px clamp(26px, 3.8vw, 60px) 26px; border: 1px solid var(--edge); border-radius: 26px; background: linear-gradient(170deg, var(--glass-a), var(--glass-b)); color: var(--ink); -webkit-backdrop-filter: blur(var(--skin-blur)) saturate(1.45); backdrop-filter: blur(var(--skin-blur)) saturate(1.45); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), inset 0 0 0 1px var(--inner), 0 22px 54px -16px var(--shadow); }
+.box::before { position: absolute; left: 10%; right: 10%; top: -1px; height: 1px; background: linear-gradient(90deg, transparent, #fff, transparent); content: ""; }
+.box::after { position: absolute; left: -1px; top: -1px; width: 220px; height: 120px; border-radius: 26px 0 0 0; background: radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--skin-accent) 32%, transparent), transparent 70%); content: ""; pointer-events: none; }
+.name { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; margin: 0 0 8px; color: var(--ink); font-size: clamp(14px, 1.1vw, 16px); font-weight: 700; letter-spacing: .2em; }
+.name::before { width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--skin-accent); box-shadow: 0 0 0 1px var(--deep), 0 0 10px var(--skin-accent); content: ""; }
+.name::after { width: 110px; height: 1px; flex: none; background: linear-gradient(90deg, var(--line), transparent); content: ""; }
+html:not([data-has-speaker]) .name { display: none; }
+.text { position: relative; z-index: 1; min-height: 3.3em; margin: 0; padding-right: 40px; font-size: var(--larch-text-size, 22px); font-weight: 500; line-height: 1.78; letter-spacing: .03em; white-space: pre-wrap; overflow-wrap: anywhere; }
+html:not([data-has-speaker]) .text { color: var(--soft); }
+.next { position: absolute; right: 18px; bottom: 16px; z-index: 1; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--deep); cursor: pointer; transition: background .2s, border-color .2s; }
+.next::after { width: 8px; height: 8px; margin-top: -4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; content: ""; transform: rotate(45deg); animation: sink 1.8s ease-in-out infinite; }
+.next:hover { border-color: var(--deep); background: rgba(255, 255, 255, .55); }
+.next:focus-visible { outline: 2px solid var(--deep); outline-offset: 3px; }
+.next:active { scale: .94; }
+.next:disabled { opacity: .35; cursor: default; }
+@keyframes sink { 0%, 100% { translate: 0 0; } 50% { translate: 0 3px; } }
+@media (max-width: 640px) { body { padding: 6px 6px 6px; } .box { min-height: 136px; padding: 18px 18px 22px; border-radius: 20px; } .name::after { width: 60px; } .text { font-size: max(17px, var(--larch-text-size, 22px)); padding-right: 30px; } .next { right: 12px; bottom: 12px; } }
+@media (prefers-reduced-motion: reduce) { .next::after { animation: none; } .next { transition: none; } }
+</style>
+<section class="box" aria-label="對話">
+  <div class="name"><span data-larch-slot="speaker"></span></div>
+  <p class="text" data-larch-slot="text"></p>
+  <button class="next" data-larch-action="advance" aria-label="繼續"></button>
+</section>
