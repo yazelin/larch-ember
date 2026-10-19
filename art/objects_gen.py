@@ -51,6 +51,7 @@ TYPES = {
     'b_piano': (3, 2, 1, 'an old black upright piano against a wall, a lamp on top', True, 'magenta'),
     'b_rail': (1, 4, 4, 'a dark wooden stair banister seen from above, running straight down, worn handrail', True, 'magenta'),
     'b_balcony': (12, 3, 2, 'the front edge of an indoor second-floor balcony walkway seen from a top-down RPG angle: an ornate black cast-iron railing along the top, below it a full story-high old red brick wall with one warm brass wall lamp, so the balcony clearly floats one floor above the ground floor', True, 'magenta'),
+    'b_post': (1, 3, 1, 'a tall dark wooden newel post of an old theater staircase, carved top with a small warm brass lamp', True, 'magenta'),
     'b_cases': (2, 2, 1, 'two stacked black flight cases for stage equipment', True, 'magenta'),
     'a_block6': (6, 10, 10, 'a block of old ornate red velvet theater seats seen from above, 5 rows of 6 seats with empty walking rows between them, gold-trimmed armrests', True, 'green'),
     'a_block8': (8, 10, 10, 'a block of old ornate red velvet theater seats seen from above, 5 rows of 8 seats with empty walking rows between them, gold-trimmed armrests', True, 'green'),
@@ -63,7 +64,7 @@ TYPES = {
 
 OBJ_TYPE_MAP = {
     '朝西的窗': 'd_window', '化妝台': 'd_vanity', '首飾盒小桌': 'd_jewel', '收音機桌': 'd_radio', '化妝箱': 'd_case', '衣架': 'd_rack', '椅子': 'd_chair',
-    '化妝間門': 'b_door', '樓梯欄杆': 'b_rail', '陽台前緣': 'b_balcony', '直立鋼琴': 'b_piano', '器材箱': 'b_cases',
+    '化妝間門': 'b_door', '樓梯欄杆': 'b_rail', '陽台前緣': 'b_balcony', '樓梯頂轉角柱': 'b_post', '樓梯底起頭柱': 'b_post', '直立鋼琴': 'b_piano', '器材箱': 'b_cases',
     '左區': 'a_block6', '中區': 'a_block8', '右區': 'a_block6', '鋼琴': 'a_piano', '音控台': 'a_desk',
     '後門': 'l_door', '機車': 'l_scooter', '菜籃': 'l_basket',
 }
