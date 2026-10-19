@@ -33,7 +33,31 @@ WHO = {
                  'calm dark eyes, faint lines at the eye corners, clean jaw. Wearing a plain dark navy shirt with sleeves rolled to the forearm, a black wristwatch. '
                  'Acting: holding out a glass of warm water with both hands toward the viewer, a patient gentle half smile that hides grief; '
                  'steady hands, the look of someone who has been forgotten by the person he loves and stays anyway.'),
+    # ── 第二輪（2026-10-19 作者挑定：余靜 47#4、33#2、25#2、程希 45#3）──
+    'cheng_23': ('CHENG XI at 23, in 2004, the same man as Reference 3 but twenty-two years younger: no grey, smooth skin, messy black hair, thin. '
+                 'Wearing a cheap oversized plaid flannel shirt over a white tee, damp from rain. Acting: holding a single deep crimson rose and a paper ticket stub out with both hands, '
+                 'blushing hard, eyes down, mouth slightly open, unable to say a word. Lit by a warm backstage door lamp on a rainy night.'),
+    'cheng_30': ('CHENG XI at 30, in 2009-2013, the same man as Reference 3 but fifteen years younger: no grey, short neat black hair. '
+                 'Wearing a black crew T-shirt, a monitor headset hanging around his neck, a black wristwatch. Acting: one hand raised slightly as if just pulling a fader down, '
+                 'calm focused eyes with a shy small smile. Warm stage side-light.'),
+    'yu_9': (YU_FACE + 'YU SHU-JING at 9 years old, in 1988, the same girl as Reference 3 as a child: round cheeks, long light-brown hair in a ponytail, '
+             'a Taiwanese elementary school uniform (white short-sleeve shirt, navy pleated skirt) with sleeves rolled, rubber rain boots. '
+             'Acting: holding a green garden hose with both hands, laughing, water splashing. Lit by a warm dusk market light bulb.'),
+    'zhou_62': ('ZHOU WEN-XIONG, 62, her pianist since 2004, called Teacher Zhou: kind face, neat white hair, thin gold-rimmed glasses, a grey cardigan over a white shirt. '
+                'Acting: hands resting on an invisible keyboard edge, looking up with a gentle patient smile, as if waiting for her to sing. Warm stage light.'),
+    'azhe_30': ('TSAI CHE-WEI "A-ZHE", 30, a young sound engineer, Cheng Xi\'s apprentice: short side-swept hair, earnest eyes, black crew T-shirt, a walkie-talkie and headset clipped on. '
+                'Acting: one hand pressing the walkie-talkie button, nervous determined look. Warm backstage light.'),
+    'tao_73': ('AH-TAO, 73, a vegetable vendor from the old Tainan market who watched the heroine grow up: short grey permed curls, a floral blouse, a small jade bracelet, '
+               'deep laugh lines, tanned. Acting: holding a plastic bag of guavas, laughing warmly while calling out a name. Warm dusk light.'),
+    'tao_35': ('AH-TAO at 35, in 1988, the same woman as tao_73 when young: black permed hair under a headscarf, a work apron over a floral blouse, sleeves pushed up. '
+               'Acting: holding a bunch of leafy greens, laughing, splashed with water. Warm dusk market light bulb.'),
+    'yu_father': ('YU BO, 45, in 1988, the heroine\'s father, a fishmonger at the Tainan evening market: tanned weathered face, short hair, a white towel around his neck, '
+                  'a yellow rubber apron and rubber boots, strong forearms. Acting: holding up a big fish on ice with a proud tender grin, looking down at his daughter. Warm dusk market light bulb.'),
+    'dr_lin': ('DR. LIN HUI-RU, 52, a neurologist in Taipei: shoulder-length black hair, a white coat over a navy blouse, a stethoscope, reading glasses pushed up. '
+               'Acting: holding a tablet with brain scan images, a calm kind serious expression, about to deliver hard news gently. Cool clinical white light from a window, a warm tone on the face.'),
 }
+# 身分參考（第三張參考圖）：挑定的立繪
+IDREF = {'cheng_23': 'p_cheng_45', 'cheng_30': 'p_cheng_45', 'yu_9': 'p_yu_25', 'tao_35': None}
 
 
 def gen(job):
@@ -46,8 +70,10 @@ def gen(job):
 
 
 def _gen(codex11, name, n):
-    return codex11.gen(BASE + ' Character: ' + WHO[name], str(RAW / f'{name}_{n}.png'),
-                       refs=[str(STY / 'yu_cover_crop.png'), str(STY / 'cover_full.jpg')], size='1024x1536')
+    refs = [str(STY / 'yu_cover_crop.png'), str(STY / 'cover_full.jpg')]
+    if IDREF.get(name):
+        refs.append(str(R / f'assets/art/{IDREF[name]}.webp'))
+    return codex11.gen(BASE + ' Character: ' + WHO[name], str(RAW / f'{name}_{n}.png'), refs=refs, size='1024x1536')
 
 
 def cut(name, n):
