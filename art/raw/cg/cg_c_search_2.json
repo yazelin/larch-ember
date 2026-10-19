@@ -1,0 +1,8 @@
+{
+ "job": "img_aaca5e4a243032cd1d4b783a",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is CHENG XI at 45: short black hair with grey temples, dark navy shirt with rolled sleeves, black wristwatch. Scene: Night, a modern canal walkway in Tainan with railings and street lamps; police and volunteers with flashlights searching along the walkway, beams sweeping. He stands at the railing shouting a name, phone in hand. Below the railing, out of the light, old dark stone steps lead down to the water, unseen by anyone.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_cheng_45.webp"
+ ]
+}

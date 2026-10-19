@@ -1,0 +1,7 @@
+{
+ "job": "img_f7154543a7d04a152f02287f",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9.  Scene: A small old theater dressing room on the second floor, a big west-facing window full of orange sunset over old Tainan rooftops and a distant tower, a dressing table with a bulb-framed mirror (a small photo tucked in its corner), an old plastic portable radio on a side table under the window, an open notebook and a black wristwatch on the table, an empty clothes rack, a carved jewelry box. No people. Warm golden light with long shadows.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg"
+ ]
+}

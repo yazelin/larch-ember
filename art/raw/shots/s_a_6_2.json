@@ -1,0 +1,8 @@
+{
+ "job": "img_a21978893f10bf00d0e05e0f",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 47 at home: shoulder-length wavy light-brown bob with a few silver strands, wearing a cream knit cardigan over a simple floral house dress, NOT the evening gown, no earrings. Scene: Early morning old Tainan kitchen: she stands at the fridge reading a folded sheet of music held by a magnet, lips moving, morning light.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_47.webp"
+ ]
+}

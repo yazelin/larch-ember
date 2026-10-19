@@ -1,0 +1,7 @@
+{
+ "job": "img_68954c05e53c4df4028d6fa6",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9.  Scene: Wide establishing shot: the arcade of an old 1950s Tainan theater at 15:30, warm afternoon light, a hand-painted farewell poster of a woman singer on the wall (no readable text), scooters parked, an old neon sign off.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg"
+ ]
+}

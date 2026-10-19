@@ -1,0 +1,8 @@
+{
+ "job": "img_be2b922e9779a5c9b91748d2",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 43: the same woman as the reference, hair to the shoulders, a plain grey sweater. Scene: Night, 2022, a Taipei apartment dining table under a pendant lamp; in the background kitchen a man's back washing dishes, steam. She sits writing a letter by hand, pausing with the pen above the paper; an old plastic portable radio beside her with its base cover open. Quiet and heavy.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_47.webp"
+ ]
+}

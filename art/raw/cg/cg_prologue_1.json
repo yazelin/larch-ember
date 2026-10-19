@@ -1,0 +1,9 @@
+{
+ "job": "img_c2d55b0e99e1b8d7efcae317",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 47: shoulder-length wavy light-brown bob with a few silver strands, off-shoulder black lace evening gown, a pair of long drop earrings. Reference 3 is CHENG XI at 45: short black hair with grey temples, dark navy shirt with rolled sleeves, black wristwatch. Scene: Today 15:30, the arcade in front of an old 1950s Tainan theater, a hand-painted farewell poster of a woman singer on the wall (no readable text), warm afternoon light. He holds the side door open with one hand, carrying a makeup case in the other; she steps over the threshold, looking up at the old building with a faint smile of recognition.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_47.webp",
+  "/home/ct/larch-ember/assets/art/p_cheng_45.webp"
+ ]
+}

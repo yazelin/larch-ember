@@ -1,0 +1,9 @@
+{
+ "job": "img_4a46c38a28882236404f75ed",
+ "prompt": "Cinematic anime feature-film still in exactly the painting style of Reference 1 (the original cover): painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is CHENG XI at 45: short black hair with grey temples, dark navy shirt with rolled sleeves, black wristwatch. Reference 3 is AH-TAO at 73: short grey permed curls, floral blouse, jade bracelet. Scene: One week later, night, the old theater full of people, every seat full, everyone holding a single deep crimson rose, the stage empty with one spotlight on an empty microphone stand. In the third row a man sits alone with the seat beside him empty except for a sheet of music folded in four; an old woman in the row behind rests her hand on his shoulder.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_full.jpg",
+  "/home/ct/larch-ember/assets/art/p_cheng_45.webp",
+  "/home/ct/larch-ember/assets/art/p_tao_73.webp"
+ ]
+}

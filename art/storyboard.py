@@ -55,7 +55,7 @@ SHOTS = {
     's_mem4_7': ('mem4_name', '2024 年，台南的老家', ['yu_47', 'cheng_45'], 'cg:cg_2024_name', None),
     's_mem4_8': ('mem4_name', '程希：我是你先生', ['yu_47_home', 'cheng_45'], 'Close two-shot in the dawn kitchen: he says it gently; she repeats the word, tears in her eyes, a small relieved smile.', 's_mem4_7'),
     # 分歧
-    's_branch_1': ('branch_dark', '窗外最後一道光', [], 'The dressing room window gone black, every lamp in the room on, the mirror bulbs glowing; the room suddenly feels unfamiliar.', None),
+    's_branch_1': ('branch_dark', '窗外最後一道光', [], 'The dressing room window gone black, every lamp in the room on, the mirror bulbs glowing; the room suddenly feels unfamiliar. Same room as Reference 2, after dark.', 's_dress_1'),
     's_branch_2': ('branch_dark', '余靜：你去。', ['yu_47', 'cheng_45'], 'He stands at the door with a walkie-talkie, hesitating, looking back at her; she sits at the dressing table and nods at him to go.', 's_branch_1'),
     's_branch_3': ('branch_dark', '他看了她三秒，出去了', ['yu_47'], 'The open empty doorway; she sits alone in the bright dressing room, one hand on the folded paper in her pocket, the old radio beside her, the black window behind.', 's_branch_1'),
     # 開演

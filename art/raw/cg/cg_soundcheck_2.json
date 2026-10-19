@@ -1,0 +1,7 @@
+{
+ "job": "img_ca19587687e557d95994a6d1",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9.  Scene: The view from the stage of an old Tainan theater during soundcheck: one row of stage lights on, a thousand empty red seats in rows, dust in the light. In the third row, the fourteenth seat from the left holds a single deep crimson rose; far at the back, a small glowing mixing desk. Quiet, waiting.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg"
+ ]
+}

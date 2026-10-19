@@ -1,0 +1,10 @@
+{
+ "job": "img_d3dd11b68c60ccda2b0f21fc",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is the previous shot of this same scene: keep the same location, set dressing, lighting, outfits and color grade; this is the next moment. Reference 3 is YU JING at 33: long light-brown wavy hair pinned up loosely, off-shoulder black lace evening gown, long drop earrings. Reference 4 is CHENG XI at 30: short neat black hair, black crew T-shirt, monitor headset around his neck. Scene: Night, by the backstage door: he has stood up, embarrassed, scratching the back of his neck; she faces him close, eyes shining.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/cg/s_mem2_4.webp",
+  "/home/ct/larch-ember/assets/art/p_yu_33.webp",
+  "/home/ct/larch-ember/assets/art/p_cheng_30.webp"
+ ]
+}
