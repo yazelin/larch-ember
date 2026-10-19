@@ -25,6 +25,7 @@ GROUND = {
     'asphalt': (55, 60, 70),
     'sidewalk': (120, 125, 130),
     'concrete': (150, 150, 145),
+    'stairs': (185, 160, 110),
 }
 
 KIND = {
@@ -35,6 +36,7 @@ KIND = {
     '椅': (90, 60, 60),
     '床': (170, 110, 120),
     '雜物': (210, 160, 80),
+    '隔間牆': (170, 170, 175),
 }
 
 
@@ -49,8 +51,8 @@ def ground(d, a):
         dr.line((x * PX, 0, x * PX, Hh * PX), fill=(100, 100, 100), width=1)   # 淡格線
     for y in range(Hh):
         dr.line((0, y * PX, W * PX, y * PX), fill=(100, 100, 100), width=1)
-    os.makedirs(os.path.join(G, 'assets/maps'), exist_ok=True)
-    out = os.path.join(G, f'assets/maps/{a}_blocks.webp')
+    os.makedirs(os.path.join(G, 'art/check/blocks'), exist_ok=True)
+    out = os.path.join(G, f'art/check/blocks/{a}_ground.webp')
     im.save(out, 'WEBP')
     return out
 
@@ -80,7 +82,7 @@ def block(o):
 
 def plan(d, a):
     W, Hh = d['map']['w'], d['map']['h']; S = 48
-    bg_file = os.path.join(G, f'assets/maps/{a}_blocks.webp')
+    bg_file = os.path.join(G, f'art/check/blocks/{a}_ground.webp')
     im = Image.open(bg_file).convert('RGBA').resize((W * S, Hh * S), Image.NEAREST)
     lay = Image.new('RGBA', im.size, (0, 0, 0, 0)); dr = ImageDraw.Draw(lay); f = FONT(12)
     for o in layout.objects(d):
@@ -113,13 +115,7 @@ def main(a):
     d = layout.load(a); errs = layout.check(d)
     if errs: raise SystemExit(f'設計檔 {a} 有問題：\n' + '\n'.join(errs))
     ground(d, a)
-    od = os.path.join(G, f'assets/blocks/{a}')
-    os.makedirs(od, exist_ok=True)
-    for f in os.listdir(od):
-        os.remove(os.path.join(od, f))
-    obs = layout.objects(d)
-    for o in obs:
-        block(o).save(os.path.join(od, f"{o['name']}.webp"), 'WEBP')
+    obs = layout.objects(d)   # 2026-10-20：色塊只放 art/check，不再寫進 assets（不要出貨）
     p = plan(d, a)
     print(f'Done {a}: plan saved to {p}, generated {len(obs)} objects')
 

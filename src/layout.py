@@ -32,6 +32,10 @@ def objects(d):
             o['frame'] = (x - side, y - up, w + 2 * side, h + up)
         o['sort'] = o.get('sort', y + h - 1)
         o['gapset'] = {tuple(c) for c in o.get('gap', [])}
+        # 引擎排序＝自由圖片圖框的下緣那一列。設計上的 sort 比圖框下緣大（只擋視覺的遮擋牆），圖框要往下多留透明列補到 sort
+        fx, fy, fw, fh = o['frame']; o['vis'] = (fx, fy, fw, fh)
+        if o['sort'] > fy + fh - 1:
+            o['frame'] = (fx, fy, fw, fh + o['sort'] - (fy + fh - 1))
     return out
 
 

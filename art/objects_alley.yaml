@@ -1,17 +1,20 @@
 # 後門巷子（m-alley）：傍晚，巷子盡頭是黃昏市場的燈，地上一層沖地流過來的水。
-map: {id: m-alley, w: 18, h: 10}
+# 2026-10-20 照《十一分鐘》標準重做：北牆（戲院後牆）整排畫成牆，後門與市場店面是牆的一段；機車、菜籃貼牆整齊停放。
+map: {id: m-alley, w: 18, h: 12}
 
 ground:
-  - {name: 北牆, kind: border, rects: [[0, 0, 18, 2]]}
-  - {name: 南牆, kind: border, rects: [[0, 8, 18, 2]]}
-  - {name: 巷子, kind: asphalt, rects: [[0, 2, 18, 6]]}
+  - {name: 外牆, kind: border, rects: [[0, 0, 18, 3], [0, 0, 1, 12], [17, 0, 1, 12], [0, 10, 18, 2]]}
+  - {name: 巷子, kind: asphalt, rects: [[1, 3, 16, 7]], desc: 老舊濕潤的柏油巷子，地上幾灘積水映著右邊市場的橘色燈光，右側三分之一明顯更亮更暖}
 
 objects:
-  - {name: 後門, kind: 門, foot: [1, 1, 2, 1], up: 1, desc: 戲院的鐵捲後門，開著}
-  - {name: 機車, kind: 雜物, foot: [6, 6, 2, 1], up: 1, desc: 兩台停著的機車}
-  - {name: 菜籃, kind: 雜物, foot: [10, 2, 1, 1], up: 1, desc: 一個塑膠菜籃}
-  - {name: 市場的燈, kind: 門, foot: [17, 3, 1, 4], desc: 巷子盡頭黃昏市場的燈}
+  - {name: 北牆左, type: l_wall, kind: 隔間牆, foot: [1, 2, 2, 1], up: 2, desc: 戲院後牆的舊紅磚牆（左段）}
+  - {name: 後門, type: l_door, kind: 門, foot: [3, 2, 2, 1], up: 2, desc: 戲院的鐵製後門，門上一盞暖黃的燈泡；門前（4,3）是觸發點}
+  - {name: 北牆中, type: l_wall, kind: 隔間牆, foot: [5, 2, 8, 1], up: 2, desc: 同上，紅磚牆}
+  - {name: 市場店面, type: l_shop, kind: 隔間牆, foot: [13, 2, 4, 1], up: 2, desc: 巷子盡頭市場的店面：紅白條紋帆布遮陽棚，橘色紙燈籠掛成一排}
+  - {name: 機車, type: l_scooters, kind: 雜物, foot: [6, 3, 4, 1], up: 1, desc: 兩台並排停在牆邊的機車，一白一紅，車頭朝西}
+  - {name: 菜籃, type: l_crates, kind: 雜物, foot: [12, 3, 1, 1], up: 1, desc: 兩層疊起來的塑膠菜籃}
 
 points:
-  hero_start: [2, 3]
-  tao: [12, 4]
+  hero_start: [4, 4]
+  door: [4, 3]
+  tao: [12, 5]

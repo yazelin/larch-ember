@@ -52,67 +52,67 @@ def dressing():
     p = P('dressing')
     events = [
         hero(*p['hero_start']),
-        npc('cheng', *p['cheng'], W('cheng-45'), direction='up', name='先生', actions=[card('m_dressing_intro')]),
-        ev('intro', 1, 9, trigger='auto', once=True, actions=[card('m_dressing_intro')]),
-        look('window', 11, 2, '窗', [card('m_window')]),
-        look('mirror', 3, 3, '鏡子角落的照片', [card('m_mirror'), card('mem2_monitor'), card('mem2_rose'), card('mem2_europe'), card('mem2_stage')]),
-        look('notebook', 5, 3, '筆記本', [card('m_notebook'), card('mem3_forget')]),
-        look('rose', 3, 6, '化妝箱', [card('m_rose_dry'), card('mem1_door')]),
-        look('jewel', 7, 3, '首飾盒', [card('m_jewelry'), setv('knob', True)], [cond('knob', False)]),
-        look('radio', 12, 4, '阿爸的收音機',
+        npc('cheng', *p['cheng'], W('cheng-45'), direction='left', name='先生', actions=[card('m_dressing_intro')]),
+        ev('intro', 2, 10, trigger='auto', once=True, actions=[card('m_dressing_intro')]),
+        look('window', *p['window'], '窗', [card('m_window')]),
+        look('mirror', *p['mirror'], '鏡子角落的照片', [card('m_mirror'), card('mem2_monitor'), card('mem2_rose'), card('mem2_europe'), card('mem2_stage')]),
+        look('notebook', *p['notebook'], '筆記本', [card('m_notebook'), card('mem3_forget')]),
+        look('rose', *p['case'], '化妝箱', [card('m_rose_dry'), card('mem1_door')]),
+        look('jewel', *p['jewel'], '首飾盒', [card('m_jewelry'), setv('knob', True)], [cond('knob', False)]),
+        look('radio', *p['radio'], '阿爸的收音機',
              [branch([cond('knob', True)],
                      [card('m_radio_on'), card('m_letter'), card('mem4_clinic'), card('mem4_letter'), card('mem4_name'), card('m_note'), setv('letter', True)],
                      [card('m_radio')])], [cond('letter', False)]),
-        ev('door', *p['door'], name='門', trigger='touch', actions=[jump('m-backstage', arrive={'x': 4, 'y': 2, 'direction': 'down'})]),
+        ev('door', *p['door'], name='門', trigger='touch', actions=[jump('m-backstage', arrive={'x': 4, 'y': 4, 'direction': 'down'})]),
         # 四條線都走過、回到化妝間：天黑
-        ev('dark', 1, 8, trigger='auto', once=True, conditions=ALL_DONE, actions=[jump('branch_dark')]),
+        ev('dark', 3, 10, trigger='auto', once=True, conditions=ALL_DONE, actions=[jump('branch_dark')]),
     ]
     guide = [G('收音機旁邊的東西', 'radio', [cond('letter', False)]), G('走廊盡頭的鋼琴聲', 'door', [cond('zhou', False)]),
              G('天黑之前，回到化妝間', 'dark', ALL_DONE)]
     return _map('m-dressing', '化妝間', 'dressing', events, guide,
-                _env('#ff9a4d', 0.22, [('lamp-mirror', 4, 2, 4, '#ffd59a', 0.05), ('sunset', 11, 1, 6, '#ff8a3d', 0)]))
+                _env('#ff9a4d', 0.22, [('lamp-mirror', 3, 4, 4, '#ffd59a', 0.05), ('sunset', 8, 3, 7, '#ff8a3d', 0)]))
 
 
 def backstage():
     p = P('backstage')
     events = [
-        hero(4, 2, 'down'),   # 每張地圖都要剛好一位主角；實際位置由跳轉的 arrive 決定
+        hero(*p['hero_start'], 'down'),   # 每張地圖都要剛好一位主角；實際位置由跳轉的 arrive 決定
         npc('zhou', *p['piano'], W('zhou'), direction='up', name='彈琴的人', conditions=[cond('zhou', False)],
             actions=[card('m_corridor'), setv('zhou', True)]),
-        ev('to-dressing', 4, 1, name='化妝間', trigger='touch', actions=[jump('m-dressing', arrive={'x': 8, 'y': 9, 'direction': 'up'})]),
-        ev('to-stage', 1, 8, name='側台門', trigger='touch', actions=[jump('m-auditorium', arrive={'x': 1, 'y': 3, 'direction': 'right'})]),
-        ev('to-alley', 16, 11, name='後門', trigger='touch', actions=[jump('m-alley', arrive={'x': 2, 'y': 3, 'direction': 'down'})]),
+        ev('to-dressing', *p['to_dressing'], name='化妝間', trigger='touch', actions=[jump('m-dressing', arrive={'x': 15, 'y': 4, 'direction': 'down'})]),
+        ev('to-stage', *p['stage_door'], name='側台門', trigger='touch', actions=[jump('m-auditorium', arrive={'x': 2, 'y': 5, 'direction': 'right'})]),
+        ev('to-alley', *p['back_door'], name='後門', trigger='touch', actions=[jump('m-alley', arrive={'x': 4, 'y': 4, 'direction': 'down'})]),
     ]
     guide = [G('彈琴的人', 'zhou', [cond('zhou', False)]), G('側台門：通觀眾席', 'to-stage', [cond('seat', False)]),
              G('後門：通巷子', 'to-alley', [cond('tao', False)]), G('回化妝間', 'to-dressing', ALL_DONE)]
     return _map('m-backstage', '後台', 'backstage', events, guide,
-                _env('#ffb070', 0.18, [('wall-lamp', 7, 5, 4, '#ffcf8a', 0.06), ('stair-lamp', 14, 3, 3, '#ffd59a', 0.04)]))
+                _env('#ffb070', 0.18, [('wall-lamp-a', 4, 9, 4, '#ffcf8a', 0.06), ('wall-lamp-b', 11, 9, 4, '#ffcf8a', 0.06), ('stair-lamp', 18, 5, 3, '#ffd59a', 0.04)]))
 
 
 def auditorium():
     p = P('auditorium')
     events = [
-        hero(1, 3, 'right'),
+        hero(*p['hero_start'], 'right'),
         npc('azhe', *p['azhe'], W('azhe'), direction='up', name='阿哲', actions=[say('阿哲：余老師，聲音我會顧好。')]),
         look('seat314', *p['seat314'], '三排十四號', [card('m_auditorium'), setv('seat', True)], [cond('seat', False)]),
-        ev('to-backstage', 0, 3, name='側台門', trigger='touch', actions=[jump('m-backstage', arrive={'x': 2, 'y': 8, 'direction': 'right'})]),
+        ev('to-backstage', *p['side_door'], name='側台門', trigger='touch', actions=[jump('m-backstage', arrive={'x': 2, 'y': 12, 'direction': 'right'})]),
     ]
     guide = [G('三排十四號', 'seat314', [cond('seat', False)]), G('回後台', 'to-backstage', [cond('seat', True)])]
     return _map('m-auditorium', '觀眾席', 'auditorium', events, guide,
-                _env('#ff9a5a', 0.15, [('stage', 12, 1, 9, '#ffd59a', 0.03)], dark=0.25))
+                _env('#ff9a5a', 0.15, [('stage', 12, 4, 9, '#ffd59a', 0.03)], dark=0.25))
 
 
 def alley():
     p = P('alley')
     events = [
-        hero(2, 3, 'down'),
+        hero(*p['hero_start'], 'down'),
         npc('tao', *p['tao'], W('tao-73'), direction='left', name='阿桃姨', conditions=[cond('tao', False)],
             actions=[card('m_alley'), card('mem0_market'), setv('tao', True)]),
-        ev('to-backstage', 1, 2, name='後門', trigger='touch', actions=[jump('m-backstage', arrive={'x': 15, 'y': 11, 'direction': 'left'})]),
+        ev('to-backstage', *p['door'], name='後門', trigger='touch', actions=[jump('m-backstage', arrive={'x': 21, 'y': 12, 'direction': 'left'})]),
     ]
     guide = [G('有人在叫你', 'tao', [cond('tao', False)]), G('回後台', 'to-backstage', [cond('tao', True)])]
     return _map('m-alley', '後門巷子', 'alley', events, guide,
-                _env('#ff8a3d', 0.25, [('market', 17, 5, 6, '#ffb060', 0.08)], dark=0.3))
+                _env('#ff8a3d', 0.25, [('market', 16, 6, 6, '#ffb060', 0.08)], dark=0.3))
 
 
 def all_maps():
