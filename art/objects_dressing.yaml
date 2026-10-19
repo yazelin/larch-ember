@@ -1,0 +1,24 @@
+# 永明戲院二樓化妝間（m-dressing）：17:00–18:00 探索主地圖。單位：格。
+map: {id: m-dressing, w: 16, h: 11}
+
+ground:
+  - {name: 北牆, kind: border, rects: [[0, 0, 16, 2]]}
+  - {name: 西牆, kind: border, rects: [[0, 0, 1, 11]]}
+  - {name: 東牆, kind: border, rects: [[15, 0, 1, 11]]}
+  - {name: 南牆, kind: border, rects: [[0, 10, 7, 1], [9, 10, 7, 1]]}
+  - {name: 木地板, kind: wood, rects: [[1, 2, 14, 8]]}
+  - {name: 地毯, kind: rug, rects: [[5, 5, 6, 3]]}
+
+objects:
+  - {name: 朝西的窗, kind: 門, foot: [9, 1, 5, 1], up: 1, desc: 一大面朝西的老木窗，窗外是台南老街屋頂與落日}
+  - {name: 化妝台, kind: 桌, foot: [2, 2, 4, 1], up: 2, desc: 燈泡框化妝鏡與化妝台，鏡角貼一張小照片，桌上攤著筆記本與一支黑色手錶}
+  - {name: 首飾盒小桌, kind: 桌, foot: [6, 2, 1, 1], up: 1, desc: 小邊桌上一個雕花首飾盒}
+  - {name: 收音機桌, kind: 桌, foot: [11, 3, 2, 1], up: 1, desc: 窗下小桌上一台舊的塑膠殼手提收音機}
+  - {name: 化妝箱, kind: 雜物, foot: [2, 7, 2, 1], up: 1, desc: 打開的化妝箱，最下層一個小玻璃盒}
+  - {name: 衣架, kind: 櫃, foot: [14, 4, 1, 3], up: 1, desc: 空衣架，掛著一件深藍外套}
+  - {name: 椅子, kind: 椅, foot: [4, 4, 1, 1], up: 1, desc: 化妝台前的木椅}
+
+points:
+  hero_start: [8, 8]
+  door: [8, 10]
+  cheng: [9, 9]

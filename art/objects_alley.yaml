@@ -1,0 +1,17 @@
+# 後門巷子（m-alley）：傍晚，巷子盡頭是黃昏市場的燈，地上一層沖地流過來的水。
+map: {id: m-alley, w: 18, h: 10}
+
+ground:
+  - {name: 北牆, kind: border, rects: [[0, 0, 18, 2]]}
+  - {name: 南牆, kind: border, rects: [[0, 8, 18, 2]]}
+  - {name: 巷子, kind: asphalt, rects: [[0, 2, 18, 6]]}
+
+objects:
+  - {name: 後門, kind: 門, foot: [1, 1, 2, 1], up: 1, desc: 戲院的鐵捲後門，開著}
+  - {name: 機車, kind: 雜物, foot: [6, 6, 2, 1], up: 1, desc: 兩台停著的機車}
+  - {name: 菜籃, kind: 雜物, foot: [10, 2, 1, 1], up: 1, desc: 一個塑膠菜籃}
+  - {name: 市場的燈, kind: 門, foot: [17, 3, 1, 4], desc: 巷子盡頭黃昏市場的燈}
+
+points:
+  hero_start: [2, 3]
+  tao: [12, 4]
