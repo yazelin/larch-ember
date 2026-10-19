@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>最終遺忘的橘色餘燼</title>
+<meta name="description" content="改編自真實故事。台南老戲院，歌手余靜得了早發性阿茲海默症，在告別演唱會的那個下午，一邊失去字，一邊找回一個人。Larch 上的視覺小說＋RPG，三個結局。">
+<meta name="theme-color" content="#140b07">
+<link rel="canonical" href="https://yazelin.github.io/larch-ember/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="最終遺忘的橘色餘燼">
+<meta property="og:description" content="改編自真實故事：兩位罹患阿茲海默症、仍站上舞台唱完最後一場的歌手。">
+<meta property="og:image" content="https://yazelin.github.io/larch-ember/media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23140b07'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff9a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap">
+<style>
+:root{--bg:#140b07;--panel:#201109;--ink:#fbeedd;--muted:#cdb59a;--amber:#ffab4d;--rose:#d9455a;--line:rgba(255,171,77,.22);
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;--sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--w:min(1080px,calc(100% - 32px))}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.9 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--amber);overflow-wrap:anywhere}
+img{max-width:100%;display:block}
+.w{width:var(--w);margin:0 auto}
+.top{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;gap:18px;height:56px;padding:0 max(16px,calc(50% - 540px));background:linear-gradient(rgba(20,11,7,.94),rgba(20,11,7,.7));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top b{font:900 17px/1 var(--serif);letter-spacing:.08em;margin-right:auto;white-space:nowrap}
+.top nav{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none}
+.top nav a{color:var(--muted);text-decoration:none;font:500 14px/1 var(--sans);white-space:nowrap}
+.top nav a:hover{color:var(--amber)}
+.burger{display:none;place-content:center;gap:5px;width:36px;height:36px;padding:0;border:1px solid var(--line);background:rgba(255,171,77,.06);cursor:pointer}
+.burger i{display:block;width:16px;height:2px;background:var(--amber);transition:transform .2s,opacity .2s}
+.top.open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.top.open .burger i:nth-child(2){opacity:0}
+.top.open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 40%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,11,7,.05) 20%,rgba(20,11,7,.82) 62%,rgba(20,11,7,.95)),linear-gradient(0deg,var(--bg),transparent 25%)}
+.hero .w{position:relative;z-index:1;padding:90px 0 60px;display:flex;justify-content:flex-end}
+.hero .in{max-width:30em}
+.badge{display:inline-block;padding:7px 14px;border:1px solid var(--amber);color:var(--amber);font:700 14px/1 var(--sans);letter-spacing:.2em;background:rgba(20,11,7,.6)}
+h1{margin:16px 0 10px;font:900 clamp(40px,6.4vw,76px)/1.15 var(--serif);letter-spacing:.04em;text-shadow:0 0 30px rgba(255,171,77,.35)}
+.lead{margin:12px 0 0;font:500 clamp(17px,1.5vw,19px)/1.9 var(--sans)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 24px;font:700 16px/1 var(--sans);letter-spacing:.1em;text-decoration:none;border-radius:2px}
+.btn.main{background:var(--amber);color:#1a0d05}
+.btn.main[aria-disabled=true]{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);cursor:default}
+.btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px var(--amber)}
+.btn.ghost:hover{background:rgba(255,171,77,.14)}
+.meta{margin-top:18px;font:500 14px/1.7 var(--sans);color:var(--muted)}
+section.blk{padding:96px 0 0}
+.tag{font:700 13px/1 var(--sans);letter-spacing:.3em;color:var(--rose)}
+h2{margin:12px 0 26px;font:900 clamp(26px,3.4vw,40px)/1.35 var(--serif);letter-spacing:.03em}
+h3{font:700 20px/1.5 var(--serif);margin:34px 0 8px}
+.prose p{max-width:36em;margin:0 0 1.1em}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.panel{background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);padding:22px 26px}
+.panel p{margin:0}
+.panel small{display:block;margin-top:10px;color:var(--muted);font-size:13px}
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{padding:14px 14px 18px;background:linear-gradient(180deg,rgba(255,171,77,.08),var(--panel) 60%);box-shadow:inset 0 0 0 1px var(--line)}
+.card img{width:100%;height:250px;object-fit:contain;object-position:50% 100%}
+.card small{display:block;margin-top:10px;font:700 12px/1.4 var(--sans);color:var(--rose);letter-spacing:.12em}
+.card b{display:block;font:900 19px/1.4 var(--serif)}
+.card p{margin:6px 0 0;font-size:14.5px;line-height:1.75;color:#ead7bf}
+.card .alt{display:flex;gap:8px;margin-top:10px}
+.card .alt img{height:96px;width:auto;flex:1;min-width:0;opacity:.9}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:0 0 28px;padding:0;list-style:none}
+.steps li{padding:18px 20px;background:var(--panel);box-shadow:inset 0 0 0 1px var(--line)}
+.steps b{display:block;font:700 17px/1.5 var(--serif);color:var(--amber);margin-bottom:4px}
+.steps span{font-size:15px;color:#ead7bf;line-height:1.8}
+figure.shot{margin:0}
+figure.shot img{width:100%;box-shadow:0 0 0 1px var(--line)}
+figure.shot figcaption{margin-top:8px;font-size:14px;color:var(--muted)}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.tl li{position:relative;padding:0 0 20px 26px}
+.tl li::before{content:"";position:absolute;left:-5px;top:11px;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+.tl .t{font:700 16px/1.5 var(--serif);color:var(--amber)}
+.tl p{margin:2px 0 0;color:#ead7bf;max-width:42em}
+.tl li.now::before{background:var(--rose)}.tl li.now .t{color:var(--rose)}
+details.spoil{margin-top:18px}
+details.spoil>summary{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font:700 14px/1.4 var(--sans);letter-spacing:.08em;color:var(--rose);box-shadow:inset 0 0 0 1px rgba(217,69,90,.6);list-style:none}
+details.spoil>summary::-webkit-details-marker{display:none}
+details.spoil[open]>summary{margin-bottom:16px}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.cg figure{margin:0;padding:8px 8px 10px;background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);cursor:zoom-in}
+.cg img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.cg figcaption{margin-top:8px;font:500 14px/1.5 var(--sans);color:var(--muted)}
+.cg figcaption b{color:var(--ink)}
+.cg figure:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.real{max-width:46em}
+.real h3{border-top:1px solid var(--line);padding-top:26px}
+.real p{margin:0 0 14px}
+.real ul{margin:0 0 14px;padding-left:1.3em}
+.real li{margin:0 0 6px}
+.real .src{font-size:14.5px;color:var(--muted)}
+.real .src li{margin:0 0 4px}
+.real details.spoil{margin:8px 0 20px}
+.real details.spoil p{color:#ead7bf;font-size:15.5px}
+.note{margin-top:22px;font-size:14.5px;color:var(--muted);max-width:44em}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:8px 0 0}
+.facts div{padding:16px 18px;background:var(--panel);box-shadow:inset 0 -1px 0 var(--line)}
+.facts dt{font:700 12px/1.4 var(--sans);color:var(--rose);letter-spacing:.12em}
+.facts dd{margin:6px 0 0;font-size:15px;color:#ead7bf}
+footer.end{margin-top:110px;padding:40px 0 90px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+.rise{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.rise.in{opacity:1;transform:none}
+.lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;align-content:center;gap:14px;padding:56px 16px 24px;background:rgba(10,5,3,.95)}
+.lb[hidden]{display:none}
+.lb figure{margin:0;max-width:min(1280px,100%)}
+.lb img{display:block;max-width:100%;max-height:calc(100svh - 190px);margin:0 auto;object-fit:contain}
+.lb figcaption{margin-top:10px;font:500 14px/1.5 var(--sans);color:var(--muted)}
+.lb-bar{display:flex;gap:10px}
+.lb-bar button,.lb-x{border:1px solid var(--amber);background:rgba(255,171,77,.08);color:var(--amber);font:700 15px/1 var(--sans);cursor:pointer;padding:10px 18px}
+.lb-x{position:fixed;top:12px;right:12px}
+@media (min-width:900px){.cast{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (max-width:760px){
+  body{font-size:16px}
+  .top{display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:0 8px;height:auto;min-height:56px;padding:10px 16px}
+  .top b{grid-row:1;grid-column:2;justify-self:center;margin:0}
+  .top .burger{display:grid;grid-row:1;grid-column:1}
+  .top nav{display:none;grid-column:1/-1;flex-direction:column;gap:0;padding:6px 0 12px;border-top:1px solid var(--line)}
+  .top.open nav{display:flex}
+  .top nav a{padding:13px 4px;font-size:16px;border-bottom:1px solid rgba(255,171,77,.1)}
+  .top.open{background:rgba(20,11,7,.98)}
+  .hero>img{object-position:28% 40%}
+  .hero::after{background:linear-gradient(0deg,rgba(20,11,7,.98) 38%,rgba(20,11,7,.5) 66%,rgba(20,11,7,.05) 90%)}
+  .hero .w{align-self:flex-end;justify-content:flex-start}
+  .two{grid-template-columns:1fr}
+  .cast{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{padding:10px 10px 14px}
+  .card img{height:190px}
+  .card p{font-size:13.5px}
+  .cg{grid-template-columns:1fr}
+  section.blk{padding-top:72px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rise{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><button type="button" class="burger" id="burger" aria-label="開啟選單" aria-expanded="false" aria-controls="topnav"><i></i><i></i><i></i></button><b>最終遺忘的橘色餘燼</b>
+  <nav aria-label="頁面導覽" id="topnav"><a href="#story">故事</a><a href="#real">改編自真實故事</a><a href="#people">人物</a><a href="#play">怎麼玩</a><a href="#timeline">時間線</a><a href="#cg">畫面</a><a href="#refs">參考資料</a><a href="#making">製作紀錄</a><a href="#credits">名單與授權</a></nav>
+</header>
+
+<section class="hero" aria-label="最終遺忘的橘色餘燼">
+  <img src="media/cover.webp" alt="黃昏的化妝間，余靜托著腮看向窗外的落日，桌上有一朵深紅玫瑰、一張泛黃的票根和一台老收音機">
+  <div class="w"><div class="in">
+    <span class="badge">改編自真實故事</span>
+    <h1>最終遺忘的橘色餘燼</h1>
+    <p class="lead">原型是兩位罹患阿茲海默症、仍然站上舞台唱完最後一場的歌手：Tony Bennett 與 Lady Gaga 的最後兩場演唱會，以及 Glen Campbell 的告別巡演。我們把主角改成一位女歌手。</p>
+    <div class="btns">
+      <a class="btn main" href="#play" aria-disabled="true" title="上線後補">試玩連結：上線後補</a>
+      <a class="btn ghost" href="#real">原型與參考資料</a>
+    </div>
+    <div class="meta">視覺小說＋RPG · 三個結局 · Larch</div>
+  </div></div>
+</section>
+
+<section class="blk w" id="story">
+  <div class="two">
+    <div class="prose rise">
+      <div class="tag">STORY</div>
+      <h2>告別演唱會的那個下午</h2>
+      <p>四十七歲的歌手余靜得了早發性阿茲海默症，回到家鄉台南，要在永明戲院唱最後一場。這座老戲院是她 2004 年第一次開售票演唱會的地方。</p>
+      <p>下午三點半進後台，晚上七點半開演。陪她的是一個男人：他把化妝間的燈一盞一盞打開，替她遞水，提醒她下一句歌詞。她覺得這位先生讓人安心，卻想不起他是誰。</p>
+      <p>她記得快四十年前父親魚攤收攤後，地上的水光。她記得 2004 年坐在三排十四號、一句話也說不出來的年輕人。落日在窗外一點一點退，她能想起的字也一個一個少下去。</p>
+    </div>
+    <div class="panel rise">
+      <p>「你不記得他也沒關係，唱歌給他聽。」</p> <!-- speak-tw-ok 劇中信的原文 -->
+      <small>余靜寫給以後的自己的信，遊戲裡收音機底座的蓋板下面</small>
+    </div>
+  </div>
+</section>
+
+<section class="blk w" id="real">
+  <div class="tag">TRUE STORY</div>
+  <h2>改編自真實故事</h2>
+  <div class="real">
+    <p>這個故事的骨架來自兩位真實的歌手。Tony Bennett 2016 年確診阿茲海默症，2021 年 8 月 95 歲生日前後，和 Lady Gaga 在紐約 Radio City Music Hall 開了兩場演唱會，被視為他最後一次對觀眾演出。Glen Campbell 2011 年公開確診，隨即展開告別巡演，樂團裡有他自己的孩子。</p>
+    <p>遊戲裡不出現兩位的名字，人物與劇情是虛構的。台下認不出人，音樂一響、站上舞台就回來；照顧的人一次只問一個問題；唱完之後她不記得自己唱過。這些在兩位原型身上都有報導記下。</p>
+    <p>病的部分也照醫學資料寫：余靜是早發性阿茲海默症，先是唱歌忘詞、說話卡住，之後才開始認不出人。熟悉的歌留得最久，傍晚最難熬，失智者有可能走失。每一項的說明與出處在下面的<a href="#refs">參考資料</a>，一條一條附了連結。</p>
+  </div>
+</section>
+
+<section class="blk w" id="people">
+  <div class="tag">CHARACTERS</div>
+  <h2>五個人</h2>
+  <div class="cast">
+    <div class="card rise"><img src="media/p-yu-47.webp" alt="余靜，四十七歲" loading="lazy"><small>歌手 · 47 歲</small><b>余靜</b>
+      <p>本名余淑靜，台南人，父親在戲院附近的黃昏市場賣魚。聲音偏低、有點沙，她說自己唱得不算最好，可是一個字都不肯放掉。緊張時摸左耳的長耳墜，上台前一定喝一口溫水。玩家操作她。</p>
+      <div class="alt"><img src="media/p-yu-33.webp" alt="余靜，三十三歲" loading="lazy"><img src="media/p-yu-25.webp" alt="余靜，二十五歲" loading="lazy"></div></div>
+    <div class="card rise"><img src="media/p-cheng-45.webp" alt="程希，四十五歲" loading="lazy"><small>音控師 · 45 歲</small><b>程希</b>
+      <p>她的丈夫，以前是她的音控師。話很少，手很穩。每次試音前，先把化妝間的每一盞燈全部打開。今天他一路陪著她，問她問題時只給一個選項。</p>
+      <div class="alt"><img src="media/p-cheng-23.webp" alt="程希，二十三歲" loading="lazy"></div></div>
+    <div class="card rise"><img src="media/p-zhou.webp" alt="周老師" loading="lazy"><small>鍵盤手 · 62 歲</small><b>周老師</b>
+      <p>周文雄，從 2004 年那場就替她彈琴。排練時只要他彈起前奏，她就回來了。</p></div>
+    <div class="card rise"><img src="media/p-azhe.webp" alt="阿哲" loading="lazy"><small>音控 · 30 歲</small><b>阿哲</b>
+      <p>蔡哲維，跟著程希學了十年。今天是他第一次在程希不在旁邊的情況下，扛余靜的場子。</p></div>
+    <div class="card rise"><img src="media/p-tao.webp" alt="阿桃姨" loading="lazy"><small>市場的鄰居 · 73 歲</small><b>阿桃姨</b>
+      <p>以前在余靜父親的魚攤隔壁賣菜，看著她長大，叫她「淑靜仔」。今天坐在觀眾席。</p></div>
+  </div>
+  <p class="note">劇中還有余靜的父親、診斷她的神經科林醫師、電台主持人與其他工作人員，以回憶或聲音的方式出現。</p>
+</section>
+
+<section class="blk w" id="play">
+  <div class="tag">HOW TO PLAY</div>
+  <h2>怎麼玩</h2>
+  <ul class="steps">
+    <li class="rise"><b>走過四張地圖</b><span>化妝間、後台、戲院觀眾席、後門巷子。走到物件前，意識會被拉回過去：1988 年的魚攤、2004 年的後台門口、2009 到 2013 年的舞台、2021 年的第一次忘詞、2022 年的診間。</span></li>
+    <li class="rise"><b>字會隨落日掉</b><span>落日西沉，余靜的內心話與道具名稱會一個字一個字變成「……」。回憶清楚，現在越來越模糊。</span></li>
+    <li class="rise"><b>沒有失敗條件</b><span>字會掉，燈會越開越多，落日一定會沉，這些是時間在走。程希問的問題永遠只有一個選項。</span></li>
+    <li class="rise"><b>天黑時選一次</b><span>18:00 天黑，她心裡聽見三個聲音，玩家選她聽見誰。三個結局，三條都是愛。</span></li>
+  </ul>
+  <figure class="shot rise"><img src="media/maps.webp" alt="四張地圖的遊戲畫面：化妝間、後台、觀眾席、後門巷子" loading="lazy"><figcaption>四張地圖的遊戲畫面，左上起依序是化妝間、後台、觀眾席、後門巷子（本機預覽器截圖）。</figcaption></figure>
+</section>
+
+<section class="blk w" id="timeline">
+  <div class="tag">TIMELINE</div>
+  <h2>那二十二年</h2>
+  <ol class="tl">
+    <li><div class="t">1988</div><p>九歲，每天放學陪父親收攤、沖地，把魚箱抬到運河邊的石階上刷洗。</p></li>
+    <li><div class="t">2004 年 10 月 14 日</div><p>二十五歲，在永明戲院開第一場售票演唱會，只賣出四百多張，大多是家鄉的人。</p></li>
+    <li><div class="t">2008</div><p>〈餘燼〉走紅。</p></li>
+    <li><div class="t">2012</div><p>第一次到歐洲開華人巡演。封面是她三十三歲在歐洲巡演的一晚。</p></li>
+    <li><div class="t">2021 年 12 月</div><p>疫情後復出的第一場，在台中，第一次在台上忘詞。</p></li>
+    <li><div class="t">2022</div><p>確診，繼續唱了一年。</p></li>
+    <li><div class="t">2023</div><p>停止巡演，家屬公開病情，搬回台南，住進父母的老房子。</p></li>
+    <li class="now"><div class="t">2026 年 10 月 14 日</div><p>告別演唱會。同一座戲院，同一天。</p></li>
+  </ol>
+</section>
+
+<section class="blk w" id="cg">
+  <div class="tag">GALLERY</div>
+  <h2>畫面</h2>
+  <div class="cg">
+    <figure class="rise" tabindex="0"><img src="media/cover.webp" alt="封面：化妝間的余靜" loading="lazy"><figcaption><b>封面</b>　2012 年，歐洲巡演的一晚</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-prologue-1.webp" alt="戲院騎樓，程希扶著側門，余靜抬頭看著老戲院" loading="lazy"><figcaption><b>序：最後一場</b>　15:30，永明戲院</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-soundcheck-2.webp" alt="試音，周老師彈琴，余靜站在舞台上" loading="lazy"><figcaption><b>試音</b>　16:00</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-dress-2.webp" alt="化妝間的窗，窗外是落日" loading="lazy"><figcaption><b>化妝間</b>　朝西的窗</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-mem1-2.webp" alt="2004 年，雨後的後台門口，年輕男人遞出玫瑰" loading="lazy"><figcaption><b>2004，後台門口</b>　回憶</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-mem2-2.webp" alt="2009 年，舞台側邊，她回頭，側台有人在推推桿" loading="lazy"><figcaption><b>2009，兩秒半</b>　回憶</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-mem2-10.webp" alt="2013 年，空舞台上兩個人在聚光燈下跳舞" loading="lazy"><figcaption><b>2013，空舞台</b>　回憶</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-mem3-1.webp" alt="2021 年，台上的余靜停住，眼前是看不清的提詞螢幕" loading="lazy"><figcaption><b>2021，第一次忘詞</b>　回憶</figcaption></figure>
+    <figure class="rise" tabindex="0"><img src="media/cg-mem4-1.webp" alt="2022 年，診間，醫師、余靜與程希" loading="lazy"><figcaption><b>2022，診間</b>　回憶</figcaption></figure>
+  </div>
+  <details class="spoil">
+    <summary>結局後的畫面（結局劇透，看過再開）</summary>
+    <div class="cg">
+      <figure tabindex="0"><img src="media/cg-a-6.webp" alt="結局 A 尾聲：清晨的廚房" loading="lazy"><figcaption><b>三排十四號</b>　結局 A 尾聲</figcaption></figure>
+      <figure tabindex="0"><img src="media/cg-b-3.webp" alt="結局 B：謝幕" loading="lazy"><figcaption><b>餘燼</b>　結局 B</figcaption></figure>
+      <figure tabindex="0"><img src="media/cg-c-9.webp" alt="結局 C：天亮的運河邊" loading="lazy"><figcaption><b>天黑以後</b>　結局 C</figcaption></figure>
+    </div>
+  </details>
+</section>
+
+<section class="blk w" id="refs">
+  <div class="tag">REFERENCES</div>
+  <h2>參考資料</h2>
+  <div class="real">
+    <p>下面是做這個故事時查的全部資料，以及每一項改進故事的哪裡。報導與論文的內容由 AI 協助查找整理，再逐條對過原文，請以原始來源為準。有幾條連結目前打不開或需要訂閱，我們沒能重新核對內容，已在該條標明，站上的敘述不依賴它們。</p>
+
+    <h3>原型一：Tony Bennett 與最後兩場演唱會</h3>
+    <ul>
+      <li>爵士歌手 Tony Bennett 2016 年確診阿茲海默症（Hollywood Reporter 寫 2016 年；CBS《60 Minutes》寫神經科醫師 Gayatri Devi 2017 年診斷，兩個來源不一致）。家人 2021 年 2 月公開。</li>
+      <li>太太 Susan Benedetto 說：他認得她和孩子，但他不知道自己生病了。他大約五年前開始記不住常合作樂手的名字，平常大多待在紐約的公寓，翻書、看老照片，每天跟 Susan 去中央公園散步。</li>
+      <li>Gayatri Devi 醫師說他的海馬迴（她稱為記憶的中央車站）運作得不好，但音樂記憶、表演者的能力還在。醫師的建議，Susan 轉述是：他想唱就讓他唱。</li>
+      <li>排練時，伴奏 Lee Musiker 一彈，他就開始唱，不看筆記、不用提詞卡，一小時的曲目全憑記憶。</li>
+      <li>2021 年 8 月，95 歲生日前後，他和 Lady Gaga 在 Radio City Music Hall 開了兩場演唱會，6,000 個座位全滿，唱了十幾首歌，至少 20 次起立鼓掌，有幾處小失誤，觀眾不在意。</li>
+      <li>排練的前幾週，他叫 Lady Gaga「sweetheart」，她不確定他知不知道她是誰；她用簡單的問題跟他說話。正式演出她一上台，他說出「Lady Gaga」，她說那是 Tony 很久以來第一次叫出她的名字。</li>
+      <li>後台他問：「我要唱幾首？」Susan 一句一句告訴他接下來要做什麼。他看見觀眾、舉起雙手的那一刻，Susan 說他變回他自己，像按下開關。</li>
+      <li>Lady Gaga 扶他下台，對他說能護送他下台是她的榮幸。幾天後在中央公園被問起那場演唱會，他說：「I don't know what you mean.」他不記得自己唱過。Lady Gaga 被問這是不是一個悲傷的故事，她回答：「No.」</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>台下認不出人，音樂一響、站上舞台就回來；照顧的人一句一句提醒、只給一個選項；唱完之後她不記得自己唱過。</p></details>
+    <ul class="src">
+      <li>CBS News《Tony Bennett and Lady Gaga prepare for Bennett's last big concert》（2021-10-03）：<a href="https://www.cbsnews.com/news/tony-bennett-lady-gaga-alzheimers-disease-60-minutes-2021-10-03/" target="_blank" rel="noopener">cbsnews.com</a></li>
+      <li>The Hollywood Reporter《Lady Gaga, Tony Bennett》：<a href="https://www.hollywoodreporter.com/music/music-news/lady-gaga-tony-bennett-alzheimers-disease-1235025307/" target="_blank" rel="noopener">hollywoodreporter.com</a></li>
+      <li>Anderson Cooper on Witnessing Tony Bennett's Final Act（tonybennett.com）：<a href="https://tonybennett.com/news-detail.php?id=179" target="_blank" rel="noopener">tonybennett.com</a></li>
+    </ul>
+
+    <h3>原型二：Glen Campbell 的告別巡演</h3>
+    <ul>
+      <li>鄉村歌手 Glen Campbell 2011 年公開確診阿茲海默症，隨即開始告別巡演，一起上台的有他自己的孩子。</li>
+      <li>整趟巡演靠提詞機記自己的歌詞。在納許維爾萊曼禮堂（Ryman Auditorium）那場，提詞機壞了，他拿這件事開玩笑，把場面救了回來。</li>
+      <li>紀錄片《Glen Campbell: I'll Be Me》（2014，James Keach 導演）記下這趟巡演。太太 Kim Campbell 說：Glen 什麼都很平靜地接受，觀眾也感受到了，「他們不在乎，他們是來為他加油的」。</li>
+      <li>2016 年 Kim 說他進入晚期，生活起居都需要人協助，失去大部分用語言溝通的能力，回到全天候照護；他的狀態平靜，對微笑與親吻仍有反應。</li>
+      <li>2017 年 8 月 8 日過世，81 歲。紀錄片的主題曲〈I'm Not Gonna Miss You〉由 Campbell 與 Julian Raymond 合寫，入圍奧斯卡最佳原創歌曲。</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>提詞機、出錯的那一刻、家人在台上台下陪著他；回頭看舊影像的那一幕；忘記的人不會痛，會痛的是還記得的人。</p></details>
+    <ul class="src">
+      <li>Fox News《Glen Campbell's wife says singer has lost ability to speak》：<a href="https://www.foxnews.com/entertainment/glen-campbells-wife-says-singer-has-lost-ability-to-speak" target="_blank" rel="noopener">foxnews.com</a></li>
+      <li>Wikipedia《Glen Campbell: I'll Be Me》：<a href="https://en.wikipedia.org/wiki/Glen_Campbell:_I%27ll_Be_Me" target="_blank" rel="noopener">wikipedia.org</a></li>
+      <li>NPR《'No Shame': Glen Campbell Documentary Follows Singer's Goodbye Tour》（2014-10-27）：<a href="https://www.npr.org/2014/10/27/359314188/no-shame-glen-campbell-documentary-follows-singers-goodbye-tour" target="_blank" rel="noopener">npr.org</a></li>
+      <li>NPR《Encore: Glen Campbell Documents Farewell Tour In 'I'll Be Me'》（2016-08-31）：<a href="https://www.npr.org/2016/08/31/492133087/encore-glen-campbell-documents-farewell-tour-in-ill-be-me" target="_blank" rel="noopener">npr.org</a></li>
+    </ul>
+
+    <h3>早發性阿茲海默症與少詞型失語症</h3>
+    <ul>
+      <li>65 歲以前發病稱為早發性，佔阿茲海默症的比例不到一成，常在 40、50 多歲出現，也可能更早（Medical News Today）。</li>
+      <li>以語言症狀為主的類型之一叫少詞型原發性漸進性失語症（logopenic variant PPA），主要困難是找詞與複誦句子；阿茲海默症的病理是這一型的常見原因（Wikipedia、Frontiers in Neurology 的個案報告）。</li>
+      <li>單看找不到詞不能診斷，需要醫師完整評估。</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>她先是唱歌時忘詞、講話卡住，之後才開始認不出人；「失語」與「遺忘」在她身上是同一件事。</p></details>
+    <ul class="src">
+      <li>BrightFocus Foundation《Early-Onset Alzheimer's Disease》：<a href="https://brightfocus.org/alzheimers/news/early-onset-alzheimers-disease" target="_blank" rel="noopener">brightfocus.org</a>（連結目前回 404，內容未能核對）</li>
+      <li>Stanford ADRC 2019 簡報（Jacob Hall）：<a href="https://aemstage.med.stanford.edu/content/dam/sm/adrc/documents/2019-ADRC-jacob-hall.pdf" target="_blank" rel="noopener">stanford.edu</a>（本次無法開啟，內容未能核對）</li>
+      <li>Medical News Today《Early-onset Alzheimer's》：<a href="https://www.medicalnewstoday.com/articles/315247" target="_blank" rel="noopener">medicalnewstoday.com</a></li>
+      <li>Wikipedia《Primary progressive aphasia》：<a href="https://en.wikipedia.org/wiki/Primary_progressive_aphasia" target="_blank" rel="noopener">wikipedia.org</a></li>
+      <li>Huang 等，《Case Report: A neurolinguistic and neuroimaging study on a Chinese follow-up case with logopenic-variant of primary progressive aphasia》，Frontiers in Neurology，2022（PMC9530806）：<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9530806/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a></li>
+      <li>Cochrane 繁體中文摘要〈原發性漸進性失語症〉：<a href="https://www.cochrane.org/zh-hant/evidence/CD015067_does-non-invasive-brain-stimulation-or-language-training-help-people-primary-progressive-aphasia" target="_blank" rel="noopener">cochrane.org</a></li>
+    </ul>
+
+    <h3>熟悉的歌留得最久</h3>
+    <ul>
+      <li>Jacobsen、Stelzer、Fritz、Chételat、La Joie、Turner，〈Why musical memory can be preserved in advanced Alzheimer's disease〉，《Brain》138(8):2438–2450，2015，doi:10.1093/brain/awv135。</li>
+      <li>研究先用 7T 功能性磁振造影，在 32 位健康的年輕人身上找出存放「聽了很久的歌」的腦區（尾側前扣帶迴、腹側前輔助運動區），再用 20 位阿茲海默症患者的影像資料比對：這兩個區域的萎縮與葡萄糖代謝下降，比腦的其他部分少。</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>她忘了他的名字，還唱得出那首唱了十八年的歌；歌是她找回他的路。</p></details>
+    <ul class="src">
+      <li>Brain 期刊原文：<a href="https://academic.oup.com/brain/article/138/8/2438/330617" target="_blank" rel="noopener">academic.oup.com</a></li>
+      <li>Neuroscience News 報導：<a href="https://neurosciencenews.com/musical-memory-alzheimers-2144/" target="_blank" rel="noopener">neurosciencenews.com</a></li>
+    </ul>
+
+    <h3>日落症候群：傍晚最難熬</h3>
+    <ul>
+      <li>失智症常見的「日落症候群」（sundowning）：混亂與焦躁多在下午後段、傍晚到夜間出現。UCLA Health 引述研究，約 19% 的失智者有這個現象，多在中後期；Medical News Today 引 2019 年一項 104 位阿茲海默症患者的研究，將近 28%。</li>
+      <li>可能的原因包括身心疲憊、體內生理時鐘（褪黑激素）紊亂、光線太亮或太暗、視力在昏暗中更差。</li>
+      <li>照顧上的做法：作息固定、把費力的活動排在白天前段、傍晚安排輕鬆的事（散步、音樂、一起安靜待著）、光線與噪音維持適中。新出現的混亂要就醫。</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>落日是她最難撐的時候，所以要在天黑前把自己找回來。程希一到傍晚就把化妝間的燈全部打開，那是他從 2009 年起的老習慣，2022 年以後，剛好也是照顧的方法。</p></details>
+    <ul class="src">
+      <li>Alzheimer's Association 西北俄亥俄分會《Time Change Can Prompt Sleep and Behavioral Issues》：<a href="https://alz.org/nwohio/News/Time-Change-Can-Prompt-Sleep-and-Behavioral-Issues?lang=en-US" target="_blank" rel="noopener">alz.org</a></li>
+      <li>UCLA Health（Keith Vossel, MD）《What Is Sundown Syndrome?》：<a href="https://uclahealth.acquiaedge.net/departments/neurology/keith-vossel-md-what-sundown-syndrome-symptoms-causes-and" target="_blank" rel="noopener">uclahealth.org</a></li>
+      <li>Medical News Today《Sundowning》：<a href="https://www.medicalnewstoday.com/articles/314685" target="_blank" rel="noopener">medicalnewstoday.com</a></li>
+    </ul>
+
+    <h3>走失</h3>
+    <ul>
+      <li>美國阿茲海默症協會的數字（National Council on Aging 引述）：每 10 位失智者約有 6 位會走失。走失可能因車流、地形、天氣而受傷。</li>
+      <li>失智者可能認不出熟悉的地方，包括自己的家，於是一直走下去找熟悉的東西；也會往還認得的地方走；沒被滿足的需要（餓、痛、想上廁所）也會讓人走出去。警訊包括提到要去做一份早已沒有的工作的事、問起已過世的家人。</li>
+      <li>台灣：TVBS 健康 2021 年 11 月報導，全台每年有超過兩萬名失蹤人口，失蹤長者每 2 位就有 1 位可能是失智者；前一年警方受理的 4,500 多件失蹤人口中，有 2,145 位是失智症患者。</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>結局 C：天黑時她以為是 1988 年，父親在市場等她回去幫忙收攤，她從後門出去找他；程希沿著她小時候走過的路找她。她離開是因為愛，劇本本來就會走到這裡。</p></details>
+    <ul class="src">
+      <li>National Council on Aging《Understanding Wandering Risks》：<a href="https://www.ncoa.org/article/understanding-wandering-risks/" target="_blank" rel="noopener">ncoa.org</a></li>
+      <li>Mount Vernon Gazette《Senior Living: Six in 10 People with Dementia Will Wander》（2024-02-27）：<a href="https://m.mountvernongazette.com/news/2024/feb/27/senior-living-six-in-10-people-with-dementia-will-wander/" target="_blank" rel="noopener">mountvernongazette.com</a></li>
+      <li>TVBS 健康《失蹤長者每 2 位就有 1 位失智》：<a href="https://health.tvbs.com.tw/medical/330462" target="_blank" rel="noopener">tvbs.com.tw</a></li>
+      <li>報導者《失智友善》專題：<a href="https://www.twreporter.org/topics/dementia-friendly-policy" target="_blank" rel="noopener">twreporter.org</a></li>
+      <li>UPMC《Wandering Tendencies in Patients with Alzheimer's and Dementia》：<a href="https://dam.upmc.com/services/seniors/resources-for-caregivers/wandering-tendencies-patients-alzheimers-dementia" target="_blank" rel="noopener">upmc.com</a></li>
+      <li>AllSeniors《What Is Wandering Behavior in Dementia?》：<a href="https://allseniors.org/faqs/what-is-wandering-behavior-in-dementia/" target="_blank" rel="noopener">allseniors.org</a></li>
+    </ul>
+
+    <h3>越早的記憶，留得越久</h3>
+    <ul>
+      <li>Ribot 定律（Théodule Ribot，1881）：逆行性失憶時，近的記憶比遠的記憶更容易先失去，記憶有時間梯度。不是每位失憶的人都符合。</li>
+      <li>研究檔另列了 2016 年《Journal of Alzheimer's Disease》的一篇研究，認為比起「多久以前」，「被重溫過幾次」更能解釋哪些舊記憶留得住。該頁面本次回 403，內容未能核對，站上不引用它的結論。</li>
+    </ul>
+    <details class="spoil"><summary>改編進劇情的部分（有劇透）</summary>
+      <p>她記得 2004 年那場與童年的市場，因為那是她在訪問裡講過無數次的故事；她記得三排十四號那個說不出話的年輕人，記不得「那個年輕人就是丈夫」，因為這個連結是 2011 年以後才有的。</p></details>
+    <ul class="src">
+      <li>Wikipedia《Ribot's law》：<a href="https://en.wikipedia.org/wiki/Ribot%27s_law" target="_blank" rel="noopener">wikipedia.org</a></li>
+      <li>Journal of Alzheimer's Disease（2016）：<a href="https://content.iospress.com/articles/journal-of-alzheimers-disease/jad150722" target="_blank" rel="noopener">iospress.com</a>（連結回 403，內容未能核對）</li>
+      <li>少詞型個案報告（PMC9530806，同上 Frontiers in Neurology 個案報告）：<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9530806/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a></li>
+    </ul>
+
+    <h3>永明戲院的參考</h3>
+    <ul>
+      <li>永明戲院是虛構的。命名參考台灣老戲院常見的「永」字，例如台南鹽水的永成戲院：1942 年建，前身是碾米廠，1945 年 12 月 1 日開臺，電影與戲劇兼演，1991 年左右結束營業，後來整修並成為台南市歷史建築。</li>
+      <li>台南現存的老戲院：全美戲院（仍在營業、手繪看板）、電姬戲院（立面列歷史建築）。這兩項取自下列報導，未另外查證。</li>
+    </ul>
+    <ul class="src">
+      <li>名人帶路：沈方正帶玩台南鹽水：<a href="https://n.yam.com/Article/20240611275399" target="_blank" rel="noopener">yam.com</a></li>
+      <li>全美戲院介紹（ARTOGO）：<a href="https://artogo.co/exhibition/mcuarch19/work/8c23a3c25805" target="_blank" rel="noopener">artogo.co</a></li>
+      <li>TVBS《老戲院整修建物惹議 台南市府盼擬對策》：<a href="https://news.tvbs.com.tw/life/1147553" target="_blank" rel="noopener">tvbs.com.tw</a></li>
+    </ul>
+    <p class="note">本作是虛構的故事。余靜、程希與所有人物、永明戲院、〈餘燼〉等歌曲都是虛構的。Tony Bennett、Lady Gaga、Glen Campbell 是真實的人，這裡引用的是公開報導，劇中沒有使用他們的名字，也不代表他們或家人的立場。</p>
+  </div>
+</section>
+
+<section class="blk w" id="making">
+  <div class="tag">MAKING</div>
+  <h2>製作紀錄</h2>
+  <div class="real">
+    <p>劇本的方向、角色與設計由作者決定，作者也審稿。文字由 AI 依作者的方向與審稿意見寫（主要用 codex）。美術由 AI 生圖，作者挑選：立繪、CG、背景、封面。配樂的器樂由 AI（gemini-web）生成，歌曲由作者在 Suno 製作。地圖與程式由 AI 製作，包含測試。</p>
+    <p>這個作品有原版：2026 年 9 月第二屆創作者挑戰的版本。這一版重寫了劇本與設計，封面沿用原版。原版的六個問題（三排十四號沒有名字、失語失憶視力三件事沒有病因、道具來由說不通、行動力像扣點數、壞結局與前面的她接不上、簡介的想法沒有演出來）是重寫的起點。</p>
+    <p>這一版沒有配音。台詞以文字呈現。</p>
+    <p>參考資料的查找由 AI 協助，作者明確要求把原型與醫學研究的出處放在公開站，讓讀的人知道這是改編自真實故事。</p>
+  </div>
+</section>
+
+<section class="blk w" id="credits">
+  <div class="tag">CREDITS</div>
+  <h2>製作名單與授權</h2>
+  <dl class="facts">
+    <div><dt>作者</dt><dd>林亞澤（yaze）</dd></div>
+    <div><dt>平台</dt><dd>Larch：視覺小說與 RPG 地圖、劇情卡</dd></div>
+    <div><dt>文字</dt><dd>AI（codex 等），依作者的方向與審稿</dd></div>
+    <div><dt>美術</dt><dd>AI 生圖（codex），作者挑選</dd></div>
+    <div><dt>配樂</dt><dd>器樂：gemini-web；歌曲：作者在 Suno 製作</dd></div>
+    <div><dt>地圖與程式</dt><dd>AI 製作，原始碼在 <a href="https://github.com/yazelin/larch-ember" target="_blank" rel="noopener">GitHub</a></dd></div>
+  </dl>
+  <p class="note">致 Tony Bennett、Lady Gaga、Glen Campbell，以及他們身邊的人。故事借用的是公開報導裡他們在舞台上與舞台下的樣子，我們對這些報導記下的事懷著敬意。</p>
+  <p class="note">〈天黑黑〉是台灣傳統童謠，屬公眾領域。劇中的歌曲〈餘燼〉〈晚安，台南〉與其他曲目是原創。</p>
+  <p class="note">程式碼（<code>src/</code>、<code>tests/</code>、<code>art/*.py</code>、<code>site/</code>）以 MIT 授權；故事文字、美術與本站素材以 CC BY-NC 4.0 授權（姓名標示、非商業），原始檔在 <a href="https://github.com/yazelin/larch-ember" target="_blank" rel="noopener">GitHub</a>。</p>
+</section>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="大圖">
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <div class="lb-bar"><button type="button" id="lb-prev" aria-label="上一張">‹</button><button type="button" id="lb-next" aria-label="下一張">›</button></div>
+  <button type="button" class="lb-x" id="lb-x" aria-label="關閉">×</button>
+</div>
+
+<footer class="end">
+  <p>最終遺忘的橘色餘燼 · 林亞澤 · 2026</p>
+</footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var lb = $("lb"), cur = 0, list = [];
+  function visible() { return [].slice.call(document.querySelectorAll(".cg figure")).filter(function (f) { return f.offsetParent !== null; }); }
+  function show(i) {
+    cur = (i + list.length) % list.length; var f = list[cur], img = f.querySelector("img");
+    $("lb-img").src = img.src; $("lb-img").alt = img.alt; $("lb-cap").innerHTML = f.querySelector("figcaption").innerHTML;
+  }
+  function open(f) { list = visible(); show(list.indexOf(f)); lb.hidden = false; document.body.style.overflow = "hidden"; $("lb-x").focus(); }
+  function close() { lb.hidden = true; document.body.style.overflow = ""; if (list[cur]) list[cur].focus(); }
+  [].forEach.call(document.querySelectorAll(".cg figure"), function (f) {
+    f.addEventListener("click", function () { open(f); });
+    f.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(f); } });
+  });
+  $("lb-x").addEventListener("click", close);
+  $("lb-prev").addEventListener("click", function () { show(cur - 1); });
+  $("lb-next").addEventListener("click", function () { show(cur + 1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+  document.addEventListener("keydown", function (e) { if (lb.hidden) return; if (e.key === "Escape") close(); if (e.key === "ArrowLeft") show(cur - 1); if (e.key === "ArrowRight") show(cur + 1); });
+  var els = document.querySelectorAll(".rise");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  } else els.forEach(function (el) { el.classList.add("in"); });
+  var top = document.querySelector(".top"), b = $("burger");
+  var set = function (on) { top.classList.toggle("open", on); b.setAttribute("aria-expanded", on); b.setAttribute("aria-label", on ? "關閉選單" : "開啟選單"); };
+  b.addEventListener("click", function () { set(!top.classList.contains("open")); });
+  top.querySelectorAll("nav a").forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+})();
+</script>
+<!-- yz-promo-footer v11 | 三件套+BMC 注意力效果 | https://github.com/yazelin/promo-footer-skill -->
+<script>
+(function(){"use strict";
+if(window.__yzPromoInit)return;window.__yzPromoInit=1;
+/* 開啟計數。只送站名,後端只記「哪天、哪站、幾次」,不存 IP、不設 cookie、不給識別碼。
+   有一半的作品是純靜態沒後端,以前根本不知道有沒有人在用。這行要放在下面那個
+   prefers-reduced-motion 的 return 之前,不然關動畫的人就不會被算到。 */
+try{if(location.hostname==="yazelin.github.io"&&navigator.sendBeacon)navigator.sendBeacon("https://k-rider-api.yazelinj303.workers.dev/hit?s=larch-ember")}catch(e){}
+try{if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return}catch(e){}
+var REPO="larch-ember",INJECT=true,ADDBLOG=true;
+var GH=REPO?"https://github.com/yazelin/"+REPO:"https://github.com/yazelin";
+var LINES=["嘿，這裡這裡，我是咖啡按鈕","我是一顆很努力的按鈕，求被點一下","噓，亞澤不知道我在偷偷拉贊助","你看我跳得這麼賣力，不請一杯嗎？","不請也沒關係，你來玩我就很開心","免費給你玩的，想寵亞澤再說","一杯咖啡，是下一個作品的燃料","你的咖啡會變成下一個作品，真的","咖啡因進入亞澤體內，程式碼就會自己寫完","亞澤說，有人請咖啡他會開心一整天","只是一杯咖啡，但亞澤會記得你","用愛發電中，咖啡因可提升發電效率","覺得好玩嗎？抖內一下下","這個網站沒有廣告，只有我這顆按鈕"];
+var ICONS={blog:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>',gh:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>',fb:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>',bmc:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107c-.086-.01-.18-.025-.258-.036-.243-.036-.484-.08-.724-.13-.111-.027-.111-.185 0-.212h.005c.277-.06.557-.108.838-.147h.002c.131-.009.263-.032.394-.048a25.076 25.076 0 013.426-.12c.674.019 1.347.067 2.017.144l.228.031c.267.04.533.088.798.145.392.085.895.113 1.07.542.055.137.08.288.111.431l.319 1.484a.237.237 0 01-.199.284h-.003c-.037.006-.075.01-.112.015a36.704 36.704 0 01-4.743.295 37.059 37.059 0 01-4.699-.304c-.14-.017-.293-.042-.417-.06-.326-.048-.649-.108-.973-.161-.393-.065-.768-.032-1.123.161-.29.16-.527.404-.675.701-.154.316-.199.66-.267 1-.069.34-.176.707-.135 1.056.087.753.613 1.365 1.37 1.502a39.69 39.69 0 0011.343.376.483.483 0 01.535.53l-.071.697-1.018 9.907c-.041.41-.047.832-.125 1.237-.122.637-.553 1.028-1.182 1.171-.577.131-1.165.2-1.756.205-.656.004-1.31-.025-1.966-.022-.699.004-1.556-.06-2.095-.58-.475-.458-.54-1.174-.605-1.793l-.731-7.013-.322-3.094c-.037-.351-.286-.695-.678-.678-.336.015-.718.3-.678.679l.228 2.185.949 9.112c.147 1.344 1.174 2.068 2.446 2.272.742.12 1.503.144 2.257.156.966.016 1.942.053 2.892-.122 1.408-.258 2.465-1.198 2.616-2.657.34-3.332.683-6.663 1.024-9.995l.215-2.087a.484.484 0 01.39-.426c.402-.078.787-.212 1.074-.518.455-.488.546-1.124.385-1.766zm-1.478.772c-.145.137-.363.201-.578.233-2.416.359-4.866.54-7.308.46-1.748-.06-3.477-.254-5.207-.498-.17-.024-.353-.055-.47-.18-.22-.236-.111-.71-.054-.995.052-.26.152-.609.463-.646.484-.057 1.046.148 1.526.22.577.088 1.156.159 1.737.212 2.48.226 5.002.19 7.472-.14.45-.06.899-.13 1.345-.21.399-.072.84-.206 1.08.206.166.281.188.657.162.974a.544.544 0 01-.169.364zm-6.159 3.9c-.862.37-1.84.788-3.109.788a5.884 5.884 0 01-1.569-.217l.877 9.004c.065.78.717 1.38 1.5 1.38 0 0 1.243.065 1.658.065.447 0 1.786-.065 1.786-.065.783 0 1.434-.6 1.499-1.38l.94-9.95a3.996 3.996 0 00-1.322-.238c-.826 0-1.491.284-2.26.613z"/></svg>'};
+var CSS="@keyframes yzIdle{0%,55%,100%{transform:translateY(0)}62%{transform:translateY(-4px)}70%{transform:translateY(0)}78%{transform:translateY(-2px)}84%{transform:translateY(0)}}"+
+".yz-idle{animation:yzIdle 2.6s ease-in-out infinite}"+
+"@keyframes yzHop{0%,100%{transform:translateY(0)}20%{transform:translateY(-6px) scale(1.04)}40%{transform:translateY(0) scale(1)}55%{transform:translateY(-3px)}70%{transform:translateY(0)}}"+
+".yz-hop{animation:yzHop .9s cubic-bezier(.36,.07,.19,.97)}"+
+".yz-bubble{position:fixed;z-index:2147483000;max-width:200px;padding:6px 11px;border-radius:14px;background:#fffdf7;color:#4a3f35;border:1px solid rgba(0,0,0,.1);box-shadow:0 4px 14px rgba(0,0,0,.18);font:13px/1.5 system-ui,-apple-system,'Noto Sans TC',sans-serif;pointer-events:none;opacity:0;transform:translateY(5px);transition:opacity .25s ease,transform .25s ease}"+
+".yz-bubble.yz-on{opacity:1;transform:translateY(0)}"+
+".yz-bubble::after{content:'';position:absolute;left:var(--yz-tail,50%);margin-left:-6px;border:6px solid transparent}"+
+".yz-bubble.yz-above::after{bottom:-6px;border-bottom:0;border-top:6px solid #fffdf7}"+
+".yz-bubble.yz-below::after{top:-6px;border-top:0;border-bottom:6px solid #fffdf7}"+
+".yz-cluster{position:fixed;right:12px;bottom:12px;z-index:2147482999;display:flex;gap:10px}"+
+".yz-cluster a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(22,26,35,.72);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(4px);transition:transform .15s,background .15s}"+
+".yz-cluster a:hover{transform:translateY(-2px);background:rgba(22,26,35,.92)}";
+var bubble,anchor;
+function addCss(){if(document.getElementById("yz-promo-css"))return;var s=document.createElement("style");s.id="yz-promo-css";s.textContent=CSS;document.head.appendChild(s)}
+function inFooter(el){try{return !!(el.closest&&el.closest('footer,nav,[class*="footer"],[id*="footer"]'))}catch(e){return false}}
+function findAnchor(){var as=document.querySelectorAll('a[href*="buymeacoffee.com/yazelin"]');if(!as.length)return null;
+var vis=[],i,r;for(i=0;i<as.length;i++){r=as[i].getBoundingClientRect();if(r.width||r.height)vis.push(as[i])}
+var pool=vis.length?vis:[].slice.call(as);
+for(i=0;i<pool.length;i++)if(inFooter(pool[i]))return pool[i];
+return pool[pool.length-1]}
+function inject(){if(!INJECT||findAnchor()||document.querySelector(".yz-cluster"))return;
+var n=document.createElement("nav");n.className="yz-cluster";n.setAttribute("aria-label","作者連結");
+n.innerHTML='<a href="'+GH+'" target="_blank" rel="noopener" aria-label="GitHub 原始碼" title="GitHub 原始碼">'+ICONS.gh+'</a>'+
+'<a href="https://www.facebook.com/yaze.lin.gm" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">'+ICONS.fb+'</a>'+
+'<a href="https://buymeacoffee.com/yazelin" target="_blank" rel="noopener" aria-label="請亞澤喝杯咖啡 Buy me a coffee" title="請亞澤喝杯咖啡 Buy me a coffee">'+ICONS.bmc+'</a>'+
+(ADDBLOG?'<a class="yz-blog" href="https://yazelin.github.io/" target="_blank" rel="noopener" aria-label="亞澤的部落格" title="亞澤的部落格">'+ICONS.blog+'</a>':'');
+document.body.appendChild(n)}
+function blogLinked(){var as=document.querySelectorAll('a[href^="https://yazelin.github.io"]');for(var i=0;i<as.length;i++){try{if(new URL(as[i].href).pathname==="/")return true}catch(e){}}return false}
+function addBlog(){if(!ADDBLOG||document.querySelector(".yz-blog")||blogLinked()||!inFooter(anchor))return;
+var c=anchor.cloneNode(true);c.classList.remove("yz-hop","yz-idle");c.classList.add("yz-blog");
+c.href="https://yazelin.github.io/";c.setAttribute("aria-label","亞澤的部落格");c.setAttribute("title","亞澤的部落格");
+if(c.querySelector("svg")){var hasText=!!c.textContent.trim();c.innerHTML=ICONS.blog+(hasText?"部落格":"")}else{c.textContent="部落格"}
+anchor.parentNode.insertBefore(c,anchor.nextSibling)}
+function hop(){anchor.classList.remove("yz-hop");void anchor.offsetWidth;anchor.classList.add("yz-hop")}
+var shown=0,MAX_SHOWS=3;
+function say(){if(document.hidden)return;var r=anchor.getBoundingClientRect();if(!r.width&&!r.height)return;if(r.bottom<0||r.top>innerHeight)return;shown++;
+bubble.textContent=LINES[Math.floor(Math.random()*LINES.length)];
+bubble.classList.remove("yz-on","yz-above","yz-below");
+bubble.style.left="0px";bubble.style.top="0px";
+var bw=bubble.offsetWidth,bh=bubble.offsetHeight,cx=r.left+r.width/2;
+var left=Math.max(8,Math.min(cx-bw/2,innerWidth-bw-8));
+var above=r.top-bh-12>=8;
+bubble.style.left=left+"px";
+bubble.style.top=(above?r.top-bh-12:r.bottom+12)+"px";
+bubble.classList.add(above?"yz-above":"yz-below");
+bubble.style.setProperty("--yz-tail",Math.max(12,Math.min(cx-left,bw-12))+"px");
+hop();
+requestAnimationFrame(function(){bubble.classList.add("yz-on")});
+setTimeout(function(){bubble.classList.remove("yz-on")},4200)}
+function start(){addCss();inject();anchor=findAnchor();if(!anchor)return false;
+try{if(getComputedStyle(anchor).display==="inline")anchor.style.display="inline-block"}catch(e){}
+anchor.classList.add("yz-idle");
+anchor.addEventListener("animationend",function(e){if(e.animationName==="yzHop")anchor.classList.remove("yz-hop")});
+try{addBlog()}catch(e){}
+bubble=document.createElement("div");bubble.className="yz-bubble";bubble.setAttribute("aria-hidden","true");document.body.appendChild(bubble);
+window.__yzPromo=say;
+(function loop(first){if(shown>=MAX_SHOWS)return;setTimeout(function(){say();loop(false)},first?18e3+Math.random()*12e3:9e4+Math.random()*9e4)})(true);
+return true}
+function boot(){var tries=0;(function t(){if(start())return;if(++tries<20)setTimeout(t,1500)})()}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+})();
+</script>
+</body>
+</html>
