@@ -30,6 +30,8 @@ END_CARDS = {'ending_a3', 'ending_b2', 'ending_c4'}
 
 
 def voice(vid):
+    if not os.environ.get('VOICE'):   # 2026-10-19 作者：配音先全部拿掉，劇本與各場景過關後再決定（VOICE=1 才帶配音）
+        return None
     p = R / f'assets/voice/{vid}.mp3'
     return A + f'voice/{vid}.mp3' if vid and p.exists() else None
 
