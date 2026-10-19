@@ -40,24 +40,27 @@ WHO = {
     'cheng_30': ('CHENG XI at 30, in 2009-2013, the same man as Reference 3 but fifteen years younger: no grey, short neat black hair. '
                  'Wearing a black crew T-shirt, a monitor headset hanging around his neck, a black wristwatch. Acting: one hand raised slightly as if just pulling a fader down, '
                  'calm focused eyes with a shy small smile. Warm stage side-light.'),
-    'yu_9': (YU_FACE + 'YU SHU-JING at 9 years old, in 1988, the same girl as Reference 3 as a child: round cheeks, long light-brown hair in a ponytail, '
-             'a Taiwanese elementary school uniform (white short-sleeve shirt, navy pleated skirt) with sleeves rolled, rubber rain boots. '
-             'Acting: holding a green garden hose with both hands, laughing, water splashing. Lit by a warm dusk market light bulb.'),
+    'yu_9': ('YU SHU-JING as a small 9-year-old child in 1988, the childhood version of the woman in Reference 3: clearly a young child with child proportions, '
+             'short small body, round childish face, big eyes, missing a front tooth, light-brown hair in a short ponytail. '
+             'Wearing a dry Taiwanese elementary school uniform: white short-sleeve shirt buttoned up, navy pleated skirt below the knees, '
+             'a small blue plastic apron over it, yellow rubber boots. Acting: crouching on a wet market floor, holding a green garden hose with both small hands, '
+             'giggling at her father off-screen. Wholesome, innocent, lit by a warm dusk market light bulb.'),
     'zhou_62': ('ZHOU WEN-XIONG, 62, her pianist since 2004, called Teacher Zhou: kind face, neat white hair, thin gold-rimmed glasses, a grey cardigan over a white shirt. '
                 'Acting: hands resting on an invisible keyboard edge, looking up with a gentle patient smile, as if waiting for her to sing. Warm stage light.'),
     'azhe_30': ('TSAI CHE-WEI "A-ZHE", 30, a young sound engineer, Cheng Xi\'s apprentice: short side-swept hair, earnest eyes, black crew T-shirt, a walkie-talkie and headset clipped on. '
                 'Acting: one hand pressing the walkie-talkie button, nervous determined look. Warm backstage light.'),
     'tao_73': ('AH-TAO, 73, a vegetable vendor from the old Tainan market who watched the heroine grow up: short grey permed curls, a floral blouse, a small jade bracelet, '
                'deep laugh lines, tanned. Acting: holding a plastic bag of guavas, laughing warmly while calling out a name. Warm dusk light.'),
-    'tao_35': ('AH-TAO at 35, in 1988, the same woman as tao_73 when young: black permed hair under a headscarf, a work apron over a floral blouse, sleeves pushed up. '
-               'Acting: holding a bunch of leafy greens, laughing, splashed with water. Warm dusk market light bulb.'),
+    'tao_35': ('AH-TAO at 35, in 1988, the SAME woman as Reference 3 (her at 73) when young: same face shape, eyes and smile, black permed hair under a faded headscarf. '
+               'A plain hard-working market vegetable vendor, not glamorous: a modest floral blouse buttoned up to the collar, sleeves pushed up, a worn canvas work apron, '
+               'rubber boots, sturdy hands. Acting: holding a bunch of leafy greens, laughing loudly, a few water splashes. Warm dusk market light bulb.'),
     'yu_father': ('YU BO, 45, in 1988, the heroine\'s father, a fishmonger at the Tainan evening market: tanned weathered face, short hair, a white towel around his neck, '
                   'a yellow rubber apron and rubber boots, strong forearms. Acting: holding up a big fish on ice with a proud tender grin, looking down at his daughter. Warm dusk market light bulb.'),
     'dr_lin': ('DR. LIN HUI-RU, 52, a neurologist in Taipei: shoulder-length black hair, a white coat over a navy blouse, a stethoscope, reading glasses pushed up. '
                'Acting: holding a tablet with brain scan images, a calm kind serious expression, about to deliver hard news gently. Cool clinical white light from a window, a warm tone on the face.'),
 }
 # 身分參考（第三張參考圖）：挑定的立繪
-IDREF = {'cheng_23': 'p_cheng_45', 'cheng_30': 'p_cheng_45', 'yu_9': 'p_yu_25', 'tao_35': None}
+IDREF = {'cheng_23': 'p_cheng_45', 'cheng_30': 'p_cheng_45', 'yu_9': 'p_yu_25', 'tao_35': 'p_tao_73'}
 
 
 def gen(job):
