@@ -6,12 +6,12 @@ import { hookInit, cutSizes, named } from './audiohook.mjs';
 mkdirSync('art/check', { recursive: true });
 const END = process.env.END || 'a';
 const PICK = { a: '有人會坐在三排十四號。', b: '周老師在等我開口。', c: '阿爸一個人收不完。' }[END];
-const END_RE = { a: /10 月 17 日/, b: /他沒有走/, c: /阿哲按下播放鍵/ }[END];
+const END_RE = { a: /10 月 17 日/, b: /怕走音/, c: /阿哲按下播放鍵/ }[END];
 // 地圖任務：照順序點畫面上看得到的標籤（標籤就是地圖上的調查點／導引文字）。每個最多點 N 次，避免原地繞圈
 const GUIDE = [['鏡子角落的照片', 2], ['筆記本', 2], ['化妝箱', 2], ['窗', 2], ['首飾盒', 2], ['阿爸的收音機', 3], ['走廊盡頭的鋼琴聲', 2], ['彈琴的人', 2], ['側台門：通觀眾席', 2], ['三排十四號', 2], ['回後台', 3],
   ['後門：通巷子', 2], ['有人在叫你', 2], ['回化妝間', 2], ['天黑之前，回到化妝間', 2]];
-const MUST = [/這裡的燈起床慢/, /早發性阿茲海默症/, /我是你先生/, /魚我來處理/, /這件好舊/, /河岸留言那晚/, /2013，永明，空舞台/, /你是彈琴的|她記得我們的歌/, /她心裡聽見誰|天黑了/,
-  { a: /程希，三排十四號/, b: /謝謝您，先生/, c: /淑靜仔，阮攏來矣|阮攏來矣/ }[END]];
+const MUST = [/鏡子裡多一個人/, /早發性阿茲海默症/, /我是你先生/, /我爸賣魚，整天/, /這件還在喔/, /河岸留言那晚/, /2013，永明，空舞台/, /把花那句唱得特別輕/, /她心裡聽見誰|天黑了/,
+  { a: /程希，三排十四號/, b: /先生，這杯有點燙/, c: /淑靜仔，阮攏來矣|阮攏來矣/ }[END]];
 // AUDIO=1：攔截所有音訊播放，結束時印出實際換曲順序（不含介面音效）
 const s = process.env.LIVE ? { base: process.env.LIVE, kill() {} } : await serve('dist/project.json');
 const ui = await open(s.base, { width: 1600, height: 900, init: process.env.AUDIO ? hookInit : null });
@@ -35,7 +35,7 @@ const wayBtn = async t => { for (const f of page.frames()) { const b = f.locator
 // 翻頁一律點畫面上的「下一句／繼續」按鈕。地圖上沒有對話框時不要按 Enter：那等於在調查點旁按「互動」，同一個事件會一再重新觸發。
 const nextBtn = async () => { for (const f of page.frames()) for (const name of ['下一句', '繼續探索', '繼續']) { const b = f.getByRole('button', { name }).filter({ visible: true }); if (await b.count()) return b.first(); } return null; };
 let idle = 0;
-const introDone0 = () => /我在這裡工作/.test(seen);   // 進化妝間時自動播的開場對話要先播完，不然點調查點會被它吃掉
+const introDone0 = () => /杯子放在右邊，線也沒壓到/.test(seen);   // 進化妝間時自動播的開場對話要先播完，不然點調查點會被它吃掉
 const used = new Map(), tries = new Map();
 // 16 倍速會把地圖素材的載入逾時也縮短，跳出「地圖素材沒有完整載入」：這是加速造成的假象，按「仍然開始」繼續。
 // 真正缺檔另外用 404 記錄抓（只看遊戲素材 /files/），最後必須是 0。
