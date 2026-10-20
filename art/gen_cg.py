@@ -54,7 +54,7 @@ CG = {
         'December 2021, a big concert hall in Taichung full of audience in the dark. On stage she stands frozen in a spotlight, mouth half open, one hand at her ear; '
         'at the front edge of the stage a large teleprompter screen glows with huge blurred white characters (not readable). Far back, at the mixing desk, a small figure presses a walkie-talkie.'),
     'cg_2022_clinic': (['yu_43', 'cheng_45', 'dr_lin'],
-        '2022, a neurology consulting room in Taipei, white window light, a brain MRI on a monitor. She (long wavy light-brown hair) sits very still with her hands in her lap; the doctor, a clearly different woman with straight black chin-length hair and thin black-framed glasses on her nose, older and plainer than the heroine, speaks gently; '
+        '2022, a neurology consulting room in Taipei, white window light, a brain MRI on a monitor. Behind them the window, with half-open horizontal blinds, shows ONLY ordinary low-rise city rooftops and distant soft hills under a warm evening sky. No skyscrapers, no landmark towers, no Taipei 101, no tall tower of any kind, no real-world landmarks, nothing duplicated outside the window. She (long wavy light-brown hair) sits very still with her hands in her lap; the doctor, a clearly different woman with straight black chin-length hair and thin black-framed glasses on her nose, older and plainer than the heroine, speaks gently; '
         'he sits beside her writing every word in a small notebook, his jaw tight. Quiet, clinical, devastating.'),
     'cg_letter': (['yu_47', 'cheng_45'],
         'Today, 17:40, a small old theater dressing room on the second floor, a west window full of sunset over old Tainan rooftops, a dressing table with a lit bulb mirror. '
