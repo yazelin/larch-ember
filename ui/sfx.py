@@ -41,6 +41,13 @@ def piano(f, dur=.6, vol=.3):
     return s * np.clip(t / .004, 0, 1) * vol
 
 
+def softnote(f=293.66, dur=.45):
+    """翻頁：不用噪音（沙沙聲像預設音效，作者 2026-10-20 說要柔和）。毛氈包著的一個低音：起音慢、泛音少、很快淡掉。"""
+    t = np.arange(int(SR * dur)) / SR
+    s = sum(a * np.sin(2 * np.pi * f * k * t) * np.exp(-t * d) for k, a, d in ((1, 1, 7), (2, .15, 12)))
+    return lowpass(s * np.clip(t / .014, 0, 1), 3)
+
+
 def seq(*parts):
     n = max(int(SR * d) + len(w) for d, w in parts); out = np.zeros(n)
     for d, w in parts:
@@ -51,7 +58,7 @@ def seq(*parts):
 SOUNDS = {
     'hover': rustle(.07, .5, 2, 5, False) * .12,
     'press': tick(),
-    'advance': rustle(.26, 1.6),
+    'advance': (rustle(.26, 1.6), softnote())[1],   # 舊的沙聲照樣呼叫一次，只為了讓後面 open／close 的亂數序列不變
     'open': rustle(.3, 1.2),
     'close': rustle(.22, 1.0),
     'use': piano(523.25),
@@ -61,7 +68,7 @@ if __name__ == '__main__':
     OUT.mkdir(exist_ok=True)
     for name, s in SOUNDS.items():
         s = np.concatenate([s, np.zeros(int(SR * .03))])
-        s = s / max(1e-9, np.abs(s).max()) * {'hover': .1, 'press': .5, 'advance': .45, 'open': .4, 'close': .35, 'use': .45}[name]
+        s = s / max(1e-9, np.abs(s).max()) * {'hover': .1, 'press': .5, 'advance': .22, 'open': .4, 'close': .35, 'use': .45}[name]
         wav = OUT / f'{name}.wav'
         with wave.open(str(wav), 'wb') as w:
             w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((s * 32767).astype('<i2').tobytes())
