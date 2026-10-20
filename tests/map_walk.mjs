@@ -8,9 +8,13 @@ const dir = project.replace(/[^/]+$/, '');
 fs.mkdirSync('art/check/maps-review/walk', { recursive: true });
 const base = JSON.parse(fs.readFileSync(project, 'utf8')); const P = base.project || base;
 
-function variant(vars) {
+function variant(vars, hero, mapId) {
   const v = JSON.parse(JSON.stringify(P)); const b = base.project ? { ...base, project: v } : v;
   for (const x of v.variables) if (x.name in vars) x.defaultValue = vars[x.name];
+  if (hero) {   // 把主角擺到指定格子（驗長距離走回門口）
+    const n = v.boards[0].nodes.find(n => n.id === mapId); const m = JSON.parse(n.data.pluginValues.map);
+    const h = m.events.find(e => e.actor === 'player'); h.x = hero[0]; h.y = hero[1]; n.data.pluginValues.map = JSON.stringify(m);
+  }
   fs.writeFileSync(dir + '_walk.json', JSON.stringify(b)); return dir + '_walk.json';
 }
 const NAMES = { 'm-dressing': '化妝間', 'm-backstage': '後台', 'm-auditorium': '觀眾席', 'm-alley': '後門巷子' };
@@ -35,13 +39,15 @@ const SCENES = [
   ['巷子→阿桃姨', 'm-alley', {}, '有人在叫你', { text: /巷子口站著一個頭髮花白的阿姨/ }, true],
   ['巷子→回後台（後門）', 'm-alley', { tao: true }, '回後台', { card: 'm-backstage' }],
   ['後台→回化妝間→天黑', 'm-backstage', { letter: true, zhou: true, seat: true, tao: true }, '回化妝間', { text: /窗外最後一道光/ }, false, 40000],
+  ['觀眾席：從三排十四號走回舞台後牆的門（長距離）', 'm-auditorium', { seat: true }, '回後台', { card: 'm-backstage' }, true, 40000, [15, 13]],
+  ['巷子：從巷子盡頭走回後門（長距離）', 'm-alley', { tao: true }, '回後台', { card: 'm-backstage' }, true, 40000, [15, 8]],
   ['化妝間→鋼琴聲以外的任務：旋鈕與收音機', 'm-dressing', {}, '收音機旁邊的東西', { text: /舊塑膠殼手提收音機/ }, true],
 ];
 const only = process.argv.slice(2).map(Number); let fail = 0;
 for (let i = 0; i < SCENES.length; i++) {
   if (only.length && !only.includes(i + 1)) continue;
-  const [name, mapId, vars, quest, expect, shots, limit = 30000] = SCENES[i];
-  const s = await serve(variant(vars)); const ui = await open(s.base, { width: 1600, height: 900 }); const { page } = ui; let verdict = '';
+  const [name, mapId, vars, quest, expect, shots, limit = 30000, hero] = SCENES[i];
+  const s = await serve(variant(vars, hero, mapId)); const ui = await open(s.base, { width: 1600, height: 900 }); const { page } = ui; let verdict = '';
   try {
     const v = await page.$$eval('select option', (o, id) => o.find(e => e.value.includes(id) || e.textContent.includes(id))?.value, mapId);
     await page.selectOption('select', v); await sleep(5000);

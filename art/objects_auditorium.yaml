@@ -1,45 +1,47 @@
 # 觀眾席（m-auditorium）：跟 CG（s_soundcheck_1、s_concert_1）是同一座戲院：大舞台、紅絨座位分三區、兩條走道、後方音控台。
-# 規模：一千個座位畫不完，地圖畫前段 4 排、三區（6／8／6），後面暗下去。三排十四號＝第三排、從左數第十四個位子（左區 6＋中區第 8 個）。
+# 規模：一千個座位畫不完，地圖畫前段 3 排、三區（6／8／6），後面暗下去。三排十四號＝第三排、從左數第十四個位子（左區 6＋中區第 8 個）。
 # 2026-10-20 照《十一分鐘》標準重做：座位一排一個物件（同一張圖重複），整齊成列；排與排之間是可走的走道列。
+# 2026-10-20 門的規則（作者：門製作得非常奇怪）：相機從南邊看，只看得到朝南的牆面，所以門一律做在朝南的面上。
+#   舞台前緣的木裙只有三格高（含一格腳燈），放不下約 3 格高的門；通後台的門改做在舞台後牆（朝南的牆面）、紅絨幕旁，正面朝南，門前一格（舞台地板）是觸發點。
 map: {id: m-auditorium, w: 26, h: 18}
 
 ground:
-  - {name: 外牆, kind: border, rects: [[0, 0, 26, 3], [0, 0, 1, 18], [25, 0, 1, 18], [0, 17, 26, 1]]}
-  - {name: 舞台, kind: wood, rects: [[1, 3, 24, 4]], desc: 舊木舞台地板，長條板縫整齊平行，幾盞舞台燈在地板上打出柔和光圈}
-  - {name: 觀眾席地毯, kind: carpet, rects: [[1, 7, 24, 10]], desc: 深紅色的絨毛地毯，整齊乾淨}
-  - {name: 舞台階梯, kind: stairs, rects: [[8, 6, 1, 1], [17, 6, 1, 1]], desc: 舞台通往走道的兩小段木階梯，橫向踏板}
-  - {name: 走道, kind: rug, rects: [[8, 7, 1, 10], [17, 7, 1, 10]], desc: 兩條縱向走道，比周圍地毯稍淺的暗紅色}
+  - {name: 外牆, kind: border, rects: [[0, 0, 26, 3], [0, 0, 1, 18], [25, 0, 1, 18], [0, 17, 26, 1], [1, 6, 7, 3], [9, 6, 8, 3], [18, 6, 7, 3]], desc: 外牆與舞台木裙後面的實心區}
+  - {name: 舞台, kind: wood, rects: [[1, 3, 24, 3]], desc: 舊木舞台地板，長條板縫整齊平行，幾盞舞台燈在地板上打出柔和光圈}
+  - {name: 觀眾席地毯, kind: carpet, rects: [[1, 9, 24, 8]], desc: 深紅色的絨毛地毯，整齊乾淨}
+  - {name: 舞台階梯, kind: stairs, nogate: true, rects: [[8, 6, 1, 3], [17, 6, 1, 3]], desc: 舞台通往走道的兩小段木階梯，橫向踏板}
+  - {name: 走道, kind: rug, rects: [[8, 9, 1, 8], [17, 9, 1, 8]], desc: 兩條縱向走道，比周圍地毯稍淺的暗紅色}
 
 objects:
-  # ── 舞台：背幕、前緣、鋼琴、麥克風 ──
-  - {name: 背幕一, type: a_curtain, kind: 隔間牆, foot: [1, 2, 6, 1], up: 2, desc: 深紅絨布舞台背幕，金色流蘇}
-  - {name: 背幕二, type: a_curtain, kind: 隔間牆, foot: [7, 2, 6, 1], up: 2, desc: 同上}
+  # ── 舞台：背幕、前緣（朝南的木裙，含門）、鋼琴、麥克風 ──
+  - {name: 背幕一, type: a_curtain, kind: 隔間牆, foot: [1, 2, 2, 1], up: 2, desc: 深紅絨布舞台背幕，金色流蘇（門左邊）}
+  - {name: 舞台門, type: door_stage2, kind: 門, foot: [3, 2, 2, 1], up: 2, desc: 舞台後牆正面（朝南）的木門，通後台；兩旁紅絨幕束起、木門框、深色門板、門前一階；門前 (3,3)(4,3) 是觸發點}
+  - {name: 背幕二, type: a_curtain, kind: 隔間牆, foot: [5, 2, 8, 1], up: 2, desc: 同上（門右邊）}
   - {name: 背幕三, type: a_curtain, kind: 隔間牆, foot: [13, 2, 6, 1], up: 2, desc: 同上}
   - {name: 背幕四, type: a_curtain, kind: 隔間牆, foot: [19, 2, 6, 1], up: 2, desc: 同上}
-  - {name: 舞台前緣左, type: a_lip, kind: 雜物, foot: [1, 6, 7, 1], up: 1, desc: 舞台前緣的木裙，金色滾邊（左段）；右邊留出走道口的階梯}
-  - {name: 舞台前緣中, type: a_lip, kind: 雜物, foot: [9, 6, 8, 1], up: 1, desc: 同上（中段）}
-  - {name: 舞台前緣右, type: a_lip, kind: 雜物, foot: [18, 6, 7, 1], up: 1, desc: 同上（右段）}
+  - {name: 舞台前緣左, type: a_lip, kind: 雜物, foot: [1, 8, 7, 1], up: 2, desc: 舞台前緣三格高的木裙：最上面一列是金色滾邊與腳燈，下面是深色木板裙（左段）}
+  - {name: 舞台前緣中, type: a_lip, kind: 雜物, foot: [9, 8, 8, 1], up: 2, desc: 同上（中段）}
+  - {name: 舞台前緣右, type: a_lip, kind: 雜物, foot: [18, 8, 7, 1], up: 2, desc: 同上（右段）}
   - {name: 鋼琴, type: a_piano, kind: 櫃, foot: [5, 4, 3, 1], up: 1, desc: 舞台左側的平台鋼琴}
   - {name: 麥克風架, type: a_mic, kind: 雜物, foot: [12, 4, 1, 1], up: 1, desc: 舞台中央的直立麥克風架}
-  # ── 座位：第 1–4 排（y=8,10,12,14），中間的列（9,11,13,15）是走道 ──
-  - {name: 左一排, type: a_seat6, kind: 椅, foot: [2, 8, 6, 1], up: 1, desc: 左區第一排}
-  - {name: 中一排, type: a_seat8, kind: 椅, foot: [9, 8, 8, 1], up: 1, desc: 中區第一排}
-  - {name: 右一排, type: a_seat6, kind: 椅, foot: [18, 8, 6, 1], up: 1, desc: 右區第一排}
-  - {name: 左二排, type: a_seat6, kind: 椅, foot: [2, 10, 6, 1], up: 1, desc: 左區第二排}
-  - {name: 中二排, type: a_seat8, kind: 椅, foot: [9, 10, 8, 1], up: 1, desc: 中區第二排}
-  - {name: 右二排, type: a_seat6, kind: 椅, foot: [18, 10, 6, 1], up: 1, desc: 右區第二排}
-  - {name: 左三排, type: a_seat6, kind: 椅, foot: [2, 12, 6, 1], up: 1, desc: 左區第三排}
-  - {name: 中三排, type: a_seat8rose, kind: 椅, foot: [9, 12, 8, 1], up: 1, desc: 中區第三排，最右邊那一個座位（從左數第十四個）椅面上躺著一朵深紅玫瑰}
-  - {name: 右三排, type: a_seat6, kind: 椅, foot: [18, 12, 6, 1], up: 1, desc: 右區第三排}
-  - {name: 左四排, type: a_seat6, kind: 椅, foot: [2, 14, 6, 1], up: 1, desc: 左區第四排}
-  - {name: 中四排, type: a_seat8, kind: 椅, foot: [9, 14, 8, 1], up: 1, desc: 中區第四排}
-  - {name: 右四排, type: a_seat6, kind: 椅, foot: [18, 14, 6, 1], up: 1, desc: 右區第四排}
-  # ── 後方、側邊 ──
+  # ── 座位：第 1–3 排（y=10,12,14），中間的列（11,13,15）是走道，第 9 列是前排走道 ──
+  - {name: 左一排, type: a_seat6, kind: 椅, foot: [2, 10, 6, 1], up: 1, desc: 左區第一排}
+  - {name: 中一排, type: a_seat8, kind: 椅, foot: [9, 10, 8, 1], up: 1, desc: 中區第一排}
+  - {name: 右一排, type: a_seat6, kind: 椅, foot: [18, 10, 6, 1], up: 1, desc: 右區第一排}
+  - {name: 左二排, type: a_seat6, kind: 椅, foot: [2, 12, 6, 1], up: 1, desc: 左區第二排}
+  - {name: 中二排, type: a_seat8, kind: 椅, foot: [9, 12, 8, 1], up: 1, desc: 中區第二排}
+  - {name: 右二排, type: a_seat6, kind: 椅, foot: [18, 12, 6, 1], up: 1, desc: 右區第二排}
+  - {name: 左三排, type: a_seat6, kind: 椅, foot: [2, 14, 6, 1], up: 1, desc: 左區第三排}
+  - {name: 中三排, type: a_seat8rose, kind: 椅, foot: [9, 14, 8, 1], up: 1, desc: 中區第三排，最右邊那一個座位（從左數第十四個）椅面上躺著一朵深紅玫瑰}
+  - {name: 右三排, type: a_seat6, kind: 椅, foot: [18, 14, 6, 1], up: 1, desc: 右區第三排}
+  # ── 後方 ──
   - {name: 音控台, type: a_desk, kind: 桌, foot: [11, 16, 4, 1], up: 1, desc: 後方的音控台，一整排推桿與小燈}
-  - {name: 側台入口, type: a_sidedoor, kind: 門, foot: [0, 4, 1, 2], up: 1, desc: 舞台左側通後台的門；門前 (1,5) 是觸發點}
 
 points:
-  hero_start: [2, 5]    # 從後台側台門進來：舞台左側（門前一格 (1,5) 是觸發點）
-  side_door: [1, 5]
-  seat314: [16, 11]     # 第三排中區最後一個座位北側的走道格
+  hero_start: [4, 4]    # 從後台進來：舞台後牆那扇門的前面一排
+  side_door: [4, 3]     # 舞台後牆的門前（兩格都是觸發點）
+  side_door_b: [3, 3]
+  seat314: [16, 13]     # 第三排中區最後一個座位北側的走道格
   azhe: [13, 15]
+
+doors: [[3, 3], [4, 3]]

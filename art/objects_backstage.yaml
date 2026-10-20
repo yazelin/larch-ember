@@ -8,42 +8,50 @@
 map: {id: m-backstage, w: 24, h: 16}
 
 ground:
-  - {name: 外牆, kind: border, rects: [[0, 0, 16, 2], [16, 0, 5, 1], [21, 0, 3, 10], [23, 10, 1, 2], [23, 14, 1, 2], [0, 0, 1, 11], [0, 13, 1, 3], [0, 15, 24, 1], [16, 7, 2, 3], [18, 2, 1, 8], [1, 8, 15, 2]],
+  - {name: 外牆, kind: border, rects: [[0, 0, 16, 2], [16, 0, 5, 1], [21, 0, 3, 12], [23, 12, 1, 4], [0, 0, 1, 16], [0, 15, 24, 1], [16, 7, 2, 5], [18, 2, 1, 10], [1, 8, 15, 4]],
      desc: 外牆與樓梯井之外的實心區}
   - {name: 二樓平台, kind: wood, rects: [[1, 3, 15, 5]], desc: 二樓走廊的老木地板，長條板縫整齊平行}
   - {name: 轉折平台, kind: wood, rects: [[16, 1, 5, 1]]}
   - {name: A 段樓梯, kind: stairs, rects: [[16, 2, 2, 5]], desc: 木頭樓梯：每一階是一塊獨立的木板，階與階之間有一條深色的踢腳陰影線，一階一階清楚地分開，橫向整齊排列，全程同樣的階高}
   - {name: B 段樓梯, kind: stairs, rects: [[19, 2, 2, 10]], desc: 同 A 段的木頭樓梯：每一階是一塊獨立的木板，階與階之間有一條深色的踢腳陰影線，一階一階清楚地分開，橫向整齊排列；從頭到尾每半格一階，跟 A 段完全一樣的階梯}
-  - {name: 一樓後台, kind: concrete, rects: [[1, 10, 22, 5]], desc: 灰色水泥地，幾條褪色的舞台膠帶標記與一條電線}
+  - {name: 一樓後台, kind: concrete, rects: [[1, 12, 22, 3]], desc: 灰色水泥地，幾條褪色的舞台膠帶標記與一條電線}
 
 objects:
   # ── 二樓：北牆、鋼琴、東欄杆 ──
   - {name: 北牆左, type: b_wall, kind: 隔間牆, foot: [1, 2, 2, 1], up: 2, desc: 二樓走廊北牆（左段）}
-  - {name: 化妝間門, type: b_door, kind: 門, foot: [3, 2, 2, 1], up: 2, desc: 二樓化妝間的門，門前（4,3）是觸發點}
+  - {name: 化妝間門, type: door_wood, kind: 門, foot: [3, 2, 2, 1], up: 2, desc: 二樓化妝間的門，門前（4,3）是觸發點}
   - {name: 北牆右, type: b_wall, kind: 隔間牆, foot: [5, 2, 11, 1], up: 2, desc: 二樓走廊北牆（右段）}
   - {name: 直立鋼琴, type: b_piano, kind: 櫃, foot: [7, 3, 3, 1], up: 1, desc: 靠北牆的舊直立鋼琴，周老師站在它南邊（8,4）}
   - {name: 東欄杆, type: b_rail_e, kind: 雜物, foot: [15, 3, 1, 3], up: 1, desc: 二樓東緣欄杆，只留 (15,6) 一格通往樓梯 A 段}
-  - {name: 陽台前緣, type: b_balcony, kind: 雜物, foot: [1, 8, 15, 2], up: 1, desc: 二樓前緣的鑄鐵欄杆與一整層樓高的磚牆；人在二樓被它擋住腳，在一樓畫在前面}
+  - {name: 前緣左, type: b_balcony, kind: 雜物, foot: [1, 8, 2, 4], up: 1, desc: 二樓前緣的鑄鐵欄杆（最上一列）與下面四格高的老磚牆面；左段}
+  - {name: 側台門, type: door_stage, kind: 門, foot: [3, 8, 2, 4], up: 1, desc: 磚牆正面（朝南）的側台門，通觀眾席：石框、深色木門板、門前石階；門前 (3,12)(4,12) 是觸發點}
+  - {name: 前緣中, type: b_balcony, kind: 雜物, foot: [5, 8, 6, 4], up: 1, desc: 同上，中段}
+  - {name: 後門, type: door_steel, kind: 門, foot: [11, 8, 2, 4], up: 1, desc: 磚牆正面（朝南）的後門，通巷子：石框、灰色鋼門板、門前腳墊；門前 (11,12)(12,12) 是觸發點}
+  - {name: 前緣右, type: b_balcony, kind: 雜物, foot: [13, 8, 3, 4], up: 1, desc: 同上，右段}
   # ── 樓梯井 ──
   - {name: A段底牆, type: b_cap, kind: 隔間牆, foot: [16, 7, 2, 1], up: 0, desc: A 段南端封住，只能從二樓 (15,6) 進}
-  - {name: 樓梯中隔牆, type: b_divider, kind: 隔間牆, foot: [18, 2, 1, 8], up: 2, desc: A、B 兩段中間的隔牆，不給人從 A 直接跨到 B}
+  - {name: 樓梯中隔牆, type: b_divider, kind: 隔間牆, foot: [18, 2, 1, 10], up: 2, desc: A、B 兩段中間的隔牆，不給人從 A 直接跨到 B}
   - {name: 轉折牆, type: b_turn, kind: 雜物, foot: [16, 1, 4, 2], frame: [15, 0, 7, 3], gap: [[16,1],[17,1],[18,1],[19,1],[16,2],[17,2],[18,2],[19,2]], sort: 3,
      desc: 樓梯井上端的牆面，蓋住轉折（只擋視覺、占地全可走）。圖框 x15–21、列 0–2，整面不透明}
   - {name: B上段牆, type: b_upper, kind: 雜物, foot: [19, 3, 2, 2], frame: [18, 0, 4, 5], gap: [[19,3],[20,3],[19,4],[20,4]], sort: 5,
      desc: 蓋住 B 段第 3–4 列（只擋視覺）。圖框 x18–21、列 0–4，整面不透明；走到第 5 列才現身}
   # ── 一樓 ──
-  - {name: 器材箱, type: b_cases, kind: 雜物, foot: [5, 12, 2, 1], up: 1, desc: 兩個疊起來的黑色器材箱}
-  - {name: 工作桌, type: b_table, kind: 桌, foot: [13, 12, 3, 1], up: 1, desc: 靠牆的木工作桌，一盞檯燈、幾個沙袋、一捲膠帶}
-  - {name: 側台門, type: b_sidedoor, kind: 門, foot: [0, 11, 1, 2], up: 1, desc: 西牆的側台門，通觀眾席；門前 (1,12) 是觸發點}
-  - {name: 後門, type: b_backdoor, kind: 門, foot: [23, 12, 1, 2], up: 1, desc: 東牆的後門，通巷子；門前 (22,12) 是觸發點}
+  - {name: 器材箱, type: b_cases, kind: 雜物, foot: [5, 13, 2, 1], up: 1, desc: 兩個疊起來的黑色器材箱}
+  - {name: 工作桌, type: b_table, kind: 桌, foot: [13, 13, 3, 1], up: 1, desc: 靠牆的木工作桌，一盞檯燈、幾個沙袋、一捲膠帶}
 
 points:
   hero_start: [4, 4]
   piano: [8, 4]
   to_dressing: [4, 3]
-  stage_door: [1, 12]
-  back_door: [22, 12]
+  to_dressing_b: [3, 3]
+  stage_door: [4, 12]
+  stage_door_b: [3, 12]
+  back_door: [12, 12]
+  back_door_b: [11, 12]
   stairs_in: [15, 6]
+
+# 門前的觸發格：格子本身要走得到，正北方那格要是實心的牆（門嵌在牆裡），layout.check 會驗
+doors: [[3, 3], [4, 3], [3, 12], [4, 12], [11, 12], [12, 12]]
 
 # 遮擋驗證（art/occl_check.py）：路線上哪幾格要整個藏起來、哪幾格要看得見；occluders 是負控制要拿掉的牆
 checks:

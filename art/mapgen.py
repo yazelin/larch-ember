@@ -43,7 +43,6 @@ TYPES = {
     # 化妝間
     'd_wall': (6, 3, 1, 'a plain section of the interior back wall of an old Tainan theater dressing room: warm cream lime-plaster with soft age stains, the lower third is dark brown wood wainscot panelling with evenly spaced raised panels, a thin wooden picture rail along the top; completely plain, no window, no door, no furniture, nothing hanging', 'strip', 'green', True),
     'd_window': (4, 3, 1, 'the same kind of wall section (cream plaster above, dark wood wainscot panelling below) with one tall rectangular wooden-framed window in the middle showing a glowing orange sunset sky over old Tainan tiled rooftops, a stone sill, and deep red velvet curtains tied back neatly on both sides; plain wall continues at the left and right edges', 'seg', 'green', True),
-    'd_door': (2, 3, 1, 'the same kind of wall section (cream plaster, dark wood wainscot) with a closed old dark-brown wooden door with a brass handle and a small blank brass plate, in a plain wooden door frame, centered; plain wall at the left and right edges', 'seg', 'green', True),
     'd_vanity': (4, 3, 1, 'an old theater dressing table seen from the front: a wide wooden table with drawers, above it a large rectangular mirror framed by evenly spaced round warm light bulbs; on the table an open notebook and a black wristwatch; a small photo tucked into the corner of the mirror frame; the whole piece is symmetrical', 'obj', 'green', True),
     'd_jewel': (1, 2, 1, 'a small round wooden side table with a carved wooden jewelry box on top', 'obj', 'green', False),
     'd_bench': (4, 2, 1, 'a long low wooden bench seen from the front with a faded red velvet cushion on the seat, straight and level', 'obj', 'green', True),
@@ -52,38 +51,41 @@ TYPES = {
     'd_case': (2, 2, 1, 'an open black leather makeup case sitting on the floor, its trays showing neatly arranged brushes and lipsticks, a small glass box in the bottom tray', 'obj', 'green', True),
     'd_rack': (1, 4, 3, 'a narrow metal clothes rack with one navy jacket hanging on it, standing against a wall, drawn as a tall narrow object', 'obj', 'green', False),
     'd_sofa': (6, 2, 1, 'a long sofa seen from behind (its back toward the camera): a tall straight faded red velvet backrest with gold buttons, wooden feet, straight and level', 'obj', 'green', True),
+    # 門：每扇門單獨生成成「含門框的門」，統一縮成 1.7×2.9 格再貼到那面牆的連續牆面上（作者：門製作得非常奇怪；規則：門約 3 格高、2 格寬，嵌在朝南的牆面裡）
+    'door_wood': (2, 3, 1, 'one single closed old dark-brown wooden door with a brass handle and a small blank brass name plate, set in a plain dark wooden door frame (architrave) with a thin wooden threshold at the bottom, seen from the front; the whole door including its frame is 1.7 cells wide and 2.9 cells tall (width:height = 0.59:1)', 'door', 'green', True),
+    'door_iron': (2, 3, 1, 'one single closed heavy dark-green painted iron stage door with a handle, set in a plain stone door frame (architrave) with a worn concrete step at the bottom and a small warm yellow bulb in a wire cage above the frame, seen from the front; the whole door including its frame, step and lamp is 1.7 cells wide and 2.9 cells tall (width:height = 0.59:1)', 'door', 'green', True),
+    'door_stage': (2, 3, 1, 'one single closed heavy dark-brown wooden door with iron straps and a ring handle, set in a plain light stone door frame (architrave) with a worn stone threshold step at the bottom, seen from the front; the whole door including its frame and step is 1.7 cells wide and 2.9 cells tall (width:height = 0.59:1)', 'door', 'green', True),
+    'door_steel': (2, 3, 1, 'one single closed dark grey steel back door with a horizontal push bar and a small blank sign plate above, set in a plain light stone door frame (architrave) with a black rubber door mat at the bottom, seen from the front; the whole door including its frame and mat is 1.7 cells wide and 2.9 cells tall (width:height = 0.59:1)', 'door', 'green', True),
+    'door_stage2': (2, 3, 1, 'one single closed heavy dark-brown wooden stage door with a brass handle in a plain dark wooden door frame (architrave) with a small pelmet above it and a worn wooden step at the bottom, seen from the front; the whole door including its frame and step is 1.7 cells wide and 2.9 cells tall (width:height = 0.59:1)', 'door', 'green', True),
     # 後台
     'b_wall': (11, 3, 1, 'a plain section of the back wall of an old theater backstage corridor: worn cream plaster with a few peeling patches, a dark brown wooden skirting, a faded painted stripe; completely plain, no doors, no windows, nothing hanging', 'strip', 'green', True),
-    'b_door': (2, 3, 1, 'the same kind of wall section (worn cream plaster above, a dark brown wooden wainscot panelling band along the whole bottom third, dark skirting) with a closed old wooden dressing-room door and a small blank brass plate, in a plain frame, centered; the door goes all the way down to the bottom edge and the wainscot panelling continues on both sides down to the bottom edge; NO floor visible anywhere, plain wall at the left and right edges', 'seg', 'green', True),
     'b_piano': (3, 2, 1, 'an old black upright piano seen from the front, a small brass lamp on top', 'obj', 'green', True),
     'b_rail_e': (1, 4, 3, 'a short dark wooden banister rail with turned balusters standing along a balcony edge, drawn as a tall narrow object', 'obj', 'green', False),
-    'b_balcony': (15, 3, 2, 'the front edge of an indoor second-floor balcony seen from the south: an ornate black cast-iron railing along the top, below it a full-storey-high old red brick wall face with four evenly spaced brass wall lamps glowing warm; runs straight across', 'strip', 'green', True),
+    'b_balcony': (15, 5, 4, 'the front edge of an indoor second-floor balcony seen from the south: along the top a one-cell-tall ornate black cast-iron railing, below it a full-storey old red brick wall face four cells tall with evenly spaced brass wall lamps glowing warm; plain brick wall with no doors; runs straight across', 'strip', 'green', True),
     'b_cap': (2, 1, 1, 'a short flat-topped section of an old masonry wall, plaster and brick, seen from the south', 'seg', 'green', True),
-    'b_divider': (1, 10, 8, 'one thin plaster-and-brick partition wall running straight north-south away from the viewer, so on screen it is one long narrow vertical strip: its long thin top edge runs from the top of the image downward, and at the bottom end you see the wall south-facing end face; about 1 cell wide and 10 cells tall', 'obj', 'green', True),
+    'b_divider': (1, 12, 10, 'one thin plaster-and-brick partition wall running straight north-south away from the viewer, so on screen it is one long narrow vertical strip: its long thin top edge runs from the top of the image downward, and at the bottom end you see the wall south-facing end face; about 1 cell wide and 12 cells tall', 'obj', 'green', True),
     'b_turn': (7, 3, 2, 'a wide masonry stairwell wall front seen from the south, plaster and old brick like the backstage back wall, COMPLETELY OPAQUE with no see-through gaps; near the left third a dark rounded archway whose interior is solid dark brown-black (opaque, nothing visible through it); a dark wooden lintel; a brass wall lamp; fills the full width', 'seg', 'green', True),
     'b_upper': (4, 5, 2, 'a thick masonry wall pier of the stairwell seen from the south, plaster and old brick, 4 cells wide and 5 cells tall, COMPLETELY OPAQUE and solid with no gaps; a heavy dark wooden beam across its bottom edge and a small hanging brass lamp near the top', 'seg', 'green', True),
     'b_cases': (2, 2, 1, 'two stacked black stage flight cases with metal corners', 'obj', 'green', True),
     'b_table': (3, 2, 1, 'a sturdy wooden workbench seen from the front with a desk lamp, a few sandbags and a roll of tape on top', 'obj', 'green', True),
-    'b_sidedoor': (1, 3, 2, 'a tall narrow arched doorway with a dark wooden frame in a side wall, the opening glowing warm with a hint of deep red curtain beyond, drawn as a tall narrow object', 'obj', 'green', False),
-    'b_backdoor': (1, 3, 2, 'a tall narrow dark steel back door in a side wall standing slightly open onto orange evening light, a small unlit exit lamp above (no text), drawn as a tall narrow object', 'obj', 'green', False),
     # 觀眾席
     'a_curtain': (6, 3, 1, 'a section of deep red velvet stage curtain with evenly spaced vertical folds and a gold fringe along the bottom hem', 'strip', 'green', True),
-    'a_lip': (8, 2, 1, 'the front edge of an old wooden stage seen from the front: a wooden stage skirt with gold trim along the top edge and evenly spaced small footlights', 'strip', 'green', True),
+    'a_lip': (8, 3, 1, 'the front of an old wooden stage seen from the front, 3 cells tall: along the top a gold-trimmed lip with small evenly spaced round footlights in the top cell, below it a dark wood panelled stage skirt two cells tall with evenly spaced raised panels', 'strip', 'green', True),
     'a_piano': (3, 2, 1, 'a black grand piano with its lid closed, seen from the front', 'obj', 'green', True),
     'a_mic': (1, 2, 1, 'a straight black microphone stand with a microphone on top', 'obj', 'green', False),
     'a_seat6': (6, 2, 1, 'one row of exactly 6 old red velvet theater seats in a perfectly straight row seen from the front: tall seat backs, gold-trimmed armrests between the seats, six identical evenly spaced seats', 'obj', 'green', True),
     'a_seat8': (8, 2, 1, 'one row of exactly 8 old red velvet theater seats in a perfectly straight row seen from the front: tall seat backs, gold-trimmed armrests between the seats, eight identical evenly spaced seats', 'obj', 'green', True),
     'a_seat8rose': (8, 2, 1, 'exactly the same row of 8 red velvet theater seats as image 2, but the rightmost seat has a single deep red rose lying across its seat cushion', 'obj', 'green', True),
     'a_desk': (4, 2, 1, 'a sound mixing desk seen from the front with rows of faders and small glowing lights on a wooden stand', 'obj', 'green', True),
-    'a_sidedoor': (1, 3, 2, 'a tall narrow stage-side doorway with a dark wooden frame in a side wall, a heavy red curtain half drawn, warm light beyond, drawn as a tall narrow object', 'obj', 'green', False),
     # 巷子
     'l_wall': (8, 3, 1, 'a plain section of weathered red brick wall of the back of an old theater: straight mortar lines, dark water stains, a low concrete base; completely plain, no doors, no windows, nothing hanging', 'strip', 'green', True),
-    'l_door': (2, 3, 1, 'the same red brick wall section with a heavy dark-green iron stage door, closed, a warm yellow bulb in a wire cage above it, a worn concrete step; plain brick at the left and right edges', 'seg', 'green', True),
     'l_shop': (4, 3, 1, 'the same red brick wall as a market-side shopfront: a striped red-and-white canvas awning, a row of glowing orange paper lanterns hanging under it, a few wooden produce crates below, warm light', 'seg', 'green', True),
     'l_scooters': (4, 2, 1, 'two parked scooters side by side seen from the side, both facing left, one white and one red, parallel and upright', 'obj', 'green', True),
     'l_crates': (1, 2, 1, 'two stacked red plastic produce baskets', 'obj', 'green', False),
 }
-OPAQUE = {'b_turn', 'b_upper', 'b_cap', 'd_wall', 'b_wall', 'l_wall', 'a_curtain'}   # 整面要不透明（遮擋物與牆）
+OPAQUE = {'b_turn', 'b_upper', 'b_cap', 'd_wall', 'b_wall', 'l_wall', 'a_curtain'}
+DOOR_WALL = {('dressing', 'door_wood'): 'd_wall', ('backstage', 'door_wood'): 'b_wall', ('alley', 'door_iron'): 'l_wall', ('auditorium', 'door_stage2'): 'a_curtain'}   # 門貼在哪種牆面上
+DOOR_W, DOOR_H = 1.7, 2.9   # 所有門（含門框）統一大小，單位：格   # 整面要不透明（遮擋物與牆）
 FLOORS = {a: '' for a in LOOK}
 
 
@@ -115,6 +117,7 @@ def prompt(t, a, hint=''):
          f"Draw: {desc}.\n"
          f"Proportions: its bounding box is {w} cells wide and {h} cells tall (width:height = {w}:{h}); the bottom {dd} cell(s) are its footprint on the floor, "
          f"the top {h - dd} cell(s) the part rising up. It fills that box: it touches (within 2%) the left, right and bottom edges of its box and nothing is cropped.\n")
+    if mode == 'door': p = p.replace(f"Proportions: its bounding box is {w} cells wide and {h} cells tall (width:height = {w}:{h}); the bottom {dd} cell(s) are its footprint on the floor, the top {h - dd} cell(s) the part rising up. It fills that box", "Proportions: it fills its bounding box")
     if mode == 'strip':
         p += (SEG + f" Draw it as one long straight horizontal strip about {max(w, h * 4)} cells wide and {h} cells tall; place it in the lower part of the image.\n")
     elif mode == 'seg':
@@ -161,7 +164,9 @@ def check_raw(path, t):
     cut = [k for k in need if margins[k] < 4]
     if cut: probs.append('貼到圖邊（可能被切掉）：' + ','.join(cut))
     asp = bw / bh; want = w / h; m['aspect'] = round(asp, 2); m['want'] = round(want, 2)
-    if mode == 'strip':
+    if mode == 'door':
+        if not (.45 <= asp <= .78): probs.append(f'門的比例不對（{asp:.2f}，要約 {DOOR_W / DOOR_H:.2f}）')
+    elif mode == 'strip':
         if asp < want * .45: probs.append(f'長條太短（比例 {asp:.2f} < {want * .45:.2f}），鏡射接長也不夠')   # 不夠寬的長條會在 cut 時鏡射接長
     elif not ((.62 if rect else .4) <= asp / want <= 1.65):   # 寬扁的家具比框胖沒關係（縮放以寬為準），只擋極端
         probs.append(f'比例不對（{asp:.2f}，要 {want:.2f}）')
@@ -292,7 +297,7 @@ def stair_rows(d):
                 for i in range(x, x + w): grid[j][i] = g['kind']
     out = []
     for g in d['ground']:
-        if g['kind'] != 'stairs': continue
+        if g['kind'] != 'stairs' or g.get('nogate'): continue
         for x, y, w, h in g['rects']:
             rows = [j for j in range(y, y + h) if all(grid[j][i] == 'stairs' for i in range(x, x + w))]
             if len(rows) >= 3: out.append((g['name'], x, w, rows))   # 舞台前的 1 格小階梯不驗
@@ -415,12 +420,50 @@ def fit(fig, fw, fh, mode):
     c = Image.new('RGBA', (W, Hh)); c.alpha_composite(f, ((W - nw) // 2, Hh - nh)); return c
 
 
+FACADE = {'b_balcony', 'door_stage', 'door_steel'}
+
+
+def door_insert(a, t):
+    """含門框的門 → 統一縮成 DOOR_W×DOOR_H 格（生成圖比例已過閘門，形變小）"""
+    f = key_full(raw_path(a, t)); g = f.crop(f.getbbox())
+    return g.resize((round(DOOR_W * OBJ_PX), round(DOOR_H * OBJ_PX)), Image.LANCZOS)
+
+
+def facade_line(a, d):
+    """陽台前緣整排：長條（欄杆＋磚牆）合成一張連續的長圖，兩扇門的門（統一大小、含石框）貼在上面、下緣貼齊地面；
+    之後每一段（左、門、中、門、右）都是這一張長圖的切片，不會有接縫（十一分鐘 lines 的做法）。回傳 (長圖, 最左邊的格)。"""
+    if a != 'backstage': return None
+    objs = [o for o in layout.objects(d) if type_of(o) in FACADE]
+    if not objs: return None
+    xmin = min(o['vis'][0] for o in objs); xmax = max(o['vis'][0] + o['vis'][2] for o in objs); Wc = xmax - xmin; Hc = objs[0]['vis'][3]
+    f = key_full(raw_path(a, 'b_balcony')); f = f.crop(f.getbbox()); f = f.crop((4, 0, f.width - 4, f.height))
+    comp = fit(seg_slice(extend_strip(f, Wc / Hc * 1.15), Wc, Hc, 0), Wc, Hc, 'strip')
+    for o in objs:
+        t = type_of(o)
+        if t == 'b_balcony': continue
+        fx, fy, fw, fh = o['vis']; ins = door_insert(a, t)
+        comp.alpha_composite(ins, ((fx - xmin) * OBJ_PX + (fw * OBJ_PX - ins.width) // 2, fh * OBJ_PX - ins.height))
+    return comp, xmin
+
+
 def cut(a):
     d = layout.load(a); od = os.path.join(G, f'assets/objects/{a}'); os.makedirs(od, exist_ok=True)
     for f in glob.glob(os.path.join(od, '*')): os.remove(f)
     cache, alt = {}, {}
+    line = facade_line(a, d)   # 後台陽台前緣：整排合成再切段
     for o in layout.objects(d):
         t = type_of(o); fx, fy, fw, fh = o['vis']; pad = o['frame'][3] - fh; tw, th, _, _, mode, _, _ = TYPES[t]
+        if line is not None and t in FACADE:
+            comp, xmin = line; ox = (fx - xmin) * OBJ_PX
+            comp.crop((ox, 0, ox + fw * OBJ_PX, fh * OBJ_PX)).save(os.path.join(od, f"{o['name']}.webp"), quality=93); continue
+        if mode == 'door':   # 一般牆上的門：同一面牆的連續牆面切片當底，門（統一大小）貼在中間、下緣貼齊
+            wt = DOOR_WALL[(a, t)]
+            if wt not in cache:
+                f = key_full(raw_path(a, wt)); cache[wt] = f.crop(f.getbbox())
+            alt[wt] = alt.get(wt, 0) + 1; wf = cache[wt]
+            base = fit(seg_slice(extend_strip(wf.crop((4, 0, wf.width - 4, wf.height)), fw / fh * 1.15), fw, fh, alt[wt] - 1), fw, fh, 'strip')
+            ins = door_insert(a, t); base.alpha_composite(ins, ((fw * OBJ_PX - ins.width) // 2, fh * OBJ_PX - ins.height))
+            base.save(os.path.join(od, f"{o['name']}.webp"), quality=93); continue
         if mode == 'obj' and (fw, fh) != (tw, th): raise SystemExit(f"{o['name']} 圖框 {fw}×{fh} 跟種類 {t} 的 {tw}×{th} 不一致")
         if t not in cache:
             if not os.path.exists(raw_path(a, t)): raise SystemExit(f'缺 {t} 的產圖')

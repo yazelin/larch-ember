@@ -14,7 +14,7 @@ objects:
   - {name: 北牆左, type: d_wall, kind: 隔間牆, foot: [1, 2, 6, 1], up: 2, desc: 奶油色老灰泥牆，下三分之一是深色木護壁}
   - {name: 窗, type: d_window, kind: 隔間牆, foot: [7, 2, 4, 1], up: 2, desc: 牆面正中一扇朝西的大木框窗，外面是橘色夕陽與台南老街屋頂，兩側紅絨窗簾束起}
   - {name: 北牆右, type: d_wall, kind: 隔間牆, foot: [11, 2, 4, 1], up: 2, desc: 同左}
-  - {name: 化妝間門, type: d_door, kind: 門, foot: [15, 2, 2, 1], up: 2, desc: 深色木門，黃銅把手，門牌（不放字）；門前（15,3）是觸發點}
+  - {name: 化妝間門, type: door_wood, kind: 門, foot: [15, 2, 2, 1], up: 2, desc: 深色木門，黃銅把手，門牌（不放字）；門前（15,3）是觸發點}
   # ── 北牆前的家具（佔地在第 3 列）──
   - {name: 化妝台, type: d_vanity, kind: 桌, foot: [1, 3, 4, 1], up: 2, desc: 燈泡框大鏡的化妝台，鏡角貼一張小照片，桌上攤著筆記本與一支黑色手錶}
   - {name: 首飾盒小桌, type: d_jewel, kind: 桌, foot: [5, 3, 1, 1], up: 1, desc: 圓形小邊桌，上面一個雕花首飾盒}
@@ -28,7 +28,8 @@ objects:
 
 points:
   hero_start: [9, 8]
-  door: [15, 3]          # 化妝間門前，觸發點（往後台）
+  door: [15, 3]          # 化妝間門前，觸發點（往後台）；門 2 格寬，兩格都是觸發點
+  door_b: [16, 3]
   cheng: [14, 4]
   window: [8, 4]
   mirror: [2, 4]
@@ -36,3 +37,5 @@ points:
   jewel: [5, 4]
   radio: [12, 4]
   case: [3, 8]
+
+doors: [[15, 3], [16, 3]]

@@ -1088,5 +1088,417 @@
   ],
   "try_": 2,
   "t": "2026-10-20 03:25:55"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_lip",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 8,
+    "top": 429,
+    "right": 8,
+    "bottom": 200
+   },
+   "aspect": 3.85,
+   "want": 2.67,
+   "bottom_deg": -0.0,
+   "top_deg": 0.04
+  },
+  "try": 1,
+  "t": "2026-10-20 12:00:50"
+ },
+ {
+  "map": "backstage",
+  "type": "b_balcony",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 11,
+    "top": 296,
+    "right": 9,
+    "bottom": 208
+   },
+   "aspect": 2.92,
+   "want": 3.75,
+   "bottom_deg": 0.0,
+   "top_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:01:02"
+ },
+ {
+  "map": "backstage",
+  "type": "b_door_back",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 26,
+    "top": 61,
+    "right": 26,
+    "bottom": 51
+   },
+   "aspect": 0.68,
+   "want": 0.5,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:01:10"
+ },
+ {
+  "map": "backstage",
+  "type": "b_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 16,
+    "top": 101,
+    "right": 16,
+    "bottom": 112
+   },
+   "aspect": 0.75,
+   "want": 0.67,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:01:12"
+ },
+ {
+  "map": "backstage",
+  "type": "b_door_side",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 43,
+    "top": 80,
+    "right": 42,
+    "bottom": 74
+   },
+   "aspect": 0.68,
+   "want": 0.5,
+   "bottom_deg": 0.01,
+   "top_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:01:26"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 7,
+    "top": 30,
+    "right": 7,
+    "bottom": 93
+   },
+   "aspect": 0.71,
+   "want": 0.67,
+   "bottom_deg": -0.0,
+   "top_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:01:41"
+ },
+ {
+  "map": "backstage",
+  "type": "b_divider",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 534,
+    "top": 14,
+    "right": 532,
+    "bottom": 17
+   },
+   "aspect": 0.1,
+   "want": 0.09,
+   "bottom_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:01:49"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": true,
+  "iou": 0.956,
+  "stairs": [
+   [
+    "A 段樓梯",
+    5,
+    6
+   ],
+   [
+    "B 段樓梯",
+    9,
+    8
+   ]
+  ],
+  "cloned": [
+   "A 段樓梯"
+  ],
+  "try_": 1,
+  "t": "2026-10-20 12:02:31"
+ },
+ {
+  "map": "auditorium",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "stairs": [],
+  "cloned": [],
+  "try_": 1,
+  "t": "2026-10-20 12:02:48"
+ },
+ {
+  "map": "auditorium",
+  "type": "a_door",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 16,
+    "top": 41,
+    "right": 16,
+    "bottom": 42
+   },
+   "aspect": 0.68,
+   "want": 0.67,
+   "bottom_deg": -0.06,
+   "top_deg": -0.09
+  },
+  "try": 1,
+  "t": "2026-10-20 12:06:15"
+ },
+ {
+  "map": "backstage",
+  "type": "door_steel",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 99,
+    "top": 55,
+    "right": 96,
+    "bottom": 58
+   },
+   "aspect": 0.58,
+   "want": 0.67,
+   "bottom_deg": 0.06
+  },
+  "try": 1,
+  "t": "2026-10-20 12:09:40"
+ },
+ {
+  "map": "auditorium",
+  "type": "door_stage2",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 108,
+    "top": 53,
+    "right": 109,
+    "bottom": 50
+   },
+   "aspect": 0.56,
+   "want": 0.67,
+   "bottom_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:09:45"
+ },
+ {
+  "map": "dressing",
+  "type": "door_wood",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 129,
+    "top": 55,
+    "right": 129,
+    "bottom": 55
+   },
+   "aspect": 0.54,
+   "want": 0.67,
+   "bottom_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:09:50"
+ },
+ {
+  "map": "backstage",
+  "type": "door_wood",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 70,
+    "top": 120,
+    "right": 70,
+    "bottom": 123
+   },
+   "aspect": 0.59,
+   "want": 0.67,
+   "bottom_deg": -0.01
+  },
+  "try": 1,
+  "t": "2026-10-20 12:09:56"
+ },
+ {
+  "map": "backstage",
+  "type": "b_balcony",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 45,
+    "top": 146,
+    "right": 45,
+    "bottom": 110
+   },
+   "aspect": 4.45,
+   "want": 3.0,
+   "bottom_deg": 0.0,
+   "top_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:10:00"
+ },
+ {
+  "map": "backstage",
+  "type": "door_stage",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 56,
+    "top": 104,
+    "right": 57,
+    "bottom": 114
+   },
+   "aspect": 0.6,
+   "want": 0.67,
+   "bottom_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:10:16"
+ },
+ {
+  "map": "backstage",
+  "type": "b_divider",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 443,
+    "top": 12,
+    "right": 442,
+    "bottom": 42
+   },
+   "aspect": 0.09,
+   "want": 0.08,
+   "bottom_deg": -0.0
+  },
+  "try": 1,
+  "t": "2026-10-20 12:10:27"
+ },
+ {
+  "map": "alley",
+  "type": "door_iron",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 106,
+    "top": 13,
+    "right": 105,
+    "bottom": 67
+   },
+   "aspect": 0.56,
+   "want": 0.67,
+   "bottom_deg": 0.02
+  },
+  "try": 1,
+  "t": "2026-10-20 12:10:31"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": false,
+  "iou": 0.866,
+  "stairs": [
+   [
+    "A 段樓梯",
+    5,
+    1
+   ],
+   [
+    "B 段樓梯",
+    10,
+    6
+   ]
+  ],
+  "cloned": [],
+  "try_": 1,
+  "t": "2026-10-20 12:11:09"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": false,
+  "iou": 0.754,
+  "stairs": [
+   [
+    "A 段樓梯",
+    5,
+    8
+   ],
+   [
+    "B 段樓梯",
+    10,
+    14
+   ]
+  ],
+  "cloned": [
+   "A 段樓梯"
+  ],
+  "try_": 2,
+  "t": "2026-10-20 12:12:36"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "stairs": [
+   [
+    "A 段樓梯",
+    5,
+    7
+   ],
+   [
+    "B 段樓梯",
+    10,
+    14
+   ]
+  ],
+  "cloned": [
+   "A 段樓梯"
+  ],
+  "try_": 3,
+  "t": "2026-10-20 12:13:18"
  }
 ]

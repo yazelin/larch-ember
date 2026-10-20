@@ -101,6 +101,13 @@ def check(d):
             if qx <= ox and qy <= oy and ox + ow <= qx + qw and oy + oh <= qy + qh:
                 errs.append(f"{o['name']} 整個落在 {q['name']} 的圖框裡，會被完全蓋掉")
     wl = walls(d); pts = d['points']; ok = reachable(d, pts['hero_start'])
+    floor = {(i, j) for g in d['ground'] if g['kind'] != 'border' for x, y, w, h in g['rects'] for j in range(y, y + h) for i in range(x, x + w)}
+    hole = sorted(c for c in ok if c not in floor)   # 走得到、卻沒有畫地面的格子（主角會走進黑色空洞）
+    if hole: errs.append(f'走得到卻沒有地面的格子（空洞）：{hole[:8]}{"…" if len(hole) > 8 else ""}')
+    for (x, y) in d.get('doors', []):   # 門前的觸發格：本身走得到，正北方那格是實心的牆（門嵌在牆裡，不是貼在外緣）
+        if (x, y) in wl or (x, y) not in ok: errs.append(f'門前觸發格 {(x, y)} 走不到')
+        if (x, y - 1) not in wl: errs.append(f'門前觸發格 {(x, y)} 的正北方 {(x, y - 1)} 不是牆，門沒有嵌在牆裡')
+        if not (0 < x < d['map']['w'] - 1): errs.append(f'門 {(x, y)} 貼在地圖左右外緣')
     for k, p in pts.items():
         if tuple(p) in wl:
             errs.append(f'事件點 {k} {p} 在牆上')

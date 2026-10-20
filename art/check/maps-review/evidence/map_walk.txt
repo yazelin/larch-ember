@@ -1,10 +1,36 @@
-1. 化妝間→後台（走廊盡頭的鋼琴聲）：ok   2.5s
-2. 後台 二樓→U 型樓梯→一樓→側台門→觀眾席：ok   9.5s
+1. 化妝間→後台（走廊盡頭的鋼琴聲）：ok   4s
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 51346)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/ct/larch-preview/serve.py", line 185, in do_GET
+    return self.send_file(safe_join(os.path.join(vendor, 'root'), path.lstrip('/')))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ct/larch-preview/serve.py", line 127, in send_file
+    self.send(200, f.read(), mimetypes.guess_type(path)[0] or 'application/octet-stream')
+  File "/home/ct/larch-preview/serve.py", line 121, in send
+    self.wfile.write(body)
+  File "/usr/lib/python3.12/socketserver.py", line 840, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+2. 後台 二樓→U 型樓梯→一樓→側台門→觀眾席：ok   9.6s
 3. 觀眾席→三排十四號：ok   4.1s
-4. 觀眾席→回後台（側台門）：ok   0.9s
-5. 後台→後門→巷子：ok   6.4s
+4. 觀眾席→回後台（側台門）：ok   0.8s
+5. 後台→後門→巷子：ok   7.3s
 6. 巷子→阿桃姨：ok   1.6s
 7. 巷子→回後台（後門）：ok   0.9s
 8. 後台→回化妝間→天黑：ok   7.9s
-9. 化妝間→鋼琴聲以外的任務：旋鈕與收音機：ok   1.5s
+9. 觀眾席：從三排十四號走回舞台後牆的門（長距離）：ok   4.2s
+10. 巷子：從巷子盡頭走回後門（長距離）：ok   3.3s
+11. 化妝間→鋼琴聲以外的任務：旋鈕與收音機：ok   1.6s
 全部走得到
