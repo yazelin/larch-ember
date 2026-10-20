@@ -35,7 +35,7 @@ const SCENES = [
   ['巷子→阿桃姨', 'm-alley', {}, '有人在叫你', { text: /巷子口站著一個頭髮花白的阿姨/ }, true],
   ['巷子→回後台（後門）', 'm-alley', { tao: true }, '回後台', { card: 'm-backstage' }],
   ['後台→回化妝間→天黑', 'm-backstage', { letter: true, zhou: true, seat: true, tao: true }, '回化妝間', { text: /窗外最後一道光/ }, false, 40000],
-  ['化妝間→鋼琴聲以外的任務：旋鈕與收音機', 'm-dressing', {}, '收音機旁邊的東西', { text: /一台舊的塑膠殼手提收音機/ }, true],
+  ['化妝間→鋼琴聲以外的任務：旋鈕與收音機', 'm-dressing', {}, '收音機旁邊的東西', { text: /舊塑膠殼手提收音機/ }, true],
 ];
 const only = process.argv.slice(2).map(Number); let fail = 0;
 for (let i = 0; i < SCENES.length; i++) {

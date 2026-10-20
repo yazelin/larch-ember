@@ -33,6 +33,16 @@ GALLERY = [('s_prologue_2', '後台的門'), ('s_soundcheck_3', '三排十四號
            ('s_mem2_9', '2012，歐洲的化妝間'), ('s_mem2_11', '2013，空舞台上的一小段舞'), ('s_mem4_1', '2022，診間'), ('s_concert_1', '開演'),
            ('s_a_2', '結局 A'), ('s_a_8', '結局 A 尾聲'), ('s_b_3', '結局 B'), ('s_c_8', '結局 C'), ('s_c_10', '結局 C 尾聲')]
 GAL = {k for k, _ in GALLERY}
+# 配樂（assets/bgm/manifest.json 的 use_in：劇本代號 → 曲名）。地圖本身掛各自的曲子；同一首曲子的卡片不重複設定，避免重播
+_BGM = json.loads((R / 'assets/bgm/manifest.json').read_text(encoding='utf-8')) if (R / 'assets/bgm/manifest.json').exists() else {'tracks': []}
+TRACK = {c: t['name'] for t in _BGM['tracks'] for c in t.get('use_in', [])}
+MAP_TRACK = {'m-dressing': 'dressing', 'm-backstage': 'backstage', 'm-auditorium': 'auditorium', 'm-alley': 'alley'}
+CARD_MAP = {c: 'dressing' for c in ('m_dressing_intro', 'm_window', 'm_mirror', 'm_notebook', 'm_rose_dry', 'm_jewelry', 'm_radio', 'm_radio_on', 'm_letter', 'm_note')}
+CARD_MAP.update({'m_corridor': 'backstage', 'm_auditorium': 'auditorium', 'm_alley': 'alley'})
+
+
+def music(name):
+    return A + f'bgm/{name}.mp3' if name and (R / f'assets/bgm/{name}.mp3').exists() else ''
 
 
 def voice(vid):
@@ -47,7 +57,7 @@ def shot_url(shot):
     return A + f'art/cg/{shot}.webp' if p.exists() else ''
 
 
-def story_card(cid, bg_carry):
+def story_card(cid, bg_carry, bgm=''):
     """一段台詞 → 一張對話卡；台詞前有〔圖〕的那一句換背景。回傳 (卡, 這段結束時的背景)。"""
     lines, bg = [], bg_carry
     first_bg = None
@@ -63,7 +73,7 @@ def story_card(cid, bg_carry):
         if v:
             line['voiceUrl'] = v
         lines.append(line)
-    card = cards.dialogue(cid, TITLES.get(cid, cid), [(l['speaker'], l['text'], l.get('voiceUrl')) for l in lines], bg=first_bg or '')
+    card = cards.dialogue(cid, TITLES.get(cid, cid), [(l['speaker'], l['text'], l.get('voiceUrl')) for l in lines], bg=first_bg or '', bgm=bgm or None)
     for src, dst in zip(lines, card['data']['dialogueLines']):
         dst['speaker'] = src['speaker']
         if 'background' in src:
@@ -97,22 +107,28 @@ def build():
                       'portrait': '/files/assets/art/p_yu_47.webp', 'join': 'stay', 'kit': 'none', 'rig': '', 'joinVariable': ''}]}
     p['settings'].setdefault('plugins', {})['larch-rpg-system'] = {'enabled': True, 'settings': {'database': json.dumps(db, ensure_ascii=False)}}
     for m in maps.all_maps():
+        t = music(MAP_TRACK.get(m['id']))
+        if t:
+            m['data'].update(bgm=t, bgmVolume=0.4, bgmLoop=True)
         N(m)
-    for cid in MAP_CARDS:   # 地圖事件播的卡：不接線
-        c, _ = story_card(cid, '')
+    for cid in MAP_CARDS:   # 地圖事件播的卡：不接線；曲子跟所在地圖一樣就不重設（避免重播）
+        t = TRACK.get(cid)
+        c, _ = story_card(cid, '', bgm=music(t) if t and t != CARD_MAP.get(cid) else '')
         N(c); made.add(cid)
-    c, bgb = story_card('branch_dark', shot_url('s_branch_1'))
+    c, bgb = story_card('branch_dark', shot_url('s_branch_1'), bgm=music(TRACK.get('branch_dark')))
     N(c); made.add('branch_dark')
     N(cards.choice('branch_choice', '天黑', '她心裡聽見誰？', [t for t, _ in script.CHOICES['branch_dark']], speaker='余靜', bg=bgb))
     cards.link(board, 'branch_dark', 'branch_choice')
     seqs = [MAIN] + list(ENDINGS.values())
     for seq in seqs:
-        prev = None
+        prev = None; ptrack = None
         bg = shot_url('s_branch_1') if seq is not MAIN else ''
         for cid in seq:
             if cid == 'concert' and 'concert' in made:   # A、B 共用開演
-                prev = cid; continue
-            c, bg = story_card(cid, bg)
+                prev = cid; ptrack = TRACK.get(cid); continue
+            t = TRACK.get(cid)
+            c, bg = story_card(cid, bg, bgm=music(t) if t and t != ptrack else '')
+            ptrack = t or ptrack
             if cid == MAIN[0]:
                 c['data']['start'] = True
             if cid not in made:
@@ -141,6 +157,7 @@ def build():
     for n in board['nodes']:
         if n['id'].startswith('set_heard_'):
             n['data']['text'] = '天黑了。'
+    p['settings'].setdefault('titleScreen', {})['bgm'] = music('title') or p['settings'].get('titleScreen', {}).get('bgm', '')
     cover = A + 'art/cover.webp'
     p['settings']['titleCoverImage'] = cover
     p['settings']['projectThumbnail'] = cover

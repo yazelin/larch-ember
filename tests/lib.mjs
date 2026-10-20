@@ -30,7 +30,7 @@ export async function serve(json) {
   return { base, kill: () => proc.kill() };
 }
 
-export async function open(base, { mobile = false, width = 1280, height = 800 } = {}) {
+export async function open(base, { mobile = false, width = 1280, height = 800, init = null } = {}) {
   const browser = await chromium.launch({
     executablePath: process.env.CHROME || '/usr/bin/google-chrome',
     headless: process.env.HEADED ? false : true,
@@ -38,6 +38,7 @@ export async function open(base, { mobile = false, width = 1280, height = 800 } 
   });
   const ctx = await browser.newContext(mobile ? { ...devices['iPhone 13'], locale: 'zh-TW' } : { viewport: { width, height }, deviceScaleFactor: 1, locale: 'zh-TW' });
   if (SPEED > 1) await ctx.addInitScript(timewarp, SPEED);
+  if (init) await ctx.addInitScript(init);   // 開頁前注入（所有 frame 一建立就有，例如攔截 audio.play）
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
