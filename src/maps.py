@@ -85,11 +85,11 @@ def backstage2f():
         npc('zhou', *p['piano'], W('zhou'), direction='up', name='彈琴的人', conditions=[cond('zhou', False)],
             actions=[card('m_corridor'), setv('zhou', True)]),
         *door('to-dressing', [p['to_dressing'], p['to_dressing_b']], 'm-dressing', {'x': 15, 'y': 4, 'direction': 'down'}),
-        *door('stairs-down', [p['stairs_down'], p['stairs_down_b']], 'm-backstage', {'x': 15, 'y': 8, 'direction': 'down'}, name='階梯：下樓'),
+        *door('stairs-down', [p['stairs_down'], p['stairs_down_b']], 'm-backstage', {'x': 15, 'y': 4, 'direction': 'down'}, name='拱門樓梯口：下樓'),
     ]
     guide = [G('彈琴的人', 'zhou', [cond('zhou', False)]),
-             G('下樓：階梯走到底', 'stairs-down', [cond('zhou', True), cond('seat', False)]),   # 分兩條：導引條件只能 AND，兩條互斥
-             G('下樓：階梯走到底', 'stairs-down', [cond('zhou', True), cond('seat', True), cond('tao', False)]),
+             G('下樓：走到拱門樓梯口', 'stairs-down', [cond('zhou', True), cond('seat', False)]),   # 分兩條：導引條件只能 AND，兩條互斥
+             G('下樓：走到拱門樓梯口', 'stairs-down', [cond('zhou', True), cond('seat', True), cond('tao', False)]),
              G('回化妝間', 'to-dressing', ALL_DONE)]
     return _map('m-backstage-2f', '後台二樓', 'backstage2f', events, guide,
                 _env('#ffb070', 0.18, [('lamp-door', 4, 5, 4, '#ffcf8a', 0.06), ('lamp-piano', 9, 5, 4, '#ffcf8a', 0.06), ('lamp-stair', 15, 5, 3, '#ffd59a', 0.04)]))
@@ -101,10 +101,10 @@ def backstage():
         hero(*p['hero_start'], 'down'),
         *door('to-stage', [p['stage_door'], p['stage_door_b']], 'm-auditorium', {'x': 4, 'y': 4, 'direction': 'down'}),
         *door('to-alley', [p['back_door'], p['back_door_b']], 'm-alley', {'x': 4, 'y': 4, 'direction': 'down'}),
-        *door('stairs-up', [p['stairs_up'], p['stairs_up_b']], 'm-backstage-2f', {'x': 15, 'y': 8, 'direction': 'down'}, name='階梯：上樓'),
+        *door('stairs-up', [p['stairs_up'], p['stairs_up_b']], 'm-backstage-2f', {'x': 15, 'y': 4, 'direction': 'down'}, name='拱門樓梯口：上樓'),
     ]
     guide = [G('側台門：通觀眾席', 'to-stage', [cond('seat', False)]), G('後門：通巷子', 'to-alley', [cond('tao', False)]),
-             G('上樓：階梯走到底', 'stairs-up', ALL_DONE)]
+             G('上樓：走到拱門樓梯口', 'stairs-up', ALL_DONE)]
     return _map('m-backstage', '後台一樓', 'backstage', events, guide,
                 _env('#ffb070', 0.18, [('lamp-stage', 4, 5, 4, '#ffcf8a', 0.06), ('lamp-back', 11, 5, 4, '#ffcf8a', 0.06), ('lamp-stair', 15, 5, 3, '#ffd59a', 0.04)]))
 

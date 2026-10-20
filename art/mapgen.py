@@ -74,6 +74,11 @@ TYPES = {
     'b_bench': (4, 2, 1, 'a long low plain wooden bench seen from the front, worn dark wood, four legs, straight and level', 'obj', 'green', True),
     'b_rack': (2, 2, 1, 'a wheeled metal costume rack seen from the front with three stage costumes hanging on it (a dark red dress, a navy jacket, a cream shirt), small caster wheels at the bottom', 'obj', 'green', True),
     'b_trunk': (2, 2, 1, 'one large old wooden steamer trunk with brass corners and a leather handle, closed lid, seen from the front', 'obj', 'green', True),
+    'b_mirror': (1, 2, 1, 'a standing full-length cheval mirror in a dark wooden frame on two small feet, seen from the front, the glass reflecting warm light', 'obj', 'green', False),
+    'b_plant': (1, 2, 1, 'a large leafy green potted plant in a plain terracotta pot, seen from the front', 'obj', 'green', False),
+    'b_ladder': (1, 2, 1, 'a plain wooden step ladder standing upright, seen from the front', 'obj', 'green', False),
+    'b_reel': (2, 2, 1, 'a big wooden cable drum standing on its side with black electric cable wound around it, seen from the front', 'obj', 'green', True),
+    'b_propbox': (2, 2, 1, 'an open wooden prop crate with a few small stage props sticking out of it (a paper fan, a lantern, a rolled scroll), seen from the front', 'obj', 'green', True),
     # 觀眾席
     'a_curtain': (6, 3, 1, 'a section of deep red velvet stage curtain with evenly spaced vertical folds and a gold fringe along the bottom hem', 'strip', 'green', True),
     'a_lip': (8, 3, 1, 'the front of an old wooden stage seen from the front, 3 cells tall: along the top a gold-trimmed lip with small evenly spaced round footlights in the top cell, below it a dark wood panelled stage skirt two cells tall with evenly spaced raised panels', 'strip', 'green', True),
@@ -284,7 +289,9 @@ def align_ground(raw_png, d, S):
     for textured in (False, True):
         m = floor_mask(im.filter(ImageFilter.GaussianBlur(3)), textured)
         lab, n = ndimage.label(m); k = 1 + int(np.argmax(ndimage.sum(m, lab, range(1, n + 1)))); mm = lab == k
-        ys2, xs2 = np.where(mm); gx0, gx1, gy0, gy1 = xs2.min(), xs2.max() + 1, ys2.min(), ys2.max() + 1
+        rs, cs = mm.sum(1), mm.sum(0)   # 模型有時會多畫一條窄窄的凸出（門口）：只取寬度過半的列與行當地板範圍
+        ys2 = np.where(rs > .5 * rs.max())[0]; xs2 = np.where(cs > .5 * cs.max())[0]
+        gx0, gx1, gy0, gy1 = xs2.min(), xs2.max() + 1, ys2.min(), ys2.max() + 1
         border = tuple(int(v) for v in np.asarray(im)[~mm].mean(0)) if (~mm).any() else (30, 30, 30)
         crop = im.crop((int(gx0), int(gy0), int(gx1), int(gy1))).resize(((wx1 - wx0) * S, (wy1 - wy0) * S), Image.LANCZOS)
         canvas = Image.new('RGB', (W * S, Hh * S), border); canvas.paste(crop, (int(wx0) * S, int(wy0) * S))
@@ -348,6 +355,14 @@ def fix_stairs(canvas, d, S):
     return out, fixed
 
 
+def no_stairs_ok(canvas, d, S):
+    """d['no_stairs'] 範圍（格）內不能有階梯立面（暗帶 ≥ 9 px 且夠深）；回傳是否乾淨"""
+    ok = True
+    for x, y, w, h in d.get('no_stairs', []):
+        n, runs = riser_count(canvas, x, w, list(range(y, y + h)), S); print('  無階梯範圍', (x, y, w, h), '立面', n, '乾淨' if n <= 1 else '有階梯殘留'); ok &= n <= 1
+    return ok
+
+
 def ground(a):
     d = layout.load(a); W, Hh = d['map']['w'], d['map']['h']; S = 32
     im = Image.new('RGB', (W * S, Hh * S)); dr = ImageDraw.Draw(im)
@@ -358,20 +373,21 @@ def ground(a):
     p = (f"Top-down painted game map floor texture only ({BASE}), following exactly the colour-region layout of image 1 (each flat colour is one floor material). "
          f"Match the painting style, palette and lighting of image 2, but IGNORE image 2's layout completely (its furniture, rug position and doorways are irrelevant). {LOOK[a]}. Floor materials: {desc}. "
          "The dark regions are solid walls seen from above: draw them as a dark plaster wall top / dark masonry, plain and flat. "
-         f"{CAM}. Draw ONLY the floor surfaces and the dark wall areas: no furniture, no walls rising up, no windows, no doors, no people, no objects at all, no text.")
+         f"The floor is completely flat everywhere: NO staircase, NO steps, NO stair treads, NO railings anywhere on the floor (image 2 may show a doorway in a wall, ignore it). {CAM}. Draw ONLY the floor surfaces and the dark wall areas: no furniture, no walls rising up, no windows, no doors, no people, no objects at all, no text.")
     out = os.path.join(RAW, f'ground-{a}.png'); S2 = 1536 // W; best = None
     for k in range(3):
         o = out if k == 0 else out.replace('.png', f'-try{k + 1}.png')
-        try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom. The wooden staircase must show clearly separated steps: many distinct horizontal treads with a dark riser line between each, one step about every half cell.' if k else ''), o, [lay, anchor(a)], size='1536x1024')
+        try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom. ' if k else ''), o, [lay, anchor(a)], size='1536x1024')
         except Exception as e: print('地面第', k + 1, '次生成失敗', repr(e)[:120], flush=True); continue
         canvas, iou, how = align_ground(o, d, S2); sok, sres = stairs_ok(canvas, d, S2); fixed = []
         if not sok:
             c2, fixed = fix_stairs(canvas, d, S2); sok2, sres2 = stairs_ok(c2, d, S2)
             if sok2: canvas, sok, sres = c2, True, sres2
         print('地面第', k + 1, '次 IoU', round(iou, 3), '樓梯立面', sres, '過' if sok else '不過', ('；補貼：' + '、'.join(fixed)) if fixed else '', flush=True)
-        good = iou >= .92 and sok
+        nost = no_stairs_ok(canvas, d, S2)
+        good = iou >= .92 and sok and nost
         log(dict(map=a, type='ground', ok=good, iou=round(iou, 3), stairs=sres, cloned=fixed, try_=k + 1))
-        score = iou + (1 if sok else 0)
+        score = iou + (1 if sok else 0) + (1 if nost else 0)
         if best is None or score > best[1]: best = (canvas, score, o)
         if good: break
     os.makedirs(os.path.join(G, 'assets/maps'), exist_ok=True)
@@ -539,7 +555,7 @@ def realign(a, raw=None):
             c2, fixed = fix_stairs(canvas, d, S2); sok2, sres2 = stairs_ok(c2, d, S2)
             if sok2: canvas, sok, sres = c2, True, sres2
         print(os.path.basename(c), 'IoU', round(iou, 3), f'({how})', '樓梯立面', sres, '過' if sok else '不過', ('；補貼：' + '、'.join(fixed)) if fixed else '')
-        sc = iou + (1 if sok else 0)
+        sc = iou + (1 if sok else 0) + (1 if no_stairs_ok(canvas, d, S2) else 0)
         if best is None or sc > best[1]: best = (canvas, sc, c, iou, sok)
     best[0].save(os.path.join(G, f'assets/maps/{a}_ground.webp'), quality=92)
     print('採用', os.path.basename(best[2]), 'IoU', round(best[3], 3), '樓梯', '過' if best[4] else '不過')

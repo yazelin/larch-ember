@@ -1,28 +1,26 @@
 # 後台二樓（m-backstage-2f）：2026-10-21 作者拍板，後台拆成兩張各自平的地圖。
-#   化妝間的門過來落在這裡；鋼琴與周老師；東邊一段階梯往北走進拱門＝下樓，傳到一樓（objects_backstage.yaml）的階梯南端。
-#   兩層的階梯位置相同（x15–16、第 3–7 列）。
+#   二樓偏「走廊／衣物」：化妝間的門、鋼琴與周老師、服裝架、地毯、試衣鏡、單一箱子。
+#   2026-10-21 作者：地板上沒有階梯；只留北牆右上角的拱門樓梯口（下樓），走到拱門前（第 3 列）就淡出換層。
 map: {id: m-backstage-2f, w: 18, h: 12}
 
 ground:
   - {name: 外牆, kind: border, rects: [[0, 0, 18, 3], [0, 0, 1, 12], [17, 0, 1, 12], [0, 11, 18, 1]]}
   - {name: 二樓走廊, kind: wood, rects: [[1, 3, 16, 8]], desc: 二樓走廊的老木地板，長條板縫整齊平行，暖棕色}
   - {name: 地毯, kind: rug, rects: [[4, 5, 9, 4]], desc: 一塊褪色的深紅色長方地毯，邊緣整齊，在走廊中間}
-  - {name: 樓梯, kind: stairs, rects: [[15, 3, 2, 5]], desc: 靠東牆的一段木頭階梯往北下去：每一階是一塊獨立的木板，階與階之間有一條深色的踢腳陰影線，一階一階清楚地分開，橫向整齊排列，全程同樣的階高}
 
 objects:
   # ── 北牆 ──
   - {name: 北牆左, type: b_wall, kind: 隔間牆, foot: [1, 2, 2, 1], up: 2, desc: 二樓走廊北牆（左段）}
   - {name: 化妝間門, type: door_wood, kind: 門, foot: [3, 2, 2, 1], up: 2, desc: 二樓化妝間的門；門前 (3,3)(4,3) 是觸發點}
   - {name: 北牆右, type: b_wall, kind: 隔間牆, foot: [5, 2, 10, 1], up: 2, desc: 二樓走廊北牆（右段）}
-  - {name: 樓梯拱門, type: b_arch, kind: 隔間牆, foot: [15, 2, 2, 1], up: 2, desc: 牆裡一個深色拱門，階梯往下通進去，下樓；階梯最北一格 (15,3)(16,3) 是樓梯口}
+  - {name: 樓梯拱門, type: b_arch, kind: 隔間牆, foot: [15, 2, 2, 1], up: 2, desc: 牆裡一個深色圓拱門（樓梯間入口，只有牆面上的門洞），下樓；拱門前 (15,3)(16,3) 是樓梯口}
   # ── 貼北牆 ──
   - {name: 直立鋼琴, type: b_piano, kind: 櫃, foot: [8, 3, 3, 1], up: 1, desc: 靠北牆的舊直立鋼琴，周老師站在它南邊 (9,4)}
   - {name: 舊木箱, type: b_trunk, kind: 雜物, foot: [12, 3, 2, 1], up: 1, desc: 鋼琴右邊貼牆的一只大舊木箱，銅包角}
   # ── 走廊上 ──
-  - {name: 化妝桌, type: b_table, kind: 桌, foot: [1, 6, 3, 1], up: 1, desc: 貼西牆的長桌，一盞檯燈與幾個沙袋}
-  - {name: 服裝架, type: b_rack, kind: 櫃, foot: [5, 9, 2, 1], up: 1, desc: 帶輪子的服裝架，掛幾件舞台服}
-  - {name: 長椅, type: b_bench, kind: 椅, foot: [9, 8, 4, 1], up: 1, desc: 地毯南邊一張長木凳}
-  - {name: 器材箱, type: b_cases, kind: 雜物, foot: [1, 9, 2, 1], up: 1, desc: 左下角兩個疊起來的黑色器材箱}
+  - {name: 試衣鏡, type: b_mirror, kind: 雜物, foot: [1, 6, 1, 1], up: 1, desc: 貼西牆的一面立式試衣鏡}
+  - {name: 服裝架, type: b_rack, kind: 櫃, foot: [5, 8, 2, 1], up: 1, desc: 帶輪子的服裝架，掛幾件舞台服}
+  - {name: 盆栽, type: b_plant, kind: 雜物, foot: [14, 9, 1, 1], up: 1, desc: 走廊東邊一盆大葉盆栽}
 
 points:
   hero_start: [4, 6]
@@ -31,7 +29,10 @@ points:
   to_dressing_b: [3, 3]
   stairs_down: [15, 3]
   stairs_down_b: [16, 3]
-  arrive_stairs: [15, 8]
+  arrive_stairs: [15, 4]
   arrive_dressing: [4, 4]
 
 doors: [[3, 3], [4, 3], [15, 3], [16, 3]]
+
+# 地面生成後要驗：這塊範圍不能出現階梯立面（mapgen ground 的閘門；樓梯只畫在牆面的拱門裡）
+no_stairs: [[15, 3, 2, 5]]
