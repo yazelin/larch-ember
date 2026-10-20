@@ -2,6 +2,7 @@
 // END=a|b|c 選結局（預設 a）。SPEED=16 node tests/play_full.mjs（先 python3 src/build.py；HEADED=1 看畫面）。截圖 art/check/full-<結局>-<n>.png
 import { serve, open, sleep, assert } from './lib.mjs';
 import { mkdirSync } from 'node:fs';
+import { hookInit, cutSizes, named } from './audiohook.mjs';
 mkdirSync('art/check', { recursive: true });
 const END = process.env.END || 'a';
 const PICK = { a: '有人會坐在三排十四號。', b: '周老師在等我開口。', c: '阿爸一個人收不完。' }[END];
@@ -12,13 +13,8 @@ const GUIDE = [['鏡子角落的照片', 2], ['筆記本', 2], ['化妝箱', 2],
 const MUST = [/這裡的燈起床慢/, /早發性阿茲海默症/, /我是你先生/, /魚我來處理/, /這件好舊/, /河岸留言那晚/, /2013，永明，空舞台/, /你是彈琴的|她記得我們的歌/, /她心裡聽見誰|天黑了/,
   { a: /程希，三排十四號/, b: /謝謝您，先生/, c: /淑靜仔，阮攏來矣|阮攏來矣/ }[END]];
 // AUDIO=1：攔截所有音訊播放，結束時印出實際換曲順序（不含介面音效）
-const hook = () => {
-  window.__bgm = window.__bgm || [];
-  const push = (kind, el) => { try { window.__bgm.push({ t: Math.round(performance.now()), kind, src: String(el?.currentSrc || el?.src || '').split('/').pop() }); } catch {} };
-  document.addEventListener('play', e => push('play', e.target), true);
-};
 const s = process.env.LIVE ? { base: process.env.LIVE, kill() {} } : await serve('dist/project.json');
-const ui = await open(s.base, { width: 1600, height: 900, init: process.env.AUDIO ? hook : null });
+const ui = await open(s.base, { width: 1600, height: 900, init: process.env.AUDIO ? hookInit : null });
 const { page } = ui;
 // 預覽器的「跳到…」下拉選單有全部卡片標題，讀畫面文字時要拿掉，不然會把卡名當成任務提示
 const text = async () => (await Promise.all(page.frames().map(f => f.evaluate(() => {
@@ -44,7 +40,8 @@ const used = new Map(), tries = new Map();
 // 16 倍速會把地圖素材的載入逾時也縮短，跳出「地圖素材沒有完整載入」：這是加速造成的假象，按「仍然開始」繼續。
 // 真正缺檔另外用 404 記錄抓（只看遊戲素材 /files/），最後必須是 0。
 const bad404 = [], skipped = [];
-page.on('response', r => { if (r.status() >= 400 && /\/files\//.test(r.url())) bad404.push(r.status() + ' ' + r.url()); });
+const songReq = [];   // 歌檔（含逐句 sfx）被抓過的順序
+page.on('response', r => { if (r.status() >= 400 && /\/files\//.test(r.url())) bad404.push(r.status() + ' ' + r.url()); if (/\/songs\/.*cuts\/.*\.mp3/.test(r.url())) songReq.push(decodeURIComponent(r.url().split('/').pop())); });
 try {
   await ui.clickText('開始遊戲'); await sleep(1500);
   const end = Date.now() + 40 * 60000;
@@ -71,10 +68,11 @@ try {
   }
   await shot();
   if (process.env.AUDIO) {
-    const L = (await Promise.all(page.frames().map(f => f.evaluate(() => window.__bgm || []).catch(() => [])))).flat().sort((a, b) => a.t - b.t);
+    const L = named((await Promise.all(page.frames().map(f => f.evaluate(() => window.__bgm || []).catch(() => [])))).flat().sort((a, b) => a.t - b.t), cutSizes());
     const SFX = /^(press|hover|advance|open|close|use)\.mp3$/; let prev = '', out = [];
     for (const x of L) if (x.src && !SFX.test(x.src) && x.src !== prev) { out.push(x.src.replace('.mp3', '')); prev = x.src; }
     console.log('實際換曲順序：', out.join(' → '));
+    console.log('歌檔請求（含地圖卡的收音機 sfx）：', [...new Set(songReq)].join(', '));
   }
   assert(END_RE.test(seen), '走到結局 ' + END.toUpperCase());
   for (const r of MUST) assert(r.test(seen), '有出現 ' + r);
