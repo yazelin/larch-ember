@@ -4,7 +4,7 @@ python3 src/build.py
 """
 import json, pathlib, shutil, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-import script, cards, maps, variables, mapkit, ui_inject
+import script, cards, maps, variables, mapkit, ui_inject, songs
 
 R = pathlib.Path(__file__).resolve().parent.parent
 PROJECT_ID = 'project-904c48a1-2797-4a7e-916a-75b1117e6211'
@@ -165,6 +165,7 @@ def build():
     p['settings']['cgGalleryEnabled'] = True
     p['settings']['cgGallerySource'] = 'picked'
     p['settings']['cgGalleryItems'] = [{'url': cover, 'title': '最終遺忘的橘色餘燼'}] + [{'url': shot_url(k), 'title': t, 'locked': True} for k, t in GALLERY if shot_url(k)]
+    songs.apply(p, R / 'dist')   # 有 assets/songs/cuts/manifest.json 才會接歌
     ui_inject.apply(p, R / 'dist')   # 介面「信紙與餘燼」；線上的 PUT 不更新介面，要另外推（見 ui/ 說明）
     (R / 'dist').mkdir(exist_ok=True)
     out = R / 'dist/project.json'
