@@ -10,6 +10,10 @@ CS = ['我記住了', '謝謝你，', '慢慢來', '你先坐', '放在椅背', 
 SIM = re.compile(r'像|彷彿|好像|似乎|宛如|如同')
 STRAIN = re.compile(r'[亮酸軟冷緊熱燙沉輕重脆][得][^，。！？]{0,8}(停不下來|像|要命|不得了|發亮|發抖)')
 ALLOW = ('像在等人',)   # 作者看過、保留的畫面句（結局 C 舊石階）
+# 唱詞必須逐字等於歌詞檔（作者要拿歌詞去 Suno，不能被悄悄改）
+_LY = pathlib.Path(__file__).resolve().parent.parent / 'canon/歌詞.md'
+_norm = lambda t: re.sub(r'[\s，。、！？「」…·\-—,.!?]', '', t)
+LYRICS = _norm('\n'.join(l for l in _LY.read_text(encoding='utf-8').split('\n') if not l.startswith(('#', '```', '[', '-', '劇情', '遊戲裡', '台語', '一定', '加分')))) if _LY.exists() else ''
 hard = warn = 0
 for f in files:
     sec = None; rows = []
@@ -36,6 +40,10 @@ for f in files:
         probs += [f'禁用詞「{b}」' for b in BAN if b in txt]
         probs += [f'客服句型「{c}」' for c in CS if c in txt]
         if re.search(r'不是[^。！？「」]{1,30}[，；、]?而是', txt): probs.append('不是…而是')
+        if re.match(r'(余靜|程希)：（唱）', line):
+            t = _norm(txt.replace('（唱）', ''))
+            if t and LYRICS and t not in LYRICS and not any(k in txt for k in ('欲落雨', '阿公仔', '欲掘芋', '天烏烏', '天黑黑')):   # 〈天烏烏〉是公有童謠，不在歌詞檔
+                probs.append('唱詞不在歌詞檔裡（必須逐字相同）')
         for p in probs: hard += 1; print(f'  ✗ [{sec}] {p}：{line[:70]}')
     flush()
 print(f'硬規則違反 {hard}，警告 {warn}'); sys.exit(1 if hard else 0)
