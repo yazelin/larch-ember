@@ -38,6 +38,27 @@
 
 `tests/` 需要本機預覽器 `~/larch-preview` 與 Playwright。`python3 art/*.py` 與 `src/tts.py` 要連自架服務，金鑰從環境變數讀，不放進 repo。
 
+## 地圖結構（RPG 探索）
+
+五張地圖，每張都是平的（沒有遮擋牆、隱藏格），18×12 格，設計檔在 `art/objects_<地圖>.yaml`：
+
+| 地圖 | id | 內容 |
+| --- | --- | --- |
+| 化妝間 | `m-dressing` | 主地圖；門通後台二樓 |
+| 後台二樓 | `m-backstage-2f` | 化妝間的門、鋼琴與周老師、東邊階梯（下樓） |
+| 後台一樓 | `m-backstage` | 側台門（通觀眾席）、後門（通巷子）、東邊階梯（上樓） |
+| 觀眾席 | `m-auditorium` | 從側台門進，回後台一樓門前 |
+| 後門巷子 | `m-alley` | 從後門出，回後台一樓後門前 |
+
+後台二樓與一樓的階梯在同一個位置（x15–16、第 3–7 列）：從南邊走上階梯、走到最北一格（樓梯口）就淡出，換到另一層階梯的南端。導引文字：二樓「下樓：階梯走到底」、一樓「上樓：階梯走到底」。兩層用同一首後台配樂（`src/build.py` 的 `MAP_TRACK`）。
+
+美術管線 `art/mapgen.py`：`style`（整間房畫風定錨）→ `ground`（地面，樓梯要通過立面閘門）→ `gen`（逐物件，機械品質閘門）→ `cut` → `review`（合成預覽在 `art/check/maps-review/`）→ `audit`。檢查：
+
+    python3 art/preview_build.py            # 預覽版導到 dist-maps/dist/project.json
+    python3 tests/map_check.py dist-maps/dist/project.json   # 事件／導引／跳轉落點走得到、每個跳轉都有回程、arrive 離回程觸發格 ≤ 8 步
+    node tests/map_walk.mjs                 # 實機走路：點「遊戲任務」讓主角自己走，含整條路線（化妝間→二樓→鋼琴→下樓→一樓→側台門→觀眾席）與回程
+    python3 -c "import sys; sys.path.insert(0,'src'); import layout; print(layout.check(layout.load('backstage')))"   # 設計檔：佔地、門、空洞、物件不蓋住走得到的格子
+
 ## 分工
 
 劇本方向、角色與設計由作者決定並審稿。文字由 AI 依作者的方向與審稿寫，美術由 AI 生圖、作者挑選，器樂配樂由 AI 生成，歌曲由作者在 Suno 製作，地圖與程式（含測試）由 AI 製作。這一版沒有配音。

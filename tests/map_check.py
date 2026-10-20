@@ -5,6 +5,7 @@
   3. 導引（guidance）指向的事件，目標格走得到（作者回報「走不過去」的根因：門開在牆格上）。
   4. 跳轉（jump arrive）落點：不是牆、走得到、而且不是剛好落在另一個會立刻觸發的 touch 事件上（會彈回去）。
   5. 自由圖片：每張圖的檔案都存在。
+  6. 來回互通：每個跳轉 A→B，B 裡一定有個 touch 事件跳回 A（樓梯口兩端、門兩端），而且 arrive 到那個回程觸發格的步行距離 ≤ 8 格（距離自然）。
 python3 tests/map_check.py [dist/project.json]
 """
 import json, os, re, sys
@@ -84,6 +85,19 @@ for mid, m in maps.items():
                 elif c not in reach(tm, (th['x'], th['y']), twl): bad.append(f"{mid}→{tgt}: arrive {c} 走不到")
                 hit = [x['id'] for x in tm['events'] if (x['x'], x['y']) == c and x.get('trigger') == 'touch']
                 if hit: bad.append(f"{mid}→{tgt}: arrive {c} 剛好落在 touch 事件 {hit}，會彈回去")
+    for e in evs:
+        for j in jumps(e.get('actions')):
+            tgt = j.get('cardId'); arr = j.get('arrive')
+            if tgt not in maps or not arr: continue
+            tm = maps[tgt]; twl = walls_of(tm); back = [x for x in tm['events'] if x.get('trigger') == 'touch' and any(q.get('cardId') == mid for q in jumps(x.get('actions')))]
+            if not back: bad.append(f"{mid}→{tgt}: {tgt} 裡沒有跳回 {mid} 的觸發點（單向）"); continue
+            dist = {(arr['x'], arr['y']): 0}; q = [(arr['x'], arr['y'])]
+            while q:
+                cx, cy = q.pop(0)
+                for c in ((cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)):
+                    if 0 <= c[0] < tm['width'] and 0 <= c[1] < tm['height'] and c not in twl and c not in dist: dist[c] = dist[(cx, cy)] + 1; q.append(c)
+            dmin = min([dist[(b['x'], b['y'])] for b in back if (b['x'], b['y']) in dist] or [999])
+            if dmin > 8: bad.append(f"{mid}→{tgt}: arrive {(arr['x'], arr['y'])} 離回程觸發格太遠（步行 {dmin} 格）")
     print(f'{mid}: {W}x{H}，事件 {len(evs)}，走得到 {len(ok)} 格，導引 {len(m.get("guidance", []))}')
 print('不合格', len(bad))
 for b in bad: print(' ✗', b)

@@ -28,7 +28,8 @@ BASE = ('warm hand-painted 2D game map art, storybook illustration style with cl
         'warm golden-hour palette of orange, amber, deep red and dark brown; NOT pixel art, NOT blurry, NOT photographic')
 LOOK = {
     'dressing': 'the second-floor dressing room of an old 1950s Tainan theater at sunset, cream lime-plaster walls, dark wood, faded red velvet',
-    'backstage': 'the backstage of an old 1950s Tainan theater: warm tungsten bulbs, worn cream plaster, dark wood, old red brick, concrete floor, a wooden staircase',
+    'backstage': 'the ground-floor backstage of an old 1950s Tainan theater: warm tungsten bulbs, old red brick walls, dark wood, grey concrete floor with faded stage tape marks, a wooden staircase going up along the east side',
+    'backstage2f': 'the second-floor backstage landing of an old 1950s Tainan theater: warm tungsten bulbs, worn cream plaster walls, dark wood, an old wooden plank floor with a faded dark-red rug, a wooden staircase going down along the east side',
     'auditorium': 'the auditorium of an old 1950s Tainan theater: red velvet seats, a wooden stage with deep red curtains, warm stage lights',
     'alley': 'a narrow back alley behind an old Tainan theater at dusk: weathered red brick wall, wet asphalt reflecting the orange lights of an evening market at the far right end',
 }
@@ -68,6 +69,11 @@ TYPES = {
     'b_upper': (4, 5, 2, 'a thick masonry wall pier of the stairwell seen from the south, plaster and old brick, 4 cells wide and 5 cells tall, COMPLETELY OPAQUE and solid with no gaps; a heavy dark wooden beam across its bottom edge and a small hanging brass lamp near the top', 'seg', 'green', True),
     'b_cases': (2, 2, 1, 'two stacked black stage flight cases with metal corners', 'obj', 'green', True),
     'b_table': (3, 2, 1, 'a sturdy wooden workbench seen from the front with a desk lamp, a few sandbags and a roll of tape on top', 'obj', 'green', True),
+    'b_brick': (11, 3, 1, 'a plain section of old red brick wall of a theater backstage: straight cement mortar lines, a few darker bricks, a low dark concrete base; completely plain, no doors, no windows, nothing hanging', 'strip', 'green', True),
+    'b_arch': (2, 3, 1, 'a wall section with one dark rounded archway in the middle leading to a stairwell: plaster and old brick around it, a dark wooden lintel, a small brass wall lamp above; the inside of the arch is solid dark brown-black (opaque, nothing visible through it); plain wall continues left and right of the arch', 'seg', 'green', True),
+    'b_bench': (4, 2, 1, 'a long low plain wooden bench seen from the front, worn dark wood, four legs, straight and level', 'obj', 'green', True),
+    'b_rack': (2, 2, 1, 'a wheeled metal costume rack seen from the front with three stage costumes hanging on it (a dark red dress, a navy jacket, a cream shirt), small caster wheels at the bottom', 'obj', 'green', True),
+    'b_trunk': (2, 2, 1, 'one large old wooden steamer trunk with brass corners and a leather handle, closed lid, seen from the front', 'obj', 'green', True),
     # 觀眾席
     'a_curtain': (6, 3, 1, 'a section of deep red velvet stage curtain with evenly spaced vertical folds and a gold fringe along the bottom hem', 'strip', 'green', True),
     'a_lip': (8, 3, 1, 'the front of an old wooden stage seen from the front, 3 cells tall: along the top a gold-trimmed lip with small evenly spaced round footlights in the top cell, below it a dark wood panelled stage skirt two cells tall with evenly spaced raised panels', 'strip', 'green', True),
@@ -83,8 +89,8 @@ TYPES = {
     'l_scooters': (4, 2, 1, 'two parked scooters side by side seen from the side, both facing left, one white and one red, parallel and upright', 'obj', 'green', True),
     'l_crates': (1, 2, 1, 'two stacked red plastic produce baskets', 'obj', 'green', False),
 }
-OPAQUE = {'b_turn', 'b_upper', 'b_cap', 'd_wall', 'b_wall', 'l_wall', 'a_curtain'}
-DOOR_WALL = {('dressing', 'door_wood'): 'd_wall', ('backstage', 'door_wood'): 'b_wall', ('alley', 'door_iron'): 'l_wall', ('auditorium', 'door_stage2'): 'a_curtain'}   # 門貼在哪種牆面上
+OPAQUE = {'b_turn', 'b_upper', 'b_cap', 'd_wall', 'b_wall', 'b_brick', 'b_arch', 'l_wall', 'a_curtain'}
+DOOR_WALL = {('dressing', 'door_wood'): 'd_wall', ('backstage2f', 'door_wood'): 'b_wall', ('backstage', 'door_stage'): 'b_brick', ('backstage', 'door_steel'): 'b_brick', ('alley', 'door_iron'): 'l_wall', ('auditorium', 'door_stage2'): 'a_curtain'}   # 門貼在哪種牆面上
 DOOR_W, DOOR_H = 1.7, 2.9   # 所有門（含門框）統一大小，單位：格   # 整面要不透明（遮擋物與牆）
 FLOORS = {a: '' for a in LOOK}
 
@@ -356,7 +362,7 @@ def ground(a):
     out = os.path.join(RAW, f'ground-{a}.png'); S2 = 1536 // W; best = None
     for k in range(3):
         o = out if k == 0 else out.replace('.png', f'-try{k + 1}.png')
-        try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom. Both wooden staircases must show clearly separated steps: many distinct horizontal treads with a dark riser line between each, one step about every half cell.' if k else ''), o, [lay, anchor(a)], size='1536x1024')
+        try: codex11.gen(p + (' IMPORTANT: keep the floor rectangle exactly where image 1 puts it, with the same thick dark band at the top and thin band at the bottom. The wooden staircase must show clearly separated steps: many distinct horizontal treads with a dark riser line between each, one step about every half cell.' if k else ''), o, [lay, anchor(a)], size='1536x1024')
         except Exception as e: print('地面第', k + 1, '次生成失敗', repr(e)[:120], flush=True); continue
         canvas, iou, how = align_ground(o, d, S2); sok, sres = stairs_ok(canvas, d, S2); fixed = []
         if not sok:
@@ -432,9 +438,8 @@ def door_insert(a, t):
 def facade_line(a, d):
     """陽台前緣整排：長條（欄杆＋磚牆）合成一張連續的長圖，兩扇門的門（統一大小、含石框）貼在上面、下緣貼齊地面；
     之後每一段（左、門、中、門、右）都是這一張長圖的切片，不會有接縫（十一分鐘 lines 的做法）。回傳 (長圖, 最左邊的格)。"""
-    if a != 'backstage': return None
     objs = [o for o in layout.objects(d) if type_of(o) in FACADE]
-    if not objs: return None
+    if not any(type_of(o) == 'b_balcony' for o in objs): return None   # 舊的 U 型樓梯後台才有陽台前緣；拆成兩張平地圖後沒有
     xmin = min(o['vis'][0] for o in objs); xmax = max(o['vis'][0] + o['vis'][2] for o in objs); Wc = xmax - xmin; Hc = objs[0]['vis'][3]
     f = key_full(raw_path(a, 'b_balcony')); f = f.crop(f.getbbox()); f = f.crop((4, 0, f.width - 4, f.height))
     comp = fit(seg_slice(extend_strip(f, Wc / Hc * 1.15), Wc, Hc, 0), Wc, Hc, 'strip')

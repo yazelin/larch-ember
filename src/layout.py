@@ -108,6 +108,16 @@ def check(d):
         if (x, y) in wl or (x, y) not in ok: errs.append(f'門前觸發格 {(x, y)} 走不到')
         if (x, y - 1) not in wl: errs.append(f'門前觸發格 {(x, y)} 的正北方 {(x, y - 1)} 不是牆，門沒有嵌在牆裡')
         if not (0 < x < d['map']['w'] - 1): errs.append(f'門 {(x, y)} 貼在地圖左右外緣')
+    for o in obs:   # 物件不壓住走得到的格子：往上長超過 1 列的部分（牆面除外）下面不能有人走（人會整個消失）；事件點也不能落在別的物件圖框裡
+        fx, fy, fw, fh = o['vis']; y0 = o['foot'][1]
+        hid = sorted((i, j) for j in range(fy, y0 - 1) for i in range(fx, fx + fw) if (i, j) in ok)
+        if hid: errs.append(f"{o['name']} 往上長太高，蓋住走得到的格子 {hid[:4]}")
+    for k, p in pts.items():
+        if k in d.get('covered_ok', []): continue
+        for o in obs:
+            fx, fy, fw, fh = o['vis']
+            if fx <= p[0] < fx + fw and fy <= p[1] < fy + fh and tuple(p) not in foot_cells(o) and o['sort'] > p[1]:
+                errs.append(f"事件點 {k} {p} 被 {o['name']} 的圖框蓋住")
     for k, p in pts.items():
         if tuple(p) in wl:
             errs.append(f'事件點 {k} {p} 在牆上')

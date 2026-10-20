@@ -45,3 +45,6 @@ points:
   azhe: [13, 15]
 
 doors: [[3, 3], [4, 3]]
+
+# 本來就坐在座位後面、站在音控台後面，下半身被前面的物件遮住（layout.check 的「事件點被圖框蓋住」例外）
+covered_ok: [seat314, azhe]

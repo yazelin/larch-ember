@@ -36,7 +36,7 @@ GAL = {k for k, _ in GALLERY}
 # 配樂（assets/bgm/manifest.json 的 use_in：劇本代號 → 曲名）。地圖本身掛各自的曲子；同一首曲子的卡片不重複設定，避免重播
 _BGM = json.loads((R / 'assets/bgm/manifest.json').read_text(encoding='utf-8')) if (R / 'assets/bgm/manifest.json').exists() else {'tracks': []}
 TRACK = {c: t['name'] for t in _BGM['tracks'] for c in t.get('use_in', [])}
-MAP_TRACK = {'m-dressing': 'dressing', 'm-backstage': 'backstage', 'm-auditorium': 'auditorium', 'm-alley': 'alley'}
+MAP_TRACK = {'m-dressing': 'dressing', 'm-backstage-2f': 'backstage', 'm-backstage': 'backstage', 'm-auditorium': 'auditorium', 'm-alley': 'alley'}
 CARD_MAP = {c: 'dressing' for c in ('m_dressing_intro', 'm_window', 'm_mirror', 'm_notebook', 'm_rose_dry', 'm_jewelry', 'm_radio', 'm_radio_on', 'm_letter', 'm_note')}
 CARD_MAP.update({'m_corridor': 'backstage', 'm_auditorium': 'auditorium', 'm_alley': 'alley'})
 

@@ -1500,5 +1500,189 @@
   ],
   "try_": 3,
   "t": "2026-10-20 12:13:18"
+ },
+ {
+  "map": "backstage2f",
+  "type": "b_arch",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 27,
+    "top": 119,
+    "right": 26,
+    "bottom": 151
+   },
+   "aspect": 0.77,
+   "want": 0.67,
+   "bottom_deg": 0.0,
+   "top_deg": 0.0,
+   "opaque": 0.973
+  },
+  "try": 1,
+  "t": "2026-10-21 01:34:52"
+ },
+ {
+  "map": "backstage2f",
+  "type": "b_bench",
+  "ok": false,
+  "problems": [
+   "比例不對（3.34，要 2.00）"
+  ],
+  "m": {
+   "margins": {
+    "left": 34,
+    "top": 325,
+    "right": 34,
+    "bottom": 259
+   },
+   "aspect": 3.34,
+   "want": 2.0,
+   "bottom_deg": 0.0
+  },
+  "try": 1,
+  "t": "2026-10-21 01:34:53"
+ },
+ {
+  "map": "backstage2f",
+  "type": "b_trunk",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 40,
+    "top": 129,
+    "right": 38,
+    "bottom": 141
+   },
+   "aspect": 1.2,
+   "want": 1.0,
+   "bottom_deg": 0.02
+  },
+  "try": 1,
+  "t": "2026-10-21 01:34:58"
+ },
+ {
+  "map": "backstage2f",
+  "type": "b_rack",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 33,
+    "top": 29,
+    "right": 33,
+    "bottom": 45
+   },
+   "aspect": 1.01,
+   "want": 1.0,
+   "bottom_deg": 0.1
+  },
+  "try": 1,
+  "t": "2026-10-21 01:35:02"
+ },
+ {
+  "map": "backstage2f",
+  "type": "ground",
+  "ok": false,
+  "iou": 1.0,
+  "stairs": [
+   [
+    "樓梯",
+    5,
+    3
+   ]
+  ],
+  "cloned": [],
+  "try_": 1,
+  "t": "2026-10-21 01:35:07"
+ },
+ {
+  "map": "backstage2f",
+  "type": "b_bench",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 47,
+    "top": 275,
+    "right": 47,
+    "bottom": 287
+   },
+   "aspect": 3.12,
+   "want": 2.0,
+   "bottom_deg": -0.05
+  },
+  "try": 2,
+  "t": "2026-10-21 01:35:31"
+ },
+ {
+  "map": "backstage2f",
+  "type": "ground",
+  "ok": false,
+  "iou": 1.0,
+  "stairs": [
+   [
+    "樓梯",
+    5,
+    3
+   ]
+  ],
+  "cloned": [],
+  "try_": 2,
+  "t": "2026-10-21 01:35:48"
+ },
+ {
+  "map": "backstage2f",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "stairs": [
+   [
+    "樓梯",
+    5,
+    4
+   ]
+  ],
+  "cloned": [],
+  "try_": 3,
+  "t": "2026-10-21 01:36:35"
+ },
+ {
+  "map": "backstage",
+  "type": "b_brick",
+  "ok": true,
+  "problems": [],
+  "m": {
+   "margins": {
+    "left": 25,
+    "top": 275,
+    "right": 23,
+    "bottom": 288
+   },
+   "aspect": 4.51,
+   "want": 3.67,
+   "bottom_deg": 0.0,
+   "top_deg": -0.01,
+   "opaque": 0.996
+  },
+  "try": 1,
+  "t": "2026-10-21 01:39:01"
+ },
+ {
+  "map": "backstage",
+  "type": "ground",
+  "ok": true,
+  "iou": 1.0,
+  "stairs": [
+   [
+    "樓梯",
+    5,
+    8
+   ]
+  ],
+  "cloned": [],
+  "try_": 1,
+  "t": "2026-10-21 01:39:05"
  }
 ]
