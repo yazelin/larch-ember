@@ -5,165 +5,516 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <title>原聲帶 · 最終遺忘的橘色餘燼</title>
-<meta name="description" content="《最終遺忘的橘色餘燼》的原聲帶：〈餘燼〉的四種版本、〈晚安，台南〉、〈港邊的燈〉。歌曲由 Suno 生成。">
+<meta name="description" content="《最終遺忘的橘色餘燼》的原聲帶：〈餘燼〉的四種版本、〈晚安，台南〉、〈港邊的燈〉，附逐句動態歌詞。歌曲由 Suno 生成。">
 <meta name="theme-color" content="#140b07">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23140b07'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff9a3c'/%3E%3C/svg%3E">
 <link rel="canonical" href="https://yazelin.github.io/larch-ember/music.html">
 <meta property="og:title" content="原聲帶 · 最終遺忘的橘色餘燼">
 <meta property="og:image" content="https://yazelin.github.io/larch-ember/media/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap">
-<style>:root{color-scheme:dark;--bg:#140b07;--panel:rgba(26,13,7,.66);--ink:#fbeedd;--muted:#d6bfa4;--amber:#ffab4d;--rose:#d9455a;--line:rgba(255,171,77,.28);
+<style>:root{color-scheme:dark;--bg:#140b07;--ink:#fbeedd;--dim:#d6bfa4;--acc:rgb(255,171,77);--acc-rgb:255,171,77;--line:rgba(255,171,77,.28);--pulse:0;--kick:1;--px:0;--py:0;
   --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;--sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
 *{box-sizing:border-box}
+html,body{height:100%}
 html{color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.85 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:var(--amber);overflow-wrap:anywhere}
-.stage{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:-2;overflow:hidden;background:var(--bg)}
-.stage i{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;will-change:opacity,transform}
-.stage i.on{opacity:1;animation:push 40s ease-out forwards}
-@keyframes push{from{transform:scale(1)}to{transform:scale(1.09)}}
-.shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,11,7,.28),rgba(20,11,7,.4) 45%,rgba(20,11,7,.8))}
-.top{display:flex;align-items:center;gap:18px;height:56px;padding:0 16px;max-width:1080px;margin:0 auto}
-.top b{font:900 17px/1 var(--serif);letter-spacing:.08em;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.top a{font:500 14px/1 var(--sans);text-decoration:none;white-space:nowrap}
-main{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:24px 0 120px}
-.tag{font:700 13px/1 var(--sans);letter-spacing:.3em;color:#ff6b80;text-shadow:0 1px 8px rgba(0,0,0,.9)}
-h1{margin:12px 0 18px;font:900 clamp(30px,5vw,52px)/1.25 var(--serif);letter-spacing:.04em;text-shadow:0 2px 24px rgba(0,0,0,.6)}
-h2{margin:44px 0 6px;font:900 clamp(22px,3vw,30px)/1.4 var(--serif)}
-.lead{max-width:36em;margin:0 0 10px;text-shadow:0 1px 12px rgba(0,0,0,.7)}
-.sub{max-width:40em;margin:0 0 18px;color:#ecd8bf;font-size:15.5px;text-shadow:0 1px 10px rgba(0,0,0,.85)}
-.player{background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);backdrop-filter:blur(10px);padding:22px;margin-top:26px}
-.now{display:grid;grid-template-columns:160px 1fr;gap:22px;align-items:center}
-.art{width:160px;height:160px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.5)}
-.player.playing .art{box-shadow:0 0 0 2px var(--amber),0 8px 30px rgba(0,0,0,.5)}
-.meta{min-width:0}
-.meta small{font:600 12px/1 var(--sans);letter-spacing:.22em;color:var(--rose)}
-.meta b{display:block;margin:8px 0 2px;font:900 clamp(22px,3vw,30px)/1.3 var(--serif)}
-.meta .ver{color:var(--amber);font-size:15px}
-.meta .one{margin:6px 0 0;color:#ead7bf;font-size:15px;line-height:1.7}
-.bar{display:flex;align-items:center;gap:12px;margin:18px 0 12px;font:500 13px/1 var(--sans);color:var(--muted)}
-.bar input{flex:1;min-width:0;accent-color:var(--amber);height:4px;cursor:pointer}
-.ctl{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.ctl button{min-width:44px;height:44px;border:1px solid var(--line);background:rgba(255,171,77,.08);color:var(--amber);font:16px/1 var(--sans);cursor:pointer;padding:0 12px}
-.ctl button.big{width:60px;background:var(--amber);color:#1a0d05;font-size:18px}
-.ctl button:hover{border-color:var(--amber)}
-.ctl .clean{margin-left:auto;font-size:14px}
-.list{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
-.list button{display:grid;grid-template-columns:28px 56px minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;padding:10px 6px;border:0;border-bottom:1px solid rgba(255,171,77,.12);background:none;color:var(--ink);text-align:left;cursor:pointer;font:inherit}
-.list button:hover{background:rgba(255,171,77,.08)}
-.list em{font:500 13px/1 var(--sans);color:var(--muted);font-style:normal;text-align:right}
-.list img{width:56px;height:56px;object-fit:cover}
-.list b{display:block;font:700 15.5px/1.4 var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.list small{display:block;color:var(--muted);font-size:13px;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.list i{font:500 13px/1 var(--sans);color:var(--muted);font-style:normal}
-.list li.on b,.list li.on em{color:var(--amber)}
-.list li.live em::before{content:"▶ "}
-.note{margin-top:22px;font-size:15px;color:var(--muted);max-width:44em}
-.todo{display:inline-block;padding:4px 10px;background:#b3202f;color:#fff;font-weight:700}
-footer.end{margin-top:70px;padding:30px 0 20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center}
-body.clean main>*:not(.player){display:none}
-body.clean .player .list,body.clean .player .one{display:none}
-body.clean .shade{background:linear-gradient(180deg,rgba(20,11,7,.05),rgba(20,11,7,.15) 60%,rgba(20,11,7,.6))}
-@media (max-width:640px){
-  body{font-size:16px}
-  .player{padding:16px}
-  .now{grid-template-columns:96px 1fr;gap:14px}
-  .art{width:96px;height:96px}
-  .list button{grid-template-columns:22px 48px minmax(0,1fr);gap:10px}
-  .list button i{display:none}.list img{width:48px;height:48px}
-  .ctl .clean{margin-left:0}
+body{margin:0;background:var(--bg);color:var(--ink);overflow:hidden;font:400 16px/1.7 var(--sans);letter-spacing:.03em;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none}
+a{color:var(--dim);text-decoration:none}
+button{font:inherit;color:var(--ink);background:none;border:0;cursor:pointer;padding:0}
+/* 背景：每首配的劇情 CG，兩層交叉淡化＋慢推鏡；遮罩壓暗到歌詞清楚可讀 */
+.stage-bg{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:0;overflow:hidden;background:var(--bg)}
+.stage-bg i{position:absolute;inset:-3%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;will-change:opacity,transform;
+  transform:translate3d(calc(var(--px)*-14px),calc(var(--py)*-14px),0) scale(1)}
+.stage-bg i.on{opacity:1;animation:push 45s ease-out forwards}
+@keyframes push{from{transform:translate3d(calc(var(--px)*-14px),calc(var(--py)*-14px),0) scale(1)}to{transform:translate3d(calc(var(--px)*-14px),calc(var(--py)*-14px),0) scale(1.1)}}
+.shade{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 85% 75% at 50% 45%,rgba(20,11,7,.2),rgba(20,11,7,.7)),linear-gradient(90deg,rgba(20,11,7,.15) 0%,rgba(20,11,7,.42) 42%,rgba(20,11,7,.52) 100%)}
+.glow{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:calc(.12 + var(--pulse)*.5);mix-blend-mode:screen;
+  background:radial-gradient(ellipse 55% 60% at 30% 52%,rgba(var(--acc-rgb),.55),transparent 70%)}
+/* width/height 不能省：canvas 沒給 CSS 尺寸就用屬性尺寸（W*dpr）排版，dpr 2 的手機上整層特效會放大兩倍、貼在左上角 */
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.stage{position:relative;z-index:3;height:100vh;height:100dvh;display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:clamp(1rem,4vw,3rem);align-items:center;padding:clamp(1rem,3vw,2.5rem) clamp(1rem,4vw,3rem)}
+.side{display:flex;flex-direction:column;align-items:center;gap:.9rem;min-width:0}
+.art{position:relative;width:min(100%,min(380px,46vh));aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--line);cursor:pointer;
+  box-shadow:0 18px 60px rgba(0,0,0,.6),0 0 calc(18px + var(--pulse)*40px) rgba(var(--acc-rgb),.45);
+  transform:perspective(900px) rotateY(calc(var(--px)*6deg)) rotateX(calc(var(--py)*-6deg)) scale(var(--kick));transition:transform .18s cubic-bezier(.22,.61,.36,1)}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+.art-hover{position:absolute;inset:0;display:grid;place-items:center;opacity:0;background:rgba(10,5,3,.42);transition:opacity .25s}
+.art:hover .art-hover,.art:focus-visible .art-hover{opacity:1}
+.art-hover svg{width:70px;height:70px;fill:rgba(255,255,255,.94);filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.meta{text-align:center;line-height:1.5;max-width:30em}
+.meta small{font:600 11px/1 var(--sans);letter-spacing:.24em;color:#ff7a8c}
+.meta h1{font:900 clamp(1.4rem,3.4vw,2.1rem)/1.3 var(--serif);margin:.35em 0 .1em;letter-spacing:.1em;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+.ver{color:var(--acc);font-size:.95rem}
+.one{margin:.4em 0 0;color:#ecd8bf;font-size:.9rem;line-height:1.65;text-shadow:0 1px 10px rgba(0,0,0,.85)}
+.note{color:var(--dim);font-size:.82rem}
+.ctrl{display:flex;align-items:center;gap:.7rem;width:min(100%,420px);transition:opacity .5s}
+.play{width:54px;height:54px;flex:none;border-radius:50%;background:linear-gradient(135deg,#ffc27a,var(--acc));color:#241408;display:grid;place-items:center}
+.play:hover{filter:brightness(1.1)}
+.play svg{width:22px;height:22px;fill:currentColor}
+.ctrl .sm{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:rgba(20,11,7,.45)}
+.ctrl .sm svg{width:16px;height:16px;fill:var(--acc)}
+.ctrl .sm:hover{border-color:var(--acc)}
+.seek{flex:1;min-width:0;display:flex;align-items:center;gap:.5rem}
+.seek input{flex:1;min-width:0;height:24px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer}
+.seek input::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:rgba(251,238,221,.25)}
+.seek input::-moz-range-track{height:3px;border-radius:2px;background:rgba(251,238,221,.25)}
+.seek input::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;margin-top:-6px;border-radius:50%;background:var(--acc);border:0;box-shadow:0 0 12px rgba(var(--acc-rgb),.8)}
+.seek input::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:var(--acc)}
+.seek .t{font-variant-numeric:tabular-nums;font-size:.78rem;color:var(--dim);min-width:2.4em;text-align:center}
+.tracks{list-style:none;margin:0;padding:0 0 4px;display:flex;gap:6px;width:min(100%,520px);overflow-x:auto;scrollbar-width:thin;transition:opacity .5s}
+.tracks button{display:flex;align-items:center;gap:6px;padding:6px 10px;min-height:40px;border:1px solid var(--line);background:rgba(20,11,7,.5);border-radius:6px;white-space:nowrap;font-size:.8rem;text-align:left}
+.tracks button span{display:flex;flex-direction:column;line-height:1.25}
+.tracks small{color:var(--dim);font-size:.68rem}
+.tracks em{font:500 .7rem/1 var(--sans);color:var(--dim);font-style:normal}
+.tracks button:hover{border-color:var(--acc)}
+.tracks .on button{border-color:var(--acc);box-shadow:0 0 14px rgba(var(--acc-rgb),.35) inset;color:var(--acc)}
+.credit{margin:0;font-size:.74rem;line-height:1.55;color:var(--dim);text-align:center;max-width:36em;text-shadow:0 1px 8px rgba(0,0,0,.9);transition:opacity .5s}
+.todo{background:#b3202f;color:#fff;padding:2px 8px;font-weight:700}
+/* 歌詞：目前句放大發光、前後句淡化、整列平滑捲到中間 */
+.lyrics{position:relative;height:100%;min-height:0;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent)}
+.lyrics.static{overflow-y:auto;-webkit-user-select:text;user-select:text}
+.lyrics ol{list-style:none;margin:0;padding:44vh 0;transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.lyrics.static ol{padding:18vh 0;transform:none!important}
+.lyrics li{margin:0 0 .5em;padding:.15em .3em;border-radius:8px;color:rgba(251,238,221,.4);font-size:clamp(1.05rem,2.1vw,1.6rem);line-height:1.6;transition:color .3s,transform .3s,text-shadow .3s;transform-origin:left center;text-shadow:0 1px 10px rgba(0,0,0,.85)}
+.lyrics li.link{cursor:pointer}
+.lyrics li.link:hover{color:rgba(251,238,221,.7)}
+.lyrics li.on{color:var(--acc);transform:scale(1.08);text-shadow:0 0 30px rgba(var(--acc-rgb),.55),0 1px 10px rgba(0,0,0,.9)}
+.lyrics li.near{color:rgba(251,238,221,.6)}
+.lyrics.static li{color:rgba(251,238,221,.82)}
+.top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;gap:1rem;align-items:center;padding:.7rem 1rem;font-size:.85rem;transition:opacity .5s}
+.top a:hover,.top button:hover{color:var(--acc)}
+.top button{color:var(--dim);font-size:.85rem}
+.top .sp{flex:1}
+#show{position:fixed;top:.7rem;right:1rem;z-index:6;padding:6px 12px;border:1px solid var(--line);background:rgba(20,11,7,.6);border-radius:6px;font-size:.85rem;color:var(--dim)}
+#show[hidden]{display:none}
+body.idle,body.idle *{cursor:none}
+body.idle .top,body.idle .ctrl,body.idle .tracks,body.idle .credit{opacity:0;pointer-events:none}
+body.hold .top,body.hold .ctrl,body.hold .tracks,body.hold .credit,body.hold .one{opacity:0;pointer-events:none}
+#hint{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:7;padding:.45rem 1rem;border-radius:2rem;background:rgba(20,11,7,.8);border:1px solid var(--line);color:var(--dim);font-size:.82rem;opacity:0;transition:opacity .5s;pointer-events:none;white-space:nowrap}
+#hint.show{opacity:1}
+/* 直立手機才堆成一欄。橫躺的手機寬度也在 820 以下，但高度只剩三百出頭，堆成一欄會把控制列與歌詞整個擠出畫面。 */
+@media (max-width:820px) and (orientation:portrait){
+  .stage{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:.7rem;padding:0 16px 12px;align-content:start}
+  /* 頻譜環往封面外長出約 0.52 倍封面寬的一圈，是畫在 canvas 上的，版面上不佔位；上緣沒讓出這段空間，光環上半會被切掉。 */
+  .art{--w:min(32vw,128px);width:var(--w);margin-top:calc(var(--w)*.52 + 34px)}
+  .side{gap:.55rem}
+  .meta .one{display:none}
+  .meta h1{font-size:1.35rem;margin:.2em 0 0}
+  .lyrics ol{padding:30vh 0}
+  .credit{display:none}
+  .tracks{width:100%;gap:5px}
+  .tracks li{flex:1;min-width:0}
+  .tracks button{width:100%;justify-content:center;padding:0;min-height:38px}
+  .tracks button span{display:none}
+  .tracks button em{font-size:.85rem}
+  .ctrl{gap:.5rem}
 }
-@media (prefers-reduced-motion:reduce){.stage i{transition:none}.stage i.on{animation:none}}</style>
+@media (max-width:820px) and (orientation:portrait){#hint{top:3.2rem;bottom:auto;white-space:normal;width:88vw;text-align:center}}
+@media (max-height:560px){
+  .stage{padding-top:2.8rem}
+  .art{width:min(100%,38vh);margin-top:0}
+  .side{gap:.5rem}
+  .meta .one,.credit{display:none}
+}
+@media (max-width:820px) and (orientation:portrait) and (max-height:700px){
+  .art{--w:min(24vw,80px);margin-top:calc(var(--w)*.52 + 28px)}
+  .meta h1{font-size:1.1rem}
+  .meta small{display:none}
+  .side{gap:.3rem}
+  .play{width:44px;height:44px}
+  .ctrl .sm{width:32px;height:32px}
+  .tracks button{min-height:32px}
+  .lyrics ol{padding:24vh 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .lyrics ol,.art,.stage-bg i{transition:none}
+  .stage-bg i.on{animation:none}
+  .glow{display:none}
+  .art{transform:none}
+}
+</style>
 </head>
 <body>
-<div class="stage" id="stage" aria-hidden="true"><i id="bgA"></i><i id="bgB"></i></div>
+<div class="stage-bg" id="bgwrap" aria-hidden="true"><i id="bgA"></i><i id="bgB"></i></div>
 <div class="shade" aria-hidden="true"></div>
-<header class="top"><b>最終遺忘的橘色餘燼</b><a href="index.html">故事與參考資料</a><a href="music.html" aria-current="page">原聲帶</a></header>
-<main>
-  <div class="tag">SOUNDTRACK</div>
-  <h1>原聲帶</h1>
-  <p class="lead">六首，三首歌。〈餘燼〉有四個版本，另外是〈晚安，台南〉與〈港邊的燈〉。</p>
-  <p class="sub">四個〈餘燼〉是同一首歌的四種編曲，歌詞相同，是余靜 2008 年的成名曲。播放時背景會換成作品裡的畫面，按「收起介面」可以只留畫面與播放器。</p>
-  <section class="player" id="player" aria-label="播放器">
-    <div class="now">
-      <img class="art" id="art" src="" alt="">
-      <div class="meta">
-        <small id="no">TRACK 01 / 06</small>
-        <b id="title"></b><span class="ver" id="ver"></span>
-        <p class="one" id="one"></p>
-      </div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<nav class="top">
+  <a href="index.html">‹ 故事與參考資料</a>
+  <span class="sp"></span>
+  <button id="hide" type="button">收起介面</button>
+</nav>
+<button id="show" type="button" hidden>顯示介面</button>
+
+<main class="stage">
+  <div class="side">
+    <div class="art" id="art" title="點一下播放或暫停">
+      <img id="artimg" src="" width="600" height="600" alt="">
+      <div class="art-hover" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="picon" d="M8 5v14l11-7z"/></svg></div>
     </div>
-    <div class="bar"><span id="cur">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="播放進度"><span id="dur"></span></div>
-    <div class="ctl">
-      <button type="button" id="prev" aria-label="上一首">⏮</button>
-      <button type="button" id="play" class="big" aria-label="播放">▶</button>
-      <button type="button" id="next" aria-label="下一首">⏭</button>
-      <button type="button" id="clean" class="clean" aria-pressed="false">收起介面</button>
+    <div class="meta">
+      <small id="no">TRACK 01 / 06</small>
+      <h1 id="title"></h1>
+      <span class="ver" id="ver"></span>
+      <p class="one" id="one"></p>
+      <p class="one note" id="note"></p>
     </div>
-    <ol class="list" id="list"><li><button type="button" data-i="0"><em>01</em><img src="media/cover-studio.webp" alt="" loading="lazy"><span><b>餘燼　錄音室版</b><small>錄音室收音的版本，收音乾淨。</small></span><i>4:10</i></button></li><li><button type="button" data-i="1"><em>02</em><img src="media/cover-audience.webp" alt="" loading="lazy"><span><b>餘燼　台下跟唱版</b><small>台下的人跟著一起唱，收音比較遠，雜訊多一些。</small></span><i>3:56</i></button></li><li><button type="button" data-i="2"><em>03</em><img src="media/cover-harmony.webp" alt="" loading="lazy"><span><b>餘燼　合聲版</b><small>加了合聲的編曲。</small></span><i>3:50</i></button></li><li><button type="button" data-i="3"><em>04</em><img src="media/cover-chorus.webp" alt="" loading="lazy"><span><b>餘燼　演唱會大合唱</b><small>演唱會現場的大合唱，台下收音很好，中間有一段只剩台下的人在唱。</small></span><i>4:06</i></button></li><li><button type="button" data-i="4"><em>05</em><img src="media/cover-night.webp" alt="" loading="lazy"><span><b>晚安，台南</b><small>她停演前寫的最後一首新歌，寫給家鄉。</small></span><i>3:25</i></button></li><li><button type="button" data-i="5"><em>06</em><img src="media/cover-harbor.webp" alt="" loading="lazy"><span><b>港邊的燈</b><small>劇中是父親魚攤的收音機在放的那首台語老歌。</small></span><i>2:03</i></button></li></ol>
-  </section>
-  <p class="note">歌曲：Suno 生成。歌詞：AI 協助撰寫，林亞澤審定。</p>
-  <p class="note">故事、人物與參考資料在<a href="index.html">首頁</a>。這些歌是劇中的歌，劇中人物與事件都是虛構的。</p>
-  <footer class="end">最終遺忘的橘色餘燼 · 林亞澤 · 2026 · <a href="index.html">回首頁</a></footer>
+    <div class="ctrl">
+      <button type="button" id="prev" class="sm" aria-label="上一首"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zm3.5 7L19 5v14z"/></svg></button>
+      <button class="play" id="play" type="button" aria-label="播放"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="picon" d="M8 5v14l11-7z"/></svg></button>
+      <button type="button" id="next" class="sm" aria-label="下一首"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM5 5l9.5 7L5 19z"/></svg></button>
+      <div class="seek"><span class="t" id="cur">0:00</span><input id="bar" type="range" min="0" max="1000" value="0" step="1" aria-label="播放進度"><span class="t" id="dur">0:00</span></div>
+    </div>
+    <ol class="tracks" id="tracks" aria-label="曲目"><li><button type="button" data-i="0" aria-label="餘燼 錄音室版"><em>01</em><span>餘燼<small>錄音室版</small></span></button></li><li><button type="button" data-i="1" aria-label="餘燼 台下跟唱版"><em>02</em><span>餘燼<small>台下跟唱版</small></span></button></li><li><button type="button" data-i="2" aria-label="餘燼 合聲版"><em>03</em><span>餘燼<small>合聲版</small></span></button></li><li><button type="button" data-i="3" aria-label="餘燼 演唱會大合唱"><em>04</em><span>餘燼<small>演唱會大合唱</small></span></button></li><li><button type="button" data-i="4" aria-label="晚安，台南 2023"><em>05</em><span>晚安，台南<small>2023</small></span></button></li><li><button type="button" data-i="5" aria-label="港邊的燈 台語老歌"><em>06</em><span>港邊的燈<small>台語老歌</small></span></button></li></ol>
+    <p class="credit">歌曲：Suno 生成。歌詞：AI 協助撰寫，林亞澤審定。動態歌詞的文字是官方歌詞，時間由辨識對齊後校正。</p>
+  </div>
+  <section class="lyrics" id="lyrics" aria-label="歌詞"><ol id="lines"></ol></section>
 </main>
+<div id="hint" role="status"></div>
 <script>
-(function () {
-  var T = [{"f": "music/ember-studio.mp3", "c": "media/cover-studio.webp", "n": "餘燼", "v": "錄音室版", "l": "錄音室收音的版本，收音乾淨。", "bg": ["media/bg-soundcheck-1.webp", "media/bg-soundcheck-2.webp"], "d": "4:10"}, {"f": "music/ember-audience.mp3", "c": "media/cover-audience.webp", "n": "餘燼", "v": "台下跟唱版", "l": "台下的人跟著一起唱，收音比較遠，雜訊多一些。", "bg": ["media/bg-prologue-1.webp", "media/bg-prologue-3.webp"], "d": "3:56"}, {"f": "music/ember-harmony.mp3", "c": "media/cover-harmony.webp", "n": "餘燼", "v": "合聲版", "l": "加了合聲的編曲。", "bg": ["media/bg-soundcheck-4.webp"], "d": "3:50"}, {"f": "music/ember-chorus.mp3", "c": "media/cover-chorus.webp", "n": "餘燼", "v": "演唱會大合唱", "l": "演唱會現場的大合唱，台下收音很好，中間有一段只剩台下的人在唱。", "bg": ["media/bg-concert-2.webp", "media/bg-concert-3.webp"], "d": "4:06"}, {"f": "music/goodnight-tainan.mp3", "c": "media/cover-night.webp", "n": "晚安，台南", "v": "2023", "l": "她停演前寫的最後一首新歌，寫給家鄉。", "bg": ["media/bg-dress-1.webp", "media/bg-canal-1.webp"], "d": "3:25"}, {"f": "music/harbor-lights.mp3", "c": "media/cover-harbor.webp", "n": "港邊的燈", "v": "台語老歌", "l": "劇中是父親魚攤的收音機在放的那首台語老歌。", "bg": ["media/bg-canal-2.webp"], "d": "2:03"}];
-  var $ = function (id) { return document.getElementById(id); };
-  var audio = new Audio(); audio.preload = "none";
-  var cur = 0, loaded = -1, seeking = false, front = "bgA", slide = -1, lastKey = "";
-  var fmt = function (t) { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
-  var items = [].slice.call(document.querySelectorAll("#list button"));
-  // 背景：兩層交叉淡化，一首歌 1 到 2 張，照劇情順序，過半換下一張
-  function setBg(src) {
-    var key = src; if (key === lastKey) return; lastKey = key;
-    var next = front === "bgA" ? "bgB" : "bgA", n = $(next), f = $(front);
-    n.style.backgroundImage = 'url("' + src + '")'; n.classList.remove("on"); void n.offsetWidth; n.classList.add("on");
-    f.classList.remove("on"); front = next;
+const TRACKS = [{"id": "ember-studio", "f": "music/ember-studio.mp3", "c": "media/cover-studio.webp", "n": "餘燼", "v": "錄音室版", "l": "錄音室收音的版本，收音乾淨。", "bg": ["media/bg-soundcheck-1.webp", "media/bg-soundcheck-2.webp"], "d": "4:10", "note": "", "dyn": true, "lrc": "music/ember-studio.lrc", "secs": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"], "text": ["燈一盞一盞暗下來", "掌聲退回了街上", "我把最後一個字收好", "門口又有一朵紅", "沒有名字 沒有卡片", "花瓣上的露水還沒乾", "是誰在散場以後", "還不肯走", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "下一座城 下一個晚上", "同一種紅在門外", "我開始對著那片黑暗唱", "好像知道你在", "你從來不說話", "我也從來不問", "我們就這樣", "過了一年又一年", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "有一天我會忘記", "今晚唱過什麼", "你替我記得好嗎", "我今晚唱到燈熄掉", "如果我是一場餘燼", "你是最後熄燈的人", "就算我認不出你", "也請你 坐在那裡", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "不肯冷"], "tsec": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"]}, {"id": "ember-audience", "f": "music/ember-audience.mp3", "c": "media/cover-audience.webp", "n": "餘燼", "v": "台下跟唱版", "l": "台下的人跟著一起唱，收音比較遠，雜訊多一些。", "bg": ["media/bg-prologue-1.webp", "media/bg-prologue-3.webp"], "d": "3:56", "note": "", "dyn": true, "lrc": "music/ember-audience.lrc", "secs": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"], "text": ["燈一盞一盞暗下來", "掌聲退回了街上", "我把最後一個字收好", "門口又有一朵紅", "沒有名字 沒有卡片", "花瓣上的露水還沒乾", "是誰在散場以後", "還不肯走", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "下一座城 下一個晚上", "同一種紅在門外", "我開始對著那片黑暗唱", "好像知道你在", "你從來不說話", "我也從來不問", "我們就這樣", "過了一年又一年", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "有一天我會忘記", "今晚唱過什麼", "你替我記得好嗎", "我今晚唱到燈熄掉", "如果我是一場餘燼", "你是最後熄燈的人", "就算我認不出你", "也請你 坐在那裡", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "不肯冷"], "tsec": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"]}, {"id": "ember-harmony", "f": "music/ember-harmony.mp3", "c": "media/cover-harmony.webp", "n": "餘燼", "v": "合聲版", "l": "加了合聲的編曲。", "bg": ["media/bg-soundcheck-4.webp"], "d": "3:50", "note": "", "dyn": true, "lrc": "music/ember-harmony.lrc", "secs": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"], "text": ["燈一盞一盞暗下來", "掌聲退回了街上", "我把最後一個字收好", "門口又有一朵紅", "沒有名字 沒有卡片", "花瓣上的露水還沒乾", "是誰在散場以後", "還不肯走", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "下一座城 下一個晚上", "同一種紅在門外", "我開始對著那片黑暗唱", "好像知道你在", "你從來不說話", "我也從來不問", "我們就這樣", "過了一年又一年", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "有一天我會忘記", "今晚唱過什麼", "你替我記得好嗎", "我今晚唱到燈熄掉", "如果我是一場餘燼", "你是最後熄燈的人", "就算我認不出你", "也請你 坐在那裡", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "不肯冷"], "tsec": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"]}, {"id": "ember-chorus", "f": "music/ember-chorus.mp3", "c": "media/cover-chorus.webp", "n": "餘燼", "v": "演唱會大合唱", "l": "演唱會現場的大合唱，台下收音很好，中間有一段只剩台下的人在唱。", "bg": ["media/bg-concert-2.webp", "media/bg-concert-3.webp"], "d": "4:06", "note": "", "dyn": true, "lrc": "music/ember-chorus.lrc", "secs": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"], "text": ["燈一盞一盞暗下來", "掌聲退回了街上", "我把最後一個字收好", "門口又有一朵紅", "沒有名字 沒有卡片", "花瓣上的露水還沒乾", "是誰在散場以後", "還不肯走", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "下一座城 下一個晚上", "同一種紅在門外", "我開始對著那片黑暗唱", "好像知道你在", "你從來不說話", "我也從來不問", "我們就這樣", "過了一年又一年", "我不認得你的臉", "卻認得你的安靜", "如果我是一場餘燼", "你是最後熄燈的人", "台下坐滿了陌生人", "只有一個位子 等得那麼認真", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "有一天我會忘記", "今晚唱過什麼", "你替我記得好嗎", "我今晚唱到燈熄掉", "如果我是一場餘燼", "你是最後熄燈的人", "就算我認不出你", "也請你 坐在那裡", "就算天黑了 全世界都散了", "我還有一點紅 替你留著", "不肯冷", "不肯冷"], "tsec": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Pre-Chorus", "Pre-Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Pre-Chorus#2", "Pre-Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Chorus#2", "Bridge", "Bridge", "Bridge", "Bridge", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro"]}, {"id": "goodnight-tainan", "f": "music/goodnight-tainan.mp3", "c": "media/cover-night.webp", "n": "晚安，台南", "v": "2023", "l": "她停演前寫的最後一首新歌，寫給家鄉。", "bg": ["media/bg-dress-1.webp", "media/bg-canal-1.webp"], "d": "3:25", "note": "", "dyn": true, "lrc": "music/goodnight-tainan.lrc", "secs": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro", "Outro"], "text": ["天還沒亮攤就開了", "阿爸扛來一桶冰", "收音機沙沙響", "冰水流過地磚", "魚鱗黏在圍裙", "我伸手幫他拍掉", "他秤好最後一尾", "才問我吃飽沒", "運河風從橋下來", "路燈照著濕石階", "明天若我不認得你", "請把屋裡燈留著", "魚攤收了水還滴", "我沿著亮處回家", "淑靜仔 叫我一聲", "名字先留在你這裡", "哪天我走丟了", "再叫我一聲就好", "水邊的燈還亮著", "我聽見就回家", "有人坐在我身旁", "我想不起他是誰", "他把保溫杯打開", "等半分鐘才遞給我", "杯口的熱氣散了", "他還坐在我身邊", "有他陪我 我不怕", "淑靜仔 叫我一聲", "名字先留在你這裡", "哪天我走丟了", "再叫我一聲就好", "水邊的燈還亮著", "我聽見就回家", "晚安 台南", "你把燈留著"], "tsec": ["Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 1", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Verse 2", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Chorus", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Verse 3", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Final Chorus", "Outro", "Outro"]}, {"id": "harbor-lights", "f": "music/harbor-lights.mp3", "c": "media/cover-harbor.webp", "n": "港邊的燈", "v": "台語老歌", "l": "劇中是父親魚攤的收音機在放的那首台語老歌。", "bg": ["media/bg-canal-2.webp"], "d": "2:03", "note": "歌詞只標到第一次副歌，後半重複的副歌沒有逐句時間。", "dyn": true, "lrc": "music/harbor-lights.lrc", "secs": ["Verse", "Verse", "Verse", "Verse", "Chorus", "Chorus", "Chorus", "Chorus"], "text": ["港邊的燈 一葩一葩光", "討海的人 猶未轉來", "阮徛佇岸邊 等你的船", "風吹冷冷 心肝燒燒", "燈若熄 船就到", "阮的心 替你留一葩", "燈若熄 船就到", "阮佇遮 等你轉來"], "tsec": ["Verse", "Verse", "Verse", "Verse", "Chorus", "Chorus", "Chorus", "Chorus"]}];
+/* 原聲帶頁。TRACKS 由 site/build_music.py 注入。
+   版面與歌詞行為照 neko-tensei/music.html；頻譜環、依段落換色、AnalyserNode 與節拍偵測照 omotenashi-hell；
+   粒子是這個作品自己的：往上飄的餘燼與緩緩落下的深紅花瓣。 */
+const $ = id => document.getElementById(id);
+const root = document.documentElement;
+const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const coarse = matchMedia('(pointer:coarse)').matches;
+const lowEnd = coarse || (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 4) <= 2;
+let quality = lowEnd ? .45 : 1;          // 粒子數量係數；下面會依實際幀間隔再往下調
+const au = new Audio();
+au.preload = 'none';
+au.crossOrigin = 'anonymous';             // 接 AnalyserNode 需要 CORS；音檔改走 jsDelivr 時它也會回 ACAO *
+let corsOk = true;
+const linesEl = $('lines'), lyricsEl = $('lyrics'), art = $('art');
+let ti = 0, lrc = [], active = -1, loaded = -1, secs = [], dynMode = false;
+
+/* ── 段落 → 主色。CSS 用 var(--acc)，canvas 用同一組 RGB ── */
+const SEC = {
+  v: [255, 171, 77],    // Verse：暖橘
+  p: [255, 200, 128],   // Pre-Chorus：淺橘
+  c: [255, 104, 62],    // Chorus：亮橘紅
+  b: [238, 198, 150],   // Bridge：柔和琥珀
+  f: [255, 232, 160],   // Final Chorus：最亮
+  o: [228, 142, 88],    // Outro：餘溫
+};
+const secKey = s => !s ? 'v' : s.startsWith('Pre-Chorus') ? 'p' : s.startsWith('Final') ? 'f' : s.startsWith('Chorus') ? 'c' : s.startsWith('Bridge') ? 'b' : s.startsWith('Outro') ? 'o' : 'v';
+let accent = SEC.v.slice(), target = SEC.v, heat = 0, isChorus = false;
+
+/* ── 歌詞 ── */
+function parseLrc(text) {
+  const out = [];
+  for (const raw of text.split('\n')) {
+    const m = raw.match(/^\[(\d+):(\d+(?:\.\d+)?)\](.*)$/);
+    if (m) out.push({ t: +m[1] * 60 + parseFloat(m[2]), text: m[3].trim() });
   }
-  function bgFor(i, t) {
-    var bg = T[i].bg, k = 0;
-    if (bg.length > 1 && audio.duration && loaded === i && t > audio.duration / 2) k = 1;
-    setBg(bg[k]);
+  return out.sort((a, b) => a.t - b.t);
+}
+function buildLyrics(i) {
+  const t = TRACKS[i];
+  linesEl.innerHTML = '';
+  active = -1; lrc = []; secs = t.secs || [];
+  linesEl.style.transform = 'translateY(0)';
+  const staticMode = () => {
+    dynMode = false; lyricsEl.classList.add('static'); lyricsEl.scrollTop = 0;
+    t.text.forEach(tx => { const li = document.createElement('li'); li.textContent = tx; linesEl.appendChild(li); });
+  };
+  if (!t.dyn) return staticMode();
+  lyricsEl.classList.remove('static'); dynMode = true;
+  fetch(t.lrc).then(r => { if (!r.ok) throw 0; return r.text(); }).then(text => {
+    if (ti !== i) return;
+    lrc = parseLrc(text);
+    if (!lrc.length) throw 0;
+    linesEl.innerHTML = '';
+    lrc.forEach((ln, k) => {
+      const li = document.createElement('li');
+      li.textContent = ln.text; li.className = 'link';
+      li.onclick = () => { if (loaded !== i) load(i); au.currentTime = ln.t + .01; if (au.paused) au.play().catch(() => {}); wake(); };
+      linesEl.appendChild(li);
+    });
+    paintLyrics(au.currentTime, true);
+  }).catch(() => { if (ti === i) { linesEl.innerHTML = ''; staticMode(); } });
+}
+function paintLyrics(now, force) {
+  if (!dynMode || !lrc.length) return;
+  let i = -1;
+  while (i + 1 < lrc.length && lrc[i + 1].t <= now) i++;
+  if (i === active && !force) return;
+  active = i;
+  const kids = linesEl.children;
+  for (let k = 0; k < kids.length; k++)
+    kids[k].className = 'link' + (k === i ? ' on' : (Math.abs(k - i) === 1 ? ' near' : ''));
+  const cur = kids[i];
+  if (!cur) { linesEl.style.transform = 'translateY(0)'; return; }
+  linesEl.style.transform = `translateY(${lyricsEl.clientHeight / 2 - cur.offsetTop - cur.offsetHeight / 2}px)`;
+  const k = secKey(secs[i]);
+  target = SEC[k]; isChorus = k === 'c' || k === 'f';
+  if (!au.paused) { const [cx, cy] = artCenter(); burst(cx, cy, 5, .5); }
+}
+
+/* ── 背景：兩層交叉淡化＋慢推鏡 ── */
+let front = 'bgA', lastBg = '';
+function setBg(src) {
+  if (src === lastBg) return; lastBg = src;
+  const nxt = front === 'bgA' ? 'bgB' : 'bgA', n = $(nxt), f = $(front);
+  n.style.backgroundImage = `url("${src}")`;
+  n.classList.remove('on'); void n.offsetWidth; n.classList.add('on');
+  f.classList.remove('on'); front = nxt;
+}
+function bgFor(i, force) {
+  const bg = TRACKS[i].bg;
+  const k = (bg.length > 1 && loaded === i && au.duration && au.currentTime > au.duration / 2) ? 1 : 0;
+  if (force) lastBg = '';
+  setBg(bg[k]);
+}
+
+/* ── 控制 ── */
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+const bar = $('bar');
+const PLAY = 'M8 5v14l11-7z', PAUSE = 'M7 5h3.5v14H7zm6.5 0H17v14h-3.5z';
+const setIcon = d => { document.querySelectorAll('.picon').forEach(p => p.setAttribute('d', d)); $('play').setAttribute('aria-label', d === PAUSE ? '暫停' : '播放'); };
+const toggle = () => { if (au.paused) { if (loaded !== ti) load(ti); au.play().catch(() => {}); } else au.pause(); };
+const trackBtns = [...document.querySelectorAll('#tracks button')];
+
+function show(i) {
+  ti = i; const t = TRACKS[i];
+  $('no').textContent = `TRACK ${String(i + 1).padStart(2, '0')} / ${String(TRACKS.length).padStart(2, '0')}`;
+  $('title').textContent = t.n; $('ver').textContent = t.v === '2023' ? '2023' : t.v;
+  $('one').textContent = t.l; $('note').textContent = t.note || ''; $('note').style.display = t.note ? '' : 'none';
+  $('artimg').src = t.c; $('artimg').alt = `${t.n} ${t.v} 專輯封面`;
+  $('dur').textContent = t.d; $('cur').textContent = '0:00'; bar.value = 0;
+  trackBtns.forEach((b, k) => b.parentNode.classList.toggle('on', k === i));
+  t.bg.forEach(s => { const im = new Image(); im.src = s; });
+  buildLyrics(i); bgFor(i, true);
+}
+function load(i) {
+  if (loaded === i) return;
+  show(i);
+  corsOk = true; au.crossOrigin = 'anonymous';
+  au.src = TRACKS[i].f; loaded = i;
+}
+function go(i, autoplay) { load(i); if (autoplay) au.play().catch(() => {}); }
+trackBtns.forEach((b, i) => b.onclick = () => { if (i === ti && loaded === i) toggle(); else go(i, true); wake(); });
+$('play').onclick = toggle; art.onclick = toggle;
+$('prev').onclick = () => { if (au.currentTime > 3 && loaded === ti) { au.currentTime = 0; return; } go((ti + TRACKS.length - 1) % TRACKS.length, !au.paused); };
+$('next').onclick = () => go((ti + 1) % TRACKS.length, !au.paused);
+au.onplay = () => { setIcon(PAUSE); startAudioGraph(); wake(); };
+au.onpause = () => { setIcon(PLAY); document.body.classList.remove('idle'); };
+au.onended = () => go((ti + 1) % TRACKS.length, true);
+au.onloadedmetadata = () => { $('dur').textContent = fmt(au.duration); };
+au.onerror = () => {      // CORS 模式載入失敗就退回一般載入（頻譜改走模擬）
+  if (corsOk && au.crossOrigin) { corsOk = false; au.removeAttribute('crossorigin'); au.src = TRACKS[ti].f; au.play().catch(() => {}); }
+};
+bar.oninput = () => { if (au.duration) { if (loaded !== ti) load(ti); au.currentTime = bar.value / 1000 * au.duration; } };
+addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space') { e.preventDefault(); toggle(); }
+  else if (e.code === 'ArrowRight') au.currentTime = Math.min(au.duration || 0, au.currentTime + 5);
+  else if (e.code === 'ArrowLeft') au.currentTime = Math.max(0, au.currentTime - 5);
+  wake();
+});
+function toast(msg) {
+  const h = $('hint'); h.textContent = msg; h.classList.add('show');
+  clearTimeout(toast.t); toast.t = setTimeout(() => h.classList.remove('show'), 4800);
+}
+$('hide').onclick = () => { document.body.classList.add('hold'); $('show').hidden = false; };
+$('show').onclick = () => { document.body.classList.remove('hold'); $('show').hidden = true; wake(); };
+
+/* ── 音訊分析：只在桌機接 Web Audio（Android 關螢幕會掛起 AudioContext 直接斷音）；AudioContext 要在使用者手勢（播放）之後才建 ── */
+let analyser = null, freq = null, graphTried = false;
+function startAudioGraph() {
+  if (graphTried || coarse || reduced || !corsOk) return;
+  graphTried = true;
+  try {
+    const ac = new (window.AudioContext || window.webkitAudioContext)();
+    const src = ac.createMediaElementSource(au);
+    analyser = ac.createAnalyser(); analyser.fftSize = 256; analyser.smoothingTimeConstant = .75;
+    src.connect(analyser); analyser.connect(ac.destination);
+    freq = new Uint8Array(analyser.frequencyBinCount);
+    ac.resume();
+  } catch (_) { analyser = null; }
+}
+/* 接不上 analyser（手機、跨來源沒有 CORS）就用模擬的節拍，只隨播放狀態動 */
+function fakeSpectrum(t) {
+  const BEAT = .62, ph = (t % BEAT) / BEAT, env = Math.exp(-ph * 4);
+  return { bass: env * .55, band: i => env * (.25 + .4 * Math.abs(Math.sin(i * 1.7 + t * 2.3))) };
+}
+
+/* ── 特效層：頻譜環、節拍衝擊波、餘燼與花瓣 ── */
+const fx = $('fx'), g = fx.getContext('2d');
+let W = 0, H = 0, dpr = 1;
+function resize() {
+  dpr = Math.min(devicePixelRatio || 1, lowEnd ? 1.5 : 2);
+  W = innerWidth; H = innerHeight;
+  fx.width = Math.round(W * dpr); fx.height = Math.round(H * dpr);
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+addEventListener('resize', resize); resize();
+const spr = document.createElement('canvas'); spr.width = spr.height = 48;
+{ const c = spr.getContext('2d'), gr = c.createRadialGradient(24, 24, 0, 24, 24, 24);
+  gr.addColorStop(0, 'rgba(255,236,190,1)'); gr.addColorStop(.25, 'rgba(255,168,70,.75)'); gr.addColorStop(1, 'rgba(255,110,30,0)');
+  c.fillStyle = gr; c.fillRect(0, 0, 48, 48); }
+const bits = [], waves = [];
+const artCenter = () => { const r = art.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+const maxEmber = () => Math.round(70 * quality), maxPetal = () => Math.max(3, Math.round(9 * quality));
+function ember(x, y, vx, vy, size, life) { bits.push({ k: 0, x, y, vx, vy, size, life, age: 0, ph: Math.random() * 6.28 }); }
+function petal(x, y, vx, vy) { bits.push({ k: 1, x, y, vx: vx ?? (Math.random() - .5) * 20, vy: vy ?? 24 + Math.random() * 30, size: 7 + Math.random() * 7, life: 16, age: 0, ph: Math.random() * 6.28, rot: Math.random() * 6.28, vrot: (Math.random() - .5) * 1.6 }); }
+function burst(x, y, n, power = 1) {      // 點一下、換一句：一小撮餘燼，偶爾夾一片花瓣
+  if (reduced) return;
+  n = Math.max(1, Math.round(n * (lowEnd ? .6 : 1)));
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * 6.28, s = (60 + Math.random() * 170) * power;
+    ember(x, y, Math.cos(a) * s, Math.sin(a) * s - 50, 4 + Math.random() * 7, 1.6 + Math.random() * 1.4);
   }
-  function show(i) {
-    cur = i; var t = T[i];
-    $("no").textContent = "TRACK " + String(i + 1).padStart(2, "0") + " / 06";
-    $("title").textContent = t.n; $("ver").textContent = t.n === "餘燼" ? t.v : (t.v === "2023" ? "2023" : t.v);
-    $("one").textContent = t.l; $("art").src = t.c; $("art").alt = t.n + " " + t.v + " 專輯封面";
-    if (loaded !== i) { $("dur").textContent = t.d; $("cur").textContent = "0:00"; $("seek").value = 0; }
-    lastKey = ""; bgFor(i, 0); sync();
+  if (Math.random() < .5 && bits.length < 200) petal(x, y, (Math.random() - .5) * 90, -20 + Math.random() * 20);
+  while (bits.length > 220) bits.shift();
+}
+const mouse = { x: -999, y: -999, down: false, last: 0 };
+function wake() {
+  document.body.classList.remove('idle');
+  clearTimeout(wake.t);
+  wake.t = setTimeout(() => { if (!au.paused) document.body.classList.add('idle'); }, 2600);
+}
+addEventListener('pointermove', e => {
+  mouse.x = e.clientX; mouse.y = e.clientY;
+  if (!reduced) {
+    root.style.setProperty('--px', ((e.clientX / W) * 2 - 1).toFixed(3));
+    root.style.setProperty('--py', ((e.clientY / H) * 2 - 1).toFixed(3));
   }
-  function play(i) {
-    if (loaded !== i) { show(i); audio.src = T[i].f; loaded = i; }
-    audio.play().catch(function () {});
+  const now = performance.now();
+  if (mouse.down && now - mouse.last > 60) { mouse.last = now; burst(e.clientX, e.clientY, 2, .4); }
+  wake();
+});
+addEventListener('pointerdown', e => {
+  mouse.down = true;
+  if (!e.target.closest('button,input,a')) {
+    burst(e.clientX, e.clientY, 12);
+    if (!reduced) waves.push({ x: e.clientX, y: e.clientY, r: 8, a: .5 });
   }
-  function sync() {
-    var on = !audio.paused;
-    $("play").textContent = on ? "❚❚" : "▶"; $("play").setAttribute("aria-label", on ? "暫停" : "播放");
-    $("player").classList.toggle("playing", on);
-    items.forEach(function (b, i) { var li = b.parentNode; li.classList.toggle("on", i === cur); li.classList.toggle("live", i === cur && on); });
+  wake();
+});
+addEventListener('pointerup', () => mouse.down = false);
+addEventListener('pointerleave', () => { mouse.x = mouse.y = -999; mouse.down = false; });
+
+const hist = []; let lastBeat = 0, kick = 1;
+function detectBeat(bass, now) {
+  hist.push(bass); if (hist.length > 60) hist.shift();
+  const avg = hist.reduce((a, b) => a + b, 0) / hist.length;
+  if (bass > avg * 1.32 && bass > .22 && now - lastBeat > 240) { lastBeat = now; return true; }
+  return false;
+}
+
+let prev = performance.now(), bassS = 0, slow = 0, frames = 0;
+function tick(now) {
+  const dt = Math.min((now - prev) / 1000, .05); prev = now;
+  const playing = !au.paused;
+  if (playing && au.duration) {
+    bar.value = au.currentTime / au.duration * 1000;
+    $('cur').textContent = fmt(au.currentTime);
+    bgFor(ti, false);
   }
-  items.forEach(function (b, i) { b.addEventListener("click", function () { if (i === cur && loaded === i && !audio.paused) audio.pause(); else { if (loaded !== i) show(i); play(i); } }); });
-  $("play").addEventListener("click", function () { if (!audio.paused) audio.pause(); else play(cur); });
-  $("prev").addEventListener("click", function () { if (audio.currentTime > 3 && loaded === cur) { audio.currentTime = 0; return; } var i = (cur + T.length - 1) % T.length; show(i); if (!audio.paused || loaded === i) play(i); else if (loaded !== i) { } });
-  $("next").addEventListener("click", function () { var i = (cur + 1) % T.length; var was = !audio.paused; show(i); if (was) play(i); });
-  audio.addEventListener("ended", function () { var i = (cur + 1) % T.length; show(i); play(i); });
-  audio.addEventListener("loadedmetadata", function () { $("dur").textContent = fmt(audio.duration); });
-  audio.addEventListener("timeupdate", function () {
-    if (seeking || !audio.duration) return;
-    $("cur").textContent = fmt(audio.currentTime); $("seek").value = Math.round(audio.currentTime / audio.duration * 1000);
-    bgFor(cur, audio.currentTime);
-  });
-  $("seek").addEventListener("input", function () { seeking = true; if (audio.duration) $("cur").textContent = fmt(this.value / 1000 * audio.duration); });
-  $("seek").addEventListener("change", function () { seeking = false; if (loaded !== cur) { play(cur); return; } if (audio.duration) audio.currentTime = this.value / 1000 * audio.duration; });
-  audio.addEventListener("play", sync); audio.addEventListener("pause", sync);
-  $("clean").addEventListener("click", function () {
-    var on = !document.body.classList.contains("clean");
-    document.body.classList.toggle("clean", on); this.setAttribute("aria-pressed", on); this.textContent = on ? "顯示介面" : "收起介面";
-  });
-  show(0);
-})();
+  paintLyrics(au.currentTime);
+  /* 主色與強度用同一個係數逼近：換段是滑過去，不是跳過去 */
+  const ease = Math.min(1, dt * 1.8);
+  for (let i = 0; i < 3; i++) accent[i] += (target[i] - accent[i]) * ease;
+  heat += ((isChorus && playing ? 1 : 0) - heat) * Math.min(1, dt * 1.2);
+  const A = accent.map(Math.round);
+  root.style.setProperty('--acc', `rgb(${A[0]},${A[1]},${A[2]})`);
+  root.style.setProperty('--acc-rgb', `${A[0]},${A[1]},${A[2]}`);
+
+  let bass = 0, band = () => 0;
+  if (analyser && playing) {
+    analyser.getByteFrequencyData(freq);
+    for (let i = 0; i < 6; i++) bass = Math.max(bass, freq[i] / 255);
+    band = i => freq[Math.min(freq.length - 1, 2 + i * 2)] / 255;
+  } else if (playing) { const f = fakeSpectrum(au.currentTime); bass = f.bass; band = f.band; }
+  bassS += (bass - bassS) * Math.min(1, dt * 10);
+  root.style.setProperty('--pulse', (reduced ? 0 : bassS + heat * .15).toFixed(3));
+
+  if (reduced) { requestAnimationFrame(tick); return; }
+
+  const [cx, cy] = artCenter();
+  if (playing && detectBeat(bass, now)) {
+    kick = 1.04;
+    waves.push({ x: cx, y: cy, r: art.offsetWidth * .52, a: .3 });
+    burst(cx, cy, 2 + Math.round(heat * 3), .5);
+  }
+  kick += (1 - kick) * Math.min(1, dt * 9);
+  root.style.setProperty('--kick', kick.toFixed(4));
+
+  g.clearRect(0, 0, W, H);
+  /* 頻譜環：繞著封面往外長，左右對稱；宽螢幕上封面靠左，不夾住整圈會被畫面左緣切掉 */
+  const aw = art.offsetWidth, room = Math.min(cx, cy) - 8;
+  const R = Math.max(aw * .52, Math.min(aw * .72, room - aw * .22 - 5)), N = lowEnd ? 48 : 72;
+  g.save(); g.translate(cx, cy);
+  g.beginPath(); g.arc(0, 0, R - 5, 0, 6.283);
+  g.strokeStyle = `rgba(${A[0]},${A[1]},${A[2]},${.07 + bassS * .15})`; g.lineWidth = 1; g.stroke();
+  g.lineCap = 'round'; g.lineWidth = lowEnd ? 4 : 5;
+  for (let i = 0; i < N; i++) {
+    const v = band(Math.round((i < N / 2 ? i : N - 1 - i) * 72 / N * .5));
+    const len = 4 + v * aw * .24;
+    g.save(); g.rotate((i / N) * 6.283 - 1.5708);
+    if (lowEnd) g.strokeStyle = `rgba(${A[0]},${A[1]},${A[2]},${.25 + v * .5})`;
+    else { const gr = g.createLinearGradient(0, -R, 0, -R - len); gr.addColorStop(0, `rgba(${A[0]},${A[1]},${A[2]},${.22 + v * .55})`); gr.addColorStop(1, `rgba(255,120,50,${.05 + v * .5})`); g.strokeStyle = gr; }
+    g.beginPath(); g.moveTo(0, -R); g.lineTo(0, -R - len); g.stroke(); g.restore();
+  }
+  g.restore();
+  for (let i = waves.length - 1; i >= 0; i--) {
+    const w = waves[i]; w.r += dt * 480; w.a -= dt * .8;
+    if (w.a <= 0) { waves.splice(i, 1); continue; }
+    g.beginPath(); g.arc(w.x, w.y, w.r, 0, 6.283); g.strokeStyle = `rgba(${A[0]},${A[1]},${A[2]},${w.a})`; g.lineWidth = 2; g.stroke();
+  }
+
+  /* 餘燼往上飄、花瓣往下落。播放時才全速，暫停時放慢（不是停格） */
+  const sp = playing ? 1 : .22;
+  let ne = 0, np = 0;
+  for (const b of bits) b.k ? np++ : ne++;
+  if (ne < maxEmber() && Math.random() < dt * (playing ? 9 + bassS * 40 + heat * 10 : 2.5) * quality)
+    ember(Math.random() * W, H + 12, (Math.random() - .5) * 18, -(28 + Math.random() * 60), 3 + Math.random() * 5, 7 + Math.random() * 5);
+  if (np < maxPetal() && Math.random() < dt * (playing ? .5 : .15))
+    petal(Math.random() * W, -20);
+  g.globalCompositeOperation = 'lighter';
+  for (let i = bits.length - 1; i >= 0; i--) {
+    const p = bits[i];
+    if (p.age > p.life || p.y < -60 || p.y > H + 60) { bits.splice(i, 1); continue; }
+    p.age += dt * sp; p.ph += dt * sp * 1.6;
+    const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+    if (d2 < 22000) { const d = Math.max(24, Math.sqrt(d2)), f = (1 - d / 150) * 700; p.vx += (dx / d) * f * dt; p.vy += (dy / d) * f * dt; }
+    if (!p.k) {
+      p.vx *= 1 - dt * .6; p.vy += (-34 - p.vy) * dt * .35;                 // 打出去的力道會散掉，再慢慢往上飄
+      p.x += (p.vx + Math.sin(p.ph) * 14) * dt * sp; p.y += p.vy * dt * sp;
+      const fade = Math.min(1, p.age / .4) * Math.min(1, (p.life - p.age) / 1.2);
+      g.globalAlpha = Math.max(0, fade) * (.55 + bassS * .45);
+      const s = p.size * (1 + bassS * .5) * 2.4;
+      g.drawImage(spr, p.x - s / 2, p.y - s / 2, s, s);
+    } else {
+      p.vx *= 1 - dt * .5; p.vy += (30 - p.vy) * dt * .5;
+      p.x += (p.vx + Math.sin(p.ph) * 26) * dt * sp; p.y += p.vy * dt * sp; p.rot += p.vrot * dt * sp;
+    }
+  }
+  g.globalCompositeOperation = 'source-over';
+  for (const p of bits) if (p.k) {      // 花瓣用一般混合，深紅才不會被洗成橘白
+    const fade = Math.min(1, p.age / .8) * Math.min(1, (p.life - p.age) / 1.2);
+    g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.scale(1, .55 + .45 * Math.abs(Math.sin(p.ph * .8)));
+    g.globalAlpha = Math.max(0, fade) * .85; g.fillStyle = '#9b1b2e';
+    g.beginPath(); g.ellipse(0, 0, p.size * .55, p.size, 0, 0, 6.283); g.fill();
+    g.globalAlpha *= .6; g.fillStyle = '#d6475a'; g.beginPath(); g.ellipse(-p.size * .12, -p.size * .2, p.size * .25, p.size * .5, 0, 0, 6.283); g.fill();
+    g.restore();
+  }
+  g.globalAlpha = 1;
+
+  /* 幀間隔太長就把粒子數量往下調（低階手機不能卡） */
+  frames++; if (dt > .034) slow++;
+  if (frames >= 90) { if (slow > 30 && quality > .25) quality = Math.max(.25, quality * .6); frames = slow = 0; }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+show(0); wake();
+setTimeout(() => toast('點畫面會飄起一小撮餘燼，點歌詞可以跳到那一句，空白鍵播放或暫停'), 1200);
+
 </script>
 <!-- yz-promo-footer v11 | 三件套+BMC 注意力效果 | https://github.com/yazelin/promo-footer-skill -->
 <script>

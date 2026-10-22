@@ -5,7 +5,7 @@
 原型是兩位罹患阿茲海默症、仍然站上舞台唱完最後一場的歌手：Tony Bennett 與 Lady Gaga 的最後兩場演唱會、Glen Campbell 的告別巡演。主角改成女歌手。所有參考資料（原型與醫學研究）與出處在公開站與 `canon/研究.md`。
 
 - 公開站：<https://yazelin.github.io/larch-ember/>（原始檔 `docs/index.html`）
-- 原聲帶頁：`docs/music.html`（〈餘燼〉四個版本、〈晚安，台南〉、〈港邊的燈〉，播放時背景換成作品裡的 CG）
+- 原聲帶頁：`docs/music.html`（〈餘燼〉四個版本、〈晚安，台南〉、〈港邊的燈〉；逐句動態歌詞、播放時背景換成作品裡的 CG、餘燼與花瓣粒子、頻譜環）
 - 試玩：上線後補
 
 ## 資料夾
@@ -19,7 +19,7 @@
 | `assets/` | 正式素材：立繪、CG、地圖、行走圖；`assets/songs/` 放作者的三首 Suno 歌，說明見 `assets/songs/README.md` |
 | `tests/` | Playwright 檢查（地圖截圖、介面截圖、CG 收藏、hover 跳位） |
 | `site/media.py` | 公開站素材：把 `assets/`、`art/` 的圖縮成小檔放進 `docs/media/` |
-| `site/music_assets.py`、`site/build_music.py` | 原聲帶頁：音檔重編 128kbps 放 `docs/music/`、封面與背景 CG 放 `docs/media/`，再產生 `docs/music.html` |
+| `site/music_assets.py`、`site/make_lrc.py`、`site/verify_lrc.py`、`site/build_music.py`（加 `music.css`、`music.js`） | 原聲帶頁：音檔重編 128kbps 放 `docs/music/`、封面與背景 CG 放 `docs/media/`；動態歌詞 `docs/music/*.lrc`（只取時間，文字一律用官方歌詞）與抽查；再產生 `docs/music.html` |
 | `docs/` | 公開站（GitHub Pages） |
 
 ## 指令
@@ -35,7 +35,9 @@
     node tests/gallery_check.mjs    # CG 收藏解鎖
     node tests/hover_check.mjs      # 地圖標籤 hover 不跳位
     python3 site/music_assets.py    # 原聲帶音檔（來源在 ~/下載/有封面/）、封面、背景 CG
-    python3 site/build_music.py --draft   # 產生 docs/music.html 預覽版；歌詞署名未定時，正式版（不加 --draft）會失敗
+    python3 site/make_lrc.py        # 動態歌詞：openai-whisper 字詞時間對齊官方歌詞，輸出 docs/music/*.lrc 與 lyrics.json（要有 GPU 與 openai-whisper）
+    python3 site/verify_lrc.py      # 抽查：每首取 8 行，辨識該行時間前後各 2 秒的音檔
+    python3 site/build_music.py     # 產生 docs/music.html（歌詞署名 LYRICS_CREDIT 沒填會失敗，預覽可加 --draft）
     ~/speak-tw/bin/speak-tw --public docs/index.html docs/music.html README.md   # 對外文字檢查
 
 歌曲工具用共用 whisper-server（`~/.mori`）取時間、ffmpeg 處理、opencc 轉簡繁比對；沒有歌檔時可用 `src/songs_fixture.py` 做語音替身測流程（見 `assets/songs/README.md`）。
