@@ -9,8 +9,8 @@ import html as H, os, sys
 G = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = os.environ.get('MEDIA_BASE', '')
 
-# 歌詞署名與人／AI 分工作者還沒決定。決定後改成事實句，並把 LYRICS_CREDIT 設成那句。
-LYRICS_CREDIT = None
+# 歌詞署名：作者 2026-10-23 拍板「AI 協助撰寫，林亞澤審定」。
+LYRICS_CREDIT = 'AI 協助撰寫，林亞澤審定。'
 TODO_MARK = '【待確認：歌詞署名與人／AI 分工，作者還沒決定】'
 
 SPOILERS = ['結局', '丈夫', '先生', '過世', '死別', '悲劇', '走失', '運河', '三排十四號', '程希', '玫瑰']
