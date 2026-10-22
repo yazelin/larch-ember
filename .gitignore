@@ -7,3 +7,5 @@ assets/songs/_fixture/
 assets/songs/.cache/
 .songs-cache/
 __pycache__/
+assets/songs/*.mp3
+assets/songs/cuts/

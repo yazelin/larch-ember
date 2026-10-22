@@ -4,7 +4,7 @@
 import { serve, open, sleep, assert } from './lib.mjs';
 import { hookInit, cutSizes, named } from './audiohook.mjs';
 const CASES = [
-  { card: 'm_radio_on', end: /底座歪了一邊/, expect: [['手風琴伴著一段台語老歌', /harbor_open/], ['鋼琴前奏響起', /ember_radio_a/], ['燈一盞一盞暗下來', /ember_radio_b/]], none: ['九八點七', '音量留在這格'] },
+  { card: 'm_radio_on', end: /底座歪了一邊/, expect: [['一小段隔著雜訊的台語老歌', /harbor_open/], ['鋼琴前奏響起', /ember_radio_a/], ['（唱）燈一盞一盞暗下來', /ember_radio_b/], ['（唱）掌聲退回了街上', /ember_radio_c/]], none: ['九八點七', '你唱錯了'] },
   { card: 'mem0_market', end: /刷子掛回水龍頭旁/, expect: [['播著〈港邊的燈〉', /harbor_market/]], none: ['水莫噴甲阿桃姨'] },
 ];
 for (const c of CASES) {

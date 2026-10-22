@@ -31,13 +31,48 @@ CUT_DIR = SONGS_DIR / 'cuts'
 CACHE = ROOT / '.songs-cache' / hashlib.md5(str(SONGS_DIR).encode()).hexdigest()[:8]   # 轉錄與中間檔（不進 assets，不進 dist）
 
 TARGET_LUFS = -16.0          # 歌略大聲：背景曲約 -16.3 LUFS，卡上 bgmVolume 0.5；歌的 bgmVolume 設 0.65（songs.py）
-RADIO_LUFS = -20.0           # 收音機版整體降音量
+RADIO_LUFS = -17.0           # 收音機版：地圖背景曲 -16.2 LUFS 掛 0.4 = 約 -24.2，收音機 -17 × sfxVolume 0.9 = 約 -17.9，高出約 6 dB（窄頻容易被全頻背景曲蓋住）
 MAX_BYTES = 1_500_000
+MAX_BYTES_LONG = 3_600_000   # 超過 120 秒的段
 SR = 44100
 
 # ---------------------------------------------------------------- 歌詞
 
 SONG_FILES = {'餘燼': '餘燼.mp3', '晚安，台南': '晚安台南.mp3', '港邊的燈': '港邊的燈.mp3'}
+# 同一首歌的不同編曲：虛擬歌名「歌@版本」→（歌詞用哪首, 專屬檔名）。沒有專屬檔就退回主檔（替身測試用）。
+VERSIONS = {'餘燼@錄音室': ('餘燼', '餘燼-錄音室.mp3'), '餘燼@台下': ('餘燼', '餘燼-台下.mp3'), '餘燼@大合唱': ('餘燼', '餘燼-大合唱.mp3')}
+# 句子時間不走辨識與對齊的歌（手標或 LRC）。每句 (起, 迄) 秒，順序同 canon/歌詞.md；只在音檔指紋（md5 前 10 碼）對得上時啟用。
+# 港邊的燈：台語辨識幾乎對不上字，句子時間由人聽能量低谷手標（2026-10-23）。
+MANUAL_LINES = {'港邊的燈': [(14.9, 24.7), (24.7, 33.7), (33.7, 43.7), (43.7, 54.0), (54.5, 61.2), (61.2, 69.8), (70.0, 77.8), (77.8, 95.0)]}
+MANUAL_SHA = {'港邊的燈': hashlib.md5((ROOT / 'assets/songs/港邊的燈.mp3').read_bytes()).hexdigest()[:10] if (ROOT / 'assets/songs/港邊的燈.mp3').exists() else ''}
+TIMES_JSON = ROOT / 'assets/songs/times.json'   # src/songs_times.py 由 docs/music/*.lrc 轉出（高品質逐句時間）
+
+
+def manual_table(song, sha):
+    """這首（含版本）有沒有可用的手動句時間。回傳 [(起, 迄)] 或 None。"""
+    if song in MANUAL_LINES and MANUAL_SHA.get(song) == sha:
+        return MANUAL_LINES[song]
+    if TIMES_JSON.exists():
+        e = json.loads(TIMES_JSON.read_text(encoding='utf-8')).get(song)
+        if e and e.get('sha') == sha:
+            t0 = e['t0']
+            return [(a, (t0[i + 1] - 0.15) if i + 1 < len(t0) else e['duration']) for i, a in enumerate(t0)]
+    return None
+
+
+def base_of(song):
+    return VERSIONS[song][0] if song in VERSIONS else song
+
+
+def sources():
+    """虛擬歌名 → 檔案路徑（有檔的才算）。"""
+    out = {s: SONGS_DIR / f for s, f in SONG_FILES.items() if (SONGS_DIR / f).exists()}
+    for v, (b, f) in VERSIONS.items():
+        if (SONGS_DIR / f).exists():
+            out[v] = SONGS_DIR / f
+        elif b in out:
+            out[v] = out[b]
+    return out
 LENIENT = {'港邊的燈'}       # 台語歌：轉錄與對齊本來就不準（canon/歌詞.md：唸不準也沒關係），驗證改看切點是否落在靜處
 
 
@@ -81,25 +116,29 @@ def L(lyrics, song, sec, k):
 # place：卡代號與句子位置。anchor 是句子裡的文字（唯一匹配）；'first_sung' = 該卡第一句余靜（唱）。
 # role：sung_card（切成「歌卡」，歌詞跟著時間走）／line_bgm（只在某句開始放）／sfx（逐句 sfxUrl，收音機版）。
 CUTS = [
-    dict(id='ember_b1', song='餘燼', kind='bgm', role='sung_card', card='ending_b1', anchor='first_sung', resume='next',
+    dict(id='ember_b1', song='餘燼@台下', kind='bgm', role='sung_card', card='ending_b1', anchor='first_sung', resume='next',
          start=('song',), end=('eof',), fade_out=1.0),
-    dict(id='ember_a2', song='餘燼', kind='bgm', role='sung_card', card='ending_a2', anchor='first_sung', resume='next',
+    dict(id='ember_a2', song='餘燼@大合唱', kind='bgm', role='sung_card', card='ending_a2', anchor='first_sung', resume='next',
          start=('line', 'Final Chorus', 0, 1.5), end=('eof',), fade_out=1.0),
-    dict(id='ember_c4', song='餘燼', kind='bgm', role='line_bgm', card='ending_c4', anchor='按下播放鍵', same_as='ember_b1'),
-    dict(id='ember_radio_a', song='餘燼', kind='sfx', role='sfx', card='m_radio_on', anchor='鋼琴前奏響起',
-         start=('song',), end=('after', 'Verse 1', 0, 0.8), fade_out=0.6),
-    dict(id='ember_radio_b', song='餘燼', kind='sfx', role='sfx', card='m_radio_on', anchor='燈一盞一盞暗下來，掌聲',
-         start=('line', 'Verse 1', 0, 0.8), end=('after', 'Verse 1', 1, 0.8), fade_out=0.6),
+    dict(id='ember_c4', song='餘燼@錄音室', kind='bgm', role='line_bgm', card='ending_c4', anchor='按下播放鍵',
+         start=('song',), end=('eof',), fade_out=1.0),
+    # 收音機特輯：前奏最後幾秒、第一句、第二句各掛在對應的一句劇本上（sfx 只在當句播，所以一句一段）
+    dict(id='ember_radio_a', song='餘燼@錄音室', kind='sfx', role='sfx', card='m_radio_on', anchor='鋼琴前奏響起',
+         start=('song',), end=('after', 'Verse 1', 0, 0.8), fade_out=0.6, rel=('Verse 1', 0, -5.5, -0.25)),
+    dict(id='ember_radio_b', song='餘燼@錄音室', kind='sfx', role='sfx', card='m_radio_on', anchor='燈一盞一盞暗下來',
+         start=('line', 'Verse 1', 0, 0.8), end=('after', 'Verse 1', 0, 1.0), fade_out=0.5),
+    dict(id='ember_radio_c', song='餘燼@錄音室', kind='sfx', role='sfx', card='m_radio_on', anchor='掌聲退回了街上',
+         start=('line', 'Verse 1', 1, 0.8), end=('after', 'Verse 1', 1, 1.0), fade_out=0.5),
     dict(id='night_sc', song='晚安，台南', kind='bgm', role='sung_card', card='soundcheck', anchor='first_sung', resume='post',
          start=('line', 'Verse 1', 0, 1.0), end=('after', 'Verse 1', 3, 2.4), fade_out=1.8),
     dict(id='night_concert', song='晚安，台南', kind='bgm', role='sung_card', card='concert', anchor='first_sung', resume='none',
-         start=('line', 'Verse 1', 0, 0.6), end=('after', 'Verse 2', 3, 0.2), fade_out=0.06, sudden=True),
+         start=('line', 'Verse 1', 0, 0.6), end=('after', 'Chorus', 5, 0.4), fade_out=0.06, sudden=True),
     dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='ending_a1', anchor='first_sung', resume='next',
-         start=('line', 'Verse 3', 0, 1.0), end=('after', 'Verse 3', 3, 2.2), fade_out=1.6),
-    dict(id='harbor_open', song='港邊的燈', kind='sfx', role='sfx', card='m_radio_on', anchor='手風琴伴著一段台語老歌',
-         start=('song',), end=('after', 'Verse', 1, 0.8), fade_out=0.6),
+         start=('line', 'Verse 3', 0, 1.0), end=('after', 'Verse 3', 6, 2.2), fade_out=1.6),
+    dict(id='harbor_open', song='港邊的燈', kind='sfx', role='sfx', card='m_radio_on', anchor='一小段隔著雜訊的台語老歌',
+         start=('song',), end=('after', 'Verse', 1, 0.8), fade_out=0.6, manual=(11.2, 33.7)),
     dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sfx', card='mem0_market', anchor='播著〈港邊的燈〉',
-         start=('line', 'Chorus', 0, 0.8), end=('after', 'Chorus', 1, 0.8), fade_out=0.6),
+         start=('line', 'Chorus', 0, 0.8), end=('after', 'Chorus', 1, 0.8), fade_out=0.6, manual=(33.7, 43.7)),
 ]
 
 # ---------------------------------------------------------------- 工具
@@ -388,7 +427,7 @@ def pick(db, lo, hi, latest):
     return (a + k) * HOP, float(seg[k]), float(mn)
 
 
-def cut_points(spec, lines, al, db, dur):
+def cut_points(spec, lines, al, db, dur, manual=False, end_hint=None):
     """回傳 (start秒, end秒, 診斷)。"""
     def li(sec, k):
         return L_idx(lines, sec, k)
@@ -400,6 +439,8 @@ def cut_points(spec, lines, al, db, dur):
         i = li(sec, k)
         ls = al[i]['t0']
         prev_end = al[i - 1]['t1'] if i else 0.0
+        if manual and i:   # 手動時間的句尾是估的：前一句唱到一半以前都不當作句尾
+            prev_end = al[i - 1]['t0'] + 0.5 * (ls - al[i - 1]['t0'])
         lo, hi = max(prev_end + 0.04, ls - lead, 0.0), ls - 0.03
         s, cdb, mn = pick(db, lo, hi, latest=False)
         diag['start'] = {'line': i, 'window': [round(lo, 2), round(hi, 2)], 'db': round(cdb, 1), 'gap_min_db': round(mn, 1)}
@@ -414,7 +455,11 @@ def cut_points(spec, lines, al, db, dur):
         le = al[i]['t1']
         nxt = al[i + 1]['t0'] if i + 1 < len(al) else dur
         lo, hi = le + 0.03, min(nxt - 0.03, le + tail, dur)
-        e, cdb, mn = pick(db, lo, max(lo + 0.01, hi), latest=True)
+        if manual:   # 句尾是估的：改在「下一句開唱前」往回找最安靜的縫（最多 1.6 秒、不超過這句一半）
+            lo, hi = max(al[i]['t0'] + 0.4 * (nxt - al[i]['t0']), nxt - min(1.6, 0.5 * (nxt - al[i]['t0']))), min(nxt - 0.04, dur)
+            if end_hint is not None:   # 這句後面是長間奏：用辨識取到的人聲真正結束點，在它之後 0.9 秒內找最靜處
+                lo, hi = end_hint + 0.05, min(end_hint + 2.5, nxt - 0.04, dur)   # 逐字時間的句尾偏早，往後找最靜處（取最早的安靜點）
+        e, cdb, mn = pick(db, lo, max(lo + 0.01, hi), latest=False if end_hint is not None else True)
         diag['end'] = {'line': i, 'window': [round(lo, 2), round(hi, 2)], 'db': round(cdb, 1), 'gap_min_db': round(mn, 1)}
     return s, e, diag
 
@@ -470,6 +515,9 @@ def radio_filter(x, sr, seed=7):
 def encode_mp3(x, sr, out, mono_ok=False):
     """依大小逐級降位元率，直到 < MAX_BYTES。回傳 (位元率, 位元組)。"""
     ladder = [(160, 2), (128, 2), (112, 2), (96, 2), (80, 2), (64, 2), (64, 1), (56, 1), (48, 1), (40, 1)]
+    limit = MAX_BYTES
+    if len(x) / sr > 120:   # 整首歌（結局 B、C 的 4 分鐘）壓到 1.5MB 要 40–48kbps 單聲道，太糊；長段放寬，仍保持立體聲
+        ladder = [(128, 2), (112, 2), (96, 2), (80, 2), (64, 2)]; limit = MAX_BYTES_LONG
     if x.shape[1] == 1:
         ladder = [(b, 1) for b in (96, 80, 64, 56, 48, 40)]
     wav = wav_bytes(x, sr)
@@ -478,7 +526,7 @@ def encode_mp3(x, sr, out, mono_ok=False):
         if r.returncode:
             raise RuntimeError(r.stderr.decode(errors='replace')[-300:])
         size = pathlib.Path(out).stat().st_size
-        if size < MAX_BYTES:
+        if size < limit:
             return br, size
     return br, size   # 最低檔還是超過：照實回報
 
@@ -551,28 +599,36 @@ def main():
     only = set(filter(None, args.only.split(',')))
     lyrics = load_lyrics()
     CACHE.mkdir(parents=True, exist_ok=True); CUT_DIR.mkdir(parents=True, exist_ok=True)
-    present = {s: SONGS_DIR / f for s, f in SONG_FILES.items() if (SONGS_DIR / f).exists()}
+    present = sources()
     if not present:
         sys.exit(f'{SONGS_DIR} 底下沒有歌檔。預期：' + '、'.join(SONG_FILES.values()))
-    for s in SONG_FILES:
-        print(('找到 ' if s in present else '沒有 ') + SONG_FILES[s])
-    url = whisper_url()
+    for s_ in list(SONG_FILES) + list(VERSIONS):
+        print(('找到 ' if s_ in present else '沒有 ') + (SONG_FILES.get(s_) or VERSIONS[s_][1]))
+    url = None   # 需要辨識時才拉起 whisper-server
     import script
     truth = json.loads((SONGS_DIR / 'truth.json').read_text()) if (SONGS_DIR / 'truth.json').exists() else {}
-    song_info, align_res, dbs, wav44, asrs = {}, {}, {}, {}, {}
+    song_info, align_res, dbs, wav44, asrs, manual_on, w16s = {}, {}, {}, {}, {}, set(), {}
     for song, path in present.items():
+        lyr = lyrics[base_of(song)]
         key = hashlib.md5(path.read_bytes()).hexdigest()[:10]
         dur = duration(path)
         w16 = decode_wav(path, 16000, 1)[:, 0]
-        asr = transcribe_cached(w16, url, key)
-        asr = fix_intro(asr, w16, url, key, lyrics[song][0]['text'])
-        db = energy_db(w16)
-        al = align(asr, lyrics[song], lenient=song in LENIENT, db=db)
-        asrs[song], align_res[song], dbs[song] = asr, al, db
+        man = manual_table(song, key)
+        if man:
+            asr = []; db = energy_db(w16); manual_on.add(song)
+            assert len(man) == len(lyr), f'{song} 手動句時間 {len(man)} 句與歌詞 {len(lyr)} 行不同'
+            al = [{'t0': a, 't1': b, 'conf': 1.0, 'matched': len(l['text']), 'chars': len(l['text']), 'interp': False} for (a, b), l in zip(man, lyr)]
+        else:
+            url = url or whisper_url()
+            asr = transcribe_cached(w16, url, key)
+            asr = fix_intro(asr, w16, url, key, lyr[0]['text'])
+            db = energy_db(w16)
+            al = align(asr, lyr, lenient=base_of(song) in LENIENT, db=db)
+        asrs[song], align_res[song], dbs[song] = asr, al, db; w16s[song] = w16
         wav44[song] = decode_wav(path, SR, 2)
-        info = {'file': path.name, 'duration': round(dur, 2), 'asr_chars': len(asr), 'sha': key,
+        info = {'file': path.name, 'duration': round(dur, 2), 'asr_chars': len(asr), 'sha': key, 'manual_times': bool(man),
                 'lines': [{'i': l['i'], 'sec': l['sec'], 'text': l['text'], 't0': round(a['t0'], 2), 't1': round(a['t1'], 2),
-                           'conf': round(a['conf'], 2), 'interp': a['interp']} for l, a in zip(lyrics[song], al)]}
+                           'conf': round(a['conf'], 2), 'interp': a['interp']} for l, a in zip(lyr, al)]}
         covered = sum(a['matched'] for a in al) / max(1, sum(a['chars'] for a in al))
         info['char_match'] = round(covered, 2)
         info['low_conf_lines'] = sum(1 for a in al if a['interp'])
@@ -583,7 +639,7 @@ def main():
             info['truth_error'] = {'start_mean': round(float(np.mean(e0)), 3), 'start_p95': round(float(np.percentile(e0, 95)), 3), 'start_max': round(float(np.max(e0)), 3),
                                    'end_mean': round(float(np.mean(e1)), 3), 'end_max': round(float(np.max(e1)), 3)}
         song_info[song] = info
-        print(f'〈{song}〉{dur:.1f}s 轉錄 {len(asr)} 字，歌詞字匹配 {covered:.0%}，內插句 {info["low_conf_lines"]}/{len(al)}'
+        print(f'〈{song}〉{dur:.1f}s ' + ('手動句時間（LRC／手標）' if man else f'轉錄 {len(asr)} 字，歌詞字匹配 {covered:.0%}，內插句 {info["low_conf_lines"]}/{len(al)}')
               + (f"；對真值 起點誤差 平均 {info['truth_error']['start_mean']}s 最大 {info['truth_error']['start_max']}s" if 'truth_error' in info else ''), flush=True)
 
     entries, rendered = [], {}
@@ -591,7 +647,7 @@ def main():
     for spec in CUTS:
         if spec['song'] not in present or (only and spec['id'] not in only):
             continue
-        song = spec['song']; lines = lyrics[song]; al = align_res[song]; db = dbs[song]
+        song = spec['song']; lines = lyrics[base_of(song)]; al = align_res[song]; db = dbs[song]; is_man = song in manual_on
         dur = song_info[song]['duration']
         base = spec.get('same_as')
         sp = next(c for c in CUTS if c['id'] == base) if base else spec
@@ -600,10 +656,24 @@ def main():
             e = json.loads(json.dumps(rendered[base]))
             e.update(id=spec['id'], role=spec['role'], place={'card': spec['card'], 'line': place_line, 'anchor': spec['anchor']}, same_as=base)
             entries.append(e); continue
-        s, e_, diag = cut_points(sp, lines, al, db, dur)
+        if is_man and sp.get('manual'):
+            s, e_ = sp['manual']; diag = {'start': {'at': 'manual'}, 'end': {'at': 'manual'}}
+        elif is_man and sp.get('rel'):   # 相對某句開頭的秒數（例如收音機只放前奏的最後幾秒）
+            sec_, k_, a_, b_ = sp['rel']; t_ = al[L_idx(lines, sec_, k_)]['t0']
+            s, e_ = max(0.0, t_ + a_), t_ + b_; diag = {'start': {'at': 'rel'}, 'end': {'at': 'rel'}}
+        else:
+            hint = None
+            if is_man and sp['end'][0] == 'after':
+                i_ = L_idx(lines, sp['end'][1], sp['end'][2]); nxt_ = al[i_ + 1]['t0'] if i_ + 1 < len(al) else dur
+                if nxt_ - al[i_]['t0'] > 7.5:   # 後面是長間奏
+                    url = url or whisper_url()
+                    ve = vocal_end(w16s[song], url, lines[i_]['text'], al[i_]['t0'], nxt_)
+                    print(f"   {spec['id']}：這句後面有 {nxt_ - al[i_]['t0']:.1f} 秒到下一句，辨識到人聲在 {ve and round(ve, 2)} 秒結束", flush=True)
+                    hint = ve
+            s, e_, diag = cut_points(sp, lines, al, db, dur, manual=is_man, end_hint=hint)
         x = wav44[song][int(s * SR):int(e_ * SR)]
         fo = sp.get('fade_out', 0.5)
-        x = fades(x, SR, 0.04 if s > 0 else 0.02, min(fo, len(x) / SR / 2))
+        x = fades(x, SR, (0.3 if sp.get('rel') and is_man else 0.04) if s > 0 else 0.02, min(fo, len(x) / SR / 2))
         radio = sp['kind'] == 'sfx'
         if radio:
             x = radio_filter(x, SR)
@@ -612,15 +682,19 @@ def main():
         br, size = encode_mp3(x, SR, out)
         d_out = duration(out)
         lufs = measure_lufs(out)
-        rel = [{'text': l['text'], 't0': round(a['t0'] - s, 2), 't1': round(a['t1'] - s, 2), 'conf': round(a['conf'], 2), 'interp': a['interp'], 'sec': l['sec']}
-               for l, a in zip(lines, al) if a['t0'] >= s - 0.05 and a['t1'] <= e_ + 0.05]
+        if is_man:   # 手動時間：只有句首可靠；句尾是估的，所以用句首判斷這句在不在切段裡
+            rel = [{'text': l['text'], 't0': round(a['t0'] - s, 2), 't1': round(min(a['t1'], e_) - s, 2), 'conf': round(a['conf'], 2), 'interp': a['interp'], 'sec': l['sec']}
+                   for l, a in zip(lines, al) if a['t0'] >= s - 0.05 and a['t0'] <= e_ - 0.25]
+        else:
+            rel = [{'text': l['text'], 't0': round(a['t0'] - s, 2), 't1': round(a['t1'] - s, 2), 'conf': round(a['conf'], 2), 'interp': a['interp'], 'sec': l['sec']}
+                   for l, a in zip(lines, al) if a['t0'] >= s - 0.05 and a['t1'] <= e_ + 0.05]
         # 驗證
         ver = {'ok': True}
         c0, c1 = diag['start'].get('line'), diag['end'].get('line')
         # 切點：不可在字中間；能量要在該縫隙的低點附近
         pts = {}
         for name, t, d in (('start', s, diag['start']), ('end', e_, diag['end'])):
-            if d.get('at') in ('eof', 'song_start'):
+            if d.get('at') in ('eof', 'song_start', 'rel'):   # rel：前奏等持續音的中段，沒有縫可找，靠淡入淡出
                 pts[name] = {'t': round(t, 2), 'at': d['at'], 'ok': True}; continue
             # 切點在縫隙的低谷：切點能量比前後各 1 秒內最響處低多少 dB（≥8 好；4–8 勉強；<4 切在聲音裡）
             a_, b_ = max(0, frame(t - 1.0)), min(len(db), frame(t + 1.0))
@@ -633,10 +707,13 @@ def main():
                 back = decode_wav_arr(clean, SR)
             else:
                 back = decode_wav(out, 16000, 1)[:, 0]
-            lenient = song in LENIENT
+            lenient = base_of(song) in LENIENT
             d_ = len(back) / 16000
-            ver['head'] = verify_window(url, back, rel, lines, 0.0, min(3.0, d_), lenient)
-            ver['tail'] = verify_window(url, back, rel, lines, max(0.0, d_ - 3.0), d_, lenient)
+            if is_man:   # 手動時間的歌：辨識聽不出字，頭尾辨識驗證沒意義；改看切點深度與收音機頻譜
+                ver['head'] = ver['tail'] = {'ok': True, 'manual': True}
+            else:
+                ver['head'] = verify_window(url or whisper_url(), back, rel, lines, 0.0, min(3.0, d_), lenient)
+                ver['tail'] = verify_window(url or whisper_url(), back, rel, lines, max(0.0, d_ - 3.0), d_, lenient)
             if radio:
                 ver['radio'] = radio_check(out)
         ver['ok'] = all(p['ok'] for p in pts.values()) and all(ver.get(k, {'ok': True})['ok'] for k in ('head', 'tail', 'radio'))
@@ -669,6 +746,27 @@ def main():
     if args.build:
         subprocess.run([sys.executable, str(HERE / 'build.py')], check=True)
     sys.exit(0 if all_ok else 2)
+
+
+def vocal_end(w16, url, text, t0, nxt):
+    """這句後面有長間奏時，找人聲真正唱完的時間：切出 [t0-0.3, t0+10] 辨識，從第一個屬於這句歌詞的字開始，連續（字距 ≤1.3 秒）的「屬於這句的字」
+    取最後一字的迄點；遇到不屬於這句的字（下一句的雜訊）就停。Suno 常把句尾多唱一遍（例如「就回家 就回家」），這樣會一起算進去。
+    必須比下一句開頭早 0.3 秒以上，否則視為不可信（回傳 None）。"""
+    a = max(0.0, t0 - 0.3); b = min(len(w16) / 16000, t0 + 10.0)   # 不截在下一句前：逐字時間會把最後一個字拉長到片段結尾
+    r = transcribe(w16[int(a * 16000):int(b * 16000)], url)
+    ly = set(norm(text)); last = None; prev_end = None
+    for ch, st, en in r:
+        if st + a < t0 - 0.3:
+            continue
+        if prev_end is not None and st - prev_end > 1.3:
+            break
+        if ch in ly:
+            last = en + a; prev_end = en
+        elif last is not None:
+            break
+    if last is None or last > nxt - 0.3:
+        return None
+    return last
 
 
 def locate(script, spec):
