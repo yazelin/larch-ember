@@ -5,6 +5,7 @@
 原型是兩位罹患阿茲海默症、仍然站上舞台唱完最後一場的歌手：Tony Bennett 與 Lady Gaga 的最後兩場演唱會、Glen Campbell 的告別巡演。主角改成女歌手。所有參考資料（原型與醫學研究）與出處在公開站與 `canon/研究.md`。
 
 - 公開站：<https://yazelin.github.io/larch-ember/>（原始檔 `docs/index.html`）
+- 原聲帶頁：`docs/music.html`（〈餘燼〉四個版本、〈晚安，台南〉、〈港邊的燈〉，播放時背景換成作品裡的 CG）
 - 試玩：上線後補
 
 ## 資料夾
@@ -18,6 +19,7 @@
 | `assets/` | 正式素材：立繪、CG、地圖、行走圖；`assets/songs/` 放作者的三首 Suno 歌，說明見 `assets/songs/README.md` |
 | `tests/` | Playwright 檢查（地圖截圖、介面截圖、CG 收藏、hover 跳位） |
 | `site/media.py` | 公開站素材：把 `assets/`、`art/` 的圖縮成小檔放進 `docs/media/` |
+| `site/music_assets.py`、`site/build_music.py` | 原聲帶頁：音檔重編 128kbps 放 `docs/music/`、封面與背景 CG 放 `docs/media/`，再產生 `docs/music.html` |
 | `docs/` | 公開站（GitHub Pages） |
 
 ## 指令
@@ -32,7 +34,9 @@
     node tests/ui_shots.mjs         # 介面截圖
     node tests/gallery_check.mjs    # CG 收藏解鎖
     node tests/hover_check.mjs      # 地圖標籤 hover 不跳位
-    ~/speak-tw/bin/speak-tw --public docs/index.html README.md   # 對外文字檢查
+    python3 site/music_assets.py    # 原聲帶音檔（來源在 ~/下載/有封面/）、封面、背景 CG
+    python3 site/build_music.py --draft   # 產生 docs/music.html 預覽版；歌詞署名未定時，正式版（不加 --draft）會失敗
+    ~/speak-tw/bin/speak-tw --public docs/index.html docs/music.html README.md   # 對外文字檢查
 
 歌曲工具用共用 whisper-server（`~/.mori`）取時間、ffmpeg 處理、opencc 轉簡繁比對；沒有歌檔時可用 `src/songs_fixture.py` 做語音替身測流程（見 `assets/songs/README.md`）。
 
@@ -66,3 +70,11 @@
 ## 授權
 
 程式碼以 MIT 授權（`LICENSE`）。故事文字、美術與公開站內容以 CC BY-NC 4.0 授權（`LICENSE-CONTENT.md`）。
+
+## 公開站的素材網址
+
+整個遊戲 repo 的 `.git` 超過 600MB，jsDelivr 對超過 50MB 的 repo 會 403，Pages 又慢。做法照《十一分鐘》：把 `docs/media/` 與 `docs/music/` 放進一個只有素材的孤兒 tag（例如 `site-media-1`），頁面圖與音檔走 jsDelivr。
+
+    MEDIA_BASE=https://cdn.jsdelivr.net/gh/yazelin/larch-ember@site-media-1/docs/ python3 site/build_music.py
+
+`index.html` 目前用相對路徑；要改成 jsDelivr 時，把 `media/` 前綴換成同一個網址。建 tag 與 push 要等作者點頭。
