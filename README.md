@@ -21,6 +21,7 @@
 | `site/media.py` | 公開站素材：把 `assets/`、`art/` 的圖縮成小檔放進 `docs/media/` |
 | `site/music_assets.py`、`site/make_lrc.py`、`site/verify_lrc.py`、`site/build_music.py`（加 `music.css`、`music.js`） | 原聲帶頁：音檔重編 128kbps 放 `docs/music/`、封面與背景 CG 放 `docs/media/`；動態歌詞 `docs/music/*.lrc`（只取時間，文字一律用官方歌詞）與抽查；再產生 `docs/music.html` |
 | `docs/` | 公開站（GitHub Pages） |
+| `審稿/` | 劇本審稿閘門（從《續》移植，作者 2026-10-23 同意）：讀稿人找問題與好句、修稿包、改前改後閘門、重寫比賽、主編意見併入；七項評分與流程見 `審稿/README.md`、`審稿/流程.md` |
 
 ## 指令
 
@@ -39,6 +40,9 @@
     python3 site/verify_lrc.py      # 抽查：每首取 8 行，辨識該行時間前後各 2 秒的音檔
     python3 site/build_music.py     # 產生 docs/music.html（歌詞署名 LYRICS_CREDIT 沒填會失敗，預覽可加 --draft）
     ~/speak-tw/bin/speak-tw --public docs/index.html docs/music.html README.md   # 對外文字檢查
+    python3 tests/check_voice.py    # 劇本台詞機械檢查（硬規則擋；旁白情緒詞、對白書面語只警告）
+    python3 tests/motif_check.py    # 伏筆帳：三條路線上每個回收之前都有出處
+    python3 審稿/runner.py next canon/劇本.md   # 審稿閘門：各場狀態與下一步（流程見 審稿/README.md）
 
 歌曲工具用共用 whisper-server（`~/.mori`）取時間、ffmpeg 處理、opencc 轉簡繁比對；沒有歌檔時可用 `src/songs_fixture.py` 做語音替身測流程（見 `assets/songs/README.md`）。
 
