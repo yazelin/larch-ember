@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex">
+<title>餘燼 · 最終遺忘的橘色餘燼</title>
+<meta name="theme-color" content="#0d0705">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23140b07'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff9a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&display=swap">
+<style>:root{color-scheme:dark;--bg:#0d0705;--ink:#fbeedd;--acc:#ffab4d;--serif:"Noto Serif TC","Songti TC","PMingLiU",serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--ink);overflow:hidden;font-family:var(--serif);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+/* 畫面：兩層交叉淡化，每一鏡自己的推鏡方向（JS 用 Web Animations 推） */
+.film{position:fixed;inset:0;overflow:hidden;background:var(--bg)}
+.film i{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;will-change:opacity,transform}
+.film i.on{opacity:1}
+.shade{position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(13,7,5,.25) 0%,rgba(13,7,5,0) 30%,rgba(13,7,5,0) 55%,rgba(13,7,5,.72) 100%)}
+/* width/height 不能省：canvas 沒給 CSS 尺寸就用屬性尺寸排版，dpr 2 的手機會放大兩倍貼在左上角 */
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+/* 歌詞：一次一句，字少、乾淨，放在下緣 */
+.lyric{position:fixed;left:16px;right:16px;bottom:max(9vh,64px);height:3.2em;pointer-events:none;text-align:center}
+.lyric p{position:absolute;left:0;right:0;bottom:0;margin:0;font-weight:500;font-size:clamp(1.15rem,2.6vw,2rem);line-height:1.5;letter-spacing:.12em;
+  text-shadow:0 0 18px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.9);opacity:0;transform:translateY(8px);transition:opacity 1.1s ease,transform 1.1s ease}
+.lyric p.on{opacity:1;transform:none}
+.black{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity 2.5s ease}
+.black.on{opacity:1}
+.start{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:18px;background:radial-gradient(ellipse at center,rgba(13,7,5,.55),rgba(13,7,5,.92));transition:opacity .8s}
+.start.gone{opacity:0;pointer-events:none}
+.start .t{margin:0;font-size:clamp(1.8rem,5vw,3rem);font-weight:700;letter-spacing:.3em;text-indent:.3em}
+.start .s{margin:0;font-size:.9rem;color:#d6bfa4;letter-spacing:.12em}
+.go{display:flex;align-items:center;gap:12px;padding:16px 34px;border-radius:999px;background:var(--acc);color:#241408;font-size:1.25rem;font-weight:700;letter-spacing:.2em;box-shadow:0 0 40px rgba(255,171,77,.45)}
+.go svg{width:26px;height:26px;fill:currentColor}
+.next,.again{position:fixed;right:16px;bottom:16px;padding:10px 20px;border:1px solid rgba(255,171,77,.55);border-radius:6px;background:rgba(13,7,5,.6);color:#f4dcbc;font-size:.95rem;letter-spacing:.15em;opacity:.75;transition:opacity .3s}
+.next:hover,.again:hover{opacity:1}
+.again{right:auto;left:50%;bottom:45vh;transform:translateX(-50%)}
+.next[hidden],.again[hidden]{display:none}
+.sign{position:fixed;left:16px;bottom:12px;margin:0;font-size:.75rem;color:rgba(214,191,164,.6);letter-spacing:.1em}
+.embed .sign{display:none}
+@media (prefers-reduced-motion:reduce){.film i,.lyric p,.black{transition:none}.lyric p{transform:none}}
+</style>
+</head>
+<body>
+<div class="film" aria-hidden="true"><i id="fA"></i><i id="fB"></i></div>
+<div class="shade" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="lyric" aria-live="off"><p id="lA"></p><p id="lB"></p></div>
+<div class="black" id="black" aria-hidden="true"></div>
+<div class="start" id="start">
+  <p class="t" id="stitle">餘燼</p>
+  <button type="button" id="go" class="go" aria-label="播放"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>播放</span></button>
+  <p class="s" id="sub"></p>
+</div>
+<button type="button" id="next" class="next" hidden>繼續</button>
+<button type="button" id="again" class="again" hidden>再看一次</button>
+<p class="sign" id="sign">最終遺忘的橘色餘燼 · 林亞澤</p>
+<script>
+const MV = {"ember-b": {"title": "餘燼", "ending": "結局 B〈餘燼〉", "status": "done", "dur": 236.4, "audio": "music/ember-audience.mp3", "lrc": "music/ember-audience.lrc", "shots": [{"t0": 0.0, "cg": "b_1", "move": "in", "blank": false, "sec": "前奏", "t1": 15.95, "img": "media/mv/b_1.webp"}, {"t0": 15.95, "cg": "mem1_1", "move": "right", "blank": false, "sec": "Verse 1", "t1": 22.95, "img": "media/mv/mem1_1.webp"}, {"t0": 22.95, "cg": "mem1_3", "move": "in", "blank": false, "sec": "Verse 1", "t1": 29.25, "img": "media/mv/mem1_3.webp"}, {"t0": 29.25, "cg": "mem1_4", "move": "out", "blank": false, "sec": "Verse 1", "t1": 36.52, "img": "media/mv/mem1_4.webp"}, {"t0": 36.52, "cg": "soundcheck_3", "move": "in", "blank": false, "sec": "Verse 1", "t1": 43.7, "img": "media/mv/soundcheck_3.webp"}, {"t0": 43.7, "cg": "mem4_7", "move": "left", "blank": false, "sec": "Pre-Chorus", "t1": 47.2, "img": "media/mv/mem4_7.webp"}, {"t0": 47.2, "cg": "dress_3", "move": "in", "blank": false, "sec": "Pre-Chorus", "t1": 52.69, "img": "media/mv/dress_3.webp"}, {"t0": 52.69, "cg": "b_2", "move": "out", "blank": false, "sec": "Chorus", "t1": 60.75, "img": "media/mv/b_2.webp"}, {"t0": 60.75, "cg": "concert_1", "move": "in", "blank": false, "sec": "Chorus", "t1": 69.48, "img": "media/mv/concert_1.webp"}, {"t0": 69.48, "cg": "mem2_10", "move": "right", "blank": false, "sec": "Chorus", "t1": 80.4, "img": "media/mv/mem2_10.webp"}, {"t0": 80.4, "cg": "prologue_3", "move": "in", "blank": false, "sec": "間奏", "t1": 88.72, "img": "media/mv/prologue_3.webp"}, {"t0": 88.72, "cg": "mem2_9", "move": "left", "blank": false, "sec": "Verse 2", "t1": 95.24, "img": "media/mv/mem2_9.webp"}, {"t0": 95.24, "cg": "mem2_2", "move": "in", "blank": false, "sec": "Verse 2", "t1": 102.26, "img": "media/mv/mem2_2.webp"}, {"t0": 102.26, "cg": "mem2_8", "move": "out", "blank": false, "sec": "Verse 2", "t1": 109.4, "img": "media/mv/mem2_8.webp"}, {"t0": 109.4, "cg": "mem2_11", "move": "right", "blank": false, "sec": "Verse 2", "t1": 116.86, "img": "media/mv/mem2_11.webp"}, {"t0": 116.86, "cg": "branch_2", "move": "in", "blank": false, "sec": "Pre-Chorus", "t1": 125.88, "img": "media/mv/branch_2.webp"}, {"t0": 125.88, "cg": "mem2_1", "move": "out", "blank": false, "sec": "Chorus", "t1": 133.54, "img": "media/mv/mem2_1.webp"}, {"t0": 133.54, "cg": "concert_2", "move": "in", "blank": false, "sec": "Chorus", "t1": 142.2, "img": "media/mv/concert_2.webp"}, {"t0": 142.2, "cg": "mem3_1", "move": "left", "blank": false, "sec": "Chorus", "t1": 157.51, "img": "media/mv/mem3_1.webp"}, {"t0": 157.51, "cg": "mem4_4", "move": "in", "blank": false, "sec": "Bridge", "t1": 164.31, "img": "media/mv/mem4_4.webp"}, {"t0": 164.31, "cg": "mem4_3", "move": "right", "blank": false, "sec": "Bridge", "t1": 169.0, "img": "media/mv/mem4_3.webp"}, {"t0": 169.0, "cg": "b_4", "move": "in", "blank": false, "sec": "Bridge", "t1": 173.12, "img": "media/mv/b_4.webp"}, {"t0": 173.12, "cg": "concert_4", "move": "in", "blank": false, "sec": "Final Chorus", "t1": 180.82, "img": "media/mv/concert_4.webp"}, {"t0": 180.82, "cg": "b_5", "move": "out", "blank": true, "sec": "Final Chorus", "t1": 189.54, "img": "media/mv/b_5.webp"}, {"t0": 189.54, "cg": "b_3", "move": "in", "blank": false, "sec": "Final Chorus", "t1": 206.2, "img": "media/mv/b_3.webp"}, {"t0": 206.2, "cg": "mem1_4", "move": "out", "blank": false, "sec": "Outro", "t1": 236.4, "img": "media/mv/mem1_4.webp"}]}, "ember-c": {"title": "餘燼", "ending": "結局 C〈天黑以後〉", "status": "skeleton", "dur": 245.95, "audio": "music/ember-chorus.mp3", "lrc": "music/ember-chorus.lrc", "shots": [{"t0": 0.0, "cg": "c_10", "move": "in", "blank": false, "sec": "前奏", "t1": 15.19, "img": "media/mv/c_10.webp"}, {"t0": 15.19, "cg": "mem1_4", "move": "right", "blank": false, "sec": "Verse 1", "t1": 42.35, "img": "media/mv/mem1_4.webp"}, {"t0": 42.35, "cg": "branch_3", "move": "in", "blank": false, "sec": "Pre-Chorus", "t1": 56.45, "img": "media/mv/branch_3.webp"}, {"t0": 56.45, "cg": "c_4", "move": "out", "blank": false, "sec": "Chorus", "t1": 101.36, "img": "media/mv/c_4.webp"}, {"t0": 101.36, "cg": "c_6", "move": "left", "blank": false, "sec": "Verse 2", "t1": 176.35, "img": "media/mv/c_6.webp"}, {"t0": 176.35, "cg": "mem4_4", "move": "in", "blank": false, "sec": "Bridge", "t1": 200.5, "img": "media/mv/mem4_4.webp"}, {"t0": 200.5, "cg": "c_10", "move": "out", "blank": true, "sec": "Final Chorus", "t1": 229.03, "img": "media/mv/c_10.webp"}, {"t0": 229.03, "cg": "mem1_1", "move": "out", "blank": false, "sec": "Outro", "t1": 245.95, "img": "media/mv/mem1_1.webp"}]}, "ember-a": {"title": "餘燼", "ending": "結局 A〈三排十四號〉", "status": "skeleton", "dur": 229.99, "audio": "music/ember-harmony.mp3", "lrc": "music/ember-harmony.lrc", "shots": [{"t0": 0.0, "cg": "a_1", "move": "in", "blank": false, "sec": "前奏", "t1": 18.32, "img": "media/mv/a_1.webp"}, {"t0": 18.32, "cg": "mem1_3", "move": "right", "blank": false, "sec": "Verse 1", "t1": 46.41, "img": "media/mv/mem1_3.webp"}, {"t0": 46.41, "cg": "a_2", "move": "in", "blank": false, "sec": "Pre-Chorus", "t1": 53.51, "img": "media/mv/a_2.webp"}, {"t0": 53.51, "cg": "a_4", "move": "out", "blank": false, "sec": "Chorus", "t1": 91.15, "img": "media/mv/a_4.webp"}, {"t0": 91.15, "cg": "mem2_4", "move": "left", "blank": false, "sec": "Verse 2", "t1": 160.53, "img": "media/mv/mem2_4.webp"}, {"t0": 160.53, "cg": "mem4_5", "move": "in", "blank": false, "sec": "Bridge", "t1": 181.46, "img": "media/mv/mem4_5.webp"}, {"t0": 181.46, "cg": "a_5", "move": "out", "blank": true, "sec": "Final Chorus", "t1": 206.66, "img": "media/mv/a_5.webp"}, {"t0": 206.66, "cg": "a_8", "move": "in", "blank": false, "sec": "Outro", "t1": 229.99, "img": "media/mv/a_8.webp"}]}};
+/* 〈餘燼〉MV。MV 由 site/build_mv.py 從 site/mv_storyboard.json 注入。
+   網址參數：song=ember-b|ember-c|ember-a，embed=1（嵌進遊戲：不顯示署名、沒有任何連結、右下「繼續」）。
+   播完或按「繼續」送 {type:'larch:mv:done', song} 給父層；載入時送 {type:'larch:mv:ready', song}。
+   父層是 Larch 的小遊戲卡（沙盒 iframe），來源會是 'null'，所以一律用 '*' 送。 */
+const Q = new URLSearchParams(location.search);
+const KEY = MV[Q.get('song')] ? Q.get('song') : 'ember-b';
+const SONG = MV[KEY];
+const EMBED = Q.get('embed') === '1';
+const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const lowEnd = matchMedia('(pointer:coarse)').matches || (navigator.hardwareConcurrency || 4) <= 4;
+const $ = id => document.getElementById(id);
+if (EMBED) document.body.classList.add('embed');
+$('stitle').textContent = SONG.title;
+$('sub').textContent = SONG.status === 'done' ? '' : '分鏡排列中';
+const tell = type => { if (window.parent !== window) try { parent.postMessage({ type, song: KEY }, '*'); } catch (_) {} };
+tell('larch:mv:ready');
+
+const au = new Audio(); au.preload = 'auto'; au.src = SONG.audio;
+SONG.shots.forEach(s => { const im = new Image(); im.src = s.img; });
+let lines = [];
+fetch(SONG.lrc).then(r => r.text()).then(t => {
+  for (const raw of t.split('\n')) { const m = raw.match(/^\[(\d+):(\d+(?:\.\d+)?)\](.*)$/); if (m) lines.push({ t: +m[1] * 60 + parseFloat(m[2]), text: m[3].trim() }); }
+}).catch(() => {});
+
+/* ── 畫面：一鏡一張，交叉淡化，推鏡方向照分鏡表 ── */
+const MOVES = {
+  in: ['scale(1.02)', 'scale(1.13)'], out: ['scale(1.13)', 'scale(1.02)'],
+  left: ['translateX(2.5%) scale(1.09)', 'translateX(-2.5%) scale(1.09)'], right: ['translateX(-2.5%) scale(1.09)', 'translateX(2.5%) scale(1.09)'],
+};
+let shot = -1, front = 'fA';
+function showShot(i) {
+  if (i === shot) return; shot = i;
+  const s = SONG.shots[i], nxt = front === 'fA' ? 'fB' : 'fA', n = $(nxt), f = $(front);
+  n.style.backgroundImage = `url("${s.img}")`;
+  n.getAnimations().forEach(a => a.cancel());
+  if (!reduced) n.animate([{ transform: MOVES[s.move][0] }, { transform: MOVES[s.move][1] }], { duration: (s.t1 - s.t0 + 2) * 1000, easing: 'linear', fill: 'forwards' });
+  else n.style.transform = 'scale(1.04)';
+  n.classList.add('on'); f.classList.remove('on'); front = nxt;
+  document.body.dataset.shot = s.cg;
+}
+/* ── 歌詞：一次一句，兩層交替淡入；留白那一鏡不上字 ── */
+let lyr = -2, lfront = 'lA';
+function showLine(text) {
+  const nxt = lfront === 'lA' ? 'lB' : 'lA';
+  $(lfront).classList.remove('on');
+  if (text) { $(nxt).textContent = text; $(nxt).classList.add('on'); lfront = nxt; }
+}
+function frame() {
+  const t = au.currentTime;
+  let i = 0; while (i + 1 < SONG.shots.length && SONG.shots[i + 1].t0 <= t) i++;
+  showShot(i);
+  let k = -1; while (k + 1 < lines.length && lines[k + 1].t <= t) k++;
+  const blank = SONG.shots[i].blank;
+  const key = blank ? -1 : k;
+  if (key !== lyr) { lyr = key; showLine(key >= 0 ? lines[key].text : ''); }
+  document.body.dataset.line = key;
+  if (SONG.dur - t < 3 && !au.paused) $('black').classList.add('on');
+}
+
+/* ── 餘燼：比原聲帶頁克制，數量少、慢慢往上飄 ── */
+const fx = $('fx'), g = fx.getContext('2d');
+let W = 0, H = 0;
+function resize() { const d = Math.min(devicePixelRatio || 1, 1.5); W = innerWidth; H = innerHeight; fx.width = Math.round(W * d); fx.height = Math.round(H * d); g.setTransform(d, 0, 0, d, 0, 0); }
+addEventListener('resize', resize); resize();
+const spr = document.createElement('canvas'); spr.width = spr.height = 32;
+{ const c = spr.getContext('2d'), gr = c.createRadialGradient(16, 16, 0, 16, 16, 16); gr.addColorStop(0, 'rgba(255,230,180,1)'); gr.addColorStop(.3, 'rgba(255,160,60,.6)'); gr.addColorStop(1, 'rgba(255,110,30,0)'); c.fillStyle = gr; c.fillRect(0, 0, 32, 32); }
+const bits = [], MAX = lowEnd ? 10 : 22;
+let prev = performance.now();
+function tick(now) {
+  const dt = Math.min((now - prev) / 1000, .05); prev = now;
+  if (!au.paused) frame();
+  if (!reduced) {
+    g.clearRect(0, 0, W, H);
+    const sp = au.paused ? .3 : 1;
+    if (bits.length < MAX && Math.random() < dt * 2.2 * sp) bits.push({ x: Math.random() * W, y: H + 10, vy: -(18 + Math.random() * 30), s: 2 + Math.random() * 4, ph: Math.random() * 6.3, life: 9 + Math.random() * 5, age: 0 });
+    g.globalCompositeOperation = 'lighter';
+    for (let i = bits.length - 1; i >= 0; i--) {
+      const p = bits[i]; p.age += dt * sp; p.ph += dt * sp;
+      if (p.age > p.life || p.y < -20) { bits.splice(i, 1); continue; }
+      p.y += p.vy * dt * sp; p.x += Math.sin(p.ph) * 10 * dt * sp;
+      g.globalAlpha = .5 * Math.min(1, p.age / .8) * Math.min(1, (p.life - p.age) / 1.5);
+      const s = p.s * 2.4; g.drawImage(spr, p.x - s / 2, p.y - s / 2, s, s);
+    }
+    g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+  }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+showShot(0);
+
+/* ── 播放、繼續、結束 ── */
+let done = false;
+function finish() { if (done) return; done = true; tell('larch:mv:done'); if (!EMBED) $('again').hidden = false; }
+$('go').onclick = () => {
+  au.play().then(() => { $('start').classList.add('gone'); if (EMBED) $('next').hidden = false; }).catch(() => { $('sub').textContent = '音樂載入不了，請再按一次'; });
+};
+$('next').onclick = () => { au.pause(); finish(); };
+$('again').onclick = () => { done = false; $('again').hidden = true; $('black').classList.remove('on'); au.currentTime = 0; shot = -1; lyr = -2; au.play(); };
+au.onended = () => { $('black').classList.add('on'); finish(); };
+addEventListener('keydown', e => {
+  if (e.code === 'Space' || e.key === 'Enter') { e.preventDefault(); if ($('start').classList.contains('gone')) { au.paused ? au.play() : au.pause(); } else $('go').click(); }
+  else if (['Backspace', 'BrowserBack'].includes(e.key) || (e.altKey && e.key.startsWith('Arrow'))) e.preventDefault();   // 按鍵不能把畫面帶離這頁
+});
+
+</script>
+</body>
+</html>

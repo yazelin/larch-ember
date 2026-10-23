@@ -1,0 +1,71 @@
+{
+  "_說明": "MV 分鏡表。start 是 LRC 的第幾句（1 起算，對齊 docs/music/<audio>.lrc）或秒數 {\"t\": 秒}；每一鏡演到下一鏡開始，最後一鏡演到歌結束。move 是推鏡方向（in 推近、out 拉遠、left/right 橫移）。blank=true 這一鏡不顯示歌詞（留白）。site/build_mv.py 讀這份產生 docs/mv.html。",
+  "ember-b": {
+    "title": "餘燼",
+    "ending": "結局 B〈餘燼〉",
+    "audio": "ember-audience",
+    "status": "done",
+    "shots": [
+      {"start": {"t": 0}, "cg": "b_1", "move": "in", "sec": "前奏", "why": "結局 B 她轉向周老師說「換〈餘燼〉」，這首歌就是從這一刻開始唱的。前奏只有畫面。"},
+      {"start": {"line": 1}, "cg": "mem1_1", "move": "right", "sec": "Verse 1", "why": "2004 年散場後的雨巷，年輕的程希拿著玫瑰在後台門口等。歌在講散場後的街，畫面先回到第一次散場。"},
+      {"start": {"line": 3}, "cg": "mem1_3", "move": "in", "sec": "Verse 1", "why": "他把玫瑰和票根塞給她就要跑。「門口又有一朵紅」唱的是之後的每一場，畫面停在第一朵。"},
+      {"start": {"line": 5}, "cg": "mem1_4", "move": "out", "sec": "Verse 1", "why": "他跑走了，她一個人握著花和票根。「沒有名字」那天是真的沒有名字。"},
+      {"start": {"line": 7}, "cg": "soundcheck_3", "move": "in", "sec": "Verse 1", "why": "兩個時間並排：2004 年門口的玫瑰，接 2026 年試音時他坐在三排十四號、手裡握著玫瑰。「還不肯走」落在二十二年後。"},
+      {"start": {"line": 9}, "cg": "mem4_7", "move": "left", "sec": "Pre-Chorus", "why": "2024 年清晨的廚房，她叫不出他的名字。歌詞是她 2008 年寫給一個陌生人的，現在說的是身邊的人。"},
+      {"start": {"line": 10}, "cg": "dress_3", "move": "in", "sec": "Pre-Chorus", "why": "兩個時間並排：2024 叫不出名字，接 2026 化妝間他倒溫水、等半分鐘才遞過去。她認得的是這個安靜的動作。"},
+      {"start": {"line": 11}, "cg": "b_2", "move": "out", "sec": "Chorus", "why": "結局 B 當下：她閉眼唱〈餘燼〉，第三排他站著握玫瑰、沒有跟唱。副歌回到台上。"},
+      {"start": {"line": 13}, "cg": "concert_1", "move": "in", "sec": "Chorus", "why": "坐滿陌生人的觀眾席，鏡頭停在三排十四號那個位子。歌詞先講出來，畫面不重複講。"},
+      {"start": {"line": 15}, "cg": "mem2_10", "move": "right", "sec": "Chorus", "why": "兩個時間並排：2026 坐滿的戲院，接 2013 年同一座戲院休館那天的空舞台。「全世界都散了」的時候，台上只剩他們和拿相機的周老師。"},
+      {"start": {"line": 17}, "cg": "prologue_3", "move": "in", "sec": "間奏", "why": "間奏回到 2026 年下午，她摸著小時候夾過手的那張紅色折椅。同一座戲院，第三個時間。"},
+      {"start": {"line": 18}, "cg": "mem2_9", "move": "left", "sec": "Verse 2", "why": "2012 年歐洲的化妝間，門邊一朵深紅玫瑰和一張 C 排十四號的票。「下一座城」。"},
+      {"start": {"line": 20}, "cg": "mem2_2", "move": "in", "sec": "Verse 2", "why": "2009 年耳返爆音，側台的他拉下推桿。她對著黑暗唱，黑暗裡真的有人。"},
+      {"start": {"line": 22}, "cg": "mem2_8", "move": "out", "sec": "Verse 2", "why": "2012 年她一個人在窗邊，票根擺在桌上。「你從來不說話」，畫面裡也沒有他。"},
+      {"start": {"line": 24}, "cg": "mem2_11", "move": "right", "sec": "Verse 2", "why": "2013 年空舞台上沒有音樂的那一小段舞。「一年又一年」收在他們結婚那天。"},
+      {"start": {"line": 26}, "cg": "branch_2", "move": "in", "sec": "Pre-Chorus", "why": "兩個時間並排：2013 年的舞，接 2026 年天黑時他在門框敲兩下，她的手自己伸向水杯。她不認得他，手記得杯子在哪。"},
+      {"start": {"line": 28}, "cg": "mem2_1", "move": "out", "sec": "Chorus", "why": "2009 年的台上，她壓著耳返繼續唱。第二次副歌換成她最好的那幾年。"},
+      {"start": {"line": 30}, "cg": "concert_2", "move": "in", "sec": "Chorus", "why": "2026 年開演，她看了一眼提詞螢幕唱〈晚安，台南〉。同一句「台下坐滿了陌生人」，第二次是今晚。"},
+      {"start": {"line": 32}, "cg": "mem3_1", "move": "left", "sec": "Chorus", "why": "2021 年台中，第一次在台上忘詞。「就算天黑了」的天黑，是從這一晚開始的。"},
+      {"start": {"line": 35}, "cg": "mem4_4", "move": "in", "sec": "Bridge", "why": "2022 年確診那晚，她在餐桌寫信給以後的自己，他在後面洗碗。橋段的「有一天我會忘記」，她在這一晚就知道了。"},
+      {"start": {"line": 37}, "cg": "mem4_3", "move": "right", "sec": "Bridge", "why": "2022 年診間，他把醫師說的每一句都寫進筆記本。「你替我記得好嗎」，他早就在記了。"},
+      {"start": {"t": 169.0}, "cg": "b_4", "move": "in", "sec": "Bridge", "why": "兩個時間並排：2022 年的筆記本，接結局 B 下台後他端著水杯等半分鐘。她叫他「先生」，他照樣把杯子放在她左手邊。"},
+      {"start": {"line": 39}, "cg": "concert_4", "move": "in", "sec": "Final Chorus", "why": "2026 年台上，她摸著左耳的耳墜。最後一次副歌回到她身上。"},
+      {"start": {"line": 41}, "cg": "b_5", "move": "out", "blank": true, "sec": "Final Chorus", "why": "留白：「就算我認不出你／也請你 坐在那裡」這兩句不上字，只有散場後他坐在三排十四號、玫瑰放在旁邊空位。最重要的那句讓歌自己唱。"},
+      {"start": {"line": 43}, "cg": "b_3", "move": "in", "sec": "Final Chorus", "why": "結局 B 台上：她鞠躬，抬頭朝三排十四號點頭微笑，跟對每一個陌生觀眾一樣。"},
+      {"start": {"line": 46}, "cg": "mem1_4", "move": "out", "sec": "Outro", "why": "兩個時間並排：2026 年的謝幕，最後一句「不肯冷」回到 2004 年雨後門燈下，她手裡那朵玫瑰。歌結束時淡到黑。"}
+    ]
+  },
+  "ember-c": {
+    "title": "餘燼",
+    "ending": "結局 C〈天黑以後〉",
+    "audio": "ember-chorus",
+    "status": "skeleton",
+    "_提案": "音檔建議用演唱會大合唱版：中間有一段只剩台下的人在唱，對應一個星期後的紀念演出。時間待照這首的 LRC 排。",
+    "shots": [
+      {"start": {"t": 0}, "cg": "c_10", "move": "in", "sec": "前奏", "why": "一個星期後的紀念演出，觀眾坐滿、人人一朵玫瑰，台上只有一支空麥克風架。"},
+      {"start": {"line": 1}, "cg": "mem1_4", "move": "right", "sec": "Verse 1", "why": "2004 年她握著第一朵玫瑰。"},
+      {"start": {"line": 9}, "cg": "branch_3", "move": "in", "sec": "Pre-Chorus", "why": "天黑，門開著，她一個人在化妝間。"},
+      {"start": {"line": 11}, "cg": "c_4", "move": "out", "sec": "Chorus", "why": "黃昏市場收攤，攤位燈一盞一盞熄掉。"},
+      {"start": {"line": 18}, "cg": "c_6", "move": "left", "sec": "Verse 2", "why": "所有人分頭找她。"},
+      {"start": {"line": 35}, "cg": "mem4_4", "move": "in", "sec": "Bridge", "why": "2022 年她寫給以後的自己的信。"},
+      {"start": {"line": 41}, "cg": "c_10", "move": "out", "blank": true, "sec": "Final Chorus", "why": "留白：三排十四號，他旁邊的空位放著摺成四折的歌譜。"},
+      {"start": {"line": 46}, "cg": "mem1_1", "move": "out", "sec": "Outro", "why": "回到 2004 年門口等她的年輕人。"}
+    ]
+  },
+  "ember-a": {
+    "title": "餘燼",
+    "ending": "結局 A〈三排十四號〉",
+    "audio": "ember-harmony",
+    "status": "skeleton",
+    "_提案": "音檔建議用合聲版：結局 A 安可時全場跟著唱。時間待照這首的 LRC 排。",
+    "shots": [
+      {"start": {"t": 0}, "cg": "a_1", "move": "in", "sec": "前奏", "why": "她從口袋摸出摺成四折的歌譜，背面是自己寫的「程希，三排十四號」。"},
+      {"start": {"line": 1}, "cg": "mem1_3", "move": "right", "sec": "Verse 1", "why": "2004 年塞過來的玫瑰與票根。"},
+      {"start": {"line": 9}, "cg": "a_2", "move": "in", "sec": "Pre-Chorus", "why": "她抬頭看向三排十四號，他站起來。"},
+      {"start": {"line": 11}, "cg": "a_4", "move": "out", "sec": "Chorus", "why": "安可，全場站起來。"},
+      {"start": {"line": 18}, "cg": "mem2_4", "move": "left", "sec": "Verse 2", "why": "2011 年撞見他蹲在門口放玫瑰。"},
+      {"start": {"line": 35}, "cg": "mem4_5", "move": "in", "sec": "Bridge", "why": "2022 年把信塞進收音機底座。"},
+      {"start": {"line": 41}, "cg": "a_5", "move": "out", "blank": true, "sec": "Final Chorus", "why": "留白：側台他拿著三排十四號那朵玫瑰等她。"},
+      {"start": {"line": 46}, "cg": "a_8", "move": "in", "sec": "Outro", "why": "三天後的清晨，她拉著他的手在廚房轉一圈。"}
+    ]
+  }
+}

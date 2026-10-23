@@ -7,6 +7,7 @@
 - 公開站：<https://yazelin.github.io/larch-ember/>（原始檔 `docs/index.html`）
 - 原聲帶頁：`docs/music.html`（〈餘燼〉四個版本、〈晚安，台南〉、〈港邊的燈〉；逐句動態歌詞、播放時背景換成作品裡的 CG、餘燼與花瓣粒子、頻譜環）
 - 試玩：上線後補
+- MV 頁：`docs/mv.html?song=ember-b&embed=1`（〈餘燼〉台下跟唱版，給遊戲結局 B 用小遊戲卡全螢幕嵌入；含結局劇透，不放進首頁導覽，原聲帶頁也不連過去）。分鏡表在 `site/mv_storyboard.json`，`python3 site/build_mv.py` 產生頁面與 `docs/media/mv/`
 
 ## 資料夾
 
