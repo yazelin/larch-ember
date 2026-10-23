@@ -15,10 +15,10 @@ export const hookInit = () => {
   HTMLMediaElement.prototype.play = function (...a) { push('play', this); return play.apply(this, a); };
 };
 
-/** dist/assets 底下所有 cuts/*.mp3 的 {位元組數: 檔名} */
+/** dist/assets 底下所有 cuts/*.mp3 與 sfx/*.mp3（逐句音效）的 {位元組數: 檔名} */
 export function cutSizes(root = 'dist/assets') {
   const m = {};
-  const walk = d => { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) walk(p); else if (/\/cuts\/[^/]+\.mp3$/.test(p)) m[statSync(p).size] = f; } };
+  const walk = d => { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) walk(p); else if (/\/(cuts|sfx)\/[^/]+\.mp3$/.test(p)) m[statSync(p).size] = f; } };
   try { walk(root); } catch {}
   return m;
 }

@@ -4,7 +4,9 @@
 import { serve, open, sleep, assert } from './lib.mjs';
 import { hookInit, cutSizes, named } from './audiohook.mjs';
 const CASES = [
-  { card: 'm_radio_on', end: /底座歪了一邊/, expect: [['一小段隔著雜訊的台語老歌', /harbor_open/], ['鋼琴前奏響起', /ember_radio_a/], ['（唱）燈一盞一盞暗下來', /ember_radio_b/], ['（唱）掌聲退回了街上', /ember_radio_c/]], none: ['九八點七', '你唱錯了'] },
+  { card: 'm_radio_on', end: /底座歪了一邊/, expect: [['一小段隔著雜訊的台語老歌', /harbor_open/], ['鋼琴前奏響起', /ember_radio_a/], ['（唱）燈一盞一盞暗下來', /ember_radio_b/], ['（唱）掌聲退回了街上', /ember_radio_c/]], none: ['九八點七', '她後來怎麼了'] },
+  // 天黑分歧：三個聲音依序（敲兩下 → 走廊前奏 → 市場收攤；市場聲目前沒有音檔，只有文字），各在自己那一句播，中間的念頭句不播
+  { card: 'branch_dark', end: /阿爸一個人收不完/, expect: [['門框上敲了兩下', /knock_door/], ['〈餘燼〉的前奏', /ember_corridor/]], none: ['門外沒有人', '等我吸一口氣', '水管沖地', '小箱我拿'] },
   { card: 'mem0_market', end: /刷子掛回水龍頭旁/, expect: [['播著〈港邊的燈〉', /harbor_market/]], none: ['水莫噴甲阿桃姨'] },
 ];
 for (const c of CASES) {

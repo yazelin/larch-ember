@@ -30,7 +30,7 @@
     python3 site/media.py           # 重做 docs/media（長邊 1600 以內、webp 品質 85）
     python3 src/songs_cut.py --build   # 歌檔（assets/songs/*.mp3）→ 對齊歌詞、切段、收音機版、manifest → 接進 build；沒放歌時 build 照舊
     python3 tests/songs_check.py       # 接歌結果檢查（build 之後）
-    node tests/songs_sfx.mjs           # 地圖卡的收音機歌逐句播出
+    node tests/songs_sfx.mjs           # 逐句音效依序播出：收音機的歌、天黑分歧的三個聲音（敲兩下、走廊前奏）、1988 魚攤
     node tests/songs_sync.mjs          # 歌卡歌詞跟歌的同步實測（真實時間）
     node tests/map_shots.mjs        # 地圖截圖到 art/check/
     node tests/ui_shots.mjs         # 介面截圖
@@ -85,3 +85,10 @@
     MEDIA_BASE=https://cdn.jsdelivr.net/gh/yazelin/larch-ember@site-media-1/docs/ python3 site/build_music.py
 
 `index.html` 目前用相對路徑；要改成 jsDelivr 時，把 `media/` 前綴換成同一個網址。建 tag 與 push 要等作者點頭。
+
+## 余靜的改寫（2026-10-23）
+
+作者認為女主角「隨便、讓人喜歡不起來」「忘了也不會傷心難過」。依 `design/失智症反應研究.md`（29 筆來源）寫成 `design/余靜改寫方向.md`，作者拍板三件事：用笑遮羞、笑完安靜；病識感時有時無；程希離開的九十秒加一段她獨處的戲，並讓「三個聲音」（敲兩下、走廊的〈餘燼〉前奏、窗外收攤聲）依序出現再接選項。句子由 codex 寫，提示詞與原始輸出在 `design/余靜改寫/`，`design/余靜改寫/metrics.py` 量每條路線的行數字數與余靜的察覺句數。
+
+天黑分歧的音效：敲兩下用 Larch 內建 knock（`assets/sfx/knock_door.mp3`，加大到約 -22 LUFS）、走廊前奏是 `songs_cut.py` 的 `ember_corridor`（錄音室版前奏，低通加短殘響，-23 LUFS）。窗外收攤聲沒有音檔，只有文字（gemini-web 的音樂端點做不出環境音）；`src/songs.py` 的 `LINE_SFX` 已留位置，放進 `assets/sfx/market_closing.mp3` 就會接上。
+

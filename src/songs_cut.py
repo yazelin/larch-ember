@@ -135,6 +135,9 @@ CUTS = [
          start=('line', 'Verse 1', 0, 0.6), end=('after', 'Chorus', 5, 0.4), fade_out=0.06, sudden=True),
     dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='ending_a1', anchor='first_sung', resume='next',
          start=('line', 'Verse 3', 0, 1.0), end=('after', 'Verse 3', 6, 2.2), fade_out=1.6),
+    # 分歧天黑的三個聲音之二：走廊盡頭傳來的〈餘燼〉前奏（錄音室版前奏的鋼琴，不加收音機濾鏡，遠、小聲、帶一點殘響）
+    dict(id='ember_corridor', song='餘燼@錄音室', kind='far', role='sfx', card='branch_dark', anchor='〈餘燼〉的前奏',
+         start=('song',), end=('after', 'Verse 1', 0, 0.8), fade_out=1.2, manual=(0.15, 5.6)),
     dict(id='harbor_open', song='港邊的燈', kind='sfx', role='sfx', card='m_radio_on', anchor='一小段隔著雜訊的台語老歌',
          start=('song',), end=('after', 'Verse', 1, 0.8), fade_out=0.6, manual=(11.2, 33.7)),
     dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sfx', card='mem0_market', anchor='播著〈港邊的燈〉',
@@ -497,6 +500,18 @@ def measure_lufs(path):
     return float(m[-1]) if m else None
 
 
+FAR_LUFS = -23.0            # 遠處傳來的聲音（走廊的鋼琴）：比收音機再小一點
+
+
+def far_filter(x, sr):
+    """走廊另一頭傳來的鋼琴：保留立體聲，削高頻、加短殘響。"""
+    r = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'pipe:0', '-af', 'lowpass=f=2600,aecho=0.8:0.55:70|140:0.28|0.16,highpass=f=90',
+                        '-ar', str(sr), '-ac', '2', '-f', 'f32le', '-'], input=wav_bytes(x, sr), capture_output=True)
+    if r.returncode:
+        raise RuntimeError(r.stderr.decode(errors='replace')[-400:])
+    return np.frombuffer(r.stdout, dtype=np.float32).reshape(-1, 2)
+
+
 def radio_filter(x, sr, seed=7):
     """老收音機音色：單聲道、300–3400Hz、輕微失真（tanh）、慢慢起伏的訊號強弱、粉紅底噪與零星爆音。用 ffmpeg 濾鏡。"""
     d = len(x) / sr
@@ -675,9 +690,12 @@ def main():
         fo = sp.get('fade_out', 0.5)
         x = fades(x, SR, (0.3 if sp.get('rel') and is_man else 0.04) if s > 0 else 0.02, min(fo, len(x) / SR / 2))
         radio = sp['kind'] == 'sfx'
+        far = sp['kind'] == 'far'
         if radio:
             x = radio_filter(x, SR)
-        x, in_lufs = loudnorm_two_pass(x, SR, RADIO_LUFS if radio else TARGET_LUFS, tp=-2.0 if radio else -1.5)
+        elif far:
+            x = far_filter(x, SR)
+        x, in_lufs = loudnorm_two_pass(x, SR, RADIO_LUFS if radio else FAR_LUFS if far else TARGET_LUFS, tp=-2.0 if radio or far else -1.5)
         out = CUT_DIR / f"{sp['id']}.mp3"
         br, size = encode_mp3(x, SR, out)
         d_out = duration(out)

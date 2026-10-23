@@ -101,7 +101,26 @@ def plan(lines, dur, ts):
 
 # ---------------------------------------------------------------- 套進卡
 
+# 不是歌的逐句音效（分歧天黑的三個聲音之一、之三）：(卡, 劇本句子裡的字, assets 底下的檔, 音量)。檔不在就略過。
+LINE_SFX = [('branch_dark', '敲了兩下', 'sfx/knock_door.mp3', 0.9),
+            ('branch_dark', '水管沖地', 'sfx/market_closing.mp3', 0.9)]
+
+
+def line_sfx(project):
+    by_id = {n['id']: n for n in project['boards'][0]['nodes']}
+    for cid, anchor, rel, vol in LINE_SFX:
+        f = ROOT / 'assets' / rel
+        node = by_id.get(cid)
+        if not f.exists() or node is None:
+            print(f'songs: 略過音效 {rel}（檔或卡不在）'); continue
+        hit = [i for i, l in enumerate(node['data']['dialogueLines']) if anchor in l['text']]
+        if len(hit) != 1:
+            print(f'songs: 略過音效 {rel}（{cid} 找不到唯一的「{anchor}」）'); continue
+        node['data']['dialogueLines'][hit[0]].update(sfxUrl='/files/assets/' + rel, sfxVolume=vol, sfxLoop=False)
+
+
 def apply(project, dist=None):
+    line_sfx(project)
     if not MANIFEST.exists():
         return
     mf = json.loads(MANIFEST.read_text(encoding='utf-8'))
