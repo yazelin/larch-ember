@@ -51,7 +51,7 @@ for f in files:
         if re.search(r'不是[^。！？「」]{1,30}[，；、]?而是', txt): probs.append('不是…而是')
         if re.match(r'(余靜|程希)：（唱）', line):
             t = _norm(txt.replace('（唱）', ''))
-            if t and LYRICS and t not in LYRICS and not any(k in txt for k in ('欲落雨', '阿公仔', '欲掘芋', '天烏烏', '天黑黑')):   # 〈天烏烏〉是公有童謠，不在歌詞檔
+            if t and LYRICS and t not in LYRICS and not any(k in txt for k in ('欲落雨', '阿公仔', '欲掘芋', '天烏烏', '天黑黑', '掘啊掘')):   # 〈天烏烏〉是公有童謠，不在歌詞檔
                 probs.append('唱詞不在歌詞檔裡（必須逐字相同）')
         for p in probs: hard += 1; print(f'  ✗ [{sec}] {p}：{line[:70]}')
         if line.startswith('旁白：') and (m := EMO.search(txt)) and not any(a in txt for a in ALLOW):
