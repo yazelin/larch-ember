@@ -33,7 +33,25 @@ def _call(method, path, body=None):
     return json.load(urllib.request.urlopen(req, timeout=120, context=CTX))
 
 
+QUEUE = os.path.expanduser('~/.cache/cg_jobs')   # 跟其他產線共用的送圖排隊：距離上一張送出至少 interval 秒（每分鐘最多 3 張，見 larch-taoyuan/buchan/cg_jobs.py）
+
+
+def _queue():
+    import fcntl
+    os.makedirs(QUEUE, exist_ok=True)
+    with open(os.path.join(QUEUE, 'lock'), 'w') as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        try: gap = float(open(os.path.join(QUEUE, 'interval')).read())
+        except (OSError, ValueError): gap = 30
+        try: last = float(open(os.path.join(QUEUE, 'last')).read())
+        except (OSError, ValueError): last = 0
+        if last + gap > time.time():
+            time.sleep(last + gap - time.time())
+        open(os.path.join(QUEUE, 'last'), 'w').write(str(time.time()))
+
+
 def gen(prompt, out, refs=(), size='1024x1024'):
+    _queue()
     body = {
         'prompt': prompt,
         'size': size,

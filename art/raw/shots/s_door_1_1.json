@@ -1,0 +1,9 @@
+{
+ "job": "img_34599fb3f135aa9691dc3f23",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 25: long light-brown wavy hair down, dark-red velvet slip dress with a thin black cardigan, long drop earring. Reference 3 is YU BO, her father, fishmonger: tanned, white towel around the neck, yellow rubber apron. Scene: 2004, encore in an old 1950s Tainan theater, about 400 people: the young singer stands alone at the front of the stage singing without piano, smiling down at the audience; in the front rows her father, a fishmonger in his only old suit jacket, claps proudly. Warm stage light.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_25.webp",
+  "/home/ct/larch-ember/assets/art/p_yu_father.webp"
+ ]
+}

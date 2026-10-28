@@ -67,7 +67,7 @@ if __name__ == '__main__':
         for x in v:
             spk[x[0] or '旁白'] = spk.get(x[0] or '旁白', 0) + 1
     print(spk)
-    assert CHOICES['branch_dark'] and len(CHOICES['branch_dark']) == 3, CHOICES
+    assert all(len(v) == 1 for v in CHOICES.values()), CHOICES
     assert all(L[k] for k in L), [k for k in L if not L[k]]
     t, c, f, sh = parse('## a（x）\n〔圖：s_a_1〕\n余靜（心）：好安靜。〔掉字〕\n〔圖：s_a_2〕\n旁白：燈。\n選項：\n- 走 → b\n')
     assert t == {'a': [('余靜', '好安靜。', t['a'][0][2], '心'), ('', '燈。', None, '')]} and c == {'a': [('走', 'b')]} and f == {('a', 0)}, (t, c, f)

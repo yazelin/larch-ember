@@ -144,7 +144,7 @@ def apply(project, dist=None):
         if node is None:
             print(f"songs: 略過 {cut['id']}（專案裡沒有卡 {cid}）"); continue
         DL = node['data']['dialogueLines']
-        if li >= len(DL) or (cut['place']['anchor'] != 'first_sung' and cut['place']['anchor'] not in DL[li]['text']):
+        if li >= len(DL) or (cut['place']['anchor'] not in ('first_sung', 'first') and cut['place']['anchor'] not in DL[li]['text']):
             print(f"songs: 略過 {cut['id']}（{cid} 第 {li} 句跟劇本對不上，重跑 songs_cut.py）"); continue
         role = cut['role']
         if role == 'sfx':

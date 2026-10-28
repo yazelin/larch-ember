@@ -1,0 +1,10 @@
+{
+ "job": "img_ef93046be7975d1b388dcb72",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU SHU-JING at 9: a small child, short ponytail, white school shirt, navy skirt, blue plastic apron, yellow rubber boots. Reference 3 is YU BO, her father, fishmonger: tanned, white towel around the neck, yellow rubber apron. Reference 4 is AH-TAO at 35: vegetable seller, permed black hair, flowered work blouse with sleeve covers, rubber apron. Scene: 1988, an old Tainan evening fish market at closing time: the 9-year-old girl hoses down the wet tiled floor of her father's fish stall, water glowing under bare bulbs; the father wraps the biggest fish in newspaper on the scale; a small old plastic portable radio sits on the stall; the young vegetable-seller woman stacks baskets at the next stall. Lively, warm, happy.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_9.webp",
+  "/home/ct/larch-ember/assets/art/p_yu_father.webp",
+  "/home/ct/larch-ember/assets/art/p_tao_35.webp"
+ ]
+}

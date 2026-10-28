@@ -9,7 +9,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONGS = ROOT / 'assets/songs'
 # 虛擬歌名 → (LRC 檔, 歌檔名)
 MAP = {'餘燼@錄音室': ('ember-studio', '餘燼-錄音室.mp3'), '餘燼@台下': ('ember-audience', '餘燼-台下.mp3'),
-       '餘燼@大合唱': ('ember-chorus', '餘燼-大合唱.mp3'), '晚安，台南': ('goodnight-tainan', '晚安台南.mp3')}
+       '餘燼@大合唱': ('ember-chorus', '餘燼-大合唱.mp3'), '晚安，台南': ('goodnight-tainan', '晚安台南.mp3'),
+       '餘燼@合聲': ('ember-harmony', '餘燼-合聲.mp3')}
 
 
 def parse(path):

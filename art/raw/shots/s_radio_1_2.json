@@ -1,0 +1,9 @@
+{
+ "job": "img_393bde11413c50fe039de3e7",
+ "prompt": "Reference 1 is ONLY a style and lighting reference: do not copy any person, pose, furniture layout or composition from it. Cinematic anime feature-film still in exactly the painting style of Reference 1: painterly, rich warm light, glowing rim light, drifting ember particles where it fits, anamorphic lens feel, shallow depth of field, soft bokeh, subtle film grain, motivated light only. Setting is Tainan, Taiwan unless told otherwise: Chinese characters on signs only and never readable, no Japanese text. Faces, hair and outfits must match the character references exactly; hands with five fingers; mature, emotionally real acting. No text, no letters, no logos, no watermark. 16:9. Reference 2 is YU JING at 33: long light-brown wavy hair pinned up loosely, off-shoulder black lace evening gown, long drop earrings. Reference 3 is CHENG XI at 30: short neat black hair, black crew T-shirt, monitor headset around his neck. Scene: 2011, a dressing room: on the makeup table an old cream plastic portable radio with its corners bleached by fish-market water; he tightens a screw on its base with a small screwdriver; she leans in close with her ear near the speaker, turning the tuning knob, delighted.",
+ "refs": [
+  "/home/ct/larch-ember/art/raw/styleref/cover_bg.jpg",
+  "/home/ct/larch-ember/assets/art/p_yu_33.webp",
+  "/home/ct/larch-ember/assets/art/p_cheng_30.webp"
+ ]
+}

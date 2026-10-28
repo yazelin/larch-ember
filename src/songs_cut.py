@@ -40,7 +40,8 @@ SR = 44100
 
 SONG_FILES = {'餘燼': '餘燼.mp3', '晚安，台南': '晚安台南.mp3', '港邊的燈': '港邊的燈.mp3'}
 # 同一首歌的不同編曲：虛擬歌名「歌@版本」→（歌詞用哪首, 專屬檔名）。沒有專屬檔就退回主檔（替身測試用）。
-VERSIONS = {'餘燼@錄音室': ('餘燼', '餘燼-錄音室.mp3'), '餘燼@台下': ('餘燼', '餘燼-台下.mp3'), '餘燼@大合唱': ('餘燼', '餘燼-大合唱.mp3')}
+VERSIONS = {'餘燼@錄音室': ('餘燼', '餘燼-錄音室.mp3'), '餘燼@台下': ('餘燼', '餘燼-台下.mp3'), '餘燼@大合唱': ('餘燼', '餘燼-大合唱.mp3'),
+            '餘燼@合聲': ('餘燼', '餘燼-合聲.mp3')}
 # 句子時間不走辨識與對齊的歌（手標或 LRC）。每句 (起, 迄) 秒，順序同 canon/歌詞.md；只在音檔指紋（md5 前 10 碼）對得上時啟用。
 # 港邊的燈：台語辨識幾乎對不上字，句子時間由人聽能量低谷手標（2026-10-23）。
 MANUAL_LINES = {'港邊的燈': [(14.9, 24.7), (24.7, 33.7), (33.7, 43.7), (43.7, 54.0), (54.5, 61.2), (61.2, 69.8), (70.0, 77.8), (77.8, 95.0)]}
@@ -115,33 +116,24 @@ def L(lyrics, song, sec, k):
 # start：('song',) 從頭；('line', 段, 第幾句, 最多提前幾秒)。end：('eof',)；('after', 段, 第幾句, 最多拖尾幾秒)。
 # place：卡代號與句子位置。anchor 是句子裡的文字（唯一匹配）；'first_sung' = 該卡第一句余靜（唱）。
 # role：sung_card（切成「歌卡」，歌詞跟著時間走）／line_bgm（只在某句開始放）／sfx（逐句 sfxUrl，收音機版）。
-CUTS = [
-    dict(id='ember_b1', song='餘燼@台下', kind='bgm', role='sung_card', card='ending_b1', anchor='first_sung', resume='next',
-         start=('song',), end=('eof',), fade_out=1.0),
-    dict(id='ember_a2', song='餘燼@大合唱', kind='bgm', role='sung_card', card='ending_a2', anchor='first_sung', resume='next',
-         start=('line', 'Final Chorus', 0, 1.5), end=('eof',), fade_out=1.0),
-    dict(id='ember_c4', song='餘燼@錄音室', kind='bgm', role='line_bgm', card='ending_c4', anchor='按下播放鍵',
-         start=('song',), end=('eof',), fade_out=1.0),
-    # 收音機特輯：前奏最後幾秒、第一句、第二句各掛在對應的一句劇本上（sfx 只在當句播，所以一句一段）
-    dict(id='ember_radio_a', song='餘燼@錄音室', kind='sfx', role='sfx', card='m_radio_on', anchor='鋼琴前奏響起',
-         start=('song',), end=('after', 'Verse 1', 0, 0.8), fade_out=0.6, rel=('Verse 1', 0, -5.5, -0.25)),
-    dict(id='ember_radio_b', song='餘燼@錄音室', kind='sfx', role='sfx', card='m_radio_on', anchor='燈一盞一盞暗下來',
-         start=('line', 'Verse 1', 0, 0.8), end=('after', 'Verse 1', 0, 1.0), fade_out=0.5),
-    dict(id='ember_radio_c', song='餘燼@錄音室', kind='sfx', role='sfx', card='m_radio_on', anchor='掌聲退回了街上',
-         start=('line', 'Verse 1', 1, 0.8), end=('after', 'Verse 1', 1, 1.0), fade_out=0.5),
+CUTS = [   # 重製版（2026-10-29）：單線，卡代號見 src/build.py 的 ORDER
+    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='line_bgm', card='market', anchor='港邊的燈',
+         start=('song',), end=('eof',), fade_out=1.5),
+    dict(id='ember_studio', song='餘燼@錄音室', kind='bgm', role='sung_card', card='roses', anchor='first_sung', resume='next',
+         start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0),
+    # 2009 耳返爆音：台下跟唱版，副歌第一句起三秒悶住（她的耳返沒聲音，只剩台下）
+    dict(id='ember_monitor', song='餘燼@台下', kind='bgm', role='sung_card', card='monitor', anchor='first_sung', resume='next',
+         start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0, muffle=('Chorus', 0, 3.0)),
     dict(id='night_sc', song='晚安，台南', kind='bgm', role='sung_card', card='soundcheck', anchor='first_sung', resume='post',
          start=('line', 'Verse 1', 0, 1.0), end=('after', 'Verse 1', 3, 2.4), fade_out=1.8),
     dict(id='night_concert', song='晚安，台南', kind='bgm', role='sung_card', card='concert', anchor='first_sung', resume='none',
          start=('line', 'Verse 1', 0, 0.6), end=('after', 'Chorus', 5, 0.4), fade_out=0.06, sudden=True),
-    dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='ending_a1', anchor='first_sung', resume='next',
+    dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='verse3', anchor='first_sung', resume='next',
          start=('line', 'Verse 3', 0, 1.0), end=('after', 'Verse 3', 6, 2.2), fade_out=1.6),
-    # 分歧天黑的三個聲音之二：走廊盡頭傳來的〈餘燼〉前奏（錄音室版前奏的鋼琴，不加收音機濾鏡，遠、小聲、帶一點殘響）
-    dict(id='ember_corridor', song='餘燼@錄音室', kind='far', role='sfx', card='branch_dark', anchor='〈餘燼〉的前奏',
-         start=('song',), end=('after', 'Verse 1', 0, 0.8), fade_out=1.2, manual=(0.15, 5.6)),
-    dict(id='harbor_open', song='港邊的燈', kind='sfx', role='sfx', card='m_radio_on', anchor='一小段隔著雜訊的台語老歌',
-         start=('song',), end=('after', 'Verse', 1, 0.8), fade_out=0.6, manual=(11.2, 33.7)),
-    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sfx', card='mem0_market', anchor='播著〈港邊的燈〉',
-         start=('line', 'Chorus', 0, 0.8), end=('after', 'Chorus', 1, 0.8), fade_out=0.6, manual=(33.7, 43.7)),
+    dict(id='ember_a2', song='餘燼@大合唱', kind='bgm', role='sung_card', card='encore', anchor='first_sung', resume='next',
+         start=('line', 'Final Chorus', 0, 1.5), end=('eof',), fade_out=1.0),
+    dict(id='ember_harmony', song='餘燼@合聲', kind='bgm', role='line_bgm', card='credits', anchor='first',
+         start=('song',), end=('eof',), fade_out=1.0),
 ]
 
 # ---------------------------------------------------------------- 工具
@@ -546,6 +538,17 @@ def encode_mp3(x, sr, out, mono_ok=False):
     return br, size   # 最低檔還是超過：照實回報
 
 
+def muffle(x, sr, t0, secs, ramp=0.15):
+    """x 從 t0 秒起 secs 秒換成悶住的聲音（600 Hz 低通、-12 dB），頭尾 ramp 秒交叉淡化。"""
+    from scipy.signal import butter, sosfilt
+    sos = butter(4, 600, 'low', fs=sr, output='sos')
+    wet = sosfilt(sos, x, axis=0) * 10 ** (-12 / 20)
+    n = len(x); t = np.arange(n) / sr
+    m = np.clip(np.minimum((t - t0) / ramp, (t0 + secs - t) / ramp), 0, 1)
+    m = m[:, None] if x.ndim == 2 else m
+    return (x * (1 - m) + wet * m).astype(x.dtype)
+
+
 def fades(x, sr, fin, fout):
     y = x.copy()
     n_in, n_out = int(fin * sr), int(fout * sr)
@@ -689,6 +692,9 @@ def main():
         x = wav44[song][int(s * SR):int(e_ * SR)]
         fo = sp.get('fade_out', 0.5)
         x = fades(x, SR, (0.3 if sp.get('rel') and is_man else 0.04) if s > 0 else 0.02, min(fo, len(x) / SR / 2))
+        if sp.get('muffle'):   # 某句起幾秒悶住：低通加降 12 dB，頭尾 0.15 秒交叉淡化
+            sec_, k_, secs = sp['muffle']
+            x = muffle(x, SR, al[L_idx(lines, sec_, k_)]['t0'] - s, secs)
         radio = sp['kind'] == 'sfx'
         far = sp['kind'] == 'far'
         if radio:
@@ -789,6 +795,8 @@ def vocal_end(w16, url, text, t0, nxt):
 
 def locate(script, spec):
     lines = script.L[spec['card']]
+    if spec['anchor'] == 'first':
+        return 0
     if spec['anchor'] == 'first_sung':
         hit = [i for i, (spk, t, *_r) in enumerate(lines) if spk == '余靜' and t.startswith('（唱）')]
     else:

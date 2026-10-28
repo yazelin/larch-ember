@@ -1,6 +1,8 @@
 # 最終遺忘的橘色餘燼
 
-改編自真實故事的 Larch 視覺小說＋RPG。台南老戲院，歌手余靜得了早發性阿茲海默症，告別演唱會當天的下午，三個結局。
+改編自真實故事的 Larch 視覺小說。歌手余靜得了早發性阿茲海默症，回到台南老戲院唱最後一場。從 1988 年阿爸的魚攤、2004 年三排十四號那個說不出話的年輕人，一路走到 2026 年的告別演唱會。
+
+**2026-10-29 起是重製版**：單線、純劇情卡、一個結局，順序照劇中的歌走（設計 `design/重製.md`、分章大綱 `design/重製-分章.md`）。舊版（RPG 地圖、三個結局）的劇本留在 `canon/劇本-三結局版.md`，地圖與相關程式留在 git 歷史與 `art/`、`src/maps.py` 等檔，重製版的建置不再使用。
 
 原型是兩位罹患阿茲海默症、仍然站上舞台唱完最後一場的歌手：Tony Bennett 與 Lady Gaga 的最後兩場演唱會、Glen Campbell 的告別巡演。主角改成女歌手。所有參考資料（原型與醫學研究）與出處在公開站與 `canon/研究.md`。
 
@@ -32,7 +34,8 @@
     python3 tests/songs_check.py       # 接歌結果檢查（build 之後）
     node tests/songs_sfx.mjs           # 逐句音效依序播出：收音機的歌、天黑分歧的三個聲音（敲兩下、走廊前奏）、1988 魚攤
     node tests/songs_sync.mjs          # 歌卡歌詞跟歌的同步實測（真實時間）
-    node tests/map_shots.mjs        # 地圖截圖到 art/check/
+    node tests/play_linear.mjs      # 重製版全劇試玩（單線）
+    node tests/map_shots.mjs        # 地圖截圖到 art/check/（舊版）
     node tests/ui_shots.mjs         # 介面截圖
     node tests/gallery_check.mjs    # CG 收藏解鎖
     node tests/hover_check.mjs      # 地圖標籤 hover 不跳位
@@ -49,26 +52,14 @@
 
 `tests/` 需要本機預覽器 `~/larch-preview` 與 Playwright。`python3 art/*.py` 與 `src/tts.py` 要連自架服務，金鑰從環境變數讀，不放進 repo。
 
-## 地圖結構（RPG 探索）
+## 重製版的結構
 
-五張地圖，每張都是平的（沒有遮擋牆、隱藏格），18×12 格，設計檔在 `art/objects_<地圖>.yaml`：
+`src/build.py` 的 `ORDER` 依序串 18 張卡：open（2026 冷開場）→ market（1988）→ livehouse（2001）→ door2004 → roses（2006–2008，錄音室唱〈餘燼〉）→ monitor（2009 耳返爆音）→ confess（2011、2013）→ forget（2021–2022）→ song2023（寫〈晚安，台南〉、2024）→ soundcheck → letter → dark（天黑走失）→ canal（運河石階）→ concert → verse3 → encore → kitchen（「什麼演唱會？」）→ credits。
 
-| 地圖 | id | 內容 |
-| --- | --- | --- |
-| 化妝間 | `m-dressing` | 主地圖；門通後台二樓 |
-| 後台二樓 | `m-backstage-2f` | 化妝間的門、鋼琴與周老師、拱門樓梯口（下樓） |
-| 後台一樓 | `m-backstage` | 側台門（通觀眾席）、後門（通巷子）、拱門樓梯口（上樓） |
-| 觀眾席 | `m-auditorium` | 從側台門進，回後台一樓門前 |
-| 後門巷子 | `m-alley` | 從後門出，回後台一樓後門前 |
-
-後台二樓與一樓只有北牆右上角一個拱門樓梯口（x15–16，拱門裡畫著階梯，地板上沒有階梯）：走到拱門前（第 3 列）就淡出，換到另一層拱門前（第 4 列，朝南）。導引文字：二樓「下樓：走到拱門樓梯口」、一樓「上樓：走到拱門樓梯口」。二樓偏走廊與衣物（服裝架、地毯、鋼琴、試衣鏡、一只箱子），一樓偏道具工作區（道具桌、箱子、長椅、電纜盤），同一種物件只在一層出現。兩層用同一首後台配樂（`src/build.py` 的 `MAP_TRACK`）。
-
-美術管線 `art/mapgen.py`：`style`（整間房畫風定錨）→ `ground`（地面，樓梯要通過立面閘門）→ `gen`（逐物件，機械品質閘門）→ `cut` → `review`（合成預覽在 `art/check/maps-review/`）→ `audit`。檢查：
-
-    python3 art/preview_build.py            # 預覽版導到 dist-maps/dist/project.json
-    python3 tests/map_check.py dist-maps/dist/project.json   # 事件／導引／跳轉落點走得到、每個跳轉都有回程、arrive 離回程觸發格 ≤ 8 步
-    node tests/map_walk.mjs                 # 實機走路：點「遊戲任務」讓主角自己走，含整條路線（化妝間→二樓→鋼琴→下樓→一樓→側台門→觀眾席）與回程
-    python3 -c "import sys; sys.path.insert(0,'src'); import layout; print(layout.check(layout.load('backstage')))"   # 設計檔：佔地、門、空洞、物件不蓋住走得到的格子
+- letter 與 canal 結尾各接一張只有一個選項的選擇卡（程希一次只問一個問題）。
+- 〔掉字〕只在 letter、dark、canal 三場，比例在 `FADE_RATIO`。
+- 歌的位置在 `src/songs_cut.py` 的 `CUTS`：〈港邊的燈〉收音機版（market）、〈餘燼〉錄音室版（roses）、台下跟唱版副歌起悶住三秒（monitor，耳返爆音）、〈晚安，台南〉試音／開演／第三段、大合唱版（encore）、合聲版當片尾曲（credits）。
+- 試玩：`SPEED=16 AUDIO=1 node tests/play_linear.mjs`（從標題點到製作名單，檢查每一章的關鍵句依序出現、沒有缺檔）。
 
 ## 分工
 
