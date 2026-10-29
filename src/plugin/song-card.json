@@ -1,0 +1,142 @@
+{
+ "id": "ember-song-card",
+ "name": "唱歌卡",
+ "nameEn": "Sing-along card",
+ "version": "1.0.0",
+ "author": "林亞澤",
+ "authorHandle": "yaze",
+ "pricing": "free",
+ "icon": "music",
+ "categories": [
+  "card"
+ ],
+ "license": "MIT · 林亞澤",
+ "description": "全螢幕唱歌卡：卡片上的歌由播放器播，歌詞照進卡後的秒數一句一句亮起，背景圖可以照秒數換。點畫面不會讓歌詞往前跑；唱完自動往下，或按「略過」。",
+ "descriptionEn": "Fullscreen sing-along card: the player plays the card music, lyrics light up by elapsed seconds, backgrounds change on cue. Clicks never push the lyrics ahead; it continues when the song ends or when the skip button is pressed.",
+ "permissions": [
+  "assets:read",
+  "flow:control"
+ ],
+ "cards": [
+  {
+   "id": "sing",
+   "name": "唱歌卡",
+   "nameEn": "Sing-along",
+   "icon": "music",
+   "color": "#b5532a",
+   "presentation": "fullscreen",
+   "skippable": false,
+   "description": "歌詞跟著秒數亮起，唱完自動往下。",
+   "descriptionEn": "Lyrics follow the clock; continues when the song ends.",
+   "readVariables": [],
+   "writeVariables": [],
+   "fields": [
+    {
+     "key": "lines",
+     "kind": "longText",
+     "label": "歌詞",
+     "labelEn": "Lyrics",
+     "defaultValue": "1.5｜第一句\n5.0｜第二句",
+     "hint": "一行一句：「秒數｜歌詞」，秒數從進卡算起。間奏可以寫「♪」。"
+    },
+    {
+     "key": "duration",
+     "kind": "number",
+     "label": "歌長（秒）",
+     "labelEn": "Song length (s)",
+     "min": 1,
+     "max": 900,
+     "step": 0.1,
+     "defaultValue": 60,
+     "hint": "歌唱完再停「結尾停留」秒才往下。"
+    },
+    {
+     "key": "endHold",
+     "kind": "number",
+     "label": "結尾停留（秒）",
+     "labelEn": "Hold at the end (s)",
+     "min": 0,
+     "max": 10,
+     "step": 0.5,
+     "defaultValue": 1.5
+    },
+    {
+     "key": "offset",
+     "kind": "number",
+     "label": "校正（秒）",
+     "labelEn": "Offset (s)",
+     "min": -2,
+     "max": 3,
+     "step": 0.05,
+     "defaultValue": 0.25,
+     "hint": "進卡到歌真的出聲的延遲；歌詞比歌早就調大。"
+    },
+    {
+     "key": "singer",
+     "kind": "text",
+     "label": "左上角小字（誰在唱）",
+     "labelEn": "Singer label",
+     "defaultValue": ""
+    },
+    {
+     "key": "skipLabel",
+     "kind": "text",
+     "label": "略過鈕文字",
+     "labelEn": "Skip label",
+     "defaultValue": "略過"
+    },
+    {
+     "key": "backgrounds",
+     "kind": "longText",
+     "label": "換背景",
+     "labelEn": "Background changes",
+     "defaultValue": "0｜1",
+     "hint": "一行一次：「秒數｜第幾張圖」。"
+    },
+    {
+     "key": "image1",
+     "kind": "asset",
+     "assetKind": "image",
+     "label": "背景圖 1",
+     "labelEn": "Background 1"
+    },
+    {
+     "key": "image2",
+     "kind": "asset",
+     "assetKind": "image",
+     "label": "背景圖 2",
+     "labelEn": "Background 2"
+    },
+    {
+     "key": "image3",
+     "kind": "asset",
+     "assetKind": "image",
+     "label": "背景圖 3",
+     "labelEn": "Background 3"
+    },
+    {
+     "key": "image4",
+     "kind": "asset",
+     "assetKind": "image",
+     "label": "背景圖 4",
+     "labelEn": "Background 4"
+    },
+    {
+     "key": "image5",
+     "kind": "asset",
+     "assetKind": "image",
+     "label": "背景圖 5",
+     "labelEn": "Background 5"
+    },
+    {
+     "key": "image6",
+     "kind": "asset",
+     "assetKind": "image",
+     "label": "背景圖 6",
+     "labelEn": "Background 6"
+    }
+   ],
+   "html": "<!doctype html>\n<html lang=\"zh-Hant\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n:root{--ink:#fbeedd;--dim:rgba(251,238,221,.42);--acc:#ffab4d;--serif:\"Noto Serif TC\",\"Songti TC\",\"PMingLiU\",serif;--sans:Inter,\"Noto Sans TC\",\"Microsoft JhengHei\",system-ui,sans-serif;color-scheme:dark}\n*{box-sizing:border-box}\nhtml,body{margin:0;height:100%;background:#0d0705;color:var(--ink);overflow:hidden;-webkit-user-select:none;user-select:none}\n.bg{position:fixed;inset:0;background:#0d0705}\n.bg i{position:absolute;inset:-2%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;animation:push 40s ease-out forwards}\n.bg i.on{opacity:1}\n@keyframes push{from{transform:scale(1)}to{transform:scale(1.08)}}\n.shade{position:fixed;inset:0;background:linear-gradient(180deg,rgba(13,7,5,.15) 0%,rgba(13,7,5,.25) 45%,rgba(13,7,5,.82) 100%)}\n.who{position:fixed;left:4vw;top:max(14vh,64px);font:600 clamp(12px,1.4vw,14px)/1 var(--sans);letter-spacing:.3em;color:var(--acc);opacity:.85}\n.lyr{position:fixed;left:6vw;right:6vw;bottom:12vh;text-align:center}\n.lyr p{margin:0;font-family:var(--serif);transition:opacity .5s ease,transform .5s ease}\n#prev{font-size:clamp(14px,2vw,20px);color:var(--dim);min-height:1.6em}\n#cur{font-weight:700;font-size:clamp(22px,4.2vw,46px);line-height:1.5;letter-spacing:.08em;min-height:1.5em;text-shadow:0 2px 24px rgba(0,0,0,.85),0 0 30px rgba(255,171,77,.25)}\n#next{font-size:clamp(13px,1.7vw,18px);color:rgba(251,238,221,.28);min-height:1.6em}\n#cur.in{animation:rise .55s cubic-bezier(.2,.9,.2,1) both}\n@keyframes rise{from{opacity:0;transform:translateY(10px)}}\n.bar{position:fixed;left:0;bottom:0;height:3px;width:0;background:var(--acc);opacity:.7}\n#skip{position:fixed;right:max(3vw,12px);bottom:max(3vh,12px);min-height:44px;padding:0 18px;border:1px solid rgba(251,238,221,.4);border-radius:8px;background:rgba(13,7,5,.55);color:var(--ink);font:600 13px/1 var(--sans);cursor:pointer;transition:scale .38s cubic-bezier(.2,.9,.2,1),background-color .22s ease}\n@media (hover:hover){#skip:hover{scale:1.018;background:rgba(13,7,5,.8)}}\n#skip:active{scale:.965;transition-duration:.1s}\n#skip:focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}\n</style></head>\n<body>\n<div class=\"bg\" aria-hidden=\"true\"><i id=\"bgA\"></i><i id=\"bgB\"></i></div>\n<div class=\"shade\" aria-hidden=\"true\"></div>\n<div class=\"who\" id=\"who\"></div>\n<div class=\"lyr\" aria-live=\"polite\"><p id=\"prev\"></p><p id=\"cur\"></p><p id=\"next\"></p></div>\n<div class=\"bar\" id=\"bar\" aria-hidden=\"true\"></div>\n<button id=\"skip\" type=\"button\">略過</button>\n<script>\n// 唱歌卡：歌由播放器播（卡片層 bgm），這裡照「進卡後經過的秒數」亮歌詞；不吃點擊，唱完才送完成，或玩家按「略過」。\nvar V = {}, lines = [], bgs = [], imgs = [], dur = 0, off = 0, t0 = 0, done = false, curI = -2, bgI = -1, front = 'bgA';\nfunction num(x, d) { x = parseFloat(x); return isFinite(x) ? x : d; }\nfunction parse(text) {   // 一行「秒數｜內容」\n  return String(text || '').split(/\\n/).map(function (l) { var m = l.split('｜'); return m.length > 1 ? { t: num(m[0], 0), s: m.slice(1).join('｜').trim() } : null; })\n    .filter(Boolean).sort(function (a, b) { return a.t - b.t; });\n}\nfunction finish() { if (done) return; done = true; parent.postMessage({ type: 'larch:complete', result: 'complete' }, '*'); }\nfunction showBg(i) {\n  var u = imgs[i - 1]; if (!u) return;\n  var back = front === 'bgA' ? 'bgB' : 'bgA', b = document.getElementById(back), f = document.getElementById(front);\n  b.style.backgroundImage = 'url(\"' + u + '\")'; b.classList.add('on'); f.classList.remove('on'); front = back;\n}\nfunction at(list, t) { var k = -1; for (var i = 0; i < list.length; i++) if (list[i].t <= t) k = i; return k; }\nfunction tick() {\n  if (done) return;\n  var t = (performance.now() - t0) / 1000 - off;\n  var b = at(bgs, t); if (b !== bgI) { bgI = b; if (b >= 0) showBg(num(bgs[b].s, 1)); }\n  var i = at(lines, t);\n  if (i !== curI) {\n    curI = i;\n    var c = document.getElementById('cur');\n    document.getElementById('prev').textContent = i > 0 ? lines[i - 1].s : '';\n    c.textContent = i >= 0 ? lines[i].s : '';\n    document.getElementById('next').textContent = i + 1 < lines.length ? lines[i + 1].s : '';\n    c.classList.remove('in'); void c.offsetWidth; c.classList.add('in');\n  }\n  document.getElementById('bar').style.width = Math.min(100, t / dur * 100) + '%';\n  if (t >= dur + num(V.endHold, 1.5)) { finish(); return; }\n  requestAnimationFrame(tick);\n}\ndocument.getElementById('skip').addEventListener('click', finish);\naddEventListener('message', function (e) {\n  var d = e.data; if (!d || d.type !== 'larch:init' || t0) return;\n  t0 = performance.now(); V = d.values || {};\n  lines = parse(V.lines); bgs = parse(V.backgrounds); dur = num(V.duration, lines.length ? lines[lines.length - 1].t + 5 : 30); off = num(V.offset, .25);\n  for (var k = 1; k <= 6; k++) imgs.push(V['image' + k] || '');\n  if (!bgs.length && imgs[0]) bgs = [{ t: 0, s: '1' }];\n  document.getElementById('who').textContent = V.singer || '';\n  document.getElementById('skip').textContent = V.skipLabel || '略過';\n  requestAnimationFrame(tick);\n});\nparent.postMessage({ type: 'larch:ready' }, '*');\n</script>\n</body></html>\n"
+  }
+ ]
+}

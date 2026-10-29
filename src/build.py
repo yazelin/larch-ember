@@ -117,6 +117,7 @@ def build():
     p['settings']['plugins'] = {k: {**v, 'enabled': False} if k == 'larch-inventory' else v for k, v in p['settings'].get('plugins', {}).items()}
     p['settings']['showRpgHud'] = False
     p['settings']['plugins']['credits-roll'] = {'enabled': True}
+    p['settings']['plugins']['ember-song-card'] = {'enabled': True}   # 唱歌卡（個人使用版草稿，不上架）
     N = board['nodes'].append
     missing = [c for c in ORDER if c not in script.L and c != 'credits']
     assert not missing, f'劇本缺場：{missing}'

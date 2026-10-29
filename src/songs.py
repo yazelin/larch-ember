@@ -31,6 +31,10 @@ REPORT = {}             # 卡代號 → 規劃結果（tests/songs_check.py 與�
 POST_BGM = {}   # build.py 填：卡沒自己設 BGM（沿用前一場）時，歌唱完要接回哪一首
 
 
+SONG_PLUGIN = 'ember-song-card'   # 唱歌卡插件（src/plugin/song_card.html；manifest 在 src/plugin/song_manifest.py，存成個人使用版草稿）
+SONG_HTML = (ROOT / 'src/plugin/song_card.html').read_text(encoding='utf-8')
+
+
 def _bgm_url(card_id):
     """assets/bgm/manifest.json 的 use_in：這張卡原本的背景曲。"""
     f = ROOT / 'assets/bgm/manifest.json'
@@ -250,6 +254,23 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
         chain.append(pn); last = pn
     elif was_end:
         last['data']['stayOnCard'] = True
+    # 歌卡換成「唱歌卡」插件（作者 10-29：用對話框拼的歌卡一點就對不上；插件照秒數亮歌詞、唱完才往下或按略過）
+    bg_at = [(0.0, effective_bg(r0))] + [(lines[k]['t0'], DL[r0 + k]['background']) for k in range(min(r1 - r0, len(lines))) if 'background' in DL[r0 + k]]
+    imgs, cues = [], []
+    for tt, u in bg_at:
+        if not u or (cues and imgs[cues[-1][1] - 1] == u): continue
+        if u not in imgs and len(imgs) < 6: imgs.append(u)
+        if u in imgs: cues.append((tt, imgs.index(u) + 1))
+    sd = song['data']
+    for k in ('dialogueLines', 'autoAdvance', 'speaker'):
+        sd.pop(k, None)
+    sd.update(type='plugin', text='', pluginId=SONG_PLUGIN, pluginCardId='sing', pluginVersion='1.0.0', pluginName='唱歌卡', pluginCardName='唱歌卡',
+              pluginIcon='music', pluginColor='#b5532a', pluginPresentation='fullscreen', pluginFrame={'showTitle': False, 'showButton': False},
+              pluginSkippable=False, pluginReadVars=[], pluginWriteVars=[], pluginAssets=[], platforms=['web'],
+              pluginHtml=SONG_HTML + f'<!-- {song["id"]} -->',   # 相鄰兩張插件卡 html 一樣會沿用前一張的畫面，尾端加卡片 id 讓內容不同
+              pluginValues={'lines': '\n'.join(f"{l['t0']:.2f}｜{l['text']}" for l in lines), 'duration': round(cut['duration'], 2), 'endHold': 1.5,
+                            'offset': AUDIO_LAG, 'singer': singer, 'skipLabel': '略過',
+                            'backgrounds': '\n'.join(f'{tt:.2f}｜{i}' for tt, i in cues), **{f'image{i + 1}': u for i, u in enumerate(imgs)}})
     # 邊：原卡的出邊改從最後一張出去；前→歌→後 依序連
     for e in edges:
         if e['source'] == cid and e['target'] not in {c['id'] for c in chain}:

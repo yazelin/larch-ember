@@ -8,7 +8,7 @@ const text = async () => (await Promise.all(ui.page.frames().map(f => f.evaluate
 let seen = '', back = false, site = false, t0 = Date.now();
 try {
   await ui.clickText('開始遊戲'); await sleep(2000);
-  const end = Date.now() + 90 * 60000 / SPEED + 120000;
+  const end = Date.now() + 90 * 60000 / SPEED + 20 * 60000;   // 插件卡（唱歌卡、片尾字卷）不吃 SPEED，照真實秒數走：歌約 7 分鐘、字卷約 3.5 分鐘
   while (Date.now() < end) {
     const t = await text(); seen += t;
     if (/片尾曲/.test(seen) && ui.page.frames().some(f => f.url().startsWith('https://yazelin.github.io/larch-ember/'))) { site = true; break; }
