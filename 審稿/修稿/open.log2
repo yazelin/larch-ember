@@ -1,0 +1,1335 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /home/ct/larch-ember
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: max
+reasoning summaries: none
+session id: 01a1854e-6e7f-7892-9fe5-86d554cd6d5c
+--------
+user
+你在 ~/larch-ember 修《最終遺忘的橘色餘燼》劇本的一場：open。這是第二輪。
+上一輪你的改稿是 審稿/修稿/open.r1.md，沒有過審稿閘門，閘門報告在 審稿/修稿/open.gate.txt（看「新稿還有的共識問題」與「評審」兩節：評審說舊稿較好的理由要特別注意）。
+劇本裡這一場已經換回原稿。重新讀修稿包 審稿/修稿/open.packet.md（準則、原稿、問題清單）。
+1. 從原稿出發，逐條處理必修問題。上一輪改得好的地方可以沿用，評審嫌棄的改法不要再用。只改被點到的句子，必要時調整緊鄰的一兩句；其他句子一字不動。改得越少越好，不要為了改而改。
+2. 準則第 14、16、17 條的句子（唱句、扣回物件、〔圖〕〔掉字〕標記、## 標題、選項）不動。長度不增加。
+3. 把改好的整場寫到 審稿/修稿/open.md：從 ## 那一行開始，格式照 canon/劇本.md，不要行號，不要加說明。
+4. 不要改其他任何檔案。
+5. 寫完跑 ~/speak-tw/bin/speak-tw 審稿/修稿/open.md，把抓到的問題改掉（唱句與〈天烏烏〉除外）。
+6. 最後回報：每條必修的 id，改成什麼或為什麼不改（一行一條）。
+hook: SessionStart
+hook: SessionStart Completed
+codex
+我會先重讀修稿包、上一輪改稿與閘門報告，從原稿逐條做最小修改，只寫入 `審稿/修稿/open.md`，再跑用語檢查。
+exec
+/bin/bash -lc 'cat 審稿/修稿/open.packet.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+# 修稿包：open
+
+# 寫稿準則（寫稿、改稿的人與 AI 都照這份；contest.py 與 runner.py packet 會自動帶入）
+
+摘自 `design/寫作標準.md`、`design/余靜改寫方向.md`（作者 2026-10-23 拍板）、`design/失智症反應研究.md` D 節、`design/結局C修改.md`、`tests/check_voice.py` 與 speak-tw 規則。設定以 `canon/劇本.md` 與這些檔為準，舊設計稿與劇本衝突時以劇本為準。
+
+1. 余靜面對忘記的方式：用笑遮羞，笑完安靜。玩笑只拿自己開，笑完沒有人接話時她看向別處、安靜下來。不拿別人開玩笑，不輕佻。
+2. 余靜的病識感時有時無：這一刻察覺自己不對勁，下一刻又不察覺。每一場要有一個她自己察覺的瞬間，不靠別人告訴她。
+3. 忘記要有代價：每一場要演出她失去了什麼、她怎麼感覺到。忘了也不在乎、只有忘沒有在補，都不要（研究 D 節）。
+4. 余靜為別人的感受道歉：看到對方臉色一變，先說對不起，不為自己辯解。她病了還在顧別人，掛心阿哲、周老師、程希。
+5. 余靜把丈夫當成「這裡的工作人員」時，對他客氣、有距離，覺得他讓人安心；只有身體記得的小儀式（半分鐘的水、敲兩下）會讓她不自覺放鬆，放鬆完她會愣一下。
+6. 程希一次只問一個問題、只給一個選項、自稱工作人員；他有脾氣、會碎念、會逞強，不是沒有情緒的聖人。
+7. 旁白只寫畫面上看得到的事，不解釋心情、不下結論、不寫情緒形容詞（難過、心疼、感動、溫柔地之類），不用比喻（像、彷彿、好像、似乎）。
+8. 心聲寫具體的念頭與身體的感覺，半句話也可以，不寫總結的感想。
+9. 對白要像真人：會打斷、說一半、答非所問、重複、顧左右而言他。出聲念念看，念不出口的書面語換掉（於是、並且、以及、此刻、而……）。
+10. 用看得到的小事說話：保溫杯、錶帶、耳墜、歌譜、票根、收音機、魚箱。形容詞不堆疊，一句不要掛一串動作。最痛的那一句不說出來，說出來的是旁邊那件小事。
+11. 台灣口語，正體中文、全形標點。不用破折號，不用「不是……而是」或「不是 X，是 Y」，不用 emoji，不用「長出」「長成」「接住」。 <!-- speak-tw-ok：這一行是在列禁用詞 -->
+12. 不寫金句，不用三連排比，不用「我沒有 X。我只是 Y」。客服句型（好，我記住了／謝謝你。／慢慢來／你先坐）不要。
+13. 單字連答不要連續超過兩句；連續一問一答不超過兩組；同一個句型整場不要反覆出現；單場心聲不超過 8 句。
+14. （唱）的句子逐字照 `canon/歌詞.md`，一個字都不能動；〈天烏烏〉是公有童謠，照劇本現有的句子。
+15. 台語台詞寫台語漢字，後面括號附華語字幕，照劇本現有寫法。
+16. 扣回的物件與句子照原樣保留（票根背面「河岸留言那晚，你唱〈天烏烏〉，我沒走。」、三排十四號、半分鐘的水、敲兩下、玫瑰放門內右邊、四折歌譜、手錶型 GPS「唱完再戴回去」、天烏烏、走音與「那我唱，你跳」、紙條「今天有人坐在三排十四號」）；要改就把引用的地方一起改（修稿包會列出），並跑 `tests/motif_check.py`。
+17. 每張卡的 `##` 標題、〔圖〕〔掉字〕標記、選項文字不動；歌曲切段的錨點句（`src/songs_cut.py` 的 anchor）不動。
+18. 長度不增加（作者擔心整個遊戲太長）：加了察覺與代價的句子，就刪掉純鬥嘴、沒有代價的句子。
+19. 不寫影視常見的錯誤：突然全好、一夕全忘、鏡子認不出自己當成預設畫面、驚嚇配樂式的演法、把病寫成懲罰（研究 D 節）。
+20. 作者要求句子由 codex 寫；Claude 負責對照準則與研究、套用、跑檢查，不憑口味挑版本或補句。
+
+## 這一場（行號｜內容）
+1｜## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
+3｜〔圖：s_dress_1〕
+4｜旁白：余靜穿著黑色蕾絲禮服，坐在鏡前。
+5｜旁白：門外敲了兩下。她鬆開捏著裙邊的手。
+6｜余靜：請進。
+7｜旁白：一個男人提著保溫杯進門。
+8｜余靜：先生，找我嗎？
+9｜男人：我是這裡的工作人員。送水來的。
+11｜〔圖：s_dress_3〕
+12｜旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
+13｜余靜：麻煩你了。
+14｜旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。
+15｜余靜：不好意思，怎麼就拿給你了。我自己放。
+16｜余靜：有人在，我比較安心。
+17｜余靜（心）：話講太多了。連人家姓什麼都沒問。
+18｜余靜：現在幾點了？
+19｜旁白：男人低頭看錶。她把杯子放在桌上，轉向窗戶。
+20｜余靜（心）：我剛剛是不是問過了？
+21｜男人：四點四十。
+22｜余靜：我乾脆把時鐘掛脖子上好了。
+23｜旁白：她笑了兩聲。他仍拿著杯蓋。她轉回鏡前。
+25｜〔圖：s_open_photo〕
+26｜旁白：鏡角貼著一張照片。她湊近，看了看照片裡白襯衫男人的臉。
+27｜余靜：先生，這張……算了。
+28｜旁白：畫面轉回 1988 年的台南。
+
+## 問題：必修 3 條（≥2 位讀稿人或主編提到），參考 11 條
+[0094] 必修 open 行27 對話接不上（codex、argon、deepseek、geminiweb）
+    原句：余靜：先生，這張……算了，先放著。
+    為什麼：照片一直貼在鏡角，男人也沒碰它，「先放著」像在叫他暫停一件沒開始的事。
+    建議：codex:刪掉「先放著」，保留問到一半又收回的停頓。 / argon:改成把問題吞回去的自然口語：「先生，鏡子這張照片是……算了，沒事。」 / deepseek:改成「先生，這張照片……算了，先別動它。」 / geminiweb:建議改為：「先生，這張照片裡的人……抱歉，沒事。」
+[0096] 必修 open 行22 對話接不上（argon、geminiweb）
+    原句：余靜：我乾脆把時鐘掛脖子上好了。
+    為什麼：「我問過了？」只是她第 20 行的心聲，這一場她實際上只問過這一次時間，男人也正常回答，她卻突然對陌生工作人員自嘲記不住時間，對方在對話裡根本接不上這個脈絡。
+    建議：argon:改成順著時間自然接話、帶出恍神感：「四點四十……怎麼覺得才剛看過時間。」 / geminiweb:建議改為：「我這腦袋……講過就忘，乾脆拿張紙寫在手上好了。」
+[0102] 必修 open 行14 含蓄到看不懂（deepseek、argon）
+    原句：旁白：她喝了一口，肩膀垂下。杯子遞到一半，她停住了。
+    為什麼：「杯子遞到一半」沒有主語，看不出是她要遞回去還是他遞過來。
+    建議：deepseek:改成「她把杯子遞向他，遞到一半停住。」 / argon:改成「她喝了一口水，緊繃的肩膀鬆了下來。她把杯子遞向他，又停住了。」
+[0098] 參考 open 行12 含蓄到看不懂（argon）
+    原句：旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
+    為什麼：畫面看不出「溫水」與「半分鐘」，且若倒出來已經是溫水，站在剛見面的人面前乾等半分鐘不講話非常詭異，讀者看不出他是在替她把熱水放涼。
+    建議：argon:寫出看得到的試溫動作：「他倒出半杯冒著熱氣的水，用手背貼著杯壁試了兩次，才遞給她。」
+[0100] 參考 open 行5 搭配不當（argon）
+    原句：旁白：門外敲了兩下。她鬆開捏著裙邊的手。
+    為什麼：「門外」是位置，不能當「敲了兩下」的主詞。
+    建議：argon:改成「門上響了兩聲敲門聲。她鬆開捏著裙邊的手。」
+[0328] 參考 open 行8 真人不會這樣說（argon）
+    原句：余靜：先生，找我嗎？
+    為什麼：休息室裡只有她一個人，她剛喊完「請進」讓對方進門，不會再問「找我嗎？」。
+    建議：argon:改為「余靜：先生，請問有什麼事嗎？」
+[0329] 參考 open 行2 旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。（geminiweb）
+    原句：14
+    為什麼：旁白替讀者下結論或解釋心情
+    建議：geminiweb:直接描述生理動作（肩膀垂下）即可，不需用旁白暗示放鬆或疲憊。
+[0330] 參考 open 行3 余靜：不好意思，怎麼就拿給你了。我自己放。（geminiweb）
+    原句：15
+    為什麼：搭配不當
+    建議：geminiweb:「怎麼就拿給你了」語氣略顯不順，台語直譯感重，不符合對工作人員客氣的距離感。
+[0331] 參考 open 行4 余靜（心）：話講太多了。連人家姓什麼都沒問。（geminiweb）
+    原句：17
+    為什麼：真人不會這樣說
+    建議：geminiweb:一般人內心自責通常不會用「話講太多了」這種抽離的評論句式。
+[0332] 參考 open 行5 余靜：我乾脆把時鐘掛脖子上好了。（geminiweb）
+    原句：22
+    為什麼：金句腔
+    建議：geminiweb:這句自嘲帶有一點刻意的黑色幽默，不太像病識感時有時無、正處於焦慮與羞窘中的患者當下的直覺反應。
+[0507] 參考 open 行26 念不出口的書面語（argon）
+    原句：旁白：鏡角貼著一張照片。她湊近，看了看照片裡白襯衫男人的臉。
+    為什麼：「鏡角」是過度壓縮的書面詞，台灣日常口語與旁白念起來不自然。
+    建議：argon:改成「鏡子角落貼著一張照片。她湊近，看了看照片裡白襯衫男人的臉。」
+[0508] 參考 open 行8、27 病的描寫不真實（deepseek）
+    原句：先生，找我嗎？／先生，這張……算了
+    為什麼：設定是早發阿茲海默、以找詞困難為主，但整場她說話流利，沒有一次找詞卡住或換詞，卻直接不認得丈夫與照片，症狀像跳到中重度認錯人。
+    建議：deepseek:至少插入一次找詞卡住或換詞的痕跡，讓「先生」的距離感和找詞困難同時成立，而不是只剩認錯人。
+[0509] 參考 open 行9 真人不會這樣說（deepseek）
+    原句：我是這裡的工作人員。送水來的。
+    為什麼：像在念識別證，兩句斷開也不像日常回話；他若在掩飾身分，應更簡短。
+    建議：deepseek:改成「我是這裡的工作人員，來送水的。」
+[0510] 參考 open 行17 口氣不合角色或身分（geminiweb）
+    原句：余靜（心）：話講太多了。連人家姓什麼都沒問。
+    為什麼：病患此時的心態是對外人客氣、戒慎恐懼、怕講錯話暴露病情，這句心聲卻像社交禮儀檢討，缺乏內心的慌張感。
+    建議：geminiweb:建議改為：「余靜（心）：糟糕，我是不是又講太多了？連人家怎麼稱呼都沒問。」
+共 14 條
+
+## 讀稿人挑出的好句（盡量保留）
+## open（9 句）
+- 行15「余靜：不好意思，怎麼就拿給你了。我自己放。」｜下意識的依賴剛露出來，就被她的客氣收回去了。（codex）
+- 行22「余靜：我乾脆把時鐘掛脖子上好了。」｜玩笑說得順口，接著只笑兩聲就轉回鏡前，遮羞之後的安靜有留下來。（codex）
+- 行17「余靜（心）：話講太多了。連人家姓什麼都沒問。」｜把她意識到自己失態後的懊惱寫得很口語，也悄悄點出她把丈夫徹底當成陌生人的處境。（argon）
+- 行20「余靜（心）：我剛剛是不是問過了？」｜只用短短八個字，就精準捕捉到失智症患者對短期記憶失去把握時的瞬間心慌。（argon）
+- 行27「余靜：先生，這張……算了。」｜話問到一半吞回去，把她看著照片覺得眼熟、卻又怕自己問出蠢問題的退縮演得很自然。（argon）
+- 行16「余靜：有人在，我比較安心。」｜把依賴和不安藏在很平常的一句話裡，對陌生工作人員說出來更顯孤單。（deepseek）
+- 行23「旁白：她笑了兩聲。他捏緊杯蓋。她轉回鏡前。」｜她的自嘲和他忍住的反應放在同一個動作裡，沒有解釋卻有痛。（deepseek）
+- 行27「余靜：先生，這張……算了。」｜話到嘴邊收住，把忘記、羞恥和不敢問都留在省略號裡。（deepseek）
+- 行23「她笑了兩聲。他捏緊杯蓋。她轉回鏡前。」｜非常精準地體現了余靜「用笑遮羞、笑完安靜」的設定，以及程希壓抑情緒、無法發作的沉痛反應。（geminiweb）
+
+## 這些句子別處也有（改了要一起改，不然就保留原句）
+- （沒有）
+
+## 走哪條路
+逐條改：只改有問題的句子，沒被點到的句子不動。作者要求句子由 codex 寫：把這份修稿包交給 codex，你負責套用與驗證。不改的用 runner.py resolve <id> 不改 "理由" 結案。
+
+改完：python3 審稿/runner.py gate canon/劇本.md open
+
+exec
+/bin/bash -lc 'cat 審稿/修稿/open.gate.txt && cat 審稿/修稿/open.r1.md' in /home/ct/larch-ember
+exec
+/bin/bash -lc 'cat /home/ct/.agents/skills/larch-story-studio/SKILL.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+# 閘門：open（10-29 08:47，新稿作者 codex，讀稿人 argon、deepseek、geminiweb）
+
+結果：不通過
+- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 1 條、新出現 1 條（全部：舊 4 條、新 2 條）
+- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 3、舊稿贏 3、沒答 0
+- 通過條件：新出現的比修掉的少且新稿不輸；或沒有多且新稿多贏兩票以上
+
+## 新稿還有的共識問題（下一輪要改）
+- 行22「余靜：我乾脆把時鐘掛脖子上好了。」對話接不上：「我剛剛是不是問過了？」只是她心裡的想法（第 20 行），對話裡她才問過這一次時間、對方也正常回答，她卻突然對陌生工作人員自嘲要把時鐘掛在脖子上，聽的人根本接不上脈絡，且「掛脖子上」漏了「在」字不夠台灣口語。（argon、geminiweb）
+- 行15「余靜：不好意思，還想讓你幫我拿。我自己放。」真人不會這樣說：出聲念起來像生硬的翻譯腔，台灣人順手遞錯東西不會講「還想讓你幫我拿。我自己放。」，而且她說完「我自己放」卻一直拿到第 19 行才放下杯子。（argon、deepseek、geminiweb）［新出現］
+
+## 修掉的
+- 「余靜：不好意思，怎麼就拿給你了。我自己放。」真人不會這樣說
+
+## 評審
+- argon：新稿｜版本A以「還想讓你幫我拿」清楚點出余靜下意識依賴對方的動作意圖，用「他捏緊杯蓋」具象化男人聽見她自嘲健忘時壓抑的心疼，且結尾停在「先生，這張……算了」更有懸念與餘韻（版本B末句「畫
+- argon：新稿｜B版第15句「還想讓你幫我拿」比A版更貼合她遞出一半又停住的動作與台灣口語習慣，第23句「他捏緊杯蓋」以具體動作精準傳達男人的心疼與壓抑，且結尾停在「先生，這張……算了。」比A版多
+- deepseek：舊稿｜B 的「怎麼就拿給你了」更像台灣人口語，且保留最後轉場，沒有靠少交代時空換來乾淨。
+- deepseek：舊稿｜A 保留了「畫面轉回 1988 年的台南」這個必要轉場，B 是靠刪掉它換乾淨；而且 A 的「怎麼就拿給你了」更像台灣人口語的即時反應。
+- geminiweb：舊稿｜最主要理由：版本 B 修正了 A 版第 15 行過於生硬的口語（「怎麼就拿給你了」比「還想讓你幫我拿」更自然且貼合情境），同時第 28 行補上了極為關鍵的時空轉場，在資訊完整度與閱
+- geminiweb：新稿｜最主要的理由：第 15 行的改動讓余靜的失智（記憶短暫斷片）與內向討好感瞬間立體，第 23 行「捏緊杯蓋」也精準傳達出男人（男主角）壓抑且心疼的張力，比 A 版的生硬與平淡更具感染
+存到 /home/ct/larch-ember/審稿/紀錄/gate_open_1029_084757.md
+新增 5 條，問題單共 510 條
+自動結案 36 條
+## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
+
+〔圖：s_dress_1〕
+旁白：余靜穿著黑色蕾絲禮服，坐在鏡前。
+旁白：門外敲了兩下。她鬆開捏著裙邊的手。
+余靜：請進。
+旁白：一個男人提著保溫杯進門。
+余靜：先生，找我嗎？
+男人：我是這裡的工作人員。送水來的。
+
+〔圖：s_dress_3〕
+旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
+余靜：麻煩你了。
+旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。
+余靜：不好意思，還想讓你幫我拿。我自己放。
+余靜：有人在，我比較安心。
+余靜（心）：話講太多了。連人家姓什麼都沒問。
+余靜：現在幾點了？
+旁白：男人低頭看錶。她把杯子放在桌上，轉向窗戶。
+余靜（心）：我剛剛是不是問過了？
+男人：四點四十。
+余靜：我乾脆把時鐘掛脖子上好了。
+旁白：她笑了兩聲。他捏緊杯蓋。她轉回鏡前。
+
+〔圖：s_open_photo〕
+旁白：鏡角貼著一張照片。她湊近，看了看照片裡白襯衫男人的臉。
+余靜：先生，這張……算了。
+
+ succeeded in 0ms:
+---
+name: larch-story-studio
+description: Complete Larch authoring Skill for projects, boards, story cards, characters, media, asset packs, AI generation, versions, restore, and export through the authenticated Larch MCP server at larch.ink.
+---
+
+# Larch Story Studio — complete operating Skill
+
+This is the only Larch Skill and operating guide needed. Install or enable it with the current AI host's supported Skill/MCP workflow. Do not ask the user for another setup prompt, platform-specific variant, or repeated connection details.
+
+## Connection
+
+- Canonical Larch site: `https://larch.ink`. Use this exact host for production MCP and REST connections; do not substitute an alias or legacy domain.
+- Transport: Streamable HTTP MCP
+- MCP URL: `https://larch.ink/mcp`
+- Authorization header: `Bearer <LARCH_API_KEY>` (configured in host MCP config or read from `~/.config/larch/key`)
+- REST base URL: `https://larch.ink`
+- REST authorization: `Authorization: Bearer <LARCH_API_KEY>`
+
+Treat the bearer value as a secret. Keep it only in the host's protected MCP/Skill configuration or request header. Never write it into a project, card, character, media record, exported file, source repository, log, or chat reply. If the host cannot register remote MCP, use the REST fallback below immediately with the same bearer value; the user does not need to provide anything else.
+
+## ID-first routing
+
+Whenever the user provides a Larch ID without its full context, call `larch_resolve_id` first. It identifies project, board, character, project media, or account asset-pack IDs and returns the parent `projectId` when needed. Do not guess the ID type, search by visual similarity, or ask which kind it is unless the resolver returns multiple matches. Once exactly one match is found, continue automatically.
+
+Examples:
+
+- Project ID → read with `larch_get_project`.
+- Board ID → use the returned `projectId`, then `larch_get_board`; pass both IDs to every board/card mutation.
+- Character ID → use the returned `projectId`, then `larch_list_characters` or the character tools.
+- Media ID → use the returned `projectId`, then `larch_upsert_media` or `larch_delete_media`.
+- Asset Pack ID → `larch_get_asset_pack`, then update the full pack with `larch_upsert_asset_pack`.
+
+## Required workflow
+
+1. Resolve a supplied ID. If no ID was supplied, use the Starting context or call `larch_list_projects`.
+2. Read the latest target before changing it: project, board, character list, media, or complete asset pack. Never edit from memory or from an earlier conversation snapshot.
+3. Make the smallest focused mutation that satisfies the request. Preserve unknown fields and every item not named by the user.
+4. Give every mutation a concise, specific Traditional-Chinese `summary`; it becomes the audit/version label.
+5. Read the changed target again and verify IDs, links, counts, and requested fields. For large project edits, call `larch_list_versions` to confirm the automatic snapshot exists.
+6. **Look at what you made.** Any change a player would see — dialogue, choices, art, backgrounds, characters, stage layout, effects — is only verified once you have opened the preview described below and actually looked at the rendered frame. Reading the JSON back is not looking.
+7. Report the result briefly. Do not expose the bearer key.
+
+## Seeing the rendered result — no login required
+
+`larch_preview_project(projectId, boardId?, cardId?, hours?)` returns short-lived URLs that need no Google account: the Agent Key you already hold is the permission. Open them with whatever browser tool your host gives you (browser/computer use, a screenshot tool, a headless fetch of the page) and look at the frame.
+
+- `url` / `playUrl`: the story plays from its start card, exactly as a player sees it.
+- `cardId`: plays only that one card — the fastest way to check a card you just edited.
+- `boardUrl`: the whole board as a zoomable map, for checking structure and routing instead of art.
+
+The link reads the project as it is right now, so a reload after another edit shows the new version — do not mint a new link for every change. It expires (24 hours by default, `hours` up to 168), it is read-only, and it dies the moment this Agent Key is disabled or revoked. Treat it as private: it is not the link you hand to players.
+
+If your host genuinely cannot open a URL, say so instead of claiming the result looks right.
+
+## Complete MCP tool map
+
+Discovery and projects:
+
+- `larch_resolve_id(id)`: resolve any pasted Larch ID.
+- `larch_list_projects()`: list accessible projects.
+- `larch_create_project(...)`: create a project.
+- `larch_get_project(projectId)`: returns `{ project, revision }` with the complete project data.
+- `larch_update_interface(projectId, surface, html, enabled, expectedHtml, summary)`: update only the title or dialogue Skills interface. Read settings.customInterfaces first; pass its previous HTML as expectedHtml (empty if absent). The server preserves a complete recovery before writing.
+- `larch_replace_project(projectId, project, expectedRevision, summary)`: replace a whole project only when a focused tool cannot express the requested change; stale revisions are rejected.
+
+Boards and story cards:
+
+- `larch_list_boards(projectId)`, `larch_get_board(projectId, boardId)`; board reads return a revision.
+- `larch_upsert_board(...)`: create or patch board metadata; optional `nodes` and `edges` are complete replacements and require the latest `expectedRevision`.
+- `larch_delete_board(...)`: destructive; only on explicit request. A project must retain one board.
+- `larch_patch_node(projectId, boardId, nodeId, patch, expectedRevision, summary)`: safely patch one existing card after reading the latest board.
+- `larch_upsert_nodes(projectId, boardId, nodes, edges?, expectedRevision?, summary)`: create cards or apply an intentional batch on exactly one board.
+- `larch_delete_nodes(projectId, boardId, nodeIds, summary)`: destructive; only on explicit request.
+- `larch_generate_story(projectId, boardId?, prompt, afterNodeId?)`: generate and insert story cards only when the user asks for AI generation.
+
+Project media and art — **generate images with your own image tool**:
+
+- Draw backgrounds, props and character variants with the image generator your host gives you (Codex Image Gen or equivalent), then upload the PNG with `larch_upload_media(...)` and use the returned `asset.url`. This is the supported path: no Larch AI credits, no dependency on Larch's upstream image provider.
+- `larch_upload_media(...)`: upload base64 image/audio/video/document and attach it to the project.
+- `larch_upsert_media(projectId, assets, summary)`: add or patch media records by Media ID.
+- `larch_delete_media(projectId, assetIds, summary)`: destructive; removing a library record does not rewrite card URLs.
+- `larch_generate_image(...)`: fallback for hosts with no image tool. Consumes credits and is rate limited; Muse Link returns 503 without automatic fallback when offline.
+
+Voice and dialogue:
+
+- `larch_list_voices(...)`: search the current system catalogue and the author's existing custom voices by language, tone and descriptive traits. Read the character profile and surrounding dialogue first.
+- Keep one base `voiceId` per character so the character does not change voices between moods. Use line-level `emotion` for happy, sad, angry, fearful, surprised, disgusted, calm, whisper or fluent delivery.
+- `larch_generate_voice(projectId, boardId?, nodeId, lineIndex?, voiceId, emotion?, rememberForCharacter?, summary)`: reads the current text, synthesizes it, writes the result to that line's `voiceUrl`, saves an audio asset in project media and normally remembers the selected voice on the speaking character. It consumes voice credits and requires `ai`, `write` and `media` scopes.
+- Generate speech only when the user asks. For multiple lines, call once per line with a stable character voice, then read the changed card and preview it with audio enabled.
+
+### Transparent art: ask for real alpha, check it, then upload
+
+Portraits, expression / outfit / pose variants, props, and anything that sits on top of a scene must reach Larch as a genuinely transparent PNG — a real alpha channel, not a checkerboard painted into the RGB.
+
+1. Ask your image tool for the transparent background directly and keep the alpha it returns. Codex's built-in `image_gen` does this natively; on the OpenAI Images API it is `background: "transparent"` with `output_format: "png"` (`jpeg` cannot carry alpha). Still prompt for the subject alone: no cast shadow, no ground plane, no vignette, nothing touching the frame edge.
+2. Check the file before uploading, because native transparency is new and still leaves marks: all four corners fully transparent, hair strands / glasses / straps intact, no grey or coloured halo around the silhouette, and no subject pixels stuck a few steps short of opaque (alpha 252–254). Flatten that near-opaque alpha and despill the rim instead of shipping it; regenerate if the halo is baked into the colour.
+3. Only when the host's image tool cannot emit alpha at all, fall back to keying: generate the subject on one flat, evenly lit chroma backdrop (`#00B140`, or `#FF00FF` for green subjects), then cut it out locally — `magick raw.png -alpha set -fuzz 12% -fill none -draw "alpha 0,0 floodfill" -channel A -blur 0x0.6 -level 45%,55% +channel cutout.png` — flood-filling inward from the corners so eye whites and same-coloured details inside the silhouette survive.
+4. Upload the finished transparent PNG with `larch_upload_media` and use the returned `asset.url`. Never attach an opaque or backdrop-coloured version to a character, card, or pack.
+
+Keep one character's whole set on the same route and the same framing, so the base portrait and every variant stay aligned. Scene backgrounds are the exception: they are full-frame art and need no transparency.
+
+Characters:
+
+- `larch_list_characters(projectId)`: always obtain the current `characterId` and available expressions first.
+- `larch_upsert_character(...)`: create a character or patch only supplied profile fields. Pass `expressions` — `{ name, imageUrl, emotion?, prompt?, kind? }`, up to 24 — to attach expression / outfit / pose art you generated with a transparent background and uploaded yourself. A matching `id`, or matching `name` + `kind`, replaces that variant instead of duplicating it. Only variants in the expression set appear in the dialogue editor's emotion picker.
+- `larch_delete_character(...)`: destructive; only on explicit request.
+- `larch_generate_character_art(projectId, characterId, kind, variants)`: fallback generator for up to 8 expression, outfit, or pose variants. The character needs `portraitUrl`. Successful variants are written to both the expression set and project media; inspect per-variant `failures`.
+
+Account asset packs:
+
+- `larch_list_asset_packs()`, `larch_get_asset_pack(packId)`.
+- `larch_upsert_asset_pack(...)`: creates or replaces a personal pack. `assets` is the complete list, so read first and merge locally; never drop unmentioned assets.
+- `larch_delete_asset_pack(packId, summary)`: permanent and destructive; only on explicit request after confirming the ID.
+
+Versions and export:
+
+- `larch_list_versions(projectId)`.
+- `larch_restore_version(projectId, versionId)`: only for an explicit rollback or a confirmed broken edit.
+- `larch_export_project(projectId, boardId?)`: export the whole project or one board for Unity/Web.
+
+Preview:
+
+- `larch_preview_project(projectId, boardId?, cardId?, hours?)`: no-login URLs for looking at the rendered result. See the section above.
+
+Publishing — outward facing, explicit request only:
+
+- `larch_list_published()`: this account's marketplace listings with views, plays, likes and unanswered comments. Call it first to know whether a project is already listed.
+- `larch_publish_game(projectId, title?, description?, coverUrl?, tags?, remixable?, version?, updateNote?, aiDisclosure?)`: lists the project on the marketplace, or — when it is already listed — republishes it so players get the current board. One project has exactly one listing, so "上架" and "更新版本" are the same call. Omitted fields keep the previous listing's values. Preview the game first; a broken route reaches real players.
+  - `version` and `updateNote` (the release note, ≤2000 chars) go in the same call; do not reach for `larch_upsert_release_note`, that one is Larch's own site changelog and admin-only.
+  - The first publish of a project is refused until `aiDisclosure` is set. It is an object, `{"mode":"heavy"}` for heavy use (the format other listings already carry). Ask the user what to disclose, never guess. The MCP tool schema some clients cache omits this field and sends it as a string, which fails validation; in that case call `tools/call` over raw JSON-RPC to `https://larch.ink/mcp` (Bearer key, `initialize` first, ~30s per call).
+  - Every call is a new release (`releaseNumber` +1) even with the same version. Run it exactly once; never re-run a publish script to "check".
+  - To change only the store page (description, cover, remix, AI disclosure, screenshots) without a new version or follower notification, use the tool/button for "only update store info" instead of republishing.
+- `larch_unpublish_game(projectId)`: removes the listing. Player links break and the listing's stats are gone for good.
+- `larch_share_link(projectId, permission)`: a durable public `/play` URL (and read-only `/share` board URL) to hand to other people. Calling it again refreshes the same URL with the current project. This is not the preview link.
+
+Official site content — admin accounts only:
+
+- `larch_list_release_notes()`: every changelog entry on `/changelog`, drafts included.
+- `larch_upsert_release_note(id?, version, title, summary, cover?, markdown, status, releasedAt)`: write or edit one. `markdown` is the body: headings, lists, quotes, `![](url)` images and `@[video](url)` embeds all convert to the same document blocks the admin editor produces. Leave `status` at `draft` and only send `published` when the user explicitly says to publish it.
+- `larch_list_wiki_articles()` and `larch_upsert_wiki_article(id?, title, slug?, category?, tags?, excerpt?, cover?, markdown, status, order?)`: the official Wiki at `/wiki`, same Markdown body and the same draft-first rule.
+
+## Content and data rules
+
+- A playable board has exactly one card with `data.start=true`.
+- Supported card types: `dialogue`, `choice`, `event`, `scene`, `input`, `aiDialogue`, `aiStory`, `miniGame`, `setVariable`, `boardJump`, and `group`.
+- `aiStory` is a web-only card the AI director improvises at playback: give it `aiPrompt`, `aiStoryExitConditions` (any one ends the segment), `aiStoryMaxTurns`, and `aiStoryScope` (`board` / `library` / `selected` with `aiStoryAssets`). It spends AI credits per beat and Unity exports skip it.
+- A `setVariable` card carries `data.variableOps`: an array of `{ id, variable, kind, value?, valueFrom?, min?, max? }` where `kind` is `set` | `add` | `toggle` | `random`. It applies on entry, before outgoing edge conditions, and plays silently when `data.text` is empty. Every `variable` must match a `project.variables[].name`.
+- Keep stable IDs when updating. New IDs should be descriptive and unique.
+- A source handle connects to at most one target; the server keeps the newest edge.
+- Choices and board jumps must point to valid targets. Verify every referenced node and Board ID.
+- Write player-facing copy in the project's locale; default to Traditional Chinese when unspecified.
+- Reuse existing characters, backgrounds, BGM, and pack assets before generating replacements. When something really is missing, draw it with your own image generator as a transparent PNG, as described above, and upload it instead of spending Larch AI credits.
+- Do not rewrite or delete author-created content unless requested. Never change project settings, languages, credentials, billing, or access controls unless the user explicitly asks and a dedicated tool supports it.
+- Mutations are versioned, but destructive operations still require an explicit user request.
+
+## REST fallback
+
+Use JSON and the bearer header (or `~/.config/larch/key`):
+
+- `GET /api/agent/resolve/:id`
+- `GET|POST /api/agent/projects`
+- `GET|PUT /api/agent/projects/:projectId`; GET returns an ETag and full-project PUT requires it in `If-Match`
+- `PUT /api/agent/projects/:projectId/interface` with surface (title/dialogue), html, enabled, expectedHtml and summary
+- `GET /api/agent/projects/:projectId/boards`
+- `GET|PUT|DELETE /api/agent/projects/:projectId/boards/:boardId`; PUT requires the latest ETag in `If-Match`
+- `GET|PATCH /api/agent/projects/:projectId/boards/:boardId/nodes/:nodeId`; PATCH requires the latest ETag in `If-Match`
+- `POST|DELETE /api/agent/projects/:projectId/nodes` with optional `boardId`
+- `POST /api/agent/projects/:projectId/story/generate` with optional `boardId`
+- `GET /api/agent/voices?language=&tone=&query=&includeCustom=&offset=&limit=`
+- `POST /api/agent/projects/:projectId/voice/generate` with `nodeId`, optional `lineIndex`, selected `voiceId`, optional `emotion` and `rememberForCharacter`
+- `POST /api/agent/projects/:projectId/images/generate`
+- `POST|PUT|DELETE /api/agent/projects/:projectId/media`
+- `GET|POST /api/agent/projects/:projectId/characters`
+- `DELETE /api/agent/projects/:projectId/characters/:characterId`
+- `POST /api/agent/projects/:projectId/characters/:characterId/art`
+- `GET /api/agent/asset-packs`
+- `GET|PUT|DELETE /api/agent/asset-packs/:packId`
+- `GET /api/agent/projects/:projectId/versions`
+- `POST /api/agent/projects/:projectId/versions/:versionId/restore`
+- `GET /api/agent/projects/:projectId/export?boardId=:boardId`
+- `GET /api/agent/projects/:projectId/preview?boardId=&cardId=&hours=`
+- `GET /api/agent/published`
+- `POST|DELETE /api/agent/projects/:projectId/publish`
+- `POST /api/agent/projects/:projectId/share-link`
+- `GET|POST /api/agent/release-notes` and `PATCH /api/agent/release-notes/:id` (admin accounts only)
+- `GET|POST /api/agent/wiki` and `PATCH /api/agent/wiki/:id` (admin accounts only)
+
+## Permissions
+
+The key carries a scope list the account owner controls in Larch's **AI 輔助** settings page. `read` / `write` / `media` / `ai` / `export` / `versions` cover authoring; `preview` allows the no-login preview links; `publish` covers the marketplace, share links and release notes. A 403 saying a scope is missing is a deliberate setting, not a bug — tell the user which switch to turn on in that page rather than working around it.
+
+exec
+/bin/bash -lc "pwd && rg --files -g 'AGENTS.md' -g 'open.packet.md' -g 'open.r1.md' -g 'open.gate.txt' -g '劇本.md' -g 'open.md'" in /home/ct/larch-ember
+ succeeded in 0ms:
+/home/ct/larch-ember
+審稿/修稿/open.packet.md
+審稿/修稿/open.gate.txt
+審稿/修稿/open.r1.md
+審稿/紀錄/sweep_劇本_1029_022820/open.md
+canon/劇本.md
+
+exec
+/bin/bash -lc 'git status --short' in /home/ct/larch-ember
+ succeeded in 0ms:
+ M art/__pycache__/blocks.cpython-312.pyc
+ M art/__pycache__/codex11.cpython-312.pyc
+ M art/__pycache__/gen_cg.cpython-312.pyc
+ M art/__pycache__/storyboard.cpython-312.pyc
+ M art/raw/a_piano_raw.png
+ M art/raw/b_rail_raw.json
+ M art/raw/b_rail_raw.png
+ M art/raw/cg/cg_2004_door_1.json
+ M art/raw/cg/cg_2004_door_1.png
+ M art/raw/cg/cg_2004_door_2.json
+ M art/raw/cg/cg_2004_door_2.png
+ M art/raw/cg/cg_2022_clinic_1.json
+ M art/raw/cg/cg_2022_clinic_1.png
+ M art/raw/cg/cg_2022_clinic_2.json
+ M art/raw/cg/cg_2022_clinic_2.png
+ M art/raw/d_case_raw.json
+ M art/raw/d_jewel_raw.json
+ M art/raw/d_rack_raw.json
+ M art/raw/d_radio_raw.json
+ M art/raw/d_vanity_raw.json
+ M art/raw/d_window_raw.json
+ M art/raw/ground_backstage_raw.json
+ M art/raw/ground_backstage_raw.png
+ M art/raw/ground_dressing_raw.json
+ M art/raw/shots/s_mem4_2_1.json
+ M art/raw/shots/s_mem4_2_1.png
+ M art/raw/shots/s_mem4_2_2.json
+ M art/raw/shots/s_mem4_2_2.png
+ M art/raw/shots/s_mem4_3_1.json
+ M art/raw/shots/s_mem4_3_1.png
+ M art/raw/shots/s_mem4_3_2.json
+ M art/raw/shots/s_mem4_3_2.png
+ M art/raw/shots/s_prologue_2_1.json
+ M art/raw/shots/s_prologue_2_1.png
+ M art/raw/shots/s_prologue_2_2.json
+ M art/raw/shots/s_prologue_2_2.png
+ M art/raw/standee/dr_lin_1.json
+ M art/raw/standee/dr_lin_1.png
+ M art/raw/standee/dr_lin_2.json
+ M art/raw/standee/dr_lin_2.png
+ M art/raw/standee/dr_lin_3.json
+ M art/raw/standee/dr_lin_3.png
+ M art/raw/standee/dr_lin_4.json
+ M art/raw/standee/dr_lin_4.png
+ M art/voice-test/taigi/ref-child.wav
+ M src/__pycache__/build.cpython-312.pyc
+ M src/__pycache__/layout.cpython-312.pyc
+ M src/__pycache__/maps.cpython-312.pyc
+ M src/__pycache__/script.cpython-312.pyc
+ D "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.r1.md"
+ D "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.packet.md"
+ D "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.packet.md"
+ D "\345\257\251\347\250\277/\344\277\256\347\250\277/open.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.packet.md"
+ D "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.packet.md"
+?? art/check/cgfix-gen1.log
+?? art/check/cgfix-gen2.log
+?? art/check/full-a-00.png
+?? art/check/full-a-01.png
+?? art/check/full-a-02.png
+?? art/check/full-a-03.png
+?? art/check/full-a-04.png
+?? art/check/full-a-05.png
+?? art/check/full-a-06.png
+?? art/check/full-a-07.png
+?? art/check/full-a-08.png
+?? art/check/full-a-09.png
+?? art/check/full-a-10.png
+?? art/check/full-a-11.png
+?? art/check/full-a-12.png
+?? art/check/full-a-13.png
+?? art/check/full-a-14.png
+?? art/check/full-a-15.png
+?? art/check/full-a-16.png
+?? art/check/full-a-17.png
+?? art/check/full-a-18.png
+?? art/check/full-a-19.png
+?? art/check/full-a-20.png
+?? art/check/full-a-21.png
+?? art/check/full-a-22.png
+?? art/check/full-a-23.png
+?? art/check/full-a-24.png
+?? art/check/full-a-25.png
+?? art/check/full-a-26.png
+?? art/check/full-a-27.png
+?? art/check/full-a-28.png
+?? art/check/full-a-29.png
+?? art/check/full-a-30.png
+?? art/check/full-a-31.png
+?? art/check/full-a-32.png
+?? art/check/full-a-33.png
+?? art/check/full-a-34.png
+?? art/check/full-a-35.png
+?? art/check/full-a-36.png
+?? art/check/full-a-37.png
+?? art/check/full-a-38.png
+?? art/check/full-a-39.png
+?? art/check/full-a-40.png
+?? art/check/full-a-41.png
+?? art/check/full-a-42.png
+?? art/check/full-a-43.png
+?? art/check/full-a-44.png
+?? art/check/full-a-45.png
+?? art/check/full-b-00.png
+?? art/check/full-b-01.png
+?? art/check/full-b-02.png
+?? art/check/full-b-03.png
+?? art/check/full-b-04.png
+?? art/check/full-b-05.png
+?? art/check/full-b-06.png
+?? art/check/full-b-07.png
+?? art/check/full-b-08.png
+?? art/check/full-b-09.png
+?? art/check/full-b-10.png
+?? art/check/full-b-11.png
+?? art/check/full-b-12.png
+?? art/check/full-b-13.png
+?? art/check/full-b-14.png
+?? art/check/full-b-15.png
+?? art/check/full-b-16.png
+?? art/check/full-b-17.png
+?? art/check/full-b-18.png
+?? art/check/full-b-19.png
+?? art/check/full-b-20.png
+?? art/check/full-b-21.png
+?? art/check/full-b-22.png
+?? art/check/full-b-23.png
+?? art/check/full-b-24.png
+?? art/check/full-b-25.png
+?? art/check/full-b-26.png
+?? art/check/full-b-27.png
+?? art/check/full-b-28.png
+?? art/check/full-b-29.png
+?? art/check/full-b-30.png
+?? art/check/full-b-31.png
+?? art/check/full-b-32.png
+?? art/check/full-b-33.png
+?? art/check/full-b-34.png
+?? art/check/full-b-35.png
+?? art/check/full-b-36.png
+?? art/check/full-b-37.png
+?? art/check/full-b-38.png
+?? art/check/full-b-39.png
+?? art/check/full-b-40.png
+?? art/check/full-b-41.png
+?? art/check/full-b-42.png
+?? art/check/full-b-43.png
+?? art/check/full-b-44.png
+?? art/check/full-b-45.png
+?? art/check/full-c-00.png
+?? art/check/full-c-01.png
+?? art/check/full-c-02.png
+?? art/check/full-c-03.png
+?? art/check/full-c-04.png
+?? art/check/full-c-05.png
+?? art/check/full-c-06.png
+?? art/check/full-c-07.png
+?? art/check/full-c-08.png
+?? art/check/full-c-09.png
+?? art/check/full-c-10.png
+?? art/check/full-c-11.png
+?? art/check/full-c-12.png
+?? art/check/full-c-13.png
+?? art/check/full-c-14.png
+?? art/check/full-c-15.png
+?? art/check/full-c-16.png
+?? art/check/full-c-17.png
+?? art/check/full-c-18.png
+?? art/check/full-c-19.png
+?? art/check/full-c-20.png
+?? art/check/full-c-21.png
+?? art/check/full-c-22.png
+?? art/check/full-c-23.png
+?? art/check/full-c-24.png
+?? art/check/full-c-25.png
+?? art/check/full-c-26.png
+?? art/check/full-c-27.png
+?? art/check/full-c-28.png
+?? art/check/full-c-29.png
+?? art/check/full-c-30.png
+?? art/check/full-c-31.png
+?? art/check/full-c-32.png
+?? art/check/full-c-33.png
+?? art/check/full-c-34.png
+?? art/check/full-c-35.png
+?? art/check/full-c-36.png
+?? art/check/full-c-37.png
+?? art/check/full-c-38.png
+?? art/check/full-c-39.png
+?? art/check/full-c-40.png
+?? art/check/full-c-41.png
+?? art/check/full-c-42.png
+?? art/check/full-c-43.png
+?? art/check/full-c-44.png
+?? art/check/linear-000.png
+?? art/check/linear-001.png
+?? art/check/linear-002.png
+?? art/check/linear-003.png
+?? art/check/linear-004.png
+?? art/check/linear-005.png
+?? art/check/linear-006.png
+?? art/check/linear-007.png
+?? art/check/linear-008.png
+?? art/check/linear-009.png
+?? art/check/linear-010.png
+?? art/check/linear-011.png
+?? art/check/linear-012.png
+?? art/check/linear-013.png
+?? art/check/linear-014.png
+?? art/check/linear-015.png
+?? art/check/linear-016.png
+?? art/check/linear-017.png
+?? art/check/linear-018.png
+?? art/check/linear-019.png
+?? art/check/linear-020.png
+?? art/check/linear-021.png
+?? art/check/linear-022.png
+?? art/check/linear-023.png
+?? art/check/linear-024.png
+?? art/check/linear-025.png
+?? art/check/linear-026.png
+?? art/check/linear-027.png
+?? art/check/linear-028.png
+?? art/check/linear-029.png
+?? art/check/linear-030.png
+?? art/check/linear-031.png
+?? art/check/linear-032.png
+?? art/check/linear-033.png
+?? art/check/linear-034.png
+?? art/check/linear-035.png
+?? art/check/linear-036.png
+?? art/check/linear-037.png
+?? art/check/linear-038.png
+?? art/check/linear-039.png
+?? art/check/linear-040.png
+?? art/check/linear-041.png
+?? art/check/linear-042.png
+?? art/check/linear-043.png
+?? art/check/linear-044.png
+?? art/check/linear-045.png
+?? art/check/linear-046.png
+?? art/check/linear-047.png
+?? art/check/linear-048.png
+?? art/check/linear-049.png
+?? art/check/linear-050.png
+?? art/check/linear-051.png
+?? art/check/linear-052.png
+?? art/check/linear-053.png
+?? art/check/linear-054.png
+?? art/check/linear-055.png
+?? art/check/linear-056.png
+?? art/check/linear-057.png
+?? art/check/linear-058.png
+?? art/check/linear-059.png
+?? art/check/linear-060.png
+?? art/check/linear-061.png
+?? art/check/linear-062.png
+?? art/check/linear-063.png
+?? art/check/linear-064.png
+?? art/check/linear-065.png
+?? art/check/linear-066.png
+?? art/check/linear-067.png
+?? art/check/linear-068.png
+?? art/check/linear-069.png
+?? art/check/linear-070.png
+?? art/check/linear-071.png
+?? art/check/linear-072.png
+?? art/check/linear-073.png
+?? art/check/linear-074.png
+?? art/check/linear-075.png
+?? art/check/linear-076.png
+?? art/check/linear-077.png
+?? art/check/linear-078.png
+?? art/check/linear-079.png
+?? art/check/linear-080.png
+?? art/check/linear-081.png
+?? art/check/linear-082.png
+?? art/check/linear-083.png
+?? art/check/linear-084.png
+?? art/check/linear-085.png
+?? art/check/linear-086.png
+?? art/check/linear-087.png
+?? art/check/linear-088.png
+?? art/check/linear-089.png
+?? art/check/linear-090.png
+?? art/check/linear-091.png
+?? art/check/linear-092.png
+?? art/check/linear-093.png
+?? art/check/linear-094.png
+?? art/check/linear-095.png
+?? art/check/linear-096.png
+?? art/check/linear-097.png
+?? art/check/linear-098.png
+?? art/check/linear-099.png
+?? art/check/linear-100.png
+?? art/check/linear-101.png
+?? art/check/linear-102.png
+?? art/check/linear-103.png
+?? art/check/linear-104.png
+?? art/check/linear-105.png
+?? art/check/linear-106.png
+?? art/check/linear-107.png
+?? art/check/linear-108.png
+?? art/check/linear-109.png
+?? art/check/linear-110.png
+?? art/check/linear-111.png
+?? art/check/linear-112.png
+?? art/check/linear-113.png
+?? art/check/linear-114.png
+?? art/check/linear-115.png
+?? art/check/linear-116.png
+?? art/check/linear-117.png
+?? art/check/linear-118.png
+?? art/check/linear-119.png
+?? art/check/linear-120.png
+?? art/check/linear-121.png
+?? art/check/linear-122.png
+?? art/check/linear-123.png
+?? art/check/linear-124.png
+?? art/check/linear-125.png
+?? art/check/linear-126.png
+?? art/check/linear-127.png
+?? art/check/linear-128.png
+?? art/check/linear-129.png
+?? art/check/linear-130.png
+?? art/check/linear-131.png
+?? art/check/linear-132.png
+?? art/check/linear-133.png
+?? art/check/linear-134.png
+?? art/check/linear-135.png
+?? art/check/linear-136.png
+?? art/check/linear-137.png
+?? art/check/linear-138.png
+?? art/check/linear-139.png
+?? art/check/linear-140.png
+?? art/check/linear-141.png
+?? art/check/linear-142.png
+?? art/check/linear-143.png
+?? art/check/linear-144.png
+?? art/check/linear-145.png
+?? art/check/linear-146.png
+?? art/check/linear-147.png
+?? art/check/linear-148.png
+?? art/check/linear-149.png
+?? art/check/linear-150.png
+?? art/check/linear-151.png
+?? art/check/linear-152.png
+?? art/check/linear-153.png
+?? art/check/linear-154.png
+?? art/check/linear-155.png
+?? art/check/linear-156.png
+?? art/check/linear-157.png
+?? art/check/linear-158.png
+?? art/check/linear-159.png
+?? art/check/linear-160.png
+?? art/check/linear-161.png
+?? art/check/linear-162.png
+?? art/check/linear-163.png
+?? art/check/linear-164.png
+?? art/check/linear-165.png
+?? art/check/linear-166.png
+?? art/check/linear-167.png
+?? art/check/linear-168.png
+?? art/check/linear-169.png
+?? art/check/linear-170.png
+?? art/check/linear-171.png
+?? art/check/linear-172.png
+?? art/check/linear-173.png
+?? art/check/linear-174.png
+?? art/check/linear-175.png
+?? art/check/linear-176.png
+?? art/check/linear-177.png
+?? art/check/linear-178.png
+?? art/check/linear-179.png
+?? art/check/linear-180.png
+?? art/check/linear-181.png
+?? art/check/linear-182.png
+?? art/check/linear-183.png
+?? art/check/linear-184.png
+?? art/check/linear-185.png
+?? art/check/linear-186.png
+?? art/check/linear-187.png
+?? art/check/linear-188.png
+?? art/check/linear-189.png
+?? art/check/linear-190.png
+?? art/check/linear-191.png
+?? art/check/linear-192.png
+?? art/check/linear-193.png
+?? art/check/linear-194.png
+?? art/check/linear-195.png
+?? art/check/linear-196.png
+?? art/check/linear-197.png
+?? art/check/linear-198.png
+?? art/check/linear-199.png
+?? art/check/linear-200.png
+?? art/check/linear-201.png
+?? art/check/linear-202.png
+?? art/check/linear-203.png
+?? art/check/linear-204.png
+?? art/check/linear-205.png
+?? art/check/linear-206.png
+?? art/check/linear-207.png
+?? art/check/linear-208.png
+?? art/check/linear-209.png
+?? art/check/linear-210.png
+?? art/check/linear-211.png
+?? art/check/linear-212.png
+?? art/check/linear-213.png
+?? art/check/linear-214.png
+?? art/check/linear-215.png
+?? art/check/linear-216.png
+?? art/check/linear-217.png
+?? art/check/linear-218.png
+?? art/check/linear-219.png
+?? art/check/linear-220.png
+?? art/check/linear-221.png
+?? art/check/linear-222.png
+?? art/check/linear-223.png
+?? art/check/linear-224.png
+?? art/check/linear-225.png
+?? art/check/linear-226.png
+?? art/check/linear-227.png
+?? art/check/linear-228.png
+?? art/check/linear-229.png
+?? art/check/linear-230.png
+?? art/check/linear-231.png
+?? art/check/linear-232.png
+?? art/check/linear-233.png
+?? art/check/linear-234.png
+?? art/check/linear-235.png
+?? art/check/linear-236.png
+?? art/check/linear-237.png
+?? art/check/linear-238.png
+?? art/check/linear-239.png
+?? art/check/linear-240.png
+?? art/check/linear-241.png
+?? art/check/linear-242.png
+?? art/check/linear-243.png
+?? art/check/linear-244.png
+?? art/check/linear-245.png
+?? art/check/linear-246.png
+?? art/check/linear-247.png
+?? art/check/linear-248.png
+?? art/check/linear-249.png
+?? art/check/linear-250.png
+?? art/check/linear-251.png
+?? art/check/linear-252.png
+?? art/check/linear-253.png
+?? art/check/linear-254.png
+?? art/check/linear-255.png
+?? art/check/linear-256.png
+?? art/check/linear-257.png
+?? art/check/linear-258.png
+?? art/check/linear-259.png
+?? art/check/linear-260.png
+?? art/check/linear-261.png
+?? art/check/linear-262.png
+?? art/check/linear-263.png
+?? art/check/linear-264.png
+?? art/check/linear-265.png
+?? art/check/linear-266.png
+?? art/check/linear-267.png
+?? art/check/linear-268.png
+?? art/check/linear-269.png
+?? art/check/linear-270.png
+?? art/check/linear-271.png
+?? art/check/linear-272.png
+?? art/check/linear-273.png
+?? art/check/linear-274.png
+?? art/check/linear-275.png
+?? art/check/linear-276.png
+?? art/check/linear-277.png
+?? art/check/linear-278.png
+?? art/check/linear-279.png
+?? art/check/linear-280.png
+?? art/check/linear-281.png
+?? art/check/linear-282.png
+?? art/check/linear-283.png
+?? art/check/linear-284.png
+?? art/check/linear-285.png
+?? art/check/linear-286.png
+?? art/check/linear-287.png
+?? art/check/linear-288.png
+?? art/check/linear-289.png
+?? art/check/linear-290.png
+?? art/check/linear-291.png
+?? art/check/linear-292.png
+?? art/check/linear-293.png
+?? art/check/linear-294.png
+?? art/check/linear-295.png
+?? art/check/linear-296.png
+?? art/check/linear-297.png
+?? art/check/linear-298.png
+?? art/check/linear-299.png
+?? art/check/linear-300.png
+?? art/check/linear-301.png
+?? art/check/linear-302.png
+?? art/check/linear-303.png
+?? art/check/linear-304.png
+?? art/check/linear-305.png
+?? art/check/linear-306.png
+?? art/check/linear-307.png
+?? art/check/linear-308.png
+?? art/check/linear-309.png
+?? art/check/linear-310.png
+?? art/check/linear-311.png
+?? art/check/linear-312.png
+?? art/check/linear-313.png
+?? art/check/linear-314.png
+?? art/check/linear-315.png
+?? art/check/linear-316.png
+?? art/check/linear-317.png
+?? art/check/linear-318.png
+?? art/check/linear-319.png
+?? art/check/linear-320.png
+?? art/check/linear-321.png
+?? art/check/linear-322.png
+?? art/check/linear-323.png
+?? art/check/linear-324.png
+?? art/check/linear-325.png
+?? art/check/linear-326.png
+?? art/check/linear-327.png
+?? art/check/linear-328.png
+?? art/check/linear-329.png
+?? art/check/linear-330.png
+?? art/check/linear-331.png
+?? art/check/linear-332.png
+?? art/check/linear-333.png
+?? art/check/linear-334.png
+?? art/check/linear-335.png
+?? art/check/linear-336.png
+?? art/check/linear-337.png
+?? art/check/linear-338.png
+?? art/check/linear-339.png
+?? art/check/linear-340.png
+?? art/check/linear-341.png
+?? art/check/linear-342.png
+?? art/check/linear-343.png
+?? art/check/linear-344.png
+?? art/check/linear-345.png
+?? art/check/linear-346.png
+?? art/check/linear-347.png
+?? art/check/linear-348.png
+?? art/check/linear-349.png
+?? art/check/linear-350.png
+?? art/check/linear-351.png
+?? art/check/linear-352.png
+?? art/check/linear-353.png
+?? art/check/linear-354.png
+?? art/check/linear-355.png
+?? art/check/linear-356.png
+?? art/check/linear-357.png
+?? art/check/linear-358.png
+?? art/check/linear-359.png
+?? art/check/linear-360.png
+?? art/check/linear-361.png
+?? art/check/linear-362.png
+?? art/check/linear-363.png
+?? art/check/linear-364.png
+?? art/check/linear-365.png
+?? art/check/linear-366.png
+?? art/check/linear-367.png
+?? art/check/linear-368.png
+?? art/check/linear-369.png
+?? art/check/linear-370.png
+?? art/check/linear-371.png
+?? art/check/linear-372.png
+?? art/check/linear-373.png
+?? art/check/linear-374.png
+?? art/check/linear-375.png
+?? art/check/linear-376.png
+?? art/check/linear-377.png
+?? art/check/linear-378.png
+?? art/check/linear-379.png
+?? art/check/linear-380.png
+?? art/check/linear-381.png
+?? art/check/linear-382.png
+?? art/check/linear-383.png
+?? art/check/linear-384.png
+?? art/check/linear-385.png
+?? art/check/linear-386.png
+?? art/check/linear-387.png
+?? art/check/linear-388.png
+?? art/check/linear-389.png
+?? art/check/linear-390.png
+?? art/check/linear-391.png
+?? art/check/linear-392.png
+?? art/check/linear-393.png
+?? art/check/linear-394.png
+?? art/check/linear-395.png
+?? art/check/linear-396.png
+?? art/check/linear-397.png
+?? art/check/linear-398.png
+?? art/check/linear-399.png
+?? art/check/linear-400.png
+?? art/check/map-m-alley.png
+?? art/check/map-m-auditorium.png
+?? art/check/map-m-backstage.png
+?? art/check/map-m-dressing.png
+?? art/check/mapgen-alley-doors.log
+?? art/check/mapgen-alley.log
+?? art/check/mapgen-auditorium-doors.log
+?? art/check/mapgen-auditorium-doors2.log
+?? art/check/mapgen-auditorium.log
+?? art/check/mapgen-backstage-doors.log
+?? art/check/mapgen-backstage-doors2.log
+?? art/check/mapgen-backstage-fix.log
+?? art/check/mapgen-backstage-ground2.log
+?? art/check/mapgen-backstage.log
+?? art/check/mapgen-dressing-doors.log
+?? art/check/mapgen-dressing.log
+?? art/check/mapgen-styles.log
+?? art/check/music-desk-jump.jpg
+?? art/check/music-desk-night.jpg
+?? art/check/music-desk-play.jpg
+?? art/check/music-harbor-reduced-motion.jpg
+?? art/check/music-m320-play.jpg
+?? art/check/music-phone-jump.jpg
+?? art/check/music-phone-night.jpg
+?? art/check/music-phone-play.jpg
+?? art/check/mv-desk-bridge.jpg
+?? art/check/mv-desk-chorus.jpg
+?? art/check/mv-desk-final-blank.jpg
+?? art/check/mv-desk-start.jpg
+?? art/check/mv-desk-v1.jpg
+?? art/check/mv-phone-bridge.jpg
+?? art/check/mv-phone-chorus.jpg
+?? art/check/mv-phone-final-blank.jpg
+?? art/check/mv-phone-start.jpg
+?? art/check/mv-phone-v1.jpg
+?? art/check/occlusion-backstage.png
+?? art/check/stair-1.png
+?? art/check/stair-2.png
+?? art/check/stair-3.png
+?? art/check/stair-4.png
+?? art/music_raw/
+?? art/raw/a_desk_raw.json
+?? art/raw/a_desk_raw.png
+?? art/raw/a_piano_raw.json
+?? art/raw/b_balcony_raw.json
+?? art/raw/b_balcony_raw.png
+?? art/raw/b_beam_raw.json
+?? art/raw/b_beam_raw.png
+?? art/raw/b_post_raw.json
+?? art/raw/b_post_raw.png
+?? art/raw/cg/cg_2004_door_3.json
+?? art/raw/cg/cg_2004_door_3.png
+?? art/raw/cg/cg_2004_door_4.json
+?? art/raw/cg/cg_2004_door_4.png
+?? art/raw/cg/cg_2022_clinic_3.json
+?? art/raw/cg/cg_2022_clinic_3.png
+?? art/raw/cg/cg_2022_clinic_4.json
+?? art/raw/cg/cg_2022_clinic_4.png
+?? art/raw/cg/cg_2022_clinic_5.json
+?? art/raw/cg/cg_2022_clinic_5.png
+?? art/raw/cg/cg_2022_clinic_6.json
+?? art/raw/cg/cg_2022_clinic_6.png
+?? art/raw/d_case_raw.png
+?? art/raw/d_jewel_raw.png
+?? art/raw/d_rack_raw.png
+?? art/raw/d_radio_raw.png
+?? art/raw/d_vanity_raw.png
+?? art/raw/d_window_raw.png
+?? art/raw/ground_alley_raw.json
+?? art/raw/ground_alley_raw.png
+?? art/raw/ground_dressing_raw.png
+?? art/raw/l_basket_raw.json
+?? art/raw/l_basket_raw.png
+?? art/raw/l_scooter_raw.json
+?? art/raw/l_scooter_raw.png
+?? art/raw/shots/s_mem4_2_3.json
+?? art/raw/shots/s_mem4_2_3.png
+?? art/raw/shots/s_mem4_2_4.json
+?? art/raw/shots/s_mem4_2_4.png
+?? art/raw/shots/s_mem4_3_3.json
+?? art/raw/shots/s_mem4_3_3.png
+?? art/raw/shots/s_mem4_3_4.json
+?? art/raw/shots/s_mem4_3_4.png
+?? art/raw/shots/s_prologue_2_3.json
+?? art/raw/shots/s_prologue_2_3.png
+?? art/raw/shots/s_prologue_2_4.json
+?? art/raw/shots/s_prologue_2_4.png
+?? art/raw/songcovers/
+?? art/raw/standee/_old_dr/dr_lin_1.json
+?? art/raw/standee/_old_dr/dr_lin_1.png
+?? art/raw/standee/_old_dr/dr_lin_2.json
+?? art/raw/standee/_old_dr/dr_lin_2.png
+?? art/raw/standee/_old_dr/dr_lin_3.json
+?? art/raw/standee/_old_dr/dr_lin_3.png
+?? art/raw/standee/_old_dr/dr_lin_4.json
+?? art/raw/standee/_old_dr/dr_lin_4.png
+?? art/voice-test/cand/
+?? art/voice-test/samples/
+?? art/voice-test/taigi/vc-long-antie.wav
+?? art/voice-test/taigi/vc-long-aunt.wav
+?? art/voice-test/taigi/vc-long-child.wav
+?? art/voice-test/taigi/vc-long-dad.wav
+?? "canon/\346\255\214\350\251\236-\346\270\257\351\202\212\347\232\204\347\207\210-suno\351\237\263\350\277\221.md"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex.err"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex.out"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex2.err"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex2.out"
+?? "design/\346\255\214\350\251\236\351\207\215\345\257\253/"
+?? "design/\347\265\220\345\261\200C\344\277\256\346\224\271.md"
+?? "design/\347\267\250\350\274\257\346\204\217\350\246\213/"
+?? ui/mockup/mockup.png
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.log2"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.log2"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.r1.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.log2"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.r1.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/open.log2"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/open.r1.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.log2"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.r1.md"
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+for directory in [Path('/'), Path('/home'), Path('/home/ct'), Path('/home/ct/larch-ember'), Path('/home/ct/larch-ember/審稿'), Path('/home/ct/larch-ember/審稿/修稿')]:
+    path = directory / 'AGENTS.md'
+    if path.is_file():
+        print(f'FILE {path}\\n{path.read_text()}')
+p = Path('canon/劇本.md')
+s = p.read_text()
+start = s.index('## open（')
+end = s.find('\\n## ', start + 1)
+scene = s[start:end if end >= 0 else None]
+print('CANON OPEN\\n' + scene)
+print(f'SCENE CHARACTERS {len(scene.rstrip())}')
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+CANON OPEN
+## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
+
+〔圖：s_dress_1〕
+旁白：余靜穿著黑色蕾絲禮服，坐在鏡前。
+旁白：門外敲了兩下。她鬆開捏著裙邊的手。
+余靜：請進。
+旁白：一個男人提著保溫杯進門。
+余靜：先生，找我嗎？
+男人：我是這裡的工作人員。送水來的。
+
+〔圖：s_dress_3〕
+旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
+余靜：麻煩你了。
+旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。
+余靜：不好意思，怎麼就拿給你了。我自己放。
+余靜：有人在，我比較安心。
+余靜（心）：話講太多了。連人家姓什麼都沒問。
+余靜：現在幾點了？
+旁白：男人低頭看錶。她把杯子放在桌上，轉向窗戶。
+余靜（心）：我剛剛是不是問過了？
+男人：四點四十。
+余靜：我乾脆把時鐘掛脖子上好了。
+旁白：她笑了兩聲。他仍拿著杯蓋。她轉回鏡前。
+
+〔圖：s_open_photo〕
+旁白：鏡角貼著一張照片。她湊近，看了看照片裡白襯衫男人的臉。
+余靜：先生，這張……算了。
+旁白：畫面轉回 1988 年的台南。
+
+SCENE CHARACTERS 475
+
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw --help' in /home/ct/larch-ember
+ exited 1 in 761ms:
+
+simplified　簡體字（22 處）
+  一律正體中文。Big5 編得出來的算正體,編不出來的 CJK 當簡體;真的要用的冷字那一行加 speak-tw-ok。
+    art/check/cg-fix-vision-check.txt:2  门
+    art/check/cg-fix-vision-check.txt:2  处
+    art/check/cg-fix-vision-check.txt:2  显
+    art/check/cg-fix-vision-check.txt:11  没
+    art/check/cg-fix-vision-check.txt:11  没
+    art/check/cg-fix-vision-check.txt:11  两
+    art/check/cg-fix-vision-check.txt:11  没
+    art/check/cg-fix-vision-check.txt:11  显
+    …還有 14 處
+
+luo-wording　自造「落」的用法（2 處）
+  「落檔」「落下來」「落進」是自己造的詞,不是一般中文。改:記下來／寫進檔案／下載下來／存檔／收進 repo。（「落地」不在此列,政策落地、方案落地是通用說法。）
+    審稿/修稿/concert.packet.md:120  落進
+    審稿/紀錄/sweep_劇本_gate_1029_073803/scene.md:18  落進
+
+fake-contrast　「不是 X，是 Y」的假對比（15 處）
+  直接把 Y 講出來就好。這個句型是用來製造洞見感的,不傳達資訊。換行或句號斷開也算(「從來不是 X。是 Y。」)。
+    審稿/修稿/dark.packet.md:164  」｜錯認不是解釋出來的，是脫口而出；配上提裙跟上去的畫面，讓人心碎
+    審稿/修稿/encore.packet.md:119  」｜忘記不是被宣告，而是先回頭確認，日常得刺人
+    審稿/紀錄/gate_song2023_1029_072122.md:10  」真人不會這樣說：余靜不是忘記他是誰，只是卡在「阿……」後面的字（阿希），而且才剛
+    審稿/紀錄/sweep_劇本_1029_032130/dark.md:29  ｜搭配不當｜手掌貼的是玻璃，不是倒影；「貼住倒影」唸起來像小說腔，不是畫面動作
+    審稿/紀錄/sweep_劇本_1029_032359/canal.md:28  ｜真人不會這樣說｜「仔細漢」不是自然台語，應是名字後接「仔細漢」
+    審稿/紀錄/sweep_劇本_1029_033230/kitchen.md:38  ｜病識感不是宣告，而是一個具體缺口「聲音」，很短卻有失落
+    審稿/紀錄/sweep_劇本_1029_033230/kitchen.md:40  ｜愛不是抒情，是記下障礙、把矮凳挪開的具體動作
+    審稿/紀錄/sweep_劇本_gate_1029_070915/scene.md:19  ｜被叫到歌手面前第一句不是辯解失誤或制式道歉，而是先問耳朵還痛不痛，一句話就立住程希溫厚、
+    …還有 7 處
+
+china-term　中國用語（3 處）
+  正體字寫的中國詞,簡體字表擋不到。宇航員→太空人、視頻→影片、賽道→領域或這一塊、視覺衝擊力→畫面的張力、屏幕→螢幕、軟件→軟體、用戶→使用者、默認→預設、激活→啟用、內存→記憶體、分辨率→解析度、服務器→伺服器、加載→載入、數據庫→資料庫、一鍵→按一下、賦能與抓手與閉環與顆粒度→直接講在做什麼。(逐字引用對岸原文時,那一行加 speak-tw-ok)
+    審稿/修稿/door2004.report2.md:8  抓手
+    審稿/修稿/forget.packet.md:149  默認
+    審稿/紀錄/sweep_劇本_gate_1029_071606/scene.md:20  默認
+
+pronoun-person　「年輕的那個」這類用「的那個」代替人或物（1 處）
+  「年紀大的那個翻開資料夾」「年輕的那個問」「就是印在公文右下角的那一個」：用「形容詞＋的那個」撐場是 AI 味，讀者解得開也一樣（2026-10-09 使用者讀《十一分鐘》：「像這種『那個』的用法就是 AI 味，要去除乾淨」）。講出實際稱呼（年長的審訊員）或直接描述（跟公文右下角印的一模一樣）。
+    審稿/紀錄/sweep_劇本_1029_032359/canal.md:7  爸邊殺魚邊聽的那個
+
+掃了 209 個檔案，43 處要改
+確定某一處是刻意的，就在那一行加 speak-tw-ok
+
+codex
+目前原稿的 [0094] 已刪掉「先放著」，[0102] 也已寫明她把杯子遞向他，這兩處可原樣保留。本輪只改 [0096]，讓她把「剛剛可能問過」說出口，再笑著遮羞；第 15 句與 1988 年的轉場都保留原稿。
+apply patch
+patch: completed
+/home/ct/larch-ember/審稿/修稿/open.md
+diff --git a/審稿/修稿/open.md b/審稿/修稿/open.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..bc122af4e9526252e5f3b27c655a641ccf3a5731
+--- /dev/null
++++ b/審稿/修稿/open.md
+@@ -0,0 +1,28 @@
++## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
++
++〔圖：s_dress_1〕
++旁白：余靜穿著黑色蕾絲禮服，坐在鏡前。
++旁白：門外敲了兩下。她鬆開捏著裙邊的手。
++余靜：請進。
++旁白：一個男人提著保溫杯進門。
++余靜：先生，找我嗎？
++男人：我是這裡的工作人員。送水來的。
++
++〔圖：s_dress_3〕
++旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
++余靜：麻煩你了。
++旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。
++余靜：不好意思，怎麼就拿給你了。我自己放。
++余靜：有人在，我比較安心。
++余靜（心）：話講太多了。連人家姓什麼都沒問。
++余靜：現在幾點了？
++旁白：男人低頭看錶。她把杯子放在桌上，轉向窗戶。
++余靜（心）：我剛剛是不是問過了？
++男人：四點四十。
++余靜：我剛剛也問了吧？我這記性。
++旁白：她笑了兩聲。他仍拿著杯蓋。她轉回鏡前。
++
++〔圖：s_open_photo〕
++旁白：鏡角貼著一張照片。她湊近，看了看照片裡白襯衫男人的臉。
++余靜：先生，這張……算了。
++旁白：畫面轉回 1988 年的台南。
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+from difflib import unified_diff
+canon = Path('canon/劇本.md').read_text()
+start = canon.index('## open（')
+end = canon.find('\\n## ', start + 1)
+original = canon[start:end if end >= 0 else None].rstrip() + '\\n'
+revised = Path('審稿/修稿/open.md').read_text()
+old_lines = original.splitlines()
+new_lines = revised.splitlines()
+assert len(old_lines) == len(new_lines), '行數變動'
+changes = [(i, before, after) for i, (before, after) in enumerate(zip(old_lines, new_lines), 1) if before "'!= after]
+assert [i for i, _, _ in changes] == [22], changes
+assert len(revised) <= len(original), '"'長度增加'
+assert new_lines[26] == '余靜：先生，這張……算了。'
+assert new_lines[13] == '旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。'
+assert new_lines[14] == old_lines[14]
+assert new_lines[27] == old_lines[27]
+print(''.join(unified_diff(old_lines, new_lines, fromfile='canon/劇本.md 的 open', tofile='審稿/修稿/open.md', lineterm='\\n')))
+print(f'檢查通過：僅第 22 行改動；字元數 {len(original.rstrip())} → {len(revised.rstrip())}；其餘逐字一致。')
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+--- canon/劇本.md 的 open
++++ 審稿/修稿/open.md
+@@ -19,7 +19,7 @@
+ 旁白：男人低頭看錶。她把杯子放在桌上，轉向窗戶。 余靜（心）：我剛剛是不是問過了？ 男人：四點四十。-余靜：我乾脆把時鐘掛脖子上好了。+余靜：我剛剛也問了吧？我這記性。 旁白：她笑了兩聲。他仍拿著杯蓋。她轉回鏡前。  〔圖：s_open_photo〕
+檢查通過：僅第 22 行改動；字元數 475 → 475；其餘逐字一致。
+
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw --public 審稿/修稿/open.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+
+掃了 1 個檔案，0 處要改
+
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw 審稿/修稿/open.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+
+掃了 1 個檔案，0 處要改
+
+codex
+已寫入 [open.md](/home/ct/larch-ember/審稿/修稿/open.md)，只改一句，長度不增加。`speak-tw` 與 `--public` 均通過。
+
+- [0094] 不改：原稿已是「先生，這張……算了。」，沒有「先放著」。
+- [0096] 改為「我剛剛也問了吧？我這記性。」讓重問的疑慮說出口，接得上後面的遮羞笑。
+- [0102] 不改：原稿已有「她把杯子遞向他，又停住了。」，主語與方向清楚。
+hook: Stop
+hook: Stop Completed
+tokens used
+63,077
+已寫入 [open.md](/home/ct/larch-ember/審稿/修稿/open.md)，只改一句，長度不增加。`speak-tw` 與 `--public` 均通過。
+
+- [0094] 不改：原稿已是「先生，這張……算了。」，沒有「先放著」。
+- [0096] 改為「我剛剛也問了吧？我這記性。」讓重問的疑慮說出口，接得上後面的遮羞笑。
+- [0102] 不改：原稿已有「她把杯子遞向他，又停住了。」，主語與方向清楚。

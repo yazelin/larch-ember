@@ -49,6 +49,11 @@ def cx(p):
     r = subprocess.run(['codex', 'exec', '-m', os.environ.get('CODEX_MODEL', 'gpt-6.1-sol'), '--skip-git-repo-check', '-s', 'read-only', '-C', '/tmp', '-'], input=p, capture_output=True, text=True, timeout=900).stdout
     return r.split('tokens used', 1)[-1].split('\n', 1)[-1].strip() if 'tokens used' in r else r.strip()
 _ds_lock = __import__('threading').Lock()
+def qw(p):   # llmshare 上的 qwen3.5:397b；2026-10-29 argon 額度用完（七天）時補第三位讀稿人
+    try: return subprocess.run(['llmshare', 'raw', 'qwen3.5:397b', p], capture_output=True, text=True, timeout=900, env={**os.environ, 'LLMSHARE_ALLOW_ANY': '1'}).stdout.strip()
+    except Exception: return ''
+
+
 def dsl(p):   # 同一時間只送一個、間隔 3 秒
     with _ds_lock: time.sleep(3); return ds(p)
 
@@ -57,8 +62,8 @@ def dsl(p):   # 同一時間只送一個、間隔 3 秒
 # 要強制指定：環境變數 READERS=codex,deepseek,geminiweb
 PREFERRED = {'opus': ag('claude-opus-5-5-high'), 'codex': cx, 'argon': ag('gemini-4-argon-high'), 'deepseek': dsl}
 FALLBACK = {'google': ('geminiweb', gm)}
-FAMILY = {'claude': 'anthropic', 'opus': 'anthropic', 'codex': 'openai', 'argon': 'google', 'geminiweb': 'google', 'deepseek': 'deepseek'}
-ALL = {**PREFERRED, 'geminiweb': gm}
+FAMILY = {'qwen': 'alibaba', 'claude': 'anthropic', 'opus': 'anthropic', 'codex': 'openai', 'argon': 'google', 'geminiweb': 'google', 'deepseek': 'deepseek'}
+ALL = {**PREFERRED, 'geminiweb': gm, 'qwen': qw}
 
 
 def available():
