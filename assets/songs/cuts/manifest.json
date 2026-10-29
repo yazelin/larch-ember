@@ -1,0 +1,3663 @@
+{
+ "version": 1,
+ "generated": "2026-10-29T11:55:56+0800",
+ "songs_dir": "assets/songs",
+ "asr": "whisper.cpp large-v3-turbo（共用 whisper-server）",
+ "songs": {
+  "晚安，台南": {
+   "file": "晚安台南.mp3",
+   "duration": 204.84,
+   "asr_chars": 0,
+   "sha": "70e253b57d",
+   "manual_times": true,
+   "lines": [
+    {
+     "i": 0,
+     "sec": "Verse 1",
+     "text": "天還沒亮攤就開了",
+     "t0": 16.76,
+     "t1": 19.56,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 1,
+     "sec": "Verse 1",
+     "text": "阿爸扛來一桶冰",
+     "t0": 19.71,
+     "t1": 23.43,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 2,
+     "sec": "Verse 1",
+     "text": "收音機沙沙響",
+     "t0": 23.58,
+     "t1": 26.84,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 3,
+     "sec": "Verse 1",
+     "text": "冰水流過地磚",
+     "t0": 26.99,
+     "t1": 31.87,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 4,
+     "sec": "Verse 1",
+     "text": "魚鱗黏在圍裙",
+     "t0": 32.02,
+     "t1": 34.36,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 5,
+     "sec": "Verse 1",
+     "text": "我伸手幫他拍掉",
+     "t0": 34.51,
+     "t1": 37.69,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 6,
+     "sec": "Verse 1",
+     "text": "他秤好最後一尾",
+     "t0": 37.84,
+     "t1": 42.45,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 7,
+     "sec": "Verse 1",
+     "text": "才問我吃飽沒",
+     "t0": 42.6,
+     "t1": 47.09,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 8,
+     "sec": "Verse 2",
+     "text": "運河風從橋下來",
+     "t0": 47.24,
+     "t1": 50.29,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 9,
+     "sec": "Verse 2",
+     "text": "路燈照著濕石階",
+     "t0": 50.44,
+     "t1": 55.15,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 10,
+     "sec": "Verse 2",
+     "text": "明天若我不認得你",
+     "t0": 55.3,
+     "t1": 57.85,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 11,
+     "sec": "Verse 2",
+     "text": "請把屋裡燈留著",
+     "t0": 58.0,
+     "t1": 63.03,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 12,
+     "sec": "Verse 2",
+     "text": "魚攤收了水還滴",
+     "t0": 63.18,
+     "t1": 70.66,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 13,
+     "sec": "Verse 2",
+     "text": "我沿著亮處回家",
+     "t0": 70.81,
+     "t1": 78.58,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 14,
+     "sec": "Chorus",
+     "text": "淑靜仔 叫我一聲",
+     "t0": 78.73,
+     "t1": 81.07,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 15,
+     "sec": "Chorus",
+     "text": "名字先留在你這裡",
+     "t0": 81.22,
+     "t1": 86.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 16,
+     "sec": "Chorus",
+     "text": "哪天我走丟了",
+     "t0": 86.2,
+     "t1": 88.59,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 17,
+     "sec": "Chorus",
+     "text": "再叫我一聲就好",
+     "t0": 88.74,
+     "t1": 94.0,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 18,
+     "sec": "Chorus",
+     "text": "水邊的燈還亮著",
+     "t0": 94.15,
+     "t1": 99.55,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 19,
+     "sec": "Chorus",
+     "text": "我聽見就回家",
+     "t0": 99.7,
+     "t1": 125.14,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 20,
+     "sec": "Verse 3",
+     "text": "有人坐在我身旁",
+     "t0": 125.29,
+     "t1": 128.21,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 21,
+     "sec": "Verse 3",
+     "text": "我想不起他是誰",
+     "t0": 128.36,
+     "t1": 132.13,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 22,
+     "sec": "Verse 3",
+     "text": "他把保溫杯打開",
+     "t0": 132.28,
+     "t1": 135.96,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 23,
+     "sec": "Verse 3",
+     "text": "等半分鐘才遞給我",
+     "t0": 136.11,
+     "t1": 141.36,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 24,
+     "sec": "Verse 3",
+     "text": "杯口的熱氣散了",
+     "t0": 141.51,
+     "t1": 144.22,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 25,
+     "sec": "Verse 3",
+     "text": "他還坐在我身邊",
+     "t0": 144.37,
+     "t1": 149.08,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 26,
+     "sec": "Verse 3",
+     "text": "有他陪我 我不怕",
+     "t0": 149.23,
+     "t1": 156.91,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 27,
+     "sec": "Final Chorus",
+     "text": "淑靜仔 叫我一聲",
+     "t0": 157.06,
+     "t1": 159.29,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 28,
+     "sec": "Final Chorus",
+     "text": "名字先留在你這裡",
+     "t0": 159.44,
+     "t1": 164.26,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 29,
+     "sec": "Final Chorus",
+     "text": "哪天我走丟了",
+     "t0": 164.41,
+     "t1": 166.87,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 30,
+     "sec": "Final Chorus",
+     "text": "再叫我一聲就好",
+     "t0": 167.02,
+     "t1": 172.37,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 31,
+     "sec": "Final Chorus",
+     "text": "水邊的燈還亮著",
+     "t0": 172.52,
+     "t1": 175.95,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 32,
+     "sec": "Final Chorus",
+     "text": "我聽見就回家",
+     "t0": 176.1,
+     "t1": 183.55,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 33,
+     "sec": "Outro",
+     "text": "晚安 台南",
+     "t0": 183.7,
+     "t1": 188.16,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 34,
+     "sec": "Outro",
+     "text": "你把燈留著",
+     "t0": 188.31,
+     "t1": 204.84,
+     "conf": 1.0,
+     "interp": false
+    }
+   ],
+   "char_match": 1.0,
+   "low_conf_lines": 0
+  },
+  "港邊的燈": {
+   "file": "港邊的燈.mp3",
+   "duration": 123.24,
+   "asr_chars": 0,
+   "sha": "c0199a1a8e",
+   "manual_times": true,
+   "lines": [
+    {
+     "i": 0,
+     "sec": "Verse",
+     "text": "港邊的燈 一葩一葩光",
+     "t0": 14.9,
+     "t1": 24.7,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 1,
+     "sec": "Verse",
+     "text": "討海的人 猶未轉來",
+     "t0": 24.7,
+     "t1": 33.7,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 2,
+     "sec": "Verse",
+     "text": "阮徛佇岸邊 等你的船",
+     "t0": 33.7,
+     "t1": 43.7,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 3,
+     "sec": "Verse",
+     "text": "風吹冷冷 心肝燒燒",
+     "t0": 43.7,
+     "t1": 54.0,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 4,
+     "sec": "Chorus",
+     "text": "燈若熄 船就到",
+     "t0": 54.5,
+     "t1": 61.2,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 5,
+     "sec": "Chorus",
+     "text": "阮的心 替你留一葩",
+     "t0": 61.2,
+     "t1": 69.8,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 6,
+     "sec": "Chorus",
+     "text": "燈若熄 船就到",
+     "t0": 70.0,
+     "t1": 77.8,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 7,
+     "sec": "Chorus",
+     "text": "阮佇遮 等你轉來",
+     "t0": 77.8,
+     "t1": 95.0,
+     "conf": 1.0,
+     "interp": false
+    }
+   ],
+   "char_match": 1.0,
+   "low_conf_lines": 0
+  },
+  "餘燼@錄音室": {
+   "file": "餘燼-錄音室.mp3",
+   "duration": 250.03,
+   "asr_chars": 0,
+   "sha": "252693c36c",
+   "manual_times": true,
+   "lines": [
+    {
+     "i": 0,
+     "sec": "Verse 1",
+     "text": "燈一盞一盞暗下來",
+     "t0": 15.68,
+     "t1": 18.95,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 1,
+     "sec": "Verse 1",
+     "text": "掌聲退回了街上",
+     "t0": 19.1,
+     "t1": 22.25,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 2,
+     "sec": "Verse 1",
+     "text": "我把最後一個字收好",
+     "t0": 22.4,
+     "t1": 26.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 3,
+     "sec": "Verse 1",
+     "text": "門口又有一朵紅",
+     "t0": 26.2,
+     "t1": 29.58,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 4,
+     "sec": "Verse 1",
+     "text": "沒有名字 沒有卡片",
+     "t0": 29.73,
+     "t1": 32.33,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 5,
+     "sec": "Verse 1",
+     "text": "花瓣上的露水還沒乾",
+     "t0": 32.48,
+     "t1": 36.31,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 6,
+     "sec": "Verse 1",
+     "text": "是誰在散場以後",
+     "t0": 36.46,
+     "t1": 39.04,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 7,
+     "sec": "Verse 1",
+     "text": "還不肯走",
+     "t0": 39.19,
+     "t1": 43.04,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 8,
+     "sec": "Pre-Chorus",
+     "text": "我不認得你的臉",
+     "t0": 43.19,
+     "t1": 46.52,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 9,
+     "sec": "Pre-Chorus",
+     "text": "卻認得你的安靜",
+     "t0": 46.67,
+     "t1": 57.4,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 10,
+     "sec": "Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 57.55,
+     "t1": 60.89,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 11,
+     "sec": "Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 61.04,
+     "t1": 64.96,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 12,
+     "sec": "Chorus",
+     "text": "台下坐滿了陌生人",
+     "t0": 65.11,
+     "t1": 67.45,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 13,
+     "sec": "Chorus",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 67.6,
+     "t1": 71.36,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 14,
+     "sec": "Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 71.51,
+     "t1": 79.06,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 15,
+     "sec": "Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 79.21,
+     "t1": 85.89,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 16,
+     "sec": "Chorus",
+     "text": "不肯冷",
+     "t0": 86.04,
+     "t1": 101.25,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 17,
+     "sec": "Verse 2",
+     "text": "下一座城 下一個晚上",
+     "t0": 101.4,
+     "t1": 104.35,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 18,
+     "sec": "Verse 2",
+     "text": "同一種紅在門外",
+     "t0": 104.5,
+     "t1": 107.54,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 19,
+     "sec": "Verse 2",
+     "text": "我開始對著那片黑暗唱",
+     "t0": 107.69,
+     "t1": 111.54,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 20,
+     "sec": "Verse 2",
+     "text": "好像知道你在",
+     "t0": 111.69,
+     "t1": 114.76,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 21,
+     "sec": "Verse 2",
+     "text": "你從來不說話",
+     "t0": 114.91,
+     "t1": 116.9,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 22,
+     "sec": "Verse 2",
+     "text": "我也從來不問",
+     "t0": 117.05,
+     "t1": 121.63,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 23,
+     "sec": "Verse 2",
+     "text": "我們就這樣",
+     "t0": 121.78,
+     "t1": 123.81,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 24,
+     "sec": "Verse 2",
+     "text": "過了一年又一年",
+     "t0": 123.96,
+     "t1": 128.92,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 25,
+     "sec": "Pre-Chorus#2",
+     "text": "我不認得你的臉",
+     "t0": 129.07,
+     "t1": 132.55,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 26,
+     "sec": "Pre-Chorus#2",
+     "text": "卻認得你的安靜",
+     "t0": 132.7,
+     "t1": 143.86,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 27,
+     "sec": "Chorus#2",
+     "text": "如果我是一場餘燼",
+     "t0": 144.01,
+     "t1": 146.88,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 28,
+     "sec": "Chorus#2",
+     "text": "你是最後熄燈的人",
+     "t0": 147.03,
+     "t1": 151.09,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 29,
+     "sec": "Chorus#2",
+     "text": "台下坐滿了陌生人",
+     "t0": 151.24,
+     "t1": 153.6,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 30,
+     "sec": "Chorus#2",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 153.75,
+     "t1": 157.53,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 31,
+     "sec": "Chorus#2",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 157.68,
+     "t1": 165.31,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 32,
+     "sec": "Chorus#2",
+     "text": "我還有一點紅 替你留著",
+     "t0": 165.46,
+     "t1": 172.61,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 33,
+     "sec": "Chorus#2",
+     "text": "不肯冷",
+     "t0": 172.76,
+     "t1": 176.18,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 34,
+     "sec": "Bridge",
+     "text": "有一天我會忘記",
+     "t0": 176.33,
+     "t1": 179.33,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 35,
+     "sec": "Bridge",
+     "text": "今晚唱過什麼",
+     "t0": 179.48,
+     "t1": 183.29,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 36,
+     "sec": "Bridge",
+     "text": "你替我記得好嗎",
+     "t0": 183.44,
+     "t1": 185.37,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 37,
+     "sec": "Bridge",
+     "text": "我今晚唱到燈熄掉",
+     "t0": 185.52,
+     "t1": 190.75,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 38,
+     "sec": "Final Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 190.9,
+     "t1": 193.63,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 39,
+     "sec": "Final Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 193.78,
+     "t1": 197.78,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 40,
+     "sec": "Final Chorus",
+     "text": "就算我認不出你",
+     "t0": 197.93,
+     "t1": 200.5,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 41,
+     "sec": "Final Chorus",
+     "text": "也請你 坐在那裡",
+     "t0": 200.65,
+     "t1": 204.35,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 42,
+     "sec": "Final Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 204.5,
+     "t1": 212.11,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 43,
+     "sec": "Final Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 212.26,
+     "t1": 220.85,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 44,
+     "sec": "Final Chorus",
+     "text": "不肯冷",
+     "t0": 221.0,
+     "t1": 228.1,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 45,
+     "sec": "Outro",
+     "text": "不肯冷",
+     "t0": 228.25,
+     "t1": 250.03,
+     "conf": 1.0,
+     "interp": false
+    }
+   ],
+   "char_match": 1.0,
+   "low_conf_lines": 0
+  },
+  "餘燼@台下": {
+   "file": "餘燼-台下.mp3",
+   "duration": 236.4,
+   "asr_chars": 0,
+   "sha": "bf7f1fef2d",
+   "manual_times": true,
+   "lines": [
+    {
+     "i": 0,
+     "sec": "Verse 1",
+     "text": "燈一盞一盞暗下來",
+     "t0": 15.95,
+     "t1": 18.26,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 1,
+     "sec": "Verse 1",
+     "text": "掌聲退回了街上",
+     "t0": 18.41,
+     "t1": 22.8,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 2,
+     "sec": "Verse 1",
+     "text": "我把最後一個字收好",
+     "t0": 22.95,
+     "t1": 25.55,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 3,
+     "sec": "Verse 1",
+     "text": "門口又有一朵紅",
+     "t0": 25.7,
+     "t1": 29.1,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 4,
+     "sec": "Verse 1",
+     "text": "沒有名字 沒有卡片",
+     "t0": 29.25,
+     "t1": 32.21,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 5,
+     "sec": "Verse 1",
+     "text": "花瓣上的露水還沒乾",
+     "t0": 32.36,
+     "t1": 36.37,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 6,
+     "sec": "Verse 1",
+     "text": "是誰在散場以後",
+     "t0": 36.52,
+     "t1": 39.35,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 7,
+     "sec": "Verse 1",
+     "text": "還不肯走",
+     "t0": 39.5,
+     "t1": 43.55,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 8,
+     "sec": "Pre-Chorus",
+     "text": "我不認得你的臉",
+     "t0": 43.7,
+     "t1": 47.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 9,
+     "sec": "Pre-Chorus",
+     "text": "卻認得你的安靜",
+     "t0": 47.2,
+     "t1": 52.54,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 10,
+     "sec": "Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 52.69,
+     "t1": 56.72,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 11,
+     "sec": "Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 56.87,
+     "t1": 60.6,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 12,
+     "sec": "Chorus",
+     "text": "台下坐滿了陌生人",
+     "t0": 60.75,
+     "t1": 63.18,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 13,
+     "sec": "Chorus",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 63.33,
+     "t1": 69.33,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 14,
+     "sec": "Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 69.48,
+     "t1": 74.06,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 15,
+     "sec": "Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 74.21,
+     "t1": 80.25,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 16,
+     "sec": "Chorus",
+     "text": "不肯冷",
+     "t0": 80.4,
+     "t1": 88.57,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 17,
+     "sec": "Verse 2",
+     "text": "下一座城 下一個晚上",
+     "t0": 88.72,
+     "t1": 91.39,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 18,
+     "sec": "Verse 2",
+     "text": "同一種紅在門外",
+     "t0": 91.54,
+     "t1": 95.09,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 19,
+     "sec": "Verse 2",
+     "text": "我開始對著那片黑暗唱",
+     "t0": 95.24,
+     "t1": 98.51,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 20,
+     "sec": "Verse 2",
+     "text": "好像知道你在",
+     "t0": 98.66,
+     "t1": 102.11,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 21,
+     "sec": "Verse 2",
+     "text": "你從來不說話",
+     "t0": 102.26,
+     "t1": 105.3,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 22,
+     "sec": "Verse 2",
+     "text": "我也從來不問",
+     "t0": 105.45,
+     "t1": 109.25,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 23,
+     "sec": "Verse 2",
+     "text": "我們就這樣",
+     "t0": 109.4,
+     "t1": 111.47,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 24,
+     "sec": "Verse 2",
+     "text": "過了一年又一年",
+     "t0": 111.62,
+     "t1": 116.71,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 25,
+     "sec": "Pre-Chorus#2",
+     "text": "我不認得你的臉",
+     "t0": 116.86,
+     "t1": 119.79,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 26,
+     "sec": "Pre-Chorus#2",
+     "text": "卻認得你的安靜",
+     "t0": 119.94,
+     "t1": 125.73,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 27,
+     "sec": "Chorus#2",
+     "text": "如果我是一場餘燼",
+     "t0": 125.88,
+     "t1": 129.43,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 28,
+     "sec": "Chorus#2",
+     "text": "你是最後熄燈的人",
+     "t0": 129.58,
+     "t1": 133.39,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 29,
+     "sec": "Chorus#2",
+     "text": "台下坐滿了陌生人",
+     "t0": 133.54,
+     "t1": 135.95,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 30,
+     "sec": "Chorus#2",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 136.1,
+     "t1": 142.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 31,
+     "sec": "Chorus#2",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 142.2,
+     "t1": 146.75,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 32,
+     "sec": "Chorus#2",
+     "text": "我還有一點紅 替你留著",
+     "t0": 146.9,
+     "t1": 153.19,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 33,
+     "sec": "Chorus#2",
+     "text": "不肯冷",
+     "t0": 153.34,
+     "t1": 157.36,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 34,
+     "sec": "Bridge",
+     "text": "有一天我會忘記",
+     "t0": 157.51,
+     "t1": 160.15,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 35,
+     "sec": "Bridge",
+     "text": "今晚唱過什麼",
+     "t0": 160.3,
+     "t1": 164.16,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 36,
+     "sec": "Bridge",
+     "text": "你替我記得好嗎",
+     "t0": 164.31,
+     "t1": 165.89,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 37,
+     "sec": "Bridge",
+     "text": "我今晚唱到燈熄掉",
+     "t0": 166.04,
+     "t1": 172.97,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 38,
+     "sec": "Final Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 173.12,
+     "t1": 176.85,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 39,
+     "sec": "Final Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 177.0,
+     "t1": 180.67,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 40,
+     "sec": "Final Chorus",
+     "text": "就算我認不出你",
+     "t0": 180.82,
+     "t1": 183.51,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 41,
+     "sec": "Final Chorus",
+     "text": "也請你 坐在那裡",
+     "t0": 183.66,
+     "t1": 189.39,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 42,
+     "sec": "Final Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 189.54,
+     "t1": 194.15,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 43,
+     "sec": "Final Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 194.3,
+     "t1": 200.31,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 44,
+     "sec": "Final Chorus",
+     "text": "不肯冷",
+     "t0": 200.46,
+     "t1": 206.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 45,
+     "sec": "Outro",
+     "text": "不肯冷",
+     "t0": 206.2,
+     "t1": 236.4,
+     "conf": 1.0,
+     "interp": false
+    }
+   ],
+   "char_match": 1.0,
+   "low_conf_lines": 0
+  },
+  "餘燼@大合唱": {
+   "file": "餘燼-大合唱.mp3",
+   "duration": 245.95,
+   "asr_chars": 0,
+   "sha": "65f769ea44",
+   "manual_times": true,
+   "lines": [
+    {
+     "i": 0,
+     "sec": "Verse 1",
+     "text": "燈一盞一盞暗下來",
+     "t0": 15.19,
+     "t1": 18.51,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 1,
+     "sec": "Verse 1",
+     "text": "掌聲退回了街上",
+     "t0": 18.66,
+     "t1": 21.88,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 2,
+     "sec": "Verse 1",
+     "text": "我把最後一個字收好",
+     "t0": 22.03,
+     "t1": 25.61,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 3,
+     "sec": "Verse 1",
+     "text": "門口又有一朵紅",
+     "t0": 25.76,
+     "t1": 28.57,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 4,
+     "sec": "Verse 1",
+     "text": "沒有名字 沒有卡片",
+     "t0": 28.72,
+     "t1": 32.33,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 5,
+     "sec": "Verse 1",
+     "text": "花瓣上的露水還沒乾",
+     "t0": 32.48,
+     "t1": 35.76,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 6,
+     "sec": "Verse 1",
+     "text": "是誰在散場以後",
+     "t0": 35.91,
+     "t1": 39.08,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 7,
+     "sec": "Verse 1",
+     "text": "還不肯走",
+     "t0": 39.23,
+     "t1": 42.2,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 8,
+     "sec": "Pre-Chorus",
+     "text": "我不認得你的臉",
+     "t0": 42.35,
+     "t1": 45.65,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 9,
+     "sec": "Pre-Chorus",
+     "text": "卻認得你的安靜",
+     "t0": 45.8,
+     "t1": 56.3,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 10,
+     "sec": "Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 56.45,
+     "t1": 59.95,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 11,
+     "sec": "Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 60.1,
+     "t1": 64.34,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 12,
+     "sec": "Chorus",
+     "text": "台下坐滿了陌生人",
+     "t0": 64.49,
+     "t1": 67.2,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 13,
+     "sec": "Chorus",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 67.35,
+     "t1": 70.89,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 14,
+     "sec": "Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 71.04,
+     "t1": 78.08,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 15,
+     "sec": "Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 78.23,
+     "t1": 85.19,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 16,
+     "sec": "Chorus",
+     "text": "不肯冷",
+     "t0": 85.34,
+     "t1": 101.21,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 17,
+     "sec": "Verse 2",
+     "text": "下一座城 下一個晚上",
+     "t0": 101.36,
+     "t1": 103.91,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 18,
+     "sec": "Verse 2",
+     "text": "同一種紅在門外",
+     "t0": 104.06,
+     "t1": 107.6,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 19,
+     "sec": "Verse 2",
+     "text": "我開始對著那片黑暗唱",
+     "t0": 107.75,
+     "t1": 110.91,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 20,
+     "sec": "Verse 2",
+     "text": "好像知道你在",
+     "t0": 111.06,
+     "t1": 114.89,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 21,
+     "sec": "Verse 2",
+     "text": "你從來不說話",
+     "t0": 115.04,
+     "t1": 117.43,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 22,
+     "sec": "Verse 2",
+     "text": "我也從來不問",
+     "t0": 117.58,
+     "t1": 121.2,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 23,
+     "sec": "Verse 2",
+     "text": "我們就這樣",
+     "t0": 121.35,
+     "t1": 123.49,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 24,
+     "sec": "Verse 2",
+     "text": "過了一年又一年",
+     "t0": 123.64,
+     "t1": 128.58,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 25,
+     "sec": "Pre-Chorus#2",
+     "text": "我不認得你的臉",
+     "t0": 128.73,
+     "t1": 132.31,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 26,
+     "sec": "Pre-Chorus#2",
+     "text": "卻認得你的安靜",
+     "t0": 132.46,
+     "t1": 142.5,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 27,
+     "sec": "Chorus#2",
+     "text": "如果我是一場餘燼",
+     "t0": 142.65,
+     "t1": 145.84,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 28,
+     "sec": "Chorus#2",
+     "text": "你是最後熄燈的人",
+     "t0": 145.99,
+     "t1": 150.23,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 29,
+     "sec": "Chorus#2",
+     "text": "台下坐滿了陌生人",
+     "t0": 150.38,
+     "t1": 153.09,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 30,
+     "sec": "Chorus#2",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 153.24,
+     "t1": 156.67,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 31,
+     "sec": "Chorus#2",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 156.82,
+     "t1": 163.96,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 32,
+     "sec": "Chorus#2",
+     "text": "我還有一點紅 替你留著",
+     "t0": 164.11,
+     "t1": 171.09,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 33,
+     "sec": "Chorus#2",
+     "text": "不肯冷",
+     "t0": 171.24,
+     "t1": 176.2,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 34,
+     "sec": "Bridge",
+     "text": "有一天我會忘記",
+     "t0": 176.35,
+     "t1": 179.85,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 35,
+     "sec": "Bridge",
+     "text": "今晚唱過什麼",
+     "t0": 180.0,
+     "t1": 182.67,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 36,
+     "sec": "Bridge",
+     "text": "你替我記得好嗎",
+     "t0": 182.82,
+     "t1": 184.74,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 37,
+     "sec": "Bridge",
+     "text": "我今晚唱到燈熄掉",
+     "t0": 184.89,
+     "t1": 192.91,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 38,
+     "sec": "Final Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 193.06,
+     "t1": 196.17,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 39,
+     "sec": "Final Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 196.32,
+     "t1": 200.35,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 40,
+     "sec": "Final Chorus",
+     "text": "就算我認不出你",
+     "t0": 200.5,
+     "t1": 203.43,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 41,
+     "sec": "Final Chorus",
+     "text": "也請你 坐在那裡",
+     "t0": 203.58,
+     "t1": 207.07,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 42,
+     "sec": "Final Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 207.22,
+     "t1": 213.96,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 43,
+     "sec": "Final Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 214.11,
+     "t1": 221.24,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 44,
+     "sec": "Final Chorus",
+     "text": "不肯冷",
+     "t0": 221.39,
+     "t1": 228.88,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 45,
+     "sec": "Outro",
+     "text": "不肯冷",
+     "t0": 229.03,
+     "t1": 245.95,
+     "conf": 1.0,
+     "interp": false
+    }
+   ],
+   "char_match": 1.0,
+   "low_conf_lines": 0
+  },
+  "餘燼@合聲": {
+   "file": "餘燼-合聲.mp3",
+   "duration": 229.99,
+   "asr_chars": 0,
+   "sha": "2e5f2eeeb5",
+   "manual_times": true,
+   "lines": [
+    {
+     "i": 0,
+     "sec": "Verse 1",
+     "text": "燈一盞一盞暗下來",
+     "t0": 18.32,
+     "t1": 21.14,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 1,
+     "sec": "Verse 1",
+     "text": "掌聲退回了街上",
+     "t0": 21.29,
+     "t1": 24.66,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 2,
+     "sec": "Verse 1",
+     "text": "我把最後一個字收好",
+     "t0": 24.81,
+     "t1": 28.35,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 3,
+     "sec": "Verse 1",
+     "text": "門口又有一朵紅",
+     "t0": 28.5,
+     "t1": 32.76,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 4,
+     "sec": "Verse 1",
+     "text": "沒有名字 沒有卡片",
+     "t0": 32.91,
+     "t1": 35.53,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 5,
+     "sec": "Verse 1",
+     "text": "花瓣上的露水還沒乾",
+     "t0": 35.68,
+     "t1": 39.3,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 6,
+     "sec": "Verse 1",
+     "text": "是誰在散場以後",
+     "t0": 39.45,
+     "t1": 41.95,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 7,
+     "sec": "Verse 1",
+     "text": "還不肯走",
+     "t0": 42.1,
+     "t1": 46.26,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 8,
+     "sec": "Pre-Chorus",
+     "text": "我不認得你的臉",
+     "t0": 46.41,
+     "t1": 49.74,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 9,
+     "sec": "Pre-Chorus",
+     "text": "卻認得你的安靜",
+     "t0": 49.89,
+     "t1": 53.36,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 10,
+     "sec": "Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 53.51,
+     "t1": 57.41,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 11,
+     "sec": "Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 57.56,
+     "t1": 61.42,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 12,
+     "sec": "Chorus",
+     "text": "台下坐滿了陌生人",
+     "t0": 61.57,
+     "t1": 63.96,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 13,
+     "sec": "Chorus",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 64.11,
+     "t1": 68.03,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 14,
+     "sec": "Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 68.18,
+     "t1": 74.93,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 15,
+     "sec": "Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 75.08,
+     "t1": 83.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 16,
+     "sec": "Chorus",
+     "text": "不肯冷",
+     "t0": 83.2,
+     "t1": 91.0,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 17,
+     "sec": "Verse 2",
+     "text": "下一座城 下一個晚上",
+     "t0": 91.15,
+     "t1": 94.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 18,
+     "sec": "Verse 2",
+     "text": "同一種紅在門外",
+     "t0": 94.2,
+     "t1": 98.58,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 19,
+     "sec": "Verse 2",
+     "text": "我開始對著那片黑暗唱",
+     "t0": 98.73,
+     "t1": 101.48,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 20,
+     "sec": "Verse 2",
+     "text": "好像知道你在",
+     "t0": 101.63,
+     "t1": 104.55,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 21,
+     "sec": "Verse 2",
+     "text": "你從來不說話",
+     "t0": 104.7,
+     "t1": 108.38,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 22,
+     "sec": "Verse 2",
+     "text": "我也從來不問",
+     "t0": 108.53,
+     "t1": 112.16,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 23,
+     "sec": "Verse 2",
+     "text": "我們就這樣",
+     "t0": 112.31,
+     "t1": 114.02,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 24,
+     "sec": "Verse 2",
+     "text": "過了一年又一年",
+     "t0": 114.17,
+     "t1": 119.32,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 25,
+     "sec": "Pre-Chorus#2",
+     "text": "我不認得你的臉",
+     "t0": 119.47,
+     "t1": 122.77,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 26,
+     "sec": "Pre-Chorus#2",
+     "text": "卻認得你的安靜",
+     "t0": 122.92,
+     "t1": 126.3,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 27,
+     "sec": "Chorus#2",
+     "text": "如果我是一場餘燼",
+     "t0": 126.45,
+     "t1": 130.3,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 28,
+     "sec": "Chorus#2",
+     "text": "你是最後熄燈的人",
+     "t0": 130.45,
+     "t1": 134.37,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 29,
+     "sec": "Chorus#2",
+     "text": "台下坐滿了陌生人",
+     "t0": 134.52,
+     "t1": 136.81,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 30,
+     "sec": "Chorus#2",
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 136.96,
+     "t1": 140.91,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 31,
+     "sec": "Chorus#2",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 141.06,
+     "t1": 148.02,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 32,
+     "sec": "Chorus#2",
+     "text": "我還有一點紅 替你留著",
+     "t0": 148.17,
+     "t1": 155.65,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 33,
+     "sec": "Chorus#2",
+     "text": "不肯冷",
+     "t0": 155.8,
+     "t1": 160.38,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 34,
+     "sec": "Bridge",
+     "text": "有一天我會忘記",
+     "t0": 160.53,
+     "t1": 163.49,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 35,
+     "sec": "Bridge",
+     "text": "今晚唱過什麼",
+     "t0": 163.64,
+     "t1": 167.05,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 36,
+     "sec": "Bridge",
+     "text": "你替我記得好嗎",
+     "t0": 167.2,
+     "t1": 169.32,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 37,
+     "sec": "Bridge",
+     "text": "我今晚唱到燈熄掉",
+     "t0": 169.47,
+     "t1": 174.22,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 38,
+     "sec": "Final Chorus",
+     "text": "如果我是一場餘燼",
+     "t0": 174.37,
+     "t1": 177.6,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 39,
+     "sec": "Final Chorus",
+     "text": "你是最後熄燈的人",
+     "t0": 177.75,
+     "t1": 181.31,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 40,
+     "sec": "Final Chorus",
+     "text": "就算我認不出你",
+     "t0": 181.46,
+     "t1": 184.72,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 41,
+     "sec": "Final Chorus",
+     "text": "也請你 坐在那裡",
+     "t0": 184.87,
+     "t1": 188.53,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 42,
+     "sec": "Final Chorus",
+     "text": "就算天黑了 全世界都散了",
+     "t0": 188.68,
+     "t1": 195.46,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 43,
+     "sec": "Final Chorus",
+     "text": "我還有一點紅 替你留著",
+     "t0": 195.61,
+     "t1": 205.67,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 44,
+     "sec": "Final Chorus",
+     "text": "不肯冷",
+     "t0": 205.82,
+     "t1": 206.51,
+     "conf": 1.0,
+     "interp": false
+    },
+    {
+     "i": 45,
+     "sec": "Outro",
+     "text": "不肯冷",
+     "t0": 206.66,
+     "t1": 229.99,
+     "conf": 1.0,
+     "interp": false
+    }
+   ],
+   "char_match": 1.0,
+   "low_conf_lines": 0
+  }
+ },
+ "cuts": [
+  {
+   "id": "harbor_market",
+   "song": "港邊的燈",
+   "file": "harbor_market.mp3",
+   "kind": "sfx",
+   "role": "sung_card",
+   "place": {
+    "card": "market",
+    "line": 8,
+    "anchor": "first_sung"
+   },
+   "resume": "post",
+   "sudden": false,
+   "singer": "收音機",
+   "src_start": 13.89,
+   "src_end": 88.05,
+   "duration": 74.19,
+   "bytes": 890611,
+   "bitrate_kbps": 96,
+   "lufs": -17.4,
+   "cut_diag": {
+    "start": {
+     "line": 0,
+     "window": [
+      12.9,
+      14.87
+     ],
+     "db": -24.0,
+     "gap_min_db": -26.5
+    },
+    "end": {
+     "line": 7,
+     "window": [
+      87.84,
+      90.29
+     ],
+     "db": -15.2,
+     "gap_min_db": -19.1
+    }
+   },
+   "lines": [
+    {
+     "text": "港邊的燈 一葩一葩光",
+     "t0": 1.01,
+     "t1": 10.81,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse"
+    },
+    {
+     "text": "討海的人 猶未轉來",
+     "t0": 10.81,
+     "t1": 19.81,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse"
+    },
+    {
+     "text": "阮徛佇岸邊 等你的船",
+     "t0": 19.81,
+     "t1": 29.81,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse"
+    },
+    {
+     "text": "風吹冷冷 心肝燒燒",
+     "t0": 29.81,
+     "t1": 40.11,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse"
+    },
+    {
+     "text": "燈若熄 船就到",
+     "t0": 40.61,
+     "t1": 47.31,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "阮的心 替你留一葩",
+     "t0": 47.31,
+     "t1": 55.91,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "燈若熄 船就到",
+     "t0": 56.11,
+     "t1": 63.91,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "阮佇遮 等你轉來",
+     "t0": 63.91,
+     "t1": 74.16,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 13.89,
+      "valley_depth_db": 15.5,
+      "weak": false,
+      "ok": true
+     },
+     "end": {
+      "t": 88.05,
+      "valley_depth_db": 7.8,
+      "weak": true,
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    },
+    "radio": {
+     "channels": 1,
+     "out_of_band_energy": 0.0056,
+     "ok": true
+    }
+   }
+  },
+  {
+   "id": "ember_studio",
+   "song": "餘燼@錄音室",
+   "file": "ember_studio.mp3",
+   "kind": "bgm",
+   "role": "sung_card",
+   "place": {
+    "card": "roses",
+    "line": 12,
+    "anchor": "first_sung"
+   },
+   "resume": "post",
+   "sudden": false,
+   "singer": "余靜",
+   "src_start": 14.12,
+   "src_end": 96.19,
+   "duration": 82.1,
+   "bytes": 1314107,
+   "bitrate_kbps": 128,
+   "lufs": -16.4,
+   "cut_diag": {
+    "start": {
+     "line": 0,
+     "window": [
+      11.68,
+      15.65
+     ],
+     "db": -30.7,
+     "gap_min_db": -34.3
+    },
+    "end": {
+     "line": 16,
+     "window": [
+      96.09,
+      98.54
+     ],
+     "db": -16.2,
+     "gap_min_db": -20.0
+    }
+   },
+   "lines": [
+    {
+     "text": "燈一盞一盞暗下來",
+     "t0": 1.56,
+     "t1": 4.83,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "掌聲退回了街上",
+     "t0": 4.98,
+     "t1": 8.13,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我把最後一個字收好",
+     "t0": 8.28,
+     "t1": 11.93,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "門口又有一朵紅",
+     "t0": 12.08,
+     "t1": 15.46,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "沒有名字 沒有卡片",
+     "t0": 15.61,
+     "t1": 18.21,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "花瓣上的露水還沒乾",
+     "t0": 18.36,
+     "t1": 22.19,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "是誰在散場以後",
+     "t0": 22.34,
+     "t1": 24.92,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "還不肯走",
+     "t0": 25.07,
+     "t1": 28.92,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我不認得你的臉",
+     "t0": 29.07,
+     "t1": 32.4,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus"
+    },
+    {
+     "text": "卻認得你的安靜",
+     "t0": 32.55,
+     "t1": 43.28,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus"
+    },
+    {
+     "text": "如果我是一場餘燼",
+     "t0": 43.43,
+     "t1": 46.77,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "你是最後熄燈的人",
+     "t0": 46.92,
+     "t1": 50.84,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "台下坐滿了陌生人",
+     "t0": 50.99,
+     "t1": 53.33,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 53.48,
+     "t1": 57.24,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "就算天黑了 全世界都散了",
+     "t0": 57.39,
+     "t1": 64.94,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "我還有一點紅 替你留著",
+     "t0": 65.09,
+     "t1": 71.77,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 71.92,
+     "t1": 82.07,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 14.12,
+      "valley_depth_db": 12.5,
+      "weak": false,
+      "ok": true
+     },
+     "end": {
+      "t": 96.19,
+      "valley_depth_db": 9.6,
+      "weak": false,
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  },
+  {
+   "id": "ember_monitor",
+   "song": "餘燼@台下",
+   "file": "ember_monitor.mp3",
+   "kind": "bgm",
+   "role": "sung_card",
+   "place": {
+    "card": "monitor",
+    "line": 1,
+    "anchor": "first_sung"
+   },
+   "resume": "post",
+   "sudden": false,
+   "singer": "余靜",
+   "src_start": 14.87,
+   "src_end": 82.65,
+   "duration": 67.81,
+   "bytes": 1356845,
+   "bitrate_kbps": 160,
+   "lufs": -16.4,
+   "cut_diag": {
+    "start": {
+     "line": 0,
+     "window": [
+      11.95,
+      15.92
+     ],
+     "db": -34.2,
+     "gap_min_db": -38.2
+    },
+    "end": {
+     "line": 16,
+     "window": [
+      82.15,
+      84.6
+     ],
+     "db": -30.1,
+     "gap_min_db": -33.8
+    }
+   },
+   "lines": [
+    {
+     "text": "燈一盞一盞暗下來",
+     "t0": 1.08,
+     "t1": 3.39,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "掌聲退回了街上",
+     "t0": 3.54,
+     "t1": 7.93,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我把最後一個字收好",
+     "t0": 8.08,
+     "t1": 10.68,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "門口又有一朵紅",
+     "t0": 10.83,
+     "t1": 14.23,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "沒有名字 沒有卡片",
+     "t0": 14.38,
+     "t1": 17.34,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "花瓣上的露水還沒乾",
+     "t0": 17.49,
+     "t1": 21.5,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "是誰在散場以後",
+     "t0": 21.65,
+     "t1": 24.48,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "還不肯走",
+     "t0": 24.63,
+     "t1": 28.68,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我不認得你的臉",
+     "t0": 28.83,
+     "t1": 32.18,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus"
+    },
+    {
+     "text": "卻認得你的安靜",
+     "t0": 32.33,
+     "t1": 37.67,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus"
+    },
+    {
+     "text": "如果我是一場餘燼",
+     "t0": 37.82,
+     "t1": 41.85,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "你是最後熄燈的人",
+     "t0": 42.0,
+     "t1": 45.73,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "台下坐滿了陌生人",
+     "t0": 45.88,
+     "t1": 48.31,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 48.46,
+     "t1": 54.46,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "就算天黑了 全世界都散了",
+     "t0": 54.61,
+     "t1": 59.19,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "我還有一點紅 替你留著",
+     "t0": 59.34,
+     "t1": 65.38,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 65.53,
+     "t1": 67.78,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 14.87,
+      "valley_depth_db": 9.6,
+      "weak": false,
+      "ok": true
+     },
+     "end": {
+      "t": 82.65,
+      "valley_depth_db": 8.6,
+      "weak": false,
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  },
+  {
+   "id": "night_sc",
+   "song": "晚安，台南",
+   "file": "night_sc.mp3",
+   "kind": "bgm",
+   "role": "sung_card",
+   "place": {
+    "card": "soundcheck",
+    "line": 3,
+    "anchor": "first_sung"
+   },
+   "resume": "post",
+   "sudden": false,
+   "singer": "余靜",
+   "src_start": 16.53,
+   "src_end": 31.9,
+   "duration": 15.41,
+   "bytes": 308812,
+   "bitrate_kbps": 160,
+   "lufs": -16.4,
+   "cut_diag": {
+    "start": {
+     "line": 0,
+     "window": [
+      15.76,
+      16.73
+     ],
+     "db": -44.9,
+     "gap_min_db": -48.7
+    },
+    "end": {
+     "line": 3,
+     "window": [
+      30.42,
+      31.98
+     ],
+     "db": -29.9,
+     "gap_min_db": -33.7
+    }
+   },
+   "lines": [
+    {
+     "text": "天還沒亮攤就開了",
+     "t0": 0.23,
+     "t1": 3.03,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "阿爸扛來一桶冰",
+     "t0": 3.18,
+     "t1": 6.9,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "收音機沙沙響",
+     "t0": 7.05,
+     "t1": 10.31,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "冰水流過地磚",
+     "t0": 10.46,
+     "t1": 15.34,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 16.53,
+      "valley_depth_db": 37.9,
+      "weak": false,
+      "ok": true
+     },
+     "end": {
+      "t": 31.9,
+      "valley_depth_db": 21.1,
+      "weak": false,
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  },
+  {
+   "id": "night_concert",
+   "song": "晚安，台南",
+   "file": "night_concert.mp3",
+   "kind": "bgm",
+   "role": "sung_card",
+   "place": {
+    "card": "concert",
+    "line": 2,
+    "anchor": "first_sung"
+   },
+   "resume": "none",
+   "sudden": true,
+   "singer": "余靜",
+   "src_start": 16.53,
+   "src_end": 111.99,
+   "duration": 95.5,
+   "bytes": 1337461,
+   "bitrate_kbps": 112,
+   "lufs": -16.5,
+   "cut_diag": {
+    "start": {
+     "line": 0,
+     "window": [
+      16.16,
+      16.73
+     ],
+     "db": -44.9,
+     "gap_min_db": -48.7
+    },
+    "end": {
+     "line": 19,
+     "window": [
+      109.75,
+      112.2
+     ],
+     "db": -19.5,
+     "gap_min_db": -23.5
+    }
+   },
+   "lines": [
+    {
+     "text": "天還沒亮攤就開了",
+     "t0": 0.23,
+     "t1": 3.03,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "阿爸扛來一桶冰",
+     "t0": 3.18,
+     "t1": 6.9,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "收音機沙沙響",
+     "t0": 7.05,
+     "t1": 10.31,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "冰水流過地磚",
+     "t0": 10.46,
+     "t1": 15.34,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "魚鱗黏在圍裙",
+     "t0": 15.49,
+     "t1": 17.83,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我伸手幫他拍掉",
+     "t0": 17.98,
+     "t1": 21.16,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "他秤好最後一尾",
+     "t0": 21.31,
+     "t1": 25.92,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "才問我吃飽沒",
+     "t0": 26.07,
+     "t1": 30.56,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "運河風從橋下來",
+     "t0": 30.71,
+     "t1": 33.76,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "路燈照著濕石階",
+     "t0": 33.91,
+     "t1": 38.62,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "明天若我不認得你",
+     "t0": 38.77,
+     "t1": 41.32,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "請把屋裡燈留著",
+     "t0": 41.47,
+     "t1": 46.5,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "魚攤收了水還滴",
+     "t0": 46.65,
+     "t1": 54.13,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "我沿著亮處回家",
+     "t0": 54.28,
+     "t1": 62.05,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "淑靜仔 叫我一聲",
+     "t0": 62.2,
+     "t1": 64.54,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "名字先留在你這裡",
+     "t0": 64.69,
+     "t1": 69.52,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "哪天我走丟了",
+     "t0": 69.67,
+     "t1": 72.06,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "再叫我一聲就好",
+     "t0": 72.21,
+     "t1": 77.47,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "水邊的燈還亮著",
+     "t0": 77.62,
+     "t1": 83.02,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "我聽見就回家",
+     "t0": 83.17,
+     "t1": 95.46,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 16.53,
+      "valley_depth_db": 37.9,
+      "weak": false,
+      "ok": true
+     },
+     "end": {
+      "t": 111.99,
+      "valley_depth_db": 12.0,
+      "weak": false,
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  },
+  {
+   "id": "night_a1",
+   "song": "晚安，台南",
+   "file": "night_a1.mp3",
+   "kind": "bgm",
+   "role": "sung_card",
+   "place": {
+    "card": "verse3",
+    "line": 0,
+    "anchor": "first_sung"
+   },
+   "resume": "post",
+   "sudden": false,
+   "singer": "余靜",
+   "src_start": 124.29,
+   "src_end": 156.74,
+   "duration": 32.5,
+   "bytes": 650494,
+   "bitrate_kbps": 160,
+   "lufs": -16.3,
+   "cut_diag": {
+    "start": {
+     "line": 20,
+     "window": [
+      124.29,
+      125.26
+     ],
+     "db": -27.5,
+     "gap_min_db": -30.1
+    },
+    "end": {
+     "line": 26,
+     "window": [
+      155.22,
+      157.02
+     ],
+     "db": -17.7,
+     "gap_min_db": -21.5
+    }
+   },
+   "lines": [
+    {
+     "text": "有人坐在我身旁",
+     "t0": 1.0,
+     "t1": 3.92,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    },
+    {
+     "text": "我想不起他是誰",
+     "t0": 4.07,
+     "t1": 7.84,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    },
+    {
+     "text": "他把保溫杯打開",
+     "t0": 7.99,
+     "t1": 11.67,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    },
+    {
+     "text": "等半分鐘才遞給我",
+     "t0": 11.82,
+     "t1": 17.07,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    },
+    {
+     "text": "杯口的熱氣散了",
+     "t0": 17.22,
+     "t1": 19.93,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    },
+    {
+     "text": "他還坐在我身邊",
+     "t0": 20.08,
+     "t1": 24.79,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    },
+    {
+     "text": "有他陪我 我不怕",
+     "t0": 24.94,
+     "t1": 32.45,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 3"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 124.29,
+      "valley_depth_db": 20.8,
+      "weak": false,
+      "ok": true
+     },
+     "end": {
+      "t": 156.74,
+      "valley_depth_db": 12.6,
+      "weak": false,
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  },
+  {
+   "id": "ember_a2",
+   "song": "餘燼@大合唱",
+   "file": "ember_a2.mp3",
+   "kind": "bgm",
+   "role": "sung_card",
+   "place": {
+    "card": "encore",
+    "line": 1,
+    "anchor": "first_sung"
+   },
+   "resume": "post",
+   "sudden": false,
+   "singer": "余靜",
+   "src_start": 192.22,
+   "src_end": 245.95,
+   "duration": 53.73,
+   "bytes": 1075245,
+   "bitrate_kbps": 160,
+   "lufs": -16.3,
+   "cut_diag": {
+    "start": {
+     "line": 38,
+     "window": [
+      191.56,
+      193.03
+     ],
+     "db": -20.4,
+     "gap_min_db": -23.9
+    },
+    "end": {
+     "at": "eof"
+    }
+   },
+   "lines": [
+    {
+     "text": "如果我是一場餘燼",
+     "t0": 0.84,
+     "t1": 3.95,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "你是最後熄燈的人",
+     "t0": 4.1,
+     "t1": 8.13,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "就算我認不出你",
+     "t0": 8.28,
+     "t1": 11.21,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "也請你 坐在那裡",
+     "t0": 11.36,
+     "t1": 14.85,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "就算天黑了 全世界都散了",
+     "t0": 15.0,
+     "t1": 21.74,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "我還有一點紅 替你留著",
+     "t0": 21.89,
+     "t1": 29.02,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 29.17,
+     "t1": 36.66,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 36.81,
+     "t1": 53.73,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Outro"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 192.22,
+      "valley_depth_db": 7.5,
+      "weak": true,
+      "ok": true
+     },
+     "end": {
+      "t": 245.95,
+      "at": "eof",
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  },
+  {
+   "id": "ember_harmony",
+   "song": "餘燼@合聲",
+   "file": "ember_harmony.mp3",
+   "kind": "bgm",
+   "role": "line_bgm",
+   "place": {
+    "card": "credits",
+    "line": 0,
+    "anchor": "first"
+   },
+   "resume": "none",
+   "sudden": false,
+   "singer": "余靜",
+   "src_start": 0.0,
+   "src_end": 229.99,
+   "duration": 230.01,
+   "bytes": 3220524,
+   "bitrate_kbps": 112,
+   "lufs": -16.4,
+   "cut_diag": {
+    "start": {
+     "at": "song_start"
+    },
+    "end": {
+     "at": "eof"
+    }
+   },
+   "lines": [
+    {
+     "text": "燈一盞一盞暗下來",
+     "t0": 18.32,
+     "t1": 21.14,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "掌聲退回了街上",
+     "t0": 21.29,
+     "t1": 24.66,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我把最後一個字收好",
+     "t0": 24.81,
+     "t1": 28.35,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "門口又有一朵紅",
+     "t0": 28.5,
+     "t1": 32.76,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "沒有名字 沒有卡片",
+     "t0": 32.91,
+     "t1": 35.53,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "花瓣上的露水還沒乾",
+     "t0": 35.68,
+     "t1": 39.3,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "是誰在散場以後",
+     "t0": 39.45,
+     "t1": 41.95,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "還不肯走",
+     "t0": 42.1,
+     "t1": 46.26,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 1"
+    },
+    {
+     "text": "我不認得你的臉",
+     "t0": 46.41,
+     "t1": 49.74,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus"
+    },
+    {
+     "text": "卻認得你的安靜",
+     "t0": 49.89,
+     "t1": 53.36,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus"
+    },
+    {
+     "text": "如果我是一場餘燼",
+     "t0": 53.51,
+     "t1": 57.41,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "你是最後熄燈的人",
+     "t0": 57.56,
+     "t1": 61.42,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "台下坐滿了陌生人",
+     "t0": 61.57,
+     "t1": 63.96,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 64.11,
+     "t1": 68.03,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "就算天黑了 全世界都散了",
+     "t0": 68.18,
+     "t1": 74.93,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "我還有一點紅 替你留著",
+     "t0": 75.08,
+     "t1": 83.05,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 83.2,
+     "t1": 91.0,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus"
+    },
+    {
+     "text": "下一座城 下一個晚上",
+     "t0": 91.15,
+     "t1": 94.05,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "同一種紅在門外",
+     "t0": 94.2,
+     "t1": 98.58,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "我開始對著那片黑暗唱",
+     "t0": 98.73,
+     "t1": 101.48,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "好像知道你在",
+     "t0": 101.63,
+     "t1": 104.55,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "你從來不說話",
+     "t0": 104.7,
+     "t1": 108.38,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "我也從來不問",
+     "t0": 108.53,
+     "t1": 112.16,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "我們就這樣",
+     "t0": 112.31,
+     "t1": 114.02,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "過了一年又一年",
+     "t0": 114.17,
+     "t1": 119.32,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Verse 2"
+    },
+    {
+     "text": "我不認得你的臉",
+     "t0": 119.47,
+     "t1": 122.77,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus#2"
+    },
+    {
+     "text": "卻認得你的安靜",
+     "t0": 122.92,
+     "t1": 126.3,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Pre-Chorus#2"
+    },
+    {
+     "text": "如果我是一場餘燼",
+     "t0": 126.45,
+     "t1": 130.3,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "你是最後熄燈的人",
+     "t0": 130.45,
+     "t1": 134.37,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "台下坐滿了陌生人",
+     "t0": 134.52,
+     "t1": 136.81,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "只有一個位子 等得那麼認真",
+     "t0": 136.96,
+     "t1": 140.91,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "就算天黑了 全世界都散了",
+     "t0": 141.06,
+     "t1": 148.02,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "我還有一點紅 替你留著",
+     "t0": 148.17,
+     "t1": 155.65,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 155.8,
+     "t1": 160.38,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Chorus#2"
+    },
+    {
+     "text": "有一天我會忘記",
+     "t0": 160.53,
+     "t1": 163.49,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Bridge"
+    },
+    {
+     "text": "今晚唱過什麼",
+     "t0": 163.64,
+     "t1": 167.05,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Bridge"
+    },
+    {
+     "text": "你替我記得好嗎",
+     "t0": 167.2,
+     "t1": 169.32,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Bridge"
+    },
+    {
+     "text": "我今晚唱到燈熄掉",
+     "t0": 169.47,
+     "t1": 174.22,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Bridge"
+    },
+    {
+     "text": "如果我是一場餘燼",
+     "t0": 174.37,
+     "t1": 177.6,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "你是最後熄燈的人",
+     "t0": 177.75,
+     "t1": 181.31,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "就算我認不出你",
+     "t0": 181.46,
+     "t1": 184.72,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "也請你 坐在那裡",
+     "t0": 184.87,
+     "t1": 188.53,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "就算天黑了 全世界都散了",
+     "t0": 188.68,
+     "t1": 195.46,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "我還有一點紅 替你留著",
+     "t0": 195.61,
+     "t1": 205.67,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 205.82,
+     "t1": 206.51,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Final Chorus"
+    },
+    {
+     "text": "不肯冷",
+     "t0": 206.66,
+     "t1": 229.99,
+     "conf": 1.0,
+     "interp": false,
+     "sec": "Outro"
+    }
+   ],
+   "verify": {
+    "ok": true,
+    "cut_points": {
+     "start": {
+      "t": 0.0,
+      "at": "song_start",
+      "ok": true
+     },
+     "end": {
+      "t": 229.99,
+      "at": "eof",
+      "ok": true
+     }
+    },
+    "head": {
+     "ok": true,
+     "manual": true
+    },
+    "tail": {
+     "ok": true,
+     "manual": true
+    }
+   }
+  }
+ ]
+}

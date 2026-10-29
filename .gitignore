@@ -8,4 +8,4 @@ assets/songs/.cache/
 .songs-cache/
 __pycache__/
 assets/songs/*.mp3
-assets/songs/cuts/
+# 切段要進 git：遊戲素材走 jsDelivr，只抓得到推上 GitHub 的檔（完整歌曲 assets/songs/*.mp3 照舊不進）
