@@ -22,6 +22,7 @@ TRACK = {'open': 'dressing', 'market': 'mem_1988', 'livehouse': 'mem_2004', 'doo
          'monitor': 'mem_love', 'confess': 'mem_love', 'forget': 'mem_clinic', 'song2023': 'mem_clinic', 'soundcheck': 'dress',
          'letter': 'dressing', 'dark': 'branch', 'canal': 'end_c', 'concert': 'concert', 'kitchen': 'end_a'}
 # 〔掉字〕：落日以後，標記的句子只留前面一部分，後面變成「……」。數字是掉掉的比例
+SITE = 'https://yazelin.github.io/larch-ember/'
 POST_TRACK = {'encore': 'end_b'}   # 歌卡唱完後改用的配樂（沒列的沿用這場的 TRACK）
 # 全程自動往下（作者 10-29：一部可以邊聽歌邊看、不用點滑鼠的音樂小說）。打字 TEXT_MS 毫秒一個字，打完停 AUTO 的 delayMs；點畫面仍可加快
 TEXT_MS = 90
@@ -110,7 +111,7 @@ def build():
                         '從 1988 年阿爸的魚攤、2004 年三排十四號那朵深紅玫瑰，一路到 2026 年的最後一首歌。'
                         '單線劇情、一個結局，三首歌：〈餘燼〉〈晚安，台南〉〈港邊的燈〉。'
                         '原型、醫學資料出處與原聲帶：https://yazelin.github.io/larch-ember/')
-    board['name'] = '餘燼'
+    board['name'] = '第一章・餘燼'
     board['description'] = '從 1988 年的魚攤，到 2026 年的最後一場。'
     p['variables'] = []
     p['settings']['plugins'] = {k: {**v, 'enabled': False} if k == 'larch-inventory' else v for k, v in p['settings'].get('plugins', {}).items()}
@@ -135,6 +136,21 @@ def build():
             cards.link(board, prev, cid)
         prev = cid
     assert not script.CHOICES, f'全劇不放選項（作者 10-29）：{script.CHOICES}'
+    # 第二章＝公開站（作者 10-29：照《仙泉．香布纏．續》的製作手記章）：片尾字卷捲完跳過去，全螢幕嵌公開站，看完按「略過」結束回標題
+    board['nodes'][-1]['data']['chapterEnd'] = True
+    N({'id': 'to-site', 'type': 'story', 'position': {'x': 0, 'y': 0}, 'data': {
+        'type': 'boardJump', 'title': '第二章・公開站', 'text': '', 'start': False, 'voiceMode': 'off', 'stage': {'actors': []},
+        'jumpNodeId': 'site', 'jumpBoardId': 'board-site', 'characterLayers': []}})
+    cards.link(board, 'credits', 'to-site')
+    shell = ('<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#140b07}'
+             f'iframe{{width:100%;height:100%;border:0;display:block}}</style><iframe src="{SITE}" allow="fullscreen; autoplay"></iframe>'
+             "<script>parent.postMessage({type:'larch:ready'},'*');</script></html>")
+    p['boards'].append({'id': 'board-site', 'kind': 'story', 'mode': 'story', 'name': '第二章・公開站',
+                        'description': '公開站：故事、改編自真實故事的原型、參考資料、原聲帶', 'edges': [], 'nodes': [{
+        'id': 'site', 'type': 'story', 'position': {'x': 100, 'y': 200}, 'data': {
+            'type': 'miniGame', 'start': True, 'title': '第二章・公開站', 'text': '原型、參考資料與原聲帶。看完按「略過」回到標題。', 'voiceMode': 'off',
+            'miniGameHtml': shell, 'miniGameNote': f'薄殼而已，內容在 {SITE}', 'miniGameReadVars': [], 'miniGameSkippable': True,
+            'miniGameWriteVars': [], 'miniGamePresentation': 'fullscreen'}}]})
     p['settings'].setdefault('titleScreen', {})['bgm'] = music('title') or p['settings'].get('titleScreen', {}).get('bgm', '')
     cover = A + 'art/cover.webp'
     p['settings']['titleCoverImage'] = cover

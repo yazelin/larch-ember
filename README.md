@@ -61,7 +61,7 @@
 - 歌的位置在 `src/songs_cut.py` 的 `CUTS`：〈港邊的燈〉收音機版（market）、〈餘燼〉錄音室版（roses）、台下跟唱版副歌起悶住三秒（monitor，耳返爆音）、〈晚安，台南〉試音／開演／第三段、大合唱版（encore）、合聲版當片尾曲（credits）。
 - 片尾是「片尾字卷」插件卡（`credits-roll`，插件檔在 `src/plugin/`），內容寫在 `src/credits.txt`；推上 Larch 前專案要先導入這個插件。
 - 推上 Larch：`python3 src/push.py "這次改了什麼"`（快照、重建、素材網址換成 jsDelivr 並釘 commit、整包 PUT、讀回比對、預熱）。素材不存 Larch，走公開 repo `yazelin/larch-ember` 的 jsDelivr，所以素材要先 commit 並 `git push`。推之前關掉 Larch 編輯器分頁。
-- 全程自動播放（作者 10-29：一部不用點滑鼠的音樂小說）：每張劇情卡 `autoAdvance`、打字每字 90 毫秒、每句停 1.6 秒；開頭一張提示卡，標題畫面選單下也有一行說明。全劇沒有選項。免點試玩：`SPEED=16 node tests/play_auto.mjs`（只按「開始遊戲」，要自己播到片尾再回標題，印出全劇分鐘數，目前約 38 分鐘）。
+- 全程自動播放（作者 10-29：一部不用點滑鼠的音樂小說）：每張劇情卡 `autoAdvance`、打字每字 90 毫秒、每句停 1.6 秒；開頭一張提示卡，標題畫面選單下也有一行說明。全劇沒有選項。第二章「公開站」：片尾字卷捲完跳過去，全螢幕嵌 https://yazelin.github.io/larch-ember/ ，按「略過」回標題。免點試玩：`SPEED=16 node tests/play_auto.mjs`（只按「開始遊戲」，要自己播到片尾、跳進第二章，再按略過回標題，印出全劇分鐘數，目前約 38 分鐘）。
 - 試玩：`SPEED=16 AUDIO=1 node tests/play_linear.mjs`（從標題點到片尾字卷，檢查每一章的關鍵句依序出現、合聲版有播、按「回到標題」能回去、沒有缺檔）。
 
 ## 分工
