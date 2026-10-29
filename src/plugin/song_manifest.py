@@ -26,6 +26,10 @@ MANIFEST = {
     'description': '全螢幕唱歌卡：卡片上的歌由播放器播，歌詞照進卡後的秒數一句一句亮起，背景圖可以照秒數換。點畫面不會讓歌詞往前跑；唱完自動往下，或按「略過」。',
     'descriptionEn': 'Fullscreen sing-along card: the player plays the card music, lyrics light up by elapsed seconds, backgrounds change on cue. Clicks never push the lyrics ahead; it continues when the song ends or when the skip button is pressed.',
     'permissions': ['assets:read', 'flow:control'],
+    # 商城縮圖與截圖（作者 10-29：素材商城裡缺封面）；原檔在 src/plugin/song-card-*.webp，用 larch 的 plugins/images 上傳
+    'cover': 'https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/plugins/ember-song-card/1793254141502_song-card-cover.webp',
+    'gallery': [{'url': 'https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/plugins/ember-song-card/1793254143547_song-card-shot-desk.webp', 'caption': '桌機：歌詞照秒數亮起，左上角是正在播的歌'},
+                {'url': 'https://pub-4b20b43f5acf4dfaa3f6ab842daa51cf.r2.dev/2d3b0242-9a6d-4051-9825-46aa4efd064a/larch/plugins/ember-song-card/1793254144778_song-card-shot-phone.webp', 'caption': '手機直式'}],
     'cards': [{'id': CARD, 'name': '唱歌卡', 'nameEn': 'Sing-along', 'icon': 'music', 'color': '#b5532a', 'presentation': 'fullscreen', 'skippable': False,
                'description': '歌詞跟著秒數亮起，唱完自動往下。', 'descriptionEn': 'Lyrics follow the clock; continues when the song ends.',
                'readVariables': [], 'writeVariables': [], 'fields': FIELDS, 'html': (HERE / 'song_card.html').read_text(encoding='utf-8')}],
