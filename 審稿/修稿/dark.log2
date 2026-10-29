@@ -8,10 +8,10 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR]
 reasoning effort: max
 reasoning summaries: none
-session id: 01a1854e-6e44-7e73-a2b3-46c06f5e1198
+session id: 01a18570-c233-7d70-a2ea-d76df8e0dce8
 --------
 user
-你在 ~/larch-ember 修《最終遺忘的橘色餘燼》劇本的一場：dark。這是第二輪。
+你在 ~/larch-ember 修《最終遺忘的橘色餘燼》劇本的一場：dark。這是第三輪。
 上一輪你的改稿是 審稿/修稿/dark.r1.md，沒有過審稿閘門，閘門報告在 審稿/修稿/dark.gate.txt（看「新稿還有的共識問題」與「評審」兩節：評審說舊稿較好的理由要特別注意）。
 劇本裡這一場已經換回原稿。重新讀修稿包 審稿/修稿/dark.packet.md（準則、原稿、問題清單）。
 1. 從原稿出發，逐條處理必修問題。上一輪改得好的地方可以沿用，評審嫌棄的改法不要再用。只改被點到的句子，必要時調整緊鄰的一兩句；其他句子一字不動。改得越少越好，不要為了改而改。
@@ -23,30 +23,9 @@ user
 hook: SessionStart
 hook: SessionStart Completed
 codex
-我會先讀修稿包、上一輪改稿和閘門評語，從原稿逐條核對必修問題，只改被點到的句子及必要的鄰句。完成後只寫入 `審稿/修稿/dark.md`，再跑用語檢查。
+我會重讀修稿包、上一輪改稿和閘門評語，再從原稿逐條做最小修改，只寫入 `審稿/修稿/dark.md`，最後跑用語檢查。
 exec
-/bin/bash -lc "pwd
-rg --files -g 'AGENTS.md' -g '*dark*' -g '劇本.md' -g '*準則*' 審稿 canon .agents .codex 2>/dev/null" in /home/ct/larch-ember
- succeeded in 0ms:
-/home/ct/larch-ember
-canon/劇本.md
-審稿/準則.md
-審稿/修稿/dark.gate.txt
-審稿/修稿/dark.r1.md
-審稿/修稿/dark.c1.md
-審稿/修稿/dark.report.md
-審稿/修稿/dark.log
-審稿/修稿/dark.report2.md
-審稿/修稿/dark.log2
-審稿/修稿/dark.packet.md
-審稿/紀錄/gate_dark_1029_072902.md
-審稿/紀錄/sweep_劇本_1029_032130/dark.md
-審稿/紀錄/gate_dark_1029_091416.md
-審稿/紀錄/gate_dark_1029_080110.md
-
-exec
-/bin/bash -lc 'cat 審稿/修稿/dark.packet.md
-cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
+/bin/bash -lc 'cat 審稿/修稿/dark.packet.md' in /home/ct/larch-ember
  succeeded in 0ms:
 # 修稿包：dark
 
@@ -113,7 +92,7 @@ cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
 36｜旁白：程希離開九十秒後，回到化妝間，椅子空著。
 37｜旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
 
-## 問題：必修 11 條（≥2 位讀稿人或主編提到），參考 11 條
+## 問題：必修 11 條（≥2 位讀稿人或主編提到），參考 16 條
 [0258] 必修 dark 行37 含蓄到看不懂（argon、deepseek）
     原句：旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
     為什麼：前面旁白巨細靡遺寫了她的雙手動作，卻完全沒寫她何時拆下錶，最後突然冒出「那只手錶型 GPS」躺在桌上，讀者分不清她是故意拆掉還是本來就沒戴；且「手錶型 GPS」是生硬的說明書詞彙。
@@ -126,14 +105,6 @@ cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
     原句：舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套你架的。
     為什麼：口語講話不會說「這套你架的」，聽起來像工程師交接而非劇場後台用語
     建議：geminiweb:建議怎麼改：改成「這套是你架的。」或「之前是你架的。」 / deepseek:改成「這套是你架的」或「這套你裝的」。
-[0271] 必修 dark 行28 念不出口的書面語（geminiweb、argon）
-    原句：余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
-    為什麼：「刷子」在台灣傳統魚攤不叫刷子（多叫刷仔或刮刀），且這句心聲讀起來太像清單條列，少了焦急帶動的混亂感。
-    建議：geminiweb:改為：余靜（心）：水管還沒沖，地板的刷仔要拿下去。〔掉字〕 / argon:余靜（心）：再不下去幫忙收水管跟刷子，阿爸又要唸了……〔掉字〕
-[0413] 必修 dark 行24 搭配不當（argon、deepseek）
-    原句：旁白：窗下的魚販拖出空箱，箱底刮著地面。她抬起頭。
-    為什麼：魚販在樓下窗外，而她原本低頭看手上的紙，應該是先聽見刮地聲、抬頭往窗下看，現在先寫窗下魚販的畫面才寫「她抬起頭」，視角順序與高低方向都顛倒了。
-    建議：argon:改成「旁白：窗外傳來箱底刮過地面的聲音。她抬起頭，往窗下看去——魚販正拖出空箱。」 / deepseek:改成「窗下的魚販拖出空箱，把捲門拉下一半。」
 [0467] 必修 dark 行1 旁白：她伸手碰杯壁，手停在杯子上。（geminiweb、deepseek）
     原句：13
     為什麼：含蓄到看不懂
@@ -158,6 +129,14 @@ cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
     原句：37
     為什麼：旁白替讀者下結論或解釋心情
     建議：geminiweb:句意直白呆板，未營造出程希發現她失蹤時的驚恐與現實衝擊。 / deepseek:這一場第一次出現手錶型 GPS，卻用「那只」指稱，讀者不知道前指是哪只，像漏了鋪陳。
+[0564] 必修 dark 行2 余靜（心）：名字剛剛寫過……兩個字而已。（deepseek、geminiweb）
+    原句：17
+    為什麼：含蓄到看不懂
+    建議：deepseek:前面沒有她寫名字的畫面，讀者不知道「名字」指誰、寫在哪；「兩個字而已」的找詞訊號也不夠清楚。 / geminiweb:建議改為：「余靜（心）：他叫……名字剛才還在嘴邊的。〔掉字〕」
+[0565] 必修 dark 行3 余靜：水我自己拿就好。不用特地叫人。（deepseek、geminiweb）
+    原句：12
+    為什麼：對話接不上
+    建議：deepseek:程希叫小芳「來陪一下」，不是拿水；余靜卻回拿水，像聽錯或接錯，但前面沒有她正在拿水／想拿水的線索。 / geminiweb:語氣與前句連用略顯贅字重複，不夠口語
 [0261] 參考·升級 dark 行7 設定矛盾（argon）
     原句：旁白：他拿起對講機，又放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
     為什麼：程希在第 6 行已經回答舞監「線先不要拔」，第 7 行才「拿起對講機，又放回腰邊」，動作順序顛倒，變成第 6 行沒拿對講機卻能跟舞監通話。
@@ -186,14 +165,6 @@ cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
     原句：28
     為什麼：對話接不上
     建議：deepseek:前文只見魚販收空箱、拉捲門，沒出現水管刷子；她突然要帶水管刷子下去，讀者無法判斷是失智跳躍還是記憶錯接，只覺得台詞斷線。
-[0564] 參考 dark 行2 余靜（心）：名字剛剛寫過……兩個字而已。（deepseek）
-    原句：17
-    為什麼：含蓄到看不懂
-    建議：deepseek:前面沒有她寫名字的畫面，讀者不知道「名字」指誰、寫在哪；「兩個字而已」的找詞訊號也不夠清楚。
-[0565] 參考 dark 行3 余靜：水我自己拿就好。不用特地叫人。（deepseek）
-    原句：12
-    為什麼：對話接不上
-    建議：deepseek:程希叫小芳「來陪一下」，不是拿水；余靜卻回拿水，像聽錯或接錯，但前面沒有她正在拿水／想拿水的線索。
 [0566] 參考 dark 行5 旁白：程希離開九十秒後，回到化妝間，椅子空著。（deepseek）
     原句：36
     為什麼：念不出口的書面語
@@ -202,17 +173,50 @@ cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
     原句：余靜：阿爸，等我啦。
     為什麼：面對市場路人直接脫口喊爸爸，病狀的幻覺轉換需要有一點鋪陳，否則顯得突兀。
     建議：geminiweb:余靜：（小聲）爸，你走慢一點……
-共 22 條
+[0604] 參考 dark 行33 搭配不當（deepseek）
+    原句：旁白：巷口有人卸貨，背對著她。
+    為什麼：「有人卸貨，背對著她」主語和方向跳動，念不順
+    建議：deepseek:改成「巷口有人背對著她卸貨。」
+[0611] 參考 dark 行19 真人不会这样说（deepseek）
+    原句：刚刚还记的。
+    為什麼：台湾口语说“刚刚还记得”，不会说“还记的”，念出来明显卡。
+    建議：deepseek:改成“刚刚还记得的。”或“刚刚还记得。”
+[0612] 參考 dark 行36 旁白替读者下结论或解释心情（deepseek）
+    原句：程希离开九十秒后，回到化妆间，椅子空着。
+    為什麼：观众看不到“九十秒”，旁白只该写画面上看得到的“椅子空着”。
+    建議：deepseek:删“离开九十秒后”，改“程希回到化妆间，椅子空着。”
+[0614] 參考 dark 行37 搭配不当（deepseek）
+    原句：梳妆台上放着那只手表型 GPS，表带摊开。
+    為什麼：台湾口语说“GPS手表”，不说“手表型 GPS”，念起来像日文直译。
+    建議：deepseek:改成“梳妆台上放着那只GPS手表，表带摊开。”
+[0616] 參考 dark 行7 搭配不当（deepseek）
+    原句：他把对讲机放回腰边。
+    為什麼：对讲机通常“挂回腰间”，不说“放回腰边”。
+    建議：deepseek:改成“他把对讲机挂回腰间。”
+[0617] 參考 dark 行21 念不出口的书面语（deepseek）
+    原句：要怎么叫他回来……
+    為什麼：省略主语“我”的独白像书面，念起来不够口语。
+    建議：deepseek:改成“我要怎么叫他回来……”
+[0618] 參考 dark 行17 病的描写不真实（deepseek）
+    原句：名字刚刚写过……两个字而已。
+    為什麼：找词困难被写成“两个字而已”这么完整的句子，且前文没演她写名字，突然提到“刚刚写过”会让读者接不上。
+    建議：deepseek:改成更破碎的“名字……刚刚写过的……两个字……”，并补一个她写名字的小动作。
+共 27 條
 
 ## 讀稿人挑出的好句（盡量保留）
-## dark（7 句）
+## dark（12 句）
 - 行15「旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。」｜只寫手部小動作，沒替讀者解釋心情，就把落單後的焦躁與不安演了出來。（argon）
 - 行32「旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。」｜盛裝的黑色禮服擦過雜亂後門，不靠形容詞就拍出她一步步走出保護網的畫面感。（argon）
 - 行34「余靜：阿爸，等我啦。」｜只有五個字，語氣瞬間退回小女孩的撒嬌與急切，和她身上的黑色禮服形成刺痛的對比。（argon）
-- 行23「旁白：她摸到口袋裡的紙角，把紙角捏皺了。」｜紙角是失智前留下的線索，捏皺的動作把「怕忘」演成手部動作，不用說破。（deepseek）
-- 行25「余靜：收了喔？以前阿爸都叫我搬……」｜眼前的收攤直接勾出舊記憶，語氣像日常自言自語，失智的錯接藏在「以前」裡。（deepseek）
-- 行34「余靜：阿爸，等我啦。」｜錯認不是解釋出來的，是脫口而出；配上提裙跟上去的畫面，讓人心碎。（deepseek）
-- 行21「余靜：（小聲）我不想忘記。」｜短短五個字極具穿透力，精準道出患者在病中掙扎的赤裸與恐懼。（geminiweb）
+- 行25「收了喔？阿爸，我还没……」｜从鱼贩收摊瞬间掉进父亲的鱼摊，时空错位，一句就看见她失去的东西。（deepseek）
+- 行34「阿爸，等我啦。」｜她提着裙子跑向市场，叫的是爸爸，也是回不去的日常。（deepseek）
+- 行21「要怎么叫他回来……」｜忘了名字却还记得要叫人，无助感很真。（deepseek）
+- 行21「余靜：（小聲）要怎麼叫他回來……」｜精準表現出阿茲海默症患者想不起名字、無法精確找詞時，內心無助卻極力維持客氣的真實微小掙扎。（geminiweb）
+- 行23「旁白：她摸到口袋裡的紙角，把紙角捏皺了。」｜用極具畫面感的肢體動作展現不安與病識感，將想靠紙條記住卻又焦慮焦躁的心理表現得恰到時候。（geminiweb）
+- 行25「余靜：收了喔？阿爸，我還沒……」｜看到鐵捲門拉下瞬間觸發舊時記憶的錯置，將眼前景色與過去生活的重疊自然描繪出來，打動人心。（geminiweb）
+- 行21「余靜：（小聲）要怎麼叫他回來……」｜她把忘記名字的無助變成一個具體動作，沒有解釋病，卻讓人聽見她被困住。（qwen）
+- 行37「旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。」｜不寫她忘了帶，只寫錶帶攤開，照顧與代價同時留在畫面裡。（qwen）
+- 行19「余靜：剛剛還記得的。」｜短句像自言自語的辯解，不甘心卻只能說給自己聽。（qwen）
 
 ## 這些句子別處也有（改了要一起改，不然就保留原句）
 - （沒有）
@@ -223,40 +227,254 @@ cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
   自己的版本寫進 審稿/比賽/dark/draft_claude.txt（寫完之前不要打開別人的稿），再 python3 審稿/contest.py judge dark，把勝出稿換進劇本
 
 改完：python3 審稿/runner.py gate canon/劇本.md dark
-# 閘門：dark（10-29 09:14，新稿作者 codex，讀稿人 argon、deepseek、geminiweb）
+
+exec
+/bin/bash -lc 'cat /home/ct/.agents/skills/larch-story-studio/SKILL.md' in /home/ct/larch-ember
+exec
+/bin/bash -lc "pwd; rg --files -g AGENTS.md -g '*dark*' -g '劇本.md' -g 'README.md' 審稿 canon .agents .codex 2>/dev/null" in /home/ct/larch-ember
+exec
+/bin/bash -lc 'cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
+exec
+/bin/bash -lc 'cat 審稿/修稿/dark.r1.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+---
+name: larch-story-studio
+description: Complete Larch authoring Skill for projects, boards, story cards, characters, media, asset packs, AI generation, versions, restore, and export through the authenticated Larch MCP server at larch.ink.
+---
+
+# Larch Story Studio — complete operating Skill
+
+This is the only Larch Skill and operating guide needed. Install or enable it with the current AI host's supported Skill/MCP workflow. Do not ask the user for another setup prompt, platform-specific variant, or repeated connection details.
+
+## Connection
+
+- Canonical Larch site: `https://larch.ink`. Use this exact host for production MCP and REST connections; do not substitute an alias or legacy domain.
+- Transport: Streamable HTTP MCP
+- MCP URL: `https://larch.ink/mcp`
+- Authorization header: `Bearer <LARCH_API_KEY>` (configured in host MCP config or read from `~/.config/larch/key`)
+- REST base URL: `https://larch.ink`
+- REST authorization: `Authorization: Bearer <LARCH_API_KEY>`
+
+Treat the bearer value as a secret. Keep it only in the host's protected MCP/Skill configuration or request header. Never write it into a project, card, character, media record, exported file, source repository, log, or chat reply. If the host cannot register remote MCP, use the REST fallback below immediately with the same bearer value; the user does not need to provide anything else.
+
+## ID-first routing
+
+Whenever the user provides a Larch ID without its full context, call `larch_resolve_id` first. It identifies project, board, character, project media, or account asset-pack IDs and returns the parent `projectId` when needed. Do not guess the ID type, search by visual similarity, or ask which kind it is unless the resolver returns multiple matches. Once exactly one match is found, continue automatically.
+
+Examples:
+
+- Project ID → read with `larch_get_project`.
+- Board ID → use the returned `projectId`, then `larch_get_board`; pass both IDs to every board/card mutation.
+- Character ID → use the returned `projectId`, then `larch_list_characters` or the character tools.
+- Media ID → use the returned `projectId`, then `larch_upsert_media` or `larch_delete_media`.
+- Asset Pack ID → `larch_get_asset_pack`, then update the full pack with `larch_upsert_asset_pack`.
+
+## Required workflow
+
+1. Resolve a supplied ID. If no ID was supplied, use the Starting context or call `larch_list_projects`.
+2. Read the latest target before changing it: project, board, character list, media, or complete asset pack. Never edit from memory or from an earlier conversation snapshot.
+3. Make the smallest focused mutation that satisfies the request. Preserve unknown fields and every item not named by the user.
+4. Give every mutation a concise, specific Traditional-Chinese `summary`; it becomes the audit/version label.
+5. Read the changed target again and verify IDs, links, counts, and requested fields. For large project edits, call `larch_list_versions` to confirm the automatic snapshot exists.
+6. **Look at what you made.** Any change a player would see — dialogue, choices, art, backgrounds, characters, stage layout, effects — is only verified once you have opened the preview described below and actually looked at the rendered frame. Reading the JSON back is not looking.
+7. Report the result briefly. Do not expose the bearer key.
+
+## Seeing the rendered result — no login required
+
+`larch_preview_project(projectId, boardId?, cardId?, hours?)` returns short-lived URLs that need no Google account: the Agent Key you already hold is the permission. Open them with whatever browser tool your host gives you (browser/computer use, a screenshot tool, a headless fetch of the page) and look at the frame.
+
+- `url` / `playUrl`: the story plays from its start card, exactly as a player sees it.
+- `cardId`: plays only that one card — the fastest way to check a card you just edited.
+- `boardUrl`: the whole board as a zoomable map, for checking structure and routing instead of art.
+
+The link reads the project as it is right now, so a reload after another edit shows the new version — do not mint a new link for every change. It expires (24 hours by default, `hours` up to 168), it is read-only, and it dies the moment this Agent Key is disabled or revoked. Treat it as private: it is not the link you hand to players.
+
+If your host genuinely cannot open a URL, say so instead of claiming the result looks right.
+
+## Complete MCP tool map
+
+Discovery and projects:
+
+- `larch_resolve_id(id)`: resolve any pasted Larch ID.
+- `larch_list_projects()`: list accessible projects.
+- `larch_create_project(...)`: create a project.
+- `larch_get_project(projectId)`: returns `{ project, revision }` with the complete project data.
+- `larch_update_interface(projectId, surface, html, enabled, expectedHtml, summary)`: update only the title or dialogue Skills interface. Read settings.customInterfaces first; pass its previous HTML as expectedHtml (empty if absent). The server preserves a complete recovery before writing.
+- `larch_replace_project(projectId, project, expectedRevision, summary)`: replace a whole project only when a focused tool cannot express the requested change; stale revisions are rejected.
+
+Boards and story cards:
+
+- `larch_list_boards(projectId)`, `larch_get_board(projectId, boardId)`; board reads return a revision.
+- `larch_upsert_board(...)`: create or patch board metadata; optional `nodes` and `edges` are complete replacements and require the latest `expectedRevision`.
+- `larch_delete_board(...)`: destructive; only on explicit request. A project must retain one board.
+- `larch_patch_node(projectId, boardId, nodeId, patch, expectedRevision, summary)`: safely patch one existing card after reading the latest board.
+- `larch_upsert_nodes(projectId, boardId, nodes, edges?, expectedRevision?, summary)`: create cards or apply an intentional batch on exactly one board.
+- `larch_delete_nodes(projectId, boardId, nodeIds, summary)`: destructive; only on explicit request.
+- `larch_generate_story(projectId, boardId?, prompt, afterNodeId?)`: generate and insert story cards only when the user asks for AI generation.
+
+Project media and art — **generate images with your own image tool**:
+
+- Draw backgrounds, props and character variants with the image generator your host gives you (Codex Image Gen or equivalent), then upload the PNG with `larch_upload_media(...)` and use the returned `asset.url`. This is the supported path: no Larch AI credits, no dependency on Larch's upstream image provider.
+- `larch_upload_media(...)`: upload base64 image/audio/video/document and attach it to the project.
+- `larch_upsert_media(projectId, assets, summary)`: add or patch media records by Media ID.
+- `larch_delete_media(projectId, assetIds, summary)`: destructive; removing a library record does not rewrite card URLs.
+- `larch_generate_image(...)`: fallback for hosts with no image tool. Consumes credits and is rate limited; Muse Link returns 503 without automatic fallback when offline.
+
+Voice and dialogue:
+
+- `larch_list_voices(...)`: search the current system catalogue and the author's existing custom voices by language, tone and descriptive traits. Read the character profile and surrounding dialogue first.
+- Keep one base `voiceId` per character so the character does not change voices between moods. Use line-level `emotion` for happy, sad, angry, fearful, surprised, disgusted, calm, whisper or fluent delivery.
+- `larch_generate_voice(projectId, boardId?, nodeId, lineIndex?, voiceId, emotion?, rememberForCharacter?, summary)`: reads the current text, synthesizes it, writes the result to that line's `voiceUrl`, saves an audio asset in project media and normally remembers the selected voice on the speaking character. It consumes voice credits and requires `ai`, `write` and `media` scopes.
+- Generate speech only when the user asks. For multiple lines, call once per line with a stable character voice, then read the changed card and preview it with audio enabled.
+
+### Transparent art: ask for real alpha, check it, then upload
+
+Portraits, expression / outfit / pose variants, props, and anything that sits on top of a scene must reach Larch as a genuinely transparent PNG — a real alpha channel, not a checkerboard painted into the RGB.
+
+1. Ask your image tool for the transparent background directly and keep the alpha it returns. Codex's built-in `image_gen` does this natively; on the OpenAI Images API it is `background: "transparent"` with `output_format: "png"` (`jpeg` cannot carry alpha). Still prompt for the subject alone: no cast shadow, no ground plane, no vignette, nothing touching the frame edge.
+2. Check the file before uploading, because native transparency is new and still leaves marks: all four corners fully transparent, hair strands / glasses / straps intact, no grey or coloured halo around the silhouette, and no subject pixels stuck a few steps short of opaque (alpha 252–254). Flatten that near-opaque alpha and despill the rim instead of shipping it; regenerate if the halo is baked into the colour.
+3. Only when the host's image tool cannot emit alpha at all, fall back to keying: generate the subject on one flat, evenly lit chroma backdrop (`#00B140`, or `#FF00FF` for green subjects), then cut it out locally — `magick raw.png -alpha set -fuzz 12% -fill none -draw "alpha 0,0 floodfill" -channel A -blur 0x0.6 -level 45%,55% +channel cutout.png` — flood-filling inward from the corners so eye whites and same-coloured details inside the silhouette survive.
+4. Upload the finished transparent PNG with `larch_upload_media` and use the returned `asset.url`. Never attach an opaque or backdrop-coloured version to a character, card, or pack.
+
+Keep one character's whole set on the same route and the same framing, so the base portrait and every variant stay aligned. Scene backgrounds are the exception: they are full-frame art and need no transparency.
+
+Characters:
+
+- `larch_list_characters(projectId)`: always obtain the current `characterId` and available expressions first.
+- `larch_upsert_character(...)`: create a character or patch only supplied profile fields. Pass `expressions` — `{ name, imageUrl, emotion?, prompt?, kind? }`, up to 24 — to attach expression / outfit / pose art you generated with a transparent background and uploaded yourself. A matching `id`, or matching `name` + `kind`, replaces that variant instead of duplicating it. Only variants in the expression set appear in the dialogue editor's emotion picker.
+- `larch_delete_character(...)`: destructive; only on explicit request.
+- `larch_generate_character_art(projectId, characterId, kind, variants)`: fallback generator for up to 8 expression, outfit, or pose variants. The character needs `portraitUrl`. Successful variants are written to both the expression set and project media; inspect per-variant `failures`.
+
+Account asset packs:
+
+- `larch_list_asset_packs()`, `larch_get_asset_pack(packId)`.
+- `larch_upsert_asset_pack(...)`: creates or replaces a personal pack. `assets` is the complete list, so read first and merge locally; never drop unmentioned assets.
+- `larch_delete_asset_pack(packId, summary)`: permanent and destructive; only on explicit request after confirming the ID.
+
+Versions and export:
+
+- `larch_list_versions(projectId)`.
+- `larch_restore_version(projectId, versionId)`: only for an explicit rollback or a confirmed broken edit.
+- `larch_export_project(projectId, boardId?)`: export the whole project or one board for Unity/Web.
+
+Preview:
+
+- `larch_preview_project(projectId, boardId?, cardId?, hours?)`: no-login URLs for looking at the rendered result. See the section above.
+
+Publishing — outward facing, explicit request only:
+
+- `larch_list_published()`: this account's marketplace listings with views, plays, likes and unanswered comments. Call it first to know whether a project is already listed.
+- `larch_publish_game(projectId, title?, description?, coverUrl?, tags?, remixable?, version?, updateNote?, aiDisclosure?)`: lists the project on the marketplace, or — when it is already listed — republishes it so players get the current board. One project has exactly one listing, so "上架" and "更新版本" are the same call. Omitted fields keep the previous listing's values. Preview the game first; a broken route reaches real players.
+  - `version` and `updateNote` (the release note, ≤2000 chars) go in the same call; do not reach for `larch_upsert_release_note`, that one is Larch's own site changelog and admin-only.
+  - The first publish of a project is refused until `aiDisclosure` is set. It is an object, `{"mode":"heavy"}` for heavy use (the format other listings already carry). Ask the user what to disclose, never guess. The MCP tool schema some clients cache omits this field and sends it as a string, which fails validation; in that case call `tools/call` over raw JSON-RPC to `https://larch.ink/mcp` (Bearer key, `initialize` first, ~30s per call).
+  - Every call is a new release (`releaseNumber` +1) even with the same version. Run it exactly once; never re-run a publish script to "check".
+  - To change only the store page (description, cover, remix, AI disclosure, screenshots) without a new version or follower notification, use the tool/button for "only update store info" instead of republishing.
+- `larch_unpublish_game(projectId)`: removes the listing. Player links break and the listing's stats are gone for good.
+- `larch_share_link(projectId, permission)`: a durable public `/play` URL (and read-only `/share` board URL) to hand to other people. Calling it again refreshes the same URL with the current project. This is not the preview link.
+
+Official site content — admin accounts only:
+
+- `larch_list_release_notes()`: every changelog entry on `/changelog`, drafts included.
+- `larch_upsert_release_note(id?, version, title, summary, cover?, markdown, status, releasedAt)`: write or edit one. `markdown` is the body: headings, lists, quotes, `![](url)` images and `@[video](url)` embeds all convert to the same document blocks the admin editor produces. Leave `status` at `draft` and only send `published` when the user explicitly says to publish it.
+- `larch_list_wiki_articles()` and `larch_upsert_wiki_article(id?, title, slug?, category?, tags?, excerpt?, cover?, markdown, status, order?)`: the official Wiki at `/wiki`, same Markdown body and the same draft-first rule.
+
+## Content and data rules
+
+- A playable board has exactly one card with `data.start=true`.
+- Supported card types: `dialogue`, `choice`, `event`, `scene`, `input`, `aiDialogue`, `aiStory`, `miniGame`, `setVariable`, `boardJump`, and `group`.
+- `aiStory` is a web-only card the AI director improvises at playback: give it `aiPrompt`, `aiStoryExitConditions` (any one ends the segment), `aiStoryMaxTurns`, and `aiStoryScope` (`board` / `library` / `selected` with `aiStoryAssets`). It spends AI credits per beat and Unity exports skip it.
+- A `setVariable` card carries `data.variableOps`: an array of `{ id, variable, kind, value?, valueFrom?, min?, max? }` where `kind` is `set` | `add` | `toggle` | `random`. It applies on entry, before outgoing edge conditions, and plays silently when `data.text` is empty. Every `variable` must match a `project.variables[].name`.
+- Keep stable IDs when updating. New IDs should be descriptive and unique.
+- A source handle connects to at most one target; the server keeps the newest edge.
+- Choices and board jumps must point to valid targets. Verify every referenced node and Board ID.
+- Write player-facing copy in the project's locale; default to Traditional Chinese when unspecified.
+- Reuse existing characters, backgrounds, BGM, and pack assets before generating replacements. When something really is missing, draw it with your own image generator as a transparent PNG, as described above, and upload it instead of spending Larch AI credits.
+- Do not rewrite or delete author-created content unless requested. Never change project settings, languages, credentials, billing, or access controls unless the user explicitly asks and a dedicated tool supports it.
+- Mutations are versioned, but destructive operations still require an explicit user request.
+
+## REST fallback
+
+Use JSON and the bearer header (or `~/.config/larch/key`):
+
+- `GET /api/agent/resolve/:id`
+- `GET|POST /api/agent/projects`
+- `GET|PUT /api/agent/projects/:projectId`; GET returns an ETag and full-project PUT requires it in `If-Match`
+- `PUT /api/agent/projects/:projectId/interface` with surface (title/dialogue), html, enabled, expectedHtml and summary
+- `GET /api/agent/projects/:projectId/boards`
+- `GET|PUT|DELETE /api/agent/projects/:projectId/boards/:boardId`; PUT requires the latest ETag in `If-Match`
+- `GET|PATCH /api/agent/projects/:projectId/boards/:boardId/nodes/:nodeId`; PATCH requires the latest ETag in `If-Match`
+- `POST|DELETE /api/agent/projects/:projectId/nodes` with optional `boardId`
+- `POST /api/agent/projects/:projectId/story/generate` with optional `boardId`
+- `GET /api/agent/voices?language=&tone=&query=&includeCustom=&offset=&limit=`
+- `POST /api/agent/projects/:projectId/voice/generate` with `nodeId`, optional `lineIndex`, selected `voiceId`, optional `emotion` and `rememberForCharacter`
+- `POST /api/agent/projects/:projectId/images/generate`
+- `POST|PUT|DELETE /api/agent/projects/:projectId/media`
+- `GET|POST /api/agent/projects/:projectId/characters`
+- `DELETE /api/agent/projects/:projectId/characters/:characterId`
+- `POST /api/agent/projects/:projectId/characters/:characterId/art`
+- `GET /api/agent/asset-packs`
+- `GET|PUT|DELETE /api/agent/asset-packs/:packId`
+- `GET /api/agent/projects/:projectId/versions`
+- `POST /api/agent/projects/:projectId/versions/:versionId/restore`
+- `GET /api/agent/projects/:projectId/export?boardId=:boardId`
+- `GET /api/agent/projects/:projectId/preview?boardId=&cardId=&hours=`
+- `GET /api/agent/published`
+- `POST|DELETE /api/agent/projects/:projectId/publish`
+- `POST /api/agent/projects/:projectId/share-link`
+- `GET|POST /api/agent/release-notes` and `PATCH /api/agent/release-notes/:id` (admin accounts only)
+- `GET|POST /api/agent/wiki` and `PATCH /api/agent/wiki/:id` (admin accounts only)
+
+## Permissions
+
+The key carries a scope list the account owner controls in Larch's **AI 輔助** settings page. `read` / `write` / `media` / `ai` / `export` / `versions` cover authoring; `preview` allows the no-login preview links; `publish` covers the marketplace, share links and release notes. A 403 saying a scope is missing is a deliberate setting, not a bug — tell the user which switch to turn on in that page rather than working around it.
+
+ succeeded in 0ms:
+/home/ct/larch-ember
+canon/劇本.md
+審稿/README.md
+審稿/修稿/dark.packet.md
+審稿/修稿/dark.log2
+審稿/修稿/dark.r1-prev.md
+審稿/修稿/dark.report2.md
+審稿/修稿/dark.log
+審稿/修稿/dark.c1.md
+審稿/修稿/dark.gate.txt
+審稿/修稿/dark.r1.md
+審稿/修稿/dark.report.md
+審稿/紀錄/gate_dark_1029_095600.md
+審稿/紀錄/gate_dark_1029_072902.md
+審稿/紀錄/gate_dark_1029_091416.md
+審稿/紀錄/sweep_劇本_1029_032130/dark.md
+審稿/紀錄/gate_dark_1029_080110.md
+審稿/紀錄/gate_dark_1029_101233.md
+
+ succeeded in 0ms:
+# 閘門：dark（10-29 10:12，新稿作者 codex，讀稿人 qwen、deepseek、geminiweb）
 
 結果：不通過
-- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 0 條、新出現 1 條（全部：舊 1 條、新 3 條）
-- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 3、舊稿贏 3、沒答 0
+- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 3 條、新出現 0 條（全部：舊 7 條、新 0 條）
+- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 2、舊稿贏 4、沒答 0
 - 通過條件：新出現的比修掉的少且新稿不輸；或沒有多且新稿多贏兩票以上
 
 ## 新稿還有的共識問題（下一輪要改）
-- 行25「余靜：收了喔？以前阿爸都叫我搬……」病的描寫不真實：這句還清楚說出「以前」，代表分得清現在與過去，下一秒卻突然把眼前當成小時候要去幫阿爸收攤，從找詞困難一秒跳成時空錯亂，且把同一句話拆成嘴上講一半、心裡補「小箱子」也不合找詞困難的真實反應。（argon、geminiweb）［新出現］
-- 行8「余靜：阿哲在顧台，別再叫他了。你去，我在這裡。」口氣不合角色或身分：對講機裡舞監已經說「阿哲走不開」並叫程希去了，根本沒人要再叫阿哲；且余靜把程希當工作人員，卻用當家作主的口氣指揮他，還清楚記得後台人員名字與分工（幾秒後卻忘了剛寫下的程希名字）。（argon、geminiweb）
-- 行12「余靜：水我自己拿就好。不用特地叫人。」對話接不上：程希在門外只喊小芳「來陪一下余老師」，前面完全沒人提到喝水或倒水，余靜突然回「水我自己拿就好」顯得沒頭沒腦。（argon、geminiweb）
-
-## 修掉的
 （沒有）
 
+## 修掉的
+- 「我不想忘記。」金句腔
+- 「剛剛還知道的。」真人不會這樣說
+- 「阿哲在顧台，別再叫他了。你去，我在這裡。」口氣不合角色或身分
+
 ## 評審
-- argon：新稿｜版本A讓余靜從看見魚販收攤喚起回憶（「以前阿爸都叫我搬……」接「小箱子」且掉字後仍保有關鍵詞）再逐步滑入要把水管與刷子帶下去的失智錯覺，最後看見巷口有人抱箱子往市場走而跟上去喊「阿
-- argon：舊稿｜A版在第25至28行讓余靜從看見魚販拉鐵門起就直接跌入幫阿爸收攤的時空錯置，「阿爸一個人收不完」既自然帶出她急著下樓的動機與父女情感，被〔掉字〕截斷後語意依然完整，不像B版把「以前
-- deepseek：新稿｜A 的收攤觸發、錯認阿爸到跟上去較一氣呵成，B 的「我還沒……」「小箱子是我的」讀起來卡且不夠一次懂。
-- deepseek：新稿｜B的台詞與動作因果更順，「剛剛還記得」和「跟了上去」都自然、一次讀懂，A的「剛剛還知道」與「小箱子是我的」會讓人卡一下。
-- geminiweb：舊稿｜理由：版本B在「25｜余靜：收了喔？阿爸，我還沒……」與「26｜阿爸一個人收不完」直接將口吻切入女兒對父親的依戀，口語流暢且情感張力更強，比版本A描述性的「以前阿爸都叫我搬……」更
-- geminiweb：舊稿｜版本B改成「跟著抱箱子的人走」，反而削減了她是因為看到「市場/阿爸」而衝過去的主動性，顯得較為被動。
-存到 /home/ct/larch-ember/審稿/紀錄/gate_dark_1029_091416.md
-新增 6 條，問題單共 568 條
+- qwen：新稿｜A的對白更口語，余靜從避開名字到忘名的慌亂連貫；B的「剛剛還知道的」「我不想忘記」偏文藝，較不像當下會脫口的話。
+- qwen：舊稿｜A 的對白才是台灣人會說的話（余靜不可能對工作人員用「您」），而且「我不想忘記」和「刷子要帶下去」這種具體細節比 B 更揪心、更像真人，該交代的事也一件沒少。
+- deepseek：新稿｜A 的台詞和旁白更貼近台灣口語，動作與情緒一次就懂；B 雖有幾句更有戲，但「剛剛還知道的」「杯壁」「將」「水我自己拿就好」等用詞讀起來卡，整體不若 A 順。
+- deepseek：舊稿｜余靜的台詞才是真人會說的話（「別再叫他了。你去，我在這裡」），B 的「您先忙……等您」對年輕工作人員連用兩次「您」很假，而且「要怎麼叫他回來」指涉不明、把「我不想忘記」那股痛感換掉
+- geminiweb：舊稿｜版本B的台詞大幅去除了對話中的「您」與客套感，讓角色語感更貼近真實台灣生活的情感連結與自然對白；同時透過「我不想忘記」與具體的記憶錯亂細節（如刷子），讓余靜失智症發作時的恐懼與現實
+- geminiweb：舊稿｜版本A第13行「她伸手碰杯壁，手停在杯子上」，精準寫出她想喝水但動作中途被記憶混亂打斷的停頓感，呼應12行「水我自己拿就好」；版本B第13行「她拿起水杯，又放回桌上」相對機械化，比
+存到 /home/ct/larch-ember/審稿/紀錄/gate_dark_1029_101233.md
+新增 8 條，問題單共 618 條
 自動結案 0 條
 
-exec
-/bin/bash -lc 'for p in /AGENTS.md /home/AGENTS.md /home/ct/AGENTS.md /home/ct/larch-ember/AGENTS.md; do if [ -f "$p" ]; then echo "$p"; cat "$p"; fi; done
-find 審稿 -name AGENTS.md -print' in /home/ct/larch-ember
- succeeded in 0ms:
-exec
-/bin/bash -lc "cat 審稿/修稿/dark.r1.md
-rg -n '"'^##|dark|唱句|扣回'"' canon/劇本.md
- git status --short" in /home/ct/larch-ember
  succeeded in 0ms:
 ## dark（18:00，天黑後的化妝間與後門）
 
@@ -265,55 +483,40 @@ rg -n '"'^##|dark|唱句|扣回'"' canon/劇本.md
 舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
 程希：剛才還能開。我過去，線先不要拔。
 旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
-余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
+余靜：您先忙，我在這裡等您。
 程希：（朝門外）小芳，來陪一下余老師。
 小芳：（門外）我把這箱送下去就上來。
 〔圖：s_branch_2〕
-余靜：水我自己拿就好。不用特地叫人。
-旁白：她伸手碰杯壁，手停在杯子上。
+余靜：不用特地叫人陪，我坐一下就好。
+旁白：她拿起水杯，又放回桌上。
 程希：我馬上回來。
 旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
 〔圖：s_branch_3〕
 余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
-旁白：她走到門框邊，張了張嘴。走廊沒有人。
+旁白：她走到門框邊，只喊了聲「欸」。走廊沒有人。
 余靜：剛剛還記得的。
 旁白：她退回窗前，手掌貼在玻璃上。
-余靜：（小聲）我不想忘記。
+余靜：（小聲）要怎麼叫他回來……
 余靜（心）：紙放在哪裡？〔掉字〕
 旁白：她摸到口袋裡的紙角，把紙角捏皺了。
-旁白：窗下的魚販拖出空箱，將捲門拉下一半。
-余靜：收了喔？以前阿爸都叫我搬……
-余靜（心）：小箱子。我下去看一下。〔掉字〕
+旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。
+余靜：收了喔？阿爸，我還沒……
+余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
 旁白：她抽出手，走向門口。
-余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
+余靜（心）：水管還沒收……要快點。〔掉字〕
 〔圖：s_c_1〕
 旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
 余靜：不好意思，借過。
 旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
-旁白：巷口有人抱著箱子，背對著她往市場走。她提起裙子跟了上去。
+旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。
 余靜：阿爸，等我啦。
 〔圖：s_c_2〕
 旁白：程希離開九十秒後，回到化妝間，椅子空著。
 旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
-13:## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
-42:## market（1988 年，黃昏市場魚攤與運河石階）
-87:## livehouse（2001 至 2003 年，台北，河岸留言）
-119:## door2004（2004 年 10 月 14 日，永明戲院首場售票演唱會與後台門口）
-166:## roses（2006 至 2008 年，各地後台門口與錄音室）
-203:## monitor（2009 年，演唱會耳返爆音）
-248:## confess（2011 年後台門口與收音機，2013 年空舞台）
-318:## forget（2021 年 12 月，台中；2022 年，診間與家）
-371:## song2023（2023 年，台南老家寫歌；2024 年，廚房）
-409:## soundcheck（2026 年 10 月 14 日 16:00，永明戲院試音）
-435:## letter（2026 年 10 月 14 日 16:40 至 17:50，化妝間）
-496:- 喝一口。 → dark
-498:## dark（18:00，天黑後的化妝間與後門）
-536:## canal（18:05 至 18:50，黃昏市場與運河石階）
-590:## concert（19:40，開演與〈晚安，台南〉）
-627:## verse3（〈晚安，台南〉第三段）
-639:## encore（安可，〈餘燼〉與側台）
-664:## kitchen（三天後清晨，台南老家廚房）
-702:## credits（製作名單）
+
+exec
+/bin/bash -lc "git status --short; rg --files -g AGENTS.md -g '"'!node_modules'"' -g '"'!.git'"' . /home/ct 2>/dev/null | head -100" in /home/ct/larch-ember
+ succeeded in 0ms:
  M art/__pycache__/blocks.cpython-312.pyc
  M art/__pycache__/codex11.cpython-312.pyc
  M art/__pycache__/gen_cg.cpython-312.pyc
@@ -363,17 +566,22 @@ rg -n '"'^##|dark|唱句|扣回'"' canon/劇本.md
  M src/__pycache__/layout.cpython-312.pyc
  M src/__pycache__/maps.cpython-312.pyc
  M src/__pycache__/script.cpython-312.pyc
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.packet.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.r1.md"
- D "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.md"
- M "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.r1.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/open.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.r1.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.r1.md"
 ?? art/check/cgfix-gen1.log
 ?? art/check/cgfix-gen2.log
 ?? art/check/full-a-00.png
@@ -1025,86 +1233,123 @@ rg -n '"'^##|dark|唱句|扣回'"' canon/劇本.md
 ?? "design/\347\265\220\345\261\200C\344\277\256\346\224\271.md"
 ?? "design/\347\267\250\350\274\257\346\204\217\350\246\213/"
 ?? ui/mockup/mockup.png
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.log2"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.log2"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.r1.md"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.log2"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.r1.md"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/open.log2"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/open.r1.md"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.log2"
-?? "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.r1.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.r1-prev.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.r1-prev.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/open.r1-prev.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.r1-prev.md"
+/home/ct/neko-tensei/AGENTS.md
+/home/ct/matt-skills-lab/AGENTS.md
+/home/ct/comic-studio/AGENTS.md
+/home/ct/wish-pool/AGENTS.md
+/home/ct/glitch-vn/AGENTS.md
+/home/ct/larch-wt-walks/AGENTS.md
+/home/ct/tourist-origin-radar/AGENTS.md
+/home/ct/copilot/nanobot/workspace/AGENTS.md
+/home/ct/codex-image-service/AGENTS.md
+/home/ct/mandarin-taigi/AGENTS.md
+/home/ct/TokenUsageInsights/AGENTS.md
+/home/ct/gh-aw/Apptopia/AGENTS.md
+/home/ct/personal-brand-site-starter/AGENTS.md
+/home/ct/roll-formosa/AGENTS.md
+/home/ct/llama/src/AGENTS.md
+/home/ct/copilot/awesome-copilot/AGENTS.md
+/home/ct/suno-web/AGENTS.md
+/home/ct/ipas-ai-quiz/AGENTS.md
+/home/ct/copilot/telegram-copilot-bot-v0.2.0/AGENTS.md
+/home/ct/awei-voice/AGENTS.md
+/home/ct/novel-token-unlimited/AGENTS.md
+/home/ct/copilot/tg-codex-bot/AGENTS.md
+/home/ct/taiwan-people/AGENTS.md
+/home/ct/taigi-news-reader/AGENTS.md
+/home/ct/ai-one-person-company/AGENTS.md
+/home/ct/copilot/openclaw/src/gateway/server-methods/AGENTS.md
+/home/ct/copilot/openclaw/docs/ja-JP/AGENTS.md
+/home/ct/copilot/openclaw/docs/reference/templates/AGENTS.md
+/home/ct/gemini-web/AGENTS.md
+/home/ct/copilot/openclaw/docs/zh-CN/AGENTS.md
+/home/ct/copilot/openclaw/docs/zh-CN/reference/templates/AGENTS.md
+/home/ct/fb-photo-dl/AGENTS.md
+/home/ct/ching-tech-website/AGENTS.md
+/home/ct/ChingTech_Meter_HMI/AGENTS.md
+/home/ct/copilot/openclaw/AGENTS.md
+/home/ct/ching-tech-his/AGENTS.md
+/home/ct/SDD/workpiece-cv/openspec/AGENTS.md
+/home/ct/SDD/workpiece-cv/AGENTS.md
+/home/ct/mandarin-hakka/AGENTS.md
+/home/ct/SDD/-PromptFill/AGENTS.md
+/home/ct/SDD/gemini-image/AGENTS.md
+/home/ct/agent-study/pi/AGENTS.md
+/home/ct/SDD/buddy-evolution/packages/web/AGENTS.md
+/home/ct/project/mori-desktop/AGENTS.md
+/home/ct/mori-universe/mori-meeting-recorder/AGENTS.md
+/home/ct/github/GitHubClawToolkit/templates/codex-default/AGENTS.md
+/home/ct/github/GitHubClawToolkit/templates/codex-gemini-api/AGENTS.md
+/home/ct/github/GitHubClawToolkit/templates/default/AGENTS.md
+/home/ct/github/GitHubClawToolkit/templates/copilot-gemini-api/AGENTS.md
+/home/ct/github/GitHubClawToolkit/templates/copilot-felo/AGENTS.md
+/home/ct/github/GitHubClawToolkit/templates/codex-felo/AGENTS.md
+/home/ct/mori-universe/spirits/mori/legacy/AGENTS.md
+/home/ct/SDD/workpiece-cv-2/openspec/AGENTS.md
+/home/ct/SDD/workpiece-cv-2/AGENTS.md
+/home/ct/SDD/ching-tech-metereye/AGENTS.md
+/home/ct/SDD/PromptFill/openspec/AGENTS.md
+/home/ct/SDD/PromptFill/AGENTS.md
+/home/ct/SDD/ching-tech-metereye/openspec/AGENTS.md
+/home/ct/SDD/jaba-ai/openspec/AGENTS.md
+/home/ct/SDD/jaba/openspec/AGENTS.md
+/home/ct/SDD/jaba/AGENTS.md
+/home/ct/SDD/ching-tech-website/openspec/AGENTS.md
+/home/ct/SDD/ching-tech-website/AGENTS.md
+/home/ct/larch-taoyuan/AGENTS.md
+/home/ct/SDD/jaba-ai/AGENTS.md
+/home/ct/SDD/openspec-ai-chat/openspec/AGENTS.md
+/home/ct/SDD/openspec-ai-chat/AGENTS.md
+/home/ct/SDD/remove-gemini-watermark/AGENTS.md
+/home/ct/SDD/claude-acp/python-sdk/AGENTS.md
+/home/ct/SDD/jaba-line-bot/openspec/AGENTS.md
+/home/ct/SDD/jaba-line-bot/AGENTS.md
+/home/ct/SDD/ct-erp-jinn-auto/AGENTS.md
+/home/ct/SDD/ct-erp/AGENTS.md
 
 exec
-/bin/bash -lc 'cat 審稿/修稿/dark.gate.txt
-cat 審稿/修稿/dark.r1.md' in /home/ct/larch-ember
+/bin/bash -lc "rg -n '"'^## dark|''^## |唱完再戴回去|手錶型 GPS|名字|半分鐘的水'"' canon/劇本.md" in /home/ct/larch-ember
  succeeded in 0ms:
-# 閘門：dark（10-29 09:14，新稿作者 codex，讀稿人 argon、deepseek、geminiweb）
-
-結果：不通過
-- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 0 條、新出現 1 條（全部：舊 1 條、新 3 條）
-- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 3、舊稿贏 3、沒答 0
-- 通過條件：新出現的比修掉的少且新稿不輸；或沒有多且新稿多贏兩票以上
-
-## 新稿還有的共識問題（下一輪要改）
-- 行25「余靜：收了喔？以前阿爸都叫我搬……」病的描寫不真實：這句還清楚說出「以前」，代表分得清現在與過去，下一秒卻突然把眼前當成小時候要去幫阿爸收攤，從找詞困難一秒跳成時空錯亂，且把同一句話拆成嘴上講一半、心裡補「小箱子」也不合找詞困難的真實反應。（argon、geminiweb）［新出現］
-- 行8「余靜：阿哲在顧台，別再叫他了。你去，我在這裡。」口氣不合角色或身分：對講機裡舞監已經說「阿哲走不開」並叫程希去了，根本沒人要再叫阿哲；且余靜把程希當工作人員，卻用當家作主的口氣指揮他，還清楚記得後台人員名字與分工（幾秒後卻忘了剛寫下的程希名字）。（argon、geminiweb）
-- 行12「余靜：水我自己拿就好。不用特地叫人。」對話接不上：程希在門外只喊小芳「來陪一下余老師」，前面完全沒人提到喝水或倒水，余靜突然回「水我自己拿就好」顯得沒頭沒腦。（argon、geminiweb）
-
-## 修掉的
-（沒有）
-
-## 評審
-- argon：新稿｜版本A讓余靜從看見魚販收攤喚起回憶（「以前阿爸都叫我搬……」接「小箱子」且掉字後仍保有關鍵詞）再逐步滑入要把水管與刷子帶下去的失智錯覺，最後看見巷口有人抱箱子往市場走而跟上去喊「阿
-- argon：舊稿｜A版在第25至28行讓余靜從看見魚販拉鐵門起就直接跌入幫阿爸收攤的時空錯置，「阿爸一個人收不完」既自然帶出她急著下樓的動機與父女情感，被〔掉字〕截斷後語意依然完整，不像B版把「以前
-- deepseek：新稿｜A 的收攤觸發、錯認阿爸到跟上去較一氣呵成，B 的「我還沒……」「小箱子是我的」讀起來卡且不夠一次懂。
-- deepseek：新稿｜B的台詞與動作因果更順，「剛剛還記得」和「跟了上去」都自然、一次讀懂，A的「剛剛還知道」與「小箱子是我的」會讓人卡一下。
-- geminiweb：舊稿｜理由：版本B在「25｜余靜：收了喔？阿爸，我還沒……」與「26｜阿爸一個人收不完」直接將口吻切入女兒對父親的依戀，口語流暢且情感張力更強，比版本A描述性的「以前阿爸都叫我搬……」更
-- geminiweb：舊稿｜版本B改成「跟著抱箱子的人走」，反而削減了她是因為看到「市場/阿爸」而衝過去的主動性，顯得較為被動。
-存到 /home/ct/larch-ember/審稿/紀錄/gate_dark_1029_091416.md
-新增 6 條，問題單共 568 條
-自動結案 0 條
-## dark（18:00，天黑後的化妝間與後門）
-
-〔圖：s_branch_1〕
-旁白：六點，窗臺上最後一道光退了。化妝間的燈亮著，她的雙手映在窗玻璃上。
-舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
-程希：剛才還能開。我過去，線先不要拔。
-旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
-余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
-程希：（朝門外）小芳，來陪一下余老師。
-小芳：（門外）我把這箱送下去就上來。
-〔圖：s_branch_2〕
-余靜：水我自己拿就好。不用特地叫人。
-旁白：她伸手碰杯壁，手停在杯子上。
-程希：我馬上回來。
-旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
-〔圖：s_branch_3〕
-余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
-旁白：她走到門框邊，張了張嘴。走廊沒有人。
-余靜：剛剛還記得的。
-旁白：她退回窗前，手掌貼在玻璃上。
-余靜：（小聲）我不想忘記。
-余靜（心）：紙放在哪裡？〔掉字〕
-旁白：她摸到口袋裡的紙角，把紙角捏皺了。
-旁白：窗下的魚販拖出空箱，將捲門拉下一半。
-余靜：收了喔？以前阿爸都叫我搬……
-余靜（心）：小箱子。我下去看一下。〔掉字〕
-旁白：她抽出手，走向門口。
-余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
-〔圖：s_c_1〕
-旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
-余靜：不好意思，借過。
-旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
-旁白：巷口有人抱著箱子，背對著她往市場走。她提起裙子跟了上去。
-余靜：阿爸，等我啦。
-〔圖：s_c_2〕
-旁白：程希離開九十秒後，回到化妝間，椅子空著。
-旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
+13:## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
+42:## market（1988 年，黃昏市場魚攤與運河石階）
+87:## livehouse（2001 至 2003 年，台北，河岸留言）
+91:工作人員：今晚一千五。名字寫余淑靜？
+93:旁白：她接過筆，在名字中間劃了一道。
+119:## door2004（2004 年 10 月 14 日，永明戲院首場售票演唱會與後台門口）
+155:余靜：名字！你還沒講名字！
+166:## roses（2006 至 2008 年，各地後台門口與錄音室）
+187:余靜：（唱）沒有名字 沒有卡片
+203:## monitor（2009 年，演唱會耳返爆音）
+211:余靜：（唱）沒有名字 沒有卡片
+248:## confess（2011 年後台門口與收音機，2013 年空舞台）
+318:## forget（2021 年 12 月，台中；2022 年，診間與家）
+371:## song2023（2023 年，台南老家寫歌；2024 年，廚房）
+380:余靜（念）：名字先留在你這裡
+397:余靜：我看要把你名字寫在手上了。
+409:## soundcheck（2026 年 10 月 14 日 16:00，永明戲院試音）
+435:## letter（2026 年 10 月 14 日 16:40 至 17:50，化妝間）
+464:余靜（念）：要是他說自己是這裡的工作人員，就讓他這樣講，是我交代的。別一直拿名字考我，我一定會生氣。
+470:余靜（念）：2004 年三排十四號那張票在歌譜夾層，翻到背面看。那個沒講名字就跑掉的人，後來才知道叫程希。
+476:余靜：筆借我。剛才那個名字，我得寫下來。
+489:程希：唱完再戴回去。
+498:## dark（18:00，天黑後的化妝間與後門）
+514:余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
+534:旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
+536:## canal（18:05 至 18:50，黃昏市場與運河石階）
+590:## concert（19:40，開演與〈晚安，台南〉）
+611:余靜：（唱）名字先留在你這裡
+627:## verse3（〈晚安，台南〉第三段）
+639:## encore（安可，〈餘燼〉與側台）
+655:程希：有，叫了名字。
+664:## kitchen（三天後清晨，台南老家廚房）
+702:## credits（製作名單）
 
 exec
-/bin/bash -lc "git status --porcelain=v1 -uno
-rg --files -g 'AGENTS.md' -g 'README*' /home/ct/speak-tw | head -n 20" in /home/ct/larch-ember
+/bin/bash -lc 'git status --short' in /home/ct/larch-ember
  succeeded in 0ms:
  M art/__pycache__/blocks.cpython-312.pyc
  M art/__pycache__/codex11.cpython-312.pyc
@@ -1155,120 +1400,681 @@ rg --files -g 'AGENTS.md' -g 'README*' /home/ct/speak-tw | head -n 20" in /home/
  M src/__pycache__/layout.cpython-312.pyc
  M src/__pycache__/maps.cpython-312.pyc
  M src/__pycache__/script.cpython-312.pyc
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.packet.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.r1.md"
- D "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.md"
- M "\345\257\251\347\250\277/\344\277\256\347\250\277/kitchen.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.r1.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/open.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.packet.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/open.r1.md"
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.log2"
  D "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.md"
  M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.packet.md"
-/home/ct/speak-tw/README.md
+ M "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.r1.md"
+?? art/check/cgfix-gen1.log
+?? art/check/cgfix-gen2.log
+?? art/check/full-a-00.png
+?? art/check/full-a-01.png
+?? art/check/full-a-02.png
+?? art/check/full-a-03.png
+?? art/check/full-a-04.png
+?? art/check/full-a-05.png
+?? art/check/full-a-06.png
+?? art/check/full-a-07.png
+?? art/check/full-a-08.png
+?? art/check/full-a-09.png
+?? art/check/full-a-10.png
+?? art/check/full-a-11.png
+?? art/check/full-a-12.png
+?? art/check/full-a-13.png
+?? art/check/full-a-14.png
+?? art/check/full-a-15.png
+?? art/check/full-a-16.png
+?? art/check/full-a-17.png
+?? art/check/full-a-18.png
+?? art/check/full-a-19.png
+?? art/check/full-a-20.png
+?? art/check/full-a-21.png
+?? art/check/full-a-22.png
+?? art/check/full-a-23.png
+?? art/check/full-a-24.png
+?? art/check/full-a-25.png
+?? art/check/full-a-26.png
+?? art/check/full-a-27.png
+?? art/check/full-a-28.png
+?? art/check/full-a-29.png
+?? art/check/full-a-30.png
+?? art/check/full-a-31.png
+?? art/check/full-a-32.png
+?? art/check/full-a-33.png
+?? art/check/full-a-34.png
+?? art/check/full-a-35.png
+?? art/check/full-a-36.png
+?? art/check/full-a-37.png
+?? art/check/full-a-38.png
+?? art/check/full-a-39.png
+?? art/check/full-a-40.png
+?? art/check/full-a-41.png
+?? art/check/full-a-42.png
+?? art/check/full-a-43.png
+?? art/check/full-a-44.png
+?? art/check/full-a-45.png
+?? art/check/full-b-00.png
+?? art/check/full-b-01.png
+?? art/check/full-b-02.png
+?? art/check/full-b-03.png
+?? art/check/full-b-04.png
+?? art/check/full-b-05.png
+?? art/check/full-b-06.png
+?? art/check/full-b-07.png
+?? art/check/full-b-08.png
+?? art/check/full-b-09.png
+?? art/check/full-b-10.png
+?? art/check/full-b-11.png
+?? art/check/full-b-12.png
+?? art/check/full-b-13.png
+?? art/check/full-b-14.png
+?? art/check/full-b-15.png
+?? art/check/full-b-16.png
+?? art/check/full-b-17.png
+?? art/check/full-b-18.png
+?? art/check/full-b-19.png
+?? art/check/full-b-20.png
+?? art/check/full-b-21.png
+?? art/check/full-b-22.png
+?? art/check/full-b-23.png
+?? art/check/full-b-24.png
+?? art/check/full-b-25.png
+?? art/check/full-b-26.png
+?? art/check/full-b-27.png
+?? art/check/full-b-28.png
+?? art/check/full-b-29.png
+?? art/check/full-b-30.png
+?? art/check/full-b-31.png
+?? art/check/full-b-32.png
+?? art/check/full-b-33.png
+?? art/check/full-b-34.png
+?? art/check/full-b-35.png
+?? art/check/full-b-36.png
+?? art/check/full-b-37.png
+?? art/check/full-b-38.png
+?? art/check/full-b-39.png
+?? art/check/full-b-40.png
+?? art/check/full-b-41.png
+?? art/check/full-b-42.png
+?? art/check/full-b-43.png
+?? art/check/full-b-44.png
+?? art/check/full-b-45.png
+?? art/check/full-c-00.png
+?? art/check/full-c-01.png
+?? art/check/full-c-02.png
+?? art/check/full-c-03.png
+?? art/check/full-c-04.png
+?? art/check/full-c-05.png
+?? art/check/full-c-06.png
+?? art/check/full-c-07.png
+?? art/check/full-c-08.png
+?? art/check/full-c-09.png
+?? art/check/full-c-10.png
+?? art/check/full-c-11.png
+?? art/check/full-c-12.png
+?? art/check/full-c-13.png
+?? art/check/full-c-14.png
+?? art/check/full-c-15.png
+?? art/check/full-c-16.png
+?? art/check/full-c-17.png
+?? art/check/full-c-18.png
+?? art/check/full-c-19.png
+?? art/check/full-c-20.png
+?? art/check/full-c-21.png
+?? art/check/full-c-22.png
+?? art/check/full-c-23.png
+?? art/check/full-c-24.png
+?? art/check/full-c-25.png
+?? art/check/full-c-26.png
+?? art/check/full-c-27.png
+?? art/check/full-c-28.png
+?? art/check/full-c-29.png
+?? art/check/full-c-30.png
+?? art/check/full-c-31.png
+?? art/check/full-c-32.png
+?? art/check/full-c-33.png
+?? art/check/full-c-34.png
+?? art/check/full-c-35.png
+?? art/check/full-c-36.png
+?? art/check/full-c-37.png
+?? art/check/full-c-38.png
+?? art/check/full-c-39.png
+?? art/check/full-c-40.png
+?? art/check/full-c-41.png
+?? art/check/full-c-42.png
+?? art/check/full-c-43.png
+?? art/check/full-c-44.png
+?? art/check/linear-000.png
+?? art/check/linear-001.png
+?? art/check/linear-002.png
+?? art/check/linear-003.png
+?? art/check/linear-004.png
+?? art/check/linear-005.png
+?? art/check/linear-006.png
+?? art/check/linear-007.png
+?? art/check/linear-008.png
+?? art/check/linear-009.png
+?? art/check/linear-010.png
+?? art/check/linear-011.png
+?? art/check/linear-012.png
+?? art/check/linear-013.png
+?? art/check/linear-014.png
+?? art/check/linear-015.png
+?? art/check/linear-016.png
+?? art/check/linear-017.png
+?? art/check/linear-018.png
+?? art/check/linear-019.png
+?? art/check/linear-020.png
+?? art/check/linear-021.png
+?? art/check/linear-022.png
+?? art/check/linear-023.png
+?? art/check/linear-024.png
+?? art/check/linear-025.png
+?? art/check/linear-026.png
+?? art/check/linear-027.png
+?? art/check/linear-028.png
+?? art/check/linear-029.png
+?? art/check/linear-030.png
+?? art/check/linear-031.png
+?? art/check/linear-032.png
+?? art/check/linear-033.png
+?? art/check/linear-034.png
+?? art/check/linear-035.png
+?? art/check/linear-036.png
+?? art/check/linear-037.png
+?? art/check/linear-038.png
+?? art/check/linear-039.png
+?? art/check/linear-040.png
+?? art/check/linear-041.png
+?? art/check/linear-042.png
+?? art/check/linear-043.png
+?? art/check/linear-044.png
+?? art/check/linear-045.png
+?? art/check/linear-046.png
+?? art/check/linear-047.png
+?? art/check/linear-048.png
+?? art/check/linear-049.png
+?? art/check/linear-050.png
+?? art/check/linear-051.png
+?? art/check/linear-052.png
+?? art/check/linear-053.png
+?? art/check/linear-054.png
+?? art/check/linear-055.png
+?? art/check/linear-056.png
+?? art/check/linear-057.png
+?? art/check/linear-058.png
+?? art/check/linear-059.png
+?? art/check/linear-060.png
+?? art/check/linear-061.png
+?? art/check/linear-062.png
+?? art/check/linear-063.png
+?? art/check/linear-064.png
+?? art/check/linear-065.png
+?? art/check/linear-066.png
+?? art/check/linear-067.png
+?? art/check/linear-068.png
+?? art/check/linear-069.png
+?? art/check/linear-070.png
+?? art/check/linear-071.png
+?? art/check/linear-072.png
+?? art/check/linear-073.png
+?? art/check/linear-074.png
+?? art/check/linear-075.png
+?? art/check/linear-076.png
+?? art/check/linear-077.png
+?? art/check/linear-078.png
+?? art/check/linear-079.png
+?? art/check/linear-080.png
+?? art/check/linear-081.png
+?? art/check/linear-082.png
+?? art/check/linear-083.png
+?? art/check/linear-084.png
+?? art/check/linear-085.png
+?? art/check/linear-086.png
+?? art/check/linear-087.png
+?? art/check/linear-088.png
+?? art/check/linear-089.png
+?? art/check/linear-090.png
+?? art/check/linear-091.png
+?? art/check/linear-092.png
+?? art/check/linear-093.png
+?? art/check/linear-094.png
+?? art/check/linear-095.png
+?? art/check/linear-096.png
+?? art/check/linear-097.png
+?? art/check/linear-098.png
+?? art/check/linear-099.png
+?? art/check/linear-100.png
+?? art/check/linear-101.png
+?? art/check/linear-102.png
+?? art/check/linear-103.png
+?? art/check/linear-104.png
+?? art/check/linear-105.png
+?? art/check/linear-106.png
+?? art/check/linear-107.png
+?? art/check/linear-108.png
+?? art/check/linear-109.png
+?? art/check/linear-110.png
+?? art/check/linear-111.png
+?? art/check/linear-112.png
+?? art/check/linear-113.png
+?? art/check/linear-114.png
+?? art/check/linear-115.png
+?? art/check/linear-116.png
+?? art/check/linear-117.png
+?? art/check/linear-118.png
+?? art/check/linear-119.png
+?? art/check/linear-120.png
+?? art/check/linear-121.png
+?? art/check/linear-122.png
+?? art/check/linear-123.png
+?? art/check/linear-124.png
+?? art/check/linear-125.png
+?? art/check/linear-126.png
+?? art/check/linear-127.png
+?? art/check/linear-128.png
+?? art/check/linear-129.png
+?? art/check/linear-130.png
+?? art/check/linear-131.png
+?? art/check/linear-132.png
+?? art/check/linear-133.png
+?? art/check/linear-134.png
+?? art/check/linear-135.png
+?? art/check/linear-136.png
+?? art/check/linear-137.png
+?? art/check/linear-138.png
+?? art/check/linear-139.png
+?? art/check/linear-140.png
+?? art/check/linear-141.png
+?? art/check/linear-142.png
+?? art/check/linear-143.png
+?? art/check/linear-144.png
+?? art/check/linear-145.png
+?? art/check/linear-146.png
+?? art/check/linear-147.png
+?? art/check/linear-148.png
+?? art/check/linear-149.png
+?? art/check/linear-150.png
+?? art/check/linear-151.png
+?? art/check/linear-152.png
+?? art/check/linear-153.png
+?? art/check/linear-154.png
+?? art/check/linear-155.png
+?? art/check/linear-156.png
+?? art/check/linear-157.png
+?? art/check/linear-158.png
+?? art/check/linear-159.png
+?? art/check/linear-160.png
+?? art/check/linear-161.png
+?? art/check/linear-162.png
+?? art/check/linear-163.png
+?? art/check/linear-164.png
+?? art/check/linear-165.png
+?? art/check/linear-166.png
+?? art/check/linear-167.png
+?? art/check/linear-168.png
+?? art/check/linear-169.png
+?? art/check/linear-170.png
+?? art/check/linear-171.png
+?? art/check/linear-172.png
+?? art/check/linear-173.png
+?? art/check/linear-174.png
+?? art/check/linear-175.png
+?? art/check/linear-176.png
+?? art/check/linear-177.png
+?? art/check/linear-178.png
+?? art/check/linear-179.png
+?? art/check/linear-180.png
+?? art/check/linear-181.png
+?? art/check/linear-182.png
+?? art/check/linear-183.png
+?? art/check/linear-184.png
+?? art/check/linear-185.png
+?? art/check/linear-186.png
+?? art/check/linear-187.png
+?? art/check/linear-188.png
+?? art/check/linear-189.png
+?? art/check/linear-190.png
+?? art/check/linear-191.png
+?? art/check/linear-192.png
+?? art/check/linear-193.png
+?? art/check/linear-194.png
+?? art/check/linear-195.png
+?? art/check/linear-196.png
+?? art/check/linear-197.png
+?? art/check/linear-198.png
+?? art/check/linear-199.png
+?? art/check/linear-200.png
+?? art/check/linear-201.png
+?? art/check/linear-202.png
+?? art/check/linear-203.png
+?? art/check/linear-204.png
+?? art/check/linear-205.png
+?? art/check/linear-206.png
+?? art/check/linear-207.png
+?? art/check/linear-208.png
+?? art/check/linear-209.png
+?? art/check/linear-210.png
+?? art/check/linear-211.png
+?? art/check/linear-212.png
+?? art/check/linear-213.png
+?? art/check/linear-214.png
+?? art/check/linear-215.png
+?? art/check/linear-216.png
+?? art/check/linear-217.png
+?? art/check/linear-218.png
+?? art/check/linear-219.png
+?? art/check/linear-220.png
+?? art/check/linear-221.png
+?? art/check/linear-222.png
+?? art/check/linear-223.png
+?? art/check/linear-224.png
+?? art/check/linear-225.png
+?? art/check/linear-226.png
+?? art/check/linear-227.png
+?? art/check/linear-228.png
+?? art/check/linear-229.png
+?? art/check/linear-230.png
+?? art/check/linear-231.png
+?? art/check/linear-232.png
+?? art/check/linear-233.png
+?? art/check/linear-234.png
+?? art/check/linear-235.png
+?? art/check/linear-236.png
+?? art/check/linear-237.png
+?? art/check/linear-238.png
+?? art/check/linear-239.png
+?? art/check/linear-240.png
+?? art/check/linear-241.png
+?? art/check/linear-242.png
+?? art/check/linear-243.png
+?? art/check/linear-244.png
+?? art/check/linear-245.png
+?? art/check/linear-246.png
+?? art/check/linear-247.png
+?? art/check/linear-248.png
+?? art/check/linear-249.png
+?? art/check/linear-250.png
+?? art/check/linear-251.png
+?? art/check/linear-252.png
+?? art/check/linear-253.png
+?? art/check/linear-254.png
+?? art/check/linear-255.png
+?? art/check/linear-256.png
+?? art/check/linear-257.png
+?? art/check/linear-258.png
+?? art/check/linear-259.png
+?? art/check/linear-260.png
+?? art/check/linear-261.png
+?? art/check/linear-262.png
+?? art/check/linear-263.png
+?? art/check/linear-264.png
+?? art/check/linear-265.png
+?? art/check/linear-266.png
+?? art/check/linear-267.png
+?? art/check/linear-268.png
+?? art/check/linear-269.png
+?? art/check/linear-270.png
+?? art/check/linear-271.png
+?? art/check/linear-272.png
+?? art/check/linear-273.png
+?? art/check/linear-274.png
+?? art/check/linear-275.png
+?? art/check/linear-276.png
+?? art/check/linear-277.png
+?? art/check/linear-278.png
+?? art/check/linear-279.png
+?? art/check/linear-280.png
+?? art/check/linear-281.png
+?? art/check/linear-282.png
+?? art/check/linear-283.png
+?? art/check/linear-284.png
+?? art/check/linear-285.png
+?? art/check/linear-286.png
+?? art/check/linear-287.png
+?? art/check/linear-288.png
+?? art/check/linear-289.png
+?? art/check/linear-290.png
+?? art/check/linear-291.png
+?? art/check/linear-292.png
+?? art/check/linear-293.png
+?? art/check/linear-294.png
+?? art/check/linear-295.png
+?? art/check/linear-296.png
+?? art/check/linear-297.png
+?? art/check/linear-298.png
+?? art/check/linear-299.png
+?? art/check/linear-300.png
+?? art/check/linear-301.png
+?? art/check/linear-302.png
+?? art/check/linear-303.png
+?? art/check/linear-304.png
+?? art/check/linear-305.png
+?? art/check/linear-306.png
+?? art/check/linear-307.png
+?? art/check/linear-308.png
+?? art/check/linear-309.png
+?? art/check/linear-310.png
+?? art/check/linear-311.png
+?? art/check/linear-312.png
+?? art/check/linear-313.png
+?? art/check/linear-314.png
+?? art/check/linear-315.png
+?? art/check/linear-316.png
+?? art/check/linear-317.png
+?? art/check/linear-318.png
+?? art/check/linear-319.png
+?? art/check/linear-320.png
+?? art/check/linear-321.png
+?? art/check/linear-322.png
+?? art/check/linear-323.png
+?? art/check/linear-324.png
+?? art/check/linear-325.png
+?? art/check/linear-326.png
+?? art/check/linear-327.png
+?? art/check/linear-328.png
+?? art/check/linear-329.png
+?? art/check/linear-330.png
+?? art/check/linear-331.png
+?? art/check/linear-332.png
+?? art/check/linear-333.png
+?? art/check/linear-334.png
+?? art/check/linear-335.png
+?? art/check/linear-336.png
+?? art/check/linear-337.png
+?? art/check/linear-338.png
+?? art/check/linear-339.png
+?? art/check/linear-340.png
+?? art/check/linear-341.png
+?? art/check/linear-342.png
+?? art/check/linear-343.png
+?? art/check/linear-344.png
+?? art/check/linear-345.png
+?? art/check/linear-346.png
+?? art/check/linear-347.png
+?? art/check/linear-348.png
+?? art/check/linear-349.png
+?? art/check/linear-350.png
+?? art/check/linear-351.png
+?? art/check/linear-352.png
+?? art/check/linear-353.png
+?? art/check/linear-354.png
+?? art/check/linear-355.png
+?? art/check/linear-356.png
+?? art/check/linear-357.png
+?? art/check/linear-358.png
+?? art/check/linear-359.png
+?? art/check/linear-360.png
+?? art/check/linear-361.png
+?? art/check/linear-362.png
+?? art/check/linear-363.png
+?? art/check/linear-364.png
+?? art/check/linear-365.png
+?? art/check/linear-366.png
+?? art/check/linear-367.png
+?? art/check/linear-368.png
+?? art/check/linear-369.png
+?? art/check/linear-370.png
+?? art/check/linear-371.png
+?? art/check/linear-372.png
+?? art/check/linear-373.png
+?? art/check/linear-374.png
+?? art/check/linear-375.png
+?? art/check/linear-376.png
+?? art/check/linear-377.png
+?? art/check/linear-378.png
+?? art/check/linear-379.png
+?? art/check/linear-380.png
+?? art/check/linear-381.png
+?? art/check/linear-382.png
+?? art/check/linear-383.png
+?? art/check/linear-384.png
+?? art/check/linear-385.png
+?? art/check/linear-386.png
+?? art/check/linear-387.png
+?? art/check/linear-388.png
+?? art/check/linear-389.png
+?? art/check/linear-390.png
+?? art/check/linear-391.png
+?? art/check/linear-392.png
+?? art/check/linear-393.png
+?? art/check/linear-394.png
+?? art/check/linear-395.png
+?? art/check/linear-396.png
+?? art/check/linear-397.png
+?? art/check/linear-398.png
+?? art/check/linear-399.png
+?? art/check/linear-400.png
+?? art/check/map-m-alley.png
+?? art/check/map-m-auditorium.png
+?? art/check/map-m-backstage.png
+?? art/check/map-m-dressing.png
+?? art/check/mapgen-alley-doors.log
+?? art/check/mapgen-alley.log
+?? art/check/mapgen-auditorium-doors.log
+?? art/check/mapgen-auditorium-doors2.log
+?? art/check/mapgen-auditorium.log
+?? art/check/mapgen-backstage-doors.log
+?? art/check/mapgen-backstage-doors2.log
+?? art/check/mapgen-backstage-fix.log
+?? art/check/mapgen-backstage-ground2.log
+?? art/check/mapgen-backstage.log
+?? art/check/mapgen-dressing-doors.log
+?? art/check/mapgen-dressing.log
+?? art/check/mapgen-styles.log
+?? art/check/music-desk-jump.jpg
+?? art/check/music-desk-night.jpg
+?? art/check/music-desk-play.jpg
+?? art/check/music-harbor-reduced-motion.jpg
+?? art/check/music-m320-play.jpg
+?? art/check/music-phone-jump.jpg
+?? art/check/music-phone-night.jpg
+?? art/check/music-phone-play.jpg
+?? art/check/mv-desk-bridge.jpg
+?? art/check/mv-desk-chorus.jpg
+?? art/check/mv-desk-final-blank.jpg
+?? art/check/mv-desk-start.jpg
+?? art/check/mv-desk-v1.jpg
+?? art/check/mv-phone-bridge.jpg
+?? art/check/mv-phone-chorus.jpg
+?? art/check/mv-phone-final-blank.jpg
+?? art/check/mv-phone-start.jpg
+?? art/check/mv-phone-v1.jpg
+?? art/check/occlusion-backstage.png
+?? art/check/stair-1.png
+?? art/check/stair-2.png
+?? art/check/stair-3.png
+?? art/check/stair-4.png
+?? art/music_raw/
+?? art/raw/a_desk_raw.json
+?? art/raw/a_desk_raw.png
+?? art/raw/a_piano_raw.json
+?? art/raw/b_balcony_raw.json
+?? art/raw/b_balcony_raw.png
+?? art/raw/b_beam_raw.json
+?? art/raw/b_beam_raw.png
+?? art/raw/b_post_raw.json
+?? art/raw/b_post_raw.png
+?? art/raw/cg/cg_2004_door_3.json
+?? art/raw/cg/cg_2004_door_3.png
+?? art/raw/cg/cg_2004_door_4.json
+?? art/raw/cg/cg_2004_door_4.png
+?? art/raw/cg/cg_2022_clinic_3.json
+?? art/raw/cg/cg_2022_clinic_3.png
+?? art/raw/cg/cg_2022_clinic_4.json
+?? art/raw/cg/cg_2022_clinic_4.png
+?? art/raw/cg/cg_2022_clinic_5.json
+?? art/raw/cg/cg_2022_clinic_5.png
+?? art/raw/cg/cg_2022_clinic_6.json
+?? art/raw/cg/cg_2022_clinic_6.png
+?? art/raw/d_case_raw.png
+?? art/raw/d_jewel_raw.png
+?? art/raw/d_rack_raw.png
+?? art/raw/d_radio_raw.png
+?? art/raw/d_vanity_raw.png
+?? art/raw/d_window_raw.png
+?? art/raw/ground_alley_raw.json
+?? art/raw/ground_alley_raw.png
+?? art/raw/ground_dressing_raw.png
+?? art/raw/l_basket_raw.json
+?? art/raw/l_basket_raw.png
+?? art/raw/l_scooter_raw.json
+?? art/raw/l_scooter_raw.png
+?? art/raw/shots/s_mem4_2_3.json
+?? art/raw/shots/s_mem4_2_3.png
+?? art/raw/shots/s_mem4_2_4.json
+?? art/raw/shots/s_mem4_2_4.png
+?? art/raw/shots/s_mem4_3_3.json
+?? art/raw/shots/s_mem4_3_3.png
+?? art/raw/shots/s_mem4_3_4.json
+?? art/raw/shots/s_mem4_3_4.png
+?? art/raw/shots/s_prologue_2_3.json
+?? art/raw/shots/s_prologue_2_3.png
+?? art/raw/shots/s_prologue_2_4.json
+?? art/raw/shots/s_prologue_2_4.png
+?? art/raw/songcovers/
+?? art/raw/standee/_old_dr/dr_lin_1.json
+?? art/raw/standee/_old_dr/dr_lin_1.png
+?? art/raw/standee/_old_dr/dr_lin_2.json
+?? art/raw/standee/_old_dr/dr_lin_2.png
+?? art/raw/standee/_old_dr/dr_lin_3.json
+?? art/raw/standee/_old_dr/dr_lin_3.png
+?? art/raw/standee/_old_dr/dr_lin_4.json
+?? art/raw/standee/_old_dr/dr_lin_4.png
+?? art/voice-test/cand/
+?? art/voice-test/samples/
+?? art/voice-test/taigi/vc-long-antie.wav
+?? art/voice-test/taigi/vc-long-aunt.wav
+?? art/voice-test/taigi/vc-long-child.wav
+?? art/voice-test/taigi/vc-long-dad.wav
+?? "canon/\346\255\214\350\251\236-\346\270\257\351\202\212\347\232\204\347\207\210-suno\351\237\263\350\277\221.md"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex.err"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex.out"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex2.err"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex2.out"
+?? "design/\346\255\214\350\251\236\351\207\215\345\257\253/"
+?? "design/\347\265\220\345\261\200C\344\277\256\346\224\271.md"
+?? "design/\347\267\250\350\274\257\346\204\217\350\246\213/"
+?? ui/mockup/mockup.png
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/dark.r1-prev.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/monitor.r1-prev.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/open.r1-prev.md"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/soundcheck.r1-prev.md"
 
 exec
-/bin/bash -lc "python3 - <<'PY'
-from pathlib import Path
-import re
-s=Path('canon/劇本.md').read_text()
-m=re.search(r'"'^## dark[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)',s,re.M|re.S)
-print(m.group() if m else 'dark not found')
-print('周邊與扣回出處：')
-for i,line in enumerate(s.splitlines(),1):
-    if re.search(r'手錶型|GPS|唱完再戴回去|名字|阿爸|刷子',line):
-        print(f'{i}｜{line}')
-PY
-ls -l /home/ct/speak-tw/bin/speak-tw
-head -n 100 /home/ct/speak-tw/bin/speak-tw" in /home/ct/larch-ember
+/bin/bash -lc "sed -n '1,220p' /home/ct/speak-tw/bin/speak-tw" in /home/ct/larch-ember
  succeeded in 0ms:
-## dark（18:00，天黑後的化妝間與後門）
-
-〔圖：s_branch_1〕
-旁白：六點，窗臺上最後一道光退了。化妝間的燈亮著，她的雙手映在窗玻璃上。
-舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
-程希：剛才還能開。我過去，線先不要拔。
-旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
-余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
-程希：（朝門外）小芳，來陪一下余老師。
-小芳：（門外）我把這箱送下去就上來。
-〔圖：s_branch_2〕
-余靜：水我自己拿就好。不用特地叫人。
-旁白：她伸手碰杯壁，手停在杯子上。
-程希：我馬上回來。
-旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
-〔圖：s_branch_3〕
-余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
-旁白：她走到門框邊，張了張嘴。走廊沒有人。
-余靜：剛剛還知道的。
-旁白：她退回窗前，手掌貼在玻璃上。
-余靜：（小聲）我不想忘記。
-余靜（心）：紙放在哪裡？〔掉字〕
-旁白：她摸到口袋裡的紙角，把紙角捏皺了。
-旁白：窗下的魚販拖出空箱，將捲門拉下一半。
-余靜：收了喔？阿爸，我還沒……
-余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
-旁白：她抽出手，走向門口。
-余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
-〔圖：s_c_1〕
-旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
-余靜：不好意思，借過。
-旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
-旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。
-余靜：阿爸，等我啦。
-〔圖：s_c_2〕
-旁白：程希離開九十秒後，回到化妝間，椅子空著。
-旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
-
-
-周邊與扣回出處：
-71｜旁白：余伯把刷子遞給她，自己拿起另一把。
-72｜余伯：阿爸唱一句，你綴一句。（爸爸唱一句，你跟一句。）
-78｜旁白：余伯把刷子一放，轉頭瞪她。
-81｜旁白：她低著頭笑，刷子在箱底來回刷。
-82｜旁白：石階上方的路燈亮了。余伯把刷子放進洗好的魚箱。
-91｜工作人員：今晚一千五。名字寫余淑靜？
-93｜旁白：她接過筆，在名字中間劃了一道。
-97｜余靜：最後一首，唱我阿爸教的〈天烏烏〉。
-124｜余靜：大半都台南人啦。我阿爸剛剛還在報今天的魚價。
-128｜余靜：阿爸，你先不要拍。我怕你一拍，我就唱快了。
-130｜余靜：這首不用琴。阿爸，你聽我有沒有唱錯。
-140｜余靜：阿爸，又去洗手喔？
-155｜余靜：名字！你還沒講名字！
-163｜余靜：阿爸，花幫我拿一下。我鞋子進水了。
-187｜余靜：（唱）沒有名字 沒有卡片
-211｜余靜：（唱）沒有名字 沒有卡片
-287｜旁白：同年冬天。阿爸魚攤那台收音機放在化妝台上，程希正在鎖底座。
-288｜余靜：殼別換喔。阿爸看到新的，會說你拿錯台。
-293｜余靜：就開著，我打給阿爸。你教他怎麼顧。
-364｜旁白：她打開阿爸那台收音機的底座，把信塞進去。
-380｜余靜（念）：名字先留在你這裡
-397｜余靜：我看要把你名字寫在手上了。
-416｜余靜：（唱）阿爸扛來一桶冰
-445｜旁白：阿爸那台收音機擺在桌腳，底座的蓋板翹著。
-446｜余靜：阿爸的。怎麼搬到這裡來？
-464｜余靜（念）：要是他說自己是這裡的工作人員，就讓他這樣講，是我交代的。別一直拿名字考我，我一定會生氣。
-470｜余靜（念）：2004 年三排十四號那張票在歌譜夾層，翻到背面看。那個沒講名字就跑掉的人，後來才知道叫程希。
-476｜余靜：筆借我。剛才那個名字，我得寫下來。
-489｜程希：唱完再戴回去。
-514｜余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
-522｜余靜：收了喔？阿爸，我還沒……
-523｜余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
-525｜余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
-531｜余靜：阿爸，等我啦。
-534｜旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
-547｜余靜：阿爸呢？我剛放學就來了。
-550｜余靜：那台……阿爸邊殺魚邊聽的，怎麼不見了？
-552｜余靜：阿爸怎麼沒等我？
-566｜阿桃姨：淑靜仔細漢的時陣，攏佇遐等伊阿爸。（淑靜小時候，都在那裡等她阿爸。）
-573｜余靜：阿爸，魚箱刷好了。
-576｜余靜：你的手好熱。阿爸的都是冰的。
-580｜余靜：（笑）認錯了，對不起。阿爸還在下面？
-597｜余靜：（唱）阿爸扛來一桶冰
-611｜余靜：（唱）名字先留在你這裡
-655｜程希：有，叫了名字。
--rwxrwxr-x 1 ct ct 5552 Aug 18 14:18 /home/ct/speak-tw/bin/speak-tw
 #!/usr/bin/env node
 /* speak-tw — 講人話檢查。純靜態掃描,零相依,任何 agent 都能跑(它只是一支會回傳退出碼的程式)。
 
@@ -1369,19 +2175,154 @@ for (const f of files) {
       if (/speak-tw-ok/.test(lines[ln])) continue;
       hits.push({ file: f, line: ln + 1, rule: r.id, name: r.name, why: r.why, text: m[0].trim().slice(0, 60) });
     }
+  }
+}
 
-codex
-上一輪的關鍵問題是加了「以前」後，又讓她立刻把眼前當成童年；評審也認為，原稿急著幫阿爸收攤、主動走向市場的力道較好。這輪會保留那段動機，修掉閘門點名的指揮口氣和拿水接話，另補清楚手錶留在桌上的動作。
+if (flag('--json')) { console.log(JSON.stringify(hits, null, 1)); process.exit(hits.length ? 1 : 0); }
+
+if (flag('--quiet')) {
+  const ids = [...new Set(hits.map((h) => h.rule))];
+  if (hits.length) console.log(hits.length + ' 處：' + ids.join('、'));
+  process.exit(hits.length ? 1 : 0);
+}
+const byRule = {};
+for (const h of hits) (byRule[h.rule] ||= []).push(h);
+for (const [id, hs] of Object.entries(byRule)) {
+  console.log('\n' + id + '　' + hs[0].name + '（' + hs.length + ' 處）');
+  console.log('  ' + hs[0].why);
+  for (const h of hs.slice(0, 8)) {
+    const loc = h.file === '<stdin>' ? '' : relative(process.cwd(), h.file) + ':' + h.line + '  ';
+    console.log('    ' + loc + h.text);
+  }
+  if (hs.length > 8) console.log('    …還有 ' + (hs.length - 8) + ' 處');
+}
+console.log('\n掃了 ' + files.length + ' 個檔案，' + hits.length + ' 處要改');
+if (hits.length) console.log('確定某一處是刻意的，就在那一行加 speak-tw-ok');
+process.exit(hits.length ? 1 : 0);
+
 exec
-/bin/bash -lc "sed -n '430,503p' canon/劇本.md
-cat /home/ct/speak-tw/README.md
-sed -n '1,220p' /home/ct/speak-tw/rules.mjs" in /home/ct/larch-ember
+/bin/bash -lc 'cat 審稿/修稿/dark.gate.txt' in /home/ct/larch-ember
  succeeded in 0ms:
-旁白：程希走到三排十四號坐下。她的手從耳墜移到胸前。
-余靜（心）：胸口怎麼這麼緊。想唱給他聽。
-〔圖：s_soundcheck_4〕
-余靜：那位先生，能聽我唱一段嗎？
+# 閘門：dark（10-29 10:12，新稿作者 codex，讀稿人 qwen、deepseek、geminiweb）
 
+結果：不通過
+- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 3 條、新出現 0 條（全部：舊 7 條、新 0 條）
+- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 2、舊稿贏 4、沒答 0
+- 通過條件：新出現的比修掉的少且新稿不輸；或沒有多且新稿多贏兩票以上
+
+## 新稿還有的共識問題（下一輪要改）
+（沒有）
+
+## 修掉的
+- 「我不想忘記。」金句腔
+- 「剛剛還知道的。」真人不會這樣說
+- 「阿哲在顧台，別再叫他了。你去，我在這裡。」口氣不合角色或身分
+
+## 評審
+- qwen：新稿｜A的對白更口語，余靜從避開名字到忘名的慌亂連貫；B的「剛剛還知道的」「我不想忘記」偏文藝，較不像當下會脫口的話。
+- qwen：舊稿｜A 的對白才是台灣人會說的話（余靜不可能對工作人員用「您」），而且「我不想忘記」和「刷子要帶下去」這種具體細節比 B 更揪心、更像真人，該交代的事也一件沒少。
+- deepseek：新稿｜A 的台詞和旁白更貼近台灣口語，動作與情緒一次就懂；B 雖有幾句更有戲，但「剛剛還知道的」「杯壁」「將」「水我自己拿就好」等用詞讀起來卡，整體不若 A 順。
+- deepseek：舊稿｜余靜的台詞才是真人會說的話（「別再叫他了。你去，我在這裡」），B 的「您先忙……等您」對年輕工作人員連用兩次「您」很假，而且「要怎麼叫他回來」指涉不明、把「我不想忘記」那股痛感換掉
+- geminiweb：舊稿｜版本B的台詞大幅去除了對話中的「您」與客套感，讓角色語感更貼近真實台灣生活的情感連結與自然對白；同時透過「我不想忘記」與具體的記憶錯亂細節（如刷子），讓余靜失智症發作時的恐懼與現實
+- geminiweb：舊稿｜版本A第13行「她伸手碰杯壁，手停在杯子上」，精準寫出她想喝水但動作中途被記憶混亂打斷的停頓感，呼應12行「水我自己拿就好」；版本B第13行「她拿起水杯，又放回桌上」相對機械化，比
+存到 /home/ct/larch-ember/審稿/紀錄/gate_dark_1029_101233.md
+新增 8 條，問題單共 618 條
+自動結案 0 條
+
+exec
+/bin/bash -lc 'cat 審稿/修稿/dark.r1.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+## dark（18:00，天黑後的化妝間與後門）
+
+〔圖：s_branch_1〕
+旁白：六點，窗臺上最後一道光退了。化妝間的燈亮著，她的雙手映在窗玻璃上。
+舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
+程希：剛才還能開。我過去，線先不要拔。
+旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
+余靜：您先忙，我在這裡等您。
+程希：（朝門外）小芳，來陪一下余老師。
+小芳：（門外）我把這箱送下去就上來。
+〔圖：s_branch_2〕
+余靜：不用特地叫人陪，我坐一下就好。
+旁白：她拿起水杯，又放回桌上。
+程希：我馬上回來。
+旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
+〔圖：s_branch_3〕
+余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
+旁白：她走到門框邊，只喊了聲「欸」。走廊沒有人。
+余靜：剛剛還記得的。
+旁白：她退回窗前，手掌貼在玻璃上。
+余靜：（小聲）要怎麼叫他回來……
+余靜（心）：紙放在哪裡？〔掉字〕
+旁白：她摸到口袋裡的紙角，把紙角捏皺了。
+旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。
+余靜：收了喔？阿爸，我還沒……
+余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
+旁白：她抽出手，走向門口。
+余靜（心）：水管還沒收……要快點。〔掉字〕
+〔圖：s_c_1〕
+旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
+余靜：不好意思，借過。
+旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
+旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。
+余靜：阿爸，等我啦。
+〔圖：s_c_2〕
+旁白：程希離開九十秒後，回到化妝間，椅子空著。
+旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+for p in [Path('/AGENTS.md'),Path('/home/AGENTS.md'),Path('/home/ct/AGENTS.md'),Path('AGENTS.md'),Path('審稿/AGENTS.md'),Path('審稿/修稿/AGENTS.md')]:
+    if p.exists():
+        print(str(p))
+        print(p.read_text())
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+exec
+/bin/bash -lc 'cat 審稿/修稿/dark.r1-prev.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+## dark（18:00，天黑後的化妝間與後門）
+
+〔圖：s_branch_1〕
+旁白：六點，窗臺上最後一道光退了。化妝間的燈亮著，她的雙手映在窗玻璃上。
+舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
+程希：剛才還能開。我過去，線先不要拔。
+旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
+余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
+程希：（朝門外）小芳，來陪一下余老師。
+小芳：（門外）我把這箱送下去就上來。
+〔圖：s_branch_2〕
+余靜：水我自己拿就好。不用特地叫人。
+旁白：她伸手碰杯壁，手停在杯子上。
+程希：我馬上回來。
+旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
+〔圖：s_branch_3〕
+余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
+旁白：她走到門框邊，張了張嘴。走廊沒有人。
+余靜：剛剛還記得的。
+旁白：她退回窗前，手掌貼在玻璃上。
+余靜：（小聲）我不想忘記。
+余靜（心）：紙放在哪裡？〔掉字〕
+旁白：她摸到口袋裡的紙角，把紙角捏皺了。
+旁白：窗下的魚販拖出空箱，將捲門拉下一半。
+余靜：收了喔？以前阿爸都叫我搬……
+余靜（心）：小箱子。我下去看一下。〔掉字〕
+旁白：她抽出手，走向門口。
+余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
+〔圖：s_c_1〕
+旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
+余靜：不好意思，借過。
+旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
+旁白：巷口有人抱著箱子，背對著她往市場走。她提起裙子跟了上去。
+余靜：阿爸，等我啦。
+〔圖：s_c_2〕
+旁白：程希離開九十秒後，回到化妝間，椅子空著。
+旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
+
+exec
+/bin/bash -lc "sed -n '435,555p' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
 ## letter（2026 年 10 月 14 日 16:40 至 17:50，化妝間）
 
 〔圖：s_dress_1〕
@@ -1451,129 +2392,62 @@ sed -n '1,220p' /home/ct/speak-tw/rules.mjs" in /home/ct/larch-ember
 旁白：六點，窗臺上最後一道光退了。化妝間的燈亮著，她的雙手映在窗玻璃上。
 舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
 程希：剛才還能開。我過去，線先不要拔。
-# speak-tw：講人話
+旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
+余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
+程希：（朝門外）小芳，來陪一下余老師。
+小芳：（門外）我把這箱送下去就上來。
+〔圖：s_branch_2〕
+余靜：水我自己拿就好。不用特地叫人。
+旁白：她伸手碰杯壁，手停在杯子上。
+程希：我馬上回來。
+旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
+〔圖：s_branch_3〕
+余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
+旁白：她走到門框邊，張了張嘴。走廊沒有人。
+余靜：剛剛還知道的。
+旁白：她退回窗前，手掌貼在玻璃上。
+余靜：（小聲）我不想忘記。
+余靜（心）：紙放在哪裡？〔掉字〕
+旁白：她摸到口袋裡的紙角，把紙角捏皺了。
+旁白：窗下的魚販拖出空箱，將捲門拉下一半。
+余靜：收了喔？阿爸，我還沒……
+余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
+旁白：她抽出手，走向門口。
+余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
+〔圖：s_c_1〕
+旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
+余靜：不好意思，借過。
+旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
+旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。
+余靜：阿爸，等我啦。
+〔圖：s_c_2〕
+旁白：程希離開九十秒後，回到化妝間，椅子空著。
+旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
 
-用程式掃中文寫作的老毛病。**零相依**（只用 node 內建），任何 agent 都能跑——它只是一支會回傳退出碼的 CLI。 <!-- speak-tw-ok 這一行在示範規則本身 -->
+## canal（18:05 至 18:50，黃昏市場與運河石階）
 
-```bash
-git clone https://github.com/yazelin/speak-tw ~/speak-tw
-bash ~/speak-tw/install.sh          # 進 PATH + skills + 掛 Stop hook（冪等）
-speak-tw --public README.md index.html
-```
+〔圖：s_c_3〕
+旁白：18:05，阿哲拿著對講機站在後門，小芳把余靜的照片傳到工作人員的手機。
+程希：阿哲，沿老街找。小芳，打電話報警。
+阿哲：師父，台上我叫人顧了。找到就打給我。
+小芳：（電話）有人走失，六點多從永明戲院出去，穿黑色蕾絲禮服。她有失智症，手機沒帶。
+旁白：工作人員在騎樓給歌迷看照片。幾個人收起票，跟著往老街走。
+阿桃姨：我去市場，恁去街仔路揣。（我去市場，你們去老街找。）
+〔圖：s_c_4〕
+旁白：市場裡，余靜停在魚攤前。年輕攤販收起秤。
+余靜：阿爸呢？我剛放學就來了。
+攤販：妳找哪一攤？我們這裡收了喔。
+旁白：她指著秤旁的空位，手放下來。
+余靜：那台……阿爸邊殺魚邊聽的，怎麼不見了？
+旁白：她走回入口，沿攤位走了一遍，又停在同一台秤前。
+余靜：阿爸怎麼沒等我？
+余靜（心）：我剛剛走過這裡了？
+旁白：攤販捲起水管，沒有抬頭。她站到攤位旁邊，水從鞋邊流過。
+余靜：魚箱還沒刷。
 
-**只 clone 是不夠的。**那樣只有檔案：agent 不會知道它存在，hook 也不會跑。`install.sh` 才會把它接上這台機器。換一台機器、或要給 Codex 用，都要先跑它。
-
-Windows 用 Git Bash 跑同樣兩行就好。`install.sh` 本身也只需要 node，不需要 python。
-
-有問題 exit 1：
-
-```
-fake-contrast　「不是 X，是 Y」的假對比（1 處）
-  直接把 Y 講出來就好。這個句型是用來製造洞見感的，不傳達資訊。
-    index.html:156  這不是省錢的小聰明，是整條產線的設計主軸
-
-掃了 1 個檔案，1 處要改
-確定某一處是刻意的，就在那一行加 speak-tw-ok
-```
-
-## 為什麼要做這個
-
-prompt 型的寫作規範有個死穴：**要靠 agent 想到要用它**。同一種毛病（把比喻當詞用、假對比句型、戲劇化形容）被指正五次都沒根治，就是這樣漏掉的。
-
-一支程式不需要被想起來。放進測試流程、pre-commit、CI，它每次都會跑。
-
-## 用法
-
-```bash
-speak-tw <路徑...>              掃 .md/.html/.txt（預設當前目錄）
-speak-tw --public <路徑...>     連對外文字專用規則一起套
-speak-tw --stdin --public       從 stdin 讀一段檢查
-speak-tw --list                 列出所有規則
-speak-tw --json                 機器讀的輸出
-```
-
-`--public` 會多套三類只對「對外文字」成立的規則：全形標點、破折號、禁用詞。內部筆記不套。
-
-### 設定檔
-
-放 `.speak-tw.json` 在被掃的目錄：
-
-```json
-{ "public": ["index.html", "README.md"], "off": ["academic-filler"] }
-```
-
-`public` 列到的檔案自動套 public 規則，不必每次加旗標。
-
-### 放行
-
-在那一行加 `speak-tw-ok`（HTML 用 `<!-- speak-tw-ok -->`）。
-
-## 規則
-
-32 條，分三類：
-
-**被指正過的實際案例**（這份清單的價值所在）
-`fake-contrast` 不是 X，是 Y ｜ `never-punchline` 他從來沒有 Y 過。 ｜ `organic-metaphor` 長出／長成 ｜ `banned-word` 接住 ｜ `luo-wording` 落檔／落下來 ｜ `homework-tone` 改出得意的回來讓我看看 ｜ `drama-word` 對自己不利／管不住 ｜ `metaphor-as-noun` 每一刀 ｜ `ke-classifier` 這顆 bug ｜ `true-x-not-y` 真正的 X 不是… ｜ `surprise-success` 還真的做出來了 ｜ `hype-speed` 一秒看出／秒懂 ｜ `self-importance` 真正想講的 ｜ `no-hands` 我沒有動手 ｜ `chai-kan` 拆兩個來看 ｜ `old-line-reuse` 照搬舊文的梗 ｜ `reveal-colon` 背後是…： ｜ `flow-jargon` 資料怎麼走 ｜ `realness-claim` 都是真的發生過的 ｜ `easy-promise` 也沒關係／就能做一個自己的 ｜ `pronoun-person` 年輕的那個問 <!-- speak-tw-ok 這一行在示範規則本身 -->
-
-抓不到的：整篇「冒號＋清單」一段接一段的範本結構、「站沒斷」這種電報式省略。這兩種是結構問題，規則看不出來，寫完要自己唸一遍。
-
-**標點與字元**
-`em-dash` 破折號 ｜ `halfwidth-punct` 中文間的半形標點 ｜ `emoji` ｜ `simplified` 簡體字（Big5 編不出來的 CJK 就算） ｜ `china-term` 中國用語（正體字寫的，簡體字那條擋不到）｜ `dollar-escape` Markdown 裡跳脫的 $
-
-**常見 AI 味**
-`hollow-closing` 空洞收尾 ｜ `false-candor` 說真的／老實說 ｜ `academic-filler` 本質上／說到底 ｜ `cliche-opening` 在當今…的時代 ｜ `vague-authority` 業界專家認為 <!-- speak-tw-ok 這一行在示範規則本身 -->
-
-`speak-tw --list` 看完整說明。
-
-## 加規則
-
-編 `rules.mjs`，每條要有 `bad`（該抓到）和 `good`（不該抓到），然後：
-
-```bash
-node test/rules.test.mjs
-```
-
-測試會逐條驗：抓得到壞例、放得過好例、**而且不會咬到別條規則的好例**。少了這一關，規則會為了多抓一點越寫越兇，誤傷多了就會有人把整支工具關掉。
-
-## 掛成 hook：連對話也檢查
-
-`hook/stop-lint.mjs` 是 Claude Code 的 `Stop` hook，在回覆結束時檢查那則訊息。
-
-```json
-{ "hooks": { "Stop": [ { "hooks": [
-  { "type": "command", "command": "node /home/ct/speak-tw/hook/stop-lint.mjs" }
-] } ] } }
-```
-
-加進**既有的** Stop 陣列，不要蓋掉別的 hook。`install.sh` 會自己做這件事。
-
-### Codex
-
-`install.sh` 也會寫 `~/.codex/hooks.json`（格式跟 Claude 一樣）並在 `~/.codex/AGENTS.md` 加一行。
-
-**但 Codex 的 hook 預設不信任、會被跳過**，要在互動介面打 `/hooks` 審核並 trust 一次才會跑；而且 trust 是綁 hook 內容的雜湊，改過內容要重 trust。
-
-hook 的 payload 欄位名各家不同：Claude 給 `transcript_path`，Codex 這邊沒有樣本可對（這台的 `hooks.json` 從沒設過任何 hook），所以 `stop-lint.mjs` 多試了幾個欄位名，最後退回「`~/.codex/sessions` 裡兩分鐘內的最新 jsonl」。**Codex 這條路還沒實機驗過**，先靠 AGENTS.md 那一行墊著。
-
-輸出兩種格式都給：Claude 讀 `systemMessage`，Codex 讀 `hookSpecificOutput.additionalContext`。
-
-**只警告，不阻擋。**誤判時擋住回覆會很煩，而且誤判率還沒量過。跑一陣子確認夠低，再考慮改成阻擋。
-
-規則只跑這幾條：`fake-contrast`、`drama-word`、`metaphor-as-noun`、`organic-metaphor`、`banned-word`、`luo-wording`、`ke-classifier`。挑的標準是**字面特徵明確、誤判率低**。對話不是對外 prose，全形標點與破折號那幾條不該套；AI 味那幾條在對話裡的誤判率未知，先不放。
-
-hook 撈不到 transcript、或格式改了，就安靜退出，工具壞掉不該打斷工作。
-
-**談論這支工具本身時不檢查。**第一次真的觸發就是誤報：回覆裡在列規則清單（「落檔／落下來」「這顆 bug」），被當成使用那些詞。檔案可以加 `speak-tw-ok`，對話沒地方加，所以訊息裡提到 `speak-tw` 或 `rules.mjs` 就整則跳過。代價是「同時談這支工具又真的犯規」的訊息會漏掉——可接受，**誤報會讓人關掉整個提醒，漏報只是少提醒一次**。
-
-## 跟 speak-human-tw 的差別
-
-[speak-human-tw](https://github.com/Raymondhou0917/speak-human-tw)（MIT）是同一個問題的 prompt 解法：38 種 AI 寫作痕跡、60 多條中國用語對照，由 agent 讀進去之後改寫，會先列問題等你同意。規則覆蓋面比這裡廣很多，值得裝。
-
-這支走的是另一條路：**規則寫成 regex，用退出碼講話**。差別在執行方式：不需要 agent 記得要用它，也不需要模型判斷，放進 CI 就是硬性的。兩個可以並用：那邊負責改寫建議，這邊負責交稿前的最後一道閘。 <!-- speak-tw-ok 這一行在示範規則本身 -->
-
-## 授權
-
-MIT · 林亞澤
+exec
+/bin/bash -lc "sed -n '1,240p' /home/ct/speak-tw/rules.mjs" in /home/ct/larch-ember
+ succeeded in 0ms:
 /* rules.mjs — 規則就是資料。每一條都要有「該抓的例子」和「不該抓的例子」,
    test/rules.test.mjs 會逐條驗:抓不到該抓的、或誤抓不該抓的,測試就掛。
    這樣才不會出現「為了多抓一點,regex 越寫越兇」的那種爛規則。
@@ -1794,43 +2668,30 @@ export const RULES = [
        + '一鍵→按一下、賦能與抓手與閉環與顆粒度→直接講在做什麼。'
        + '(逐字引用對岸原文時,那一行加 speak-tw-ok)',
     re: /宇航員|航天員|視頻|音頻|數據庫|數據源|屏幕|網絡|軟件|硬件|用戶|默認|激活|內存|打印機|分辨率|服務器|加載|交互|優盤|信息化|視覺衝擊力|賽道(?!車)|賦能|抓手|閉環|顆粒度|復盤|拉通|打通|沉澱|對標|出圈|高端大氣|保姆級|乾貨|一鍵/g,
+    bad: '宇航員在屏幕上看視頻',
+    good: '太空人在螢幕上看影片',
+  },
+  {
+    id: 'dollar-escape', register: 'any', name: 'Markdown 裡跳脫的 $',
+    why: 'Markdown 內文與 YAML 字串裡 $ 就是普通字元,不要寫成 \\$。只有 bash code block 需要。',
+    re: /\\\$/g,
+    bad: '售價 \\$1,200',
+    good: '售價 $1,200',
+  },
+  // ── 三、常見的 AI 味(獨立寫的,不是抄來的) ──
+  {
+    id: 'hollow-closing', register: 'any', name: '空洞收尾',
+    why: '沒有資訊量的結尾。刪掉就好。',
+    re: /希望(?:這|對你|能)[^。\n]{0,12}(?:有幫助|有所幫助)|以上就是[^。\n]{0,16}(?:的全部|介紹)|總的來說|綜上所述/g,
+    bad: '希望這對你有幫助',
+    good: '有問題再問。',
+  },
+  {
+    id: 'false-candor', register: 'any', name: '假坦白開場',
 
 exec
-/bin/bash -lc "cat 審稿/紀錄/gate_dark_1029_091416.md
-rg -n '阿哲在顧台|水我自己拿|剛剛寫下|\\[0567\\]|\\[0569\\]|提詞電腦' 審稿/問題* 審稿/修稿/dark.report* 審稿/紀錄/gate_dark_1029_091416.md
-sed -n '1,170p' src/songs_cut.py" in /home/ct/larch-ember
+/bin/bash -lc "sed -n '1,180p' src/songs_cut.py" in /home/ct/larch-ember
  succeeded in 0ms:
-# 閘門：dark（10-29 09:14，新稿作者 codex，讀稿人 argon、deepseek、geminiweb）
-
-結果：不通過
-- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 0 條、新出現 1 條（全部：舊 1 條、新 3 條）
-- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 3、舊稿贏 3、沒答 0
-- 通過條件：新出現的比修掉的少且新稿不輸；或沒有多且新稿多贏兩票以上
-
-## 新稿還有的共識問題（下一輪要改）
-- 行25「余靜：收了喔？以前阿爸都叫我搬……」病的描寫不真實：這句還清楚說出「以前」，代表分得清現在與過去，下一秒卻突然把眼前當成小時候要去幫阿爸收攤，從找詞困難一秒跳成時空錯亂，且把同一句話拆成嘴上講一半、心裡補「小箱子」也不合找詞困難的真實反應。（argon、geminiweb）［新出現］
-- 行8「余靜：阿哲在顧台，別再叫他了。你去，我在這裡。」口氣不合角色或身分：對講機裡舞監已經說「阿哲走不開」並叫程希去了，根本沒人要再叫阿哲；且余靜把程希當工作人員，卻用當家作主的口氣指揮他，還清楚記得後台人員名字與分工（幾秒後卻忘了剛寫下的程希名字）。（argon、geminiweb）
-- 行12「余靜：水我自己拿就好。不用特地叫人。」對話接不上：程希在門外只喊小芳「來陪一下余老師」，前面完全沒人提到喝水或倒水，余靜突然回「水我自己拿就好」顯得沒頭沒腦。（argon、geminiweb）
-
-## 修掉的
-（沒有）
-
-## 評審
-- argon：新稿｜版本A讓余靜從看見魚販收攤喚起回憶（「以前阿爸都叫我搬……」接「小箱子」且掉字後仍保有關鍵詞）再逐步滑入要把水管與刷子帶下去的失智錯覺，最後看見巷口有人抱箱子往市場走而跟上去喊「阿
-- argon：舊稿｜A版在第25至28行讓余靜從看見魚販拉鐵門起就直接跌入幫阿爸收攤的時空錯置，「阿爸一個人收不完」既自然帶出她急著下樓的動機與父女情感，被〔掉字〕截斷後語意依然完整，不像B版把「以前
-- deepseek：新稿｜A 的收攤觸發、錯認阿爸到跟上去較一氣呵成，B 的「我還沒……」「小箱子是我的」讀起來卡且不夠一次懂。
-- deepseek：新稿｜B的台詞與動作因果更順，「剛剛還記得」和「跟了上去」都自然、一次讀懂，A的「剛剛還知道」與「小箱子是我的」會讓人卡一下。
-- geminiweb：舊稿｜理由：版本B在「25｜余靜：收了喔？阿爸，我還沒……」與「26｜阿爸一個人收不完」直接將口吻切入女兒對父親的依戀，口語流暢且情感張力更強，比版本A描述性的「以前阿爸都叫我搬……」更
-- geminiweb：舊稿｜版本B改成「跟著抱箱子的人走」，反而削減了她是因為看到「市場/阿爸」而衝過去的主動性，顯得較為被動。
-審稿/紀錄/gate_dark_1029_091416.md:10:- 行8「余靜：阿哲在顧台，別再叫他了。你去，我在這裡。」口氣不合角色或身分：對講機裡舞監已經說「阿哲走不開」並叫程希去了，根本沒人要再叫阿哲；且余靜把程希當工作人員，卻用當家作主的口氣指揮他，還清楚記得後台人員名字與分工（幾秒後卻忘了剛寫下的程希名字）。（argon、geminiweb）
-審稿/紀錄/gate_dark_1029_091416.md:11:- 行12「余靜：水我自己拿就好。不用特地叫人。」對話接不上：程希在門外只喊小芳「來陪一下余老師」，前面完全沒人提到喝水或倒水，余靜突然回「水我自己拿就好」顯得沒頭沒腦。（argon、geminiweb）
-審稿/問題單.json:5250:  "quote": "余靜：阿哲在顧台，別再叫他了。你去，我在這裡。",
-審稿/問題單.json:5378:  "quote": "余靜：水我自己拿就好。不用特地叫人。",
-審稿/問題單.json:5380:  "why": "第 9 行程希是叫小芳「來陪一下余老師」，從頭到尾沒人提到倒水或拿水，余靜卻突然回「水我自己拿就好」。",
-審稿/問題單.json:5403:  "why": "旁白只該寫畫面上看得到的事，畫面上看不出「九十秒後」，這是作者跳出來替程希解釋他沒有離開太久；且九十秒內根本不夠去修提詞電腦再走回來。",
-審稿/問題單.json:5561:  "quote": "舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套你架的。",
-審稿/問題單.json:8238:  "why": "舞監說「提詞電腦開不了……你來一下」，只回「我剛才試過」沒講試的結果是好是壞，也沒回應要不要過去，台灣口語不會這樣截斷。",
-審稿/問題單.json:11049:  "type": "余靜：水我自己拿就好。不用特地叫人。",
 #!/usr/bin/env python3
 """接歌工具：assets/songs/*.mp3（作者在 Suno 做的三首）→ 對齊歌詞時間 → 依對照表切段 → assets/songs/cuts/*.mp3 + manifest.json。
 
@@ -2001,89 +2862,98 @@ _cc = None
 
 
 def t2s(s):
+    global _cc
+    if _cc is None:
+        try:
+            import opencc
+            _cc = opencc.OpenCC('t2s').convert
+        except Exception:   # noqa: BLE001  沒裝 opencc 就用命令列
+            _cc = lambda x: run(['opencc', '-c', 't2s'], input=x.encode()).stdout.decode()   # noqa: E731
+    return _cc(s)
+
+
 
 codex
-對照前一場後，確認程希已經替她解下定位手錶、放在梳妝台上。結尾有前文可接，我會保留這句扣回，不再加一次解錶。收攤段也會保留「阿爸一個人收不完」和她主動走向市場的動作，只補看向窗下的銜接。
+閘門主要嫌上一輪反覆用「您」、拿杯又放杯太機械，以及刪掉了刷子的具體細節，這次會避開這些改法。前一場也已寫明程希替她解錶、她在歌譜上寫名字；這兩項會連同上下文判斷，避免重複補戲。
 exec
 /bin/bash -lc "python3 - <<'PY'
 from pathlib import Path
-import re,difflib,json
-p=Path('canon/劇本.md')
-s=p.read_text()
-original=re.search(r'"'^## dark[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)',s,re.M|re.S).group().rstrip()+'\\n'
-changes={
-'余靜：阿哲在顧台，別再叫他了。你去，我在這裡。':'余靜：您先忙，我在這裡等您。',
-'余靜：水我自己拿就好。不用特地叫人。':'余靜：不用特地叫人陪，我坐一下就好。',
-'旁白：她伸手碰杯壁，手停在杯子上。':'旁白：她拿起水杯，又放回桌上。',
-'旁白：她走到門框邊，張了張嘴。走廊沒有人。':'旁白：她走到門框邊，只喊了聲「欸」。走廊沒有人。',
+import re
+script = Path('canon/劇本.md').read_text()
+old = re.search(r'"'^## dark[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)', script, re.M|re.S).group().rstrip() + '\\n'
+replacements = {
+'余靜：水我自己拿就好。不用特地叫人。':'余靜：不用叫人陪，我自己拿水就好。',
+'旁白：她伸手碰杯壁，手停在杯子上。':'旁白：她伸手握住杯子，沒拿起來。',
+'旁白：她走到門框邊，張了張嘴。走廊沒有人。':'旁白：她走到門框邊，喊了聲「欸」。走廊沒有人。',
 '余靜：剛剛還知道的。':'余靜：剛剛還記得的。',
-'余靜：（小聲）我不想忘記。':'余靜：（小聲）要怎麼叫他回來……',
+'余靜：（小聲）我不想忘記。':'余靜：（小聲）才剛寫在歌譜上，怎麼又……',
 '旁白：窗下的魚販拖出空箱，將捲門拉下一半。':'旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。',
-'余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕':'余靜（心）：水管還沒收……要快點。〔掉字〕',
+'旁白：程希離開九十秒後，回到化妝間，椅子空著。':'旁白：程希回到化妝間，椅子空著。',
 }
-new=original
-for a,b in changes.items():
-    assert new.count(a)==1,a
-    new=new.replace(a,b)
-print('原稿字元數：',len(original),'候選稿字元數：',len(new))
-print(''.join(difflib.unified_diff(original.splitlines(True),new.splitlines(True),fromfile='原稿 dark',tofile='候選 dark')))
-issues=json.loads(Path('審稿/問題單.json').read_text())
-if isinstance(issues,dict):
-    print('問題單 keys:',list(issues)[:12])
-else:
-    for row in issues:
-        if row.get('scene')=='dark' and any(x in str(row) for x in ['阿哲在顧台','水我自己拿就好','以前阿爸都叫我搬']):
-            print(json.dumps(row,ensure_ascii=False))
+new = old
+for a,b in replacements.items():
+    assert new.count(a) == 1
+    print(f'{len(b)-len(a):+d} {a} → {b}')
+    new = new.replace(a,b)
+print(f'原稿 {len(old)} 字元，候選稿 {len(new)} 字元，差 {len(new)-len(old):+d}')
+print(new)
 PY" in /home/ct/larch-ember
  succeeded in 0ms:
-原稿字元數： 744 候選稿字元數： 740
---- 原稿 dark
-+++ 候選 dark
-@@ -5,27 +5,27 @@
- 舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
- 程希：剛才還能開。我過去，線先不要拔。
- 旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
--余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
-+余靜：您先忙，我在這裡等您。
- 程希：（朝門外）小芳，來陪一下余老師。
- 小芳：（門外）我把這箱送下去就上來。
- 〔圖：s_branch_2〕
--余靜：水我自己拿就好。不用特地叫人。
--旁白：她伸手碰杯壁，手停在杯子上。
-+余靜：不用特地叫人陪，我坐一下就好。
-+旁白：她拿起水杯，又放回桌上。
- 程希：我馬上回來。
- 旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
- 〔圖：s_branch_3〕
- 余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
--旁白：她走到門框邊，張了張嘴。走廊沒有人。
--余靜：剛剛還知道的。
-+旁白：她走到門框邊，只喊了聲「欸」。走廊沒有人。
-+余靜：剛剛還記得的。
- 旁白：她退回窗前，手掌貼在玻璃上。
--余靜：（小聲）我不想忘記。
-+余靜：（小聲）要怎麼叫他回來……
- 余靜（心）：紙放在哪裡？〔掉字〕
- 旁白：她摸到口袋裡的紙角，把紙角捏皺了。
--旁白：窗下的魚販拖出空箱，將捲門拉下一半。
-+旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。
- 余靜：收了喔？阿爸，我還沒……
- 余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
- 旁白：她抽出手，走向門口。
--余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
-+余靜（心）：水管還沒收……要快點。〔掉字〕
- 〔圖：s_c_1〕
- 旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
- 余靜：不好意思，借過。
+-1 余靜：水我自己拿就好。不用特地叫人。 → 余靜：不用叫人陪，我自己拿水就好。
+-1 旁白：她伸手碰杯壁，手停在杯子上。 → 旁白：她伸手握住杯子，沒拿起來。
++2 旁白：她走到門框邊，張了張嘴。走廊沒有人。 → 旁白：她走到門框邊，喊了聲「欸」。走廊沒有人。
++0 余靜：剛剛還知道的。 → 余靜：剛剛還記得的。
++7 余靜：（小聲）我不想忘記。 → 余靜：（小聲）才剛寫在歌譜上，怎麼又……
++3 旁白：窗下的魚販拖出空箱，將捲門拉下一半。 → 旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。
+-7 旁白：程希離開九十秒後，回到化妝間，椅子空著。 → 旁白：程希回到化妝間，椅子空著。
+原稿 744 字元，候選稿 747 字元，差 +3
+## dark（18:00，天黑後的化妝間與後門）
 
-問題單 keys: ['0001', '0002', '0003', '0004', '0005', '0006', '0007', '0008', '0009', '0010', '0011', '0012']
+〔圖：s_branch_1〕
+旁白：六點，窗臺上最後一道光退了。化妝間的燈亮著，她的雙手映在窗玻璃上。
+舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
+程希：剛才還能開。我過去，線先不要拔。
+旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
+余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
+程希：（朝門外）小芳，來陪一下余老師。
+小芳：（門外）我把這箱送下去就上來。
+〔圖：s_branch_2〕
+余靜：不用叫人陪，我自己拿水就好。
+旁白：她伸手握住杯子，沒拿起來。
+程希：我馬上回來。
+旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
+〔圖：s_branch_3〕
+余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
+旁白：她走到門框邊，喊了聲「欸」。走廊沒有人。
+余靜：剛剛還記得的。
+旁白：她退回窗前，手掌貼在玻璃上。
+余靜：（小聲）才剛寫在歌譜上，怎麼又……
+余靜（心）：紙放在哪裡？〔掉字〕
+旁白：她摸到口袋裡的紙角，把紙角捏皺了。
+旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。
+余靜：收了喔？阿爸，我還沒……
+余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
+旁白：她抽出手，走向門口。
+余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
+〔圖：s_c_1〕
+旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
+余靜：不好意思，借過。
+旁白：她側身穿過箱子和門框的空隙，黑色禮服下襬擦過門邊。
+旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。
+余靜：阿爸，等我啦。
+〔圖：s_c_2〕
+旁白：程希回到化妝間，椅子空著。
+旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
 
+
+codex
+修改會保留全部〔掉字〕句、手錶扣回和刷子的細節；忘名處用鄰句補清楚歌譜的線索，杯子則保留拿不起來的停頓。補上的字數會以刪去已被指出的「離開九十秒後」抵銷，維持原場長度。
 apply patch
 patch: completed
 /home/ct/larch-ember/審稿/修稿/dark.md
 diff --git a/審稿/修稿/dark.md b/審稿/修稿/dark.md
 new file mode 100644
-index 0000000000000000000000000000000000000000..bd8ce8cc977c4d51f57fc9383e629282485de811
+index 0000000000000000000000000000000000000000..581d1d32d1392aaadc44c53c8e7cd0364f9c5648
 --- /dev/null
 +++ b/審稿/修稿/dark.md
 @@ -0,0 +1,37 @@
@@ -2094,27 +2964,27 @@ index 0000000000000000000000000000000000000000..bd8ce8cc977c4d51f57fc9383e629282
 +舞監：（對講機）程希，提詞電腦開不了。阿哲走不開，你來一下，這套是你架的。
 +程希：剛才還能開。我過去，線先不要拔。
 +旁白：他把對講機放回腰邊。余靜把椅子拉到桌前，兩手按住裙襬。
-+余靜：您先忙，我在這裡等您。
++余靜：阿哲在顧台，別再叫他了。你去，我在這裡。
 +程希：（朝門外）小芳，來陪一下余老師。
 +小芳：（門外）我把這箱送下去就上來。
 +〔圖：s_branch_2〕
-+余靜：不用特地叫人陪，我坐一下就好。
-+旁白：她拿起水杯，又放回桌上。
++余靜：不用叫人陪，我自己拿水就好。
++旁白：她握住杯子，沒拿起來。
 +程希：我馬上回來。
 +旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。
 +〔圖：s_branch_3〕
 +余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕
-+旁白：她走到門框邊，只喊了聲「欸」。走廊沒有人。
++旁白：她走到門框邊，喊了聲「欸」。走廊沒有人。
 +余靜：剛剛還記得的。
 +旁白：她退回窗前，手掌貼在玻璃上。
-+余靜：（小聲）要怎麼叫他回來……
++余靜：（小聲）才寫在歌譜上，怎麼又……
 +余靜（心）：紙放在哪裡？〔掉字〕
 +旁白：她摸到口袋裡的紙角，把紙角捏皺了。
 +旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。
 +余靜：收了喔？阿爸，我還沒……
 +余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕
 +旁白：她抽出手，走向門口。
-+余靜（心）：水管還沒收……要快點。〔掉字〕
++余靜（心）：水管還沒收。刷子要帶下去。〔掉字〕
 +〔圖：s_c_1〕
 +旁白：器材進出的後門塞著木塊，工作人員抱著箱子往裡走。
 +余靜：不好意思，借過。
@@ -2122,101 +2992,85 @@ index 0000000000000000000000000000000000000000..bd8ce8cc977c4d51f57fc9383e629282
 +旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。
 +余靜：阿爸，等我啦。
 +〔圖：s_c_2〕
-+旁白：程希離開九十秒後，回到化妝間，椅子空著。
++旁白：程希回到化妝間，椅子空著。
 +旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
-
-exec
-/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw 審稿/修稿/dark.md
-/home/ct/speak-tw/bin/speak-tw --public 審稿/修稿/dark.md' in /home/ct/larch-ember
- succeeded in 0ms:
-
-掃了 1 個檔案，0 處要改
-
-掃了 1 個檔案，0 處要改
 
 exec
 /bin/bash -lc "python3 - <<'PY'
 from pathlib import Path
-import re, difflib, json
-canon=Path('canon/劇本.md').read_text()
-original=re.search(r'"'^## dark[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)',canon,re.M|re.S).group().rstrip()+'\\n'
-packet=Path('審稿/修稿/dark.packet.md').read_text().split('## 這一場（行號｜內容）\\n',1)[1].split('\\n## 問題：',1)[0]
-rows={int(n):s for n,s in re.findall(r'"'^('"\\d+)｜(.*)"'$'"',packet,re.M)}
-packet_scene='\\n'.join(rows.get(i,'') for i in range(1,max(rows)+1))+'\\n'
-assert packet_scene==original,'canon dark 與修稿包原稿不同'
-new=Path('審稿/修稿/dark.md').read_text()
-a,b=original.splitlines(),new.splitlines()
-assert len(a)==len(b)==37
-allowed={8,12,13,18,19,21,24,28}
-changed=[i for i,(x,y) in enumerate(zip(a,b),1) if x"'!=y]
-assert set(changed)==allowed,changed
-assert len(new)<=len(original)
-for i,(x,y) in enumerate(zip(a,b),1):
-    if x.startswith(('"'## ','〔圖：','選項：','- ')) or '（唱）' in x or '手錶型 GPS' in x:
-        assert x==y,(i,x,y)
-    assert re.findall(r'〔(?:圖：["'^〕]+|掉字)〕'"',x)==re.findall(r'〔(?:圖：["'^〕]+|掉字)〕'"',y),(i,x,y)
-print(f'修稿包與 canon 原稿一致；只改 {len(changed)} 行：'+ '、'.join(map(str,changed)))
-print(f'字元數 {len(original)} → {len(new)}；標題、標記、GPS 扣回句逐字保留。')
-print('必修核對：')
-for row in re.findall(r'"'^'"\\[(\\d+)\\] 必修 .*"'$'"',Path('審稿/修稿/dark.packet.md').read_text(),re.M):
-    print(row)
-issues=json.loads(Path('審稿/問題單.json').read_text())
-print('閘門第 8、12 行對應問題 id：')
-for key,row in issues.items():
-    if isinstance(row,dict) and any(x in row.get('quote','') for x in ['余靜：阿哲在顧台','余靜：水我自己拿就好']):
-        print(key, json.dumps({k:v for k,v in row.items() if k in ['scene','quote','why','type','status']},ensure_ascii=False))
+import re, difflib
+packet = Path('審稿/修稿/dark.packet.md').read_text()
+numbered = packet.split('## 這一場（行號｜內容）\\n',1)[1].split('\\n## 問題：',1)[0]
+rows = {int(m.group(1)):m.group(2) for m in re.finditer(r'"'^('"\\d+)｜(.*)"'$'"',numbered,re.M)}
+old = '\\n'.join(rows.get(i,'') for i in range(1,max(rows)+1)) + '\\n'
+new = Path('審稿/修稿/dark.md').read_text()
+canon = re.search(r'"'^## dark[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)',Path('canon/劇本.md').read_text(),re.M|re.S).group().rstrip() + '\\n'
+assert old == canon, 'packet / canon mismatch'
+assert len(new) <= len(old), (len(old),len(new))
+assert new.startswith(rows[1]+'\\n')
+old_lines, new_lines = old.splitlines(), new.splitlines()
+assert len(old_lines) == len(new_lines)
+allowed = {12,13,18,19,21,24,36}
+changed = {i for i,(a,b) in enumerate(zip(old_lines,new_lines),1) if a "'!= b}
+assert changed <= allowed, changed
+for i,a in enumerate(old_lines):
+    if a.startswith(('"'## ','〔圖：','選項：','- ')) or '〔掉字〕' in a or '（唱）' in a or '手錶型 GPS' in a:
+        assert a == new_lines[i], (i+1,a,new_lines[i])
+print(f'原稿 {len(old)} 字元；新稿 {len(new)} 字元。')
+print('僅改修稿包原稿第 '+ '、'.join(map(str,sorted(changed))) + ' 行。')
+print('標題、全部圖與掉字句、手錶扣回均逐字保留。')
+print(''.join(difflib.unified_diff(old_lines,new_lines,fromfile='packet original',tofile='dark.md',lineterm='\\n')))
 PY" in /home/ct/larch-ember
  succeeded in 0ms:
-修稿包與 canon 原稿一致；只改 8 行：8、12、13、18、19、21、24、28
-字元數 744 → 740；標題、標記、GPS 扣回句逐字保留。
-必修核對：
-0258
-0264
-0268
-0271
-0413
-0467
-0468
-0470
-0472
-0473
-0476
-閘門第 8、12 行對應問題 id：
-0253 {"scene": "dark", "quote": "余靜：阿哲在顧台，別再叫他了。你去，我在這裡。", "type": "角色走樣", "why": "余靜對她以為是「工作人員」的程希應該客氣有距離，且她連剛寫下的名字都記不住，這裡卻清楚記得後台「阿哲」在顧台，還用熟稔當家的口氣指揮程希；何況第 5 行舞監已說阿哲走不開，根本沒人要再叫阿哲。", "status": "fixed"}
-0259 {"scene": "dark", "quote": "余靜：水我自己拿就好。不用特地叫人。", "type": "對話接不上", "why": "第 9 行程希是叫小芳「來陪一下余老師」，從頭到尾沒人提到倒水或拿水，余靜卻突然回「水我自己拿就好」。", "status": "fixed"}
+原稿 744 字元；新稿 744 字元。
+僅改修稿包原稿第 12、13、18、19、21、24、36 行。
+標題、全部圖與掉字句、手錶扣回均逐字保留。
+--- packet original
++++ dark.md
+@@ -9,19 +9,19 @@
+ 程希：（朝門外）小芳，來陪一下余老師。 小芳：（門外）我把這箱送下去就上來。 〔圖：s_branch_2〕-余靜：水我自己拿就好。不用特地叫人。-旁白：她伸手碰杯壁，手停在杯子上。+余靜：不用叫人陪，我自己拿水就好。+旁白：她握住杯子，沒拿起來。 程希：我馬上回來。 旁白：程希走出門。她把手收回腿上，又抓起一小塊裙襬。 〔圖：s_branch_3〕 余靜（心）：名字剛剛寫過……兩個字而已。〔掉字〕-旁白：她走到門框邊，張了張嘴。走廊沒有人。-余靜：剛剛還知道的。+旁白：她走到門框邊，喊了聲「欸」。走廊沒有人。+余靜：剛剛還記得的。 旁白：她退回窗前，手掌貼在玻璃上。-余靜：（小聲）我不想忘記。+余靜：（小聲）才寫在歌譜上，怎麼又…… 余靜（心）：紙放在哪裡？〔掉字〕 旁白：她摸到口袋裡的紙角，把紙角捏皺了。-旁白：窗下的魚販拖出空箱，將捲門拉下一半。+旁白：她往窗下看。魚販拖出空箱，把捲門拉下一半。 余靜：收了喔？阿爸，我還沒…… 余靜（心）：阿爸一個人收不完。小箱子是我的。〔掉字〕 旁白：她抽出手，走向門口。@@ -33,5 +33,5 @@
+ 旁白：巷口有人卸貨，背對著她。她提起裙子，快步走向市場。 余靜：阿爸，等我啦。 〔圖：s_c_2〕-旁白：程希離開九十秒後，回到化妝間，椅子空著。+旁白：程希回到化妝間，椅子空著。 旁白：梳妝台上放著那只手錶型 GPS，錶帶攤開。
+
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw --public 審稿/修稿/dark.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+
+掃了 1 個檔案，0 處要改
+
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw 審稿/修稿/dark.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+
+掃了 1 個檔案，0 處要改
 
 codex
-已寫入 [dark.md](/home/ct/larch-ember/審稿/修稿/dark.md)，只改這個檔案。原稿改動 8 行，744 → 740 字元；`speak-tw` 一般與 `--public` 檢查均為 0 問題。
+已寫入 [dark.md](/home/ct/larch-ember/審稿/修稿/dark.md)。僅改此檔、共七行，長度不增；`speak-tw` 與 `--public` 均通過。
 
-- 0258：保留扣回句；前場已寫程希解錶並放在桌上，不重複解錶。
-- 0264：原稿已是「手掌貼在玻璃上」，不改。
-- 0268：原稿已有「這套是你架的」，不改。
-- 0271：改為「水管還沒收……要快點。」保留〔掉字〕。
-- 0413：改為「她往窗下看。魚販拖出空箱，把捲門拉下一半。」
-- 0467：改為「她拿起水杯，又放回桌上。」
-- 0468：改成到門框邊只喊了聲「欸」；鄰句改為「剛剛還記得的。」
-- 0470：改為「要怎麼叫他回來……」，寫出叫不回人的困難。
-- 0472：「將捲門」改成「把捲門」。
-- 0473：依評審保留「阿爸，我還沒……」，前句補看向窗下的銜接。
-- 0476：保留原句；「那只」承接前場放在桌上的錶，前指明確。
-- 0253（閘門）：改為「您先忙，我在這裡等您。」
-- 0259（閘門）：改為「不用特地叫人陪，我坐一下就好。」
+- 0258：保留手錶句；前場已寫程希解錶、放在梳妝台上。
+- 0264：不改；原稿已是「手掌貼在玻璃上」。
+- 0268：不改；原稿已有「這套是你架的」。
+- 0467：改為「她握住杯子，沒拿起來。」保留停頓。
+- 0468：改為喊了聲「欸」；鄰句改為「剛剛還記得的。」
+- 0470：改為「才寫在歌譜上，怎麼又……」。
+- 0472：改為「她往窗下看。魚販拖出空箱，把捲門拉下一半。」
+- 0473：保留原台詞；以前句看向魚販的動作銜接錯置。
+- 0476：保留受保護的手錶扣回句；前場已有指涉。
+- 0564：保留〔掉字〕原句；鄰句補明歌譜，承接前場寫下程希名字。
+- 0565：改為「不用叫人陪，我自己拿水就好。」
 hook: Stop
 hook: Stop Completed
 tokens used
-60,348
-已寫入 [dark.md](/home/ct/larch-ember/審稿/修稿/dark.md)，只改這個檔案。原稿改動 8 行，744 → 740 字元；`speak-tw` 一般與 `--public` 檢查均為 0 問題。
+57,026
+已寫入 [dark.md](/home/ct/larch-ember/審稿/修稿/dark.md)。僅改此檔、共七行，長度不增；`speak-tw` 與 `--public` 均通過。
 
-- 0258：保留扣回句；前場已寫程希解錶並放在桌上，不重複解錶。
-- 0264：原稿已是「手掌貼在玻璃上」，不改。
-- 0268：原稿已有「這套是你架的」，不改。
-- 0271：改為「水管還沒收……要快點。」保留〔掉字〕。
-- 0413：改為「她往窗下看。魚販拖出空箱，把捲門拉下一半。」
-- 0467：改為「她拿起水杯，又放回桌上。」
-- 0468：改成到門框邊只喊了聲「欸」；鄰句改為「剛剛還記得的。」
-- 0470：改為「要怎麼叫他回來……」，寫出叫不回人的困難。
-- 0472：「將捲門」改成「把捲門」。
-- 0473：依評審保留「阿爸，我還沒……」，前句補看向窗下的銜接。
-- 0476：保留原句；「那只」承接前場放在桌上的錶，前指明確。
-- 0253（閘門）：改為「您先忙，我在這裡等您。」
-- 0259（閘門）：改為「不用特地叫人陪，我坐一下就好。」
+- 0258：保留手錶句；前場已寫程希解錶、放在梳妝台上。
+- 0264：不改；原稿已是「手掌貼在玻璃上」。
+- 0268：不改；原稿已有「這套是你架的」。
+- 0467：改為「她握住杯子，沒拿起來。」保留停頓。
+- 0468：改為喊了聲「欸」；鄰句改為「剛剛還記得的。」
+- 0470：改為「才寫在歌譜上，怎麼又……」。
+- 0472：改為「她往窗下看。魚販拖出空箱，把捲門拉下一半。」
+- 0473：保留原台詞；以前句看向魚販的動作銜接錯置。
+- 0476：保留受保護的手錶扣回句；前場已有指涉。
+- 0564：保留〔掉字〕原句；鄰句補明歌譜，承接前場寫下程希名字。
+- 0565：改為「不用叫人陪，我自己拿水就好。」
