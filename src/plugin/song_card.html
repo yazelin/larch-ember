@@ -9,7 +9,13 @@ html,body{margin:0;height:100%;background:#0d0705;color:var(--ink);overflow:hidd
 .bg i.on{opacity:1}
 @keyframes push{from{transform:scale(1)}to{transform:scale(1.08)}}
 .shade{position:fixed;inset:0;background:linear-gradient(180deg,rgba(13,7,5,.15) 0%,rgba(13,7,5,.25) 45%,rgba(13,7,5,.82) 100%)}
-.who{position:fixed;left:4vw;top:max(14vh,64px);font:600 clamp(12px,1.4vw,14px)/1 var(--sans);letter-spacing:.3em;color:var(--acc);opacity:.85}
+.now{position:fixed;left:4vw;top:max(13vh,60px);display:flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;border-radius:12px;background:rgba(13,7,5,.5);border:1px solid rgba(255,171,77,.25);animation:rise .6s cubic-bezier(.2,.9,.2,1) both}
+.now[hidden]{display:none}
+.now img{width:clamp(52px,7vw,84px);aspect-ratio:1;border-radius:8px;object-fit:cover;display:block;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.now img:not([src]),.now img[src=""]{display:none}
+.now b{display:block;font:700 clamp(15px,1.8vw,20px)/1.3 var(--serif);letter-spacing:.08em}
+.now small{display:block;font:500 clamp(11px,1.2vw,13px)/1.5 var(--sans);color:var(--dim);letter-spacing:.06em}
+.now em{display:block;font:600 clamp(10px,1.1vw,12px)/1.4 var(--sans);font-style:normal;letter-spacing:.24em;color:var(--acc)}
 .lyr{position:fixed;left:6vw;right:6vw;bottom:12vh;text-align:center}
 .lyr p{margin:0;font-family:var(--serif);transition:opacity .5s ease,transform .5s ease}
 #prev{font-size:clamp(14px,2vw,20px);color:var(--dim);min-height:1.6em}
@@ -27,7 +33,7 @@ html,body{margin:0;height:100%;background:#0d0705;color:var(--ink);overflow:hidd
 <body>
 <div class="bg" aria-hidden="true"><i id="bgA"></i><i id="bgB"></i></div>
 <div class="shade" aria-hidden="true"></div>
-<div class="who" id="who"></div>
+<div class="now" id="now" hidden><img id="cov" alt=""><div><em id="who"></em><b id="ttl"></b><small id="ver"></small></div></div>
 <div class="lyr" aria-live="polite"><p id="prev"></p><p id="cur"></p><p id="next"></p></div>
 <div class="bar" id="bar" aria-hidden="true"></div>
 <button id="skip" type="button">略過</button>
@@ -71,6 +77,10 @@ addEventListener('message', function (e) {
   for (var k = 1; k <= 6; k++) imgs.push(V['image' + k] || '');
   if (!bgs.length && imgs[0]) bgs = [{ t: 0, s: '1' }];
   document.getElementById('who').textContent = V.singer || '';
+  document.getElementById('ttl').textContent = V.songTitle || '';
+  document.getElementById('ver').textContent = V.songVersion || '';
+  if (V.cover) document.getElementById('cov').src = V.cover;
+  document.getElementById('now').hidden = !(V.songTitle || V.cover);
   document.getElementById('skip').textContent = V.skipLabel || '略過';
   requestAnimationFrame(tick);
 });

@@ -33,6 +33,9 @@ POST_BGM = {}   # build.py 填：卡沒自己設 BGM（沿用前一場）時，�
 
 SONG_PLUGIN = 'ember-song-card'   # 唱歌卡插件（src/plugin/song_card.html；manifest 在 src/plugin/song_manifest.py，存成個人使用版草稿）
 SONG_HTML = (ROOT / 'src/plugin/song_card.html').read_text(encoding='utf-8')
+# 唱歌卡左上角的「正在播放」：manifest 的 song → (歌名, 版本, 封面)；封面跟公開站原聲帶頁同一批（assets/art/song/）
+SONG_INFO = {'港邊的燈': ('港邊的燈', '台語老歌', 'harbor'), '餘燼@錄音室': ('餘燼', '錄音室版', 'studio'), '餘燼@台下': ('餘燼', '台下跟唱版', 'audience'),
+             '晚安，台南': ('晚安，台南', '2023', 'night'), '餘燼@大合唱': ('餘燼', '演唱會大合唱', 'chorus')}
 
 
 def _bgm_url(card_id):
@@ -264,12 +267,14 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
     sd = song['data']
     for k in ('dialogueLines', 'autoAdvance', 'speaker'):
         sd.pop(k, None)
-    sd.update(type='plugin', text='', pluginId=SONG_PLUGIN, pluginCardId='sing', pluginVersion='1.0.0', pluginName='唱歌卡', pluginCardName='唱歌卡',
+    sd.update(type='plugin', text='', pluginId=SONG_PLUGIN, pluginCardId='sing', pluginVersion='1.1.0', pluginName='唱歌卡', pluginCardName='唱歌卡',
               pluginIcon='music', pluginColor='#b5532a', pluginPresentation='fullscreen', pluginFrame={'showTitle': False, 'showButton': False},
               pluginSkippable=False, pluginReadVars=[], pluginWriteVars=[], pluginAssets=[], platforms=['web'],
               pluginHtml=SONG_HTML + f'<!-- {song["id"]} -->',   # 相鄰兩張插件卡 html 一樣會沿用前一張的畫面，尾端加卡片 id 讓內容不同
               pluginValues={'lines': '\n'.join(f"{l['t0']:.2f}｜{l['text']}" for l in lines), 'duration': round(cut['duration'], 2), 'endHold': 1.5,
                             'offset': AUDIO_LAG, 'singer': singer, 'skipLabel': '略過',
+                            **({'songTitle': SONG_INFO[cut['song']][0], 'songVersion': SONG_INFO[cut['song']][1],
+                                'cover': f"/files/assets/art/song/cover-{SONG_INFO[cut['song']][2]}.webp"} if cut['song'] in SONG_INFO else {}),
                             'backgrounds': '\n'.join(f'{tt:.2f}｜{i}' for tt, i in cues), **{f'image{i + 1}': u for i, u in enumerate(imgs)}})
     # 邊：原卡的出邊改從最後一張出去；前→歌→後 依序連
     for e in edges:

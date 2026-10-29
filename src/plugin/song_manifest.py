@@ -2,7 +2,7 @@
 畫面在同資料夾的 song_card.html；遊戲裡跑的是 build 時塞進卡片的 pluginHtml，這份 manifest 只給編輯器認得這種卡。"""
 import json, pathlib
 HERE = pathlib.Path(__file__).resolve().parent
-ID, CARD, VERSION = 'ember-song-card', 'sing', '1.0.0'
+ID, CARD, VERSION = 'ember-song-card', 'sing', '1.1.0'   # 1.1.0：左上角加封面、歌名、版本
 FIELDS = [
     {'key': 'lines', 'kind': 'longText', 'label': '歌詞', 'labelEn': 'Lyrics', 'defaultValue': '1.5｜第一句\n5.0｜第二句',
      'hint': '一行一句：「秒數｜歌詞」，秒數從進卡算起。間奏可以寫「♪」。'},
@@ -12,6 +12,9 @@ FIELDS = [
     {'key': 'offset', 'kind': 'number', 'label': '校正（秒）', 'labelEn': 'Offset (s)', 'min': -2, 'max': 3, 'step': 0.05, 'defaultValue': 0.25,
      'hint': '進卡到歌真的出聲的延遲；歌詞比歌早就調大。'},
     {'key': 'singer', 'kind': 'text', 'label': '左上角小字（誰在唱）', 'labelEn': 'Singer label', 'defaultValue': ''},
+    {'key': 'songTitle', 'kind': 'text', 'label': '歌名', 'labelEn': 'Song title', 'defaultValue': ''},
+    {'key': 'songVersion', 'kind': 'text', 'label': '版本', 'labelEn': 'Version', 'defaultValue': ''},
+    {'key': 'cover', 'kind': 'asset', 'assetKind': 'image', 'label': '封面（方形）', 'labelEn': 'Cover (square)'},
     {'key': 'skipLabel', 'kind': 'text', 'label': '略過鈕文字', 'labelEn': 'Skip label', 'defaultValue': '略過'},
     {'key': 'backgrounds', 'kind': 'longText', 'label': '換背景', 'labelEn': 'Background changes', 'defaultValue': '0｜1',
      'hint': '一行一次：「秒數｜第幾張圖」。'},
