@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
+:root{--larch-ink:#111210;--larch-paper:#ffffff;--larch-soft:#eeeeea;--larch-line:#deded7;--larch-control-line:#8b8d85;--larch-muted:#686a63;--larch-control-muted-bg:#eeeeea;--larch-control-muted-fg:#262724;--larch-control-strong-bg:#171716;--larch-control-strong-fg:#ffffff;--larch-danger-bg:#fff0ee;--larch-danger-fg:#9f352e;--larch-link-fg:#3542b4;--larch-font:Inter,"SF Pro Display","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;--larch-spring:cubic-bezier(.2,.9,.2,1);--larch-spring-pop:cubic-bezier(.2,1.5,.35,1);color-scheme:light}
+@supports (transition-timing-function:linear(0,1)){:root{--larch-spring:linear(0,.047,.157,.293,.432,.561,.673,.766,.84,.896,.937,.966,.986,.999,1.006,1.01,1.011,1.011,1.01,1.008,1.007,1.005,1.004,1.003,1);--larch-spring-pop:linear(0,.103,.333,.594,.823,.991,1.091,1.132,1.131,1.106,1.071,1.037,1.01,.993,.984,.982,.984,.988,.993,.997,1,1.002,1.002,1.002,1)}}
+:root[data-larch-theme="dark"],:root.dark{--larch-ink:#f4f4f1;--larch-paper:#1e1f22;--larch-soft:#2b2c31;--larch-line:#4e5058;--larch-control-line:#7c7f88;--larch-muted:#b5bac1;--larch-control-muted-bg:#2b2c31;--larch-control-muted-fg:#f2f3f5;--larch-control-strong-bg:#f2f3f5;--larch-control-strong-fg:#171815;--larch-danger-bg:#3b2421;--larch-danger-fg:#ffb5ae;--larch-link-fg:#b8beff;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-larch-theme="light"]):not(.light){--larch-ink:#f4f4f1;--larch-paper:#1e1f22;--larch-soft:#2b2c31;--larch-line:#4e5058;--larch-control-line:#7c7f88;--larch-muted:#b5bac1;--larch-control-muted-bg:#2b2c31;--larch-control-muted-fg:#f2f3f5;--larch-control-strong-bg:#f2f3f5;--larch-control-strong-fg:#171815;--larch-danger-bg:#3b2421;--larch-danger-fg:#ffb5ae;--larch-link-fg:#b8beff;color-scheme:dark}}
+button{min-height:36px;padding:0 14px;border:1px solid transparent;border-radius:8px;font:600 13px/1 var(--larch-font);display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;background:var(--larch-control-muted-bg);color:var(--larch-control-muted-fg);transition:scale .38s var(--larch-spring),box-shadow .38s var(--larch-spring),background-color .22s ease,border-color .22s ease,color .22s ease}
+@media (hover:hover){button:not(:disabled):hover{scale:1.018}}
+button:not(:disabled):active{scale:.965;transition-duration:.1s}
+button:focus-visible{outline:2px solid var(--larch-ink);outline-offset:3px}
+button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* 以上是 Larch 介面樣式（插件規格要求放在開頭）；以下是唱歌卡的畫面，歌詞與背景屬遊戲美術 */
 :root{--ink:#fbeedd;--dim:rgba(251,238,221,.42);--acc:#ffab4d;--serif:"Noto Serif TC","Songti TC","PMingLiU",serif;--sans:Inter,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#0d0705;color:var(--ink);overflow:hidden;-webkit-user-select:none;user-select:none}
@@ -24,10 +35,7 @@ html,body{margin:0;height:100%;background:#0d0705;color:var(--ink);overflow:hidd
 #cur.in{animation:rise .55s cubic-bezier(.2,.9,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}}
 .bar{position:fixed;left:0;bottom:0;height:3px;width:0;background:var(--acc);opacity:.7}
-#skip{position:fixed;right:max(3vw,12px);bottom:max(3vh,12px);min-height:44px;padding:0 18px;border:1px solid rgba(251,238,221,.4);border-radius:8px;background:rgba(13,7,5,.55);color:var(--ink);font:600 13px/1 var(--sans);cursor:pointer;transition:scale .38s cubic-bezier(.2,.9,.2,1),background-color .22s ease}
-@media (hover:hover){#skip:hover{scale:1.018;background:rgba(13,7,5,.8)}}
-#skip:active{scale:.965;transition-duration:.1s}
-#skip:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+#skip{position:fixed;right:max(3vw,12px);bottom:max(3vh,12px);min-height:44px}   /* Larch 標準按鈕（muted），手機至少 44px */
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style></head>
 <body>
@@ -36,7 +44,7 @@ html,body{margin:0;height:100%;background:#0d0705;color:var(--ink);overflow:hidd
 <div class="now" id="now" hidden><img id="cov" alt=""><div><em id="who"></em><b id="ttl"></b><small id="ver"></small></div></div>
 <div class="lyr" aria-live="polite"><p id="prev"></p><p id="cur"></p><p id="next"></p></div>
 <div class="bar" id="bar" aria-hidden="true"></div>
-<button id="skip" type="button">略過</button>
+<button id="skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14"/></svg><span id="skipt">略過</span></button>
 <script>
 // 唱歌卡：歌由播放器播（卡片層 bgm），這裡照「進卡後經過的秒數」亮歌詞；不吃點擊，唱完才送完成，或玩家按「略過」。
 var V = {}, lines = [], bgs = [], imgs = [], dur = 0, off = 0, t0 = 0, done = false, curI = -2, bgI = -1, front = 'bgA';
@@ -81,7 +89,7 @@ addEventListener('message', function (e) {
   document.getElementById('ver').textContent = V.songVersion || '';
   if (V.cover) document.getElementById('cov').src = V.cover;
   document.getElementById('now').hidden = !(V.songTitle || V.cover);
-  document.getElementById('skip').textContent = V.skipLabel || '略過';
+  document.getElementById('skipt').textContent = V.skipLabel || '略過';
   requestAnimationFrame(tick);
 });
 parent.postMessage({ type: 'larch:ready' }, '*');

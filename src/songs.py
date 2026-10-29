@@ -267,7 +267,7 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
     sd = song['data']
     for k in ('dialogueLines', 'autoAdvance', 'speaker'):
         sd.pop(k, None)
-    sd.update(type='plugin', text='', pluginId=SONG_PLUGIN, pluginCardId='sing', pluginVersion='1.1.0', pluginName='唱歌卡', pluginCardName='唱歌卡',
+    sd.update(type='plugin', text='', pluginId=SONG_PLUGIN, pluginCardId='sing', pluginVersion='1.1.1', pluginName='唱歌卡', pluginCardName='唱歌卡',
               pluginIcon='music', pluginColor='#b5532a', pluginPresentation='fullscreen', pluginFrame={'showTitle': False, 'showButton': False},
               pluginSkippable=False, pluginReadVars=[], pluginWriteVars=[], pluginAssets=[], platforms=['web'],
               pluginHtml=SONG_HTML + f'<!-- {song["id"]} -->',   # 相鄰兩張插件卡 html 一樣會沿用前一張的畫面，尾端加卡片 id 讓內容不同
