@@ -1,0 +1,1463 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /home/ct/larch-ember
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: max
+reasoning summaries: none
+session id: 01a185ac-03ff-7e80-9c7f-eea86269ec1e
+--------
+user
+你在 ~/larch-ember 修《最終遺忘的橘色餘燼》劇本 canon/劇本.md。
+作者 10-29 說：「水放半分鐘」出現太多次，有點怪、不浪漫，要減少。決定只留三處：第 24 行開場旁白（他等了半分鐘才遞給她）、第 280 行 2011 年她交代「倒出來放半分鐘再給我」、第 633 行歌詞（唱句不能動）。
+其他提到半分鐘的句子，要拿掉秒數：第 335、361、405、460、469、670 行。做法自己判斷：保留遞水、等水涼這個動作，但不報時間；或整句刪掉，讓前後還接得上。第 361 與 460 行是同一封信的同一句（forget 念信、letter 寫信），兩處要改成一樣。第 469 行那句清單，拿掉「水放半分鐘」，其他項目照留。
+先讀 審稿/準則.md（第 16 條已更新）。只改這幾行和必要的緊鄰一兩句，其他一字不動；長度不增加；〔圖〕〔掉字〕標記、## 標題、選項、唱句不動。
+改完跑 ~/speak-tw/bin/speak-tw canon/劇本.md，要 0 處要改；跑 python3 tests/check_voice.py 要硬規則違反 0。不要改其他檔案。
+最後回報：每一行原句 → 新句（或刪除）。
+hook: SessionStart
+hook: SessionStart Completed
+codex
+我會先讀審稿準則和指定段落，只調整這六處；改完核對差異，再跑兩項檢查。
+exec
+/bin/bash -lc "rg --files -g AGENTS.md -g '審稿/準則.md' -g 'canon/劇本.md' -g 'tests/check_voice.py'" in /home/ct/larch-ember
+ succeeded in 0ms:
+審稿/準則.md
+canon/劇本.md
+tests/check_voice.py
+
+exec
+/bin/bash -lc 'git status --short' in /home/ct/larch-ember
+ succeeded in 0ms:
+ M art/__pycache__/blocks.cpython-312.pyc
+ M art/__pycache__/codex11.cpython-312.pyc
+ M art/__pycache__/gen_cg.cpython-312.pyc
+ M art/__pycache__/storyboard.cpython-312.pyc
+ M art/raw/a_piano_raw.png
+ M art/raw/b_rail_raw.json
+ M art/raw/b_rail_raw.png
+ M art/raw/cg/cg_2004_door_1.json
+ M art/raw/cg/cg_2004_door_1.png
+ M art/raw/cg/cg_2004_door_2.json
+ M art/raw/cg/cg_2004_door_2.png
+ M art/raw/cg/cg_2022_clinic_1.json
+ M art/raw/cg/cg_2022_clinic_1.png
+ M art/raw/cg/cg_2022_clinic_2.json
+ M art/raw/cg/cg_2022_clinic_2.png
+ M art/raw/d_case_raw.json
+ M art/raw/d_jewel_raw.json
+ M art/raw/d_rack_raw.json
+ M art/raw/d_radio_raw.json
+ M art/raw/d_vanity_raw.json
+ M art/raw/d_window_raw.json
+ M art/raw/ground_backstage_raw.json
+ M art/raw/ground_backstage_raw.png
+ M art/raw/ground_dressing_raw.json
+ M art/raw/shots/s_mem4_2_1.json
+ M art/raw/shots/s_mem4_2_1.png
+ M art/raw/shots/s_mem4_2_2.json
+ M art/raw/shots/s_mem4_2_2.png
+ M art/raw/shots/s_mem4_3_1.json
+ M art/raw/shots/s_mem4_3_1.png
+ M art/raw/shots/s_mem4_3_2.json
+ M art/raw/shots/s_mem4_3_2.png
+ M art/raw/shots/s_prologue_2_1.json
+ M art/raw/shots/s_prologue_2_1.png
+ M art/raw/shots/s_prologue_2_2.json
+ M art/raw/shots/s_prologue_2_2.png
+ M art/raw/standee/dr_lin_1.json
+ M art/raw/standee/dr_lin_1.png
+ M art/raw/standee/dr_lin_2.json
+ M art/raw/standee/dr_lin_2.png
+ M art/raw/standee/dr_lin_3.json
+ M art/raw/standee/dr_lin_3.png
+ M art/raw/standee/dr_lin_4.json
+ M art/raw/standee/dr_lin_4.png
+ M art/voice-test/taigi/ref-child.wav
+ M src/__pycache__/build.cpython-312.pyc
+ M src/__pycache__/layout.cpython-312.pyc
+ M src/__pycache__/maps.cpython-312.pyc
+ M src/__pycache__/script.cpython-312.pyc
+ M src/build.py
+ M src/songs.py
+ M tests/play_linear.mjs
+ M "\345\257\251\347\250\277/\345\245\275\345\217\245.json"
+ M "\345\257\251\347\250\277/\346\272\226\345\211\207.md"
+?? art/check/cgfix-gen1.log
+?? art/check/cgfix-gen2.log
+?? art/check/full-a-00.png
+?? art/check/full-a-01.png
+?? art/check/full-a-02.png
+?? art/check/full-a-03.png
+?? art/check/full-a-04.png
+?? art/check/full-a-05.png
+?? art/check/full-a-06.png
+?? art/check/full-a-07.png
+?? art/check/full-a-08.png
+?? art/check/full-a-09.png
+?? art/check/full-a-10.png
+?? art/check/full-a-11.png
+?? art/check/full-a-12.png
+?? art/check/full-a-13.png
+?? art/check/full-a-14.png
+?? art/check/full-a-15.png
+?? art/check/full-a-16.png
+?? art/check/full-a-17.png
+?? art/check/full-a-18.png
+?? art/check/full-a-19.png
+?? art/check/full-a-20.png
+?? art/check/full-a-21.png
+?? art/check/full-a-22.png
+?? art/check/full-a-23.png
+?? art/check/full-a-24.png
+?? art/check/full-a-25.png
+?? art/check/full-a-26.png
+?? art/check/full-a-27.png
+?? art/check/full-a-28.png
+?? art/check/full-a-29.png
+?? art/check/full-a-30.png
+?? art/check/full-a-31.png
+?? art/check/full-a-32.png
+?? art/check/full-a-33.png
+?? art/check/full-a-34.png
+?? art/check/full-a-35.png
+?? art/check/full-a-36.png
+?? art/check/full-a-37.png
+?? art/check/full-a-38.png
+?? art/check/full-a-39.png
+?? art/check/full-a-40.png
+?? art/check/full-a-41.png
+?? art/check/full-a-42.png
+?? art/check/full-a-43.png
+?? art/check/full-a-44.png
+?? art/check/full-a-45.png
+?? art/check/full-b-00.png
+?? art/check/full-b-01.png
+?? art/check/full-b-02.png
+?? art/check/full-b-03.png
+?? art/check/full-b-04.png
+?? art/check/full-b-05.png
+?? art/check/full-b-06.png
+?? art/check/full-b-07.png
+?? art/check/full-b-08.png
+?? art/check/full-b-09.png
+?? art/check/full-b-10.png
+?? art/check/full-b-11.png
+?? art/check/full-b-12.png
+?? art/check/full-b-13.png
+?? art/check/full-b-14.png
+?? art/check/full-b-15.png
+?? art/check/full-b-16.png
+?? art/check/full-b-17.png
+?? art/check/full-b-18.png
+?? art/check/full-b-19.png
+?? art/check/full-b-20.png
+?? art/check/full-b-21.png
+?? art/check/full-b-22.png
+?? art/check/full-b-23.png
+?? art/check/full-b-24.png
+?? art/check/full-b-25.png
+?? art/check/full-b-26.png
+?? art/check/full-b-27.png
+?? art/check/full-b-28.png
+?? art/check/full-b-29.png
+?? art/check/full-b-30.png
+?? art/check/full-b-31.png
+?? art/check/full-b-32.png
+?? art/check/full-b-33.png
+?? art/check/full-b-34.png
+?? art/check/full-b-35.png
+?? art/check/full-b-36.png
+?? art/check/full-b-37.png
+?? art/check/full-b-38.png
+?? art/check/full-b-39.png
+?? art/check/full-b-40.png
+?? art/check/full-b-41.png
+?? art/check/full-b-42.png
+?? art/check/full-b-43.png
+?? art/check/full-b-44.png
+?? art/check/full-b-45.png
+?? art/check/full-c-00.png
+?? art/check/full-c-01.png
+?? art/check/full-c-02.png
+?? art/check/full-c-03.png
+?? art/check/full-c-04.png
+?? art/check/full-c-05.png
+?? art/check/full-c-06.png
+?? art/check/full-c-07.png
+?? art/check/full-c-08.png
+?? art/check/full-c-09.png
+?? art/check/full-c-10.png
+?? art/check/full-c-11.png
+?? art/check/full-c-12.png
+?? art/check/full-c-13.png
+?? art/check/full-c-14.png
+?? art/check/full-c-15.png
+?? art/check/full-c-16.png
+?? art/check/full-c-17.png
+?? art/check/full-c-18.png
+?? art/check/full-c-19.png
+?? art/check/full-c-20.png
+?? art/check/full-c-21.png
+?? art/check/full-c-22.png
+?? art/check/full-c-23.png
+?? art/check/full-c-24.png
+?? art/check/full-c-25.png
+?? art/check/full-c-26.png
+?? art/check/full-c-27.png
+?? art/check/full-c-28.png
+?? art/check/full-c-29.png
+?? art/check/full-c-30.png
+?? art/check/full-c-31.png
+?? art/check/full-c-32.png
+?? art/check/full-c-33.png
+?? art/check/full-c-34.png
+?? art/check/full-c-35.png
+?? art/check/full-c-36.png
+?? art/check/full-c-37.png
+?? art/check/full-c-38.png
+?? art/check/full-c-39.png
+?? art/check/full-c-40.png
+?? art/check/full-c-41.png
+?? art/check/full-c-42.png
+?? art/check/full-c-43.png
+?? art/check/full-c-44.png
+?? art/check/linear-000.png
+?? art/check/linear-001.png
+?? art/check/linear-002.png
+?? art/check/linear-003.png
+?? art/check/linear-004.png
+?? art/check/linear-005.png
+?? art/check/linear-006.png
+?? art/check/linear-007.png
+?? art/check/linear-008.png
+?? art/check/linear-009.png
+?? art/check/linear-010.png
+?? art/check/linear-011.png
+?? art/check/linear-012.png
+?? art/check/linear-013.png
+?? art/check/linear-014.png
+?? art/check/linear-015.png
+?? art/check/linear-016.png
+?? art/check/linear-017.png
+?? art/check/linear-018.png
+?? art/check/linear-019.png
+?? art/check/linear-020.png
+?? art/check/linear-021.png
+?? art/check/linear-022.png
+?? art/check/linear-023.png
+?? art/check/linear-024.png
+?? art/check/linear-025.png
+?? art/check/linear-026.png
+?? art/check/linear-027.png
+?? art/check/linear-028.png
+?? art/check/linear-029.png
+?? art/check/linear-030.png
+?? art/check/linear-031.png
+?? art/check/linear-032.png
+?? art/check/linear-033.png
+?? art/check/linear-034.png
+?? art/check/linear-035.png
+?? art/check/linear-036.png
+?? art/check/linear-037.png
+?? art/check/linear-038.png
+?? art/check/linear-039.png
+?? art/check/linear-040.png
+?? art/check/linear-041.png
+?? art/check/linear-042.png
+?? art/check/linear-043.png
+?? art/check/linear-044.png
+?? art/check/linear-045.png
+?? art/check/linear-046.png
+?? art/check/linear-047.png
+?? art/check/linear-048.png
+?? art/check/linear-049.png
+?? art/check/linear-050.png
+?? art/check/linear-051.png
+?? art/check/linear-052.png
+?? art/check/linear-053.png
+?? art/check/linear-054.png
+?? art/check/linear-055.png
+?? art/check/linear-056.png
+?? art/check/linear-057.png
+?? art/check/linear-058.png
+?? art/check/linear-059.png
+?? art/check/linear-060.png
+?? art/check/linear-061.png
+?? art/check/linear-062.png
+?? art/check/linear-063.png
+?? art/check/linear-064.png
+?? art/check/linear-065.png
+?? art/check/linear-066.png
+?? art/check/linear-067.png
+?? art/check/linear-068.png
+?? art/check/linear-069.png
+?? art/check/linear-070.png
+?? art/check/linear-071.png
+?? art/check/linear-072.png
+?? art/check/linear-073.png
+?? art/check/linear-074.png
+?? art/check/linear-075.png
+?? art/check/linear-076.png
+?? art/check/linear-077.png
+?? art/check/linear-078.png
+?? art/check/linear-079.png
+?? art/check/linear-080.png
+?? art/check/linear-081.png
+?? art/check/linear-082.png
+?? art/check/linear-083.png
+?? art/check/linear-084.png
+?? art/check/linear-085.png
+?? art/check/linear-086.png
+?? art/check/linear-087.png
+?? art/check/linear-088.png
+?? art/check/linear-089.png
+?? art/check/linear-090.png
+?? art/check/linear-091.png
+?? art/check/linear-092.png
+?? art/check/linear-093.png
+?? art/check/linear-094.png
+?? art/check/linear-095.png
+?? art/check/linear-096.png
+?? art/check/linear-097.png
+?? art/check/linear-098.png
+?? art/check/linear-099.png
+?? art/check/linear-100.png
+?? art/check/linear-101.png
+?? art/check/linear-102.png
+?? art/check/linear-103.png
+?? art/check/linear-104.png
+?? art/check/linear-105.png
+?? art/check/linear-106.png
+?? art/check/linear-107.png
+?? art/check/linear-108.png
+?? art/check/linear-109.png
+?? art/check/linear-110.png
+?? art/check/linear-111.png
+?? art/check/linear-112.png
+?? art/check/linear-113.png
+?? art/check/linear-114.png
+?? art/check/linear-115.png
+?? art/check/linear-116.png
+?? art/check/linear-117.png
+?? art/check/linear-118.png
+?? art/check/linear-119.png
+?? art/check/linear-120.png
+?? art/check/linear-121.png
+?? art/check/linear-122.png
+?? art/check/linear-123.png
+?? art/check/linear-124.png
+?? art/check/linear-125.png
+?? art/check/linear-126.png
+?? art/check/linear-127.png
+?? art/check/linear-128.png
+?? art/check/linear-129.png
+?? art/check/linear-130.png
+?? art/check/linear-131.png
+?? art/check/linear-132.png
+?? art/check/linear-133.png
+?? art/check/linear-134.png
+?? art/check/linear-135.png
+?? art/check/linear-136.png
+?? art/check/linear-137.png
+?? art/check/linear-138.png
+?? art/check/linear-139.png
+?? art/check/linear-140.png
+?? art/check/linear-141.png
+?? art/check/linear-142.png
+?? art/check/linear-143.png
+?? art/check/linear-144.png
+?? art/check/linear-145.png
+?? art/check/linear-146.png
+?? art/check/linear-147.png
+?? art/check/linear-148.png
+?? art/check/linear-149.png
+?? art/check/linear-150.png
+?? art/check/linear-151.png
+?? art/check/linear-152.png
+?? art/check/linear-153.png
+?? art/check/linear-154.png
+?? art/check/linear-155.png
+?? art/check/linear-156.png
+?? art/check/linear-157.png
+?? art/check/linear-158.png
+?? art/check/linear-159.png
+?? art/check/linear-160.png
+?? art/check/linear-161.png
+?? art/check/linear-162.png
+?? art/check/linear-163.png
+?? art/check/linear-164.png
+?? art/check/linear-165.png
+?? art/check/linear-166.png
+?? art/check/linear-167.png
+?? art/check/linear-168.png
+?? art/check/linear-169.png
+?? art/check/linear-170.png
+?? art/check/linear-171.png
+?? art/check/linear-172.png
+?? art/check/linear-173.png
+?? art/check/linear-174.png
+?? art/check/linear-175.png
+?? art/check/linear-176.png
+?? art/check/linear-177.png
+?? art/check/linear-178.png
+?? art/check/linear-179.png
+?? art/check/linear-180.png
+?? art/check/linear-181.png
+?? art/check/linear-182.png
+?? art/check/linear-183.png
+?? art/check/linear-184.png
+?? art/check/linear-185.png
+?? art/check/linear-186.png
+?? art/check/linear-187.png
+?? art/check/linear-188.png
+?? art/check/linear-189.png
+?? art/check/linear-190.png
+?? art/check/linear-191.png
+?? art/check/linear-192.png
+?? art/check/linear-193.png
+?? art/check/linear-194.png
+?? art/check/linear-195.png
+?? art/check/linear-196.png
+?? art/check/linear-197.png
+?? art/check/linear-198.png
+?? art/check/linear-199.png
+?? art/check/linear-200.png
+?? art/check/linear-201.png
+?? art/check/linear-202.png
+?? art/check/linear-203.png
+?? art/check/linear-204.png
+?? art/check/linear-205.png
+?? art/check/linear-206.png
+?? art/check/linear-207.png
+?? art/check/linear-208.png
+?? art/check/linear-209.png
+?? art/check/linear-210.png
+?? art/check/linear-211.png
+?? art/check/linear-212.png
+?? art/check/linear-213.png
+?? art/check/linear-214.png
+?? art/check/linear-215.png
+?? art/check/linear-216.png
+?? art/check/linear-217.png
+?? art/check/linear-218.png
+?? art/check/linear-219.png
+?? art/check/linear-220.png
+?? art/check/linear-221.png
+?? art/check/linear-222.png
+?? art/check/linear-223.png
+?? art/check/linear-224.png
+?? art/check/linear-225.png
+?? art/check/linear-226.png
+?? art/check/linear-227.png
+?? art/check/linear-228.png
+?? art/check/linear-229.png
+?? art/check/linear-230.png
+?? art/check/linear-231.png
+?? art/check/linear-232.png
+?? art/check/linear-233.png
+?? art/check/linear-234.png
+?? art/check/linear-235.png
+?? art/check/linear-236.png
+?? art/check/linear-237.png
+?? art/check/linear-238.png
+?? art/check/linear-239.png
+?? art/check/linear-240.png
+?? art/check/linear-241.png
+?? art/check/linear-242.png
+?? art/check/linear-243.png
+?? art/check/linear-244.png
+?? art/check/linear-245.png
+?? art/check/linear-246.png
+?? art/check/linear-247.png
+?? art/check/linear-248.png
+?? art/check/linear-249.png
+?? art/check/linear-250.png
+?? art/check/linear-251.png
+?? art/check/linear-252.png
+?? art/check/linear-253.png
+?? art/check/linear-254.png
+?? art/check/linear-255.png
+?? art/check/linear-256.png
+?? art/check/linear-257.png
+?? art/check/linear-258.png
+?? art/check/linear-259.png
+?? art/check/linear-260.png
+?? art/check/linear-261.png
+?? art/check/linear-262.png
+?? art/check/linear-263.png
+?? art/check/linear-264.png
+?? art/check/linear-265.png
+?? art/check/linear-266.png
+?? art/check/linear-267.png
+?? art/check/linear-268.png
+?? art/check/linear-269.png
+?? art/check/linear-270.png
+?? art/check/linear-271.png
+?? art/check/linear-272.png
+?? art/check/linear-273.png
+?? art/check/linear-274.png
+?? art/check/linear-275.png
+?? art/check/linear-276.png
+?? art/check/linear-277.png
+?? art/check/linear-278.png
+?? art/check/linear-279.png
+?? art/check/linear-280.png
+?? art/check/linear-281.png
+?? art/check/linear-282.png
+?? art/check/linear-283.png
+?? art/check/linear-284.png
+?? art/check/linear-285.png
+?? art/check/linear-286.png
+?? art/check/linear-287.png
+?? art/check/linear-288.png
+?? art/check/linear-289.png
+?? art/check/linear-290.png
+?? art/check/linear-291.png
+?? art/check/linear-292.png
+?? art/check/linear-293.png
+?? art/check/linear-294.png
+?? art/check/linear-295.png
+?? art/check/linear-296.png
+?? art/check/linear-297.png
+?? art/check/linear-298.png
+?? art/check/linear-299.png
+?? art/check/linear-300.png
+?? art/check/linear-301.png
+?? art/check/linear-302.png
+?? art/check/linear-303.png
+?? art/check/linear-304.png
+?? art/check/linear-305.png
+?? art/check/linear-306.png
+?? art/check/linear-307.png
+?? art/check/linear-308.png
+?? art/check/linear-309.png
+?? art/check/linear-310.png
+?? art/check/linear-311.png
+?? art/check/linear-312.png
+?? art/check/linear-313.png
+?? art/check/linear-314.png
+?? art/check/linear-315.png
+?? art/check/linear-316.png
+?? art/check/linear-317.png
+?? art/check/linear-318.png
+?? art/check/linear-319.png
+?? art/check/linear-320.png
+?? art/check/linear-321.png
+?? art/check/linear-322.png
+?? art/check/linear-323.png
+?? art/check/linear-324.png
+?? art/check/linear-325.png
+?? art/check/linear-326.png
+?? art/check/linear-327.png
+?? art/check/linear-328.png
+?? art/check/linear-329.png
+?? art/check/linear-330.png
+?? art/check/linear-331.png
+?? art/check/linear-332.png
+?? art/check/linear-333.png
+?? art/check/linear-334.png
+?? art/check/linear-335.png
+?? art/check/linear-336.png
+?? art/check/linear-337.png
+?? art/check/linear-338.png
+?? art/check/linear-339.png
+?? art/check/linear-340.png
+?? art/check/linear-341.png
+?? art/check/linear-342.png
+?? art/check/linear-343.png
+?? art/check/linear-344.png
+?? art/check/linear-345.png
+?? art/check/linear-346.png
+?? art/check/linear-347.png
+?? art/check/linear-348.png
+?? art/check/linear-349.png
+?? art/check/linear-350.png
+?? art/check/linear-351.png
+?? art/check/linear-352.png
+?? art/check/linear-353.png
+?? art/check/linear-354.png
+?? art/check/linear-355.png
+?? art/check/linear-356.png
+?? art/check/linear-357.png
+?? art/check/linear-358.png
+?? art/check/linear-359.png
+?? art/check/linear-360.png
+?? art/check/linear-361.png
+?? art/check/linear-362.png
+?? art/check/linear-363.png
+?? art/check/linear-364.png
+?? art/check/linear-365.png
+?? art/check/linear-366.png
+?? art/check/linear-367.png
+?? art/check/linear-368.png
+?? art/check/linear-369.png
+?? art/check/linear-370.png
+?? art/check/linear-371.png
+?? art/check/linear-372.png
+?? art/check/linear-373.png
+?? art/check/linear-374.png
+?? art/check/linear-375.png
+?? art/check/linear-376.png
+?? art/check/linear-377.png
+?? art/check/linear-378.png
+?? art/check/linear-379.png
+?? art/check/linear-380.png
+?? art/check/linear-381.png
+?? art/check/linear-382.png
+?? art/check/linear-383.png
+?? art/check/linear-384.png
+?? art/check/linear-385.png
+?? art/check/linear-386.png
+?? art/check/linear-387.png
+?? art/check/linear-388.png
+?? art/check/linear-389.png
+?? art/check/linear-390.png
+?? art/check/linear-391.png
+?? art/check/linear-392.png
+?? art/check/linear-393.png
+?? art/check/linear-394.png
+?? art/check/linear-395.png
+?? art/check/linear-396.png
+?? art/check/linear-397.png
+?? art/check/linear-398.png
+?? art/check/linear-399.png
+?? art/check/linear-400.png
+?? art/check/map-m-alley.png
+?? art/check/map-m-auditorium.png
+?? art/check/map-m-backstage.png
+?? art/check/map-m-dressing.png
+?? art/check/mapgen-alley-doors.log
+?? art/check/mapgen-alley.log
+?? art/check/mapgen-auditorium-doors.log
+?? art/check/mapgen-auditorium-doors2.log
+?? art/check/mapgen-auditorium.log
+?? art/check/mapgen-backstage-doors.log
+?? art/check/mapgen-backstage-doors2.log
+?? art/check/mapgen-backstage-fix.log
+?? art/check/mapgen-backstage-ground2.log
+?? art/check/mapgen-backstage.log
+?? art/check/mapgen-dressing-doors.log
+?? art/check/mapgen-dressing.log
+?? art/check/mapgen-styles.log
+?? art/check/music-desk-jump.jpg
+?? art/check/music-desk-night.jpg
+?? art/check/music-desk-play.jpg
+?? art/check/music-harbor-reduced-motion.jpg
+?? art/check/music-m320-play.jpg
+?? art/check/music-phone-jump.jpg
+?? art/check/music-phone-night.jpg
+?? art/check/music-phone-play.jpg
+?? art/check/mv-desk-bridge.jpg
+?? art/check/mv-desk-chorus.jpg
+?? art/check/mv-desk-final-blank.jpg
+?? art/check/mv-desk-start.jpg
+?? art/check/mv-desk-v1.jpg
+?? art/check/mv-phone-bridge.jpg
+?? art/check/mv-phone-chorus.jpg
+?? art/check/mv-phone-final-blank.jpg
+?? art/check/mv-phone-start.jpg
+?? art/check/mv-phone-v1.jpg
+?? art/check/occlusion-backstage.png
+?? art/check/stair-1.png
+?? art/check/stair-2.png
+?? art/check/stair-3.png
+?? art/check/stair-4.png
+?? art/music_raw/
+?? art/raw/a_desk_raw.json
+?? art/raw/a_desk_raw.png
+?? art/raw/a_piano_raw.json
+?? art/raw/b_balcony_raw.json
+?? art/raw/b_balcony_raw.png
+?? art/raw/b_beam_raw.json
+?? art/raw/b_beam_raw.png
+?? art/raw/b_post_raw.json
+?? art/raw/b_post_raw.png
+?? art/raw/cg/cg_2004_door_3.json
+?? art/raw/cg/cg_2004_door_3.png
+?? art/raw/cg/cg_2004_door_4.json
+?? art/raw/cg/cg_2004_door_4.png
+?? art/raw/cg/cg_2022_clinic_3.json
+?? art/raw/cg/cg_2022_clinic_3.png
+?? art/raw/cg/cg_2022_clinic_4.json
+?? art/raw/cg/cg_2022_clinic_4.png
+?? art/raw/cg/cg_2022_clinic_5.json
+?? art/raw/cg/cg_2022_clinic_5.png
+?? art/raw/cg/cg_2022_clinic_6.json
+?? art/raw/cg/cg_2022_clinic_6.png
+?? art/raw/d_case_raw.png
+?? art/raw/d_jewel_raw.png
+?? art/raw/d_rack_raw.png
+?? art/raw/d_radio_raw.png
+?? art/raw/d_vanity_raw.png
+?? art/raw/d_window_raw.png
+?? art/raw/ground_alley_raw.json
+?? art/raw/ground_alley_raw.png
+?? art/raw/ground_dressing_raw.png
+?? art/raw/l_basket_raw.json
+?? art/raw/l_basket_raw.png
+?? art/raw/l_scooter_raw.json
+?? art/raw/l_scooter_raw.png
+?? art/raw/shots/s_mem4_2_3.json
+?? art/raw/shots/s_mem4_2_3.png
+?? art/raw/shots/s_mem4_2_4.json
+?? art/raw/shots/s_mem4_2_4.png
+?? art/raw/shots/s_mem4_3_3.json
+?? art/raw/shots/s_mem4_3_3.png
+?? art/raw/shots/s_mem4_3_4.json
+?? art/raw/shots/s_mem4_3_4.png
+?? art/raw/shots/s_prologue_2_3.json
+?? art/raw/shots/s_prologue_2_3.png
+?? art/raw/shots/s_prologue_2_4.json
+?? art/raw/shots/s_prologue_2_4.png
+?? art/raw/songcovers/
+?? art/raw/standee/_old_dr/dr_lin_1.json
+?? art/raw/standee/_old_dr/dr_lin_1.png
+?? art/raw/standee/_old_dr/dr_lin_2.json
+?? art/raw/standee/_old_dr/dr_lin_2.png
+?? art/raw/standee/_old_dr/dr_lin_3.json
+?? art/raw/standee/_old_dr/dr_lin_3.png
+?? art/raw/standee/_old_dr/dr_lin_4.json
+?? art/raw/standee/_old_dr/dr_lin_4.png
+?? art/voice-test/cand/
+?? art/voice-test/samples/
+?? art/voice-test/taigi/vc-long-antie.wav
+?? art/voice-test/taigi/vc-long-aunt.wav
+?? art/voice-test/taigi/vc-long-child.wav
+?? art/voice-test/taigi/vc-long-dad.wav
+?? "canon/\346\255\214\350\251\236-\346\270\257\351\202\212\347\232\204\347\207\210-suno\351\237\263\350\277\221.md"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex.err"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex.out"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex2.err"
+?? "design/\346\255\214\350\251\236\346\216\245\347\267\232/codex2.out"
+?? "design/\346\255\214\350\251\236\351\207\215\345\257\253/"
+?? "design/\347\265\220\345\261\200C\344\277\256\346\224\271.md"
+?? "design/\347\267\250\350\274\257\346\204\217\350\246\213/"
+?? ui/mockup/mockup.png
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/halfmin.log"
+?? "\345\257\251\347\250\277/\344\277\256\347\250\277/halfmin.sh"
+
+exec
+/bin/bash -lc pwd in /home/ct/larch-ember
+ succeeded in 0ms:
+/home/ct/larch-ember
+
+exec
+/bin/bash -lc 'cat 審稿/準則.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+# 寫稿準則（寫稿、改稿的人與 AI 都照這份；contest.py 與 runner.py packet 會自動帶入）
+
+摘自 `design/寫作標準.md`、`design/余靜改寫方向.md`（作者 2026-10-23 拍板）、`design/失智症反應研究.md` D 節、`design/結局C修改.md`、`tests/check_voice.py` 與 speak-tw 規則。設定以 `canon/劇本.md` 與這些檔為準，舊設計稿與劇本衝突時以劇本為準。
+
+1. 余靜面對忘記的方式：用笑遮羞，笑完安靜。玩笑只拿自己開，笑完沒有人接話時她看向別處、安靜下來。不拿別人開玩笑，不輕佻。
+2. 余靜的病識感時有時無：這一刻察覺自己不對勁，下一刻又不察覺。每一場要有一個她自己察覺的瞬間，不靠別人告訴她。
+3. 忘記要有代價：每一場要演出她失去了什麼、她怎麼感覺到。忘了也不在乎、只有忘沒有在補，都不要（研究 D 節）。
+4. 余靜為別人的感受道歉：看到對方臉色一變，先說對不起，不為自己辯解。她病了還在顧別人，掛心阿哲、周老師、程希。
+5. 余靜把丈夫當成「這裡的工作人員」時，對他客氣、有距離，覺得他讓人安心；只有身體記得的小儀式（半分鐘的水（作者 10-29：只留開場旁白、2011 年她交代「放半分鐘再給我」、第三段歌詞三處，其他地方遞水不講秒數）、敲兩下）會讓她不自覺放鬆，放鬆完她會愣一下。
+6. 程希一次只問一個問題、只給一個選項、自稱工作人員；他有脾氣、會碎念、會逞強，不是沒有情緒的聖人。
+7. 旁白只寫畫面上看得到的事，不解釋心情、不下結論、不寫情緒形容詞（難過、心疼、感動、溫柔地之類），不用比喻（像、彷彿、好像、似乎）。
+8. 心聲寫具體的念頭與身體的感覺，半句話也可以，不寫總結的感想。
+9. 對白要像真人：會打斷、說一半、答非所問、重複、顧左右而言他。出聲念念看，念不出口的書面語換掉（於是、並且、以及、此刻、而……）。
+10. 用看得到的小事說話：保溫杯、錶帶、耳墜、歌譜、票根、收音機、魚箱。形容詞不堆疊，一句不要掛一串動作。最痛的那一句不說出來，說出來的是旁邊那件小事。
+11. 台灣口語，正體中文、全形標點。不用破折號，不用「不是……而是」或「不是 X，是 Y」，不用 emoji，不用「長出」「長成」「接住」。 <!-- speak-tw-ok：這一行是在列禁用詞 -->
+12. 不寫金句，不用三連排比，不用「我沒有 X。我只是 Y」。客服句型（好，我記住了／謝謝你。／慢慢來／你先坐）不要。
+13. 單字連答不要連續超過兩句；連續一問一答不超過兩組；同一個句型整場不要反覆出現；單場心聲不超過 8 句。
+14. （唱）的句子逐字照 `canon/歌詞.md`，一個字都不能動；〈天烏烏〉是公有童謠，照劇本現有的句子。
+15. 台語台詞寫台語漢字，後面括號附華語字幕，照劇本現有寫法。
+16. 扣回的物件與句子照原樣保留（票根背面「河岸留言那晚，你唱〈天烏烏〉，我沒走。」、三排十四號、半分鐘的水、敲兩下、玫瑰放門內右邊、四折歌譜、手錶型 GPS「唱完再戴回去」、天烏烏、走音與「那我唱，你跳」、紙條「今天有人坐在三排十四號」、尾聲余靜問的「什麼演唱會？」（作者 10-19 指定）、天黑獨處她小聲說的「我不想忘記」（作者 10-29 指定））；要改就把引用的地方一起改（修稿包會列出），並跑 `tests/motif_check.py`。
+17. 每張卡的 `##` 標題、〔圖〕〔掉字〕標記、選項文字不動；歌曲切段的錨點句（`src/songs_cut.py` 的 anchor）不動。
+18. 長度不增加（作者擔心整個遊戲太長）：加了察覺與代價的句子，就刪掉純鬥嘴、沒有代價的句子。
+19. 不寫影視常見的錯誤：突然全好、一夕全忘、鏡子認不出自己當成預設畫面、驚嚇配樂式的演法、把病寫成懲罰（研究 D 節）。
+20. 作者要求句子由 codex 寫；Claude 負責對照準則與研究、套用、跑檢查，不憑口味挑版本或補句。
+
+exec
+/bin/bash -lc 'cat AGENTS.md' in /home/ct/larch-ember
+ exited 1 in 0ms:
+cat: AGENTS.md: No such file or directory
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+p = Path('canon/劇本.md')
+lines = p.read_text().splitlines()
+for target in [24,280,335,361,405,460,469,633,670]:
+    print(f'\\n【{target} 行附近】')
+    for n in range(max(1,target-3), min(len(lines), target+3)+1):
+        print(f'{n}: {lines[n-1]}')
+print('\\n【所有半分鐘】')
+for n,line in enumerate(lines,1):
+    if '半分鐘' in line:
+        print(f'{n}: {line}')
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+
+【24 行附近】
+21: 男人：我是這裡的工作人員，來送水的。
+22: 
+23: 〔圖：s_dress_3〕
+24: 旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
+25: 余靜：麻煩你了。
+26: 旁白：她喝了一口，肩膀垂下。她把杯子遞向他，又停住了。
+27: 余靜：不好意思，我自己放就好。
+
+【280 行附近】
+277: 旁白：他拿出保溫杯，倒了水。她接過，嘴唇一碰就推回來。
+278: 余靜：燙。你在門口待這麼久，水怎麼還這麼燙。
+279: 程希：保溫杯啊。不然買它幹嘛。
+280: 余靜：倒出來放半分鐘再給我。
+281: 旁白：他端著杯子看錶。她把票根收回歌譜，手上還拿著花。
+282: 程希：淑靜，這樣可以了吧。
+283: 旁白：她喝了一口，拉住他袖口。
+
+【335 行附近】
+332: 余靜（心）：下了台還是接不上。再寫一次。
+333: 旁白：第一句後面空著。她把筆蓋扣上，又拔開。
+334: 旁白：門上敲了兩下。程希端著水進來，袖口濕了一片。
+335: 程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。
+336: 余靜：去換件衣服。這間冷氣很強。
+337: 旁白：她在紙角補上「看醫生」，把歌單推過去。
+338: 程希：我打電話掛號，明天陪妳。
+
+【361 行附近】
+358: 余靜：阿希，水先關掉。
+359: 旁白：廚房的水停了。她在信紙最上面寫下本名「余淑靜」。
+360: 余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+361: 余靜（念）：如果又嫌水燙，放半分鐘再喝。
+362: 旁白：她寫完最後一行，抹過眼角，把信摺好。
+363: 〔圖：s_mem4_5〕
+364: 旁白：她打開阿爸那台收音機的底座，把信塞進去。
+
+【405 行附近】
+402: 〔圖：s_mem4_8〕
+403: 程希：妳先生，程希。
+404: 旁白：她鬆開他的袖口，伸手接杯子。他沒有遞過來。
+405: 程希：剛倒的，還沒半分鐘。
+406: 旁白：她把身旁的椅子拉開，手重新搭在他腕上。
+407: 余靜：那你陪我等。
+408: 
+
+【460 行附近】
+457: 旁白：她抽出信紙，沿著摺痕攤開。
+458: 余靜：我的字。可是我什麼時候……
+459: 余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+460: 余靜（念）：如果又嫌水燙，放半分鐘再喝。
+461: 余靜（念）：今天醫生說，我得了早發性阿茲海默症。我把報告摺在包裡，回家都沒拿出來。
+462: 余靜（念）：旁邊那個人叫程希，是你先生。2013 年，我們在永明戲院的空舞台拍過照，周老師拍的。
+463: 旁白：她看向鏡角的照片，又看門邊的男人。
+
+【469 行附近】
+466: 旁白：她用指尖壓住那一行。程希抿著嘴。
+467: 余靜：對不起，讓你一直重講。
+468: 程希：我也有沒忍住的時候。問完才想到，妳早交代過。
+469: 余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
+470: 余靜（念）：2004 年三排十四號那張票在歌譜夾層，翻到背面看。那個沒講名字就跑掉的人，後來才知道叫程希。
+471: 余靜（念）：看完把票放回去。歌譜摺四折，口袋比較放得下。
+472: 余靜（心）：信留在這裡。等一下又忘了，還能再看。〔掉字〕
+
+【633 行附近】
+630: 余靜：（唱）有人坐在我身旁
+631: 余靜：（唱）我想不起他是誰
+632: 余靜：（唱）他把保溫杯打開
+633: 余靜：（唱）等半分鐘才遞給我
+634: 余靜：（唱）杯口的熱氣散了
+635: 余靜：（唱）他還坐在我身邊
+636: 余靜：（唱）有他陪我 我不怕
+
+【670 行附近】
+667: 旁白：10 月 17 日清晨，台南老家廚房。冰箱上用磁鐵壓著那張四折歌譜，電鍋冒著白煙。
+668: 余靜：程希……阿希。
+669: 余靜：阿希，早。
+670: 程希：早。水放半分鐘了，這杯妳的。
+671: 旁白：她從冰箱前走到桌邊，喝了一口。
+672: 余靜：飯先半碗，不夠再添。
+673: 程希：蛋先吃。妳昨天又剩半顆。
+
+【所有半分鐘】
+24: 旁白：他倒出半杯溫水，端在手裡，等了半分鐘才遞給她。
+280: 余靜：倒出來放半分鐘再給我。
+335: 程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。
+361: 余靜（念）：如果又嫌水燙，放半分鐘再喝。
+405: 程希：剛倒的，還沒半分鐘。
+460: 余靜（念）：如果又嫌水燙，放半分鐘再喝。
+469: 余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
+633: 余靜：（唱）等半分鐘才遞給我
+670: 程希：早。水放半分鐘了，這杯妳的。
+
+exec
+/bin/bash -lc "sed -n '658,683p' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+余靜：對不起。手帕借我，等一下會扎到你。
+程希：刺剪過了。留了上面一根，妳別碰。
+旁白：她用手帕裹住花梗，插進他襯衫胸前的口袋。
+余靜：你坐的那邊，我有看到。你也喝點水，光顧著等我。
+旁白：她把保溫杯推到他手邊，手帕的一角露在花下面。
+
+## kitchen（三天後清晨，台南老家廚房）
+
+〔圖：s_a_6〕
+旁白：10 月 17 日清晨，台南老家廚房。冰箱上用磁鐵壓著那張四折歌譜，電鍋冒著白煙。
+余靜：程希……阿希。
+余靜：阿希，早。
+程希：早。水放半分鐘了，這杯妳的。
+旁白：她從冰箱前走到桌邊，喝了一口。
+余靜：飯先半碗，不夠再添。
+程希：蛋先吃。妳昨天又剩半顆。
+余靜：我等一下會吃，別一直看我的碗。
+〔圖：s_a_7〕
+旁白：阿桃姨推開紗門，把一袋饅頭和報紙放上桌。
+阿桃姨：報紙有寫恁彼工的演唱會，我提來予恁看。（報紙寫了你們那天的演唱會，我拿來給你們看。）
+余靜：什麼演唱會？
+旁白：阿桃姨攤開報紙。照片裡，余靜拿著歌譜站在舞台上。
+余靜：這件衣服我有。
+旁白：她的手指停在照片下方的「十四日」。
+余靜（心）：三天前。我唱的，怎麼一點聲音都想不起來。
+余靜：我還得看報紙才知道自己唱過。
+
+exec
+/bin/bash -lc 'cat tests/check_voice.py' in /home/ct/larch-ember
+ succeeded in 0ms:
+#!/usr/bin/env python3
+"""劇本台詞機械檢查（作者 2026-10-20：旁白不要寫比喻、不要客服腔、不要 AI 腔）。
+python3 tests/check_voice.py [檔案…]   預設 canon/劇本.md；有硬規則違反就 exit 1。
+硬規則：旁白用比喻（像／彷彿／好像／似乎）、勉強的「X 得 Y」形容（亮得停不下來、酸得像…）、禁用詞、客服句型、破折號、不是…而是。
+警告：連續一問一答 > 2、單場心聲 > 8、旁白情緒詞、對白書面語（2026-10-23 加，只警告不擋）。"""
+import re, sys, pathlib
+files = [pathlib.Path(a) for a in sys.argv[1:]] or [pathlib.Path(__file__).resolve().parent.parent / 'canon/劇本.md']
+BAN = ['一個字都', '沒有放掉', '不肯放掉', '手很穩', '話很少', '先把燈', '想不起來為什麼', '理由不見', '——', '長出', '長成']
+CS = ['我記住了', '謝謝你，', '慢慢來', '你先坐', '放在椅背', '好，我記', '謝謝你。']
+SIM = re.compile(r'像|彷彿|好像|似乎|宛如|如同')
+STRAIN = re.compile(r'[亮酸軟冷緊熱燙沉輕重脆][得][^，。！？]{0,8}(停不下來|像|要命|不得了|發亮|發抖)')
+ALLOW = ('像在等人',)   # 作者看過、保留的畫面句（結局 C 舊石階）
+# 唱詞必須逐字等於歌詞檔（作者要拿歌詞去 Suno，不能被悄悄改）
+_LY = pathlib.Path(__file__).resolve().parent.parent / 'canon/歌詞.md'
+_norm = lambda t: re.sub(r'[\s，。、！？「」…·\-—,.!?]', '', t)
+LYRICS = _norm('\n'.join(l for l in _LY.read_text(encoding='utf-8').split('\n') if not l.startswith(('#', '```', '[', '-', '劇情', '遊戲裡', '台語', '一定', '加分')))) if _LY.exists() else ''
+# 評分五（作者 2026-10-23）：旁白直接寫情緒的詞 → 警告。旁白只寫看得到的事，情緒交給動作與物件。
+EMO = re.compile(r'難過|悲傷|傷心|心疼|感動|溫柔地|深情地|痛苦地|哀傷|心碎|不捨|欣慰|落寞|惆悵|黯然|悵然|無奈地|寵溺|愧疚|欣喜')
+# 評分三之二（作者 2026-10-23）：對白（含心聲，不含旁白、（唱）、（念））裡念不出口的書面語 → 警告。
+# 清單取台灣口語少用、讀起來像文章的連接詞與文言字；「而且」「然而」「之前」「其實」這類口語常用的排除。
+WRITTEN = re.compile(r'並且|於是|以及|此刻|彷彿|宛如|何以|倘若|便是|已然|未曾|尚未|不禁|甚是|頗為|皆是|之所以|此時|故而|然後便'
+                     r'|(?<![然因從反進繼幸偶忽時故])而(?![且已])'
+                     r'|(?<![總前後類間一分])之(?![前後類間一中外內])'
+                     r'|(?<![尤與極])其(?![實他它中餘次])')
+hard = warn = 0
+soft = {'旁白情緒詞': 0, '對白書面語': 0}
+for f in files:
+    sec = None; rows = []
+    def flush():
+        global warn
+        if not rows: return
+        run = best = 0
+        for a, b in zip(rows, rows[1:]):
+            if re.search(r'[？?]$', a) and re.match(r'\w+：', a) and re.match(r'\w+：', b) and a.split('：')[0] != b.split('：')[0]:
+                run += 1; best = max(best, run)
+            else: run = 0
+        hearts = sum('（心）' in r for r in rows)
+        if best > 2: warn += 1; print(f'  警告 [{sec}] 連續問答 {best} 組')
+        if hearts > 8: warn += 1; print(f'  警告 [{sec}] 心聲 {hearts} 句')
+    for line in f.read_text(encoding='utf-8').split('## 修改紀錄')[0].split('\n'):
+        m = re.match(r'## (\w+)', line)
+        if m: flush(); sec, rows = m.group(1), []; continue
+        if not line.strip() or line.startswith(('〔', '<!--', '#', '|', '-', '選項')): continue
+        rows.append(line)
+        txt = line.split('：', 1)[-1]
+        probs = []
+        if line.startswith('旁白：') and SIM.search(txt) and not any(a in txt for a in ALLOW): probs.append('旁白用比喻')
+        if STRAIN.search(txt): probs.append('勉強的形容')
+        probs += [f'禁用詞「{b}」' for b in BAN if b in txt]
+        probs += [f'客服句型「{c}」' for c in CS if c in txt]
+        if re.search(r'不是[^。！？「」]{1,30}[，；、]?而是', txt): probs.append('不是…而是')
+        if re.match(r'(余靜|程希)：（唱）', line):
+            t = _norm(txt.replace('（唱）', ''))
+            if t and LYRICS and t not in LYRICS and not any(k in txt for k in ('欲落雨', '阿公仔', '欲掘芋', '天烏烏', '天黑黑', '掘啊掘')):   # 〈天烏烏〉是公有童謠，不在歌詞檔
+                probs.append('唱詞不在歌詞檔裡（必須逐字相同）')
+        for p in probs: hard += 1; print(f'  ✗ [{sec}] {p}：{line[:70]}')
+        if line.startswith('旁白：') and (m := EMO.search(txt)) and not any(a in txt for a in ALLOW):
+            warn += 1; soft['旁白情緒詞'] += 1; print(f'  警告 [{sec}] 旁白情緒詞「{m.group(0)}」：{line[:70]}')
+        if not line.startswith('旁白：') and re.match(r'[^：]{1,12}：', line) and not re.match(r'[^：]{1,12}：（[唱念]）', line) and not re.match(r'[^：]{1,12}（念）：', line):
+            if (m := WRITTEN.search(re.sub(r'（[^）]*）', '', txt))):   # 台語字幕括號裡的華語不算
+                warn += 1; soft['對白書面語'] += 1; print(f'  警告 [{sec}] 對白書面語「{m.group(0)}」：{line[:70]}')
+    flush()
+print(f'硬規則違反 {hard}，警告 {warn}（其中旁白情緒詞 {soft["旁白情緒詞"]}、對白書面語 {soft["對白書面語"]}）'); sys.exit(1 if hard else 0)
+
+exec
+/bin/bash -lc "sed -n '445,485p' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+旁白：阿爸那台收音機擺在桌腳，底座的蓋板翹著。
+余靜：阿爸的。怎麼搬到這裡來？
+程希：妳出門都帶著。我放上來。
+旁白：他把收音機放到桌上，轉開電源。
+陳婉君：這裡是余靜告別特輯。她 2004 年在永明戲院唱第一場售票演唱會，今晚回到同一座戲院。
+陳婉君：她在各地唱了二十多年，2023 年停止巡演，搬回台南。
+余靜：她後來怎麼了？
+旁白：她的手指停在音量旋鈕上，嘴裡重複了一次「余靜」。
+余靜：啊……是在講我。
+旁白：收音機播出〈餘燼〉的鋼琴前奏。程希把音量轉小。
+〔圖：s_letter_1〕
+旁白：她抬起收音機，底座的蓋板垂下來。
+旁白：她抽出信紙，沿著摺痕攤開。
+余靜：我的字。可是我什麼時候……
+余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+余靜（念）：如果又嫌水燙，放半分鐘再喝。
+余靜（念）：今天醫生說，我得了早發性阿茲海默症。我把報告摺在包裡，回家都沒拿出來。
+余靜（念）：旁邊那個人叫程希，是你先生。2013 年，我們在永明戲院的空舞台拍過照，周老師拍的。
+旁白：她看向鏡角的照片，又看門邊的男人。
+余靜（念）：要是他說自己是這裡的工作人員，就讓他這樣講，是我交代的。別一直拿名字考我，我一定會生氣。
+余靜：我還交代你這種事。
+旁白：她用指尖壓住那一行。程希抿著嘴。
+余靜：對不起，讓你一直重講。
+程希：我也有沒忍住的時候。問完才想到，妳早交代過。
+余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
+余靜（念）：2004 年三排十四號那張票在歌譜夾層，翻到背面看。那個沒講名字就跑掉的人，後來才知道叫程希。
+余靜（念）：看完把票放回去。歌譜摺四折，口袋比較放得下。
+余靜（心）：信留在這裡。等一下又忘了，還能再看。〔掉字〕
+〔圖：s_dress_3〕
+旁白：她翻開歌譜，從夾層抽出票根，轉到背面。
+余靜（念）：河岸留言那晚，你唱〈天烏烏〉，我沒走。
+余靜：筆借我。剛才那個名字，我得寫下來。
+旁白：程希遞筆。她在歌譜背面寫下「程希，三排十四號」，筆尖壓破了紙。
+余靜（心）：程希。剛念完的，怎麼又要看一眼。〔掉字〕
+旁白：程希拿起膠帶，她用手掌壓平破的地方。
+余靜：破一點而已。字還看得清楚，膠帶先不用。
+旁白：她把票根放回夾層，將歌譜摺成四折，塞進禮服口袋。
+余靜（心）：左邊口袋。紙角碰得到，還在。〔掉字〕
+
+〔圖：s_dress_2〕
+旁白：五點五十分，窗邊的橘光退到桌沿。程希伸手托起她的左手腕。
+
+exec
+/bin/bash -lc "sed -n '315,415p' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+余靜：（唱）燈一盞一盞暗下來
+旁白：他抬起腳。她拉著他再走一步。
+
+## forget（2021 年 12 月，台中；2022 年，診間與家）
+
+〔圖：s_mem3_1〕
+旁白：2021 年 12 月，台中。余靜唱到〈遠方的燈〉第二段，麥克風停在嘴邊。
+余靜（心）：昨天在車上還會。下一句，我有練。
+旁白：她的手在腿側打了兩拍，嘴唇張著。
+〔圖：s_mem3_2〕
+旁白：提詞螢幕翻到下一行。她看著字，唱完那一段。
+余靜：我休息太久，連歌詞都跟著放假了。不好意思。
+旁白：她笑著朝台下點頭，轉身面向鋼琴。
+余靜：老師，下一首。
+〔圖：s_mem3_3〕
+旁白：散場後，她獨自坐在化妝鏡前，耳返還掛在肩上。
+旁白：十分鐘後，她拿起筆，在歌單背面默寫歌詞。
+余靜（心）：下了台還是接不上。再寫一次。
+旁白：第一句後面空著。她把筆蓋扣上，又拔開。
+旁白：門上敲了兩下。程希端著水進來，袖口濕了一片。
+程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。
+余靜：去換件衣服。這間冷氣很強。
+旁白：她在紙角補上「看醫生」，把歌單推過去。
+程希：我打電話掛號，明天陪妳。
+余靜：電話我自己打。手機拿給我就好。
+
+〔圖：s_mem4_1〕
+旁白：2022 年 3 月，神經內科診間。林慧如醫師把檢查報告轉向余靜。
+林醫師：檢查結果是早發性阿茲海默症。妳有時會想不起要說的詞。
+余靜：我還能唱歌嗎？
+林醫師：熟的歌可能會記得比較久。現在想唱，還是可以唱。
+〔圖：s_mem4_2〕
+旁白：余靜把演出行事曆放到報告旁。
+程希：下個月還排了三場。我先跟公司講，暫時……
+林醫師：她想唱就讓她唱。場次怎麼排，你們回去商量。
+余靜：那三場先留著。老師都請好了。
+〔圖：s_mem4_3〕
+旁白：程希打開本子，寫下回診日期。筆帽掉在行事曆上。
+余靜：報告給我。我帶回去看。
+
+〔圖：s_mem4_4〕
+旁白：當晚，余靜坐在餐桌前。信紙旁堆著用過的衛生紙。
+余靜（心）：鼻子塞住了。先寫，不然等一下又忘。
+余靜：阿希，水先關掉。
+旁白：廚房的水停了。她在信紙最上面寫下本名「余淑靜」。
+余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+余靜（念）：如果又嫌水燙，放半分鐘再喝。
+旁白：她寫完最後一行，抹過眼角，把信摺好。
+〔圖：s_mem4_5〕
+旁白：她打開阿爸那台收音機的底座，把信塞進去。
+程希：卡榫會斷。妳別硬壓。
+余靜：蓋子別扣緊，以後我要開。
+旁白：他把蓋子放回底座，沒有按下去。
+余靜：碗等一下再洗。你的袖子又濕了。
+旁白：程希把濕掉的袖口捲起來。
+
+## song2023（2023 年，台南老家寫歌；2024 年，廚房）
+
+〔圖：s_song_1〕
+旁白：2023 年，台南老家。餐桌旁放著搬家紙箱，牆上的鐘指著凌晨兩點。
+旁白：余靜在紙上寫下「晚安，台南」。程希抱著收音機，側身跨過紙箱。
+余靜：那箱不要丟，裡面還有譜。
+程希：我搬到旁邊。妳從吃完飯寫到現在，水也沒喝。
+旁白：她沒接話，翻回前一張歌詞紙，小聲念。
+余靜（念）：淑靜仔 叫我一聲
+余靜（念）：名字先留在你這裡
+余靜（念）：哪天我走丟了
+余靜（念）：再叫我一聲就好
+余靜（念）：水邊的燈還亮著
+余靜（念）：我聽見就回家
+旁白：她拿著筆，停在「叫我一聲」那行。
+程希：這首寫給誰？
+余靜：先放你那邊。我自己收，明天又要問你放哪裡。
+旁白：她把歌詞紙轉向他，手指壓著紙角。
+程希：我先放下收音機，再幫妳收。
+余靜：那箱裡也有歌詞，有寫字的先留著。
+
+〔圖：s_mem4_7〕
+旁白：2024 年清晨，廚房。程希端著水杯走到餐桌邊，杯口冒著熱氣。
+余靜：阿……你……
+旁白：她望著他的臉，嘴張開又合上。手指抓住睡衣口袋邊。
+余靜（心）：阿……後面那個字呢？
+余靜：我看要把你名字寫在手上了。
+旁白：她笑了一聲。程希抿起嘴，端杯子的手停住。
+余靜：對不起。
+旁白：她抓住他的袖口，拇指在袖縫上來回摩擦。
+余靜：我知道你叫什麼，等我一下……
+〔圖：s_mem4_8〕
+程希：妳先生，程希。
+旁白：她鬆開他的袖口，伸手接杯子。他沒有遞過來。
+程希：剛倒的，還沒半分鐘。
+旁白：她把身旁的椅子拉開，手重新搭在他腕上。
+余靜：那你陪我等。
+
+## soundcheck（2026 年 10 月 14 日 16:00，永明戲院試音）
+
+〔圖：s_soundcheck_1〕
+旁白：2026 年 10 月 14 日，下午四點。永明戲院只亮著舞台前方一排燈。
+余靜：2004 年那場，老師也是坐這裡。後來我還有回來唱嗎？
+周老師：有啊，後來又唱過。先試第一段。
+余靜：（唱）天還沒亮攤就開了
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+for p in [Path('/AGENTS.md'),Path('/home/AGENTS.md'),Path('/home/ct/AGENTS.md'),Path('canon/AGENTS.md')]:
+    if p.is_file():
+        print(f'【{p}】')
+        print(p.read_text())
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+codex
+六處都能在原行改完，不必動相鄰句子。兩處信文會統一成「如果又嫌水燙，等涼一點再喝。」；清單只刪掉水的項目，尾聲縮成「早。這杯妳的。」
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+import tempfile
+p = Path('canon/劇本.md')
+snapshot = Path(tempfile.mkdtemp(prefix='larch-halfmin-')) / '劇本.before.md'
+snapshot.write_bytes(p.read_bytes())
+print(snapshot)
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+/tmp/larch-halfmin-f0aja1ul/劇本.before.md
+
+exec
+/bin/bash -lc 'cat tests/motif_check.py' in /home/ct/larch-ember
+ succeeded in 0ms:
+#!/usr/bin/env python3
+"""伏筆帳（評分六，作者 2026-10-23）：扣回物件在 A／B／C 三條路線上，每個「回收」之前都要有出處。
+python3 tests/motif_check.py [劇本.md]   預設 canon/劇本.md；有回收沒有出處就 exit 1。
+路線＝劇本順序的共同場景（結局與程希視角以外）＋該結局的 ending_<x>* 場景。地圖調查點的實際觸發順序由玩家決定，這裡用劇本順序近似；
+所以「出處」只認共同場景與回憶，回收認結局場景。"""
+import re, sys, pathlib
+p = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent / 'canon/劇本.md'
+MOTIFS = {   # 名稱：比對樣式
+    '票根背面的字': r'河岸留言那晚',
+    '三排十四號': r'三排十四號|第三排左邊第十四',
+    '半分鐘的水': r'半分鐘',
+    '敲兩下': r'敲兩下|敲了兩下|敲兩聲',
+    '玫瑰放門內右邊': r'門內右邊',
+    '四折歌譜': r'四折|摺四|折四|四道折痕|摺成四|對摺兩次',
+    '手錶型 GPS': r'手錶|定位手錶|GPS',
+    '「唱完再戴回去」': r'唱完再戴|唱完戴回',
+    '天烏烏': r'天烏烏|天黑黑',
+    '走音／那我唱你跳': r'走音|我唱，你跳',
+    '紙條「今天有人坐在三排十四號」': r'今天有人坐在三排十四號',
+}
+text = p.read_text(encoding='utf-8').split('\n## 修改紀錄')[0]
+scenes = [(m.group(1), m.group(2)) for m in re.finditer(r'^## ([A-Za-z0-9_]+)[^\n]*\n(.*?)(?=^## |\Z)', text, re.S | re.M)]
+common = [c for c, _ in scenes if not c.startswith(('ending_', 'cheng_pov'))]
+routes = {x: common + [c for c, _ in scenes if c.startswith(f'ending_{x}')] for x in 'abc'}
+body = dict(scenes)
+bad = 0
+for name, pat in MOTIFS.items():
+    where = [c for c, b in scenes if re.search(pat, b)]
+    first = where[0] if where else '（沒有出現）'
+    print(f'■ {name}：第一次 {first}；出現在 {len(where)} 場')
+    for x, order in routes.items():
+        pay = [c for c in order if c.startswith('ending_') and re.search(pat, body[c])]
+        setup = [c for c in order if not c.startswith('ending_') and re.search(pat, body[c])]
+        if pay and not setup:
+            bad += 1; print(f'    ✗ 結局 {x.upper()} 回收在 {"、".join(pay)}，之前沒有出處')
+        elif pay:
+            print(f'    結局 {x.upper()}：出處 {setup[0]}（共 {len(setup)} 場）→ 回收 {"、".join(pay)}')
+        elif setup:
+            print(f'    結局 {x.upper()}：只有鋪陳、這條路線沒有回收')
+    if where and all(not c.startswith('ending_') for c in where) and len(where) == 1:
+        print('    提醒：只出現一次，沒有回收')
+print(f'回收沒有出處 {bad} 處'); sys.exit(1 if bad else 0)
+
+apply patch
+patch: completed
+/home/ct/larch-ember/canon/劇本.md
+diff --git a/canon/劇本.md b/canon/劇本.md
+index 688e6591f743c0ffcb184b0d8fbff6c53bd2bbb1..f5de74f79a63b9069381566abe4b2778946e24af
+--- a/canon/劇本.md
++++ b/canon/劇本.md
+@@ -332,7 +332,7 @@
+ 余靜（心）：下了台還是接不上。再寫一次。
+ 旁白：第一句後面空著。她把筆蓋扣上，又拔開。
+ 旁白：門上敲了兩下。程希端著水進來，袖口濕了一片。
+-程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。
++程希：水灑在控台旁邊，差一點。先別喝，還燙。
+ 余靜：去換件衣服。這間冷氣很強。
+ 旁白：她在紙角補上「看醫生」，把歌單推過去。
+ 程希：我打電話掛號，明天陪妳。
+@@ -358,7 +358,7 @@
+ 余靜：阿希，水先關掉。
+ 旁白：廚房的水停了。她在信紙最上面寫下本名「余淑靜」。
+ 余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+-余靜（念）：如果又嫌水燙，放半分鐘再喝。
++余靜（念）：如果又嫌水燙，等涼一點再喝。
+ 旁白：她寫完最後一行，抹過眼角，把信摺好。
+ 〔圖：s_mem4_5〕
+ 旁白：她打開阿爸那台收音機的底座，把信塞進去。
+@@ -402,7 +402,7 @@
+ 〔圖：s_mem4_8〕
+ 程希：妳先生，程希。
+ 旁白：她鬆開他的袖口，伸手接杯子。他沒有遞過來。
+-程希：剛倒的，還沒半分鐘。
++程希：剛倒的，還燙。
+ 旁白：她把身旁的椅子拉開，手重新搭在他腕上。
+ 余靜：那你陪我等。
+ 
+@@ -457,7 +457,7 @@
+ 旁白：她抽出信紙，沿著摺痕攤開。
+ 余靜：我的字。可是我什麼時候……
+ 余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+-余靜（念）：如果又嫌水燙，放半分鐘再喝。
++余靜（念）：如果又嫌水燙，等涼一點再喝。
+ 余靜（念）：今天醫生說，我得了早發性阿茲海默症。我把報告摺在包裡，回家都沒拿出來。
+ 余靜（念）：旁邊那個人叫程希，是你先生。2013 年，我們在永明戲院的空舞台拍過照，周老師拍的。
+ 旁白：她看向鏡角的照片，又看門邊的男人。
+@@ -466,7 +466,7 @@
+ 旁白：她用指尖壓住那一行。程希抿著嘴。
+ 余靜：對不起，讓你一直重講。
+ 程希：我也有沒忍住的時候。問完才想到，妳早交代過。
+-余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
++余靜（念）：敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
+ 余靜（念）：2004 年三排十四號那張票在歌譜夾層，翻到背面看。那個沒講名字就跑掉的人，後來才知道叫程希。
+ 余靜（念）：看完把票放回去。歌譜摺四折，口袋比較放得下。
+ 余靜（心）：信留在這裡。等一下又忘了，還能再看。〔掉字〕
+@@ -667,7 +667,7 @@
+ 旁白：10 月 17 日清晨，台南老家廚房。冰箱上用磁鐵壓著那張四折歌譜，電鍋冒著白煙。
+ 余靜：程希……阿希。
+ 余靜：阿希，早。
+-程希：早。水放半分鐘了，這杯妳的。
++程希：早。這杯妳的。
+ 旁白：她從冰箱前走到桌邊，喝了一口。
+ 余靜：飯先半碗，不夠再添。
+ 程希：蛋先吃。妳昨天又剩半顆。
+
+exec
+/bin/bash -lc 'git diff --check -- canon/劇本.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+exec
+/bin/bash -lc 'git diff -- canon/劇本.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+diff --git "a/canon/\345\212\207\346\234\254.md" "b/canon/\345\212\207\346\234\254.md"
+index 688e659..f5de74f 100644
+--- "a/canon/\345\212\207\346\234\254.md"
++++ "b/canon/\345\212\207\346\234\254.md"
+@@ -332,7 +332,7 @@
+ 余靜（心）：下了台還是接不上。再寫一次。
+ 旁白：第一句後面空著。她把筆蓋扣上，又拔開。
+ 旁白：門上敲了兩下。程希端著水進來，袖口濕了一片。
+-程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。
++程希：水灑在控台旁邊，差一點。先別喝，還燙。
+ 余靜：去換件衣服。這間冷氣很強。
+ 旁白：她在紙角補上「看醫生」，把歌單推過去。
+ 程希：我打電話掛號，明天陪妳。
+@@ -358,7 +358,7 @@
+ 余靜：阿希，水先關掉。
+ 旁白：廚房的水停了。她在信紙最上面寫下本名「余淑靜」。
+ 余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+-余靜（念）：如果又嫌水燙，放半分鐘再喝。
++余靜（念）：如果又嫌水燙，等涼一點再喝。
+ 旁白：她寫完最後一行，抹過眼角，把信摺好。
+ 〔圖：s_mem4_5〕
+ 旁白：她打開阿爸那台收音機的底座，把信塞進去。
+@@ -402,7 +402,7 @@
+ 〔圖：s_mem4_8〕
+ 程希：妳先生，程希。
+ 旁白：她鬆開他的袖口，伸手接杯子。他沒有遞過來。
+-程希：剛倒的，還沒半分鐘。
++程希：剛倒的，還燙。
+ 旁白：她把身旁的椅子拉開，手重新搭在他腕上。
+ 余靜：那你陪我等。
+ 
+@@ -457,7 +457,7 @@
+ 旁白：她抽出信紙，沿著摺痕攤開。
+ 余靜：我的字。可是我什麼時候……
+ 余靜（念）：淑靜，這是 2022 年 3 月，寫給以後的你。
+-余靜（念）：如果又嫌水燙，放半分鐘再喝。
++余靜（念）：如果又嫌水燙，等涼一點再喝。
+ 余靜（念）：今天醫生說，我得了早發性阿茲海默症。我把報告摺在包裡，回家都沒拿出來。
+ 余靜（念）：旁邊那個人叫程希，是你先生。2013 年，我們在永明戲院的空舞台拍過照，周老師拍的。
+ 旁白：她看向鏡角的照片，又看門邊的男人。
+@@ -466,7 +466,7 @@
+ 旁白：她用指尖壓住那一行。程希抿著嘴。
+ 余靜：對不起，讓你一直重講。
+ 程希：我也有沒忍住的時候。問完才想到，妳早交代過。
+-余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
++余靜（念）：敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。
+ 余靜（念）：2004 年三排十四號那張票在歌譜夾層，翻到背面看。那個沒講名字就跑掉的人，後來才知道叫程希。
+ 余靜（念）：看完把票放回去。歌譜摺四折，口袋比較放得下。
+ 余靜（心）：信留在這裡。等一下又忘了，還能再看。〔掉字〕
+@@ -667,7 +667,7 @@
+ 旁白：10 月 17 日清晨，台南老家廚房。冰箱上用磁鐵壓著那張四折歌譜，電鍋冒著白煙。
+ 余靜：程希……阿希。
+ 余靜：阿希，早。
+-程希：早。水放半分鐘了，這杯妳的。
++程希：早。這杯妳的。
+ 旁白：她從冰箱前走到桌邊，喝了一口。
+ 余靜：飯先半碗，不夠再添。
+ 程希：蛋先吃。妳昨天又剩半顆。
+
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw --public canon/劇本.md' in /home/ct/larch-ember
+exec
+/bin/bash -lc '/home/ct/speak-tw/bin/speak-tw canon/劇本.md' in /home/ct/larch-ember
+exec
+/bin/bash -lc 'python3 tests/check_voice.py' in /home/ct/larch-ember
+exec
+/bin/bash -lc "python3 - '/tmp/larch-halfmin-f0aja1ul/劇本.before.md' <<'PY'
+from pathlib import Path
+import sys
+old = Path(sys.argv[1]).read_bytes()
+new = Path('canon/劇本.md').read_bytes()
+a, b = old.decode().splitlines(keepends=True), new.decode().splitlines(keepends=True)
+assert len(a) == len(b), '行數改變'
+changed = [n for n,(x,y) in enumerate(zip(a,b),1) if x "'!= y]
+assert changed == [335,361,405,460,469,670], changed
+assert len(new.decode()) <= len(old.decode()), '"'字數增加'
+assert len(new) <= len(old), '位元組數增加'
+assert b[360] == b[459], '兩處信文不同'
+found = [n for n,row in enumerate(b,1) if '半分鐘' in row]
+assert found == [24,280,633], found
+for n in changed:
+    assert len(b[n-1]) <= len(a[n-1]), f'第 {n} 行加長'
+for marker in ('〔圖', '〔掉字〕', '## ', '選項', '（唱）'):
+    assert [x for x in a if marker in x] == [x for x in b if marker in x], f'{marker} 改變'
+print(f'只改第 {changed} 行，其餘逐位元組相同。')
+print(f'字數 {len(old.decode())} → {len(new.decode())}（減少 {len(old.decode())-len(new.decode())} 字）。')
+print(f'半分鐘僅保留第 {found} 行；兩處信文相同；標記、標題、選項、唱句未變。')
+PY" in /home/ct/larch-ember
+ succeeded in 11ms:
+
+掃了 1 個檔案，0 處要改
+
+ succeeded in 25ms:
+
+掃了 1 個檔案，0 處要改
+
+ succeeded in 22ms:
+只改第 [335, 361, 405, 460, 469, 670] 行，其餘逐位元組相同。
+字數 13914 → 13895（減少 19 字）。
+半分鐘僅保留第 [24, 280, 633] 行；兩處信文相同；標記、標題、選項、唱句未變。
+
+ succeeded in 34ms:
+硬規則違反 0，警告 0（其中旁白情緒詞 0、對白書面語 0）
+
+exec
+/bin/bash -lc 'python3 tests/motif_check.py' in /home/ct/larch-ember
+ succeeded in 0ms:
+■ 票根背面的字：第一次 confess；出現在 2 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 三排十四號：第一次 door2004；出現在 6 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 半分鐘的水：第一次 open；出現在 3 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 敲兩下：第一次 open；出現在 4 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 玫瑰放門內右邊：第一次 roses；出現在 3 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 四折歌譜：第一次 livehouse；出現在 6 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 手錶型 GPS：第一次 monitor；出現在 3 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 「唱完再戴回去」：第一次 letter；出現在 1 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+    提醒：只出現一次，沒有回收
+■ 天烏烏：第一次 market；出現在 7 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 走音／那我唱你跳：第一次 market；出現在 3 場
+    結局 A：只有鋪陳、這條路線沒有回收
+    結局 B：只有鋪陳、這條路線沒有回收
+    結局 C：只有鋪陳、這條路線沒有回收
+■ 紙條「今天有人坐在三排十四號」：第一次 （沒有出現）；出現在 0 場
+回收沒有出處 0 處
+
+codex
+已只修改 [canon/劇本.md](/home/ct/larch-ember/canon/劇本.md) 指定六行，減少 19 字。「半分鐘」僅保留第 24、280、633 行。
+
+| 行 | 原句 | 新句 |
+|---|---|---|
+| 335 | 程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。 | 程希：水灑在控台旁邊，差一點。先別喝，還燙。 |
+| 361 | 余靜（念）：如果又嫌水燙，放半分鐘再喝。 | 余靜（念）：如果又嫌水燙，等涼一點再喝。 |
+| 405 | 程希：剛倒的，還沒半分鐘。 | 程希：剛倒的，還燙。 |
+| 460 | 余靜（念）：如果又嫌水燙，放半分鐘再喝。 | 余靜（念）：如果又嫌水燙，等涼一點再喝。 |
+| 469 | 余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。 | 余靜（念）：敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。 |
+| 670 | 程希：早。水放半分鐘了，這杯妳的。 | 程希：早。這杯妳的。 |
+
+檢查全部通過：
+
+- `speak-tw`（含 `--public`）：0 處要改。
+- `check_voice.py`：硬規則違反 0、警告 0。
+- `motif_check.py`：回收沒有出處 0 處。
+
+其餘內容逐位元組相同，未修改其他檔案。
+hook: Stop
+hook: Stop Completed
+tokens used
+28,832
+已只修改 [canon/劇本.md](/home/ct/larch-ember/canon/劇本.md) 指定六行，減少 19 字。「半分鐘」僅保留第 24、280、633 行。
+
+| 行 | 原句 | 新句 |
+|---|---|---|
+| 335 | 程希：水灑在控台旁邊，差一點。先別喝，還沒半分鐘。 | 程希：水灑在控台旁邊，差一點。先別喝，還燙。 |
+| 361 | 余靜（念）：如果又嫌水燙，放半分鐘再喝。 | 余靜（念）：如果又嫌水燙，等涼一點再喝。 |
+| 405 | 程希：剛倒的，還沒半分鐘。 | 程希：剛倒的，還燙。 |
+| 460 | 余靜（念）：如果又嫌水燙，放半分鐘再喝。 | 余靜（念）：如果又嫌水燙，等涼一點再喝。 |
+| 469 | 余靜（念）：水放半分鐘、敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。 | 余靜（念）：敲兩下、玫瑰放門內右邊，線不要壓到，都是我交代的。 |
+| 670 | 程希：早。水放半分鐘了，這杯妳的。 | 程希：早。這杯妳的。 |
+
+檢查全部通過：
+
+- `speak-tw`（含 `--public`）：0 處要改。
+- `check_voice.py`：硬規則違反 0、警告 0。
+- `motif_check.py`：回收沒有出處 0 處。
+
+其餘內容逐位元組相同，未修改其他檔案。

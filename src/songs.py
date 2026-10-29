@@ -143,14 +143,16 @@ def apply(project, dist=None):
         node = by_id.get(cid)
         if node is None:
             print(f"songs: 略過 {cut['id']}（專案裡沒有卡 {cid}）"); continue
+        if node['data'].get('type') == 'plugin' and li == 0 and cut['role'] == 'line_bgm':   # 片尾字卷插件卡：歌從進卡開始放
+            node['data'].update(bgm=url, bgmVolume=BGM_VOL, bgmLoop=False); continue
         DL = node['data']['dialogueLines']
         if li >= len(DL) or (cut['place']['anchor'] not in ('first_sung', 'first') and cut['place']['anchor'] not in DL[li]['text']):
             print(f"songs: 略過 {cut['id']}（{cid} 第 {li} 句跟劇本對不上，重跑 songs_cut.py）"); continue
         role = cut['role']
         if role == 'sfx':
             DL[li].update(sfxUrl=url, sfxVolume=SFX_VOL, sfxLoop=False)
-        elif role == 'line_bgm':
-            DL[li].update(bgm=url, bgmVolume=BGM_VOL, bgmLoop=False)
+        elif role == 'line_bgm':   # 第 0 句的逐句 BGM 播放器不理，要設在卡上（製作名單的合聲版就是這樣沒播）
+            (by_id[cid]['data'] if li == 0 else DL[li]).update(bgm=url, bgmVolume=BGM_VOL, bgmLoop=False)
         elif role == 'sung_card':
             last_id = _song_card(project, by_id, nodes, edges, cut, url, ts)
             if cut.get('resume') == 'next':

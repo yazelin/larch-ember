@@ -20,4 +20,4 @@ def apply(project: dict, dist=None) -> None:
         (dist / 'ui-sfx').mkdir(parents=True, exist_ok=True)
         for f in (ROOT / 'ui/sfx').glob('*.mp3'):
             shutil.copy2(f, dist / 'ui-sfx' / f.name)
-    project['settings']['menuUi'] = {'preset': 'paper', 'accent': '#e8743b', 'title': '最終遺忘的橘色餘燼', 'eyebrow': '余靜的黃昏', 'buttons': ['bag', 'save', 'load', 'title']}
+    project['settings']['menuUi'] = {'preset': 'paper', 'accent': '#e8743b', 'title': '餘燼', 'eyebrow': '余靜的黃昏', 'buttons': ['bag', 'save', 'load', 'title']}

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""《最終遺忘的橘色餘燼》配樂：走 .11 gemini-web /api/music，切 60 秒循環、-16 LUFS、量接縫，再用 Gemini 2.5 flash 代聽驗收。
+"""《餘燼》配樂：走 .11 gemini-web /api/music，切 60 秒循環、-16 LUFS、量接縫，再用 Gemini 2.5 flash 代聽驗收。
 沿用 larch-eleven-minutes/art/music.py 與 larch-taoyuan/bgm.py（find_start／make／seam_score）。內網 IP、不驗憑證。
   python3 art/music.py run|resume [名字…]       → 全流程（產→切→代聽→不合格自動重產，最多 3 次），狀態寫 art/music_state/
   python3 art/music.py control           → 負控制：拿不符的場景描述去問代聽，應該要打低分

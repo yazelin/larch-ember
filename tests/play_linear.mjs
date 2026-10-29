@@ -41,15 +41,26 @@ try {
       await sleep(800);
     }
   }
+  // 製作名單播完要回到標題（不能卡在最後一句）
+  // 片尾字卷是插件卡：滾到底，按「回到標題」
+  let back = false;
+  await sleep(1500);
+  for (let k = 0; k < 40 && !back; k++) {
+    await page.mouse.move(800, 450); await page.mouse.wheel(0, 2000); await sleep(300);
+    for (const f of page.frames()) { const b = f.getByRole('button', { name: '回到標題' }).filter({ visible: true }); if (await b.count()) { await b.first().click(); break; } }
+    await sleep(500); back = /開始遊戲/.test(await text());
+  }
   await page.screenshot({ path: `art/check/linear-${String(n++).padStart(3, '0')}.png` });
   if (process.env.AUDIO) {
     const L = named((await Promise.all(page.frames().map(f => f.evaluate(() => window.__bgm || []).catch(() => [])))).flat().sort((a, b) => a.t - b.t), cutSizes());
     const SFX = /^(press|hover|advance|open|close|use)\.mp3$/; let prev = '', out = [];
     for (const x of L) if (x.src && !SFX.test(x.src) && x.src !== prev) { out.push(x.src.replace('.mp3', '')); prev = x.src; }
     console.log('實際換曲順序：', out.join(' → '));
+    assert(out.includes('ember_harmony'), '製作名單播合聲版');
     console.log('歌檔請求：', [...new Set(songReq)].join(', '));
   }
   assert(END_RE.test(seen), '走到製作名單');
+  assert(back, '製作名單點完回到標題');
   let at = 0;
   for (const r of MUST) { const m = r.exec(seen.slice(at)); assert(m, '依序出現 ' + r); if (m) at += m.index; }
   assert(bad404.length === 0, '遊戲素材沒有 404 ' + JSON.stringify(bad404.slice(0, 5)));

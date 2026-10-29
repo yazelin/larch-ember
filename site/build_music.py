@@ -69,12 +69,12 @@ def build(draft):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<title>原聲帶 · 最終遺忘的橘色餘燼</title>
-<meta name="description" content="《最終遺忘的橘色餘燼》的原聲帶：〈餘燼〉的四種版本、〈晚安，台南〉、〈港邊的燈〉，附逐句動態歌詞。歌曲由 Suno 生成。">
+<title>原聲帶 · 餘燼</title>
+<meta name="description" content="《餘燼》的原聲帶：〈餘燼〉的四種版本、〈晚安，台南〉、〈港邊的燈〉，附逐句動態歌詞。歌曲由 Suno 生成。">
 <meta name="theme-color" content="#140b07">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23140b07'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff9a3c'/%3E%3C/svg%3E">
 <link rel="canonical" href="https://yazelin.github.io/larch-ember/music.html">
-<meta property="og:title" content="原聲帶 · 最終遺忘的橘色餘燼">
+<meta property="og:title" content="原聲帶 · 餘燼">
 <meta property="og:image" content="https://yazelin.github.io/larch-ember/media/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap">

@@ -70,30 +70,55 @@ def story_card(cid, bg_carry, bgm=''):
     return card, bg
 
 
+# 片尾字卷（作者 2026-10-29：故事結束後用素材裡的「片尾字卷」插件，不要對話框）。內容在 src/credits.txt，合聲版由 songs.apply 掛在這張卡上
+ROLL_IMAGES = ['art/cg/s_mem2_11', 'art/p_yu_47', 'art/p_cheng_45', 'art/p_yu_father', 'art/p_tao_73', 'art/p_zhou_62', 'art/p_azhe_30', 'art/cg/s_a_8']
+
+
+def credits_card():
+    content = (R / 'src/credits.txt').read_text(encoding='utf-8').strip()
+    for i, n in enumerate(ROLL_IMAGES, 1):
+        assert (R / f'assets/{n}.webp').exists(), n
+        assert f'@{i}' in content, f'credits.txt 沒用到圖片 {i}'
+    card = {'id': 'credits', 'type': 'story', 'position': {'x': 0, 'y': 0}, 'data': {
+        'type': 'plugin', 'title': TITLES['credits'], 'text': '', 'voiceMode': 'off', 'stage': {'actors': []}, 'characterLayers': [],
+        'background': shot_url('s_a_9'),
+        'pluginId': 'credits-roll', 'pluginCardId': 'roll', 'pluginVersion': '1.0.0', 'pluginName': '片尾字卷', 'pluginCardName': '片尾字卷',
+        'pluginIcon': 'scroll', 'pluginColor': '#8a6d2a', 'pluginPresentation': 'fullscreen', 'pluginFrame': {'showTitle': False, 'showButton': False},
+        'pluginSkippable': True, 'pluginReadVars': [], 'pluginWriteVars': [], 'pluginAssets': [], 'platforms': ['web'],
+        'pluginHtml': (R / 'src/plugin/credits_roll_card.html').read_text(encoding='utf-8'),
+        'pluginValues': {'content': content, **{f'image{i}': A + f'{n}.webp' for i, n in enumerate(ROLL_IMAGES, 1)},
+                         'speed': 34, 'autoContinue': False, 'endHold': 4, 'continueLabel': '回到標題', 'bgColor': '#0a0c0e', 'bgOpacity': 0.8,
+                         'textColor': '#f2ead6', 'accentColor': '#e8743b', 'font': 'serif'}}}
+    return card, card['data']['background']
+
+
 def build():
     p = json.loads((R / 'skeleton/project.json').read_text(encoding='utf-8'))
     p = p.get('project', p)
     board = p['boards'][0]
     board['nodes'], board['edges'] = [], []
     p['nodes'], p['edges'] = board['nodes'], board['edges']
+    p['name'] = '餘燼'   # 作者 10-29：改名，原名《最終遺忘的橘色餘燼》太長
     p['description'] = ('改編自真實故事。歌手余靜得了早發性阿茲海默症，回到家鄉台南，在她第一次開售票演唱會的老戲院唱最後一場。'
-                        '陪她來的男人替她遞水、提醒她下一句歌詞，她叫他「先生」。這是她和三排十四號那個人的二十二年。')
+                        '陪她來的男人替她遞水、提醒她下一句歌詞，她叫他「先生」。'
+                        '從 1988 年阿爸的魚攤、2004 年三排十四號那朵深紅玫瑰，一路到 2026 年的最後一首歌。'
+                        '單線劇情、一個結局，三首歌：〈餘燼〉〈晚安，台南〉〈港邊的燈〉。')
+    board['name'] = '餘燼'
     board['description'] = '從 1988 年的魚攤，到 2026 年的最後一場。'
     p['variables'] = []
     p['settings']['plugins'] = {k: {**v, 'enabled': False} if k == 'larch-inventory' else v for k, v in p['settings'].get('plugins', {}).items()}
     p['settings']['showRpgHud'] = False
+    p['settings']['plugins']['credits-roll'] = {'enabled': True}
     N = board['nodes'].append
-    missing = [c for c in ORDER if c not in script.L]
+    missing = [c for c in ORDER if c not in script.L and c != 'credits']
     assert not missing, f'劇本缺場：{missing}'
     prev, ptrack, bg = None, None, ''
     for cid in ORDER:
         t = TRACK.get(cid)
-        c, bg = story_card(cid, bg, bgm=music(t) if t and t != ptrack else '')
+        c, bg = credits_card() if cid == 'credits' else story_card(cid, bg, bgm=music(t) if t and t != ptrack else '')
         ptrack = t or ptrack
         if cid == ORDER[0]:
             c['data']['start'] = True
-        if cid == ORDER[-1]:
-            c['data']['stayOnCard'] = True
         N(c)
         if prev:
             cards.link(board, prev, cid)
@@ -117,7 +142,7 @@ def build():
     p['projectThumbnail'] = cover
     p['settings']['cgGalleryEnabled'] = True
     p['settings']['cgGallerySource'] = 'picked'
-    p['settings']['cgGalleryItems'] = [{'url': cover, 'title': '最終遺忘的橘色餘燼'}] + [{'url': shot_url(k), 'title': t, 'locked': True} for k, t in GALLERY if shot_url(k)]
+    p['settings']['cgGalleryItems'] = [{'url': cover, 'title': '餘燼'}] + [{'url': shot_url(k), 'title': t, 'locked': True} for k, t in GALLERY if shot_url(k)]
     songs.apply(p, R / 'dist')   # 有 assets/songs/cuts/manifest.json 才會接歌
     ui_inject.apply(p, R / 'dist')
     p['settings']['menuUi']['buttons'] = [b for b in p['settings']['menuUi']['buttons'] if b != 'bag']

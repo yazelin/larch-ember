@@ -794,9 +794,9 @@ def vocal_end(w16, url, text, t0, nxt):
 
 
 def locate(script, spec):
-    lines = script.L[spec['card']]
-    if spec['anchor'] == 'first':
+    if spec['anchor'] == 'first':   # 卡的開頭（製作名單是插件卡，不在劇本裡）
         return 0
+    lines = script.L[spec['card']]
     if spec['anchor'] == 'first_sung':
         hit = [i for i, (spk, t, *_r) in enumerate(lines) if spk == '余靜' and t.startswith('（唱）')]
     else:

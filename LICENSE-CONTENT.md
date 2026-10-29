@@ -7,7 +7,7 @@ Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 ```
 
 - 可以分享與改作。
-- 須標示出處：林亞澤（Yaze Lin），《最終遺忘的橘色餘燼》。
+- 須標示出處：林亞澤（Yaze Lin），《餘燼》。
 - 不可用於商業用途。
 
 Official deed: https://creativecommons.org/licenses/by-nc/4.0/

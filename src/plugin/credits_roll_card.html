@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>片尾字卷</title>
+<style>
+/* 片尾字卷。整頁一塊幕,字從下往上走。顏色與底色透明度全部由欄位決定;
+   底色透明度 0 的時候看得到卡片底下的場景圖(播放器把這個 iframe 的底設成透明)。
+   字型走系統字,不外連:iframe 是 sandbox="allow-scripts",外連字型會被擋。 */
+:root{--bg:#0a0c0e;--bga:1;--ink:rgba(255,255,255,.05);--hair:rgba(255,255,255,.14);--gold:#caa85f;--text:#f2ead6;--muted:#a89f8c;--faint:#6f695d;
+  --serif:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU","Noto Serif CJK TC",serif;
+  --sans:"Noto Sans TC","Source Han Sans TC","PingFang TC","Microsoft JhengHei","Noto Sans CJK TC",sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;background:transparent}
+body{margin:0;color:var(--text);overflow:hidden;font-family:var(--serif)}
+body.sans{font-family:var(--sans)}
+#bg{position:fixed;inset:0;background:var(--bg);opacity:var(--bga);z-index:0}
+#stage{position:fixed;inset:0;overflow:hidden;cursor:grab;z-index:1}
+#stage.drag{cursor:grabbing}
+/* 上下暗角:讓進出畫面的字自然淡掉。底色透明時改用陰影撐字。 */
+#stage::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(180deg,var(--bg) 0%,transparent 14%,transparent 86%,var(--bg) 100%);opacity:var(--bga)}
+body.clear #track{text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 18px rgba(0,0,0,.6)}
+#track{z-index:2;position:absolute;left:50%;top:100%;width:min(720px,100%);padding:0 24px 40vh;text-align:center;will-change:transform}
+.film{margin:10vh 0 0;font-size:38px;letter-spacing:.16em;line-height:1.4}
+.sub{margin:14px 0 0;font-size:14px;letter-spacing:.42em;color:var(--muted)}
+.h{margin:84px 0 22px;font-size:14px;letter-spacing:.5em;color:var(--gold);text-indent:.5em}
+.name{font-size:22px;line-height:1.6;margin:10px 0}
+.name small{display:block;margin-top:6px;font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.quip{margin:14px 0;font-size:15px;line-height:2;color:var(--muted)}
+.epi{margin:96px auto 0;max-width:22em;font-size:21px;line-height:2.1;color:var(--gold)}
+.gap{height:28px}
+.cast{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:560px;margin:0 auto}
+.c-card{background:var(--ink);border:1px solid var(--hair);border-radius:3px;overflow:hidden}
+.c-pic{aspect-ratio:3/4;background:rgba(0,0,0,.35)}
+.c-pic img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.c-nm{padding:8px 4px 10px;font-size:15px;letter-spacing:.08em}
+.c-nm span{display:block;font-size:11px;color:var(--faint);letter-spacing:.04em;margin-top:2px}
+.still{margin:36px auto;max-width:520px;border:1px solid var(--hair);background:var(--ink);padding:8px}
+.still img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.still .cap{margin-top:8px;font-size:13px;color:var(--faint);letter-spacing:.06em}
+table{margin:0 auto;border-collapse:collapse;font-size:16px;line-height:2}
+td{padding:0 12px}td:first-child{color:var(--muted);text-align:right}td:last-child{text-align:left}
+#go{position:fixed;left:50%;bottom:9vh;transform:translateX(-50%);z-index:4;display:none;
+  font:inherit;font-size:15px;letter-spacing:.3em;text-indent:.3em;color:var(--text);background:rgba(0,0,0,.45);
+  border:1px solid var(--gold);border-radius:3px;padding:10px 26px;cursor:pointer}
+#go:hover,#go:focus-visible{background:var(--gold);color:#111;outline:none}
+@media (max-width:520px){.film{font-size:28px}.name{font-size:19px}.cast{gap:8px}table{font-size:15px}}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="stage"><div id="track"></div></div>
+<button id="go" type="button">繼續</button>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const track = $('track'), stage = $('stage'), go = $('go');
+  const post = m => { if (parent !== window) parent.postMessage(m, '*'); };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const num = (v, d) => { const n = Number(v); return Number.isFinite(n) ? n : d; };
+  const str = (v, d) => (v === undefined || v === null || v === '') ? d : String(v);
+
+  // 內容標記:一行一項,行首符號決定樣式。
+  //   = 片名   - 副標   # 段落標題   > 灰字說明   * 金字結語   (空行) 空一段
+  //   @n 名字｜說明   → 用第 n 張圖排人物卡,連續幾行排成一格格
+  //   @n! 說明        → 第 n 張圖當橫幅劇照,下面一行小字
+  //   名字：說明       → 兩欄表(全形冒號),連續幾行排成一張表
+  //   名字｜說明       → 大字加一行小字
+  //   其他            → 大字
+  function render(text, images) {
+    const lines = String(text || '').replace(/\r/g, '').split('\n');
+    let html = '', cast = [], rows = [];
+    const flush = () => {
+      if (cast.length) { html += '<div class="cast">' + cast.join('') + '</div>'; cast = []; }
+      if (rows.length) { html += '<table>' + rows.join('') + '</table>'; rows = []; }
+    };
+    for (const raw of lines) {
+      const s = raw.trim();
+      let m;
+      if ((m = s.match(/^@(\d+)!\s*(.*)$/))) {
+        flush(); const u = images[+m[1] - 1];
+        if (u) html += `<div class="still"><img src="${esc(u)}" alt=""><div class="cap">${esc(m[2])}</div></div>`;
+        continue;
+      }
+      if ((m = s.match(/^@(\d+)\s+(.*)$/))) {
+        if (rows.length) flush();
+        const u = images[+m[1] - 1]; const [nm, note = ''] = m[2].split('｜');
+        cast.push(`<div class="c-card"><div class="c-pic">${u ? `<img src="${esc(u)}" alt="${esc(nm)}">` : ''}</div><div class="c-nm">${esc(nm)}${note ? `<span>${esc(note)}</span>` : ''}</div></div>`);
+        continue;
+      }
+      if (cast.length) flush();
+      if (!s) { flush(); html += '<div class="gap"></div>'; continue; }
+      if (s.startsWith('= ')) { flush(); html += `<div class="film">${esc(s.slice(2))}</div>`; continue; }
+      if (s.startsWith('- ')) { flush(); html += `<div class="sub">${esc(s.slice(2))}</div>`; continue; }
+      if (s.startsWith('# ')) { flush(); html += `<div class="h">${esc(s.slice(2))}</div>`; continue; }
+      if (s.startsWith('> ')) { flush(); html += `<div class="quip">${esc(s.slice(2))}</div>`; continue; }
+      if (s.startsWith('* ')) { flush(); html += `<div class="epi">${esc(s.slice(2))}</div>`; continue; }
+      if (s.includes('：')) { const i = s.indexOf('：'); rows.push(`<tr><td>${esc(s.slice(0, i))}</td><td>${esc(s.slice(i + 1))}</td></tr>`); continue; }
+      flush();
+      if (s.includes('｜')) { const [a, b] = s.split('｜'); html += `<div class="name">${esc(a)}<small>${esc(b)}</small></div>`; continue; }
+      html += `<div class="name">${esc(s)}</div>`;
+    }
+    flush();
+    track.innerHTML = html;
+  }
+
+  function start(values) {
+    const root = document.documentElement.style;
+    root.setProperty('--bg', str(values.bgColor, '#0a0c0e'));
+    const a = Math.max(0, Math.min(1, num(values.bgOpacity, 1)));
+    root.setProperty('--bga', a);
+    if (a < 0.5) document.body.classList.add('clear');
+    root.setProperty('--text', str(values.textColor, '#f2ead6'));
+    root.setProperty('--gold', str(values.accentColor, '#caa85f'));
+    if (values.font === 'sans') document.body.classList.add('sans');
+    const images = []; for (let i = 1; i <= 8; i++) images.push(str(values['image' + i], ''));
+    render(values.content, images);
+    go.textContent = str(values.continueLabel, '繼續');
+
+    const SPEED = Math.max(8, num(values.speed, 46)), HOLD = Math.max(0, num(values.endHold, 2)) * 1000;
+    const auto = values.autoContinue !== false && values.autoContinue !== 'false';
+    let pos = innerHeight * 0.5, paused = false, last = 0, dragY = null, done = false;
+    const maxPos = () => track.scrollHeight + innerHeight * 0.35;
+    const apply = () => { track.style.transform = `translate(-50%,${-pos}px)`; };
+    const clamp = () => { pos = Math.max(0, Math.min(maxPos(), pos)); };
+    const finish = () => { if (done) return; done = true; post({ type: 'larch:complete', result: 'complete', payload: {} }); };
+    const ended = () => {
+      if (auto) setTimeout(finish, HOLD);
+      else go.style.display = 'block';
+    };
+    let endedOnce = false;
+    stage.addEventListener('wheel', e => { pos += e.deltaY * 0.7; clamp(); apply(); }, { passive: true });
+    stage.addEventListener('pointerdown', e => { dragY = e.clientY; stage.classList.add('drag'); stage.setPointerCapture(e.pointerId); });
+    stage.addEventListener('pointermove', e => { if (dragY === null) return; pos += (dragY - e.clientY) * 1.1; dragY = e.clientY; clamp(); apply(); });
+    const drop = () => { dragY = null; stage.classList.remove('drag'); };
+    stage.addEventListener('pointerup', drop); stage.addEventListener('pointercancel', drop);
+    go.addEventListener('click', finish);
+    const tick = t => {
+      if (!last) last = t;
+      const dt = (t - last) / 1000; last = t;
+      if (!paused && dragY === null) { pos += SPEED * dt; if (pos >= maxPos()) paused = true; clamp(); apply(); }
+      if (pos >= maxPos() && !endedOnce) { endedOnce = true; ended(); }
+      requestAnimationFrame(tick);
+    };
+    apply(); requestAnimationFrame(tick);
+  }
+
+  let started = false;
+  addEventListener('message', e => {
+    const d = e.data; if (!d || d.type !== 'larch:init' || started) return;
+    started = true; start(d.values || {});
+  });
+  post({ type: 'larch:ready' });
+  // 沒有宿主(直接開檔案測試)就用預設值跑
+  setTimeout(() => { if (!started && parent === window) { started = true; start({ content: '= 片尾字卷\n- 直接開檔案的測試\n# 段落\n旁白：測試\n* 完' }); } }, 300);
+})();
+</script>
+</body>
+</html>

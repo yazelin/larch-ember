@@ -82,7 +82,7 @@ SHOTS = {
     # 結局 C
     's_c_1': ('ending_c1', '化妝間的門開著', [], 'The backstage stairs and the open back door to an alley at dusk; staff carrying boxed dinners in, their backs turned; the alley glows with market lights.', None),
     's_c_2': ('ending_c1', '九十秒後，程希回到化妝間', ['cheng_45'], 'He stands in the doorway of the empty bright dressing room; on the dressing table the black wristwatch lies beside the notebook.', 's_branch_1'),
-    's_c_3': ('ending_c1', '他打開手機上的定位', ['cheng_45'], 'Close: his phone screen showing a map with a red dot blinking right where he stands; his face behind, going pale.', 's_c_2'),
+    's_c_3': ('ending_c1', '他打開手機上的定位', ['cheng_45'], 'Over-the-shoulder shot from BEHIND him (作者 10-29：手機螢幕朝鏡頭時他不能也在看螢幕): in the foreground his shoulder and the back of his head, out of focus; he holds a phone in front of him, its screen facing him AND us, showing a dark street map with one red location dot; we never see his face. Beyond the phone, in focus, the dressing table under the bulb mirror with an empty chair, and on the table a black wristwatch lying with its strap open: the red dot is that watch. Dusk, lamps on.', 's_c_2'),
     's_c_4': ('ending_c2', '黃昏市場在收攤', ['yu_47'], 'cg:cg_c_market', None),
     's_c_5': ('ending_c2', '運河邊新修了步道', ['yu_47'], 'cg:cg_c_steps', None),
     's_c_6': ('ending_c3', '18:05，程希、阿哲、小芳分頭找', ['cheng_45'], 'cg:cg_c_search', None),
