@@ -28,6 +28,9 @@ ALLOW_FAIL = bool(os.environ.get('SONGS_ALLOW_FAIL'))
 REPORT = {}             # 卡代號 → 規劃結果（tests/songs_check.py 與建置輸出用）
 
 
+POST_BGM = {}   # build.py 填：卡沒自己設 BGM（沿用前一場）時，歌唱完要接回哪一首
+
+
 def _bgm_url(card_id):
     """assets/bgm/manifest.json 的 use_in：這張卡原本的背景曲。"""
     f = ROOT / 'assets/bgm/manifest.json'
@@ -187,7 +190,7 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
         if k >= len(lines) or _norm(DL[r0 + k]['text']) != _norm(lines[k]['text']):
             print(f"songs: 警告 {cid} 第 {r0 + k} 句「{DL[r0 + k]['text']}」和歌詞檔不一致")
     pl = plan(lines, cut['duration'], ts)
-    base = data.get('bgm') or _bgm_url(cid)
+    base = data.get('bgm') or POST_BGM.get(cid) or _bgm_url(cid)
     REPORT[cid] = dict(pl, base_bgm=base, cut=cut['id'], n_script_lines=r1 - r0, n_lyrics=len(lines))
 
     def effective_bg(idx):

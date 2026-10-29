@@ -22,6 +22,7 @@ TRACK = {'open': 'dressing', 'market': 'mem_1988', 'livehouse': 'mem_2004', 'doo
          'monitor': 'mem_love', 'confess': 'mem_love', 'forget': 'mem_clinic', 'song2023': 'mem_clinic', 'soundcheck': 'dress',
          'letter': 'dressing', 'dark': 'branch', 'canal': 'end_c', 'concert': 'concert', 'kitchen': 'end_a'}
 # 〔掉字〕：落日以後，標記的句子只留前面一部分，後面變成「……」。數字是掉掉的比例
+POST_TRACK = {'encore': 'end_b'}   # 歌卡唱完後改用的配樂（沒列的沿用這場的 TRACK）
 FADE_RATIO = {'letter': 0.35, 'dark': 0.55, 'canal': 0.6}
 GALLERY = [('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面'), ('s_mem2_11', '2013，空舞台上的一小段舞'),
            ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '三排十四號'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
@@ -143,6 +144,10 @@ def build():
     p['settings']['cgGalleryEnabled'] = True
     p['settings']['cgGallerySource'] = 'picked'
     p['settings']['cgGalleryItems'] = [{'url': cover, 'title': '餘燼'}] + [{'url': shot_url(k), 'title': t, 'locked': True} for k, t in GALLERY if shot_url(k)]
+    cur = None   # 歌卡唱完接回這一場的配樂（作者 10-29：歌盡量不斷，斷的地方用原本的 BGM）；encore 下台後換 end_b
+    for cid in ORDER:
+        cur = TRACK.get(cid, cur)
+        songs.POST_BGM[cid] = music(POST_TRACK.get(cid, cur))
     songs.apply(p, R / 'dist')   # 有 assets/songs/cuts/manifest.json 才會接歌
     ui_inject.apply(p, R / 'dist')
     p['settings']['menuUi']['buttons'] = [b for b in p['settings']['menuUi']['buttons'] if b != 'bag']

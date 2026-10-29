@@ -118,20 +118,20 @@ def L(lyrics, song, sec, k):
 # role：sung_card（切成「歌卡」，歌詞跟著時間走）／line_bgm（只在某句開始放）／sfx（逐句 sfxUrl，收音機版）。
 CUTS = [   # 重製版（2026-10-29）：單線，卡代號見 src/build.py 的 ORDER
     # 收音機唱的副歌四句：歌卡，字跟著時間走（作者 10-29：原本從頭放，字幕出來時還在前奏）；kind='sfx' 是收音機音色
-    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sung_card', card='market', anchor='first_sung', singer='收音機', resume='next',
+    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sung_card', card='market', anchor='first_sung', singer='收音機', resume='post',
          start=('line', 'Verse', 0, 2.0), end=('after', 'Chorus', 3, 2.0), fade_out=1.5),
-    dict(id='ember_studio', song='餘燼@錄音室', kind='bgm', role='sung_card', card='roses', anchor='first_sung', resume='next',
+    dict(id='ember_studio', song='餘燼@錄音室', kind='bgm', role='sung_card', card='roses', anchor='first_sung', resume='post',
          start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0),
     # 2009 耳返爆音：台下跟唱版，副歌第一句起三秒悶住（她的耳返沒聲音，只剩台下）
-    dict(id='ember_monitor', song='餘燼@台下', kind='bgm', role='sung_card', card='monitor', anchor='first_sung', resume='next',
+    dict(id='ember_monitor', song='餘燼@台下', kind='bgm', role='sung_card', card='monitor', anchor='first_sung', resume='post',
          start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0, muffle=('Chorus', 0, 3.0)),
     dict(id='night_sc', song='晚安，台南', kind='bgm', role='sung_card', card='soundcheck', anchor='first_sung', resume='post',
          start=('line', 'Verse 1', 0, 1.0), end=('after', 'Verse 1', 3, 2.4), fade_out=1.8),
     dict(id='night_concert', song='晚安，台南', kind='bgm', role='sung_card', card='concert', anchor='first_sung', resume='none',
          start=('line', 'Verse 1', 0, 0.6), end=('after', 'Chorus', 5, 0.4), fade_out=0.06, sudden=True),
-    dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='verse3', anchor='first_sung', resume='next',
+    dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='verse3', anchor='first_sung', resume='post',
          start=('line', 'Verse 3', 0, 1.0), end=('after', 'Verse 3', 6, 2.2), fade_out=1.6),
-    dict(id='ember_a2', song='餘燼@大合唱', kind='bgm', role='sung_card', card='encore', anchor='first_sung', resume='next',
+    dict(id='ember_a2', song='餘燼@大合唱', kind='bgm', role='sung_card', card='encore', anchor='first_sung', resume='post',
          start=('line', 'Final Chorus', 0, 1.5), end=('eof',), fade_out=1.0),
     dict(id='ember_harmony', song='餘燼@合聲', kind='bgm', role='line_bgm', card='credits', anchor='first',
          start=('song',), end=('eof',), fade_out=1.0),
