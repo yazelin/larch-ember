@@ -114,11 +114,12 @@ def L(lyrics, song, sec, k):
 
 # ---------------------------------------------------------------- 切段對照表
 # start：('song',) 從頭；('line', 段, 第幾句, 最多提前幾秒)。end：('eof',)；('after', 段, 第幾句, 最多拖尾幾秒)。
-# place：卡代號與句子位置。anchor 是句子裡的文字（唯一匹配）；'first_sung' = 該卡第一句余靜（唱）。
+# place：卡代號與句子位置。anchor 是句子裡的文字（唯一匹配）；'first_sung' = 該卡第一句「singer（唱）」（singer 預設余靜）。
 # role：sung_card（切成「歌卡」，歌詞跟著時間走）／line_bgm（只在某句開始放）／sfx（逐句 sfxUrl，收音機版）。
 CUTS = [   # 重製版（2026-10-29）：單線，卡代號見 src/build.py 的 ORDER
-    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='line_bgm', card='market', anchor='港邊的燈',
-         start=('song',), end=('eof',), fade_out=1.5),
+    # 收音機唱的副歌四句：歌卡，字跟著時間走（作者 10-29：原本從頭放，字幕出來時還在前奏）；kind='sfx' 是收音機音色
+    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sung_card', card='market', anchor='first_sung', singer='收音機', resume='next',
+         start=('line', 'Verse', 0, 2.0), end=('after', 'Chorus', 3, 2.0), fade_out=1.5),
     dict(id='ember_studio', song='餘燼@錄音室', kind='bgm', role='sung_card', card='roses', anchor='first_sung', resume='next',
          start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0),
     # 2009 耳返爆音：台下跟唱版，副歌第一句起三秒悶住（她的耳返沒聲音，只剩台下）
@@ -744,7 +745,7 @@ def main():
         all_ok &= ver['ok']
         ent = {'id': spec['id'], 'song': song, 'file': out.name, 'kind': sp['kind'], 'role': spec['role'],
                'place': {'card': spec['card'], 'line': place_line, 'anchor': spec['anchor']},
-               'resume': spec.get('resume', 'none'), 'sudden': bool(sp.get('sudden')),
+               'resume': spec.get('resume', 'none'), 'sudden': bool(sp.get('sudden')), 'singer': spec.get('singer', '余靜'),
                'src_start': round(s, 2), 'src_end': round(e_, 2), 'duration': round(d_out, 2), 'bytes': size, 'bitrate_kbps': br,
                'lufs': lufs, 'cut_diag': diag, 'lines': rel, 'verify': ver}
         rendered[spec['id']] = ent
@@ -798,7 +799,7 @@ def locate(script, spec):
         return 0
     lines = script.L[spec['card']]
     if spec['anchor'] == 'first_sung':
-        hit = [i for i, (spk, t, *_r) in enumerate(lines) if spk == '余靜' and t.startswith('（唱）')]
+        hit = [i for i, (spk, t, *_r) in enumerate(lines) if spk == spec.get('singer', '余靜') and t.startswith('（唱）')]
     else:
         hit = [i for i, (spk, t, *_r) in enumerate(lines) if spec['anchor'] in t]
     if len(hit) < 1 or (spec['anchor'] != 'first_sung' and len(hit) != 1):

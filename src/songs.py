@@ -144,7 +144,7 @@ def apply(project, dist=None):
         if node is None:
             print(f"songs: 略過 {cut['id']}（專案裡沒有卡 {cid}）"); continue
         if node['data'].get('type') == 'plugin' and li == 0 and cut['role'] == 'line_bgm':   # 片尾字卷插件卡：歌從進卡開始放
-            node['data'].update(bgm=url, bgmVolume=BGM_VOL, bgmLoop=False); continue
+            node['data'].update(bgm=url, bgmVolume=BGM_VOL, bgmLoop=False); done.append(cut['id']); continue
         DL = node['data']['dialogueLines']
         if li >= len(DL) or (cut['place']['anchor'] not in ('first_sung', 'first') and cut['place']['anchor'] not in DL[li]['text']):
             print(f"songs: 略過 {cut['id']}（{cid} 第 {li} 句跟劇本對不上，重跑 songs_cut.py）"); continue
@@ -179,7 +179,8 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
     cid, r0 = cut['place']['card'], cut['place']['line']
     node = by_id[cid]; data = node['data']; DL = data['dialogueLines']
     r1 = r0
-    while r1 < len(DL) and DL[r1]['speaker'] == '余靜' and DL[r1]['text'].startswith('（唱）'):
+    singer = cut.get('singer', '余靜')
+    while r1 < len(DL) and DL[r1]['speaker'] == singer and DL[r1]['text'].startswith('（唱）'):
         r1 += 1
     lines = cut['lines']
     for k in range(r1 - r0):   # 劇本裡既有的歌詞要和歌詞檔一致
@@ -207,7 +208,7 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
         return {'id': nid, 'type': 'story', 'position': {'x': node['position']['x'] + 40, 'y': node['position']['y'] + 40}, 'data': d}
 
     pre, post = DL[:r0], DL[r1:]
-    song_lines = [{'id': f'{cid}__song-l{k}', 'speaker': '旁白' if s.get('fill') else '余靜', 'text': s['text']} for k, s in enumerate(pl['slots'])]
+    song_lines = [{'id': f'{cid}__song-l{k}', 'speaker': '旁白' if s.get('fill') else singer, 'text': s['text']} for k, s in enumerate(pl['slots'])]
     song_id = f'{cid}__song' if pre else cid
     song = mk(song_id, data.get('title', cid) + '（歌）', song_lines, r0, data)
     sd = song['data']
