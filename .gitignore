@@ -12,3 +12,7 @@ assets/songs/*.mp3
 snapshots/
 # 檢查截圖與產圖紀錄只留本機；已追蹤的縮圖照舊，要新增就 git add -f
 art/check/
+# 沒選上的產圖候選、Suno 原始檔、配音試聽只留本機（遊戲不配音，作者 10-29）；已追蹤的照舊，要新增就 git add -f
+art/raw/
+art/music_raw/
+art/voice-test/

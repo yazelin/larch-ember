@@ -1,7 +1,9 @@
 {
- "job": "img_b4f9befafeb2e995ed1ab30f",
- "prompt": "Top-down painted anime RPG game map floor, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. Follow the floor region layout of image 1 exactly. old warm-brown wooden floorboards with a faded burgundy rug in the middle; dark plaster walls along the top edge and sides; a doorway gap in the bottom wall. Top-down RPG map floor only. Dimensions: 16 cells wide by 11 cells tall. Rich textures, atmospheric lighting. Draw ONLY the floor surface materials: absolutely NO furniture, NO counters, NO walls rising up, NO doors, NO people, NO text.",
+ "job": "img_f4f808f006d58f95bb190bd2",
+ "prompt": "Top-down painted anime RPG game map floor, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. Follow the floor region layout of image 1 exactly. old warm-brown wooden floorboards with a faded burgundy rug in the middle; dark plaster walls along the top edge and sides; a doorway gap in the bottom wall. Top-down RPG map floor only. Dimensions: 16 cells wide by 11 cells tall. Rich textures, atmospheric lighting. Draw ONLY the floor surface materials: absolutely NO furniture, NO counters, NO walls rising up, NO doors, NO people, NO text. The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.",
  "refs": [
-  "/home/ct/larch-ember/art/check/compose-dressing-ground.webp"
+  "/home/ct/larch-ember/art/check/compose-dressing-ground.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_dress_1.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_branch_1.webp"
  ]
 }

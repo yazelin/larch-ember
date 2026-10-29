@@ -71,7 +71,7 @@
 
 ## 授權
 
-程式碼以 MIT 授權（`LICENSE`）。故事文字、美術與公開站內容以 CC BY-NC 4.0 授權（`LICENSE-CONTENT.md`）。
+程式碼以 MIT 授權（`LICENSE`）。故事文字、歌詞與歌曲、美術與公開站內容以 CC BY-NC 4.0 授權（`LICENSE-CONTENT.md`）。
 
 ## 公開站的素材網址
 

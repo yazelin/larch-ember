@@ -1,6 +1,6 @@
 # 內容授權（License for content）
 
-本 repo 的故事文字（`canon/`、`design/`）、美術（`assets/art/`、`art/` 底下的圖、`docs/media/`）與公開站文字（`docs/index.html`）採用：
+本 repo 的故事文字（`canon/`、`design/`）、歌詞（`canon/歌詞*.md`）、歌曲與配樂（`assets/songs/`、`assets/bgm/`、`docs/music/`）、美術（`assets/art/`、`art/` 底下的圖、`docs/media/`）與公開站文字（`docs/index.html`、`docs/music.html`）採用：
 
 ```text
 Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)

@@ -1,5 +1,8 @@
 {
- "job": "img_2f70724a16ba28371a816ec7",
- "prompt": "Game map object sprite, one single object only, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. 3/4 top-down camera view from the south (about 50 degrees elevation, showing top and south-facing front), soft even lighting. Redraw the object cleanly and completely as a standalone sprite.\nDraw: an open black makeup case on the floor, trays of brushes and lipsticks, a small glass box in the bottom tray.\nProportions: bounding box is 2 grid cells wide and 2 grid cells tall (aspect ratio 2:2). The bottom 1 cells are its floor footprint; the top 1 cells rise up.\nDraw only this object: no floor, no shadows on floor, no people, no background scenery. Clean edges.\nBackground: a completely flat opaque solid #00FF00 pure green fill, uniform color, absolutely no gradient, no drop shadow. No text, no letters.",
- "refs": []
+ "job": "img_f97a440214c58233bd5a754c",
+ "prompt": "Game map object sprite, one single object only, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. 3/4 top-down camera view from the south (about 50 degrees elevation, showing top and south-facing front), soft even lighting. Redraw the object cleanly and completely as a standalone sprite.\nDraw: an open black makeup case on the floor, trays of brushes and lipsticks, a small glass box in the bottom tray.\nProportions: bounding box is 2 grid cells wide and 2 grid cells tall (aspect ratio 2:2). The bottom 1 cells are its floor footprint; the top 1 cells rise up.\nDraw only this object: no floor, no shadows on floor, no people, no background scenery. Clean edges.\nBackground: a completely flat opaque solid #00FF00 pure green fill, uniform color, absolutely no gradient, no drop shadow. No text, no letters. The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.",
+ "refs": [
+  "/home/ct/larch-ember/assets/art/cg/s_dress_1.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_branch_1.webp"
+ ]
 }

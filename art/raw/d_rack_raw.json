@@ -1,5 +1,8 @@
 {
- "job": "img_354ff42a6cd2d0eb82805c59",
- "prompt": "Game map object sprite, one single object only, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. 3/4 top-down camera view from the south (about 50 degrees elevation, showing top and south-facing front), soft even lighting. Redraw the object cleanly and completely as a standalone sprite.\nDraw: an empty metal clothes rack seen from the side, one navy jacket hanging on it.\nProportions: bounding box is 1 grid cells wide and 4 grid cells tall (aspect ratio 1:4). The bottom 3 cells are its floor footprint; the top 1 cells rise up.\nDraw only this object: no floor, no shadows on floor, no people, no background scenery. Clean edges.\nBackground: a completely flat opaque solid #00FF00 pure green fill, uniform color, absolutely no gradient, no drop shadow. No text, no letters.",
- "refs": []
+ "job": "img_66a8fa8efa5bf988d13e9ec4",
+ "prompt": "Game map object sprite, one single object only, the second-floor dressing room of an old 1950s Tainan theater at sunset, warm golden-orange light, dark wood, faded red velvet, soft painted anime RPG map style matching a cinematic warm palette. 3/4 top-down camera view from the south (about 50 degrees elevation, showing top and south-facing front), soft even lighting. Redraw the object cleanly and completely as a standalone sprite.\nDraw: an empty metal clothes rack seen from the side, one navy jacket hanging on it.\nProportions: bounding box is 1 grid cells wide and 4 grid cells tall (aspect ratio 1:4). The bottom 3 cells are its floor footprint; the top 1 cells rise up.\nDraw only this object: no floor, no shadows on floor, no people, no background scenery. Clean edges.\nBackground: a completely flat opaque solid #00FF00 pure green fill, uniform color, absolutely no gradient, no drop shadow. No text, no letters. The extra reference images are cinematic stills of this SAME place: match its architecture, materials, colors, furniture design and warm lighting exactly, only seen from the top-down RPG map angle.",
+ "refs": [
+  "/home/ct/larch-ember/assets/art/cg/s_dress_1.webp",
+  "/home/ct/larch-ember/assets/art/cg/s_branch_1.webp"
+ ]
 }
