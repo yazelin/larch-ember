@@ -58,7 +58,7 @@ def story_card(cid, bg_carry, bgm=''):
         if (cid, i) in script.FADE and cid in FADE_RATIO:
             text = fade(text, FADE_RATIO[cid])
         shot = script.SHOTS.get((cid, i))
-        line = (spk or '旁白', text)
+        line = (f'{spk}（{tag}）' if spk and tag else spk or '旁白', text)   # 余靜（心）／（念）／（哼）、程希（筆記）照劇本標，沒配音時才分得出想的和說的（作者 10-29）
         if shot and shot_url(shot):
             bg = shot_url(shot)
         lines.append((line, bg if shot and shot_url(shot) else None))
