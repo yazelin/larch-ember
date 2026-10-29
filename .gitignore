@@ -16,3 +16,6 @@ art/check/
 art/raw/
 art/music_raw/
 art/voice-test/
+# 台語配音的工作檔：音檔確認後複製到 assets/voice/，參考聲音只留本機
+voice/taigi/audio/
+voice/taigi/refs/

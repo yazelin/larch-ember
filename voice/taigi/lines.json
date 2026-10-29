@@ -1,0 +1,187 @@
+{
+ "title": "《餘燼》台語",
+ "voices": {
+  "阿桃姨": {
+   "ref": "refs/antie.wav",
+   "note": "2026 年的阿桃姨：Kind-hearted_Antie"
+  },
+  "阿桃姨（1988）": {
+   "ref": "refs/aunt.wav",
+   "note": "1988 年的阿桃姨，比較年輕：Warm-HeartedAunt"
+  },
+  "余伯": {
+   "ref": "refs/dad.wav",
+   "note": "Larch_Mandarin_Dad"
+  }
+ },
+ "lines": [
+  {
+   "id": "87a298819b",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "水管提低咧，莫噴著人。",
+   "zh": "水管拿低一點，別噴到人。",
+   "kip": "tsuí-kóng the̍h kē leh,mài phùn-tio̍h lâng.",
+   "seg": "水-管｜tsuí-kóng 提｜the̍h 低｜kē 咧｜leh ，｜, 莫｜mài 噴-著｜phùn-tio̍h 人｜lâng 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/87a298819b.mp3"
+  },
+  {
+   "id": "9039df8cf2",
+   "speaker": "阿桃姨（1988）",
+   "scene": "market",
+   "hanzi": "淑靜仔，遮嘛沖一下。",
+   "zh": "淑靜，這裡也沖一下。",
+   "kip": "siok tsīng ah,tsia mā tshiâng tsi̍t-ē.",
+   "seg": "淑｜siok 靜｜tsīng 仔｜ah ，｜, 遮｜tsia 嘛｜mā 沖｜tshiâng 一-下｜tsi̍t-ē 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/9039df8cf2.mp3"
+  },
+  {
+   "id": "2ed0bd01d0",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "莫嫌，水管收起來。",
+   "zh": "別嫌，把水管收起來。",
+   "kip": "mài hiâm,tsuí-kóng siu-khí-lâi.",
+   "seg": "莫｜mài 嫌｜hiâm ，｜, 水-管｜tsuí-kóng 收-起-來｜siu-khí-lâi 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/2ed0bd01d0.mp3"
+  },
+  {
+   "id": "1b4b6e58a3",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "這尾留予你。轉去叫阿母煮。",
+   "zh": "這尾留給你。回去叫媽媽煮。",
+   "kip": "Tsit bué lâu hōo lí.tńg-khì kiò a-bú tsú.",
+   "seg": "這｜Tsit 尾｜bué 留｜lâu 予｜hōo 你｜lí 。｜. 轉-去｜tńg-khì 叫｜kiò 阿-母｜a-bú 煮｜tsú 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/1b4b6e58a3.mp3"
+  },
+  {
+   "id": "4facba094f",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "大箱我提，你提細箱。",
+   "zh": "大箱我拿，你拿小箱。",
+   "kip": "tuā siunn guá the̍h,lí the̍h sè siunn.",
+   "seg": "大｜tuā 箱｜siunn 我｜guá 提｜the̍h ，｜, 你｜lí 提｜the̍h 細｜sè 箱｜siunn 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/4facba094f.mp3"
+  },
+  {
+   "id": "1de7585cda",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "阿爸唱一句，你綴一句。",
+   "zh": "爸爸唱一句，你跟一句。",
+   "kip": "a-pah tshiùnn tsi̍t-kù,lí tuè tsi̍t-kù.",
+   "seg": "阿-爸｜a-pah 唱｜tshiùnn 一-句｜tsi̍t-kù ，｜, 你｜lí 綴｜tuè 一-句｜tsi̍t-kù 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/1de7585cda.mp3"
+  },
+  {
+   "id": "51a548e9b0",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "你來教我啦！",
+   "zh": "換你來教我啦！",
+   "kip": "lí lâi kà guá lah!",
+   "seg": "你｜lí 來｜lâi 教｜kà 我｜guá 啦｜lah ！｜!",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/51a548e9b0.mp3"
+  },
+  {
+   "id": "52e9106246",
+   "speaker": "余伯",
+   "scene": "market",
+   "hanzi": "天暗矣，咱轉去矣。",
+   "zh": "天黑了，我們回家了。",
+   "kip": "Thinn àm-ah,lán tńg-khì-ah.",
+   "seg": "天｜Thinn 暗-矣｜àm-ah ，｜, 咱｜lán 轉-去-矣｜tńg-khì-ah 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/52e9106246.mp3"
+  },
+  {
+   "id": "45ee24fb09",
+   "speaker": "余伯",
+   "scene": "door2004",
+   "hanzi": "兩擺矣，猶是洗袂掉。",
+   "zh": "兩次了，還是洗不掉。",
+   "kip": "nn̄g pái ah,iáu-sī sé bē tiāu.",
+   "seg": "兩｜nn̄g 擺｜pái 矣｜ah ，｜, 猶-是｜iáu-sī 洗｜sé 袂｜bē 掉｜tiāu 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/45ee24fb09.mp3"
+  },
+  {
+   "id": "eddd12e4a2",
+   "speaker": "余伯",
+   "scene": "door2004",
+   "hanzi": "伊是啥人？",
+   "zh": "他是誰？",
+   "kip": "i sī siánn-lâng?",
+   "seg": "伊｜i 是｜sī 啥-人｜siánn-lâng ？｜?",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/eddd12e4a2.mp3"
+  },
+  {
+   "id": "42f021179c",
+   "speaker": "阿桃姨",
+   "scene": "canal",
+   "hanzi": "我去市場，恁去街仔路揣。",
+   "zh": "我去市場，你們去老街找。",
+   "kip": "guá khì tshī-tiûnn,lín khì ke-á-lōo tshuē.",
+   "seg": "我｜guá 去｜khì 市-場｜tshī-tiûnn ，｜, 恁｜lín 去｜khì 街-仔-路｜ke-á-lōo 揣｜tshuē 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/42f021179c.mp3"
+  },
+  {
+   "id": "032e3e0c5b",
+   "speaker": "阿桃姨",
+   "scene": "canal",
+   "hanzi": "淑靜仔細漢的時陣，攏佇遐等伊阿爸。",
+   "zh": "淑靜小時候，都在那裡等她阿爸。",
+   "kip": "siok tsīng á sè-hàn ê sî-tsūn,lóng tī-hia tán i A-pah.",
+   "seg": "淑｜siok 靜｜tsīng 仔｜á 細-漢｜sè-hàn 的｜ê 時-陣｜sî-tsūn ，｜, 攏｜lóng 佇-遐｜tī-hia 等｜tán 伊｜i 阿-爸｜A-pah 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/032e3e0c5b.mp3"
+  },
+  {
+   "id": "66eaa6ffec",
+   "speaker": "阿桃姨",
+   "scene": "kitchen",
+   "hanzi": "報紙有寫恁彼工的演唱會，我提來予恁看。",
+   "zh": "報紙寫了你們那天的演唱會，我拿來給你們看。",
+   "kip": "pò-tsuá ū siá lín Hit-kang ê ián-tshiùnn-huē,guá the̍h-lâi hōo lín khuànn.",
+   "seg": "報-紙｜pò-tsuá 有｜ū 寫｜siá 恁｜lín 彼-工｜Hit-kang 的｜ê 演-唱-會｜ián-tshiùnn-huē ，｜, 我｜guá 提-來｜the̍h-lâi 予｜hōo 恁｜lín 看｜khuànn 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/66eaa6ffec.mp3"
+  },
+  {
+   "id": "edfae0f7c1",
+   "speaker": "阿桃姨",
+   "scene": "kitchen",
+   "hanzi": "我猶有一袋欲送隔壁，恁先食。",
+   "zh": "我還有一袋要送隔壁，你們先吃。",
+   "kip": "Guá iáu-ū tsi̍t tē beh sàng keh-piah,lín sing tsia̍h.",
+   "seg": "我｜Guá 猶-有｜iáu-ū 一｜tsi̍t 袋｜tē 欲｜beh 送｜sàng 隔-壁｜keh-piah ，｜, 恁｜lín 先｜sing 食｜tsia̍h 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/edfae0f7c1.mp3"
+  }
+ ]
+}

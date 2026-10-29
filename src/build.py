@@ -3,7 +3,7 @@
 全劇沒有選項（作者 10-29：像看一部短片）。開頭一張提示卡請玩家按「自動」。
 python3 src/build.py
 """
-import json, math, pathlib, shutil, sys, os
+import json, math, pathlib, shutil, subprocess, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 import script, cards, ui_inject, songs
 
@@ -33,6 +33,17 @@ GALLERY = [('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面
            ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '三排十四號'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
            ('s_a_8', '什麼演唱會')]
 GAL = {k for k, _ in GALLERY}
+# 台語配音（作者 10-29：只有阿桃姨、余伯的台語用聽的，其他人照舊不配）。voice/taigi/lines.json 裡標「通過」的句子才掛，音檔在 assets/voice/<id>.mp3
+TAIGI_OK = {l['id'] for l in json.loads((R / 'voice/taigi/lines.json').read_text(encoding='utf-8'))['lines'] if l['status'] == 'ok'} if (R / 'voice/taigi/lines.json').exists() else set()
+
+
+def voice_ms(vid):
+    out = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(R / f'assets/voice/{vid}.mp3')], capture_output=True, text=True).stdout
+    return float(out) * 1000
+
+
+def voice_url(vid):
+    return A + f'voice/{vid}.mp3' if vid in TAIGI_OK and (R / f'assets/voice/{vid}.mp3').exists() else ''
 
 
 def music(name):
@@ -61,7 +72,7 @@ def story_card(cid, bg_carry, bgm=''):
         line = (f'{spk}（{tag}）' if spk and tag else spk or '旁白', text)   # 余靜（心）／（念）／（哼）、程希（筆記）照劇本標，沒配音時才分得出想的和說的（作者 10-29）
         if shot and shot_url(shot):
             bg = shot_url(shot)
-        lines.append((line, bg if shot and shot_url(shot) else None))
+        lines.append((line + ((voice_url(vid),) if voice_url(vid) else ()), bg if shot and shot_url(shot) else None))
     first_bg = next((b for _, b in lines if b), bg_carry)
     card = cards.dialogue(cid, TITLES.get(cid, cid), [l for l, _ in lines], bg=first_bg or '', bgm=bgm or None)
     for (l, b), dst in zip(lines, card['data']['dialogueLines']):
@@ -74,6 +85,10 @@ def story_card(cid, bg_carry, bgm=''):
     card['data']['stage'] = {'actors': []}
     card['data']['characterLayers'] = []
     card['data']['autoAdvance'] = dict(AUTO)
+    # 有台語配音的卡：字打完後要等到最長那句唸完（delay 是整張卡共用，字打完才開始算；聲音比字晚約 0.5 秒出來，實測只等 2 秒字尾會被切掉 0.12 秒）
+    need = [voice_ms(vid) - len(text) * TEXT_MS + 900 for spk, text, vid, tag in script.L[cid] if voice_url(vid)]
+    if need and max(need) > AUTO['delayMs']:
+        card['data']['autoAdvance']['delayMs'] = int(math.ceil(max(need) / 100) * 100)
     return card, bg
 
 
@@ -173,6 +188,9 @@ def build():
     out.write_text(json.dumps(p, ensure_ascii=False, indent=1), encoding='utf-8')
     shutil.rmtree(R / 'dist/assets', ignore_errors=True)
     shutil.copytree(R / 'assets', R / 'dist/assets', ignore=shutil.ignore_patterns('voice', 'maps', 'objects', 'tilesets', '_fixture'))
+    (R / 'dist/assets/voice').mkdir(exist_ok=True)
+    for vid in TAIGI_OK:
+        if (R / f'assets/voice/{vid}.mp3').exists(): shutil.copy(R / f'assets/voice/{vid}.mp3', R / 'dist/assets/voice/')
     ids = {n['id'] for n in board['nodes']}
     bad = [e for e in board['edges'] if e['source'] not in ids or e['target'] not in ids]
     assert not bad, bad

@@ -46,7 +46,7 @@ def _git(*args):
     return subprocess.run(['git', *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout
 
 
-GROUPS = {'img': ('art/',), 'audio': ('bgm/', 'songs/', 'sfx/')}   # 10-29 用到的：圖 21 MB、聲音 28 MB
+GROUPS = {'img': ('art/',), 'audio': ('bgm/', 'songs/', 'sfx/', 'voice/')}   # 10-29 用到的：圖 21 MB、聲音 28 MB
 LIMIT = 40e6
 ASSET = r'/files/assets/([\w./-]+\.(?:png|webp|jpg|mp3))'
 
