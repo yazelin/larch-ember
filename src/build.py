@@ -33,8 +33,8 @@ GALLERY = [('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面
            ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '三排十四號'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
            ('s_a_8', '什麼演唱會')]
 GAL = {k for k, _ in GALLERY}
-# 台語配音（作者 10-29：只有阿桃姨、余伯的台語用聽的，其他人照舊不配）。voice/taigi/lines.json 裡標「通過」的句子才掛，音檔在 assets/voice/<id>.mp3
-TAIGI_OK = {l['id'] for l in json.loads((R / 'voice/taigi/lines.json').read_text(encoding='utf-8'))['lines'] if l['status'] == 'ok'} if (R / 'voice/taigi/lines.json').exists() else set()
+# 台語配音（作者 10-29：只有阿桃姨、余伯的台語用聽的，其他人照舊不配）。voice/taigi/lines.json 裡標「通過」的句子才掛（TAIGI_ALL=1 全掛，本機試聽用），音檔在 assets/voice/<id>.mp3
+TAIGI_OK = {l['id'] for l in json.loads((R / 'voice/taigi/lines.json').read_text(encoding='utf-8'))['lines'] if l['status'] == 'ok' or os.environ.get('TAIGI_ALL')} if (R / 'voice/taigi/lines.json').exists() else set()
 
 
 def voice_ms(vid):

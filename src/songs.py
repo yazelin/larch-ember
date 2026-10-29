@@ -156,6 +156,10 @@ def apply(project, dist=None):
         if node['data'].get('type') == 'plugin' and li == 0 and cut['role'] == 'line_bgm':   # 片尾字卷插件卡：歌從進卡開始放
             node['data'].update(bgm=url, bgmVolume=BGM_VOL, bgmLoop=False); done.append(cut['id']); continue
         DL = node['data']['dialogueLines']
+        if cut['place']['anchor'] == 'first_sung':   # 改稿會讓行號跑掉（roses 改稿後歌卡插錯位置、歌詞又在對話裡唱一遍）：照唱的人找第一句（唱）
+            hit = [i for i, l in enumerate(DL) if l['speaker'] == cut.get('singer', '余靜') and l['text'].startswith('（唱）')]
+            li = hit[0] if hit else len(DL)
+            cut['place'] = {**cut['place'], 'line': li}
         if li >= len(DL) or (cut['place']['anchor'] not in ('first_sung', 'first') and cut['place']['anchor'] not in DL[li]['text']):
             print(f"songs: 略過 {cut['id']}（{cid} 第 {li} 句跟劇本對不上，重跑 songs_cut.py）"); continue
         role = cut['role']

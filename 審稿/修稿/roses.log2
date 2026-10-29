@@ -1,0 +1,2207 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /home/ct/larch-ember
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: max
+reasoning summaries: none
+session id: 01a18822-16d9-77b2-915f-9175d28a724c
+--------
+user
+你是這部視覺小說的編劇。讀 審稿/修稿/roses.packet2.md（修稿包：準則、這一場、問題清單、好句、別處引用的句子），再讀 design/玫瑰.md（作者定案的玫瑰改法）。照修稿包改 canon/劇本.md 裡的「## roses」這一場：類型「作者定案」那條一定要做到；其他問題照逐條改，沒被點到、也跟玫瑰改法無關的句子不動；好句盡量保留；（唱）歌詞逐字照原稿；〔圖：…〕標記照原稿位置。不要改任何檔案。只輸出改好的整場：第一行照抄 ## 標題行，之後每行「講者：台詞」，不要行號、不要說明。
+hook: SessionStart
+hook: SessionStart Completed
+codex
+我會先讀修稿包、玫瑰定案與原場景，核對修改範圍後，只輸出改好的整場。
+
+exec
+/bin/bash -lc "rg -n '"'^## '"' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+13:## open（冷開場：2026 年 10 月 14 日 16:40，永明戲院二樓化妝間）
+42:## market（1988 年，黃昏市場魚攤與運河石階）
+91:## livehouse（2001 至 2003 年，台北，河岸留言）
+123:## door2004（2004 年 10 月 14 日，永明戲院首場售票演唱會與後台門口）
+170:## roses（2006 至 2008 年，各地後台門口與錄音室）
+207:## monitor（2009 年，演唱會耳返爆音）
+252:## confess（2011 年後台門口與收音機，2013 年空舞台）
+322:## forget（2021 年 12 月，台中；2022 年，診間與家）
+375:## song2023（2023 年，台南老家寫歌；2024 年，廚房）
+413:## soundcheck（2026 年 10 月 14 日 16:00，永明戲院試音）
+439:## letter（2026 年 10 月 14 日 16:40 至 17:50，化妝間）
+501:## dark（18:00，天黑後的化妝間與後門）
+539:## canal（18:05 至 18:50，黃昏市場與運河石階）
+592:## concert（19:40，開演與〈晚安，台南〉）
+629:## verse3（〈晚安，台南〉第三段）
+641:## encore（安可，〈餘燼〉與側台）
+666:## kitchen（三天後清晨，台南老家廚房）
+
+exec
+/bin/bash -lc "rg --files -g AGENTS.md -g 'README.md' 審稿 design canon" in /home/ct/larch-ember
+ succeeded in 0ms:
+審稿/README.md
+
+exec
+/bin/bash -lc 'cat 審稿/修稿/roses.packet2.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+# 修稿包：roses
+
+# 寫稿準則（寫稿、改稿的人與 AI 都照這份；contest.py 與 runner.py packet 會自動帶入）
+
+摘自 `design/寫作標準.md`、`design/余靜改寫方向.md`（作者 2026-10-23 拍板）、`design/失智症反應研究.md` D 節、`design/結局C修改.md`、`tests/check_voice.py` 與 speak-tw 規則。設定以 `canon/劇本.md` 與這些檔為準，舊設計稿與劇本衝突時以劇本為準。
+
+1. 余靜面對忘記的方式：用笑遮羞，笑完安靜。玩笑只拿自己開，笑完沒有人接話時她看向別處、安靜下來。不拿別人開玩笑，不輕佻。
+2. 余靜的病識感時有時無：這一刻察覺自己不對勁，下一刻又不察覺。每一場要有一個她自己察覺的瞬間，不靠別人告訴她。
+3. 忘記要有代價：每一場要演出她失去了什麼、她怎麼感覺到。忘了也不在乎、只有忘沒有在補，都不要（研究 D 節）。
+4. 余靜為別人的感受道歉：看到對方臉色一變，先說對不起，不為自己辯解。她病了還在顧別人，掛心阿哲、周老師、程希。
+5. 余靜把丈夫當成「這裡的工作人員」時，對他客氣、有距離，覺得他讓人安心；只有身體記得的小儀式（半分鐘的水（作者 10-29：只留開場旁白、2011 年她交代「放半分鐘再給我」、第三段歌詞三處，其他地方遞水不講秒數）、敲兩下）會讓她不自覺放鬆，放鬆完她會愣一下。
+6. 程希一次只問一個問題、只給一個選項、自稱工作人員；他有脾氣、會碎念、會逞強，不是沒有情緒的聖人。
+7. 旁白只寫畫面上看得到的事，不解釋心情、不下結論、不寫情緒形容詞（難過、心疼、感動、溫柔地之類），不用比喻（像、彷彿、好像、似乎）。
+8. 心聲寫具體的念頭與身體的感覺，半句話也可以，不寫總結的感想。
+9. 對白要像真人：會打斷、說一半、答非所問、重複、顧左右而言他。出聲念念看，念不出口的書面語換掉（於是、並且、以及、此刻、而……）。
+10. 用看得到的小事說話：保溫杯、錶帶、耳墜、歌譜、票根、收音機、魚箱。形容詞不堆疊，一句不要掛一串動作。最痛的那一句不說出來，說出來的是旁邊那件小事。
+11. 台灣口語，正體中文、全形標點。不用破折號，不用「不是……而是」或「不是 X，是 Y」，不用 emoji，不用「長出」「長成」「接住」。 <!-- speak-tw-ok：這一行是在列禁用詞 -->
+12. 不寫金句，不用三連排比，不用「我沒有 X。我只是 Y」。客服句型（好，我記住了／謝謝你。／慢慢來／你先坐）不要。
+13. 單字連答不要連續超過兩句；連續一問一答不超過兩組；同一個句型整場不要反覆出現；單場心聲不超過 8 句。
+14. （唱）的句子逐字照 `canon/歌詞.md`，一個字都不能動；〈天烏烏〉是公有童謠，照劇本現有的句子。
+15. 台語台詞寫台語漢字，後面括號附華語字幕，照劇本現有寫法。
+16. 扣回的物件與句子照原樣保留（票根背面「河岸留言那晚，你唱〈天烏烏〉，我沒走。」、三排十四號、半分鐘的水、敲兩下、玫瑰放門內右邊、四折歌譜、手錶型 GPS「唱完再戴回去」、天烏烏、走音與「那我唱，你跳」、紙條「今天有人坐在三排十四號」、尾聲余靜問的「什麼演唱會？」（作者 10-19 指定）、天黑獨處她小聲說的「我不想忘記」（作者 10-29 指定））；要改就把引用的地方一起改（修稿包會列出），並跑 `tests/motif_check.py`。
+17. 每張卡的 `##` 標題、〔圖〕〔掉字〕標記、選項文字不動；歌曲切段的錨點句（`src/songs_cut.py` 的 anchor）不動。
+18. 長度不增加（作者擔心整個遊戲太長）：加了察覺與代價的句子，就刪掉純鬥嘴、沒有代價的句子。
+19. 不寫影視常見的錯誤：突然全好、一夕全忘、鏡子認不出自己當成預設畫面、驚嚇配樂式的演法、把病寫成懲罰（研究 D 節）。
+20. 作者要求句子由 codex 寫；Claude 負責對照準則與研究、套用、跑檢查，不憑口味挑版本或補句。
+
+## 這一場（行號｜內容）
+1｜## roses（2006 至 2008 年，各地後台門口與錄音室）
+3｜〔圖：s_roses_1〕
+4｜旁白：2006 年，演出散場後。後台門內右邊放著一朵深紅玫瑰，沒有卡片。
+5｜余靜：誰放的？別讓外人進後台。
+6｜工作人員：不知道。我進來就有了。
+7｜旁白：她先往走廊看，才彎腰拿花。
+8｜旁白：隔週台北，再下一場嘉義。散場後，同一個位置都有一朵。
+9｜旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。
+10｜余靜：我的譜還在裡面。你們先走。
+11｜旁白：她回到桌邊，拿起歌譜。周老師停在門邊。
+12｜周老師：最近老盯著台下那個角落，跟誰談戀愛啊？
+13｜余靜：第二段我又趕了。老師，下一場幫我拉住拍子。
+14｜余靜（心）：今天還沒放。鞋子換完再看一次。
+16｜〔圖：s_studio_1〕
+17｜旁白：2008 年，錄音室。她在歌詞紙最上面寫下「餘燼」，把「門口」圈起來。
+18｜余靜：（唱）燈一盞一盞暗下來
+19｜余靜：（唱）掌聲退回了街上
+20｜余靜：（唱）我把最後一個字收好
+21｜余靜：（唱）門口又有一朵紅
+22｜余靜：（唱）沒有名字 沒有卡片
+23｜余靜：（唱）花瓣上的露水還沒乾
+24｜余靜：（唱）是誰在散場以後
+25｜余靜：（唱）還不肯走
+26｜余靜：（唱）我不認得你的臉
+27｜余靜：（唱）卻認得你的安靜
+28｜余靜：（唱）如果我是一場餘燼
+29｜余靜：（唱）你是最後熄燈的人
+30｜余靜：（唱）台下坐滿了陌生人
+31｜余靜：（唱）只有一個位子 等得那麼認真
+32｜余靜：（唱）就算天黑了 全世界都散了
+33｜余靜：（唱）我還有一點紅 替你留著
+34｜余靜：（唱）不肯冷
+35｜余靜：謝謝，再來一次。「門口」那裡我唱太重了。
+36｜旁白：她喝了一口水，看著圈起來的「門口」。
+
+## 問題：必修 2 條（≥2 位讀稿人或主編提到），參考 17 條
+[0150] 必修 roses 行35 搭配不當（argon、deepseek）
+    原句：余靜：謝謝，再給我一軌。「門口」那裡我唱太重了。
+    為什麼：台灣錄音室裡歌手要求重唱一次，會說「再來一次」、「再給我一次」或「再錄一個 take」；「一軌（track）」是指混音工程的音軌，重唱一般不會說「再給我一軌」。
+    建議：argon:余靜：謝謝，再給我一次。「門口」那裡我唱太重了。 / deepseek:改成「謝謝，再來一軌。」
+[0151] 必修 roses 行8 搭配不當（argon、deepseek）
+    原句：旁白：隔週台北，再下一場嘉義。每場散場，同一邊都有一朵。
+    為什麼：指地上固定的擺放點，日常會說「同一個位置」或「同一個地方」，說「同一邊都有一朵」搭配不自然。
+    建議：argon:旁白：隔週台北，再下一場嘉義。每場散場，門邊同一個位置都有一朵。 / deepseek:改成「隔週在台北，下一場在嘉義。每次散場，同一個位置都有一朵。」
+[0146] 參考·升級 roses 行9 設定矛盾（argon）
+    原句：旁白：2007 年，高雄。她推開門，先往右邊看，地上空著。
+    為什麼：第 4 行設定花放在「後台門內右邊」，但接第 10、11 行她是準備離開後台而「退回門裡」，人本來就在門內，不必「推開門」才看得到門內右邊的地上。
+    建議：argon:旁白：2007 年，高雄。散場準備離開時，她走到門邊先往右邊看，地上空著。
+[0147] 參考·升級 roses 行14 設定矛盾（argon）
+    原句：余靜（心）：今天還沒放。鞋子換完再看一次。
+    為什麼：第 10 行她已經叫工作人員「先走」（代表已準備離開後台），這時卻還沒換下演出鞋；且她人一直留在門內，送花的人根本無法偷偷把花放到門內右邊。
+    建議：argon:余靜（心）：今天還沒放。等我去走廊繞一圈回來再看一次。
+[0148] 參考 roses 行13 搭配不當（argon）
+    原句：余靜：第二段我又趕了。老師，下場你拉我一下。
+    為什麼：在舞台與演出行話裡，「下場」是指「走下舞台」，指下一次演出台灣人會說「下一場」；且樂團提醒別搶拍通常說「幫我拉住（拍子／速度）」，單說「下場你拉我一下」像下台時扶她一把。
+    建議：argon:余靜：第二段我又趕拍了。老師，下一場你幫我拉住一下。
+[0363] 參考·升級 roses 行36 設定矛盾（argon）
+    原句：旁白：她喝了一口水，把歌詞紙翻回第一頁。
+    為什麼：這首歌才十七行，且第 17 行剛寫她在紙最上面寫歌名並圈起第四句的「門口」，錄音室歌詞只會印單張避免翻頁雜音，不可能需要翻回第一頁。
+    建議：argon:改成「她喝了一口水，低頭看著歌詞紙上圈起來的『門口』。」
+[0364] 參考 roses 行10 真人不會這樣說（argon）
+    原句：余靜：我的譜還在裡面。你們先走。
+    為什麼：走到門口假裝忘記拿東西，台灣人會說「忘在裡面」或「還沒收」，不會像報告物品位置一樣說「還在裡面」，且第 14 行顯示她連鞋都還沒換，根本還沒要離開。
+    建議：argon:改成「啊，我譜忘在裡面了，你們先走。」
+[0367] 參考 roses 行35 真人不會這樣說（argon）
+    原句：余靜：謝謝，再來一次。「門口」那裡我唱太重了。
+    為什麼：剛唱完最後一個字、控台都還沒出聲，歌手不會沒頭沒腦先道謝；「謝謝，再來一次」是製作人對歌手說的話。
+    建議：argon:改成「不好意思，再來一次，『門口』那句我唱太重了。」
+[0368] 參考 roses 行1 余靜：誰放的？別讓外人進後台。（geminiweb）
+    原句：5
+    為什麼：真人不會這樣說
+    建議：geminiweb:口氣過於生硬防備，不符合她「用笑遮羞、笑完安靜」或對工作人員客氣的設定。
+[0369] 參考 roses 行3 余靜：我的譜還在裡面。你們先走。（geminiweb）
+    原句：10
+    為什麼：真人不會這樣說
+    建議：geminiweb:台詞平板直接，缺乏面對他人時的掩飾或社交餘裕。
+[0370] 參考 roses 行4 周老師：最近都朝台下最暗那邊唱，跟誰談戀愛啊？（geminiweb）
+    原句：12
+    為什麼：口氣不合角色或身分
+    建議：geminiweb:資深老師對歌手開這種玩笑語氣太過偶像劇，不夠自然。
+[0371] 參考 roses 行5 余靜：第二段我又趕了。老師，下一場幫我拉住拍子。（geminiweb）
+    原句：13
+    為什麼：真人不會這樣說
+    建議：geminiweb:對話接不上
+[0372] 參考 roses 行6 余靜（心）：今天還沒放。鞋子換完再看一次。（geminiweb）
+    原句：14
+    為什麼：念不出口的書面語
+    建議：geminiweb:內心獨白像旁白在指揮行動，不夠貼近心理直覺。
+[0373] 參考 roses 行7 旁白：2008 年，錄音室。她在歌詞紙最上面寫下「餘燼」，把「門口」圈起來。（geminiweb）
+    原句：17
+    為什麼：旁白替讀者下結論或解釋心情
+    建議：geminiweb:動作描寫過於瑣碎且像舞台劇劇本指令，不符合純畫面呈現。
+[0525] 參考·升級 roses 行4 設定矛盾（argon）
+    原句：旁白：2006 年，演出散場後。後台門內右邊放著一朵深紅玫瑰，沒有卡片。
+    為什麼：花若放在「門內」，第 10–14 行余靜留在後台房裡等對方放花時，送花人就得開門進房而直接撞見她，也與後文寫的「門口」矛盾。
+    建議：argon:旁白：2006 年，演出散場後。後台門外右邊的地上放著一朵深紅玫瑰，沒有卡片。
+[0526] 參考 roses 行5 對話接不上（argon）
+    原句：余靜：誰放的？別讓外人進後台。
+    為什麼：才剛開口問「誰放的」，工作人員都還沒回答是不是內部人員放的，她就先斷定是外人並出言責備。
+    建議：argon:余靜：這誰放的？
+[0527] 參考 roses 行6 真人不會這樣說（argon）
+    原句：工作人員：不知道。我進來就有了。
+    為什麼：玫瑰花放在後台門口地上，工作人員進門時如果早就看到，不可能放任花丟在地上不管、等歌手自己發現才說這句。
+    建議：argon:工作人員：咦，不知道耶，剛剛開門還沒看到。
+[0528] 參考 roses 行17 含蓄到看不懂（argon）
+    原句：旁白：2008 年，錄音室。她在歌詞紙最上面寫下「餘燼」，把「門口」圈起來。
+    為什麼：還沒開口錄唱就在寫歌名時順手圈起「門口」，讀者看不懂為什麼這時候要圈，直到第 35 行才說是那裡唱太重，動作先後倒置。
+    建議：argon:旁白：2008 年，錄音室。她在歌詞紙最上面寫下「餘燼」，戴上耳機。
+[0649] 參考 roses 行整場 作者定案（作者）
+    原句：（整場）
+    為什麼：作者定案玫瑰改法（design/玫瑰.md）：花放在後台門「外」右邊，花梗夾著當晚的票根，是他交給場務放的，放了就走。場務提一句「又是那個少年仔」。余靜知道是 2004 年那個年輕人，半開玩笑請場務帶話，要他下次買三排十四號，她要找得到他；之後她對著三排十四號唱。不寫他進後台。
+共 19 條
+
+## 讀稿人挑出的好句（盡量保留）
+## roses（6 句）
+- 行10「余靜：我的譜還在裡面。你們先走。」｜她嘴上說找譜，手上卻已經拿著，等花的心思從這個小謊露出來。（codex）
+- 行14「余靜（心）：今天還沒放。鞋子換完再看一次。」｜她把花沒出現想成還沒送到，換鞋也成了多等一下的理由。（codex）
+- 行9「旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。」｜不用寫她心裡多失落，只寫「走到門邊，先往右邊看」，身體習慣就把一整年的等待演出來了。（argon）
+- 行13「余靜：第二段我又趕了。老師，下一場幫我拉住拍子。」｜被問起曖昧時不正面回答，直接拿演出拍子當擋箭牌，很有專業歌手愛面子又想藏心事的真實感。（argon）
+- 行14「余靜（心）：今天還沒放。鞋子換完再看一次。」｜心裡連「他今天沒來」都不肯承認，只說「還沒放」，把暗戀的嘴硬與期待寫得很準。（argon）
+- 行28-29「余靜：（唱）如果我是一場餘燼／你是最後熄燈的人」｜用「餘燼」與「熄燈」精準呼應了早期記憶逐漸冷卻、需要他人默默守候的疾病核心意象。（geminiweb）
+
+## 這些句子別處也有（改了要一起改，不然就保留原句）
+- 燈一盞一盞暗下來
+  canon/劇本.md:187、canon/劇本.md:211、canon/劇本.md:314、canon/劇本.md:319、canon/歌詞.md:16、tests/play_linear.mjs:9、tests/songs_sfx.mjs:7
+- 掌聲退回了街上
+  canon/劇本.md:188、canon/劇本.md:212、canon/歌詞.md:17、tests/songs_sfx.mjs:7
+- 我把最後一個字收好
+  canon/劇本.md:189、canon/劇本.md:213、canon/歌詞.md:18
+- 門口又有一朵紅
+  canon/劇本.md:190、canon/劇本.md:214、canon/歌詞.md:19
+- 沒有名字 沒有卡片
+  canon/劇本.md:191、canon/劇本.md:215、canon/歌詞.md:20
+- 花瓣上的露水還沒乾
+  canon/劇本.md:192、canon/劇本.md:216、canon/歌詞.md:21
+- 是誰在散場以後
+  canon/劇本.md:193、canon/劇本.md:217、canon/歌詞.md:22
+- 還不肯走
+  canon/劇本.md:194、canon/劇本.md:218、canon/歌詞.md:23
+- 我不認得你的臉
+  canon/劇本.md:195、canon/劇本.md:219、canon/歌詞.md:26、canon/歌詞.md:49
+- 卻認得你的安靜
+  canon/劇本.md:196、canon/劇本.md:220、canon/歌詞.md:27、canon/歌詞.md:50
+- 如果我是一場餘燼
+  canon/劇本.md:197、canon/劇本.md:221、canon/劇本.md:645、canon/歌詞.md:30、canon/歌詞.md:53、canon/歌詞.md:68
+- 你是最後熄燈的人
+  canon/劇本.md:198、canon/劇本.md:222、canon/劇本.md:646、canon/歌詞.md:31、canon/歌詞.md:54、canon/歌詞.md:69
+- 台下坐滿了陌生人
+  canon/劇本.md:199、canon/劇本.md:223、canon/歌詞.md:32、canon/歌詞.md:55
+- 只有一個位子 等得那麼認真
+  canon/劇本.md:200、canon/劇本.md:224、canon/歌詞.md:33、canon/歌詞.md:56
+- 就算天黑了 全世界都散了
+  canon/劇本.md:201、canon/劇本.md:225、canon/劇本.md:649、canon/歌詞.md:34、canon/歌詞.md:57、canon/歌詞.md:72
+- 我還有一點紅 替你留著
+  canon/劇本.md:202、canon/劇本.md:226、canon/劇本.md:650、canon/歌詞.md:35、canon/歌詞.md:58、canon/歌詞.md:73
+
+## 走哪條路
+逐條改：只改有問題的句子，沒被點到的句子不動。作者要求句子由 codex 寫：把這份修稿包交給 codex，你負責套用與驗證。不改的用 runner.py resolve <id> 不改 "理由" 結案。
+
+改完：python3 審稿/runner.py gate canon/劇本.md roses
+
+exec
+/bin/bash -lc 'cat design/玫瑰.md' in /home/ct/larch-ember
+exec
+/bin/bash -lc 'cat /home/ct/speak-tw/bin/speak-tw' in /home/ct/larch-ember
+ succeeded in 0ms:
+# 玫瑰這條線怎麼走（作者 2026-10-29 定案）
+
+作者試玩：「每次留下一朵玫瑰感覺好像不是浪漫的事，是有點噁男的恐怖的事。」三位寫手各提一案（審稿/比賽/意象_玫瑰/），作者選 opus 的做法：規矩是她定的，她知道是誰送的，他從來不跨進那道門，直到 2011 年她讓他進來。以下是那份提案原文。
+
+一、為什麼現在讓人不舒服
+花是匿名的，一送就是好幾年，跟著她跑遍各個城市，而且每次都放在「後台門內」。讀者看到的是：一個她不知道是誰的男人，每場都進得了她的私人空間。她從來沒有點頭，也沒有拒絕的機會。2009 年他已經在她身邊當工作人員，卻還是不說自己是誰。深紅玫瑰本來就是示愛，從陌生人手上一再出現，就變成「被盯上」，不是「被喜歡」。
+
+二、做法
+玫瑰和〈餘燼〉都留下來，改成一個約定：規矩是她開口定的，她知道是誰送的，他從來不跨進那道門。
+- 2004 年：散場時他塞完花轉身要跑，余靜朝他背影喊：「下次放門口就好，不要用塞的。」
+- 2006 到 2008 年：每場散場，他把一朵玫瑰夾著當晚的票根交給場務，放在後台門**外**右邊，放了就走，從不等她。余靜知道是 2004 年那個年輕人，只是不知道名字。她請場務帶話，要他下次買三排十四號：「我要找得到他。」從那以後她對著三排十四號唱。
+- 2009 年起：他接她的場當音控。有上班的場，他不送花，也不坐那個位子。
+- 2011 年：高雄那場他沒排班，又買了三排十四號。她推開門，撞見他蹲在門外，這才把名字、這張臉、2009 年側台救她的人對在一起。她叫他以後把花放門**內**右邊。從門外到門內，是她讓他進來的。
+
+三、每一場怎麼改
+- **door2004**：156 的「塞進她手裡」改成「遞到她手裡」。他轉身要跑時，加余靜一句：「下次放門口就好，不要用塞的。」他停一步、點個頭才跑。
+- **roses**：173 改成「後台門外右邊放著一朵深紅玫瑰，花梗夾著今晚的票根」，加場務一句：「又是那個少年仔，放了就走。」再加余靜一句：「叫他下次買三排十四號。我要找得到他。」原本「對著台下那片黑暗唱」改成「對著三排十四號唱」。
+- **monitor**：補一筆：那晚三排十四號空著，散場後門外第一次沒有花。側台那個人是誰，不點破。
+- **confess**：255 的「門內右邊」改成「門外右邊」，花梗上夾著三排十四號的票根。程希第一句是「有上班的場，我不送。」接著說「妳不要，我就不放了。」275 原句不動，意思變成她邀他進門。
+- **letter**：不動。473 那句「都是我交代的」現在剛好接回 2004 年和 2011 年她說過的兩次話。
+- **concert／encore**：不動。他們已經結婚，婚後的玫瑰不會有問題。
+- **設定檔**：
+  - 角色.md:32 補上「之後每場把花和票根交給場務，從不等她；有上班的場不送」，並寫明他學音響不是為了接近她。
+  - 角色.md:181 觸發句改成「送花的人連門都不敢進。」
+  - 重製.md:42、44 照上面的新版本改寫。
+
+四、歌詞〈餘燼〉
+「門口又有一朵紅」不用改，也不用重錄。字面照樣成立，意思從「又是誰」變成「他今天也來了」，反而更甜。
+
+不過我只看得到這一句。請你把整首對一遍：如果有「不知道你是誰」「黑暗裡有人看著我」「跟著我」這類句子，只改那一句，改成「知道是他、在等他」的意思，補錄那一句就好，不用整首重錄。沒有這類句子的話，整首都不動。
+
+五、要重畫的 CG 與要改的道具
+- **重畫**：s_mem2_* 裡 2006 到 2008 年後台門口有玫瑰的那張。花移到門外、門燈底下，花梗夾著票根。畫面調亮，不要用陰暗走廊的角度。
+- **重畫**：2011 年高雄撞見那張。程希蹲在門外，余靜從門內推開門，門檻剛好隔在兩人中間。這張會變成整條線的情感重心。
+- **小修（可選）**：2004 那張如果畫成硬塞，改成遞過去。
+- **新增道具**：一疊票根，包括 2006 到 2008 年各場的三排十四號，加上 2004 年背面有字的那張，跟乾燥玫瑰一起收在化妝箱裡。她把票根都留著，讀者就知道這份心意是雙向的。
+- 場務只要文字，不用立繪；不要叫他「阿伯」，免得跟余伯搞混。
+- 乾燥玫瑰、手帕、2026 年那朵花：不動。
+
+六、這個做法的風險
+1. **懸念變弱**：「花是誰送的」這個謎沒了，換成「他叫什麼、為什麼從不留下」。2011 年那場從抓包變成認出，要靠跨過門檻那一下撐住。
+2. **她主動得太快**：余靜要他坐三排十四號那句，如果寫得太認真會顯得太快，要寫成半開玩笑。
+3. **像混進她身邊**：2009 年他變成她的音控，還是可能被讀成這樣。「有上班的場不送」和「學音響不是為了她」這兩處一定要寫清楚，少一處就破功。
+4. **追巡迴還是偏重**：跟著她跑各個城市，少數讀者仍會覺得太多。票根證明他是買票進場的觀眾，有一點緩衝。也可以改成「她到的城市，他能去才去」，不要每場都到。
+5. **深紅玫瑰本身**：示愛的意味還是很強。如果改完試玩仍有人不舒服，次選是 2006 到 2008 年只送票根、不送花，花只出現在 2004 年和婚後。但這樣「一朵紅」那句歌詞就得改，要重錄。
+6. **歌詞其他句子**：如果〈餘燼〉其他句子跟新設定衝突，就要補錄。
+ succeeded in 0ms:
+#!/usr/bin/env node
+/* speak-tw — 講人話檢查。純靜態掃描,零相依,任何 agent 都能跑(它只是一支會回傳退出碼的程式)。
+
+   用法:
+     speak-tw <檔案或目錄...>        預設掃 .md/.html/.txt
+     speak-tw --public <路徑...>     連對外文字專用的規則一起套(全形標點、破折號、禁用詞)
+     speak-tw --stdin --public       從 stdin 讀一段文字檢查
+     speak-tw --rules a,b,c          只跑指定的規則(給 hook 用,對話不需要全套)
+     speak-tw --quiet                只回退出碼與一行摘要
+     speak-tw --list                 列出所有規則
+     speak-tw --json                 機器讀的輸出
+   有問題就 exit 1。
+
+   放行:在那一行加 speak-tw-ok(HTML 用 <!-- speak-tw-ok -->)。
+   要放行就要明講,不能默默通過。
+
+   設定檔 .speak-tw.json(放在被掃的目錄):
+     { "public": ["index.html"], "off": ["academic-filler"], "exclude": ["data/", "assets/"] }
+   public 列到的檔案自動套 public 規則;exclude 列到的路徑整個跳過
+   (產出物、別人的文字、錄下來的資料 —— 那些不是你寫的,不該被改)。 */
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+import { join, resolve, relative, extname } from 'node:path';
+import { RULES } from '../rules.mjs';
+
+const argv = process.argv.slice(2);
+const flag = (n) => argv.includes(n);
+const paths = argv.filter((a) => !a.startsWith('--'));
+const only = (argv.find((a) => a.startsWith('--rules=')) || '').slice(8).split(',').filter(Boolean);
+const SKIP = new Set(['node_modules', '.git', 'dist', 'build', 'vendor']);
+
+if (flag('--list')) {
+  for (const r of RULES) console.log(r.id.padEnd(18) + '[' + r.register + '] ' + r.name + '\n    ' + r.why);
+  process.exit(0);
+}
+
+/* 只檢查「人會讀到的字」:程式碼、網址、HTML 標籤裡的東西不算。
+   位置要對得上原文,所以用等長的空白換掉,不是刪掉。 */
+function stripCode(text, ext) {
+  const blank = (m) => m.replace(/[^\n]/g, ' ');
+  let s = text;
+  if (ext === '.md') {
+    s = s.replace(/```[\s\S]*?```/g, blank).replace(/`[^`\n]*`/g, blank)
+         .replace(/^ {4}\S[^\n]*$/gm, blank);
+  }
+  if (ext === '.html') {
+    s = s.replace(/<(script|style|pre|code)[\s\S]*?<\/\1>/gi, blank)
+         .replace(/<[^>]+>/g, blank);
+  }
+  return s.replace(/https?:\/\/\S+/g, blank);
+}
+
+function collect(p) {
+  const out = [];
+  const st = statSync(p);
+  if (st.isFile()) { out.push(p); return out; }
+  (function walk(d) {
+    for (const n of readdirSync(d)) {
+      if (SKIP.has(n) || n.startsWith('.')) continue;
+      const q = join(d, n); const s = statSync(q);
+      if (s.isDirectory()) walk(q);
+      else if (/\.(md|html|txt)$/.test(n) && s.size < 2_000_000) out.push(q);
+    }
+  })(p);
+  return out;
+}
+
+function configFor(root) {
+  const f = join(root, '.speak-tw.json');
+  try { return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : {}; } catch (e) { return {}; }
+}
+
+const targets = (paths.length ? paths : ['.']).map((p) => resolve(p));
+const root = statSync(targets[0]).isDirectory() ? targets[0] : resolve(targets[0], '..');
+const cfg = configFor(root);
+const off = new Set(cfg.off || []);
+const publicList = (cfg.public || []).map((p) => resolve(root, p));
+const excludes = (cfg.exclude || []).map((p) => resolve(root, p));
+const excluded = (f) => excludes.some((e) => resolve(f) === e || resolve(f).startsWith(e.replace(/\/?$/, '/')));
+
+const hits = [];
+const files = flag('--stdin') ? ['<stdin>'] : [...new Set(targets.flatMap(collect))].filter((f) => !excluded(f));
+
+for (const f of files) {
+  const text = f === '<stdin>' ? readFileSync(0, 'utf8') : readFileSync(f, 'utf8');
+  const ext = f === '<stdin>' ? '.md' : extname(f);
+  const isPublic = flag('--public') || publicList.includes(resolve(f));
+  const clean = stripCode(text, ext);
+  const lines = text.split('\n');
+  const starts = []; let acc = 0;
+  for (const l of lines) { starts.push(acc); acc += l.length + 1; }
+  for (const r of RULES) {
+    if (off.has(r.id)) continue;
+    if (only.length && !only.includes(r.id)) continue;
+    if (r.register === 'public' && !isPublic) continue;
+    for (const m of clean.matchAll(r.re)) {
+      let ln = starts.findIndex((s, i) => m.index >= s && (i === starts.length - 1 || m.index < starts[i + 1]));
+      if (ln < 0) ln = 0;
+      if (/speak-tw-ok/.test(lines[ln])) continue;
+      hits.push({ file: f, line: ln + 1, rule: r.id, name: r.name, why: r.why, text: m[0].trim().slice(0, 60) });
+    }
+  }
+}
+
+if (flag('--json')) { console.log(JSON.stringify(hits, null, 1)); process.exit(hits.length ? 1 : 0); }
+
+if (flag('--quiet')) {
+  const ids = [...new Set(hits.map((h) => h.rule))];
+  if (hits.length) console.log(hits.length + ' 處：' + ids.join('、'));
+  process.exit(hits.length ? 1 : 0);
+}
+const byRule = {};
+for (const h of hits) (byRule[h.rule] ||= []).push(h);
+for (const [id, hs] of Object.entries(byRule)) {
+  console.log('\n' + id + '　' + hs[0].name + '（' + hs.length + ' 處）');
+  console.log('  ' + hs[0].why);
+  for (const h of hs.slice(0, 8)) {
+    const loc = h.file === '<stdin>' ? '' : relative(process.cwd(), h.file) + ':' + h.line + '  ';
+    console.log('    ' + loc + h.text);
+  }
+  if (hs.length > 8) console.log('    …還有 ' + (hs.length - 8) + ' 處');
+}
+console.log('\n掃了 ' + files.length + ' 個檔案，' + hits.length + ' 處要改');
+if (hits.length) console.log('確定某一處是刻意的，就在那一行加 speak-tw-ok');
+process.exit(hits.length ? 1 : 0);
+
+exec
+/bin/bash -lc 'rg --files -g AGENTS.md -g .speak-tw.json /home/ct/larch-ember /home/ct/speak-tw' in /home/ct/larch-ember
+ succeeded in 0ms:
+/home/ct/larch-ember/.speak-tw.json
+
+exec
+/bin/bash -lc "sed -n '252,283p' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+## confess（2011 年後台門口與收音機，2013 年空舞台）
+
+〔圖：s_mem2_4〕
+旁白：2011 年，高雄。散場後，余靜還沒卸妝就推開後台門。程希蹲在門內右邊，手還壓著玫瑰的花梗。
+余靜：你放的喔。
+程希：還沒放好，腳借過一下。
+旁白：她把腳收回來，站在門裡。他拿起花，扶著門框站起。
+余靜：我拿。你手上還有膠帶，別黏到花瓣。
+程希：2004 年那朵也是我。
+余靜：三排十四號？
+程希：那天妳叫我，我不敢回頭。
+余靜：那你先別跑。我有東西給你看。
+
+〔圖：s_mem2_6〕
+旁白：她從歌譜的透明夾層抽出票根，正面朝向他。翻到背面時，她把票拿近了些。
+余靜：（念）河岸留言那晚，你唱〈天烏烏〉，我沒走。
+余靜：河岸……你坐最裡面那桌。人家收椅子了，你還坐著。
+程希：我有跟店員說，等妳唱完，我那張自己收。
+余靜：那晚我第二句就破了。
+程希：妳重唱了，還叫台下別聊天。
+旁白：她翻回正面，又翻到背面，手指壓著票角。
+余靜：以後去敲門，敲兩下，別蹲在這裡。
+程希：妳在換衣服，我敲了也……
+余靜：那就等我叫再進來。玫瑰放門內右邊，不要壓到線。
+程希：我比妳知道線在哪裡。
+余靜：剛剛那條就在你膝蓋下面。
+旁白：他低頭看鞋邊，往旁邊退了半步。
+
+〔圖：s_mem2_7〕
+旁白：他拿出保溫杯，倒了水。她接過，嘴唇一碰就推回來。
+余靜：燙。你在門口待這麼久，水怎麼還這麼燙。
+程希：保溫杯啊。不然買它幹嘛。
+
+exec
+/bin/bash -lc "sed -n '123,207p' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+## door2004（2004 年 10 月 14 日，永明戲院首場售票演唱會與後台門口）
+
+〔圖：s_door_1〕
+旁白：永明戲院台側，余靜扶著牆脫下一隻高跟鞋。台下喊著安可。
+周老師：四百多張，坐得還滿。
+余靜：大半都台南人啦。我阿爸剛剛還在報今天的魚價。
+旁白：她穿回鞋子，走上舞台。
+旁白：余伯坐在台下，西裝外套的袖口露出一截襯衫。
+余靜（心）：就那一件西裝，從我小時候穿到現在。
+余靜：阿爸，你先不要拍。我怕你一拍，我就唱快了。
+旁白：她朝周老師擺了擺手，把麥克風拿近嘴邊。
+余靜：這首不用琴。阿爸，你聽我有沒有唱錯。
+余靜：（唱）天烏烏，欲落雨。（天黑黑，要下雨。）
+余靜：（唱）阿公仔舉鋤頭欲掘芋。（阿公拿鋤頭要挖芋頭。）
+余靜：（唱）掘啊掘，掘啊掘，掘著一尾旋鰡鼓。（挖呀挖，挖呀挖，挖到一尾泥鰍。）
+旁白：余伯坐著拍手，西裝袖口往上縮了一截。
+旁白：第三排第十四個位子，一個年輕人等她放低麥克風，才抬起兩手。
+
+〔圖：s_mem1_1〕
+旁白：散場後，雨剛停。她披著罩衫，夾著歌譜走到後台門口。余伯拿手帕擦手。
+旁白：她拉過他的手，翻過來看。
+余靜：阿爸，又去洗手喔？
+余伯：兩擺矣，猶是洗袂掉。（兩次了，還是洗不掉。）
+余靜：不要再搓了，手都紅了。袖口塞進去啦。
+旁白：她把他的襯衫袖口推回西裝裡。
+〔圖：s_mem1_2〕
+旁白：門燈下，年輕人捏著深紅玫瑰，把票根遞到她面前。
+余靜：三排十四號，我剛剛有看到你。
+旁白：年輕人張了張嘴，大拇指一直摳著手裡的票角。
+年輕人：我……
+余靜：花梗都捏彎了。鬆一點啦。
+
+〔圖：s_mem1_3〕
+旁白：他把玫瑰和票根一起塞進她手裡，碰到她的指尖就縮回手。
+余靜：欸，等我一下。
+旁白：她挪開花梗，年輕人已經轉身跑進巷子。
+余靜：名字！你還沒講名字！
+
+〔圖：s_mem1_4〕
+旁白：她追出兩步，踩進積水才停下。水漫過鞋口。
+余靜：剛剛就該先換鞋。
+余伯：伊是啥人？（他是誰？）
+余靜：不知道。話都沒講完就跑了。
+旁白：票根正面蓋著「三排十四號」。她把票根正面朝外，夾進歌譜的透明夾層。
+余靜：阿爸，花幫我拿一下。我鞋子進水了。
+旁白：余伯接過花，托住花梗。她扶著門框，脫下一隻鞋。
+
+## roses（2006 至 2008 年，各地後台門口與錄音室）
+
+〔圖：s_roses_1〕
+旁白：2006 年，演出散場後。後台門內右邊放著一朵深紅玫瑰，沒有卡片。
+余靜：誰放的？別讓外人進後台。
+工作人員：不知道。我進來就有了。
+旁白：她先往走廊看，才彎腰拿花。
+旁白：隔週台北，再下一場嘉義。散場後，同一個位置都有一朵。
+旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。
+余靜：我的譜還在裡面。你們先走。
+旁白：她回到桌邊，拿起歌譜。周老師停在門邊。
+周老師：最近老盯著台下那個角落，跟誰談戀愛啊？
+余靜：第二段我又趕了。老師，下一場幫我拉住拍子。
+余靜（心）：今天還沒放。鞋子換完再看一次。
+
+〔圖：s_studio_1〕
+旁白：2008 年，錄音室。她在歌詞紙最上面寫下「餘燼」，把「門口」圈起來。
+余靜：（唱）燈一盞一盞暗下來
+余靜：（唱）掌聲退回了街上
+余靜：（唱）我把最後一個字收好
+余靜：（唱）門口又有一朵紅
+余靜：（唱）沒有名字 沒有卡片
+余靜：（唱）花瓣上的露水還沒乾
+余靜：（唱）是誰在散場以後
+余靜：（唱）還不肯走
+余靜：（唱）我不認得你的臉
+余靜：（唱）卻認得你的安靜
+余靜：（唱）如果我是一場餘燼
+余靜：（唱）你是最後熄燈的人
+余靜：（唱）台下坐滿了陌生人
+余靜：（唱）只有一個位子 等得那麼認真
+余靜：（唱）就算天黑了 全世界都散了
+余靜：（唱）我還有一點紅 替你留著
+余靜：（唱）不肯冷
+余靜：謝謝，再來一次。「門口」那裡我唱太重了。
+旁白：她喝了一口水，看著圈起來的「門口」。
+
+## monitor（2009 年，演唱會耳返爆音）
+
+exec
+/bin/bash -lc "sed -n '1,220p' tests/motif_check.py" in /home/ct/larch-ember
+ succeeded in 0ms:
+#!/usr/bin/env python3
+"""伏筆帳（評分六，作者 2026-10-23）：扣回物件在 A／B／C 三條路線上，每個「回收」之前都要有出處。
+python3 tests/motif_check.py [劇本.md]   預設 canon/劇本.md；有回收沒有出處就 exit 1。
+路線＝劇本順序的共同場景（結局與程希視角以外）＋該結局的 ending_<x>* 場景。地圖調查點的實際觸發順序由玩家決定，這裡用劇本順序近似；
+所以「出處」只認共同場景與回憶，回收認結局場景。"""
+import re, sys, pathlib
+p = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent / 'canon/劇本.md'
+MOTIFS = {   # 名稱：比對樣式
+    '票根背面的字': r'河岸留言那晚',
+    '三排十四號': r'三排十四號|第三排左邊第十四',
+    '半分鐘的水': r'半分鐘',
+    '敲兩下': r'敲兩下|敲了兩下|敲兩聲',
+    '玫瑰放門內右邊': r'門內右邊',
+    '四折歌譜': r'四折|摺四|折四|四道折痕|摺成四|對摺兩次',
+    '手錶型 GPS': r'手錶|定位手錶|GPS',
+    '「唱完再戴回去」': r'唱完再戴|唱完戴回',
+    '天烏烏': r'天烏烏|天黑黑',
+    '走音／那我唱你跳': r'走音|我唱，你跳',
+    '紙條「今天有人坐在三排十四號」': r'今天有人坐在三排十四號',
+}
+text = p.read_text(encoding='utf-8').split('\n## 修改紀錄')[0]
+scenes = [(m.group(1), m.group(2)) for m in re.finditer(r'^## ([A-Za-z0-9_]+)[^\n]*\n(.*?)(?=^## |\Z)', text, re.S | re.M)]
+common = [c for c, _ in scenes if not c.startswith(('ending_', 'cheng_pov'))]
+routes = {x: common + [c for c, _ in scenes if c.startswith(f'ending_{x}')] for x in 'abc'}
+body = dict(scenes)
+bad = 0
+for name, pat in MOTIFS.items():
+    where = [c for c, b in scenes if re.search(pat, b)]
+    first = where[0] if where else '（沒有出現）'
+    print(f'■ {name}：第一次 {first}；出現在 {len(where)} 場')
+    for x, order in routes.items():
+        pay = [c for c in order if c.startswith('ending_') and re.search(pat, body[c])]
+        setup = [c for c in order if not c.startswith('ending_') and re.search(pat, body[c])]
+        if pay and not setup:
+            bad += 1; print(f'    ✗ 結局 {x.upper()} 回收在 {"、".join(pay)}，之前沒有出處')
+        elif pay:
+            print(f'    結局 {x.upper()}：出處 {setup[0]}（共 {len(setup)} 場）→ 回收 {"、".join(pay)}')
+        elif setup:
+            print(f'    結局 {x.upper()}：只有鋪陳、這條路線沒有回收')
+    if where and all(not c.startswith('ending_') for c in where) and len(where) == 1:
+        print('    提醒：只出現一次，沒有回收')
+print(f'回收沒有出處 {bad} 處'); sys.exit(1 if bad else 0)
+
+exec
+/bin/bash -lc 'cat canon/歌詞.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+# 劇中兩首歌：歌詞與 Suno 提示
+
+兩首都是原創歌詞。風格提示不寫任何真實歌手的名字。
+
+## 〈餘燼〉（2008，余靜的成名曲）
+
+劇情：她寫給那個每場散場都在後台門口放一朵深紅玫瑰、從不署名的人。她不知道那個人就是程希，唱給他聽了十八年；2011 年他承認的那一晚，她才知道這首歌寫給了誰。
+遊戲裡：結局 B 她換唱這首、一字不錯；結局 A 安可；結局 C 尾聲阿哲在空戲院放這首；收音機的告別特輯也播這首。
+
+### 歌詞（貼進 Suno 的 Lyrics）
+
+```
+[Intro]
+
+[Verse 1]
+燈一盞一盞暗下來
+掌聲退回了街上
+我把最後一個字收好
+門口又有一朵紅
+沒有名字 沒有卡片
+花瓣上的露水還沒乾
+是誰在散場以後
+還不肯走
+
+[Pre-Chorus]
+我不認得你的臉
+卻認得你的安靜
+
+[Chorus]
+如果我是一場餘燼
+你是最後熄燈的人
+台下坐滿了陌生人
+只有一個位子 等得那麼認真
+就算天黑了 全世界都散了
+我還有一點紅 替你留著
+不肯冷
+
+[Verse 2]
+下一座城 下一個晚上
+同一種紅在門外
+我開始對著那片黑暗唱
+好像知道你在
+你從來不說話
+我也從來不問
+我們就這樣
+過了一年又一年
+
+[Pre-Chorus]
+我不認得你的臉
+卻認得你的安靜
+
+[Chorus]
+如果我是一場餘燼
+你是最後熄燈的人
+台下坐滿了陌生人
+只有一個位子 等得那麼認真
+就算天黑了 全世界都散了
+我還有一點紅 替你留著
+不肯冷
+
+[Bridge]
+有一天我會忘記
+今晚唱過什麼
+你替我記得好嗎
+我今晚唱到燈熄掉
+
+[Final Chorus]
+如果我是一場餘燼
+你是最後熄燈的人
+就算我認不出你
+也請你 坐在那裡
+就算天黑了 全世界都散了
+我還有一點紅 替你留著
+不肯冷
+
+[Outro]
+不肯冷
+```
+
+### 風格（貼進 Suno 的 Style）
+
+```
+Mandarin female vocal, low husky alto, breathy and intimate, slow piano ballad, 68 bpm, grand piano, warm strings swelling in the chorus, 2000s Taiwanese Mandopop ballad, concert hall reverb, emotional, restrained
+```
+
+### 歌名（Title）
+
+```
+餘燼
+```
+
+## 〈晚安，台南〉（2023，停演前寫的最後一首新歌）
+
+劇情：確診一年後、搬回台南前寫的，寫給家鄉、父親的魚攤、運河。她唱得最少，所以告別演唱會第三首就是它，主歌只有周老師的鋼琴、自由速度，提詞當機時周老師停下來等她。
+遊戲裡：試音唱前四句；開演第三首（A、B 共用的高潮，唱到副歌結束提詞全黑）；結局 A 唱第三段。副歌的「淑靜仔 叫我一聲」呼應結局 C 阿桃姨在運河邊叫她「淑靜仔」。第三段「他把保溫杯打開／等半分鐘才遞給我」呼應全劇的半分鐘。
+（2026-10-23：Suno 實際唱的是 codex 寫的這版；先前的舊詞存在 canon/歌詞-晚安-舊版.md。）
+
+### 歌詞
+
+```
+[Verse 1]
+天還沒亮攤就開了
+阿爸扛來一桶冰
+收音機沙沙響
+冰水流過地磚
+魚鱗黏在圍裙
+我伸手幫他拍掉
+他秤好最後一尾
+才問我吃飽沒
+
+[Verse 2]
+運河風從橋下來
+路燈照著濕石階
+明天若我不認得你
+請把屋裡燈留著
+魚攤收了水還滴
+我沿著亮處回家
+
+[Chorus]
+淑靜仔 叫我一聲
+名字先留在你這裡
+哪天我走丟了
+再叫我一聲就好
+水邊的燈還亮著
+我聽見就回家
+
+[Verse 3]
+有人坐在我身旁
+我想不起他是誰
+他把保溫杯打開
+等半分鐘才遞給我
+杯口的熱氣散了
+他還坐在我身邊
+有他陪我 我不怕
+
+[Final Chorus]
+淑靜仔 叫我一聲
+名字先留在你這裡
+哪天我走丟了
+再叫我一聲就好
+水邊的燈還亮著
+我聽見就回家
+
+[Outro]
+晚安 台南
+你把燈留著
+```
+
+### 風格
+
+```
+Mandarin female vocal, low husky alto, tender and fragile, rubato solo piano for the first two verses, then soft cello and nylon-string guitar join, sparse folk ballad, 64 bpm, intimate, night, hometown, gentle ending
+```
+
+### 歌名
+
+```
+晚安，台南
+```
+
+## 父親收音機裡的台語老歌〈港邊的燈〉（劇中設定 1980 年代的老歌）
+
+劇情：1988 年魚攤收攤時，父親的收音機在放的台語歌。遊戲裡只用一小段，從收音機裡傳出來，要聽起來像 AM 廣播：單聲道、有雜訊。
+台語發音 Suno 不一定唸得準，隔著收音機的雜訊比較不明顯；不行的話只留伴奏。
+
+### 歌詞
+
+```
+[Verse]
+港邊的燈 一葩一葩光
+討海的人 猶未轉來
+阮徛佇岸邊 等你的船
+風吹冷冷 心肝燒燒
+
+[Chorus]
+燈若熄 船就到
+阮的心 替你留一葩
+燈若熄 船就到
+阮佇遮 等你轉來
+```
+
+### 風格
+
+```
+1980s Taiwanese Hokkien ballad, mature male vocal, accordion and electric organ, slow waltz, nostalgic harbour song, AM radio lo-fi, mono, vinyl crackle
+```
+
+### 歌名
+
+```
+港邊的燈
+```
+
+## 〈天烏烏〉（台語傳統童謠，公有；2026-10-29 改成要生成）
+
+重製版拿掉配音後，劇本裡四段〈天烏烏〉都沒有聲音。歌詞照劇本現有的句子，三個版本各生一次，全部清唱、不配伴奏。
+台語發音 Suno 不一定唸得準；唸成華語的那一首就重生。
+
+### 一、父女版（1988，運河石階刷魚箱）
+
+阿爸唱一句，九歲的淑靜跟一句。用在 market 後半。
+
+歌詞：
+
+```
+[Father]
+天烏烏，欲落雨
+[Girl]
+天烏烏，欲落雨
+[Father]
+阿公仔舉鋤頭欲掘芋
+[Girl]
+阿公仔舉鋤頭欲掘芋
+```
+
+風格：
+
+```
+Taiwanese Hokkien children's folk song, a cappella, call and response, a rough middle-aged fisherman father sings one line then a 9-year-old girl repeats it, outdoors by a canal at dusk, playful and warm, no instruments
+```
+
+歌名：`天烏烏（父女）`
+
+### 二、清唱版（2001 河岸留言、2004 永明戲院安可）
+
+二十多歲的余靜一個人清唱三句。最後一個字「鼓」要拉長，劇本裡她堅持把這個字唱完。同一首用在兩場，戲院那場另外加殘響。
+
+歌詞：
+
+```
+[Verse]
+天烏烏，欲落雨
+阿公仔舉鋤頭欲掘芋
+掘啊掘，掘啊掘，掘著一尾旋鰡鼓
+```
+
+風格：
+
+```
+Taiwanese Hokkien children's folk song, a cappella, solo young female vocal, slow and tender, intimate, clear diction, long sustained final note, no instruments, no harmony
+```
+
+歌名：`天烏烏（清唱）`
+
+### 三、哼唱版（2026，天黑後蹲在運河石階）
+
+四十七歲的余靜小聲哼一句，像在哄自己。用在 canal。
+
+歌詞：
+
+```
+[Humming]
+天烏烏，欲落雨
+```
+
+風格：
+
+```
+Taiwanese Hokkien lullaby fragment, a cappella, soft humming and half-whispered singing, mature female vocal, fragile, outdoors by water at night, no instruments
+```
+
+歌名：`天烏烏（哼）`
+
+### 評歌
+
+- 台語要唸對：「烏」唸 oo、「欲」唸 beh、「芋」唸 ōo；唸成華語就重生。
+- 不能有伴奏、鼓、合聲。
+- 父女版要聽得出兩個人：一個大人男聲、一個小女孩。
+- 清唱版最後的「鼓」要拉長，不能被切掉。
+
+## 不用生成的
+
+- 母親唱詩班的聖詩〈奇異恩典〉：詞 1779、曲 1835，公有，清唱一小段。
+
+## 評歌標準
+
+### 三首共通
+
+一定要有（任一項沒做到就重生，不用往下聽）：
+1. **歌詞照唱**：每一句都在、順序對，沒有跳句、自己加字、含糊帶過。
+2. **咬字是台灣國語**：沒有兒化音、沒有大陸腔的捲舌與字音（例如「熄」台灣唸 ㄒㄧˊ，大陸唸 ㄒㄧ；「一場」「一朵」不要兒化）。
+3. **結尾是真的結束**：不是唱到一半被切掉、不是突然停在半拍。
+4. **沒有破音與雜訊瑕疵**：人聲沒有電音般的抖動、沒有兩個聲音疊在一起的地方。
+
+加分：
+- 人聲像同一個人：〈餘燼〉和〈晚安，台南〉都要聽得出是余靜，低、有點沙、靠氣息撐高音，不是尖亮的流行女聲。
+- 副歌第一次聽就記得住旋律。
+
+### 〈餘燼〉
+
+一定要有：
+- 慢版鋼琴抒情，68 拍左右；副歌有弦樂撐起來。
+- 橋段「你替我記得好嗎／我今晚唱到燈熄掉」要唱得最輕、最清楚，這是劇情的關鍵句。
+- 最後的「不肯冷」收得住，不要拖成大炫技。
+- 前奏至少有 8 秒乾淨的鋼琴（標題畫面與地圖 BGM 要從這裡剪）。
+
+加分：
+- 有一點 2000 年代台灣抒情歌的味道：副歌升 key 或弦樂進來那一下會起雞皮疙瘩。
+- 人聲年紀聽起來 30 歲上下（2008 年的她 29 歲）。
+
+### 〈晚安，台南〉
+
+一定要有：
+- **第一、二段主歌只有鋼琴**，速度自由、會停頓。這是高潮那一刻的依據（提詞當機時周老師停下來等她），沒有這個就不能用。
+- 副歌「淑靜仔 叫我一聲／哪天我走丟了／再叫我一聲就好」清楚、輕，不要唱得很用力。
+- 比〈餘燼〉更脆弱、更慢；大提琴或木吉他第三段才進來。
+
+加分：
+- 人聲比〈餘燼〉老一點、累一點（2023 年的她 44 歲、剛確診一年）。
+- 「我想不起他是誰／他把保溫杯打開／等半分鐘才遞給我／有他陪我 我不怕」那一段會讓人鼻酸。
+
+### 〈港邊的燈〉
+
+一定要有：
+- 聽起來像 1980 年代的台語老歌：手風琴或電子琴、慢三拍子、男聲。
+- 有收音機的質感（單聲道、雜訊）；不夠的話我後製再加。
+
+加分：
+- 台語聽得懂「燈若熄 船就到」這一句。
+- 唸不準也沒關係，只用一小段，必要時只留伴奏。
+
+### 怎麼聽、怎麼回報
+
+Suno 一單出 2 版（網頁版每次兩首），每首建議先送 2 單、共 4 版再挑。
+每一版照上面的「一定要有」打勾，過關的再比加分項。回報給我時，告訴我：
+- 選哪一版（Suno 的網址或下載的檔名）。
+- 如果某一版只差一點（例如只有一句唸錯），記下是第幾秒，我可以只剪那一段，或你用 Suno 的「Replace section」重唱那一句。
+
+## 生成之後
+
+歌檔（作者在 Suno 做的，原檔不進 git）放進 `assets/songs/`，檔名與接線見 `assets/songs/README.md`；用到的逐句時間由 `python3 src/songs_times.py` 從公開站的 LRC 轉出，再 `python3 src/songs_cut.py --build` 切段並建置。
+
+exec
+/bin/bash -lc 'cat src/songs_cut.py' in /home/ct/larch-ember
+ succeeded in 0ms:
+#!/usr/bin/env python3
+"""接歌工具：assets/songs/*.mp3（作者在 Suno 做的三首）→ 對齊歌詞時間 → 依對照表切段 → assets/songs/cuts/*.mp3 + manifest.json。
+
+    python3 src/songs_cut.py              # 處理 assets/songs/ 底下有的歌（沒放的歌略過）
+    python3 src/songs_cut.py --build      # 切完直接 build（等於接著跑 python3 src/build.py）
+    python3 src/songs_cut.py --only ember_b1,night_sc    # 只重切指定段
+    SONGS_DIR=assets/songs/_fixture python3 src/songs_cut.py   # 測試用：換資料夾（替身音檔）
+
+做的事：
+1. 轉錄：呼叫共用 whisper-server（~/.mori/whisper-server.json；沒開就用 mori-whisper-serve --ensure 拉起 large-v3-turbo），
+   逐字時間（srt, max_len=1）。只取時間，字一律以 canon/歌詞.md 為準。
+2. 對齊：歌詞字與轉錄字做全域單調對齊（DP，順序約束，所以第 2、3 次副歌不會全黏到第一次），每句取時間與信心。
+3. 切點：落在句與句之間、能量最低的地方（不在字中間）；每段響度 -16 LUFS（雙遍 loudnorm），mp3 盡量小於 1.5MB。
+   收音機版（sfx）：單聲道、約 300–3400 Hz、輕微失真與底噪、整體降音量。
+4. 驗證：把切出來的檔讀回，頭 3 秒、尾 3 秒各轉錄一次，和預期那句比對；另做負控制（拿錯的句子比對，分數必須明顯較低）。
+5. 寫 manifest.json（檔名、卡與句序、起迄、類型、每句時間、驗證結果）。src/songs.py 的 apply() 讀它。
+"""
+import argparse, hashlib, io, json, os, pathlib, re, subprocess, sys, tempfile, time, urllib.request, wave
+
+import numpy as np
+
+HERE = pathlib.Path(__file__).resolve().parent
+ROOT = HERE.parent
+sys.path.insert(0, str(HERE))
+
+SONGS_DIR = pathlib.Path(os.environ.get('SONGS_DIR') or ROOT / 'assets/songs')
+if not SONGS_DIR.is_absolute():
+    SONGS_DIR = ROOT / SONGS_DIR
+SONGS_DIR = SONGS_DIR.resolve()
+CUT_DIR = SONGS_DIR / 'cuts'
+CACHE = ROOT / '.songs-cache' / hashlib.md5(str(SONGS_DIR).encode()).hexdigest()[:8]   # 轉錄與中間檔（不進 assets，不進 dist）
+
+TARGET_LUFS = -16.0          # 歌略大聲：背景曲約 -16.3 LUFS，卡上 bgmVolume 0.5；歌的 bgmVolume 設 0.65（songs.py）
+RADIO_LUFS = -17.0           # 收音機版：地圖背景曲 -16.2 LUFS 掛 0.4 = 約 -24.2，收音機 -17 × sfxVolume 0.9 = 約 -17.9，高出約 6 dB（窄頻容易被全頻背景曲蓋住）
+MAX_BYTES = 1_500_000
+MAX_BYTES_LONG = 3_600_000   # 超過 120 秒的段
+SR = 44100
+
+# ---------------------------------------------------------------- 歌詞
+
+SONG_FILES = {'餘燼': '餘燼.mp3', '晚安，台南': '晚安台南.mp3', '港邊的燈': '港邊的燈.mp3'}
+# 同一首歌的不同編曲：虛擬歌名「歌@版本」→（歌詞用哪首, 專屬檔名）。沒有專屬檔就退回主檔（替身測試用）。
+VERSIONS = {'餘燼@錄音室': ('餘燼', '餘燼-錄音室.mp3'), '餘燼@台下': ('餘燼', '餘燼-台下.mp3'), '餘燼@大合唱': ('餘燼', '餘燼-大合唱.mp3'),
+            '餘燼@合聲': ('餘燼', '餘燼-合聲.mp3')}
+# 句子時間不走辨識與對齊的歌（手標或 LRC）。每句 (起, 迄) 秒，順序同 canon/歌詞.md；只在音檔指紋（md5 前 10 碼）對得上時啟用。
+# 港邊的燈：台語辨識幾乎對不上字，句子時間由人聽能量低谷手標（2026-10-23）。
+MANUAL_LINES = {'港邊的燈': [(14.9, 24.7), (24.7, 33.7), (33.7, 43.7), (43.7, 54.0), (54.5, 61.2), (61.2, 69.8), (70.0, 77.8), (77.8, 95.0)]}
+MANUAL_SHA = {'港邊的燈': hashlib.md5((ROOT / 'assets/songs/港邊的燈.mp3').read_bytes()).hexdigest()[:10] if (ROOT / 'assets/songs/港邊的燈.mp3').exists() else ''}
+TIMES_JSON = ROOT / 'assets/songs/times.json'   # src/songs_times.py 由 docs/music/*.lrc 轉出（高品質逐句時間）
+
+
+def manual_table(song, sha):
+    """這首（含版本）有沒有可用的手動句時間。回傳 [(起, 迄)] 或 None。"""
+    if song in MANUAL_LINES and MANUAL_SHA.get(song) == sha:
+        return MANUAL_LINES[song]
+    if TIMES_JSON.exists():
+        e = json.loads(TIMES_JSON.read_text(encoding='utf-8')).get(song)
+        if e and e.get('sha') == sha:
+            t0 = e['t0']
+            return [(a, (t0[i + 1] - 0.15) if i + 1 < len(t0) else e['duration']) for i, a in enumerate(t0)]
+    return None
+
+
+def base_of(song):
+    return VERSIONS[song][0] if song in VERSIONS else song
+
+
+def sources():
+    """虛擬歌名 → 檔案路徑（有檔的才算）。"""
+    out = {s: SONGS_DIR / f for s, f in SONG_FILES.items() if (SONGS_DIR / f).exists()}
+    for v, (b, f) in VERSIONS.items():
+        if (SONGS_DIR / f).exists():
+            out[v] = SONGS_DIR / f
+        elif b in out:
+            out[v] = out[b]
+    return out
+LENIENT = {'港邊的燈'}       # 台語歌：轉錄與對齊本來就不準（canon/歌詞.md：唸不準也沒關係），驗證改看切點是否落在靜處
+
+
+def load_lyrics():
+    """canon/歌詞.md → {歌名: [{'i','sec','text'}...]}，sec 是 Suno 段落標籤（重複的加 #2）。"""
+    txt = (ROOT / 'canon/歌詞.md').read_text(encoding='utf-8')
+    out = {}
+    for blk in re.split(r'^## ', txt, flags=re.M)[1:]:
+        head = blk.split('\n', 1)[0]
+        m = re.search(r'〈(.+?)〉', head)
+        mm = re.search(r'### 歌詞[^\n]*\n+```\n(.*?)```', blk, re.S)
+        if not (m and mm):
+            continue
+        lines, sec, seen = [], '', {}
+        for raw in mm.group(1).splitlines():
+            s = raw.strip()
+            if not s:
+                continue
+            t = re.match(r'^\[(.+)\]$', s)
+            if t:
+                seen[t.group(1)] = seen.get(t.group(1), 0) + 1
+                sec = t.group(1) + (f'#{seen[t.group(1)]}' if seen[t.group(1)] > 1 else '')
+                continue
+            lines.append({'i': len(lines), 'sec': sec, 'text': s})
+        out[m.group(1)] = lines
+    return out
+
+
+def L(lyrics, song, sec, k):
+    """某首歌、某段的第 k 句 → 全曲句序。"""
+    for l in lyrics[song]:
+        if l['sec'] == sec:
+            if k == 0:
+                return l['i']
+            k -= 1
+    raise KeyError((song, sec))
+
+
+# ---------------------------------------------------------------- 切段對照表
+# start：('song',) 從頭；('line', 段, 第幾句, 最多提前幾秒)。end：('eof',)；('after', 段, 第幾句, 最多拖尾幾秒)。
+# place：卡代號與句子位置。anchor 是句子裡的文字（唯一匹配）；'first_sung' = 該卡第一句「singer（唱）」（singer 預設余靜）。
+# role：sung_card（切成「歌卡」，歌詞跟著時間走）／line_bgm（只在某句開始放）／sfx（逐句 sfxUrl，收音機版）。
+CUTS = [   # 重製版（2026-10-29）：單線，卡代號見 src/build.py 的 ORDER
+    # 收音機唱的副歌四句：歌卡，字跟著時間走（作者 10-29：原本從頭放，字幕出來時還在前奏）；kind='sfx' 是收音機音色
+    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sung_card', card='market', anchor='first_sung', singer='收音機', resume='post',
+         start=('line', 'Verse', 0, 2.0), end=('after', 'Chorus', 3, 2.0), fade_out=1.5),
+    dict(id='ember_studio', song='餘燼@錄音室', kind='bgm', role='sung_card', card='roses', anchor='first_sung', resume='post',
+         start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0),
+    # 2009 耳返爆音：台下跟唱版，副歌第一句起三秒悶住（她的耳返沒聲音，只剩台下）
+    dict(id='ember_monitor', song='餘燼@台下', kind='bgm', role='sung_card', card='monitor', anchor='first_sung', resume='post',
+         start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0, muffle=('Chorus', 0, 3.0)),
+    dict(id='night_sc', song='晚安，台南', kind='bgm', role='sung_card', card='soundcheck', anchor='first_sung', resume='post',
+         start=('line', 'Verse 1', 0, 1.0), end=('after', 'Verse 1', 3, 2.4), fade_out=1.8),
+    dict(id='night_concert', song='晚安，台南', kind='bgm', role='sung_card', card='concert', anchor='first_sung', resume='none',
+         start=('line', 'Verse 1', 0, 0.6), end=('after', 'Chorus', 5, 0.4), fade_out=0.06, sudden=True),
+    dict(id='night_a1', song='晚安，台南', kind='bgm', role='sung_card', card='verse3', anchor='first_sung', resume='post',
+         start=('line', 'Verse 3', 0, 1.0), end=('after', 'Verse 3', 6, 2.2), fade_out=1.6),
+    dict(id='ember_a2', song='餘燼@大合唱', kind='bgm', role='sung_card', card='encore', anchor='first_sung', resume='post',
+         start=('line', 'Final Chorus', 0, 1.5), end=('eof',), fade_out=1.0),
+    dict(id='ember_harmony', song='餘燼@合聲', kind='bgm', role='line_bgm', card='credits', anchor='first',
+         start=('song',), end=('eof',), fade_out=1.0),
+]
+
+# ---------------------------------------------------------------- 工具
+
+
+def run(cmd, **kw):
+    r = subprocess.run(cmd, capture_output=True, **kw)
+    if r.returncode:
+        raise RuntimeError(f'{cmd[0]} 失敗：{r.stderr.decode(errors="replace")[-400:]}')
+    return r
+
+
+def decode_wav(path, sr, ch):
+    """任何音檔 → float32 numpy (n, ch)。"""
+    r = run(['ffmpeg', '-v', 'error', '-i', str(path), '-ar', str(sr), '-ac', str(ch), '-f', 'f32le', '-'])
+    return np.frombuffer(r.stdout, dtype=np.float32).reshape(-1, ch)
+
+
+def wav_bytes(x, sr):
+    buf = io.BytesIO()
+    with wave.open(buf, 'wb') as w:
+        w.setnchannels(x.shape[1]); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes((np.clip(x, -1, 1) * 32767).astype('<i2').tobytes())
+    return buf.getvalue()
+
+
+def duration(path):
+    return float(run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(path)]).stdout)
+
+
+_cc = None
+
+
+def t2s(s):
+    global _cc
+    if _cc is None:
+        try:
+            import opencc
+            _cc = opencc.OpenCC('t2s').convert
+        except Exception:   # noqa: BLE001  沒裝 opencc 就用命令列
+            _cc = lambda x: run(['opencc', '-c', 't2s'], input=x.encode()).stdout.decode()   # noqa: E731
+    return _cc(s)
+
+
+def norm(s):
+    return t2s(re.sub(r'[^\u4e00-\u9fffA-Za-z0-9]', '', s))
+
+
+# ---------------------------------------------------------------- 轉錄（共用 whisper-server）
+
+DESC = pathlib.Path.home() / '.mori/whisper-server.json'
+
+
+def whisper_url():
+    if os.environ.get('WHISPER_URL'):
+        return os.environ['WHISPER_URL']
+
+    def alive():
+        try:
+            d = json.loads(DESC.read_text())
+            u = f"http://{d['host']}:{d['port']}"
+            urllib.request.urlopen(u + '/', timeout=3).read()
+            return u + d.get('inference_path', '/inference'), d.get('model')
+        except Exception:   # noqa: BLE001
+            return None
+    r = alive()
+    if not r:
+        print('whisper-server 沒開，拉起 large-v3-turbo …', flush=True)
+        subprocess.run([str(pathlib.Path.home() / '.mori/bin/mori-whisper-serve'), '--ensure', '--model', 'large-v3-turbo'], capture_output=True)
+        for _ in range(60):
+            time.sleep(2)
+            r = alive()
+            if r:
+                break
+    if not r:
+        sys.exit('找不到可用的 whisper-server（~/.mori/whisper-server.json）。也可設 WHISPER_URL 指到別的 whisper.cpp server。')
+    if r[1] != 'large-v3-turbo':
+        print(f'警告：共用 whisper-server 載的是 {r[1]}，唱歌用 large-v3-turbo 才準（對齊會變差）。', flush=True)
+    return r[0]
+
+
+def transcribe(wav16, url):
+    """16k 單聲道 float → [(字, 起, 迄)]（簡體，只用時間）。"""
+    data = wav_bytes(wav16.reshape(-1, 1), 16000)
+    b = '----songscut' + hashlib.md5(data[:2000]).hexdigest()[:10]
+    parts = []
+    for k, v in (('response_format', 'srt'), ('max_len', '1'), ('language', 'zh'), ('temperature', '0')):
+        parts.append(f'--{b}\r\nContent-Disposition: form-data; name="{k}"\r\n\r\n{v}\r\n'.encode())
+    parts.append(f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="a.wav"\r\nContent-Type: audio/wav\r\n\r\n'.encode() + data + b'\r\n')
+    parts.append(f'--{b}--\r\n'.encode())
+    req = urllib.request.Request(url, data=b''.join(parts), headers={'Content-Type': 'multipart/form-data; boundary=' + b})
+    srt = urllib.request.urlopen(req, timeout=600).read().decode('utf-8', 'replace')
+    out = []
+    for m in re.finditer(r'(\d+):(\d+):(\d+),(\d+) --> (\d+):(\d+):(\d+),(\d+)\n(.*?)(?:\n\n|\Z)', srt, re.S):
+        g = [int(x) for x in m.groups()[:8]]
+        a, e = g[0] * 3600 + g[1] * 60 + g[2] + g[3] / 1000, g[4] * 3600 + g[5] * 60 + g[6] + g[7] / 1000
+        for ch in norm(m.group(9)):
+            out.append((ch, a, e))
+    return out
+
+
+def transcribe_cached(wav16, url, key):
+    f = CACHE / f'asr-{key}.json'
+    if f.exists():
+        return [tuple(x) for x in json.loads(f.read_text())]
+    r = transcribe(wav16, url)
+    f.write_text(json.dumps(r, ensure_ascii=False))
+    return r
+
+
+def fix_intro(asr, w16, url, key, first_line):
+    """whisper 的第一段會從 0 秒起把字平均攤開，前奏長的歌第一句的時間全錯。做法：用滑動小視窗找人聲第一次唱出第一句的位置，
+    把那之前的前奏切掉重新轉錄一次，時間再加回去。"""
+    f = CACHE / f'asr-{key}-intro.json'
+    if f.exists():
+        return [tuple(x) for x in json.loads(f.read_text())]
+    target = norm(first_line)
+    entry = None
+    for k in range(0, 20):
+        w0 = k * 2.0
+        seg = w16[int(w0 * 16000):int((w0 + 5.0) * 16000)]
+        if len(seg) < 16000:
+            break
+        h = ''.join(c for c, _, _ in transcribe(seg, url))
+        if lcs(h, target) >= max(3, 0.5 * len(target)):
+            entry = w0
+            break
+    out = asr
+    if entry is not None and entry - 2.0 > 1.0:
+        t0 = entry - 2.0
+        re_ = [(c, a + t0, e + t0) for c, a, e in transcribe(w16[int(t0 * 16000):], url)]
+        out = [x for x in asr if x[2] <= t0] + re_
+        print(f'  前奏：人聲約在 {entry:.0f}–{entry + 5:.0f} 秒進來，切掉前 {t0:.0f} 秒重新轉錄', flush=True)
+    f.write_text(json.dumps(out, ensure_ascii=False))
+    return out
+
+
+# ---------------------------------------------------------------- 對齊
+
+MATCH, MIS, GAP = 2.0, -1.5, -1.0
+
+
+def align(asr, lines, lenient=False, db=None):
+    """歌詞字 ↔ 轉錄字，全域單調（半全域：頭尾可略過）。回傳每句 {t0,t1,conf,matched,est}。
+    只取時間：t0/t1 由「匹配到的字」往句首、句尾外推（每字 0.25 秒）取中位數；信心低的句子在左右可靠句之間按字數內插。"""
+    chars, owner, pos = [], [], []
+    for li, l in enumerate(lines):
+        for k, ch in enumerate(norm(l['text'])):
+            chars.append(ch); owner.append(li); pos.append(k)
+    n, m = len(asr), len(chars)
+    S = np.zeros((n + 1, m + 1)); P = np.zeros((n + 1, m + 1), dtype=np.int8)   # 1 對角 2 上（轉錄多字）3 左（歌詞字沒轉到）
+    a_chars = [c for c, _, _ in asr]
+    for i in range(1, n + 1):
+        ai = a_chars[i - 1]
+        for j in range(1, m + 1):
+            d = S[i - 1, j - 1] + (MATCH if ai == chars[j - 1] else MIS)
+            u = S[i - 1, j] + GAP
+            l_ = S[i, j - 1] + GAP
+            if d >= u and d >= l_:
+                S[i, j], P[i, j] = d, 1
+            elif u >= l_:
+                S[i, j], P[i, j] = u, 2
+            else:
+                S[i, j], P[i, j] = l_, 3
+    # 尾端自由
+    bi, bj = n, m
+    best = S[n, m]
+    for i in range(n + 1):
+        if S[i, m] > best: best, bi, bj = S[i, m], i, m
+    for j in range(m + 1):
+        if S[n, j] > best: best, bi, bj = S[n, j], n, j
+    i, j = bi, bj
+    pair = {}   # 歌詞字 j → 轉錄字 i
+    while i > 0 and j > 0:
+        p = P[i, j]
+        if p == 1:
+            if a_chars[i - 1] == chars[j - 1]:
+                pair[j - 1] = i - 1
+            i -= 1; j -= 1
+        elif p == 2:
+            i -= 1
+        else:
+            j -= 1
+    res = []
+    for li, l in enumerate(lines):
+        idx = [k for k in range(m) if owner[k] == li]
+        mt = [(pos[k], pair[k]) for k in idx if k in pair]
+        total = len(idx)
+        if mt:
+            # whisper 的逐字時間是首尾相接的（字的起點 = 上一個字的迄點，停頓被算進下一字），所以只信「迄點」：
+            # 句首 = 匹配字的迄點 往回推 (位置+1) 個字長；句尾 = 匹配字的迄點 往後推到最後一字。字長用匹配字迄點的斜率估（夾在 0.15–0.7 秒）。
+            if len(mt) >= 2 and mt[-1][0] > mt[0][0]:
+                dpc = (asr[mt[-1][1]][2] - asr[mt[0][1]][2]) / (mt[-1][0] - mt[0][0])
+                dpc = min(0.7, max(0.15, dpc))
+            else:
+                dpc = 0.28
+            st = float(np.median([asr[ai][2] - (p + 1) * dpc for p, ai in mt]))
+            en = float(np.median([asr[ai][2] + (total - 1 - p) * dpc for p, ai in mt]))
+        else:
+            st = en = None
+        res.append({'t0': st, 't1': en, 'conf': len(mt) / max(1, total), 'matched': len(mt), 'chars': total, 'interp': False})
+    thr = 0.2 if lenient else 0.3
+    rel = [i for i, r in enumerate(res) if r['t0'] is not None and r['conf'] >= thr]
+    if not rel:
+        raise RuntimeError('歌詞對不上轉錄（可靠句 0 句）：這首歌跟 canon/歌詞.md 差太多，或轉錄失敗。')
+    for i, r in enumerate(res):
+        if i in rel:
+            continue
+        r['interp'] = True
+        prv = max([x for x in rel if x < i], default=None)
+        nxt = min([x for x in rel if x > i], default=None)
+        # 這一段不可靠句的字數權重
+        if prv is not None and nxt is not None:
+            run_ = [x for x in range(prv + 1, nxt)]
+            a, b = res[prv]['t1'] + 0.15, res[nxt]['t0'] - 0.15
+        elif prv is not None:
+            run_ = [x for x in range(prv + 1, len(res))]
+            a, b = res[prv]['t1'] + 0.5, res[prv]['t1'] + 0.5 + 0.3 * sum(res[x]['chars'] for x in run_)
+        else:
+            run_ = [x for x in range(0, nxt)]
+            b = res[nxt]['t0'] - 0.5; a = max(0.0, b - 0.3 * sum(res[x]['chars'] for x in run_))
+        tot = sum(res[x]['chars'] for x in run_) or 1
+        t = a
+        for x in run_:
+            span = max(0.2, (b - a)) * res[x]['chars'] / tot
+            res[x]['t0'], res[x]['t1'] = t, t + span * 0.9
+            t += span
+    if db is not None:   # 句首修正：whisper 逐字時間首尾相接，停頓會被算進下一句開頭（只有句尾可信）。
+        # 在「上一句句尾 → 這句句尾」之間，取第一個接近這段最響處（-12dB 內）的位置當句首；伴奏很響的歌，這會落在人聲起音之前（偏早，安全）
+        for i, r in enumerate(res):
+            lo = (res[i - 1]['t1'] if i else 0.0) + 0.03
+            hi = r['t1'] + 0.6   # 句尾也可能估早，多看一點
+            a, b = frame(lo), frame(hi)
+            if b - a < 5:
+                continue
+            seg = db[a:b]
+            mx = seg.max()
+            up = np.where(seg >= mx - 12.0)[0]
+            quiet = [k for k in up if k >= 15 and seg[k - 15:k].max() < mx - 18.0]   # 前面先靜一下再響起來的第一個起音
+            if quiet:
+                up = [quiet[0]]
+            if len(up):
+                r['t0_char'] = r['t0']
+                r['t0'] = max(lo, (a + up[0]) * HOP - 0.05)
+                r['onset'] = True
+    for r in res:   # 切點用的「安全句首」：取較早的那個（切點落在縫隙裡，寧早勿晚；歌詞畫面時間才用起音修正過的 t0）
+        r['t0_safe'] = min(r['t0'], r.get('t0_char', r['t0']))
+    for i in range(len(res)):   # 單調
+        if i and res[i]['t0'] < res[i - 1]['t1']:
+            res[i]['t0'] = res[i - 1]['t1']
+        if res[i]['t1'] < res[i]['t0'] + 0.3:
+            res[i]['t1'] = res[i]['t0'] + 0.3
+    return res
+
+
+# ---------------------------------------------------------------- 能量與切點
+
+HOP = 0.01
+
+
+def energy_db(x16):
+    """16k 單聲道 → 每 10ms 一格的 RMS(dB)，25ms 視窗。"""
+    w = 400; h = 160
+    n = max(0, (len(x16) - w) // h + 1)
+    if n == 0:
+        return np.array([-100.0])
+    idx = np.arange(w)[None, :] + h * np.arange(n)[:, None]
+    rms = np.sqrt((x16[idx] ** 2).mean(axis=1) + 1e-12)
+    db = 20 * np.log10(rms)
+    return np.convolve(db, np.ones(3) / 3, mode='same')
+
+
+def frame(t):
+    return int(round(t / HOP))
+
+
+def pick(db, lo, hi, latest):
+    """[lo,hi] 秒裡能量接近最低（最低 +4dB 以內）的格子；latest=True 取最晚、False 取最早。"""
+    a, b = max(0, frame(lo)), min(len(db) - 1, frame(hi))
+    if b <= a:
+        return max(0.0, (lo + hi) / 2), db[min(len(db) - 1, max(0, frame((lo + hi) / 2)))], db[min(len(db) - 1, max(0, frame((lo + hi) / 2)))]
+    seg = db[a:b + 1]
+    mn = seg.min()
+    ok = np.where(seg <= mn + 4.0)[0]
+    k = ok[-1] if latest else ok[0]
+    return (a + k) * HOP, float(seg[k]), float(mn)
+
+
+def cut_points(spec, lines, al, db, dur, manual=False, end_hint=None):
+    """回傳 (start秒, end秒, 診斷)。"""
+    def li(sec, k):
+        return L_idx(lines, sec, k)
+    diag = {}
+    if spec['start'][0] == 'song':
+        s = 0.0; diag['start'] = {'at': 'song_start'}
+    else:
+        _, sec, k, lead = spec['start']
+        i = li(sec, k)
+        ls = al[i]['t0']
+        prev_end = al[i - 1]['t1'] if i else 0.0
+        if manual and i:   # 手動時間的句尾是估的：前一句唱到一半以前都不當作句尾
+            prev_end = al[i - 1]['t0'] + 0.5 * (ls - al[i - 1]['t0'])
+        lo, hi = max(prev_end + 0.04, ls - lead, 0.0), ls - 0.03
+        s, cdb, mn = pick(db, lo, hi, latest=False)
+        diag['start'] = {'line': i, 'window': [round(lo, 2), round(hi, 2)], 'db': round(cdb, 1), 'gap_min_db': round(mn, 1)}
+    if spec['end'][0] == 'eof':
+        # 檔尾：去掉結尾的數位靜音
+        loud = np.where(db > -60)[0]
+        e = min(dur, (loud[-1] * HOP + 0.4) if len(loud) else dur)
+        diag['end'] = {'at': 'eof'}
+    else:
+        _, sec, k, tail = spec['end']
+        i = li(sec, k)
+        le = al[i]['t1']
+        nxt = al[i + 1]['t0'] if i + 1 < len(al) else dur
+        lo, hi = le + 0.03, min(nxt - 0.03, le + tail, dur)
+        if manual:   # 句尾是估的：改在「下一句開唱前」往回找最安靜的縫（最多 1.6 秒、不超過這句一半）
+            lo, hi = max(al[i]['t0'] + 0.4 * (nxt - al[i]['t0']), nxt - min(1.6, 0.5 * (nxt - al[i]['t0']))), min(nxt - 0.04, dur)
+            if end_hint is not None:   # 這句後面是長間奏：用辨識取到的人聲真正結束點，在它之後 0.9 秒內找最靜處
+                lo, hi = end_hint + 0.05, min(end_hint + 2.5, nxt - 0.04, dur)   # 逐字時間的句尾偏早，往後找最靜處（取最早的安靜點）
+        e, cdb, mn = pick(db, lo, max(lo + 0.01, hi), latest=False if end_hint is not None else True)
+        diag['end'] = {'line': i, 'window': [round(lo, 2), round(hi, 2)], 'db': round(cdb, 1), 'gap_min_db': round(mn, 1)}
+    return s, e, diag
+
+
+def L_idx(lines, sec, k):
+    for l in lines:
+        if l['sec'] == sec:
+            if k == 0:
+                return l['i']
+            k -= 1
+    raise KeyError(sec)
+
+
+# ---------------------------------------------------------------- 渲染
+
+def loudnorm_two_pass(x, sr, target, tp=-1.5):
+    """x: float (n,ch) → 套雙遍 loudnorm（linear）後的 float。回傳 (x, 量到的 LUFS)。"""
+    wav = wav_bytes(x, sr)
+    r = subprocess.run(['ffmpeg', '-v', 'info', '-i', 'pipe:0', '-af', f'loudnorm=I={target}:TP={tp}:LRA=11:print_format=json', '-f', 'null', '-'],
+                       input=wav, capture_output=True)
+    txt = r.stderr.decode(errors='replace')
+    j = json.loads(txt[txt.rfind('{'):txt.rfind('}') + 1])
+    af = (f"loudnorm=I={target}:TP={tp}:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}"
+          f":measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true")
+    r2 = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'pipe:0', '-af', af, '-ar', str(sr), '-f', 'f32le', '-'], input=wav, capture_output=True)
+    if r2.returncode:
+        raise RuntimeError(r2.stderr.decode(errors='replace')[-300:])
+    y = np.frombuffer(r2.stdout, dtype=np.float32).reshape(-1, x.shape[1])
+    return y, float(j['input_i'])
+
+
+def measure_lufs(path):
+    r = subprocess.run(['ffmpeg', '-v', 'info', '-i', str(path), '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True)
+    m = re.findall(r'I:\s+(-?[\d.]+) LUFS', r.stderr.decode(errors='replace'))
+    return float(m[-1]) if m else None
+
+
+FAR_LUFS = -23.0            # 遠處傳來的聲音（走廊的鋼琴）：比收音機再小一點
+
+
+def far_filter(x, sr):
+    """走廊另一頭傳來的鋼琴：保留立體聲，削高頻、加短殘響。"""
+    r = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'pipe:0', '-af', 'lowpass=f=2600,aecho=0.8:0.55:70|140:0.28|0.16,highpass=f=90',
+                        '-ar', str(sr), '-ac', '2', '-f', 'f32le', '-'], input=wav_bytes(x, sr), capture_output=True)
+    if r.returncode:
+        raise RuntimeError(r.stderr.decode(errors='replace')[-400:])
+    return np.frombuffer(r.stdout, dtype=np.float32).reshape(-1, 2)
+
+
+def radio_filter(x, sr, seed=7):
+    """老收音機音色：單聲道、300–3400Hz、輕微失真（tanh）、慢慢起伏的訊號強弱、粉紅底噪與零星爆音。用 ffmpeg 濾鏡。"""
+    d = len(x) / sr
+    fc = (f"[0:a]pan=mono|c0=0.5*c0+0.5*c1,highpass=f=320:poles=2,lowpass=f=3300:poles=2,equalizer=f=1500:t=q:w=1.2:g=3,"
+          f"volume=6dB,asoftclip=type=tanh:threshold=0.5,tremolo=f=0.35:d=0.10,highpass=f=300,lowpass=f=3400[v];"
+          f"anoisesrc=d={d + 1:.2f}:c=pink:r={sr}:a=0.03:seed={seed},highpass=f=300,lowpass=f=3400[n];"
+          f"aevalsrc='if(lt(random(0),0.00006),(random(1)-0.5)*1.2,0)':s={sr}:d={d + 1:.2f},lowpass=f=3400[c];"
+          f"[v][n][c]amix=inputs=3:normalize=0:duration=first,volume=0.9[o]")
+    r = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'pipe:0', '-filter_complex', fc, '-map', '[o]', '-ar', str(sr), '-ac', '1', '-f', 'f32le', '-'],
+                       input=wav_bytes(x, sr), capture_output=True)
+    if r.returncode:
+        raise RuntimeError(r.stderr.decode(errors='replace')[-400:])
+    return np.frombuffer(r.stdout, dtype=np.float32).reshape(-1, 1)
+
+
+def encode_mp3(x, sr, out, mono_ok=False):
+    """依大小逐級降位元率，直到 < MAX_BYTES。回傳 (位元率, 位元組)。"""
+    ladder = [(160, 2), (128, 2), (112, 2), (96, 2), (80, 2), (64, 2), (64, 1), (56, 1), (48, 1), (40, 1)]
+    limit = MAX_BYTES
+    if len(x) / sr > 120:   # 整首歌（結局 B、C 的 4 分鐘）壓到 1.5MB 要 40–48kbps 單聲道，太糊；長段放寬，仍保持立體聲
+        ladder = [(128, 2), (112, 2), (96, 2), (80, 2), (64, 2)]; limit = MAX_BYTES_LONG
+    if x.shape[1] == 1:
+        ladder = [(b, 1) for b in (96, 80, 64, 56, 48, 40)]
+    wav = wav_bytes(x, sr)
+    for br, ch in ladder:
+        r = subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'pipe:0', '-ac', str(ch), '-c:a', 'libmp3lame', '-b:a', f'{br}k', str(out)], input=wav, capture_output=True)
+        if r.returncode:
+            raise RuntimeError(r.stderr.decode(errors='replace')[-300:])
+        size = pathlib.Path(out).stat().st_size
+        if size < limit:
+            return br, size
+    return br, size   # 最低檔還是超過：照實回報
+
+
+def muffle(x, sr, t0, secs, ramp=0.15):
+    """x 從 t0 秒起 secs 秒換成悶住的聲音（600 Hz 低通、-12 dB），頭尾 ramp 秒交叉淡化。"""
+    from scipy.signal import butter, sosfilt
+    sos = butter(4, 600, 'low', fs=sr, output='sos')
+    wet = sosfilt(sos, x, axis=0) * 10 ** (-12 / 20)
+    n = len(x); t = np.arange(n) / sr
+    m = np.clip(np.minimum((t - t0) / ramp, (t0 + secs - t) / ramp), 0, 1)
+    m = m[:, None] if x.ndim == 2 else m
+    return (x * (1 - m) + wet * m).astype(x.dtype)
+
+
+def fades(x, sr, fin, fout):
+    y = x.copy()
+    n_in, n_out = int(fin * sr), int(fout * sr)
+    if n_in:
+        y[:n_in] *= (0.5 - 0.5 * np.cos(np.linspace(0, np.pi, n_in)))[:, None]
+    if n_out:
+        y[-n_out:] *= (0.5 + 0.5 * np.cos(np.linspace(0, np.pi, n_out)))[:, None]
+    return y
+
+
+# ---------------------------------------------------------------- 驗證
+
+def lcs(a, b):
+    if not a or not b:
+        return 0
+    prev = [0] * (len(b) + 1)
+    for ca in a:
+        cur = [0]
+        for j, cb in enumerate(b):
+            cur.append(prev[j] + 1 if ca == cb else max(prev[j + 1], cur[j]))
+        prev = cur
+    return prev[-1]
+
+
+def verify_window(url, x_mono16, rel_lines, lines_all, w0, w1, lenient):
+    """x_mono16：切出來的檔（16k 單聲道）。視窗 [w0,w1] 秒讀回轉錄，跟預期句子比對。"""
+    seg = x_mono16[int(w0 * 16000):int(w1 * 16000)]
+    heard = ''.join(c for c, _, _ in transcribe(seg, url)) if len(seg) > 1600 else ''
+    exp = []
+    for l in rel_lines:
+        ov = min(l['t1'], w1) - max(l['t0'], w0)
+        if ov > 0 and (ov / max(0.1, l['t1'] - l['t0']) >= 0.3 or ov >= 1.0):
+            exp.append(l['text'])
+    r = {'window': [round(w0, 2), round(w1, 2)], 'heard': heard, 'expected': exp}
+    if not exp:
+        r['ok'] = True; r['note'] = '視窗內沒有預期歌詞（器樂）' + ('' if len(heard) <= 6 else f'；但轉錄到 {len(heard)} 字，請人工聽')
+        return r
+    E = [norm(t) for t in exp]
+
+    def score(h, e):   # 句子被聽到多少（召回），或聽到的字有多少落在這句裡（精確；視窗只框到半句時用）
+        l = lcs(h, e)
+        return max(l / max(1, len(e)), (l / max(1, len(h))) if len(h) >= 3 else 0.0)
+    recall = max(score(heard, e) for e in E)
+    exp_txt = set(E)
+    others = [norm(l['text']) for l in lines_all if norm(l['text']) not in exp_txt]
+    other_best = max([score(heard, o) for o in others], default=0.0)
+    ctrl = other_best   # 負控制：拿「不是預期的句子」比對，分數必須明顯較低
+    thr = 0.2 if lenient else 0.5
+    r.update(recall=round(recall, 2), best_other=round(other_best, 2), neg_control=round(ctrl, 2), threshold=thr)
+    r['ok'] = bool(recall >= thr and (recall >= other_best or lenient))
+    return r
+
+
+def inside_char(asr, t, margin=0.04):
+    return any(s + margin < t < e - margin for _, s, e in asr if e - s > 0.02)
+
+
+# ---------------------------------------------------------------- 主程式
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--only', default='')
+    ap.add_argument('--build', action='store_true')
+    ap.add_argument('--no-verify', action='store_true')
+    args = ap.parse_args()
+    only = set(filter(None, args.only.split(',')))
+    lyrics = load_lyrics()
+    CACHE.mkdir(parents=True, exist_ok=True); CUT_DIR.mkdir(parents=True, exist_ok=True)
+    present = sources()
+    if not present:
+        sys.exit(f'{SONGS_DIR} 底下沒有歌檔。預期：' + '、'.join(SONG_FILES.values()))
+    for s_ in list(SONG_FILES) + list(VERSIONS):
+        print(('找到 ' if s_ in present else '沒有 ') + (SONG_FILES.get(s_) or VERSIONS[s_][1]))
+    url = None   # 需要辨識時才拉起 whisper-server
+    import script
+    truth = json.loads((SONGS_DIR / 'truth.json').read_text()) if (SONGS_DIR / 'truth.json').exists() else {}
+    song_info, align_res, dbs, wav44, asrs, manual_on, w16s = {}, {}, {}, {}, {}, set(), {}
+    for song, path in present.items():
+        lyr = lyrics[base_of(song)]
+        key = hashlib.md5(path.read_bytes()).hexdigest()[:10]
+        dur = duration(path)
+        w16 = decode_wav(path, 16000, 1)[:, 0]
+        man = manual_table(song, key)
+        if man:
+            asr = []; db = energy_db(w16); manual_on.add(song)
+            assert len(man) == len(lyr), f'{song} 手動句時間 {len(man)} 句與歌詞 {len(lyr)} 行不同'
+            al = [{'t0': a, 't1': b, 'conf': 1.0, 'matched': len(l['text']), 'chars': len(l['text']), 'interp': False} for (a, b), l in zip(man, lyr)]
+        else:
+            url = url or whisper_url()
+            asr = transcribe_cached(w16, url, key)
+            asr = fix_intro(asr, w16, url, key, lyr[0]['text'])
+            db = energy_db(w16)
+            al = align(asr, lyr, lenient=base_of(song) in LENIENT, db=db)
+        asrs[song], align_res[song], dbs[song] = asr, al, db; w16s[song] = w16
+        wav44[song] = decode_wav(path, SR, 2)
+        info = {'file': path.name, 'duration': round(dur, 2), 'asr_chars': len(asr), 'sha': key, 'manual_times': bool(man),
+                'lines': [{'i': l['i'], 'sec': l['sec'], 'text': l['text'], 't0': round(a['t0'], 2), 't1': round(a['t1'], 2),
+                           'conf': round(a['conf'], 2), 'interp': a['interp']} for l, a in zip(lyr, al)]}
+        covered = sum(a['matched'] for a in al) / max(1, sum(a['chars'] for a in al))
+        info['char_match'] = round(covered, 2)
+        info['low_conf_lines'] = sum(1 for a in al if a['interp'])
+        if song in truth:   # 替身音檔：有真實句子時間，量對齊誤差
+            tr = truth[song]
+            e0 = [abs(a['t0'] - t['t0']) for a, t in zip(al, tr)]
+            e1 = [abs(a['t1'] - t['t1']) for a, t in zip(al, tr)]
+            info['truth_error'] = {'start_mean': round(float(np.mean(e0)), 3), 'start_p95': round(float(np.percentile(e0, 95)), 3), 'start_max': round(float(np.max(e0)), 3),
+                                   'end_mean': round(float(np.mean(e1)), 3), 'end_max': round(float(np.max(e1)), 3)}
+        song_info[song] = info
+        print(f'〈{song}〉{dur:.1f}s ' + ('手動句時間（LRC／手標）' if man else f'轉錄 {len(asr)} 字，歌詞字匹配 {covered:.0%}，內插句 {info["low_conf_lines"]}/{len(al)}')
+              + (f"；對真值 起點誤差 平均 {info['truth_error']['start_mean']}s 最大 {info['truth_error']['start_max']}s" if 'truth_error' in info else ''), flush=True)
+
+    entries, rendered = [], {}
+    all_ok = True
+    for spec in CUTS:
+        if spec['song'] not in present or (only and spec['id'] not in only):
+            continue
+        song = spec['song']; lines = lyrics[base_of(song)]; al = align_res[song]; db = dbs[song]; is_man = song in manual_on
+        dur = song_info[song]['duration']
+        base = spec.get('same_as')
+        sp = next(c for c in CUTS if c['id'] == base) if base else spec
+        place_line = locate(script, spec)
+        if base and base in rendered:
+            e = json.loads(json.dumps(rendered[base]))
+            e.update(id=spec['id'], role=spec['role'], place={'card': spec['card'], 'line': place_line, 'anchor': spec['anchor']}, same_as=base)
+            entries.append(e); continue
+        if is_man and sp.get('manual'):
+            s, e_ = sp['manual']; diag = {'start': {'at': 'manual'}, 'end': {'at': 'manual'}}
+        elif is_man and sp.get('rel'):   # 相對某句開頭的秒數（例如收音機只放前奏的最後幾秒）
+            sec_, k_, a_, b_ = sp['rel']; t_ = al[L_idx(lines, sec_, k_)]['t0']
+            s, e_ = max(0.0, t_ + a_), t_ + b_; diag = {'start': {'at': 'rel'}, 'end': {'at': 'rel'}}
+        else:
+            hint = None
+            if is_man and sp['end'][0] == 'after':
+                i_ = L_idx(lines, sp['end'][1], sp['end'][2]); nxt_ = al[i_ + 1]['t0'] if i_ + 1 < len(al) else dur
+                if nxt_ - al[i_]['t0'] > 7.5:   # 後面是長間奏
+                    url = url or whisper_url()
+                    ve = vocal_end(w16s[song], url, lines[i_]['text'], al[i_]['t0'], nxt_)
+                    print(f"   {spec['id']}：這句後面有 {nxt_ - al[i_]['t0']:.1f} 秒到下一句，辨識到人聲在 {ve and round(ve, 2)} 秒結束", flush=True)
+                    hint = ve
+            s, e_, diag = cut_points(sp, lines, al, db, dur, manual=is_man, end_hint=hint)
+        x = wav44[song][int(s * SR):int(e_ * SR)]
+        fo = sp.get('fade_out', 0.5)
+        x = fades(x, SR, (0.3 if sp.get('rel') and is_man else 0.04) if s > 0 else 0.02, min(fo, len(x) / SR / 2))
+        if sp.get('muffle'):   # 某句起幾秒悶住：低通加降 12 dB，頭尾 0.15 秒交叉淡化
+            sec_, k_, secs = sp['muffle']
+            x = muffle(x, SR, al[L_idx(lines, sec_, k_)]['t0'] - s, secs)
+        radio = sp['kind'] == 'sfx'
+        far = sp['kind'] == 'far'
+        if radio:
+            x = radio_filter(x, SR)
+        elif far:
+            x = far_filter(x, SR)
+        x, in_lufs = loudnorm_two_pass(x, SR, RADIO_LUFS if radio else FAR_LUFS if far else TARGET_LUFS, tp=-2.0 if radio or far else -1.5)
+        out = CUT_DIR / f"{sp['id']}.mp3"
+        br, size = encode_mp3(x, SR, out)
+        d_out = duration(out)
+        lufs = measure_lufs(out)
+        if is_man:   # 手動時間：只有句首可靠；句尾是估的，所以用句首判斷這句在不在切段裡
+            rel = [{'text': l['text'], 't0': round(a['t0'] - s, 2), 't1': round(min(a['t1'], e_) - s, 2), 'conf': round(a['conf'], 2), 'interp': a['interp'], 'sec': l['sec']}
+                   for l, a in zip(lines, al) if a['t0'] >= s - 0.05 and a['t0'] <= e_ - 0.25]
+        else:
+            rel = [{'text': l['text'], 't0': round(a['t0'] - s, 2), 't1': round(a['t1'] - s, 2), 'conf': round(a['conf'], 2), 'interp': a['interp'], 'sec': l['sec']}
+                   for l, a in zip(lines, al) if a['t0'] >= s - 0.05 and a['t1'] <= e_ + 0.05]
+        # 驗證
+        ver = {'ok': True}
+        c0, c1 = diag['start'].get('line'), diag['end'].get('line')
+        # 切點：不可在字中間；能量要在該縫隙的低點附近
+        pts = {}
+        for name, t, d in (('start', s, diag['start']), ('end', e_, diag['end'])):
+            if d.get('at') in ('eof', 'song_start', 'rel'):   # rel：前奏等持續音的中段，沒有縫可找，靠淡入淡出
+                pts[name] = {'t': round(t, 2), 'at': d['at'], 'ok': True}; continue
+            # 切點在縫隙的低谷：切點能量比前後各 1 秒內最響處低多少 dB（≥8 好；4–8 勉強；<4 切在聲音裡）
+            a_, b_ = max(0, frame(t - 1.0)), min(len(db), frame(t + 1.0))
+            depth = float(db[a_:b_].max() - db[min(len(db) - 1, frame(t))])
+            pts[name] = {'t': round(t, 2), 'valley_depth_db': round(depth, 1), 'weak': depth < 8.0, 'ok': bool(depth >= 4.0)}
+        ver['cut_points'] = pts
+        if not args.no_verify:
+            if radio:   # 驗證讀回乾淨版（收音機濾鏡後的檔對 ASR 本來就更難讀；濾鏡另用頻譜檢查）
+                clean = wav44[song][int(s * SR):int(e_ * SR)]
+                back = decode_wav_arr(clean, SR)
+            else:
+                back = decode_wav(out, 16000, 1)[:, 0]
+            lenient = base_of(song) in LENIENT
+            d_ = len(back) / 16000
+            if is_man:   # 手動時間的歌：辨識聽不出字，頭尾辨識驗證沒意義；改看切點深度與收音機頻譜
+                ver['head'] = ver['tail'] = {'ok': True, 'manual': True}
+            else:
+                ver['head'] = verify_window(url or whisper_url(), back, rel, lines, 0.0, min(3.0, d_), lenient)
+                ver['tail'] = verify_window(url or whisper_url(), back, rel, lines, max(0.0, d_ - 3.0), d_, lenient)
+            if radio:
+                ver['radio'] = radio_check(out)
+        ver['ok'] = all(p['ok'] for p in pts.values()) and all(ver.get(k, {'ok': True})['ok'] for k in ('head', 'tail', 'radio'))
+        all_ok &= ver['ok']
+        ent = {'id': spec['id'], 'song': song, 'file': out.name, 'kind': sp['kind'], 'role': spec['role'],
+               'place': {'card': spec['card'], 'line': place_line, 'anchor': spec['anchor']},
+               'resume': spec.get('resume', 'none'), 'sudden': bool(sp.get('sudden')), 'singer': spec.get('singer', '余靜'),
+               'src_start': round(s, 2), 'src_end': round(e_, 2), 'duration': round(d_out, 2), 'bytes': size, 'bitrate_kbps': br,
+               'lufs': lufs, 'cut_diag': diag, 'lines': rel, 'verify': ver}
+        rendered[spec['id']] = ent
+        entries.append(ent)
+        flag = 'OK ' if ver['ok'] else 'FAIL'
+        print(f"{flag} {spec['id']:14s} {s:6.2f}–{e_:6.2f}s  {d_out:5.1f}s {size/1e6:.2f}MB {br}k {lufs} LUFS  卡 {spec['card']}#{place_line}"
+              + ''.join(f"  {k}:{ver[k].get('recall', '-')}" for k in ('head', 'tail') if k in ver), flush=True)
+        if not ver['ok']:
+            print('   ', json.dumps({k: v for k, v in ver.items() if k != 'ok'}, ensure_ascii=False, default=float)[:1200])
+    prev = {}
+    mf = CUT_DIR / 'manifest.json'
+    if only and mf.exists():   # --only：保留別的段
+        prev = {e['id']: e for e in json.loads(mf.read_text())['cuts']}
+    for e in entries:
+        prev[e['id']] = e
+    order = [c['id'] for c in CUTS]
+    manifest = {'version': 1, 'generated': time.strftime('%Y-%m-%dT%H:%M:%S%z'), 'songs_dir': str(SONGS_DIR.relative_to(ROOT)) if ROOT in SONGS_DIR.parents else str(SONGS_DIR),
+                'asr': 'whisper.cpp large-v3-turbo（共用 whisper-server）', 'songs': song_info, 'cuts': [prev[i] for i in order if i in prev]}
+    mf.write_text(json.dumps(manifest, ensure_ascii=False, indent=1, default=float), encoding='utf-8')
+    print(f'manifest：{mf}（{len(manifest["cuts"])} 段）')
+    if not all_ok:
+        print('有驗證沒過的段（FAIL）：songs.apply 會略過它們；請看上面的診斷，或換一版歌。')
+    if args.build:
+        subprocess.run([sys.executable, str(HERE / 'build.py')], check=True)
+    sys.exit(0 if all_ok else 2)
+
+
+def vocal_end(w16, url, text, t0, nxt):
+    """這句後面有長間奏時，找人聲真正唱完的時間：切出 [t0-0.3, t0+10] 辨識，從第一個屬於這句歌詞的字開始，連續（字距 ≤1.3 秒）的「屬於這句的字」
+    取最後一字的迄點；遇到不屬於這句的字（下一句的雜訊）就停。Suno 常把句尾多唱一遍（例如「就回家 就回家」），這樣會一起算進去。
+    必須比下一句開頭早 0.3 秒以上，否則視為不可信（回傳 None）。"""
+    a = max(0.0, t0 - 0.3); b = min(len(w16) / 16000, t0 + 10.0)   # 不截在下一句前：逐字時間會把最後一個字拉長到片段結尾
+    r = transcribe(w16[int(a * 16000):int(b * 16000)], url)
+    ly = set(norm(text)); last = None; prev_end = None
+    for ch, st, en in r:
+        if st + a < t0 - 0.3:
+            continue
+        if prev_end is not None and st - prev_end > 1.3:
+            break
+        if ch in ly:
+            last = en + a; prev_end = en
+        elif last is not None:
+            break
+    if last is None or last > nxt - 0.3:
+        return None
+    return last
+
+
+def locate(script, spec):
+    if spec['anchor'] == 'first':   # 卡的開頭（製作名單是插件卡，不在劇本裡）
+        return 0
+    lines = script.L[spec['card']]
+    if spec['anchor'] == 'first_sung':
+        hit = [i for i, (spk, t, *_r) in enumerate(lines) if spk == spec.get('singer', '余靜') and t.startswith('（唱）')]
+    else:
+        hit = [i for i, (spk, t, *_r) in enumerate(lines) if spec['anchor'] in t]
+    if len(hit) < 1 or (spec['anchor'] != 'first_sung' and len(hit) != 1):
+        raise SystemExit(f"劇本對不上：{spec['card']} 找不到唯一的句子「{spec['anchor']}」（劇本改了嗎？）")
+    return hit[0]
+
+
+def decode_wav_arr(x, sr):
+    """44.1k 立體聲 float → 16k 單聲道 float。"""
+    r = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'pipe:0', '-ar', '16000', '-ac', '1', '-f', 'f32le', '-'], input=wav_bytes(x, sr), capture_output=True)
+    return np.frombuffer(r.stdout, dtype=np.float32)
+
+
+def radio_check(path):
+    """收音機版的規格檢查：單聲道；頻寬外（<250Hz 或 >3600Hz）的能量比例要小。"""
+    from scipy.signal import welch
+    ch = int(run(['ffprobe', '-v', 'error', '-select_streams', 'a:0', '-show_entries', 'stream=channels', '-of', 'csv=p=0', str(path)]).stdout)
+    x = decode_wav(path, SR, 1)[:, 0]
+    f, p = welch(x, SR, nperseg=4096)
+    tot = p.sum() + 1e-18
+    out_band = (p[(f < 200)].sum() + p[(f > 4200)].sum()) / tot
+    return {'channels': ch, 'out_of_band_energy': round(float(out_band), 4), 'ok': bool(ch == 1 and out_band < 0.05)}
+
+
+if __name__ == '__main__':
+    main()
+
+codex
+定案的重點已確認：花由場務代放在門外，余靜認得送花的人，並主動約定座位。我會保留等花與拿拍子岔開話題的段落，讓場務的話接上新設定；歌詞和圖標記照原稿保留。
+
+exec
+/bin/bash -lc "rg -n '"'^def (gate|cmd_gate)|gate'"\\(' 審稿/runner.py" in /home/ct/larch-ember
+ succeeded in 0ms:
+289:def gate(a):
+402:    elif a[0] == 'gate': gate(a[1:])
+
+exec
+/bin/bash -lc 'cat .speak-tw.json' in /home/ct/larch-ember
+ succeeded in 0ms:
+{"public":["docs/index.html","README.md"],"exclude":["canon/","design/","docs/media/"]}
+
+exec
+/bin/bash -lc "sed -n '1,180p' /home/ct/speak-tw/rules.mjs" in /home/ct/larch-ember
+ succeeded in 0ms:
+/* rules.mjs — 規則就是資料。每一條都要有「該抓的例子」和「不該抓的例子」,
+   test/rules.test.mjs 會逐條驗:抓不到該抓的、或誤抓不該抓的,測試就掛。
+   這樣才不會出現「為了多抓一點,regex 越寫越兇」的那種爛規則。
+
+   register:
+     any    —— 任何地方都算數
+     public —— 只在對外文字算數(README 中文段、網頁文案、blog、貼文);
+               內部的 commit、NEXT.md、spec 不套 */
+/* 簡體字表原本是手寫的 130 字,漏一個字就靜默放行(2026-09-21 實際發生:Larch 插件
+   manifest 裡的「换」跑了檢查器還是過)。改成反過來問:Big5 編得出來的就是正體,
+   編不出來的 CJK 就當簡體。Big5 字表用 TextDecoder 現場解出來,不進相依、不進原始碼。 */
+const BIG5_MISSING = '鿿堃喆坂媠嫲'; // Big5 漏收但正體在用:U+9FFF(正規表示式常拿來當端點)、人名用字、台語客語用字
+const SIMPLIFIED = (() => {
+  const bytes = [];
+  for (let lead = 0x81; lead <= 0xfe; lead++)
+    for (let trail = 0x40; trail <= 0xfe; trail++) bytes.push(lead, trail, 0x0a);
+  const traditional = new Set(
+    new TextDecoder('big5').decode(new Uint8Array(bytes)).split('\n').filter((c) => c.length === 1));
+  for (const c of BIG5_MISSING) traditional.add(c);
+  const hex = (cp) => '\\u' + cp.toString(16).padStart(4, '0');
+  const parts = [];
+  let start = null;
+  for (let cp = 0x4e00; cp <= 0xa000; cp++) {
+    const simp = cp < 0xa000 && !traditional.has(String.fromCodePoint(cp));
+    if (simp && start === null) start = cp;
+    if (!simp && start !== null) {
+      parts.push(start === cp - 1 ? hex(start) : hex(start) + '-' + hex(cp - 1));
+      start = null;
+    }
+  }
+  return new RegExp('[' + parts.join('') + ']', 'g');
+})();
+
+export const RULES = [
+  // ── 一、被指正過的實際案例(這份清單的價值所在) ──
+  {
+    id: 'fake-contrast', register: 'any', name: '「不是 X，是 Y」的假對比',
+    why: '直接把 Y 講出來就好。這個句型是用來製造洞見感的,不傳達資訊。換行或句號斷開也算(「從來不是 X。是 Y。」)。',
+    re: /[^。！？\n]{0,26}不是[^。！？\n]{0,24}(?:[，,][^。！？\n]{0,4}(?:是|而是)|[。！？\n]+\s*(?:就)?是(?!的|否))[^。！？\n]{0,20}/g,
+    bad: '這不是省錢的小聰明，是整條產線的設計主軸',
+    good: '這是整條產線的設計主軸，省錢只是順帶。它不是免費的。',
+  },
+  {
+    id: 'never-punchline', register: 'any', name: '「從來沒有…過。」收尾的洞見句',
+    why: '前面鋪一段，再補一句「他從來沒有 Y 過」當結語，是用絕對否定暗示一個對比、製造洞見感（2026-10-07 使用者抓到「他從來沒有坐在另一邊過」）。要嘛刪掉，讓前面的事自己說話；要嘛把要對比的那件事直接寫出來。台詞裡角色真的這樣說、或是單純交代事實的，那一行加 speak-tw-ok。',
+    re: /(?:^|[。！？\n|])\s*[^。！？\n|]{0,12}從來(?:都)?(?:沒有|沒|不曾|未曾)[^，。！？\n|]{1,14}過[。！？]/g,
+    bad: '他知道這個法子要問多久。他從來沒有坐在另一邊過。',
+    good: '他從來沒有去過洛陽，這回跟著車隊走了十天才到。',
+  },
+  {
+    id: 'pronoun-person', register: 'any', name: '「年輕的那個」這類用「的那個」代替人或物',
+    why: '「年紀大的那個翻開資料夾」「年輕的那個問」「就是印在公文右下角的那一個」：用「形容詞＋的那個」撐場是 AI 味，讀者解得開也一樣（2026-10-09 使用者讀《十一分鐘》：「像這種『那個』的用法就是 AI 味，要去除乾淨」）。講出實際稱呼（年長的審訊員）或直接描述（跟公文右下角印的一模一樣）。',
+    re: /[\u4e00-\u9fff]{1,6}的那一?個(?=[說問開翻看笑點走站坐拿答道接想簽搖遞把在，。、：！？「])|就是[^，。！？\n]{1,20}的那一?個(?=[。，！？])/g,
+    bad: '年紀大的那個翻開資料夾，推過來一張紙。',
+    good: '年長的審訊員翻開資料夾，推過來一張紙。',
+  },
+  {
+    id: 'organic-metaphor', register: 'public', name: '「長出」「長成」這類有機隱喻',
+    why: '軟體不會長東西。按語境換:做出／完成／變成／多出／產生／擴充成。（森林宇宙 lore 的字面生長意象除外,那一行加 speak-tw-ok）',
+    re: /長出|長成/g,
+    bad: '這個實驗室是從 LINE 對話製造機長出來的',
+    good: '這個實驗室是從 LINE 對話製造機做出來的',
+  },
+  {
+    id: 'banned-word', register: 'public', name: '禁用詞',
+    why: '使用者語感裡不會用的詞:接住。改用直白說法(實現／做出來／完成／幫忙)。',
+    re: /接住/g,
+    bad: '有人許願、有人接住',
+    good: '有人許願、有人幫忙做出來',
+  },
+  {
+    id: 'luo-wording', register: 'any', name: '自造「落」的用法',
+    why: '「落檔」「落下來」「落進」是自己造的詞,不是一般中文。改:記下來／寫進檔案／下載下來／存檔／收進 repo。（「落地」不在此列,政策落地、方案落地是通用說法。）',
+    re: /落檔|落下來|落進(?!度)|落上去/g,
+    bad: '產圖先轉小再落檔',
+    good: '這個方案已經落地，段落與部落格都不受影響',
+  },
+  {
+    id: 'homework-tone', register: 'any', name: '「交作業給我看」的姿態',
+    why: '帶著索取回報的語氣。fork 邀請直接寫「也歡迎 fork」「歡迎拿去改」，不要再造句（2026-08-19「它就是你的了」也被指出是怪用法）。',
+    re: /改出得意的[^。\n]{0,10}(?:回來|交回)/g,
+    bad: '改出得意的回來讓我看看',
+    good: '程式碼都公開，也歡迎 fork',
+  },
+  {
+    id: 'drama-word', register: 'any', name: '戲劇化的自造形容',
+    why: '「對自己不利」會讓人問是有誰要害你;「管不住」「沒量到代價」不是平常會講的話。',
+    re: /對自己不利|管不住|沒量到代價/g,
+    bad: '量出來的、對自己不利的事',
+    good: '實測發現的問題',
+  },
+  {
+    id: 'ke-classifier', register: 'any', name: '「顆」拿來數抽象物',
+    why: '「這顆 bug」「一顆服務」是工程圈黑話;顆是給圓的實體用的(蘋果、按鈕、鏡頭)。抽象物講「這個 bug」「這支服務」。',
+    re: /[一這那幾兩三每]\s*顆\s*(?:bug|issue|pr|api|commit|問題|功能|需求|服務|專案|系統|錯誤|修正|任務|網站|站)/gi,
+    bad: '抱歉這顆 bug',
+    good: '我是一顆很努力的按鈕',
+  },
+  {
+    id: 'metaphor-as-noun', register: 'any', name: '把比喻直接當名詞用',
+    why: '「每一刀」「最漂亮的一刀」是腦子裡的比喻,讀者看不懂。改「每一個分工」。',
+    re: /[每這那]一刀|最漂亮的一(?:刀|招)/g,
+    bad: '每一刀是被什麼逼出來的',
+    good: '每一個分工是被什麼問題逼出來的',
+  },
+  {
+    id: 'true-x-not-y', register: 'any', name: '「真正的 X 不是…」',
+    why: '假對比的變體。直接講 X 是什麼。',
+    re: /(?:真正|其實)的[^。，、\n]{2,10}(?:不在|不是)/g,
+    bad: '真正的瓶頸不是模型',
+    good: '瓶頸在資料量',
+  },
+  {
+    id: 'surprise-success', register: 'public', name: '「還真的」把預期內的成果講成僥倖',
+    why: '修好驗好才動手,做出來是預期內的事。「還真的做出來了」把按流程走的結果講成碰運氣。直接照順序講:修到會動,再切出來。(對外部事件的真實意外不算,那一行加 speak-tw-ok)',
+    re: /還真的|真的(?:切|做|印)得?出來|真的會動/g,
+    bad: '我還真的用線鋸把它切出來了',
+    good: '模擬裡修到會動，我就用線鋸把它切出來了',
+  },
+  {
+    id: 'hype-speed', register: 'public', name: '「一秒看出」「秒懂」的速度誇飾',
+    why: '廣告腔。改平實動詞:直接看出、馬上看到。真的在講時間長度(一秒鐘)不算。',
+    re: /一秒(?:看出|看懂|就懂|上手|學會)|秒懂|瞬間(?:看出|看懂|學會|上手)/g,
+    bad: '一秒看出哪裡有問題',
+    good: '直接看出哪裡有問題',
+  },
+  {
+    id: 'self-importance', register: 'any', name: '「真正想講的」自抬語',
+    why: '替接下來的話加戲,跟「老實說」同病。直接講內容,或寫「也會聊」。',
+    re: /真正想(?:講|說|談|分享)的/g,
+    bad: '然後聊真正想講的',
+    good: '然後也會聊一些',
+  },
+  // ── 2026-10-07 使用者看完一篇直播公告說「AI味還是很重，不像人類的語法」，逐句拆出來的 ──
+  {
+    id: 'no-hands', register: 'public', name: '「我沒有動手」誇大自己沒參與',
+    why: '規則是作者定的、程式是叫 AI 寫的，說「沒有動手」不實，也是用來製造反差的講法。直接講誰做了什麼：規則我定的，之後排程自己跑。',
+    re: /我(?:完全|都|根本)?沒(?:有)?(?:動手|出手)|(?:完全|都)不用(?:我)?動手/g,
+    bad: '每天會自己寫一篇，我沒有動手',
+    good: '規則是我定的，之後每天由排程自己跑',
+  },
+  {
+    id: 'chai-kan', register: 'public', name: '「拆…來看」的報幕腔',
+    why: '先預告「拆開來看」再講，是在替內容報幕。直接講要聊什麼：「今晚八點直播聊這兩個站」。',
+    re: /拆(?:[一兩三四五幾\d]+(?:個|篇|站|件))?(?:開)?來看/g,
+    bad: '今晚拆兩個來看',
+    good: '今晚八點直播聊這兩個站',
+  },
+  {
+    id: 'old-line-reuse', register: 'public', name: '照搬舊文或風格範例的句子',
+    why: '風格指南裡的例句、舊貼文的梗是用來抓語氣的，整句搬進新文會有模仿感（FB 風格鐵律 6）。同樣的意思用這次的事重寫。',
+    re: /睡過頭吧|刷爆了明天請早|像極了乙方|帳單也會哭|它就是你的了/g,
+    bad: '（就當牠睡過頭吧）',
+    good: '（GitHub 的排程常常晚跑）',
+  },
+  {
+    id: 'reveal-colon', register: 'public', name: '「背後是…：」的揭曉腔',
+    why: '先用「背後是／關鍵是／秘訣是」吊一下再冒號揭曉，是在製造懸念。把事情直接講成一句：「這兩個站都用到我自己架的兩個服務」。',
+    re: /(?:背後(?:是|靠的是|用的是)|關鍵(?:是|在於)|秘訣(?:是|在於)|答案(?:是|很簡單))[^。！？\n：:]{0,24}[：:]/g,
+    bad: '背後是我自己架的兩個服務：',
+    good: '這兩個站都用到我自己架的兩個服務。',
+  },
+  {
+    id: 'flow-jargon', register: 'public', name: '「資料怎麼走」的擬人術語',
+    why: '資料不會走路。講具體的：請求從哪裡送到哪台機器、經過什麼。',
+    re: /(?:資料|請求|訊息|流量)怎麼走/g,
+    bad: '今晚會講它們怎麼裝、資料怎麼走',
+    good: '今晚會講 GitHub 的機器怎麼連到我電腦上的服務',
+  },
+  {
+    id: 'realness-claim', register: 'public', name: '「都是真的發生過的」真實性宣稱',
+    why: '內容本來就是真的，特別聲明反而像在演。直接把事情和日期寫出來，讀的人自己會知道是真的。',
+    re: /(?:都|全)是真(?:的|實)?(?:發生過|遇過)|真(?:實|的)發生過的(?:事|例子)|真實(?:案例|發生)/g,
+    bad: '每天自己跑的站會遇到的事，都是真的發生過的：',
+    good: 'Mori 9/22、9/23 連兩天卡在搜新聞那一步，那兩天都沒發。',
+  },
+  {
+    id: 'easy-promise', register: 'public', name: '「也沒關係」「就能做一個自己的」安撫加承諾',
+    why: '先安撫再保證很簡單，是推銷腔的套句，也常常承諾過頭。直接講要準備什麼、會做出什麼。',
+    re: /(?:就能|就可以|馬上就能)(?:做|擁有|打造|有)(?:出)?(?:一個|一套)?(?:你)?自己的|[^，。！？\n]{1,12}也沒關係[，,]/g,
+
+exec
+/bin/bash -lc 'tail -n 8 tests/motif_check.py' in /home/ct/larch-ember
+ succeeded in 0ms:
+            bad += 1; print(f'    ✗ 結局 {x.upper()} 回收在 {"、".join(pay)}，之前沒有出處')
+        elif pay:
+            print(f'    結局 {x.upper()}：出處 {setup[0]}（共 {len(setup)} 場）→ 回收 {"、".join(pay)}')
+        elif setup:
+            print(f'    結局 {x.upper()}：只有鋪陳、這條路線沒有回收')
+    if where and all(not c.startswith('ending_') for c in where) and len(where) == 1:
+        print('    提醒：只出現一次，沒有回收')
+print(f'回收沒有出處 {bad} 處'); sys.exit(1 if bad else 0)
+
+exec
+/bin/bash -lc "rg -n -A 5 -B 4 \"'roses'|\\\"roses\\\"\" src/songs_cut.py" in /home/ct/larch-ember
+ succeeded in 0ms:
+119-CUTS = [   # 重製版（2026-10-29）：單線，卡代號見 src/build.py 的 ORDER
+120-    # 收音機唱的副歌四句：歌卡，字跟著時間走（作者 10-29：原本從頭放，字幕出來時還在前奏）；kind='sfx' 是收音機音色
+121-    dict(id='harbor_market', song='港邊的燈', kind='sfx', role='sung_card', card='market', anchor='first_sung', singer='收音機', resume='post',
+122-         start=('line', 'Verse', 0, 2.0), end=('after', 'Chorus', 3, 2.0), fade_out=1.5),
+123:    dict(id='ember_studio', song='餘燼@錄音室', kind='bgm', role='sung_card', card='roses', anchor='first_sung', resume='post',
+124-         start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0),
+125-    # 2009 耳返爆音：台下跟唱版，副歌第一句起三秒悶住（她的耳返沒聲音，只剩台下）
+126-    dict(id='ember_monitor', song='餘燼@台下', kind='bgm', role='sung_card', card='monitor', anchor='first_sung', resume='post',
+127-         start=('line', 'Verse 1', 0, 4.0), end=('after', 'Chorus', 6, 2.5), fade_out=2.0, muffle=('Chorus', 0, 3.0)),
+128-    dict(id='night_sc', song='晚安，台南', kind='bgm', role='sung_card', card='soundcheck', anchor='first_sung', resume='post',
+
+exec
+/bin/bash -lc "sed -n '270,350p' 審稿/runner.py" in /home/ct/larch-ember
+ succeeded in 0ms:
+        for it in parse_read(txt):
+            c = next((c for c in cl if same(c[0], it)), None)
+            c[1].add(who) if c else cl.append((it, {who}))
+    return cl
+
+def pairwise(ctx, old, new, by):   # 評審排除 anthropic（原稿與多數改稿出自 Claude）與新稿作者的家族；A/B 順序對調各問一次
+    judges = {w: f for w, f in sr.READERS.items() if sr.FAMILY[w] not in ('anthropic', sr.FAMILY.get(by))}
+    def one(j):
+        w, f, nf = j; r = sr.call(f, PAIR.format(ctx=ctx, a=new if nf else old, b=old if nf else new)); m = re.search(r'選[：:]\s*([AB])', r)
+        return w, (None if not m else (m.group(1) == 'A') == nf), (r.strip().splitlines() or [''])[-1][:90]
+    jobs = [(w, f, nf) for w, f in judges.items() for nf in (True, False)]
+    with ThreadPoolExecutor(max(1, len(jobs))) as ex: res = list(ex.map(one, jobs))
+    return sum(v is True for _, v, _ in res), sum(v is False for _, v, _ in res), res
+
+def verdict(fresh, fixed, win, lose):
+    return (fresh < fixed and win >= lose) or (fresh <= fixed and win >= lose + 2)
+
+def absent(c, text): return not any(q in text for q in frags(c[0]['quote']))
+
+def gate(a):
+    by = a[a.index('--by') + 1] if '--by' in a else 'claude'
+    if a[0] == '--files':
+        old, new = (numbered(pathlib.Path(x).read_text()) for x in a[1:3]); ctx, title, script = '', pathlib.Path(a[2]).stem, None
+    else:
+        script, key = a[0], a[1]; base = a[a.index('--base') + 1] if '--base' in a else 'HEAD'
+        ctx, title, new = scene_of(script, key); old = scene_of(script, title, git_show(script, base))[2]
+    if old == new: sys.exit('這一場跟 base 一樣，沒有可以比的（已提交的改動要複審請用 read）')
+    with ThreadPoolExecutor(3) as ex:
+        fo, fn, fp = ex.submit(read_all, ctx, old), ex.submit(read_all, ctx, new), ex.submit(pairwise, ctx, old, new, by)
+        rn = fn.result(); mo, mn, (win, lose, votes) = [c for c in clusters(fo.result()) if len(c[1]) > 1], [c for c in clusters(rn) if len(c[1]) > 1], fp.result()
+    po, pn = norm(old), norm(new)
+    fresh, fixed = [c for c in mn if absent(c, po)], [c for c in mo if absent(c, pn)]
+    ok = verdict(len(fresh), len(fixed), win, lose)
+    L = [f'# 閘門：{title}（{datetime.datetime.now():%m-%d %H:%M}，新稿作者 {by}，讀稿人 {"、".join(sr.READERS)}）', '', f'結果：{"通過" if ok else "不通過"}',
+         f'- 改動造成的共識問題（≥2 位讀稿人提到）：修掉 {len(fixed)} 條、新出現 {len(fresh)} 條（全部：舊 {len(mo)} 條、新 {len(mn)} 條）',
+         f'- 兩兩比較（非同家族評審、A/B 對調）：新稿贏 {win}、舊稿贏 {lose}、沒答 {len(votes) - win - lose}',
+         '- 通過條件：新出現的比修掉的少且新稿不輸；或沒有多且新稿多贏兩票以上', '', '## 新稿還有的共識問題（下一輪要改）']
+    L += [f"- 行{c[0]['lines']}「{c[0]['quote']}」{c[0]['type']}：{c[0]['why']}（{'、'.join(sorted(c[1]))}）" + ('［新出現］' if c in fresh else '') for c in mn] or ['（沒有）']
+    L += ['', '## 修掉的'] + ([f"- 「{c[0]['quote']}」{c[0]['type']}" for c in fixed] or ['（沒有）'])
+    L += ['', '## 評審'] + [f"- {w}：{'新稿' if v else '舊稿' if v is False else '沒答'}｜{why}" for w, v, why in votes]
+    out = sr.OUT / ('gate_' + re.sub(r'\W', '_', title)[:24] + f'_{datetime.datetime.now():%m%d_%H%M%S}.md'); out.write_text('\n'.join(L) + '\n')
+    print('\n'.join(L)); print('存到', out)
+    if script:
+        d = sr.OUT / f'sweep_{pathlib.Path(script).stem}_gate_{datetime.datetime.now():%m%d_%H%M%S}'; d.mkdir()
+        (d / 'scene.md').write_text(f'# {title}\n\n' + ''.join(f'## 讀_{w}\n{t}\n\n' for w, t in rn.items()) + f'## 原文\n{new}\n')
+        ingest(d)
+        if ok: sr.mark(pathlib.Path(script), title, new)
+        autoclose(script)
+    sys.exit(0 if ok else 1)
+
+def restore(script, key, base='HEAD'):
+    def span(text):
+        ls = text.splitlines(keepends=True)
+        idx = [i for i, l in enumerate(ls) if l.startswith('## ')] + [len(ls)]
+        hit = [(x, y) for x, y in zip(idx, idx[1:]) if ls[x][3:].split('（')[0].strip() == key]
+        if len(hit) != 1: sys.exit(f'「{key}」對到 {len(hit)} 場')
+        return ls, *hit[0]
+    p = pathlib.Path(script); nl, x, y = span(p.read_text()); ol, u, v = span(git_show(script, base))
+    p.write_text(''.join(nl[:x] + ol[u:v] + nl[y:])); print('這一場已換回', base)
+
+def tests_running():   # 只算工作目錄在 larch-ember 的試玩
+    for pid in subprocess.run(['pgrep', '-f', '^node tests/'], capture_output=True, text=True).stdout.split():
+        try:
+            if pathlib.Path(f'/proc/{pid}/cwd').resolve() == REPO: return True
+        except OSError: pass
+    return False
+
+TRAILER = 'Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>'
+
+def ship(a):
+    ok_ripple = a[a.index('--ripple-ok') + 1] if '--ripple-ok' in a else None
+    msg, files = a[0], [str(pathlib.Path(x).resolve()) for x in a[1:] if x not in ('--ripple-ok', ok_ripple)]
+    if tests_running(): sys.exit('有餘燼的試玩在跑：等它結束再 ship（同時重建會讓試玩失敗）')
+    diff = subprocess.run(['git', '-C', str(REPO), 'diff', '-U0', 'HEAD', '--', *files], capture_output=True, text=True).stdout.splitlines()
+    gone = ({cell(l[1:]) for l in diff if l.startswith('-') and not l.startswith('---')} - {cell(l[1:]) for l in diff if l.startswith('+') and not l.startswith('+++')}) - {None}
+    left = [(t, h) for t in sorted(gone) if long_enough(t) and (h := refs(t))]
+    for t, h in left: print(f'舊句子別處還在：{t}\n  ' + '、'.join(h))
+    if left and not ok_ripple: sys.exit('要一起改；確定不用改就加 --ripple-ok "理由"')
+    for cmd in (['python3', 'src/build.py'], ['python3', 'tests/check_voice.py'], [str(pathlib.Path.home() / 'speak-tw/bin/speak-tw'), '--public', 'canon/劇本.md'], ['python3', 'tests/map_check.py'], ['python3', 'tests/motif_check.py']):
+        r = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True); out = r.stdout + r.stderr
+        bad = r.returncode != 0 or ('speak-tw' in cmd[0] and not re.search(r'(?<!\d)0 處要改', out))
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+import re, subprocess
+draft = \"## roses（2006 至 2008 年，各地後台門口與錄音室）\\n\\n〔圖：s_roses_1〕\\n旁白：2006 年，演出散場後。後台門外右邊放著一朵深紅玫瑰，花梗夾著當晚的票根。\\n余靜：兩年前跑掉那個？\\n場務：又是那個少年仔，花交給我放，人就走了。\\n余靜：幫我跟他說，下次買三排十四號啦。我沒辦法邊唱邊找人。\\n旁白：她先往走廊看，才彎腰拿花。\\n旁白：隔週台北，再下一場嘉義。她對著三排十四號唱。散場後，同一個位置都有一朵。\\n旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。\\n余靜：我譜還沒收，你們先走。\\n旁白：她回到桌邊，拿起歌譜。周老師停在門邊。\\n周老師：又往三排十四號看，拍子不管啦？\\n余靜：第二段我又趕了。老師，下一場幫我拉住拍子。\\n余靜（心）：今天還沒放。換完鞋再看。\\n\\n〔圖：s_studio_1〕\\n旁白：2008 年，錄音室。歌詞紙上寫著「餘燼」。\\n余靜：（唱）燈一盞一盞暗下來\\n余靜：（唱）掌聲退回了街上\\n余靜：（唱）我把最後一個字收好\\n余靜：（唱）門口又有一朵紅\\n余靜：（唱）沒有名字 沒有卡片\\n余靜：（唱）花瓣上的露水還沒乾\\n余靜：（唱）是誰在散場以後\\n余靜：（唱）還不肯走\\n余靜：（唱）我不認得你的臉\\n余靜：（唱）卻認得你的安靜\\n余靜：（唱）如果我是一場餘燼\\n余靜：（唱）你是最後熄燈的人\\n余靜：（唱）台下坐滿了陌生人\\n余靜：（唱）只有一個位子 等得那麼認真\\n余靜：（唱）就算天黑了 全世界都散了\\n余靜：（唱）我還有一點紅 替你留著\\n余靜：（唱）不肯冷\\n余靜：再來一次。「門口」那裡我唱太重了。\\n旁白：她喝了一口水，把「門口」圈起來。\\n\"
+source = Path('canon/劇本.md').read_text()
+m = re.search(r'"'^## roses[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)', source, re.M | re.S)
+original = m.group()
+assert original.splitlines()[0] == draft.splitlines()[0]
+assert [x for x in original.splitlines() if '（唱）' in x] == [x for x in draft.splitlines() if '（唱）' in x]
+assert re.findall(r'〔圖：["'^〕]+〕'"', original) == re.findall(r'〔圖：["'^〕]+〕'"', draft)
+print('原稿字數：',len(re.sub(r'\\s+', '', original)), '修稿字數：',len(re.sub(r'\\s+', '', draft)))
+print('歌詞與圖標記比對通過。')
+lint = subprocess.run(['/home/ct/speak-tw/bin/speak-tw','--stdin','--public'], input=draft, text=True, capture_output=True)
+print(lint.stdout)
+print('speak-tw exit:',lint.returncode)
+if lint.stderr: print(lint.stderr)
+
+PY" in /home/ct/larch-ember
+ succeeded in 10ms:
+原稿字數： 620 修稿字數： 639
+歌詞與圖標記比對通過。
+
+掃了 1 個檔案，0 處要改
+
+speak-tw exit: 0
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+from pathlib import Path
+import re, subprocess
+draft = \"## roses（2006 至 2008 年，各地後台門口與錄音室）\\n\\n〔圖：s_roses_1〕\\n旁白：2006 年，散場後。後台門外右邊放著一朵深紅玫瑰，花梗夾著當晚的票根。\\n余靜：塞花就跑的？\\n場務：又是那個少年仔，交給我就走了。\\n余靜：下次叫他買三排十四號啦，我要找得到他。\\n旁白：她笑著往走廊看，才彎腰拿花。\\n旁白：隔週台北，再下一場嘉義。她對著三排十四號唱，散場後門外右邊都有一朵。\\n旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。\\n余靜：我譜還沒收，你們先走。\\n旁白：她回到桌邊，拿起歌譜。周老師停在門邊。\\n周老師：又往三排十四號看，拍子不管啦？\\n余靜：第二段我又趕了。老師，下一場幫我拉住拍子。\\n余靜（心）：今天還沒放。換完鞋再看。\\n\\n〔圖：s_studio_1〕\\n旁白：2008 年，錄音室。歌詞紙上寫著「餘燼」。\\n余靜：（唱）燈一盞一盞暗下來\\n余靜：（唱）掌聲退回了街上\\n余靜：（唱）我把最後一個字收好\\n余靜：（唱）門口又有一朵紅\\n余靜：（唱）沒有名字 沒有卡片\\n余靜：（唱）花瓣上的露水還沒乾\\n余靜：（唱）是誰在散場以後\\n余靜：（唱）還不肯走\\n余靜：（唱）我不認得你的臉\\n余靜：（唱）卻認得你的安靜\\n余靜：（唱）如果我是一場餘燼\\n余靜：（唱）你是最後熄燈的人\\n余靜：（唱）台下坐滿了陌生人\\n余靜：（唱）只有一個位子 等得那麼認真\\n余靜：（唱）就算天黑了 全世界都散了\\n余靜：（唱）我還有一點紅 替你留著\\n余靜：（唱）不肯冷\\n余靜：再來一次。「門口」我唱太重了。\\n旁白：她喝了口水，把「門口」圈起來。\\n\"
+source = Path('canon/劇本.md').read_text()
+m = re.search(r'"'^## roses[''^'"\\n]*\\n.*?(?="'^## |'"\\Z)', source, re.M | re.S)
+original = m.group()
+assert original.splitlines()[0] == draft.splitlines()[0]
+sung = lambda text: [x for x in text.splitlines() if '（唱）' in x]
+assert sung(original) == sung(draft)
+markers = lambda text: re.findall(r'〔圖：["'^〕]+〕'"', text)
+assert markers(original) == markers(draft)
+assert draft.index('〔圖：s_roses_1〕') < draft.index('旁白：2006')
+assert draft.index('〔圖：s_studio_1〕') < draft.index('旁白：2008') < draft.index('余靜：（唱）')
+assert len(re.sub(r'\\s+', '', draft)) <= len(re.sub(r'\\s+', '', original))
+assert '旁白：她回到桌邊，拿起歌譜。周老師停在門邊。' in draft
+assert '旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。' in draft
+assert '余靜：第二段我又趕了。老師，下一場幫我拉住拍子。' in draft
+assert all('：' in line for line in draft.splitlines()[1:] if line.strip() and not line.startswith('〔圖：'))
+patched = source[:m.start()] + draft + '\\n' + source[m.end():]
+lint = subprocess.run(['/home/ct/speak-tw/bin/speak-tw','--stdin','--public'], input=draft, text=True, capture_output=True)
+motif = subprocess.run(['python3','tests/motif_check.py','/dev/stdin'], input=patched, text=True, capture_output=True)
+print('標題、圖標記、17 行歌詞與保留句檢查通過；字數', len(re.sub(r'\\s+', '', draft)))
+print(lint.stdout.strip(), 'exit', lint.returncode)
+print(motif.stdout.strip().splitlines()[-1] if motif.stdout.strip() else motif.stderr, 'exit', motif.returncode)
+assert lint.returncode == 0
+assert motif.returncode == 0
+
+PY" in /home/ct/larch-ember
+ succeeded in 2ms:
+標題、圖標記、17 行歌詞與保留句檢查通過；字數 620
+掃了 1 個檔案，0 處要改 exit 0
+回收沒有出處 0 處 exit 0
+
+codex
+## roses（2006 至 2008 年，各地後台門口與錄音室）
+
+〔圖：s_roses_1〕
+旁白：2006 年，散場後。後台門外右邊放著一朵深紅玫瑰，花梗夾著當晚的票根。
+余靜：塞花就跑的？
+場務：又是那個少年仔，交給我就走了。
+余靜：下次叫他買三排十四號啦，我要找得到他。
+旁白：她笑著往走廊看，才彎腰拿花。
+旁白：隔週台北，再下一場嘉義。她對著三排十四號唱，散場後門外右邊都有一朵。
+旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。
+余靜：我譜還沒收，你們先走。
+旁白：她回到桌邊，拿起歌譜。周老師停在門邊。
+周老師：又往三排十四號看，拍子不管啦？
+余靜：第二段我又趕了。老師，下一場幫我拉住拍子。
+余靜（心）：今天還沒放。換完鞋再看。
+
+〔圖：s_studio_1〕
+旁白：2008 年，錄音室。歌詞紙上寫著「餘燼」。
+余靜：（唱）燈一盞一盞暗下來
+余靜：（唱）掌聲退回了街上
+余靜：（唱）我把最後一個字收好
+余靜：（唱）門口又有一朵紅
+余靜：（唱）沒有名字 沒有卡片
+余靜：（唱）花瓣上的露水還沒乾
+余靜：（唱）是誰在散場以後
+余靜：（唱）還不肯走
+余靜：（唱）我不認得你的臉
+余靜：（唱）卻認得你的安靜
+余靜：（唱）如果我是一場餘燼
+余靜：（唱）你是最後熄燈的人
+余靜：（唱）台下坐滿了陌生人
+余靜：（唱）只有一個位子 等得那麼認真
+余靜：（唱）就算天黑了 全世界都散了
+余靜：（唱）我還有一點紅 替你留著
+余靜：（唱）不肯冷
+余靜：再來一次。「門口」我唱太重了。
+旁白：她喝了口水，把「門口」圈起來。
+hook: Stop
+hook: Stop Completed
+tokens used
+72,734
+## roses（2006 至 2008 年，各地後台門口與錄音室）
+
+〔圖：s_roses_1〕
+旁白：2006 年，散場後。後台門外右邊放著一朵深紅玫瑰，花梗夾著當晚的票根。
+余靜：塞花就跑的？
+場務：又是那個少年仔，交給我就走了。
+余靜：下次叫他買三排十四號啦，我要找得到他。
+旁白：她笑著往走廊看，才彎腰拿花。
+旁白：隔週台北，再下一場嘉義。她對著三排十四號唱，散場後門外右邊都有一朵。
+旁白：2007 年，高雄。她走到門邊，先往右邊看，地上沒有花。
+余靜：我譜還沒收，你們先走。
+旁白：她回到桌邊，拿起歌譜。周老師停在門邊。
+周老師：又往三排十四號看，拍子不管啦？
+余靜：第二段我又趕了。老師，下一場幫我拉住拍子。
+余靜（心）：今天還沒放。換完鞋再看。
+
+〔圖：s_studio_1〕
+旁白：2008 年，錄音室。歌詞紙上寫著「餘燼」。
+余靜：（唱）燈一盞一盞暗下來
+余靜：（唱）掌聲退回了街上
+余靜：（唱）我把最後一個字收好
+余靜：（唱）門口又有一朵紅
+余靜：（唱）沒有名字 沒有卡片
+余靜：（唱）花瓣上的露水還沒乾
+余靜：（唱）是誰在散場以後
+余靜：（唱）還不肯走
+余靜：（唱）我不認得你的臉
+余靜：（唱）卻認得你的安靜
+余靜：（唱）如果我是一場餘燼
+余靜：（唱）你是最後熄燈的人
+余靜：（唱）台下坐滿了陌生人
+余靜：（唱）只有一個位子 等得那麼認真
+余靜：（唱）就算天黑了 全世界都散了
+余靜：（唱）我還有一點紅 替你留著
+余靜：（唱）不肯冷
+余靜：再來一次。「門口」我唱太重了。
+旁白：她喝了口水，把「門口」圈起來。

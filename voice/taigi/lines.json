@@ -12,6 +12,10 @@
   "余伯": {
    "ref": "refs/dad.wav",
    "note": "Larch_Mandarin_Dad"
+  },
+  "程希": {
+   "ref": "refs/chengxi.wav",
+   "note": "Larch_Mandarin_Uncle（跟 src/tts.py 華語同一個聲音）"
   }
  },
  "lines": [
@@ -88,16 +92,16 @@
    "audio": "audio/1de7585cda.mp3"
   },
   {
-   "id": "51a548e9b0",
+   "id": "6e8a3578d4",
    "speaker": "余伯",
    "scene": "market",
-   "hanzi": "你來教我啦！",
-   "zh": "換你來教我啦！",
-   "kip": "lí lâi kà guá lah!",
-   "seg": "你｜lí 來｜lâi 教｜kà 我｜guá 啦｜lah ！｜!",
+   "hanzi": "無，你來教我啦！",
+   "zh": "不然換你來教我啦！",
+   "kip": "Bô,lí lâi kà guá lah!",
+   "seg": "無｜Bô ，｜, 你｜lí 來｜lâi 教｜kà 我｜guá 啦｜lah ！｜!",
    "status": "todo",
    "note": "",
-   "audio": "audio/51a548e9b0.mp3"
+   "audio": "audio/6e8a3578d4.mp3"
   },
   {
    "id": "52e9106246",
@@ -112,16 +116,16 @@
    "audio": "audio/52e9106246.mp3"
   },
   {
-   "id": "45ee24fb09",
+   "id": "2b263481ab",
    "speaker": "余伯",
    "scene": "door2004",
-   "hanzi": "兩擺矣，猶是洗袂掉。",
-   "zh": "兩次了，還是洗不掉。",
-   "kip": "nn̄g pái ah,iáu-sī sé bē tiāu.",
-   "seg": "兩｜nn̄g 擺｜pái 矣｜ah ，｜, 猶-是｜iáu-sī 洗｜sé 袂｜bē 掉｜tiāu 。｜.",
+   "hanzi": "洗兩擺猶有臭臊，予你老師鼻著……",
+   "zh": "洗兩次還有魚腥味，被妳老師聞到……",
+   "kip": "sé nn̄g pái iáu-ū tshàu-tsho,hōo lí lāu-su phīnn-tio̍h...",
+   "seg": "洗｜sé 兩｜nn̄g 擺｜pái 猶-有｜iáu-ū 臭-臊｜tshàu-tsho ，｜, 予｜hōo 你｜lí 老-師｜lāu-su 鼻-著｜phīnn-tio̍h ……｜...",
    "status": "todo",
    "note": "",
-   "audio": "audio/45ee24fb09.mp3"
+   "audio": "audio/2b263481ab.mp3"
   },
   {
    "id": "eddd12e4a2",
@@ -158,6 +162,30 @@
    "status": "todo",
    "note": "",
    "audio": "audio/032e3e0c5b.mp3"
+  },
+  {
+   "id": "c3c537432e",
+   "speaker": "程希",
+   "scene": "canal",
+   "hanzi": "淑靜仔。",
+   "zh": "淑靜。",
+   "kip": "siok tsīng ah.",
+   "seg": "淑｜siok 靜｜tsīng 仔｜ah 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/c3c537432e.mp3"
+  },
+  {
+   "id": "aad6f2cedd",
+   "speaker": "程希",
+   "scene": "canal",
+   "hanzi": "好，咱轉來去。",
+   "zh": "好，我們回去。",
+   "kip": "Hó,lán tńg-lâi-khì.",
+   "seg": "好｜Hó ，｜, 咱｜lán 轉-來-去｜tńg-lâi-khì 。｜.",
+   "status": "todo",
+   "note": "",
+   "audio": "audio/aad6f2cedd.mp3"
   },
   {
    "id": "66eaa6ffec",

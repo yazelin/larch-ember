@@ -1,0 +1,489 @@
+Reading additional input from stdin...
+OpenAI Codex v0.165.0
+--------
+workdir: /home/ct/larch-ember
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: max
+reasoning summaries: none
+session id: 01a1891d-a640-76c2-b3fa-e0932842fbe7
+--------
+user
+你是這部視覺小說的編劇。讀 審稿/修稿/concert.r1.txt（這次要改的地方）、審稿/準則.md，再讀 canon/劇本.md 裡「## concert」這一場。只改 concert.r1.txt 點到的句子，其他逐字不動。不要改任何檔案。只輸出改好的整場：第一行照抄 ## 標題行，〔圖：…〕標記單獨一行、前面不加講者，其他每行「講者：台詞」，不要行號、不要說明。
+hook: SessionStart
+hook: SessionStart Completed
+codex
+我會先讀修稿要求、審稿準則和 concert 原文，只改指定句子，其他文字保持原樣。
+exec
+/bin/bash -lc pwd in /home/ct/larch-ember
+ succeeded in 0ms:
+/home/ct/larch-ember
+
+exec
+/bin/bash -lc "rg --files -g AGENTS.md -g 'concert.r1.txt' -g '準則.md' -g '劇本.md'" in /home/ct/larch-ember
+ succeeded in 0ms:
+審稿/準則.md
+審稿/修稿/concert.r1.txt
+canon/劇本.md
+
+exec
+/bin/bash -lc 'cat 審稿/修稿/concert.r1.txt 審稿/準則.md' in /home/ct/larch-ember
+exec
+/bin/bash -lc 'cat /home/ct/mori-universe/yaze-journal/skills/README.md' in /home/ct/larch-ember
+ succeeded in 0ms:
+這一場（canon/劇本.md 的「## concert」）只改一處，其他句子逐字不動：
+作者要把 CG s_a_2 放回這場，標記已經插在「旁白：她抬頭望向第三排。程希坐在十四號，玫瑰放在膝上。」前面。圖的內容：她站在台上，手裡拿著攤開的歌譜，轉頭看台下；程希在第三排站起來，一手拿一枝深紅玫瑰，一手按在胸口，抬頭看她，周圍觀眾坐著。
+把這句旁白改成跟圖一致（他站起來、手拿玫瑰），前後句子要接得上。
+# 寫稿準則（寫稿、改稿的人與 AI 都照這份；contest.py 與 runner.py packet 會自動帶入）
+
+摘自 `design/寫作標準.md`、`design/余靜改寫方向.md`（作者 2026-10-23 拍板）、`design/失智症反應研究.md` D 節、`design/結局C修改.md`、`tests/check_voice.py` 與 speak-tw 規則。設定以 `canon/劇本.md` 與這些檔為準，舊設計稿與劇本衝突時以劇本為準。
+
+1. 余靜面對忘記的方式：用笑遮羞，笑完安靜。玩笑只拿自己開，笑完沒有人接話時她看向別處、安靜下來。不拿別人開玩笑，不輕佻。
+2. 余靜的病識感時有時無：這一刻察覺自己不對勁，下一刻又不察覺。每一場要有一個她自己察覺的瞬間，不靠別人告訴她。
+3. 忘記要有代價：每一場要演出她失去了什麼、她怎麼感覺到。忘了也不在乎、只有忘沒有在補，都不要（研究 D 節）。
+4. 余靜為別人的感受道歉：看到對方臉色一變，先說對不起，不為自己辯解。她病了還在顧別人，掛心阿哲、周老師、程希。
+5. 余靜把丈夫當成「這裡的工作人員」時，對他客氣、有距離，覺得他讓人安心；只有身體記得的小儀式（半分鐘的水（作者 10-29：只留開場旁白、2011 年她交代「放半分鐘再給我」、第三段歌詞三處，其他地方遞水不講秒數）、敲兩下）會讓她不自覺放鬆，放鬆完她會愣一下。
+6. 程希一次只問一個問題、只給一個選項、自稱工作人員；他有脾氣、會碎念、會逞強，不是沒有情緒的聖人。
+7. 旁白只寫畫面上看得到的事，不解釋心情、不下結論、不寫情緒形容詞（難過、心疼、感動、溫柔地之類），不用比喻（像、彷彿、好像、似乎）。
+8. 心聲寫具體的念頭與身體的感覺，半句話也可以，不寫總結的感想。
+9. 對白要像真人：會打斷、說一半、答非所問、重複、顧左右而言他。出聲念念看，念不出口的書面語換掉（於是、並且、以及、此刻、而……）。
+10. 用看得到的小事說話：保溫杯、錶帶、耳墜、歌譜、票根、收音機、魚箱。形容詞不堆疊，一句不要掛一串動作。最痛的那一句不說出來，說出來的是旁邊那件小事。
+11. 台灣口語，正體中文、全形標點。不用破折號，不用「不是……而是」或「不是 X，是 Y」，不用 emoji，不用「長出」「長成」「接住」。 <!-- speak-tw-ok：這一行是在列禁用詞 -->
+12. 不寫金句，不用三連排比，不用「我沒有 X。我只是 Y」。客服句型（好，我記住了／謝謝你。／慢慢來／你先坐）不要。
+13. 單字連答不要連續超過兩句；連續一問一答不超過兩組；同一個句型整場不要反覆出現；單場心聲不超過 8 句。
+14. （唱）的句子逐字照 `canon/歌詞.md`，一個字都不能動；〈天烏烏〉是公有童謠，照劇本現有的句子。
+15. 台語台詞寫台語漢字，後面括號附華語字幕，照劇本現有寫法。
+16. 扣回的物件與句子照原樣保留（票根背面「河岸留言那晚，你唱〈天烏烏〉，我沒走。」、三排十四號、半分鐘的水、敲兩下、玫瑰放門內右邊、四折歌譜、手錶型 GPS「唱完再戴回去」、天烏烏、走音與「那我唱，你跳」、紙條「今天有人坐在三排十四號」、尾聲余靜問的「什麼演唱會？」（作者 10-19 指定）、天黑獨處她小聲說的「我不想忘記」（作者 10-29 指定））；要改就把引用的地方一起改（修稿包會列出），並跑 `tests/motif_check.py`。
+17. 每張卡的 `##` 標題、〔圖〕〔掉字〕標記、選項文字不動；歌曲切段的錨點句（`src/songs_cut.py` 的 anchor）不動。
+18. 長度不增加（作者擔心整個遊戲太長）：加了察覺與代價的句子，就刪掉純鬥嘴、沒有代價的句子。
+19. 不寫影視常見的錯誤：突然全好、一夕全忘、鏡子認不出自己當成預設畫面、驚嚇配樂式的演法、把病寫成懲罰（研究 D 節）。
+20. 作者要求句子由 codex 寫；Claude 負責對照準則與研究、套用、跑檢查，不憑口味挑版本或補句。
+
+ succeeded in 0ms:
+# 個人 skill 設計(給所有 agent)
+
+skill 清單**不手寫**——`~/.claude/skills/` 的 symlink 就是清單,看指向分三類:
+
+```bash
+ls -l ~/.claude/skills | grep -v lark
+```
+
+| symlink 指向 | 意義 |
+|---|---|
+| `/home/ct/<name>-skill` 或專案 repo | 可攜:skill 是自己的 git repo(GitHub 上有) |
+| `yaze-journal/skills/` | 跟著本 journal 同步(brief、evolve) |
+| 純目錄(非 symlink) | local-only,換機會消失——盡量別新增這類 |
+
+## 規則
+
+- **新 skill 一律做成自己的 git repo + symlink**,不要裸目錄:
+  ```bash
+  git init ~/<name>-skill && ...commit... && gh repo create yazelin/<name>-skill --public --source ~/<name>-skill --push
+  ln -s ~/<name>-skill ~/.claude/skills/<name>
+  ```
+- 換機安裝:clone + symlink 兩行,見各 skill repo README。
+- 授權:工具一律 MIT © 林亞澤;公開 repo 的 README 要有推廣 footer(GitHub/FB/BMC 三連結)。
+- 跨 agent:skill 本體是 SKILL.md + 腳本,不綁 Claude;其他 agent(Codex/Gemini)直接讀 repo 內 SKILL.md 照用法執行腳本即可。
+
+exec
+/bin/bash -lc "awk '/"'^## concert([[:space:]]|$)/{p=1} p && /''^## / && !/''^## concert([[:space:]]|$)/{exit} p{print}'"' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+exec
+/bin/bash -lc "rg -n -A 90 -B 3 '"'^## .*concert|s_a_2|她抬頭望向第三排'"' canon/劇本.md" in /home/ct/larch-ember
+ succeeded in 0ms:
+574-程希：要唱嗎？
+575-余靜：要。
+576-
+577:## concert（19:40，開演與〈晚安，台南〉）
+578-
+579-〔圖：s_concert_1〕
+580-旁白：19:40，比原訂晚了十分鐘。程希坐回三排十四號，手裡一朵深紅玫瑰。阿哲獨自坐在音控台。
+581-旁白：舞台燈亮了。余靜向周老師點頭。
+582-〔圖：s_concert_2〕
+583-余靜：（唱）天還沒亮攤就開了
+584-余靜：（唱）阿爸扛來一桶冰
+585-余靜：（唱）收音機沙沙響
+586-余靜：（唱）冰水流過地磚
+587-余靜：（唱）魚鱗黏在圍裙
+588-余靜：（唱）我伸手幫他拍掉
+589-余靜：（唱）他秤好最後一尾
+590-余靜：（唱）才問我吃飽沒
+591-余靜：（唱）運河風從橋下來
+592-余靜：（唱）路燈照著濕石階
+593-余靜：（唱）明天若我不認得你
+594-余靜：（唱）請把屋裡燈留著
+595-余靜：（唱）魚攤收了水還滴
+596-余靜：（唱）我沿著亮處回家
+597-余靜：（唱）淑靜仔 叫我一聲
+598-余靜：（唱）名字先留在你這裡
+599-余靜：（唱）哪天我走丟了
+600-余靜：（唱）再叫我一聲就好
+601-余靜：（唱）水邊的燈還亮著
+602-余靜：（唱）我聽見就回家
+603-〔圖：s_concert_3〕
+604-旁白：周老師彈完間奏。她吸了兩次氣，沒出聲。周老師的手停在琴鍵上。
+605-余靜（心）：第一個字呢？老師，你的手……
+606-余靜：對不起喔，讓大家等了。我偷看一下。
+607-旁白：她笑了一聲。台下沒有聲音，她轉頭看向側台，手摸進口袋。
+608-〔圖：s_a_1〕
+609-余靜（心）：明明背熟了……歌譜在哪個口袋？
+610-旁白：她攤開四折歌譜，指著第三段。嘴唇動了動，才翻到背面。紙上寫著「程希，三排十四號」。
+611:〔圖：s_a_2〕
+612:旁白：她抬頭望向第三排。程希坐在十四號，玫瑰放在膝上。
+613-余靜：程希……先生？
+614-
+615-## verse3（〈晚安，台南〉第三段）
+616-
+617-〔圖：s_a_3〕
+618-余靜：（唱）有人坐在我身旁
+619-余靜：（唱）我想不起他是誰
+620-余靜：（唱）他把保溫杯打開
+621-余靜：（唱）等半分鐘才遞給我
+622-余靜：（唱）杯口的熱氣散了
+623-余靜：（唱）他還坐在我身邊
+624-余靜：（唱）有他陪我 我不怕
+625-旁白：周老師又彈起琴。余靜摺好四折歌譜，手指留在紙邊。
+626-
+627-## encore（安可，〈餘燼〉與側台）
+628-
+629-〔圖：s_a_4〕
+630-旁白：安可。周老師彈起〈餘燼〉的前奏，台下的人一排排站起來。
+631-余靜：（唱）如果我是一場餘燼
+632-余靜：（唱）你是最後熄燈的人
+633-余靜：（唱）就算我認不出你
+634-余靜：（唱）也請你 坐在那裡
+635-余靜：（唱）就算天黑了 全世界都散了
+636-余靜：（唱）我還有一點紅 替你留著
+637-余靜：（唱）不肯冷
+638-旁白：第三句唱完，她放低麥克風。台下接著唱第四句，一直唱到最後一個字。
+639-旁白：她的嘴唇跟著動，手掌貼在禮服口袋上。
+640-〔圖：s_a_5〕
+641-旁白：下台後，程希在她面前攤開手帕，裡面是三排十四號那朵深紅玫瑰。
+642-余靜：我剛剛有叫你嗎？
+643-程希：有，叫了名字。
+644-余靜：連自己說的都不記得，我這張嘴喔。
+645-旁白：她笑了一下。程希抿著嘴，她低頭看花梗。
+646-余靜：對不起。手帕借我，等一下會扎到你。
+647-程希：刺剪過了。留了上面一根，妳別碰。
+648-旁白：她用手帕裹住花梗，插進他襯衫胸前的口袋。
+649-余靜：你坐的那邊，我有看到。你也喝點水，光顧著等我。
+650-旁白：她把保溫杯推到他手邊，手帕的一角露在花下面。
+651-
+652-## kitchen（三天後清晨，台南老家廚房）
+653-
+654-〔圖：s_a_6〕
+655-旁白：10 月 17 日清晨，台南老家廚房。冰箱上用磁鐵壓著那張四折歌譜，電鍋冒著白煙。
+656-余靜：程希……阿希。
+657-余靜：阿希，早。
+658-程希：早。這杯妳的。
+659-旁白：她從冰箱前走到桌邊，喝了一口。
+660-余靜：飯先半碗，不夠再添。
+661-程希：蛋先吃。妳昨天又剩半顆。
+662-余靜：我等一下會吃，別一直看我的碗。
+663-〔圖：s_a_7〕
+664-旁白：阿桃姨推開紗門，把一袋饅頭和報紙放上桌。
+665-阿桃姨：報紙有寫恁彼工的演唱會，我提來予恁看。（報紙寫了你們那天的演唱會，我拿來給你們看。）
+666-余靜：什麼演唱會？
+667-旁白：阿桃姨攤開報紙。照片裡，余靜拿著歌譜站在舞台上。
+668-余靜：這件衣服我有。
+669-旁白：她的手指停在照片下方的「十四日」。
+670-余靜（心）：三天前。我唱的，怎麼一點聲音都想不起來。
+671-余靜：我還得看報紙才知道自己唱過。
+672-旁白：她笑了兩聲。阿桃姨沒接話，余靜低頭看照片。
+673-余靜：先擺這裡，我再看一下。
+674-阿桃姨：我猶有一袋欲送隔壁，恁先食。（我還有一袋要送隔壁，你們先吃。）
+675-旁白：阿桃姨走出門，把紗門帶上。
+676-〔圖：s_a_8〕
+677-旁白：早飯後，余靜還看著報紙。她哼了半句〈餘燼〉就停。過了一會兒才拉住程希的手。
+678-程希：碗還沒洗。
+679-余靜：放著，一下就好。
+680-旁白：他跟著哼了兩句，尾音走了調。
+681-余靜：那我唱，你跳。
+682-程希：手別放，我怕撞到。
+683-旁白：她站定，他往前一步。兩人的鞋尖碰在一起。
+684-余靜：往旁邊，別碰到碗。
+685-旁白：他往旁邊挪，拖鞋撞上冰箱旁的矮凳。她拉著他的手，兩人又挪了半步。
+686-〔圖：s_a_9〕
+687-旁白：程希把筆記本翻到新的一頁。她在流理臺前沖碗。
+688-程希（筆記）：10 月 17 日。早上叫我阿希，問什麼演唱會。她哼著〈餘燼〉拉我跳舞，我又踩錯腳。明天把冰箱旁的矮凳挪開。
+
+exec
+/bin/bash -lc 'for f in /AGENTS.md /home/AGENTS.md /home/ct/AGENTS.md /home/ct/larch-ember/AGENTS.md; do if [ -f "$f" ]; then cat "$f"; fi; done' in /home/ct/larch-ember
+ succeeded in 0ms:
+exec
+/bin/bash -lc 'ls -l /home/ct/speak-tw/bin/speak-tw' in /home/ct/larch-ember
+ succeeded in 0ms:
+-rwxrwxr-x 1 ct ct 5552 Aug 18 14:18 /home/ct/speak-tw/bin/speak-tw
+
+exec
+/bin/bash -lc 'cat /home/ct/speak-tw/bin/speak-tw' in /home/ct/larch-ember
+ succeeded in 0ms:
+#!/usr/bin/env node
+/* speak-tw — 講人話檢查。純靜態掃描,零相依,任何 agent 都能跑(它只是一支會回傳退出碼的程式)。
+
+   用法:
+     speak-tw <檔案或目錄...>        預設掃 .md/.html/.txt
+     speak-tw --public <路徑...>     連對外文字專用的規則一起套(全形標點、破折號、禁用詞)
+     speak-tw --stdin --public       從 stdin 讀一段文字檢查
+     speak-tw --rules a,b,c          只跑指定的規則(給 hook 用,對話不需要全套)
+     speak-tw --quiet                只回退出碼與一行摘要
+     speak-tw --list                 列出所有規則
+     speak-tw --json                 機器讀的輸出
+   有問題就 exit 1。
+
+   放行:在那一行加 speak-tw-ok(HTML 用 <!-- speak-tw-ok -->)。
+   要放行就要明講,不能默默通過。
+
+   設定檔 .speak-tw.json(放在被掃的目錄):
+     { "public": ["index.html"], "off": ["academic-filler"], "exclude": ["data/", "assets/"] }
+   public 列到的檔案自動套 public 規則;exclude 列到的路徑整個跳過
+   (產出物、別人的文字、錄下來的資料 —— 那些不是你寫的,不該被改)。 */
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+import { join, resolve, relative, extname } from 'node:path';
+import { RULES } from '../rules.mjs';
+
+const argv = process.argv.slice(2);
+const flag = (n) => argv.includes(n);
+const paths = argv.filter((a) => !a.startsWith('--'));
+const only = (argv.find((a) => a.startsWith('--rules=')) || '').slice(8).split(',').filter(Boolean);
+const SKIP = new Set(['node_modules', '.git', 'dist', 'build', 'vendor']);
+
+if (flag('--list')) {
+  for (const r of RULES) console.log(r.id.padEnd(18) + '[' + r.register + '] ' + r.name + '\n    ' + r.why);
+  process.exit(0);
+}
+
+/* 只檢查「人會讀到的字」:程式碼、網址、HTML 標籤裡的東西不算。
+   位置要對得上原文,所以用等長的空白換掉,不是刪掉。 */
+function stripCode(text, ext) {
+  const blank = (m) => m.replace(/[^\n]/g, ' ');
+  let s = text;
+  if (ext === '.md') {
+    s = s.replace(/```[\s\S]*?```/g, blank).replace(/`[^`\n]*`/g, blank)
+         .replace(/^ {4}\S[^\n]*$/gm, blank);
+  }
+  if (ext === '.html') {
+    s = s.replace(/<(script|style|pre|code)[\s\S]*?<\/\1>/gi, blank)
+         .replace(/<[^>]+>/g, blank);
+  }
+  return s.replace(/https?:\/\/\S+/g, blank);
+}
+
+function collect(p) {
+  const out = [];
+  const st = statSync(p);
+  if (st.isFile()) { out.push(p); return out; }
+  (function walk(d) {
+    for (const n of readdirSync(d)) {
+      if (SKIP.has(n) || n.startsWith('.')) continue;
+      const q = join(d, n); const s = statSync(q);
+      if (s.isDirectory()) walk(q);
+      else if (/\.(md|html|txt)$/.test(n) && s.size < 2_000_000) out.push(q);
+    }
+  })(p);
+  return out;
+}
+
+function configFor(root) {
+  const f = join(root, '.speak-tw.json');
+  try { return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : {}; } catch (e) { return {}; }
+}
+
+const targets = (paths.length ? paths : ['.']).map((p) => resolve(p));
+const root = statSync(targets[0]).isDirectory() ? targets[0] : resolve(targets[0], '..');
+const cfg = configFor(root);
+const off = new Set(cfg.off || []);
+const publicList = (cfg.public || []).map((p) => resolve(root, p));
+const excludes = (cfg.exclude || []).map((p) => resolve(root, p));
+const excluded = (f) => excludes.some((e) => resolve(f) === e || resolve(f).startsWith(e.replace(/\/?$/, '/')));
+
+const hits = [];
+const files = flag('--stdin') ? ['<stdin>'] : [...new Set(targets.flatMap(collect))].filter((f) => !excluded(f));
+
+for (const f of files) {
+  const text = f === '<stdin>' ? readFileSync(0, 'utf8') : readFileSync(f, 'utf8');
+  const ext = f === '<stdin>' ? '.md' : extname(f);
+  const isPublic = flag('--public') || publicList.includes(resolve(f));
+  const clean = stripCode(text, ext);
+  const lines = text.split('\n');
+  const starts = []; let acc = 0;
+  for (const l of lines) { starts.push(acc); acc += l.length + 1; }
+  for (const r of RULES) {
+    if (off.has(r.id)) continue;
+    if (only.length && !only.includes(r.id)) continue;
+    if (r.register === 'public' && !isPublic) continue;
+    for (const m of clean.matchAll(r.re)) {
+      let ln = starts.findIndex((s, i) => m.index >= s && (i === starts.length - 1 || m.index < starts[i + 1]));
+      if (ln < 0) ln = 0;
+      if (/speak-tw-ok/.test(lines[ln])) continue;
+      hits.push({ file: f, line: ln + 1, rule: r.id, name: r.name, why: r.why, text: m[0].trim().slice(0, 60) });
+    }
+  }
+}
+
+if (flag('--json')) { console.log(JSON.stringify(hits, null, 1)); process.exit(hits.length ? 1 : 0); }
+
+if (flag('--quiet')) {
+  const ids = [...new Set(hits.map((h) => h.rule))];
+  if (hits.length) console.log(hits.length + ' 處：' + ids.join('、'));
+  process.exit(hits.length ? 1 : 0);
+}
+const byRule = {};
+for (const h of hits) (byRule[h.rule] ||= []).push(h);
+for (const [id, hs] of Object.entries(byRule)) {
+  console.log('\n' + id + '　' + hs[0].name + '（' + hs.length + ' 處）');
+  console.log('  ' + hs[0].why);
+  for (const h of hs.slice(0, 8)) {
+    const loc = h.file === '<stdin>' ? '' : relative(process.cwd(), h.file) + ':' + h.line + '  ';
+    console.log('    ' + loc + h.text);
+  }
+  if (hs.length > 8) console.log('    …還有 ' + (hs.length - 8) + ' 處');
+}
+console.log('\n掃了 ' + files.length + ' 個檔案，' + hits.length + ' 處要改');
+if (hits.length) console.log('確定某一處是刻意的，就在那一行加 speak-tw-ok');
+process.exit(hits.length ? 1 : 0);
+
+exec
+/bin/bash -lc "python3 -B - <<'PY'
+from pathlib import Path
+import re
+import subprocess
+text = Path('canon/劇本.md').read_text()
+scene = re.search(r'"'^## concert[''^'"\\n]*\\n(?P<body>.*?)(?="'^## |'"\\Z)', text, re.M | re.S).group(0).rstrip('\\n')
+old = '旁白：她抬頭望向第三排。程希坐在十四號，玫瑰放在膝上。'
+new = '旁白：她抬頭望向第三排。程希在十四號起身，手握著玫瑰。'
+assert scene.count(old) == 1
+revised = scene.replace(old, new)
+assert len(new) == len(old)
+assert [(a,b) for a,b in zip(scene.splitlines(),revised.splitlines()) if a "'!= b] == [(old,new)]
+result = subprocess.run(['"'/home/ct/speak-tw/bin/speak-tw', '--stdin', '--public'], input=revised, text=True, capture_output=True)
+print(result.stdout)
+if result.stderr:
+    print(result.stderr)
+print('speak-tw exit:', result.returncode)
+print(revised)
+PY" in /home/ct/larch-ember
+ succeeded in 0ms:
+
+掃了 1 個檔案，0 處要改
+
+speak-tw exit: 0
+## concert（19:40，開演與〈晚安，台南〉）
+
+〔圖：s_concert_1〕
+旁白：19:40，比原訂晚了十分鐘。程希坐回三排十四號，手裡一朵深紅玫瑰。阿哲獨自坐在音控台。
+旁白：舞台燈亮了。余靜向周老師點頭。
+〔圖：s_concert_2〕
+余靜：（唱）天還沒亮攤就開了
+余靜：（唱）阿爸扛來一桶冰
+余靜：（唱）收音機沙沙響
+余靜：（唱）冰水流過地磚
+余靜：（唱）魚鱗黏在圍裙
+余靜：（唱）我伸手幫他拍掉
+余靜：（唱）他秤好最後一尾
+余靜：（唱）才問我吃飽沒
+余靜：（唱）運河風從橋下來
+余靜：（唱）路燈照著濕石階
+余靜：（唱）明天若我不認得你
+余靜：（唱）請把屋裡燈留著
+余靜：（唱）魚攤收了水還滴
+余靜：（唱）我沿著亮處回家
+余靜：（唱）淑靜仔 叫我一聲
+余靜：（唱）名字先留在你這裡
+余靜：（唱）哪天我走丟了
+余靜：（唱）再叫我一聲就好
+余靜：（唱）水邊的燈還亮著
+余靜：（唱）我聽見就回家
+〔圖：s_concert_3〕
+旁白：周老師彈完間奏。她吸了兩次氣，沒出聲。周老師的手停在琴鍵上。
+余靜（心）：第一個字呢？老師，你的手……
+余靜：對不起喔，讓大家等了。我偷看一下。
+旁白：她笑了一聲。台下沒有聲音，她轉頭看向側台，手摸進口袋。
+〔圖：s_a_1〕
+余靜（心）：明明背熟了……歌譜在哪個口袋？
+旁白：她攤開四折歌譜，指著第三段。嘴唇動了動，才翻到背面。紙上寫著「程希，三排十四號」。
+〔圖：s_a_2〕
+旁白：她抬頭望向第三排。程希在十四號起身，手握著玫瑰。
+余靜：程希……先生？
+
+codex
+## concert（19:40，開演與〈晚安，台南〉）
+
+〔圖：s_concert_1〕
+旁白：19:40，比原訂晚了十分鐘。程希坐回三排十四號，手裡一朵深紅玫瑰。阿哲獨自坐在音控台。
+旁白：舞台燈亮了。余靜向周老師點頭。
+〔圖：s_concert_2〕
+余靜：（唱）天還沒亮攤就開了
+余靜：（唱）阿爸扛來一桶冰
+余靜：（唱）收音機沙沙響
+余靜：（唱）冰水流過地磚
+余靜：（唱）魚鱗黏在圍裙
+余靜：（唱）我伸手幫他拍掉
+余靜：（唱）他秤好最後一尾
+余靜：（唱）才問我吃飽沒
+余靜：（唱）運河風從橋下來
+余靜：（唱）路燈照著濕石階
+余靜：（唱）明天若我不認得你
+余靜：（唱）請把屋裡燈留著
+余靜：（唱）魚攤收了水還滴
+余靜：（唱）我沿著亮處回家
+余靜：（唱）淑靜仔 叫我一聲
+余靜：（唱）名字先留在你這裡
+余靜：（唱）哪天我走丟了
+余靜：（唱）再叫我一聲就好
+余靜：（唱）水邊的燈還亮著
+余靜：（唱）我聽見就回家
+〔圖：s_concert_3〕
+旁白：周老師彈完間奏。她吸了兩次氣，沒出聲。周老師的手停在琴鍵上。
+余靜（心）：第一個字呢？老師，你的手……
+余靜：對不起喔，讓大家等了。我偷看一下。
+旁白：她笑了一聲。台下沒有聲音，她轉頭看向側台，手摸進口袋。
+〔圖：s_a_1〕
+余靜（心）：明明背熟了……歌譜在哪個口袋？
+旁白：她攤開四折歌譜，指著第三段。嘴唇動了動，才翻到背面。紙上寫著「程希，三排十四號」。
+〔圖：s_a_2〕
+旁白：她抬頭望向第三排。程希在十四號起身，手握著玫瑰。
+余靜：程希……先生？
+hook: Stop
+hook: Stop Completed
+tokens used
+19,233
+## concert（19:40，開演與〈晚安，台南〉）
+
+〔圖：s_concert_1〕
+旁白：19:40，比原訂晚了十分鐘。程希坐回三排十四號，手裡一朵深紅玫瑰。阿哲獨自坐在音控台。
+旁白：舞台燈亮了。余靜向周老師點頭。
+〔圖：s_concert_2〕
+余靜：（唱）天還沒亮攤就開了
+余靜：（唱）阿爸扛來一桶冰
+余靜：（唱）收音機沙沙響
+余靜：（唱）冰水流過地磚
+余靜：（唱）魚鱗黏在圍裙
+余靜：（唱）我伸手幫他拍掉
+余靜：（唱）他秤好最後一尾
+余靜：（唱）才問我吃飽沒
+余靜：（唱）運河風從橋下來
+余靜：（唱）路燈照著濕石階
+余靜：（唱）明天若我不認得你
+余靜：（唱）請把屋裡燈留著
+余靜：（唱）魚攤收了水還滴
+余靜：（唱）我沿著亮處回家
+余靜：（唱）淑靜仔 叫我一聲
+余靜：（唱）名字先留在你這裡
+余靜：（唱）哪天我走丟了
+余靜：（唱）再叫我一聲就好
+余靜：（唱）水邊的燈還亮著
+余靜：（唱）我聽見就回家
+〔圖：s_concert_3〕
+旁白：周老師彈完間奏。她吸了兩次氣，沒出聲。周老師的手停在琴鍵上。
+余靜（心）：第一個字呢？老師，你的手……
+余靜：對不起喔，讓大家等了。我偷看一下。
+旁白：她笑了一聲。台下沒有聲音，她轉頭看向側台，手摸進口袋。
+〔圖：s_a_1〕
+余靜（心）：明明背熟了……歌譜在哪個口袋？
+旁白：她攤開四折歌譜，指著第三段。嘴唇動了動，才翻到背面。紙上寫著「程希，三排十四號」。
+〔圖：s_a_2〕
+旁白：她抬頭望向第三排。程希在十四號起身，手握著玫瑰。
+余靜：程希……先生？
