@@ -25,8 +25,8 @@ TRACK = {'open': 'dressing', 'market': 'mem_1988', 'livehouse': 'mem_2004', 'doo
 SITE = 'https://yazelin.github.io/larch-ember/'
 POST_TRACK = {'encore': 'end_b'}   # 歌卡唱完後改用的配樂（沒列的沿用這場的 TRACK）
 # 全程自動往下（作者 10-29：一部可以邊聽歌邊看、不用點滑鼠的音樂小說）。打字 TEXT_MS 毫秒一個字，打完停 AUTO 的 delayMs；點畫面仍可加快
-TEXT_MS = 90
-AUTO = {'enabled': True, 'mode': 'delay', 'delayMs': 1600}
+TEXT_MS = 55   # 作者 10-29：90 太慢
+AUTO = {'enabled': True, 'mode': 'delay', 'delayMs': 2000}
 HINT = ['這是一部有歌的小說，從頭到尾會自己播放。', '戴上耳機，不用點滑鼠，看到最後。想快一點，點一下畫面。']
 FADE_RATIO = {'letter': 0.35, 'dark': 0.55, 'canal': 0.6}
 GALLERY = [('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面'), ('s_mem2_11', '2013，空舞台上的一小段舞'),
