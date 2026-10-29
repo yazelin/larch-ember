@@ -112,6 +112,7 @@ def build():
                         '單線劇情、一個結局，三首歌：〈餘燼〉〈晚安，台南〉〈港邊的燈〉。'
                         '原型、醫學資料出處與原聲帶：https://yazelin.github.io/larch-ember/')
     board['name'] = '第一章・餘燼'
+    board['thumbnail'] = A + 'art/cover.webp'   # 白板縮圖（10-29：第二章沒縮圖時發布到市集被略過，照《續》每塊都放）
     board['description'] = '從 1988 年的魚攤，到 2026 年的最後一場。'
     p['variables'] = []
     p['settings']['plugins'] = {k: {**v, 'enabled': False} if k == 'larch-inventory' else v for k, v in p['settings'].get('plugins', {}).items()}
@@ -146,7 +147,7 @@ def build():
     shell = ('<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#140b07}'
              f'iframe{{width:100%;height:100%;border:0;display:block}}</style><iframe src="{SITE}" allow="fullscreen; autoplay"></iframe>'
              "<script>parent.postMessage({type:'larch:ready'},'*');</script></html>")
-    p['boards'].append({'id': 'board-site', 'kind': 'story', 'mode': 'story', 'name': '第二章・公開站',
+    p['boards'].append({'id': 'board-site', 'kind': 'story', 'mode': 'story', 'name': '第二章・公開站', 'thumbnail': shot_url('s_concert_1'),
                         'description': '公開站：故事、改編自真實故事的原型、參考資料、原聲帶', 'edges': [], 'nodes': [{
         'id': 'site', 'type': 'story', 'position': {'x': 100, 'y': 200}, 'data': {
             'type': 'miniGame', 'start': True, 'title': '第二章・公開站', 'text': '原型、參考資料與原聲帶。看完按「略過」回到標題。', 'voiceMode': 'off',
