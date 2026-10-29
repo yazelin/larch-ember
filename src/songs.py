@@ -211,6 +211,7 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
         return {'id': nid, 'type': 'story', 'position': {'x': node['position']['x'] + 40, 'y': node['position']['y'] + 40}, 'data': d}
 
     pre, post = DL[:r0], DL[r1:]
+    orig_auto = data.get('autoAdvance')
     song_lines = [{'id': f'{cid}__song-l{k}', 'speaker': '旁白' if s.get('fill') else singer, 'text': s['text']} for k, s in enumerate(pl['slots'])]
     song_id = f'{cid}__song' if pre else cid
     song = mk(song_id, data.get('title', cid) + '（歌）', song_lines, r0, data)
@@ -239,6 +240,8 @@ def _song_card(project, by_id, nodes, edges, cut, url, ts):
         pd = pn['data']
         for k in ('cgOps', 'start', 'autoAdvance', 'bgm', 'bgmVolume', 'bgmLoop', 'stayOnCard'):
             pd.pop(k, None)
+        if orig_auto:   # 唱完那段照這場原本的自動往下（作者 10-29：全程不用點）
+            pd['autoAdvance'] = copy.deepcopy(orig_auto)
         if cut.get('resume') == 'post' and base:
             pd.update(bgm=base, bgmVolume=0.5, bgmLoop=True)
         if was_end:

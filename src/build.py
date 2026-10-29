@@ -1,6 +1,6 @@
 """組出 dist/project.json：重製版（2026-10-29），單線、純劇情卡、一個結局（設計 design/重製.md）。
 劇本 canon/劇本.md 的每個 `##` 是一張對話卡，依 ORDER 串起來；每句帶分鏡 CG（逐句換背景，不放立繪）。
-有「選項：」的場在後面接一張只有一個選項的選擇卡（程希一次只問一個問題、只給一個選項）。
+全劇沒有選項（作者 10-29：像看一部短片）。開頭一張提示卡請玩家按「自動」。
 python3 src/build.py
 """
 import json, math, pathlib, shutil, sys, os
@@ -23,6 +23,10 @@ TRACK = {'open': 'dressing', 'market': 'mem_1988', 'livehouse': 'mem_2004', 'doo
          'letter': 'dressing', 'dark': 'branch', 'canal': 'end_c', 'concert': 'concert', 'kitchen': 'end_a'}
 # 〔掉字〕：落日以後，標記的句子只留前面一部分，後面變成「……」。數字是掉掉的比例
 POST_TRACK = {'encore': 'end_b'}   # 歌卡唱完後改用的配樂（沒列的沿用這場的 TRACK）
+# 全程自動往下（作者 10-29：一部可以邊聽歌邊看、不用點滑鼠的音樂小說）。打字 TEXT_MS 毫秒一個字，打完停 AUTO 的 delayMs；點畫面仍可加快
+TEXT_MS = 90
+AUTO = {'enabled': True, 'mode': 'delay', 'delayMs': 1600}
+HINT = ['這是一部有歌的小說，從頭到尾會自己播放。', '戴上耳機，不用點滑鼠，看到最後。想快一點，點一下畫面。']
 FADE_RATIO = {'letter': 0.35, 'dark': 0.55, 'canal': 0.6}
 GALLERY = [('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面'), ('s_mem2_11', '2013，空舞台上的一小段舞'),
            ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '三排十四號'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
@@ -68,10 +72,11 @@ def story_card(cid, bg_carry, bgm=''):
         card['data']['cgOps'] = ops
     card['data']['stage'] = {'actors': []}
     card['data']['characterLayers'] = []
+    card['data']['autoAdvance'] = dict(AUTO)
     return card, bg
 
 
-# 片尾字卷（作者 2026-10-29：故事結束後用素材裡的「片尾字卷」插件，不要對話框）。內容在 src/credits.txt，合聲版由 songs.apply 掛在這張卡上
+# 片尾字卷（作者 2026-10-29：故事結束後用素材裡的「片尾字卷」插件，不要對話框）。速度 16px/s：1600×900 約 215 秒捲完、停 8 秒自動回標題，對齊 230 秒的合聲版。內容在 src/credits.txt，合聲版由 songs.apply 掛在這張卡上
 ROLL_IMAGES = ['art/cg/s_mem2_11', 'art/p_yu_47', 'art/p_cheng_45', 'art/p_yu_father', 'art/p_tao_73', 'art/p_zhou_62', 'art/p_azhe_30', 'art/cg/s_a_8']
 
 
@@ -88,7 +93,7 @@ def credits_card():
         'pluginSkippable': True, 'pluginReadVars': [], 'pluginWriteVars': [], 'pluginAssets': [], 'platforms': ['web'],
         'pluginHtml': (R / 'src/plugin/credits_roll_card.html').read_text(encoding='utf-8'),
         'pluginValues': {'content': content, **{f'image{i}': A + f'{n}.webp' for i, n in enumerate(ROLL_IMAGES, 1)},
-                         'speed': 34, 'autoContinue': False, 'endHold': 4, 'continueLabel': '回到標題', 'bgColor': '#0a0c0e', 'bgOpacity': 0.8,
+                         'speed': 16, 'autoContinue': True, 'endHold': 8, 'continueLabel': '回到標題', 'bgColor': '#0a0c0e', 'bgOpacity': 0.8,
                          'textColor': '#f2ead6', 'accentColor': '#e8743b', 'font': 'serif'}}}
     return card, card['data']['background']
 
@@ -113,29 +118,22 @@ def build():
     N = board['nodes'].append
     missing = [c for c in ORDER if c not in script.L and c != 'credits']
     assert not missing, f'劇本缺場：{missing}'
-    prev, ptrack, bg = None, None, ''
+    p['settings']['textSpeed'] = TEXT_MS
+    hint = cards.dialogue('hint', '開始之前', HINT, bg=A + 'art/cover.webp')
+    hint['data'].update(start=True, autoAdvance=dict(AUTO), stage={'actors': []}, characterLayers=[])
+    for d in hint['data']['dialogueLines']:
+        d['speaker'] = '旁白'
+    N(hint)
+    prev, ptrack, bg = 'hint', None, ''
     for cid in ORDER:
         t = TRACK.get(cid)
         c, bg = credits_card() if cid == 'credits' else story_card(cid, bg, bgm=music(t) if t and t != ptrack else '')
         ptrack = t or ptrack
-        if cid == ORDER[0]:
-            c['data']['start'] = True
         N(c)
         if prev:
             cards.link(board, prev, cid)
         prev = cid
-        if cid in script.CHOICES:   # 程希的問題：最後一句當題目，只有一個選項
-            dl = c['data']['dialogueLines']
-            q = dl.pop()
-            assert len(script.CHOICES[cid]) == 1, (cid, script.CHOICES[cid])
-            qid = f'{cid}_ask'
-            N(cards.choice(qid, TITLES[cid] + '：' + q['text'], q['text'], [script.CHOICES[cid][0][0]], speaker=q['speaker'], bg=bg))
-            cards.link(board, cid, qid)
-            prev = qid
-    # 選擇卡的出口要走 choice-0
-    for e in board['edges']:
-        if e['source'].endswith('_ask'):
-            e['sourceHandle'] = 'choice-0'
+    assert not script.CHOICES, f'全劇不放選項（作者 10-29）：{script.CHOICES}'
     p['settings'].setdefault('titleScreen', {})['bgm'] = music('title') or p['settings'].get('titleScreen', {}).get('bgm', '')
     cover = A + 'art/cover.webp'
     p['settings']['titleCoverImage'] = cover

@@ -1,0 +1,23 @@
+// 免點試玩（作者 10-29：一部不用點滑鼠的音樂小說）：只按「開始遊戲」，之後什麼都不點，要自己走到片尾字卷再回標題。
+// SPEED=16 node tests/play_auto.mjs（先 python3 src/build.py）。印出遊戲裡經過的時間（換算成真實速度）。
+import { serve, open, sleep, assert, SPEED } from './lib.mjs';
+const MUST = [/從頭到尾會自己播放/, /先生/, /港邊的燈/, /三排十四號/, /什麼演唱會/, /片尾曲/];
+const s = await serve('dist/project.json');
+const ui = await open(s.base, { width: 1600, height: 900 });
+const text = async () => (await Promise.all(ui.page.frames().map(f => f.evaluate(() => document.body.innerText).catch(() => '')))).join(' | ');
+let seen = '', back = false, t0 = Date.now();
+try {
+  await ui.clickText('開始遊戲'); await sleep(2000);
+  const end = Date.now() + 90 * 60000 / SPEED + 120000;
+  while (Date.now() < end) {
+    const t = await text(); seen += t;
+    if (/片尾曲/.test(seen) && /開始遊戲/.test(t)) { back = true; break; }
+    await new Promise(r => setTimeout(r, 80));   // 16 倍速下提示卡只停兩百多毫秒
+  }
+  let at = 0;
+  for (const r of MUST) { const m = r.exec(seen.slice(at)); assert(m, '自己播到 ' + r); if (m) at += m.index; }
+  assert(back, '片尾字卷播完自己回到標題');
+  console.log('全劇約', Math.round((Date.now() - t0) * SPEED / 60000), '分鐘（真實速度）');
+  console.log(ui.errors.length ? ui.errors : '沒有頁面錯誤');
+} catch (e) { console.error(e.message, '\n畫面：', (await text()).slice(-300)); process.exitCode = 1; }
+finally { await ui.close(); s.kill(); }
