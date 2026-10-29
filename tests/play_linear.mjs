@@ -33,7 +33,8 @@ try {
       const cb = await choiceBtn();
       if (cb) { idle = 0; await sleep(300); await cb.click({ timeout: 3000 }).catch(() => cb.dispatchEvent('click')); await sleep(900); continue; }
       await sleep(250); seen += await text();
-      await ui.advance().catch(() => {}); await sleep(400);
+      await ui.advance().catch(() => {});
+      for (let k = 0; k < 4; k++) { await sleep(100); seen += await text(); }   // 換圖時台詞只停一下，多讀幾次
       if (process.env.DEBUG && ++idle % 20 === 0) console.log(head);
     } catch (e) {
       if (!/detached|Target closed|Execution context|has been closed/.test(e.message)) throw e;
