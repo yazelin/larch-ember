@@ -59,7 +59,8 @@
 - letter 與 canal 結尾各接一張只有一個選項的選擇卡（程希一次只問一個問題）。
 - 〔掉字〕只在 letter、dark、canal 三場，比例在 `FADE_RATIO`。
 - 歌的位置在 `src/songs_cut.py` 的 `CUTS`：〈港邊的燈〉收音機版（market）、〈餘燼〉錄音室版（roses）、台下跟唱版副歌起悶住三秒（monitor，耳返爆音）、〈晚安，台南〉試音／開演／第三段、大合唱版（encore）、合聲版當片尾曲（credits）。
-- 試玩：`SPEED=16 AUDIO=1 node tests/play_linear.mjs`（從標題點到製作名單，檢查每一章的關鍵句依序出現、沒有缺檔）。
+- 片尾是「片尾字卷」插件卡（`credits-roll`，插件檔在 `src/plugin/`），內容寫在 `src/credits.txt`；推上 Larch 前專案要先導入這個插件。
+- 試玩：`SPEED=16 AUDIO=1 node tests/play_linear.mjs`（從標題點到片尾字卷，檢查每一章的關鍵句依序出現、合聲版有播、按「回到標題」能回去、沒有缺檔）。
 
 ## 分工
 
