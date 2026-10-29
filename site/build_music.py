@@ -62,7 +62,7 @@ def build(draft):
                          text=[x['text'] for x in info['text']], tsec=[x['sec'] for x in info['text']]))
     items = ''.join(
         f'<li><button type="button" data-i="{i}" aria-label="{H.escape(t[2] + " " + t[3])}"><em>{i + 1:02d}</em>'
-        f'<span>{H.escape(t[2])}<small>{H.escape(t[3])}</small></span></button></li>' for i, t in enumerate(TRACKS))
+        f'<span><b>{H.escape(t[2])}</b><small>{H.escape(t[3])}</small></span><time>{t[6]}</time></button></li>' for i, t in enumerate(TRACKS))
     page = f"""<!doctype html>
 <html lang="zh-Hant">
 <head>
