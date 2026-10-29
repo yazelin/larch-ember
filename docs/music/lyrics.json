@@ -1,0 +1,1468 @@
+{
+ "ember-studio": {
+  "id": "ember-studio",
+  "song": "餘燼",
+  "duration": 250.0,
+  "lines": 46,
+  "entry": 14.4,
+  "asr_chars": 361,
+  "matched": 0.91,
+  "unsure": [],
+  "mode": "dynamic",
+  "secs": [
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Pre-Chorus",
+   "Pre-Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Pre-Chorus#2",
+   "Pre-Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Outro"
+  ],
+  "times": [
+   15.68,
+   19.1,
+   22.4,
+   26.2,
+   29.73,
+   32.48,
+   36.46,
+   39.19,
+   43.19,
+   46.67,
+   57.55,
+   61.04,
+   65.11,
+   67.6,
+   71.51,
+   79.21,
+   86.04,
+   101.4,
+   104.5,
+   107.69,
+   111.69,
+   114.91,
+   117.05,
+   121.78,
+   123.96,
+   129.07,
+   132.7,
+   144.01,
+   147.03,
+   151.24,
+   153.75,
+   157.68,
+   165.46,
+   172.76,
+   176.33,
+   179.48,
+   183.44,
+   185.52,
+   190.9,
+   193.78,
+   197.93,
+   200.65,
+   204.5,
+   212.26,
+   221.0,
+   228.25
+  ],
+  "text": [
+   {
+    "text": "燈一盞一盞暗下來",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "掌聲退回了街上",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我把最後一個字收好",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "門口又有一朵紅",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "沒有名字 沒有卡片",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "花瓣上的露水還沒乾",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "是誰在散場以後",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "還不肯走",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus"
+   },
+   {
+    "text": "下一座城 下一個晚上",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "同一種紅在門外",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我開始對著那片黑暗唱",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "好像知道你在",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "你從來不說話",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我也從來不問",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我們就這樣",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "過了一年又一年",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "有一天我會忘記",
+    "sec": "Bridge"
+   },
+   {
+    "text": "今晚唱過什麼",
+    "sec": "Bridge"
+   },
+   {
+    "text": "你替我記得好嗎",
+    "sec": "Bridge"
+   },
+   {
+    "text": "我今晚唱到燈熄掉",
+    "sec": "Bridge"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算我認不出你",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "也請你 坐在那裡",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Outro"
+   }
+  ]
+ },
+ "ember-audience": {
+  "id": "ember-audience",
+  "song": "餘燼",
+  "duration": 236.4,
+  "lines": 46,
+  "entry": 14.7,
+  "asr_chars": 360,
+  "matched": 0.91,
+  "unsure": [],
+  "mode": "dynamic",
+  "secs": [
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Pre-Chorus",
+   "Pre-Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Pre-Chorus#2",
+   "Pre-Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Outro"
+  ],
+  "times": [
+   15.95,
+   18.41,
+   22.95,
+   25.7,
+   29.25,
+   32.36,
+   36.52,
+   39.5,
+   43.7,
+   47.2,
+   52.69,
+   56.87,
+   60.75,
+   63.33,
+   69.48,
+   74.21,
+   80.4,
+   88.72,
+   91.54,
+   95.24,
+   98.66,
+   102.26,
+   105.45,
+   109.4,
+   111.62,
+   116.86,
+   119.94,
+   125.88,
+   129.58,
+   133.54,
+   136.1,
+   142.2,
+   146.9,
+   153.34,
+   157.51,
+   160.3,
+   164.31,
+   166.04,
+   173.12,
+   177.0,
+   180.82,
+   183.66,
+   189.54,
+   194.3,
+   200.46,
+   206.2
+  ],
+  "text": [
+   {
+    "text": "燈一盞一盞暗下來",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "掌聲退回了街上",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我把最後一個字收好",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "門口又有一朵紅",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "沒有名字 沒有卡片",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "花瓣上的露水還沒乾",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "是誰在散場以後",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "還不肯走",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus"
+   },
+   {
+    "text": "下一座城 下一個晚上",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "同一種紅在門外",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我開始對著那片黑暗唱",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "好像知道你在",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "你從來不說話",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我也從來不問",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我們就這樣",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "過了一年又一年",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "有一天我會忘記",
+    "sec": "Bridge"
+   },
+   {
+    "text": "今晚唱過什麼",
+    "sec": "Bridge"
+   },
+   {
+    "text": "你替我記得好嗎",
+    "sec": "Bridge"
+   },
+   {
+    "text": "我今晚唱到燈熄掉",
+    "sec": "Bridge"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算我認不出你",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "也請你 坐在那裡",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Outro"
+   }
+  ]
+ },
+ "ember-harmony": {
+  "id": "ember-harmony",
+  "song": "餘燼",
+  "duration": 230.0,
+  "lines": 46,
+  "entry": 17.0,
+  "asr_chars": 381,
+  "matched": 0.88,
+  "unsure": [],
+  "mode": "dynamic",
+  "secs": [
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Pre-Chorus",
+   "Pre-Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Pre-Chorus#2",
+   "Pre-Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Outro"
+  ],
+  "times": [
+   18.32,
+   21.29,
+   24.81,
+   28.5,
+   32.91,
+   35.68,
+   39.45,
+   42.1,
+   46.41,
+   49.89,
+   53.51,
+   57.56,
+   61.57,
+   64.11,
+   68.18,
+   75.08,
+   83.2,
+   91.15,
+   94.2,
+   98.73,
+   101.63,
+   104.7,
+   108.53,
+   112.31,
+   114.17,
+   119.47,
+   122.92,
+   126.45,
+   130.45,
+   134.52,
+   136.96,
+   141.06,
+   148.17,
+   155.8,
+   160.53,
+   163.64,
+   167.2,
+   169.47,
+   174.37,
+   177.75,
+   181.46,
+   184.87,
+   188.68,
+   195.61,
+   205.82,
+   206.66
+  ],
+  "text": [
+   {
+    "text": "燈一盞一盞暗下來",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "掌聲退回了街上",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我把最後一個字收好",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "門口又有一朵紅",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "沒有名字 沒有卡片",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "花瓣上的露水還沒乾",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "是誰在散場以後",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "還不肯走",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus"
+   },
+   {
+    "text": "下一座城 下一個晚上",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "同一種紅在門外",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我開始對著那片黑暗唱",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "好像知道你在",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "你從來不說話",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我也從來不問",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我們就這樣",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "過了一年又一年",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "有一天我會忘記",
+    "sec": "Bridge"
+   },
+   {
+    "text": "今晚唱過什麼",
+    "sec": "Bridge"
+   },
+   {
+    "text": "你替我記得好嗎",
+    "sec": "Bridge"
+   },
+   {
+    "text": "我今晚唱到燈熄掉",
+    "sec": "Bridge"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算我認不出你",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "也請你 坐在那裡",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Outro"
+   }
+  ]
+ },
+ "ember-chorus": {
+  "id": "ember-chorus",
+  "song": "餘燼",
+  "duration": 246.0,
+  "lines": 46,
+  "entry": 13.9,
+  "asr_chars": 357,
+  "matched": 0.86,
+  "unsure": [],
+  "mode": "dynamic",
+  "secs": [
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Pre-Chorus",
+   "Pre-Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Pre-Chorus#2",
+   "Pre-Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Chorus#2",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Bridge",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Outro"
+  ],
+  "times": [
+   15.19,
+   18.66,
+   22.03,
+   25.76,
+   28.72,
+   32.48,
+   35.91,
+   39.23,
+   42.35,
+   45.8,
+   56.45,
+   60.1,
+   64.49,
+   67.35,
+   71.04,
+   78.23,
+   85.34,
+   101.36,
+   104.06,
+   107.75,
+   111.06,
+   115.04,
+   117.58,
+   121.35,
+   123.64,
+   128.73,
+   132.46,
+   142.65,
+   145.99,
+   150.38,
+   153.24,
+   156.82,
+   164.11,
+   171.24,
+   176.35,
+   180.0,
+   182.82,
+   184.89,
+   193.06,
+   196.32,
+   200.5,
+   203.58,
+   207.22,
+   214.11,
+   221.39,
+   229.03
+  ],
+  "text": [
+   {
+    "text": "燈一盞一盞暗下來",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "掌聲退回了街上",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我把最後一個字收好",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "門口又有一朵紅",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "沒有名字 沒有卡片",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "花瓣上的露水還沒乾",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "是誰在散場以後",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "還不肯走",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus"
+   },
+   {
+    "text": "下一座城 下一個晚上",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "同一種紅在門外",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我開始對著那片黑暗唱",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "好像知道你在",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "你從來不說話",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我也從來不問",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我們就這樣",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "過了一年又一年",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我不認得你的臉",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "卻認得你的安靜",
+    "sec": "Pre-Chorus#2"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "台下坐滿了陌生人",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "只有一個位子 等得那麼認真",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Chorus#2"
+   },
+   {
+    "text": "有一天我會忘記",
+    "sec": "Bridge"
+   },
+   {
+    "text": "今晚唱過什麼",
+    "sec": "Bridge"
+   },
+   {
+    "text": "你替我記得好嗎",
+    "sec": "Bridge"
+   },
+   {
+    "text": "我今晚唱到燈熄掉",
+    "sec": "Bridge"
+   },
+   {
+    "text": "如果我是一場餘燼",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "你是最後熄燈的人",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算我認不出你",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "也請你 坐在那裡",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "就算天黑了 全世界都散了",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "我還有一點紅 替你留著",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "不肯冷",
+    "sec": "Outro"
+   }
+  ]
+ },
+ "goodnight-tainan": {
+  "id": "goodnight-tainan",
+  "song": "晚安，台南",
+  "duration": 204.8,
+  "lines": 35,
+  "entry": 15.4,
+  "asr_chars": 246,
+  "matched": 0.82,
+  "unsure": [
+   9,
+   12
+  ],
+  "mode": "dynamic",
+  "secs": [
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 1",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Verse 2",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Verse 3",
+   "Verse 3",
+   "Verse 3",
+   "Verse 3",
+   "Verse 3",
+   "Verse 3",
+   "Verse 3",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Final Chorus",
+   "Outro",
+   "Outro"
+  ],
+  "times": [
+   16.76,
+   19.71,
+   23.58,
+   26.99,
+   32.02,
+   34.51,
+   37.84,
+   42.6,
+   47.24,
+   50.44,
+   55.3,
+   58.0,
+   63.18,
+   70.81,
+   78.73,
+   81.22,
+   86.2,
+   88.74,
+   94.15,
+   99.7,
+   125.29,
+   128.36,
+   132.28,
+   136.11,
+   141.51,
+   144.37,
+   149.23,
+   157.06,
+   159.44,
+   164.41,
+   167.02,
+   172.52,
+   176.1,
+   183.7,
+   188.31
+  ],
+  "text": [
+   {
+    "text": "天還沒亮攤就開了",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "阿爸扛來一桶冰",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "收音機沙沙響",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "冰水流過地磚",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "魚鱗黏在圍裙",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "我伸手幫他拍掉",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "他秤好最後一尾",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "才問我吃飽沒",
+    "sec": "Verse 1"
+   },
+   {
+    "text": "運河風從橋下來",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "路燈照著濕石階",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "明天若我不認得你",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "請把屋裡燈留著",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "魚攤收了水還滴",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "我沿著亮處回家",
+    "sec": "Verse 2"
+   },
+   {
+    "text": "淑靜仔 叫我一聲",
+    "sec": "Chorus"
+   },
+   {
+    "text": "名字先留在你這裡",
+    "sec": "Chorus"
+   },
+   {
+    "text": "哪天我走丟了",
+    "sec": "Chorus"
+   },
+   {
+    "text": "再叫我一聲就好",
+    "sec": "Chorus"
+   },
+   {
+    "text": "水邊的燈還亮著",
+    "sec": "Chorus"
+   },
+   {
+    "text": "我聽見就回家",
+    "sec": "Chorus"
+   },
+   {
+    "text": "有人坐在我身旁",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "我想不起他是誰",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "他把保溫杯打開",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "等半分鐘才遞給我",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "杯口的熱氣散了",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "他還坐在我身邊",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "有他陪我 我不怕",
+    "sec": "Verse 3"
+   },
+   {
+    "text": "淑靜仔 叫我一聲",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "名字先留在你這裡",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "哪天我走丟了",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "再叫我一聲就好",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "水邊的燈還亮著",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "我聽見就回家",
+    "sec": "Final Chorus"
+   },
+   {
+    "text": "晚安 台南",
+    "sec": "Outro"
+   },
+   {
+    "text": "你把燈留著",
+    "sec": "Outro"
+   }
+  ]
+ },
+ "harbor-lights": {
+  "id": "harbor-lights",
+  "song": "港邊的燈",
+  "duration": 123.2,
+  "lines": 8,
+  "mode": "dynamic-manual",
+  "matched": 1.0,
+  "unsure": [],
+  "note": "前 8 句為作者手標；95 秒之後的副歌重複沒有標",
+  "secs": [
+   "Verse",
+   "Verse",
+   "Verse",
+   "Verse",
+   "Chorus",
+   "Chorus",
+   "Chorus",
+   "Chorus"
+  ],
+  "times": [
+   14.9,
+   24.7,
+   33.7,
+   43.7,
+   54.5,
+   61.2,
+   70.0,
+   77.8
+  ],
+  "text": [
+   {
+    "text": "港邊的燈 一葩一葩光",
+    "sec": "Verse"
+   },
+   {
+    "text": "討海的人 猶未轉來",
+    "sec": "Verse"
+   },
+   {
+    "text": "阮徛佇岸邊 等你的船",
+    "sec": "Verse"
+   },
+   {
+    "text": "風吹冷冷 心肝燒燒",
+    "sec": "Verse"
+   },
+   {
+    "text": "燈若熄 船就到",
+    "sec": "Chorus"
+   },
+   {
+    "text": "阮的心 替你留一葩",
+    "sec": "Chorus"
+   },
+   {
+    "text": "燈若熄 船就到",
+    "sec": "Chorus"
+   },
+   {
+    "text": "阮佇遮 等你轉來",
+    "sec": "Chorus"
+   }
+  ]
+ }
+}
