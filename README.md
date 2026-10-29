@@ -78,7 +78,7 @@
 
     MEDIA_BASE=https://cdn.jsdelivr.net/gh/yazelin/larch-ember@site-media-1/docs/ python3 site/build_music.py
 
-`index.html` 目前用相對路徑；要改成 jsDelivr 時，把 `media/` 前綴換成同一個網址。建 tag 與 push 要等作者點頭。
+公開站 https://yazelin.github.io/larch-ember/ ：HTML 由 GitHub Pages 從 `master` 的 `docs/` 發佈；圖與音樂走 jsDelivr 孤兒 tag（`site-media-*`）。換了 `docs/media`、`docs/music` 的檔，commit、push 後跑 `python3 site/cdn.py`（打 tag、重產原聲帶頁、換網址、逐一檢查回 200）。建 tag 與 push 要等作者點頭。
 
 ## 余靜的改寫（2026-10-23）
 
