@@ -54,9 +54,10 @@
 
 ## 重製版的結構
 
-`src/build.py` 的 `ORDER` 依序串 18 張卡：open（2026 冷開場）→ market（1988）→ livehouse（2001）→ door2004 → roses（2006–2008，錄音室唱〈餘燼〉）→ monitor（2009 耳返爆音）→ confess（2011、2013）→ forget（2021–2022）→ song2023（寫〈晚安，台南〉、2024）→ soundcheck → letter → dark（天黑走失）→ canal（運河石階）→ concert → verse3 → encore → kitchen（「什麼演唱會？」）→ credits。
+`src/build.py` 的 `ORDER` 依序串 19 張卡：open（2026 冷開場）→ market（1988）→ livehouse（2001）→ door2004 → roses（2006–2008，錄音室唱〈餘燼〉）→ monitor（2009 耳返爆音）→ confess（2011 相認、2013 結婚照）→ family（2012 回魚攤見余伯、2015 余伯過世）→ forget（2021 忘詞、2022 確診當晚寫第一頁日記）→ song2023（寫〈晚安，台南〉、2024 叫不出名字）→ soundcheck → letter（化妝間翻讀自己的日記）→ dark（天黑走失）→ canal（運河石階）→ concert → verse3 → encore → kitchen（「什麼演唱會？」）→ credits。
 
-- letter 與 canal 結尾各接一張只有一個選項的選擇卡（程希一次只問一個問題）。
+**2026-11-02 平鋪重寫**（作者：物件破壞了故事節奏）：拿掉第二屆比賽版留下的收集物件與小儀式（票根、敲兩下、玫瑰放門內右邊、四折歌譜、定位手錶、修收音機與藏信、耳墜），收音機只當余伯遺物，信改成她自己的日記，兩人的暗號只留「比讚」。規則在 `審稿/準則.md` 第 16 條，`tests/motif_check.py` 擋拿掉的物件；整部讀者盲測 `python3 審稿/reader_ab.py <舊版 git 版本>`。配樂改成 5 首完整曲（`art/bgm_full.py`），歌唱完先留白。手機版面：舞台「完整顯示」，`node tests/layout_check.mjs` 量對話框蓋住 CG 的比例。
+
 - 〔掉字〕只在 letter、dark、canal 三場，比例在 `FADE_RATIO`。
 - 歌的位置在 `src/songs_cut.py` 的 `CUTS`：〈港邊的燈〉收音機版（market）、〈餘燼〉錄音室版（roses）、台下跟唱版副歌起悶住三秒（monitor，耳返爆音）、〈晚安，台南〉試音／開演／第三段、大合唱版（encore）、合聲版當片尾曲（credits）。
 - 歌卡是「唱歌卡」插件卡（`ember-song-card`，作者 10-29 自製、存成 Larch 個人使用版草稿，不上架）：歌由播放器播，歌詞照進卡秒數亮起，點畫面不會跑掉，唱完自動往下或按「略過」。畫面在 `src/plugin/song_card.html`，manifest 用 `python3 src/plugin/song_manifest.py` 產生；同步測試 `node tests/song_sync.mjs [卡片 id]`。
