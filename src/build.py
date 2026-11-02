@@ -138,6 +138,7 @@ def build():
     missing = [c for c in ORDER if c not in script.L and c != 'credits']
     assert not missing, f'劇本缺場：{missing}'
     p['settings']['textSpeed'] = TEXT_MS
+    p['settings']['stageFit'] = 'contain'   # 手機直放也看得到整張 CG，多出來的地方用背景暈開補（作者 11-02：對話框與裁切擋住 CG）
     hint = cards.dialogue('hint', '開始之前', HINT, bg=A + 'art/cover.webp')
     hint['data'].update(start=True, autoAdvance=dict(AUTO), stage={'actors': []}, characterLayers=[])
     for d in hint['data']['dialogueLines']:

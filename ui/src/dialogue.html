@@ -8,34 +8,32 @@
 </script>
 <style>
 :root { /*TOKENS*/ }
-:root { --skin-accent: #e8743b; --skin-paper: 86%; --skin-blur: 4px; }
+:root { --skin-accent: #e8743b; --skin-paper: 60%; --skin-blur: 4px; }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: transparent; overflow: hidden; }
 /* 四周留白：左右下都不貼邊（作者回饋） */
 body { padding: 8px clamp(16px, 4vw, 64px) clamp(12px, 2.4vh, 24px); font-family: var(--serif); }
-.box { position: relative; min-height: 152px; padding: 22px clamp(26px, 3.8vw, 60px) 26px; border-radius: 6px; color: var(--ink);
-  background: radial-gradient(120% 140% at 50% 0%, color-mix(in srgb, var(--paper) var(--skin-paper), transparent), color-mix(in srgb, var(--paper-2) var(--skin-paper), transparent) 78%, color-mix(in srgb, var(--paper-edge) var(--skin-paper), transparent));
-  -webkit-backdrop-filter: blur(var(--skin-blur)) saturate(1.1); backdrop-filter: blur(var(--skin-blur)) saturate(1.1);
-  box-shadow: 0 0 0 1px var(--paper-line), 0 0 26px 2px var(--glow), 0 22px 54px -18px rgba(0, 0, 0, .65); }
-/* 信紙的橫線與被落日燒過的角 */
-.box::before { position: absolute; inset: 0; border-radius: inherit; content: ""; pointer-events: none;
-  background: repeating-linear-gradient(180deg, transparent 0 33px, var(--rule) 33px 34px),
-    radial-gradient(60% 45% at 0% 100%, rgba(168, 54, 31, .22), transparent 70%), radial-gradient(50% 40% at 100% 0%, rgba(232, 116, 59, .2), transparent 70%); }
-.box::after { position: absolute; inset: 0; border-radius: inherit; content: ""; pointer-events: none; box-shadow: inset 0 0 30px 4px rgba(110, 40, 15, .38), inset 0 -2px 0 rgba(232, 116, 59, .55); }
-.name { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; margin: 0 0 8px; color: var(--ink); font-size: clamp(14px, 1.1vw, 16px); font-weight: 700; letter-spacing: .3em; }
+.box { position: relative; padding: 14px clamp(22px, 3.4vw, 52px) 16px; border-radius: 6px; color: #f6efe4;
+  /* 作者 11-02：字要好讀，但不要擋 CG。改成上淡下深的半透明暗色，字靠陰影撐住 */
+  background: linear-gradient(180deg, rgba(20, 9, 5, .18), rgba(20, 9, 5, .52) 45%, rgba(20, 9, 5, .62));
+  box-shadow: inset 0 -1px 0 rgba(232, 116, 59, .55); }
+.box::before, .box::after { content: none; }
+.name { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; margin: 0 0 4px; color: #f2c9a4; font-size: clamp(13px, 1vw, 15px); font-weight: 700; letter-spacing: .3em; text-shadow: 0 1px 3px rgba(0, 0, 0, .9); }
 .name::before { width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--skin-accent); box-shadow: 0 0 0 1px var(--ember-deep), 0 0 10px var(--skin-accent); content: ""; }
-.name::after { width: 110px; height: 1px; flex: none; background: linear-gradient(90deg, var(--pencil), transparent); content: ""; }
+.name::after { width: 110px; height: 1px; flex: none; background: linear-gradient(90deg, rgba(242, 201, 164, .6), transparent); content: ""; }
 html:not([data-has-speaker]) .name { display: none; }
-.text { position: relative; z-index: 1; min-height: 3.3em; margin: 0; padding-right: 40px; font-size: var(--larch-text-size, 22px); font-weight: 500; line-height: 1.85; letter-spacing: .04em; white-space: pre-wrap; overflow-wrap: anywhere; }
-html:not([data-has-speaker]) .text { color: var(--ink-soft); font-style: normal; }
-.next { position: absolute; right: 18px; bottom: 14px; z-index: 1; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--pencil); border-radius: 50%; background: transparent; color: var(--ember-deep); cursor: pointer; transition: background .2s, border-color .2s; }
+.text { position: relative; z-index: 1; min-height: 3.2em; margin: 0; padding-right: 40px; font-size: min(var(--larch-text-size, 22px), 22px); font-weight: 500; line-height: 1.6; letter-spacing: .04em; white-space: pre-wrap; overflow-wrap: anywhere; text-shadow: 0 1px 2px rgba(0, 0, 0, .95), 0 0 10px rgba(0, 0, 0, .6); }
+html:not([data-has-speaker]) .text { color: #e9ddcf; font-style: normal; }
+.next { position: absolute; right: 18px; bottom: 14px; z-index: 1; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid rgba(242, 201, 164, .5); border-radius: 50%; background: transparent; color: #f2c9a4; cursor: pointer; transition: background .2s, border-color .2s; }
 .next::after { width: 8px; height: 8px; margin-top: -4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; content: ""; transform: rotate(45deg); animation: sink 1.8s ease-in-out infinite; }
 .next:hover { border-color: var(--ember-deep); background: rgba(232, 116, 59, .18); }
 .next:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 3px; }
 .next:active { scale: .94; }
 .next:disabled { opacity: .35; cursor: default; }
 @keyframes sink { 0%, 100% { translate: 0 0; } 50% { translate: 0 3px; } }
-@media (max-width: 640px) { body { padding: 6px 12px 12px; } .box { min-height: 136px; padding: 18px 18px 22px; } .name::after { width: 60px; } .text { font-size: max(17px, var(--larch-text-size, 22px)); padding-right: 30px; line-height: 1.75; } .next { right: 10px; bottom: 10px; } }
+/* 對話框不要壓住 CG（作者 11-02）：手機與矮螢幕再縮 */
+@media (max-width: 640px) { body { padding: 6px 12px 12px; } .box { padding: 12px 16px 14px; } .name::after { width: 60px; } .text { font-size: 17px; padding-right: 30px; line-height: 1.6; } .next { right: 10px; bottom: 10px; } }
+@media (max-height: 500px) { body { padding: 2px clamp(12px, 3vw, 40px) 6px; } .box { padding: 6px 16px 8px; } .name { margin: 0; font-size: 12px; } .name::after { width: 40px; } .text { min-height: 0; font-size: 15px; line-height: 1.5; padding-right: 28px; } .next { width: 26px; height: 26px; right: 8px; bottom: 6px; } }
 @media (prefers-reduced-motion: reduce) { .next::after { animation: none; } .next { transition: none; } }
 </style>
 <section class="box" aria-label="對話">
