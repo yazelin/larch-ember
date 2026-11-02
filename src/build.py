@@ -5,35 +5,35 @@ python3 src/build.py
 """
 import json, math, pathlib, shutil, subprocess, sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-import script, cards, ui_inject, songs
+import script, cards, ui_inject, songs, songs_cut
 
 R = pathlib.Path(__file__).resolve().parent.parent
 PROJECT_ID = 'project-904c48a1-2797-4a7e-916a-75b1117e6211'
 A = '/files/assets/'
 
-ORDER = ['open', 'market', 'livehouse', 'door2004', 'roses', 'monitor', 'confess', 'forget', 'song2023',
+ORDER = ['open', 'market', 'livehouse', 'door2004', 'roses', 'monitor', 'confess', 'family', 'forget', 'song2023',
          'soundcheck', 'letter', 'dark', 'canal', 'concert', 'verse3', 'encore', 'kitchen', 'credits']
 TITLES = {'open': '先生', 'market': '1988，收攤', 'livehouse': '2001，河岸留言', 'door2004': '2004，三排十四號',
-          'roses': '2008，門內右邊', 'monitor': '2009，三秒', 'confess': '2011，票根的背面', 'forget': '2021，第一次忘詞',
-          'song2023': '2023，晚安，台南', 'soundcheck': '2026，試音', 'letter': '信', 'dark': '天黑', 'canal': '運河',
+          'roses': '2008，門口的花', 'monitor': '2009，三秒', 'confess': '2011，原來是你', 'family': '2012，阿爸的魚攤', 'forget': '2021，第一次忘詞',
+          'song2023': '2023，晚安，台南', 'soundcheck': '2026，試音', 'letter': '結婚照', 'dark': '天黑', 'canal': '運河',
           'concert': '開演', 'verse3': '第三段', 'encore': '安可', 'kitchen': '什麼演唱會', 'credits': '製作名單'}
 # 配樂（assets/bgm/*.mp3）。同一首曲子連續的卡不重設，避免重播
-TRACK = {'open': 'dressing', 'market': 'mem_1988', 'livehouse': 'mem_2004', 'door2004': 'mem_2004', 'roses': 'mem_love',
-         'monitor': 'mem_love', 'confess': 'mem_love', 'forget': 'mem_clinic', 'song2023': 'mem_clinic', 'soundcheck': 'dress',
-         'letter': 'dressing', 'dark': 'branch', 'canal': 'end_c', 'concert': 'concert', 'kitchen': 'end_a'}
+TRACK = {'open': 'backstage', 'market': 'home', 'livehouse': 'love', 'door2004': 'love', 'roses': 'love', 'monitor': 'love',
+         'confess': 'love', 'family': 'home', 'forget': 'ill', 'song2023': 'ill', 'soundcheck': 'backstage', 'letter': 'backstage',
+         'dark': 'dusk', 'canal': 'dusk', 'kitchen': 'home'}   # 作者 11-02：配樂只做 5 首完整曲（art/bgm_full.py），開演到安可只用歌
 # 〔掉字〕：落日以後，標記的句子只留前面一部分，後面變成「……」。數字是掉掉的比例
 SITE = 'https://yazelin.github.io/larch-ember/'
-POST_TRACK = {'encore': 'end_b'}   # 歌卡唱完後改用的配樂（沒列的沿用這場的 TRACK）
+SONG_CARDS = {c['card'] for c in songs_cut.CUTS}   # 歌唱完先留白，下一張卡再從頭淡入這段的配樂（作者 11-02）
 # 全程自動往下（作者 10-29：一部可以邊聽歌邊看、不用點滑鼠的音樂小說）。打字 TEXT_MS 毫秒一個字，打完停 AUTO 的 delayMs；點畫面仍可加快
 TEXT_MS = 55   # 作者 10-29：90 太慢
 AUTO = {'enabled': True, 'mode': 'delay', 'delayMs': 2000}
 HINT = ['這是一部有歌的小說，從頭到尾會自己播放。', '戴上耳機，不用點滑鼠，看到最後。想快一點，點一下畫面。']
 FADE_RATIO = {'letter': 0.35, 'dark': 0.55, 'canal': 0.6}
-GALLERY = [('s_mem1_3', '2004，玫瑰與票根'), ('s_mem2_6', '票根的背面'), ('s_mem2_11', '2013，空舞台上的一小段舞'),
+GALLERY = [('s_mem1_3', '2004，門口的玫瑰'), ('s_family_1', '2012，阿爸的魚攤'), ('s_mem2_11', '2013，空舞台上的一小段舞'),
            ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '三排十四號'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
            ('s_a_8', '什麼演唱會')]
 GAL = {k for k, _ in GALLERY}
-# 台語配音（作者 10-29：只有阿桃姨、余伯的台語用聽的，其他人照舊不配）。voice/taigi/lines.json 裡標「通過」的句子才掛（TAIGI_ALL=1 全掛，本機試聽用），音檔在 assets/voice/<id>.mp3
+# 台語配音：作者 11-02 決定全部不配，讓音樂說話；以下程式留著，lines.json 沒有標通過的句子就什麼都不掛。（原 10-29：只有阿桃姨、余伯的台語用聽的）voice/taigi/lines.json 裡標「通過」的句子才掛（TAIGI_ALL=1 全掛，本機試聽用），音檔在 assets/voice/<id>.mp3
 TAIGI_OK = {l['id'] for l in json.loads((R / 'voice/taigi/lines.json').read_text(encoding='utf-8'))['lines'] if l['status'] == 'ok' or os.environ.get('TAIGI_ALL')} if (R / 'voice/taigi/lines.json').exists() else set()
 
 
@@ -147,7 +147,7 @@ def build():
     for cid in ORDER:
         t = TRACK.get(cid)
         c, bg = credits_card() if cid == 'credits' else story_card(cid, bg, bgm=music(t) if t and t != ptrack else '')
-        ptrack = t or ptrack
+        ptrack = None if cid in SONG_CARDS else t or ptrack
         N(c)
         if prev:
             cards.link(board, prev, cid)
@@ -168,7 +168,7 @@ def build():
             'type': 'miniGame', 'start': True, 'title': '第二章・公開站', 'text': '原型、參考資料與原聲帶。看完按「略過」回到標題。', 'voiceMode': 'off',
             'miniGameHtml': shell, 'miniGameNote': f'薄殼而已，內容在 {SITE}', 'miniGameReadVars': [], 'miniGameSkippable': True,
             'miniGameWriteVars': [], 'miniGamePresentation': 'fullscreen'}}]})
-    p['settings'].setdefault('titleScreen', {})['bgm'] = music('title') or p['settings'].get('titleScreen', {}).get('bgm', '')
+    p['settings'].setdefault('titleScreen', {})['bgm'] = music('love') or p['settings'].get('titleScreen', {}).get('bgm', '')
     cover = A + 'art/cover.webp'
     p['settings']['titleCoverImage'] = cover
     p['settings']['projectThumbnail'] = cover
@@ -176,11 +176,11 @@ def build():
     p['settings']['cgGalleryEnabled'] = True
     p['settings']['cgGallerySource'] = 'picked'
     p['settings']['cgGalleryItems'] = [{'url': cover, 'title': '餘燼'}] + [{'url': shot_url(k), 'title': t, 'locked': True} for k, t in GALLERY if shot_url(k)]
-    cur = None   # 歌卡唱完接回這一場的配樂（作者 10-29：歌盡量不斷，斷的地方用原本的 BGM）；encore 下台後換 end_b
-    for cid in ORDER:
-        cur = TRACK.get(cid, cur)
-        songs.POST_BGM[cid] = music(POST_TRACK.get(cid, cur))
     songs.apply(p, R / 'dist')   # 有 assets/songs/cuts/manifest.json 才會接歌
+    for n in board['nodes']:   # 歌後留白：唱完那段不接回配樂
+        if n['id'].endswith('__post'):
+            for k in ('bgm', 'bgmVolume', 'bgmLoop'):
+                n['data'].pop(k, None)
     ui_inject.apply(p, R / 'dist')
     p['settings']['menuUi']['buttons'] = [b for b in p['settings']['menuUi']['buttons'] if b != 'bag']
     (R / 'dist').mkdir(exist_ok=True)
