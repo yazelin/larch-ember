@@ -19,9 +19,9 @@ def body(text):
     return text[text.index('\n## '):].strip()
 
 
-def call(model, prompt):
+def call(model, prompt, temperature=0.3):
     req = urllib.request.Request(os.environ.get('LLMSHARE_BASE_URL', 'https://llm-share.duotify.com/v1') + '/chat/completions',
-                                 data=json.dumps({'model': model, 'temperature': 0.3, 'messages': [{'role': 'user', 'content': prompt}]}).encode(),
+                                 data=json.dumps({'model': model, 'temperature': temperature, 'messages': [{'role': 'user', 'content': prompt}]}).encode(),
                                  headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['LLMSHARE_API_KEY']})
     for n in range(3):
         try:
