@@ -87,7 +87,14 @@ CG = {
         'The view from the stage of an old Tainan theater during soundcheck: one row of stage lights on, a thousand empty red seats in rows, dust in the light. '
         'In the third row, the fourteenth seat from the left holds a single deep crimson rose; far at the back, a small glowing mixing desk. Quiet, waiting.'),
     'bg_dressing': ([],
-        'A small old theater dressing room on the second floor, a big west-facing window full of orange sunset over old Tainan rooftops and a distant tower, '
+        # 作者 11-02：窗外畫成歐洲（拱窗、尖塔），要台南。風格參考圖是歐洲歌劇院，建築不要照抄
+        'Do NOT copy the architecture of Reference 1 (it is a European opera house): no arched windows, no spires, no domes, no European towers, no lace curtains. '
+        'A small, plain, slightly shabby dressing room on the second floor of a 1950s Taiwanese cinema-theater in Tainan: painted concrete walls with peeling cream paint, terrazzo floor, '
+        'one ordinary rectangular aluminium-framed sliding window with old iron security bars on the outside, west-facing, full of orange sunset; '
+        # 劇本 dark 場：她從窗口往下看，魚販拉下捲門，所以窗下是黃昏市場
+        'directly below the window, seen from above: a narrow old street with an evening traditional market, fish stalls with blue plastic crates and half-open rolling steel shutters, a few hanging bare bulbs; '
+        'beyond it: low 3-4 storey Tainan concrete shophouses and apartment blocks with rooftop water tanks, iron-sheet roof additions, air-conditioner units, tangled electric wires, '
+        'and far away one traditional Chinese red-roofed temple roof with upturned eaves, '
         'a dressing table with a bulb-framed mirror (a small photo tucked in its corner), an old plastic portable radio on a side table under the window, an open notebook and a black wristwatch on the table, '
         'an empty clothes rack, a carved jewelry box. No people. Warm golden light with long shadows.'),
     'cg_2022_home': (['yu_43'],
