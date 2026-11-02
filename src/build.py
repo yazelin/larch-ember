@@ -13,8 +13,8 @@ A = '/files/assets/'
 
 ORDER = ['open', 'market', 'livehouse', 'door2004', 'roses', 'monitor', 'confess', 'family', 'forget', 'song2023',
          'soundcheck', 'letter', 'dark', 'canal', 'concert', 'verse3', 'encore', 'kitchen', 'credits']
-TITLES = {'open': '先生', 'market': '1988，收攤', 'livehouse': '2001，河岸留言', 'door2004': '2004，三排十四號',
-          'roses': '2008，門口的花', 'monitor': '2009，三秒', 'confess': '2011，原來是你', 'family': '2012，阿爸的魚攤', 'forget': '2021，第一次忘詞',
+TITLES = {'open': '先生', 'market': '1988，收攤', 'livehouse': '2001，河岸留言', 'door2004': '2004，第一朵玫瑰',
+          'roses': '2008，門口的花', 'monitor': '2009，耳返', 'confess': '2011，原來是你', 'family': '2012，阿爸的魚攤', 'forget': '2021，第一次忘詞',
           'song2023': '2023，晚安，台南', 'soundcheck': '2026，試音', 'letter': '結婚照', 'dark': '天黑', 'canal': '運河',
           'concert': '開演', 'verse3': '第三段', 'encore': '安可', 'kitchen': '什麼演唱會', 'credits': '製作名單'}
 # 配樂（assets/bgm/*.mp3）。同一首曲子連續的卡不重設，避免重播
@@ -30,7 +30,7 @@ AUTO = {'enabled': True, 'mode': 'delay', 'delayMs': 2000}
 HINT = ['這是一部有歌的小說，從頭到尾會自己播放。', '戴上耳機，不用點滑鼠，看到最後。想快一點，點一下畫面。']
 FADE_RATIO = {'letter': 0.35, 'dark': 0.55, 'canal': 0.6}
 GALLERY = [('s_mem1_3', '2004，門口的玫瑰'), ('s_family_1', '2012，阿爸的魚攤'), ('s_mem2_11', '2013，空舞台上的一小段舞'),
-           ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '三排十四號'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
+           ('s_mem4_1', '2022，診間'), ('s_soundcheck_3', '2026，試音'), ('s_concert_1', '開演'), ('s_a_2', '程希'),
            ('s_a_8', '什麼演唱會')]
 GAL = {k for k, _ in GALLERY}
 # 台語配音：作者 11-02 決定全部不配，讓音樂說話；以下程式留著，lines.json 沒有標通過的句子就什麼都不掛。（原 10-29：只有阿桃姨、余伯的台語用聽的）voice/taigi/lines.json 裡標「通過」的句子才掛（TAIGI_ALL=1 全掛，本機試聽用），音檔在 assets/voice/<id>.mp3
@@ -123,7 +123,7 @@ def build():
     p['name'] = '餘燼'   # 作者 10-29：改名，原名《最終遺忘的橘色餘燼》太長
     p['description'] = ('改編自真實故事。歌手余靜得了早發性阿茲海默症，回到家鄉台南，在她第一次開售票演唱會的老戲院唱最後一場。'
                         '陪她來的男人替她遞水、提醒她下一句歌詞，她叫他「先生」。'
-                        '從 1988 年阿爸的魚攤、2004 年三排十四號那朵深紅玫瑰，一路到 2026 年的最後一首歌。'
+                        '從 1988 年阿爸的魚攤、2004 年後台門口那朵深紅玫瑰，一路到 2026 年的最後一首歌。'
                         '單線劇情、一個結局，三首歌：〈餘燼〉〈晚安，台南〉〈港邊的燈〉。'
                         '原型、醫學資料出處與原聲帶：https://yazelin.github.io/larch-ember/')
     board['name'] = '第一章・餘燼'
