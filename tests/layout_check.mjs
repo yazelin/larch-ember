@@ -26,6 +26,8 @@ try {
       return { vw: innerWidth, vh: innerHeight, cg: big[0], dlg: dlg[0] };
     });
     await page.screenshot({ path: `art/check/layout_${name}.png` });
+    // 對話字級（作者 11-02：電腦上字太小）
+    for (const f of page.frames()) { const px = await f.evaluate(() => { const t = document.querySelector('.box .text'); return t && getComputedStyle(t).fontSize; }).catch(() => null); if (px) { console.log(`${name.padEnd(10)} 對話字級 ${px}`); break; } }
     const { cg, dlg } = m;
     if (cg && dlg) {
       const cover = Math.max(0, Math.min(cg.y + cg.h, dlg.y + dlg.h) - Math.max(cg.y, dlg.y));

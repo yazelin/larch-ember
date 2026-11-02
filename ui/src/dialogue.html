@@ -14,15 +14,14 @@ html, body { margin: 0; background: transparent; overflow: hidden; }
 /* 四周留白：左右下都不貼邊（作者回饋） */
 body { padding: 8px clamp(16px, 4vw, 64px) clamp(12px, 2.4vh, 24px); font-family: var(--serif); }
 .box { position: relative; padding: 14px clamp(22px, 3.4vw, 52px) 16px; border-radius: 6px; color: #f6efe4;
-  /* 作者 11-02：字要好讀，但不要擋 CG。改成上淡下深的半透明暗色，字靠陰影撐住 */
-  background: linear-gradient(180deg, rgba(20, 9, 5, .18), rgba(20, 9, 5, .52) 45%, rgba(20, 9, 5, .62));
-  box-shadow: inset 0 -1px 0 rgba(232, 116, 59, .55); }
+  /* 作者 11-02：暗色框會把 CG 下半切開。不鋪底，只在字的周圍暈一圈暗影撐住可讀性 */
+  background: none; }
 .box::before, .box::after { content: none; }
-.name { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; margin: 0 0 4px; color: #f2c9a4; font-size: clamp(13px, 1vw, 15px); font-weight: 700; letter-spacing: .3em; text-shadow: 0 1px 3px rgba(0, 0, 0, .9); }
+.name { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; margin: 0 0 4px; color: #f2c9a4; font-size: clamp(13px, 1.1vw, 18px); font-weight: 700; letter-spacing: .3em; text-shadow: 0 1px 3px rgba(0, 0, 0, .9); }
 .name::before { width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--skin-accent); box-shadow: 0 0 0 1px var(--ember-deep), 0 0 10px var(--skin-accent); content: ""; }
 .name::after { width: 110px; height: 1px; flex: none; background: linear-gradient(90deg, rgba(242, 201, 164, .6), transparent); content: ""; }
 html:not([data-has-speaker]) .name { display: none; }
-.text { position: relative; z-index: 1; min-height: 3.2em; margin: 0; padding-right: 40px; font-size: min(var(--larch-text-size, 22px), 22px); font-weight: 500; line-height: 1.6; letter-spacing: .04em; white-space: pre-wrap; overflow-wrap: anywhere; text-shadow: 0 1px 2px rgba(0, 0, 0, .95), 0 0 10px rgba(0, 0, 0, .6); }
+.text { position: relative; z-index: 1; min-height: 3.2em; margin: 0; padding-right: 40px; font-size: max(var(--larch-text-size, 0px), clamp(22px, 1.9vw, 30px)); font-weight: 500; line-height: 1.6; letter-spacing: .04em; white-space: pre-wrap; overflow-wrap: anywhere; text-shadow: 0 1px 2px #000, 0 0 6px rgba(0, 0, 0, .9), 0 0 16px rgba(0, 0, 0, .8), 0 0 28px rgba(0, 0, 0, .6); }
 html:not([data-has-speaker]) .text { color: #e9ddcf; font-style: normal; }
 .next { position: absolute; right: 18px; bottom: 14px; z-index: 1; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid rgba(242, 201, 164, .5); border-radius: 50%; background: transparent; color: #f2c9a4; cursor: pointer; transition: background .2s, border-color .2s; }
 .next::after { width: 8px; height: 8px; margin-top: -4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; content: ""; transform: rotate(45deg); animation: sink 1.8s ease-in-out infinite; }
@@ -33,8 +32,9 @@ html:not([data-has-speaker]) .text { color: #e9ddcf; font-style: normal; }
 @keyframes sink { 0%, 100% { translate: 0 0; } 50% { translate: 0 3px; } }
 /* 對話框不要壓住 CG（作者 11-02）：手機與矮螢幕再縮 */
 @media (max-width: 640px) { body { padding: 6px 12px 12px; } .box { padding: 12px 16px 14px; } .name::after { width: 60px; } .text { font-size: 17px; padding-right: 30px; line-height: 1.6; } .next { right: 10px; bottom: 10px; } }
-/* 矮螢幕（手機橫放）：框貼在對話區底部，不要浮在半空中（作者 11-02：橫放時太高、下面空）。fixed 不撐高 iframe，這裡最多兩行，放得下 */
-@media (max-height: 500px) { body { padding: 0; } .box { position: fixed; left: clamp(12px, 3vw, 40px); right: clamp(12px, 3vw, 40px); bottom: 4px; padding: 6px 16px 8px; } .name { margin: 0; font-size: 12px; } .name::after { width: 40px; } .text { min-height: 0; font-size: 15px; line-height: 1.5; padding-right: 28px; } .next { width: 26px; height: 26px; right: 8px; bottom: 6px; } }
+/* 手機橫放：框貼在對話區底部，不要浮在半空中（作者 11-02：橫放時太高、下面空）。fixed 不撐高 iframe，這裡最多兩行，放得下。
+   這裡的高度是對話 iframe 自己的（桌機也只有 120px），所以用觸控＋寬度判斷手機橫放，不能用 max-height（作者 11-02：電腦上字變小） */
+@media (pointer: coarse) and (min-width: 641px) and (max-width: 1000px) { body { padding: 0; } .box { position: fixed; left: clamp(12px, 3vw, 40px); right: clamp(12px, 3vw, 40px); bottom: 4px; padding: 6px 16px 8px; } .name { margin: 0; font-size: 12px; } .name::after { width: 40px; } .text { min-height: 0; font-size: 15px; line-height: 1.5; padding-right: 28px; } .next { width: 26px; height: 26px; right: 8px; bottom: 6px; } }
 @media (prefers-reduced-motion: reduce) { .next::after { animation: none; } .next { transition: none; } }
 </style>
 <section class="box" aria-label="對話">
