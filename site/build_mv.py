@@ -43,8 +43,9 @@ def resolve(key, sb):
 
 def export(cg):
     out = os.path.join(G, f'docs/media/mv/{cg}.webp')
-    if not os.path.exists(out):
-        im = Image.open(os.path.join(G, f'assets/art/cg/s_{cg}.webp')).convert('RGB')
+    src = os.path.join(G, f'assets/art/cg/s_{cg}.webp')
+    if not os.path.exists(out) or os.path.getmtime(src) > os.path.getmtime(out):   # CG 重畫後要跟著換
+        im = Image.open(src).convert('RGB')
         im.thumbnail((1600, 1600), Image.LANCZOS)
         im.save(out, quality=80, method=6)
     return out
