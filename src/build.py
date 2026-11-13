@@ -92,7 +92,7 @@ def story_card(cid, bg_carry, bgm=''):
     return card, bg
 
 
-# 片尾字卷（作者 2026-10-29：故事結束後用素材裡的「片尾字卷」插件，不要對話框）。速度 16px/s：1600×900 約 215 秒捲完、停 8 秒自動回標題，對齊 230 秒的合聲版。內容在 src/credits.txt，合聲版由 songs.apply 掛在這張卡上
+# 片尾字卷（作者 2026-10-29：故事結束後用素材裡的「片尾字卷」插件，不要對話框）。速度 20px/s（11-13 加失智症協助資源後字卷變長，從 16 調上來）：1600×900 約 215 秒捲完、停 8 秒自動回標題，對齊 230 秒的合聲版。內容在 src/credits.txt，合聲版由 songs.apply 掛在這張卡上
 ROLL_IMAGES = ['art/cg/s_mem2_11', 'art/p_yu_47', 'art/p_cheng_45', 'art/p_yu_father', 'art/p_tao_73', 'art/p_zhou_62', 'art/p_azhe_30', 'art/cg/s_a_8']
 
 
@@ -109,7 +109,7 @@ def credits_card():
         'pluginSkippable': True, 'pluginReadVars': [], 'pluginWriteVars': [], 'pluginAssets': [], 'platforms': ['web'],
         'pluginHtml': (R / 'src/plugin/credits_roll_card.html').read_text(encoding='utf-8'),
         'pluginValues': {'content': content, **{f'image{i}': A + f'{n}.webp' for i, n in enumerate(ROLL_IMAGES, 1)},
-                         'speed': 16, 'autoContinue': True, 'endHold': 8, 'continueLabel': '回到標題', 'bgColor': '#0a0c0e', 'bgOpacity': 0.8,
+                         'speed': 20, 'autoContinue': True, 'endHold': 8, 'continueLabel': '回到標題', 'bgColor': '#0a0c0e', 'bgOpacity': 0.8,
                          'textColor': '#f2ead6', 'accentColor': '#e8743b', 'font': 'serif'}}}
     return card, card['data']['background']
 
@@ -125,7 +125,9 @@ def build():
                         '陪她來的男人替她遞水、提醒她下一句歌詞，她叫他「先生」。'
                         '從 1988 年阿爸的魚攤、2004 年後台門口那朵深紅玫瑰，一路到 2026 年的最後一首歌。'
                         '單線劇情、一個結局，三首歌：〈餘燼〉〈晚安，台南〉〈港邊的燈〉。'
-                        '原型、醫學資料出處與原聲帶：https://yazelin.github.io/larch-ember/')
+                        '原型、醫學資料出處與原聲帶：https://yazelin.github.io/larch-ember/'
+                        '　失智症協助資源（台灣）：失智症關懷專線 0800-474-580、長照專線 1966、家庭照顧者關懷專線 0800-507-272，'
+                        '台灣失智症協會 https://www.tada2002.org.tw/')
     board['name'] = '第一章・餘燼'
     board['thumbnail'] = A + 'art/cover.webp'   # 白板縮圖（10-29：第二章沒縮圖時發布到市集被略過，照《續》每塊都放）
     board['description'] = '從 1988 年的魚攤，到 2026 年的最後一場。'
